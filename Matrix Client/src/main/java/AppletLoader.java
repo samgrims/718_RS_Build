@@ -8,7 +8,6 @@ import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
 public class AppletLoader extends Applet {
 	private static final long serialVersionUID = 7639088664641445302L;
 	public static Properties client_parameters = new Properties();
@@ -18,28 +17,20 @@ public class AppletLoader extends Applet {
 	public static boolean usingRS = false;
 	public static boolean useIsaac = false;
 	
-	public static String IP = "72.191.29.70";
+//	public static String IP = "72.191.29.70";
+	public static String IP = "167.86.82.69";
 	public static boolean LOBBY_ENABLED = false;
 	public static boolean DISABLE_XTEA_CRASH = true;
 	public static boolean DISABLE_USELESS_PACKETS = true;
 	public static boolean DISABLE_RSA = false;
-	public static boolean COMBAT_BETA = true;
 	
 	public static final int REVISION = 718;
 	public static final int LOBBY_PORT = 41116;
-	public static String LOBBY_IP = "72.191.29.70";
+	public static String LOBBY_IP = IP;
 	public static int SUB_REVISION = 3;
 	public static AppletLoader instance;
-	public static int[] outSizes = new int[256];
-	public static boolean localHost;
 
 	public static void main(String[] args) {
-		if (args.length > 0) {
-			if(Boolean.parseBoolean(args[0])) 
-				LOBBY_IP = IP = "127.0.0.1";
-			LOBBY_ENABLED = Boolean.parseBoolean(args[1]);
-			SUB_REVISION = Integer.parseInt(args[2]);
-		}
 		AppletLoader loader = instance = new AppletLoader();
 		loader.doFrame();
 	}
@@ -67,17 +58,15 @@ public class AppletLoader extends Applet {
 				"http://www.runescape.com/img/game/splash2.gif");
 		client_parameters.put("centerimage", "true");
 		client_parameters.put("boxborder", "false");
-		client_parameters
-				.put(
-						"java_arguments",
+		client_parameters.put("java_arguments",
 						"-Xmx256m -Xss2m -Dsun.java2d.noddraw=true -XX:CompileThreshold=1500 -Xincgc -XX:+UseConcMarkSweepGC -XX:+UseParNewGC");
 		client_parameters.put("27", "0");
 		client_parameters.put("1", "0");
 		client_parameters.put("16", "false");
 		client_parameters.put("17", "false");
-		client_parameters.put("21",  usingRS ? "11" : "1"); //WORLD ID
+		client_parameters.put("21", "1"); //WORLD ID
 		client_parameters.put("30", "false");
-		client_parameters.put("20", usingRS ? "lobby17.runescape.com" : LOBBY_IP);
+		client_parameters.put("20", LOBBY_IP); //Lobby
 		client_parameters.put("29", "");
 		client_parameters.put("11", "true");
 		client_parameters.put("25", "1378752098");
@@ -85,18 +74,15 @@ public class AppletLoader extends Applet {
 		client_parameters.put("8", ".runescape.com");
 		client_parameters.put("23", "false");
 		client_parameters.put("32", "0");
-		client_parameters.put("15",
-				"wwGlrZHF5gKN6D3mDdihco3oPeYN2KFybL9hUUFqOvk");
+		client_parameters.put("15", "wwGlrZHF5gKN6D3mDdihco3oPeYN2KFybL9hUUFqOvk");
 		client_parameters.put("0", "IjGJjn4L3q5lRpOR9ClzZQ");
 		client_parameters.put("2", "");
-		client_parameters.put("4", "" + (LOBBY_PORT - 40000));//usingRS ? "1116" : "3594"); //LOBBY ID
+		client_parameters.put("4", "" + (LOBBY_PORT - 40000));//LOBBY ID
 		client_parameters.put("14", "");
 		client_parameters.put("5", "8194");
 		client_parameters.put("-1", "QlwePyRU5GcnAn1lr035ag");
 		client_parameters.put("6", "0");
-		client_parameters
-				.put(
-						"24",
+		client_parameters.put("24",
 						"true,false,0,43,200,18,0,21,354,-15,Verdana,11,0xF4ECE9,candy_bar_middle.gif,candy_bar_back.gif,candy_bar_outline_left.gif,candy_bar_outline_right.gif,candy_bar_outline_top.gif,candy_bar_outline_bottom.gif,loadbar_body_left.gif,loadbar_body_right.gif,loadbar_body_fill.gif,6");
 		client_parameters.put("3", "hAJWGrsaETglRjuwxMwnlA/d5W6EgYWx");
 		client_parameters.put("12", "false");
@@ -120,7 +106,6 @@ public class AppletLoader extends Applet {
 
 		client_frame.pack();
 		client_frame.setVisible(true);
-
 	}
 
 	void startClient() {
@@ -144,21 +129,10 @@ public class AppletLoader extends Applet {
 
 	public URL getCodeBase() {
 		try {
-			if (usingRS)
-				return new URL("http://world11.runescape.com");
-			else
-				return new URL("http://"+IP);
+			return new URL("http://"+IP);
 		} catch (Exception exception) {
 			exception.printStackTrace();
 			return null;
 		}
-	}
-
-	void printOut() throws IOException {
-		String s = "";
-		for (int i : outSizes) {
-			s += i + ", ";
-		}
-		System.out.println("in = new int[] {" + s + "};");
 	}
 }
