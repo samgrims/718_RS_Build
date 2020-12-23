@@ -45,8 +45,10 @@ import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
 
 public final class Server {
+	//TODO: Check missing packet
+	//TODO: Remove Matrix intro texts
+	//TODO: Create an ;;appearence command
 	public static void main(String[] args) throws Exception {
-		//TODO: Update git to include both modules
 		Settings.HOSTED = false;
 		Settings.DEBUG = true;
 		long currentTime = Utils.currentTimeMillis();
