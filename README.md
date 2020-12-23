@@ -14,7 +14,7 @@ You are welcome to leech or join in on development, just make a pull request! If
 <li>Go to https://whatismyipaddress.com/ and place that ip address into the AppletLoader.java. The server automatically hosts on the computer you run it on.
 <li>Open the project in IntelliJ and create 2 Maven projects, the Client & the Server. Follow the standard Maven layout src->main->java, marking java as the source directory.
 Note the pom.xml is created for both client & server
-<li>Download data.zip from Mega
+<li>Download data.zip from Mega: https://mega.nz/file/n0lz2IxL#lNoVmXUe21G83FVgXII6qrYXqhXtrPYPtroAnOSk38Q
 <li>Unzip data.zip to the server module. It should just be Matrix Server->data->cache while the rest of the server folders are on the same level as data. Here is a picture:<br> 
 <img src="https://i.gyazo.com/2e95faffe500e88dd3eb5658efe717b7.png">
 <li>Install local jar files onto your Maven local repo on the server by running terminal commands that look like these. If you have never installed jars to your local repo 
