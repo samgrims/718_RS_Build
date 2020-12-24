@@ -64,7 +64,7 @@ public final class Settings {
 	 */
 	public static final int START_PLAYER_HITPOINTS = 100;
 	public static final WorldTile START_PLAYER_LOCATION = new WorldTile(3094,3502, 0);
-	public static final String START_CONTROLER = "StartTutorial"; // "NewHomeControler";//
+	public static final String START_CONTROLER = "StartTutorial";
 	public static final WorldTile RESPAWN_PLAYER_LOCATION = new WorldTile(3094,3502, 0);
 	public static final long MAX_PACKETS_DECODER_PING_DELAY = 30000; // 30seconds
 	public static final int XP_RATE = 100;

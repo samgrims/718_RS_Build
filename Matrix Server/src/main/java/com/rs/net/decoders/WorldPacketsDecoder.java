@@ -41,6 +41,7 @@ import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
 
 public final class WorldPacketsDecoder extends Decoder {
+	//TODO: Fix banking
 	//TODO: Make Esc close interfaces
 	//TODO: create a welcome banner based on Avalon
 
@@ -992,7 +993,15 @@ public final class WorldPacketsDecoder extends Decoder {
 		} else if (packetId == MOUVE_MOUSE_PACKET) {
 			// USELESS PACKET
 		} else if (packetId == KEY_TYPED_PACKET) {
-			// USELESS PACKET
+//			int keyPressed = stream.readByte();
+//			switch (keyPressed) {
+//				case 13://escape button
+//					player.closeInterfaces();
+//					if (player.getInterfaceManager().containsInterface(755)) {//World map
+//						player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746 : 548, 2);
+////						player.animate(new Animation(-1));
+//					}
+//			}
 		} else if (packetId == RECEIVE_PACKET_COUNT_PACKET) {
 			// interface packets
 			stream.readInt();

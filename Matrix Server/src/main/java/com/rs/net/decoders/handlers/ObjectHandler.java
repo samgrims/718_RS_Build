@@ -1,5 +1,6 @@
 package com.rs.net.decoders.handlers;
 
+import com.rs.tools.DebugLine;
 import com.rs.Settings;
 import com.rs.cache.loaders.ObjectDefinitions;
 import com.rs.game.Animation;
@@ -109,12 +110,14 @@ public final class ObjectHandler {
 			if (mapObject == null || mapObject.getId() != id)
 				return;
 		}
-		final WorldObject object = !player.isAtDynamicRegion() ? mapObject
-				: new WorldObject(id, mapObject.getType(),
+		final WorldObject object = !player.isAtDynamicRegion() ? mapObject : new WorldObject(id, mapObject.getType(),
 						(mapObject.getRotation() + rotation % 4), x, y, player.getPlane());
 		player.stopAll(false);
 		if(forceRun)
 			player.setRun(forceRun);
+
+		if(Settings.DEBUG)
+			DebugLine.print("Object Handle Option = " + option);
 		switch(option) {
 		case 1:
 			handleOption1(player, object);
@@ -1066,90 +1069,113 @@ public final class ObjectHandler {
 				.getSizeY(), object.getRotation()));
 	}
 
-	private static void handleOption2(final Player player, final WorldObject object) {
-		final ObjectDefinitions objectDef = object.getDefinitions();
-		final int id = object.getId();
-		player.setCoordsEvent(new CoordsEvent(object, new Runnable() {
+	private static boolean onClickHandledByName(WorldObject world_object, Player player) {
+		ObjectDefinitions objectDef = world_object.getDefinitions();
+		String object_name = objectDef.name.toLowerCase();
+		switch(object_name) {
+			case "cabbage":
+				if (objectDef.containsOption(1, "Pick") && player.getInventory().addItem(1965, 1)) {
+					player.setNextAnimation(new Animation(827));
+					player.lock(2);
+					World.removeTemporaryObject(world_object, 60000, false);
+				}
+				break;
+			case "bank":
+			case "bank chest":
+			case "bank booth":
+			case "counter":
+				if (objectDef.containsOption(1, "Bank"))
+					player.getBank().openBank();
+				break;
+			case "gates":
+			case "gate":
+			case "metal door":
+				if (world_object.getType() == 0 && objectDef.containsOption(1, "Open"))
+					handleGate(player, world_object);
+				break;
+			case "door":
+				if (world_object.getType() == 0 && objectDef.containsOption(1, "Open"))
+					handleDoor(player, world_object);
+				break;
+			case "ladder":
+				handleLadder(player, world_object, 2);
+				break;
+			case "staircase":
+				handleStaircases(player, world_object, 2);
+				break;
+			case "furnace":
+				player.getDialogueManager().startDialogue("SmeltingD", world_object);
+			default:
+				return false;
+		}
+		return true;
+	}
+
+	private static boolean onClickHandledByID(WorldObject world_object, Player player) {
+		final int object_id = world_object.getId();
+
+		switch(object_id) {
+			case 17010:
+				player.getDialogueManager().startDialogue("LunarAltar");
+				break;
+			case 62677:
+				player.getDominionTower().openRewards();
+				break;
+			case 62688:
+				player.getDialogueManager().startDialogue("SimpleMessage","You have a Dominion Factor of "
+						+ player.getDominionTower().getDominionFactor() + ".");
+				break;
+			case 68107:
+				FightKiln.enterFightKiln(player, true);
+				break;
+			case 34384:
+			case 34383:
+			case 14011:
+			case 7053:
+			case 34387:
+			case 34386:
+			case 34385:
+				Thieving.handleStalls(player, world_object);
+				break;
+			case 2418:
+				PartyRoom.openPartyChest(player);
+				break;
+			case 2646:
+				World.removeTemporaryObject(world_object, 50000, true);
+				player.getInventory().addItem(1779, 1);
+				break;
+			case 67051:
+				player.getDialogueManager().startDialogue("Marv", true);
+				break;
+			default:
+				return false;
+		}
+		return true;
+	}
+
+	private static void handleOption2(final Player player, final WorldObject world_object) {
+		ObjectDefinitions objectDef = world_object.getDefinitions();
+		int object_id = world_object.getId();
+
+		player.setCoordsEvent(new CoordsEvent(world_object, new Runnable() {
 			@Override
 			public void run() {
 				player.stopAll();
-				player.faceObject(object);
-				if (!player.getControlerManager().processObjectClick2(object))
-					return;
-				else if (object.getDefinitions().name
-						.equalsIgnoreCase("furnace"))
-					player.getDialogueManager().startDialogue("SmeltingD",
-							object);
-				else if (id == 17010)
-					player.getDialogueManager().startDialogue("LunarAltar");
-				else if (id == 62677)
-					player.getDominionTower().openRewards();
-				else if (id == 62688)
-					player.getDialogueManager().startDialogue(
-							"SimpleMessage",
-							"You have a Dominion Factor of "
-									+ player.getDominionTower()
-									.getDominionFactor() + ".");
-				else if (id == 68107)
-					FightKiln.enterFightKiln(player, true);
-				else if (id == 34384 || id == 34383 || id == 14011
-						|| id == 7053 || id == 34387 || id == 34386
-						|| id == 34385)
-					Thieving.handleStalls(player, object);
-				else if(id == 2418)
-					PartyRoom.openPartyChest(player);
-				else if (id == 2646) {
-					World.removeTemporaryObject(object, 50000, true);
-					player.getInventory().addItem(1779, 1);
-					//crucible
-				}else if (id == 67051)
-					player.getDialogueManager().startDialogue("Marv", true);
-				else {
-					switch (objectDef.name.toLowerCase()) {
-					case "cabbage":
-						if (objectDef.containsOption(1, "Pick") && player.getInventory().addItem(1965, 1)) {
-							player.setNextAnimation(new Animation(827));
-							player.lock(2);
-							World.removeTemporaryObject(object, 60000, false);
-						}
-						break;
-					case "bank":
-					case "bank chest":
-					case "bank booth":
-					case "counter":
-						if (objectDef.containsOption(1, "Bank"))
-							player.getBank().openBank();
-						break;
-					case "gates":
-					case "gate":
-					case "metal door":
-						if (object.getType() == 0
-						&& objectDef.containsOption(1, "Open"))
-							handleGate(player, object);
-						break;
-					case "door":
-						if (object.getType() == 0
-						&& objectDef.containsOption(1, "Open"))
-							handleDoor(player, object);
-						break;
-					case "ladder":
-						handleLadder(player, object, 2);
-						break;
-					case "staircase":
-						handleStaircases(player, object, 2);
-						break;
-					default:
-						player.getPackets().sendGameMessage(
-								"Nothing interesting happens.");
-						break;
-					}
-				}
+				player.faceObject(world_object);
+
+				if(onClickHandledByName(world_object, player))
+					;
+				else if(onClickHandledByID(world_object, player))
+					;
+				else
+					player.getPackets().sendGameMessage("Nothing interesting happens.");
+
 				if (Settings.DEBUG)
-					Logger.log("ObjectHandler", "clicked 2 at object id : " + id
-							+ ", " + object.getX() + ", " + object.getY()
-							+ ", " + object.getPlane());
+					Logger.log("ObjectHandler", "clicked 2 at object id : " + object_id
+							+ ", " + world_object.getX() + ", " + world_object.getY()
+							+ ", " + world_object.getPlane());
 			}
-		}, objectDef.getSizeX(), objectDef.getSizeY(), object.getRotation()));
+		}, objectDef.getSizeX(), objectDef.getSizeY(), world_object.getRotation()));
 	}
 
 	private static void handleOption3(final Player player, final WorldObject object) {
@@ -1244,43 +1270,32 @@ public final class ObjectHandler {
 							Bonfire.addLogs(player, object);
 						break;
 					default:
-						player.getPackets().sendGameMessage(
-								"Nothing interesting happens.");
+						player.getPackets().sendGameMessage("Nothing interesting happens.");
 						break;
 					}
 				}
 				if (Settings.DEBUG)
 					Logger.log("ObjectHandler", "cliked 5 at object id : " + id
-							+ ", " + object.getX() + ", " + object.getY()
-							+ ", " + object.getPlane() + ", ");
+							+ ", " + object.getX() + ", " + object.getY() + ", " + object.getPlane() + ", ");
 			}
 		}, objectDef.getSizeX(), objectDef.getSizeY(), object.getRotation()));
 	}
 
 	private static void handleOptionExamine(final Player player, final WorldObject object) {
-		if(player.getUsername().equalsIgnoreCase("tyler")) {
-			int offsetX = object.getX() - player.getX();
-			int offsetY = object.getY() - player.getY();
-			System.out.println("Offsets"+offsetX+ " , "+offsetY);
-		}
 		player.getPackets().sendGameMessage(
 				"It's an " + object.getDefinitions().name + ".");
-		if (Settings.DEBUG)
-			if (Settings.DEBUG)
-				
-				Logger.log(
-						"ObjectHandler",
-						"examined object id : " + object.getId() + ", "
-								+ object.getX() + ", " + object.getY()
-								+ ", " + object.getPlane() + ", "
-								+ object.getType() + ", "
-								+ object.getRotation() + ", "
-								+ object.getDefinitions().name);
+		if (Settings.DEBUG) {
+			DebugLine.print("ObjectHandler, examined object id : " + object.getId() + ", "
+					+ object.getX() + ", " + object.getY() + ", " + object.getPlane() + ", "
+					+ object.getType() + ", " + object.getRotation() + ", " + object.getDefinitions().name);
+			int offsetX = object.getX() - player.getX();
+			int offsetY = object.getY() - player.getY();
+			DebugLine.print("Offsets " + offsetX + " , " + offsetY);
+		}
 	}
 
 
 	private static void slashWeb(Player player, WorldObject object) {
-
 		if (Utils.getRandom(1) == 0) {
 			World.spawnTemporaryObject(new WorldObject(object.getId() + 1,
 					object.getType(), object.getRotation(), object.getX(),

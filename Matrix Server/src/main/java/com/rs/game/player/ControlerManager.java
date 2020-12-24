@@ -13,6 +13,9 @@ import com.rs.game.player.content.Pots.Pot;
 import com.rs.game.player.controlers.Controler;
 import com.rs.game.player.controlers.ControlerHandler;
 
+/**
+ * What is a controller?
+ */
 public final class ControlerManager implements Serializable {
 
 	private static final long serialVersionUID = 2084691334731830796L;
@@ -25,7 +28,7 @@ public final class ControlerManager implements Serializable {
 	private String lastControler;
 
 	public ControlerManager() {
-		lastControler = /*Settings.HOSTED ? */Settings.START_CONTROLER;//: "TutorialIsland"; // se
+		lastControler = Settings.START_CONTROLER;
 	}
 
 	public void setPlayer(Player player) {
