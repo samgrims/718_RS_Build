@@ -2133,8 +2133,6 @@ public final class Commands {
 	}
 
 	public static void sendYell(Player player, String message, boolean staffYell) {
-		if (player.getRights() == 0 && !player.isSupporter() && !player.isGraphicDesigner())
-			return;
 		if (player.getMuted() > Utils.currentTimeMillis()) {
 			player.getPackets().sendGameMessage(
 					"You temporary muted. Recheck in 48 hours.");
@@ -2142,73 +2140,17 @@ public final class Commands {
 		}
 		if (staffYell) {
 			World.sendWorldMessage("[<col=ff0000>Staff Yell</col>] "
-					+(player.getRights() > 1 ? "<img=1>" : (player.isSupporter() ? "": "<img=0>"))
-					+ player.getDisplayName()+": <col=ff0000>"
-					+message+".</col>", true);
+					+ (player.getRights() > 1 ? "<img=1>" : "<img=0>") + player.getDisplayName()+": <col=ff0000>"
+					+ message + ".</col>", true);
 			return;
 		}
 		if(message.length() > 100)
 			message = message.substring(0, 100);
 		if (message.toLowerCase().equals("eco") && player.getRights() == 0) {
-			player.getPackets().sendGameMessage("Shutup");
 			return;
 		}
 
-		if (player.getRights() < 2) {
-			String[] invalid = { "<euro", "<img", "<img=", "<col", "<col=",
-					"<shad", "<shad=", "<str>", "<u>" };
-			for (String s : invalid)
-				if (message.contains(s)) {
-					player.getPackets().sendGameMessage(
-							"You cannot add additional code to the message.");
-					return;
-				}
-
-			if (player.isGraphicDesigner())
-				/**
-				 * Property of Apache Ah64, modify it and risk your life.
-				 */
-				World.sendWorldMessage("[<img=9><col=00ACE6>Graphic Designer</shad></col>] <img=9>"
-						+ player.getDisplayName()
-						+ ": <col=00ACE6><shad=000000>" + message + "", false);
-			else if (player.isForumModerator())
-				/**
-				 * Property of Apache Ah64, modify it and risk your life.
-				 * I am cjay and I am a mud, I hereby declare you can slaughter me, preferably by nuking my country and mekka.
-				 * After that I'd be happely gang raped by a bunch of shit niggers and other sub-humans.
-				 */
-				World.sendWorldMessage("[<img=10><col=33CC00>Forum Moderator</col>] <img=10>"
-						+ player.getDisplayName()
-						+ ": <col=33CC00><shad=000000>" + message + "", false);
-
-			else if (player.isSupporter() && player.getRights() == 0)
-				World.sendWorldMessage("[<col=58ACFA><shad=2E2EFE>Support Team</shad></col>] " +
-						player.getDisplayName()+": <col=58ACFA><shad=2E2EFE>"+message+"</shad></col>.", false);
-
-			else
-				World.sendWorldMessage("[<img=0><col="+(player.getYellColor() == "ff0000" ||
-						player.getYellColor() == null ? "000099" : player.getYellColor())+">" +
-						((player.getRights() == 1 && player.getUsername().contains("famous")) ? "Head Mod" : "Global Mod")+
-						"</col><img=0>]" + player.getDisplayName() + ": <col="+(player.getYellColor() == "ff0000" ||
-						player.getYellColor() == null ? "000099" : player.getYellColor())+">" + message + "</col>", false);
-			return;
-		} else if (player.getUsername().equalsIgnoreCase("richard")) {
-			World.sendWorldMessage("[<img=1><col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "ff0000" : player.getYellColor())+"><shad=000000>Flamable</shad></col>] <img=1>"
-					+ player.getDisplayName()
-					+ ": <col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "ff0000" : player.getYellColor())+"><shad=000000>"
-					+ message + "", false);
-			return;
-		} else if (player.getUsername().equalsIgnoreCase("apache_ah64")) {
-			World.sendWorldMessage("[<img=1><col="+(player.getYellColor() == "ff0000" ||
-					player.getYellColor() == null ? "ff0000" : player.getYellColor())+"><shad=000000>Web Developer</shad></col>] <img=1>"
-					+ player.getDisplayName() + ": <col="+(player.getYellColor() == "ff0000" ||
-					player.getYellColor() == null ? "ff0000" : player.getYellColor())+"><shad=000000>"
-					+ message + "", false);
-			return;
-		}
-		World.sendWorldMessage("[<img=1><col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "1589FF" : player.getYellColor())+">Admin Dev.</col>] <img=1>"
-				+ player.getDisplayName() + ": <col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "1589FF" : player.getYellColor())+">" + message
-				+ "</col>", false);
+		World.sendWorldMessage("[<col=00FFFF>Yell</col>]" + player.getDisplayName() + ": <col=00FFFF>" + message + "</col>", false);
 	}
 
 	public static boolean processNormalCommand(Player player, String[] cmd,
@@ -2590,8 +2532,11 @@ public final class Commands {
 
 			case "yell":
 				message = "";
+
+				//Converts command arguments to string message
 				for (int i = 1; i < cmd.length; i++)
 					message += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
+
 				sendYell(player, Utils.fixChatMessage(message), false);
 				return true;
 
@@ -2644,8 +2589,7 @@ public final class Commands {
 				for (int i = 0; i < items.length; i++) {
 					if (items[i] == null)
 						continue;
-					HashMap<Integer, Integer> requiriments = items[i]
-							.getDefinitions().getWearingSkillRequiriments();
+					HashMap<Integer, Integer> requiriments = items[i].getDefinitions().getWearingSkillRequiriments();
 					boolean hasRequiriments = true;
 					if (requiriments != null) {
 						for (int skillId : requiriments.keySet()) {
@@ -2656,17 +2600,11 @@ public final class Commands {
 								continue;
 							if (player.getSkills().getLevelForXp(skillId) < level) {
 								if (hasRequiriments)
-									player.getPackets()
-									.sendGameMessage(
-											"You are not high enough level to use this item.");
+									player.getPackets().sendGameMessage("You are not high enough level to use this item.");
 								hasRequiriments = false;
-								new_name = Skills.SKILL_NAME[skillId]
-										.toLowerCase();
-								player.getPackets().sendGameMessage(
-										"You need to have a"
-												+ (new_name.startsWith("a") ? "n"
-														: "") + " " + new_name
-														+ " level of " + level + ".");
+								new_name = Skills.SKILL_NAME[skillId].toLowerCase();
+								player.getPackets().sendGameMessage("You need to have a" +
+										(new_name.startsWith("a") ? "n"	: "") + " " + new_name	+ " level of " + level + ".");
 							}
 
 						}

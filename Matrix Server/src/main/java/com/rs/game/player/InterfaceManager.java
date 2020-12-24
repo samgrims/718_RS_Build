@@ -56,7 +56,6 @@ public class InterfaceManager {
 				childId);
 	}
 
-	//TODO: Rename the function toward intention
 	public final void sendInterfaces() {
 		if (player.getDisplayMode() == 2 || player.getDisplayMode() == 3) {
 			resizableScreen = true;
