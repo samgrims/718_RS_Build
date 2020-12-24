@@ -68,7 +68,7 @@ public final class WorldPacketsDecoder extends Decoder {
 	private final static int INTERFACE_ON_OBJECT = 37;
 	private final static int CLICK_PACKET = -1;
 	private final static int MOUVE_MOUSE_PACKET = -1;
-	private final static int KEY_TYPED_PACKET = 83;
+	private final static int KEY_TYPED_PACKET = -1;
 	private final static int CLOSE_INTERFACE_PACKET = 54;
 	private final static int COMMANDS_PACKET = 60;
 	private final static int ITEM_ON_ITEM_PACKET = 3;
@@ -258,15 +258,9 @@ public final class WorldPacketsDecoder extends Decoder {
 			if (length > stream.getRemaining()) {
 				length = stream.getRemaining();
 				if (Settings.DEBUG)
-					System.out.println("PacketId " + packetId
-							+ " has fake size. - expected size " + length);
+					System.out.println("PacketId " + packetId + " has fake size. - expected size " + length);
 				// break;
-
 			}
-			/*
-			 * System.out.println("PacketId " +packetId+
-			 * " has . - expected size " +length);
-			 */
 			int startOffset = stream.getOffset();
 			processPackets(packetId, stream, length);
 			stream.setOffset(startOffset + length);
@@ -987,18 +981,16 @@ public final class WorldPacketsDecoder extends Decoder {
 
 	public void processPackets(final int packetId, InputStream stream, int length) {
 		player.setPacketsDecoderPing(Utils.currentTimeMillis());
+
+		if (packetId == CHAT_TYPE_PACKET && stream.readByte() == 0) {
+			//KEY_TYPED_PACKET should be decoded and used instead
+			player.closeInterfaces();
+		}
+
 		if (packetId == PING_PACKET) {
 			// kk we ping :)
 		} else if (packetId == MOUVE_MOUSE_PACKET) {
 			// USELESS PACKET
-		} else if (packetId == KEY_TYPED_PACKET) {
-			int keyPressed = stream.readByte();
-			if(keyPressed == 0) {
-				player.closeInterfaces();
-				if (player.getInterfaceManager().containsInterface(755)) {//World map
-					player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746 : 548, 2);
-				}
-			}
 		} else if (packetId == RECEIVE_PACKET_COUNT_PACKET) {
 			// interface packets
 			stream.readInt();
@@ -1244,13 +1236,8 @@ public final class WorldPacketsDecoder extends Decoder {
 				if (player.getTemporaryAttributtes().remove("bank_isWithdraw") != null)
 					player.getBank().withdrawItem(bank_item_X_Slot, value);
 				else
-					player.getBank()
-							.depositItem(
-									bank_item_X_Slot,
-									value,
-									player.getInterfaceManager()
-											.containsInterface(11) ? false
-											: true);
+					player.getBank().depositItem(bank_item_X_Slot, value,
+							player.getInterfaceManager().containsInterface(11) ? false : true);
 			} else if (player.getInterfaceManager().containsInterface(206)
 					&& player.getInterfaceManager().containsInterface(207)) {
 				if (value < 0)
@@ -1494,7 +1481,7 @@ public final class WorldPacketsDecoder extends Decoder {
 						fileId, data));
 			else if (Settings.DEBUG)
 				Logger.log(this, "Unknown chat type: " + chatType);
-		} else if (packetId == CHAT_TYPE_PACKET) {
+		} else if (packetId == CHAT_TYPE_PACKET) {//Same as Keys typed, this might cause an error
 			chatType = stream.readUnsignedByte();
 		} else if (packetId == CHAT_PACKET) {
 			if (!player.hasStarted())
