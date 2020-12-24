@@ -57,42 +57,30 @@ import com.rs.utils.Utils;
  */
 public final class Commands {
 
-	/*
-	 * all console commands only for admin, chat commands processed if they not
-	 * processed by console
-	 */
-
 	/**
-	 * returns if command was processed
+	 * Parent command function. It calls adminCommands, mod commands & support commands
 	 */
-	public static boolean processCommand(Player player, String command,
-			boolean console, boolean clientCommand) {
+	public static boolean processCommand(Player player, String command, boolean console, boolean clientCommand) {
 		if (command.length() == 0) // if they used ::(nothing) theres no command
 			return false;
+
 		String[] cmd = command.toLowerCase().split(" ");
 		if (cmd.length == 0)
 			return false;
-		if (player.getRights() >= 2
-				&& processAdminCommand(player, cmd, console, clientCommand))
+		if (player.getRights() >= 2 && isAdminCommand(player, cmd, console, clientCommand))
 			return true;
-		if (player.getRights() >= 1
-				&& (processModCommand(player, cmd, console, clientCommand)
-						|| processHeadModCommands(player, cmd, console, clientCommand)))
+		if (player.getRights() >= 1 && (isModCommand(player, cmd, console, clientCommand) || processHeadModCommands(player, cmd, console, clientCommand)))
 			return true;
-		if ((player.isSupporter() || player.getRights() >= 1) && processSupportCommands(player, cmd, console, clientCommand))
+		if ((player.isSupporter() || player.getRights() >= 1) && isSupportCommands(player, cmd, console, clientCommand))
 			return true;
-		if (Settings.ECONOMY) {
-			player.getPackets().sendGameMessage("You can't use any commands in economy mode!");
-			return true;
-		}
-		return processNormalCommand(player, cmd, console, clientCommand);
+		return isNormalCommand(player, cmd, console, clientCommand);
 	}
 
 	/*
 	 * extra parameters if you want to check them
 	 */
-	public static boolean processAdminCommand(final Player player,
-			String[] cmd, boolean console, boolean clientCommand) {
+	public static boolean isAdminCommand(final Player player,
+										 String[] cmd, boolean console, boolean clientCommand) {
 		if (clientCommand) {
 			switch (cmd[0]) {
 			case "tele":
@@ -1817,8 +1805,8 @@ public final class Commands {
 		return false;
 	}
 
-	public static boolean processSupportCommands(Player player, String[] cmd,
-			boolean console, boolean clientCommand) {
+	public static boolean isSupportCommands(Player player, String[] cmd,
+											boolean console, boolean clientCommand) {
 		String name;
 		Player target;
 		if (clientCommand) {
@@ -1900,8 +1888,8 @@ public final class Commands {
 		return false;
 	}
 
-	public static boolean processModCommand(Player player, String[] cmd,
-			boolean console, boolean clientCommand) {
+	public static boolean isModCommand(Player player, String[] cmd,
+									   boolean console, boolean clientCommand) {
 		if (clientCommand) {
 
 		} else {
@@ -2153,8 +2141,8 @@ public final class Commands {
 		World.sendWorldMessage("[<col=00FFFF>Yell</col>]" + player.getDisplayName() + ": <col=00FFFF>" + message + "</col>", false);
 	}
 
-	public static boolean processNormalCommand(Player player, String[] cmd,
-			boolean console, boolean clientCommand) {
+	public static boolean isNormalCommand(Player player, String[] cmd,
+										  boolean console, boolean clientCommand) {
 		if (clientCommand) {
 
 		} else {

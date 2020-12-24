@@ -41,6 +41,8 @@ import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
 
 public final class WorldPacketsDecoder extends Decoder {
+	//TODO: Make Esc close interfaces
+	//TODO: create a welcome banner based on Avalon
 
 	private static final byte[] PACKET_SIZES = new byte[104];
 
@@ -1499,11 +1501,10 @@ public final class WorldPacketsDecoder extends Decoder {
 			String message = Huffman.readEncryptedMessage(200, stream);
 			if (message == null || message.replaceAll(" ", "").equals(""))
 				return;
-			if (message.startsWith("::") || message.startsWith(";;")) {
-				// if command exists and processed wont send message as public
-				// message
-				Commands.processCommand(player, message.replace("::", "")
-						.replace(";;", ""), false, false);
+			if(message.startsWith("::"))
+				player.getPackets().sendGameMessage("use \";;\" to make commands");
+			if(message.startsWith(";;")) {
+				Commands.processCommand(player, message.replace(";;", ""), false, false);
 				return;
 			}
 			if (player.getMuted() > Utils.currentTimeMillis()) {
@@ -1515,8 +1516,7 @@ public final class WorldPacketsDecoder extends Decoder {
 			if (chatType == 1)
 				player.sendFriendsChannelMessage(Utils.fixChatMessage(message));
 			else
-				player.sendPublicChatMessage(new PublicChatMessage(Utils
-						.fixChatMessage(message), effects));
+				player.sendPublicChatMessage(new PublicChatMessage(Utils.fixChatMessage(message), effects));
 			player.setLastMsg(message);
 			if (Settings.DEBUG)
 				Logger.log(this, "Chat type: " + chatType);
