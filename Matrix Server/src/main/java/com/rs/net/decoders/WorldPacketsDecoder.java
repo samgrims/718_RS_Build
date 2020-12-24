@@ -35,13 +35,13 @@ import com.rs.net.decoders.handlers.ButtonHandler;
 import com.rs.net.decoders.handlers.InventoryOptionsHandler;
 import com.rs.net.decoders.handlers.NPCHandler;
 import com.rs.net.decoders.handlers.ObjectHandler;
+import com.rs.tools.DebugLine;
 import com.rs.utils.DisplayNames;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
 
 public final class WorldPacketsDecoder extends Decoder {
-	//TODO: Fix banking
 	//TODO: Make Esc close interfaces
 	//TODO: create a welcome banner based on Avalon
 
@@ -68,7 +68,7 @@ public final class WorldPacketsDecoder extends Decoder {
 	private final static int INTERFACE_ON_OBJECT = 37;
 	private final static int CLICK_PACKET = -1;
 	private final static int MOUVE_MOUSE_PACKET = -1;
-	private final static int KEY_TYPED_PACKET = -1;
+	private final static int KEY_TYPED_PACKET = 83;
 	private final static int CLOSE_INTERFACE_PACKET = 54;
 	private final static int COMMANDS_PACKET = 60;
 	private final static int ITEM_ON_ITEM_PACKET = 3;
@@ -985,23 +985,20 @@ public final class WorldPacketsDecoder extends Decoder {
 		}
 	}
 
-	public void processPackets(final int packetId, InputStream stream,
-			int length) {
+	public void processPackets(final int packetId, InputStream stream, int length) {
 		player.setPacketsDecoderPing(Utils.currentTimeMillis());
 		if (packetId == PING_PACKET) {
 			// kk we ping :)
 		} else if (packetId == MOUVE_MOUSE_PACKET) {
 			// USELESS PACKET
 		} else if (packetId == KEY_TYPED_PACKET) {
-//			int keyPressed = stream.readByte();
-//			switch (keyPressed) {
-//				case 13://escape button
-//					player.closeInterfaces();
-//					if (player.getInterfaceManager().containsInterface(755)) {//World map
-//						player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746 : 548, 2);
-////						player.animate(new Animation(-1));
-//					}
-//			}
+			int keyPressed = stream.readByte();
+			if(keyPressed == 0) {
+				player.closeInterfaces();
+				if (player.getInterfaceManager().containsInterface(755)) {//World map
+					player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746 : 548, 2);
+				}
+			}
 		} else if (packetId == RECEIVE_PACKET_COUNT_PACKET) {
 			// interface packets
 			stream.readInt();
