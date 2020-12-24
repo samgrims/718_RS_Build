@@ -118,8 +118,7 @@ public class InventoryOptionsHandler {
 		});
 	}
 
-	public static void handleItemOption1(Player player, final int slotId,
-			final int itemId, Item item) {
+	public static void handleItemOption1(Player player, final int slotId, final int itemId, Item item) {
 		long time = Utils.currentTimeMillis();
 		if (player.getLockDelay() >= time
 				|| player.getEmotesManager().getNextEmoteEnd() >= time)
@@ -162,6 +161,7 @@ public class InventoryOptionsHandler {
 		}
 		if (Magic.useTabTeleport(player, itemId))
 			return;
+
 		if (itemId == AncientEffigies.SATED_ANCIENT_EFFIGY
 				|| itemId == AncientEffigies.GORGED_ANCIENT_EFFIGY
 				|| itemId == AncientEffigies.NOURISHED_ANCIENT_EFFIGY

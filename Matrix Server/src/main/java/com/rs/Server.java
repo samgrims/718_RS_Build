@@ -45,7 +45,6 @@ import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
 
 public final class Server {
-	//TODO: Check missing packet
 	//TODO: Remove Matrix intro texts
 	//TODO: Create an ;;appearence command
 	public static void main(String[] args) throws Exception {
@@ -99,19 +98,15 @@ public final class Server {
 			ServerChannelHandler.init();
 		} catch (Throwable e) {
 			Logger.handle(e);
-			Logger.log("Launcher",
-					"Failed initing Server Channel Handler. Shutting down...");
+			Logger.log("Launcher", "Failed initing Server Channel Handler. Shutting down...");
 			System.exit(1);
 			return;
 		}
-		Logger.log("Launcher", "Server took "
-				+ (Utils.currentTimeMillis() - currentTime)
-				+ " milli seconds to launch.");
+		Logger.log("Launcher", "Server took " + (Utils.currentTimeMillis() - currentTime) + " milli seconds to launch.");
 		addAccountsSavingTask();
 		if (Settings.HOSTED)
 			addUpdatePlayersOnlineTask();
 		addCleanMemoryTask();
-		// Donations.init();
 	}
 
 	private static void setWebsitePlayersOnline(int amount) throws IOException {

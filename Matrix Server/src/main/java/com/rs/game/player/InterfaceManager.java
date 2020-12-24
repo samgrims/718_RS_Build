@@ -45,12 +45,8 @@ public class InterfaceManager {
 	}
 	
 	public void sendInterface(int interfaceId) {
-		player.getPackets()
-				.sendInterface(
-						false,
-						resizableScreen ? RESIZABLE_WINDOW_ID : FIXED_WINDOW_ID,
-						resizableScreen ? RESIZABLE_SCREEN_TAB_ID
-								: FIXED_SCREEN_TAB_ID, interfaceId);
+		player.getPackets().sendInterface(false, resizableScreen ? RESIZABLE_WINDOW_ID : FIXED_WINDOW_ID,
+						resizableScreen ? RESIZABLE_SCREEN_TAB_ID : FIXED_SCREEN_TAB_ID, interfaceId);
 	}
 
 	public void sendInventoryInterface(int childId) {

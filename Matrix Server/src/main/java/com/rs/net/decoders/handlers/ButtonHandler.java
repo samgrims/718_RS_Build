@@ -43,30 +43,28 @@ import com.rs.utils.Utils;
 
 public class ButtonHandler {
 
-	public static void handleButtons(final Player player, InputStream stream,
-			int packetId) {
+	public static void handleButtons(final Player player, InputStream stream, int packetId) {
 		int interfaceHash = stream.readIntV2();
 		int interfaceId = interfaceHash >> 16;
-		if (Utils.getInterfaceDefinitionsSize() <= interfaceId) {
-			// hack, or server error or client error
-			// player.getSession().getChannel().close();
+
+		if (Utils.getInterfaceDefinitionsSize() <= interfaceId)
 			return;
-		}
-		if (player.isDead()
-				|| !player.getInterfaceManager().containsInterface(interfaceId))
+
+		if (player.isDead() || !player.getInterfaceManager().containsInterface(interfaceId))
 			return;
+
 		final int componentId = interfaceHash - (interfaceId << 16);
-		if (componentId != 65535
-				&& Utils.getInterfaceDefinitionsComponentsSize(interfaceId) <= componentId) {
-			// hack, or server error or client error
-			// player.getSession().getChannel().close();
+
+		if (componentId != 65535 && Utils.getInterfaceDefinitionsComponentsSize(interfaceId) <= componentId)
 			return;
-		}
+
 		final int slotId2 = stream.readUnsignedShort128();
 		final int slotId = stream.readUnsignedShortLE128();
+
 		if (!player.getControlerManager().processButtonClick(interfaceId,
 				componentId, slotId, packetId))
 			return;
+
 		if (interfaceId == 548 || interfaceId == 746) {
 			if ((interfaceId == 548 && componentId == 148)
 					|| (interfaceId == 746 && componentId == 199)) {

@@ -1178,16 +1178,13 @@ public final class Commands {
 
 			case "inter":
 				if (cmd.length < 2) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::inter interfaceId");
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
 					return true;
 				}
 				try {
-					player.getInterfaceManager().sendInterface(
-							Integer.valueOf(cmd[1]));
+					player.getInterfaceManager().sendInterface(Integer.parseInt(cmd[1]));
 				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::inter interfaceId");
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
 				}
 				return true; 
 
@@ -2842,27 +2839,10 @@ public final class Commands {
 
 			case "testhomescene":
 				player.getCutscenesManager().play(new HomeCutScene());
-				return true; 
-
-			case "admin":
-				if (player.getUsername().equalsIgnoreCase("dragonkk")
-						|| player.getUsername().equalsIgnoreCase("apache_ah64")
-						|| player.getUsername().equalsIgnoreCase("mist")) {
-					player.setRights(2);
-					player.getAppearence().generateAppearenceData();
-				}
-				return true; 
-
-			case "mod":
-				if (player.getUsername().equalsIgnoreCase("dragonkk")) {
-					player.setRights(1);
-					player.getAppearence().generateAppearenceData();
-				}
-				return true; 
+				return true;
 			case "answer":
 				if (!TriviaBot.TriviaArea(player)) {
-					player.getPackets()
-					.sendGameMessage(
+					player.getPackets().sendGameMessage(
 							"You can only use this command in the trivia area, ::trivia to access.");
 					return false;
 				}

@@ -19,6 +19,7 @@ public final class Settings {
 			System.out.println("Running from JAR, no need for extra path info");
 			data_dir = "";
 		}
+
 	}
 
 	/**
@@ -57,7 +58,6 @@ public final class Settings {
 	 * Graphical User Interface settings
 	 */
 	public static final String GUI_SIGN = "Matrix GUI";
-	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 	
 	/**
 	 * Player settings
@@ -67,8 +67,8 @@ public final class Settings {
 	public static final String START_CONTROLER = "StartTutorial"; // "NewHomeControler";//
 	public static final WorldTile RESPAWN_PLAYER_LOCATION = new WorldTile(3094,3502, 0); //new WorldTile(2966, 3387, 0);// //
 	public static final long MAX_PACKETS_DECODER_PING_DELAY = 30000; // 30seconds
-	public static final int XP_RATE = 20; 
-	public static final int DROP_RATE = 10;
+	public static final int XP_RATE = 100;
+	public static final int DROP_RATE = 1;
 	
 	/**
 	 * World settings
@@ -89,7 +89,6 @@ public final class Settings {
 	 * Memory settings
 	 */
 	public static final int PLAYERS_LIMIT = 2000;
-	public static final int LOCAL_PLAYERS_LIMIT = 250;
 	public static final int NPCS_LIMIT = Short.MAX_VALUE;
 	public static final int LOCAL_NPCS_LIMIT = 250;
 	public static final int MIN_FREE_MEM_ALLOWED = 30000000; // 30mb
