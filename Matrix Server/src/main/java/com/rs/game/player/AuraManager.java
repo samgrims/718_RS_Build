@@ -81,15 +81,9 @@ public class AuraManager implements Serializable {
 
 				return;
 			}
-			if (!player.isExtremeDonator() && isWingedAura(item.getId())) {
-				player.getPackets().sendGameMessage("You need to be extreme donator to use this feature.");
-				return;
-			}
+
 			int tier = getTier(item.getId());
-			if (!player.isDonator() && !player.isExtremeDonator() && tier > 1) {
-				player.getPackets().sendGameMessage("You need to be a donator to use this feature.");
-				return;
-			}
+
 			activation = Utils.currentTimeMillis() + getActivationTime(item.getId()) * 1000;
 			cooldowns.put(item.getId(), activation + getCooldown(item.getId()) * 1000);
 			player.setNextAnimation(new Animation(2231));

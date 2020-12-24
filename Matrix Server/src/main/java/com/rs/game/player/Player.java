@@ -184,11 +184,6 @@ public class Player extends Entity {
 	private int tradeStatus;
 	private int assistStatus;
 
-	private boolean donator;
-	private boolean extremeDonator;
-	private long donatorTill;
-	private long extremeDonatorTill;
-
 	//Recovery ques. & ans.
 	private String recovQuestion;
 	private String recovAnswer;
@@ -647,6 +642,11 @@ public class Player extends Entity {
 		}
 	}
 
+	public void sendWelcomePrompts() {
+		getPackets().sendGameMessage("Welcome to " + Settings.SERVER_NAME + ".");
+		getPackets().sendGameMessage(Settings.LASTEST_UPDATE);
+	}
+
 	public void run() {
 		if (World.exiting_start != 0) {
 			int delayPassed = (int) ((Utils.currentTimeMillis() - World.exiting_start) / 1000);
@@ -661,28 +661,8 @@ public class Player extends Entity {
 		refreshPrivateChatSetup();
 		refreshOtherChatsSetup();
 		sendRunButtonConfig();
-		getPackets().sendGameMessage("Welcome to " + Settings.SERVER_NAME + ".");
-		getPackets().sendGameMessage("Please go to www.matrixftw.com to keep up with updates.");
-		getPackets().sendGameMessage(Settings.LASTEST_UPDATE);
-		getPackets().sendGameMessage("You are playing with "+(isOldItemsLook() ? "old" : "new") + " item looks. Type ::switchitemslook if you wish to switch.");
+		sendWelcomePrompts();
 
-		//temporary for next 2days
-		donatorTill = 0;
-		extremeDonatorTill = 0;
-
-		if (extremeDonator || extremeDonatorTill != 0) {
-			if (!extremeDonator && extremeDonatorTill < Utils.currentTimeMillis()) {
-				getPackets().sendGameMessage("Your extreme donator rank expired.");
-				extremeDonatorTill = 0;
-			} else
-				getPackets().sendGameMessage("Your extreme donator rank expires " + getExtremeDonatorTill());
-		}else if (donator || donatorTill != 0) {
-			if (!donator && donatorTill < Utils.currentTimeMillis()) {
-				getPackets().sendGameMessage("Your donator rank expired.");
-				donatorTill = 0;
-			}else
-				getPackets().sendGameMessage("Your donator rank expires " + getDonatorTill());
-		}
 
 		sendDefaultPlayersOptions();
 		checkMultiArea();
@@ -981,7 +961,7 @@ public class Player extends Entity {
 	}
 
 	public int getMessageIcon() {
-		return getRights() == 2 || getRights() == 1 ? getRights() : isForumModerator() ? 10 : isGraphicDesigner() ? 9 : isExtremeDonator() ? 11 : isDonator() ? 8 : getRights();
+		return getRights() == 2 || getRights() == 1 ? getRights() : isForumModerator() ? 10 : isGraphicDesigner() ? 9 : getRights();
 	}
 
 	public WorldPacketsEncoder getPackets() {
@@ -1890,8 +1870,6 @@ public class Player extends Entity {
 			if (prayer.usingPrayer(0, 10) || prayer.usingPrayer(1, 0))
 				keptAmount++;
 		}
-		if (donator && Utils.random(2) == 0)
-			keptAmount += 1;
 		CopyOnWriteArrayList<Item> keptItems = new CopyOnWriteArrayList<Item>();
 		Item lastItem = new Item(1, 1);
 		for (int i = 0; i < keptAmount; i++) {
@@ -2260,22 +2238,6 @@ public class Player extends Entity {
 		this.votes = votes;
 	}
 
-	public boolean isDonator() {
-		return isExtremeDonator() || donator || donatorTill > Utils.currentTimeMillis();
-	}
-
-	public boolean isExtremeDonator() {
-		return extremeDonator || extremeDonatorTill > Utils.currentTimeMillis();
-	}
-
-	public boolean isExtremePermDonator() {
-		return extremeDonator;
-	}
-
-	public void setExtremeDonator(boolean extremeDonator) {
-		this.extremeDonator = extremeDonator;
-	}
-
 	public boolean isGraphicDesigner() {
 		return isGraphicDesigner;
 	}
@@ -2290,47 +2252,6 @@ public class Player extends Entity {
 	
 	public void setForumModerator(boolean isForumModerator) {
 		this.isForumModerator = isForumModerator;
-	}
-
-	@SuppressWarnings("deprecation")
-	public void makeDonator(int months) {
-		if (donatorTill < Utils.currentTimeMillis())
-			donatorTill = Utils.currentTimeMillis();
-		Date date = new Date(donatorTill);
-		date.setMonth(date.getMonth() + months);
-		donatorTill = date.getTime();
-	}
-
-	@SuppressWarnings("deprecation")
-	public void makeDonatorDays(int days) {
-		if (donatorTill < Utils.currentTimeMillis())
-			donatorTill = Utils.currentTimeMillis();
-		Date date = new Date(donatorTill);
-		date.setDate(date.getDate()+days);
-		donatorTill = date.getTime();
-	}
-
-	@SuppressWarnings("deprecation")
-	public void makeExtremeDonatorDays(int days) {
-		if (extremeDonatorTill < Utils.currentTimeMillis())
-			extremeDonatorTill = Utils.currentTimeMillis();
-		Date date = new Date(extremeDonatorTill);
-		date.setDate(date.getDate()+days);
-		extremeDonatorTill = date.getTime();
-	}
-
-	@SuppressWarnings("deprecation")
-	public String getDonatorTill() {
-		return (donator ? "never" : new Date(donatorTill).toGMTString()) + ".";
-	}
-
-	@SuppressWarnings("deprecation")
-	public String getExtremeDonatorTill() {
-		return (extremeDonator ? "never" : new Date(extremeDonatorTill).toGMTString()) + ".";
-	}
-
-	public void setDonator(boolean donator) {
-		this.donator = donator;
 	}
 
 	public String getRecovQuestion() {
@@ -3014,6 +2935,6 @@ public class Player extends Entity {
 
 	public boolean hasVoted() {
 		//disabled so that donators vote for the first 2 days of list reset ^^
-		return isDonator() || voted > Utils.currentTimeMillis();
+		return voted > Utils.currentTimeMillis();
 	}
 }

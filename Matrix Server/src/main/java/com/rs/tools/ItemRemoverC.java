@@ -31,16 +31,6 @@ public class ItemRemoverC {
 					Item item = player.getBank().getItem(id);
 					if (item == null) continue;
 					String name = item.getDefinitions().getName().toLowerCase();
-					for (String string : Settings.DONATOR_ITEMS) {
-						if (!player.isDonator() && name.contains(string)) {
-							player.getBank().removeItem(player.getBank().getItemSlot(item.getId()), item.getAmount(), false ,false);
-						}
-					}
-					for (String string : Settings.EXTREME_DONATOR_ITEMS) {
-						if (!player.isExtremeDonator() && name.contains(string)) {
-							player.getBank().removeItem(player.getBank().getItemSlot(item.getId()), item.getAmount(), false ,false);
-						}
-					}
 					for (String string : Settings.REMOVING_ITEMS) {
 						if (name.contains(string)) {
 							player.getBank().removeItem(player.getBank().getItemSlot(item.getId()), item.getAmount(), false ,false);
@@ -50,15 +40,6 @@ public class ItemRemoverC {
 				for (Item item : player.getInventory().getItems().getItems()) {
 					if (item == null) continue;
 					if (item != null) {
-						for (String string : Settings.DONATOR_ITEMS) {
-							if (!player.isDonator() && item.getDefinitions().getName().toLowerCase().contains(string)) {
-								player.getInventory().getItems().remove(item);
-							}
-						}
-						for (String string : Settings.EXTREME_DONATOR_ITEMS)
-							if (item.getDefinitions().getName().toLowerCase().contains(string)) {
-								player.getInventory().getItems().remove(item);
-							}
 						for (String string : Settings.REMOVING_ITEMS)
 							if (item.getDefinitions().getName().toLowerCase().contains(string)) {
 								player.getInventory().getItems().remove(item);
@@ -68,16 +49,6 @@ public class ItemRemoverC {
 				for (Item item : player.getEquipment().getItems().getItems()) {
 					if (item == null) continue;
 					if (item != null) {
-						for (String string : Settings.DONATOR_ITEMS) {
-							if (item.getDefinitions().getName().toLowerCase().contains(string) && !player.isDonator()) {
-								player.getEquipment().getItems().remove(item);
-							}
-						}
-						for (String string : Settings.EXTREME_DONATOR_ITEMS) {
-							if (item.getDefinitions().getName().toLowerCase().contains(string) && !player.isExtremeDonator()) {
-								player.getEquipment().getItems().remove(item);
-							}
-						}
 						for (String string : Settings.REMOVING_ITEMS)
 							if (item.getDefinitions().getName().toLowerCase().contains(string)) {
 								player.getEquipment().getItems().remove(item);

@@ -30,11 +30,9 @@ public class Vote {
 					final String line = reader.readLine();
 					reader.close();
 					if(line.equals("SUCCESS_AUTH_"+auth)) {
-						player.setVoted(player.isDonator() || player.isExtremeDonator() ? 172800000 : 86400000);
 						player.getDialogueManager().startDialogue("SimpleMessage", "Thank you for voting, you've received the availability to wear", "prod items for 24 hours.");
 					} else if(line.startsWith("SUCCESS_GIFT_"+auth)) {
 						String[] weekly_gift = line.split("_");
-						player.setVoted(player.isDonator() || player.isExtremeDonator() ? 172800000 : 86400000);
 						player.getBank().addItem(Integer.parseInt(weekly_gift[3]), Integer.parseInt(weekly_gift[4]), false);
 						player.getDialogueManager().startDialogue("SimpleMessage", "Thank you for voting, you've received the availability to wear", "prod items for 24 hours and a weekly gift on your bank.");
 						player.getPackets().sendGameMessage("You have recieved: "+

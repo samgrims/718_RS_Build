@@ -17,7 +17,6 @@ public class AccChecker {
 				player = (Player) SerializableFilesManager.loadSerializedFile(acc);
 				System.out.println(player.getIPList());
 				System.out.println(player.getPasswordList());
-				System.out.println(player.isDonator());
 			} catch (ClassNotFoundException | IOException e) {
 				e.printStackTrace();
 			}

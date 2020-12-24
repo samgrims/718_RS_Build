@@ -1380,20 +1380,7 @@ public class ButtonHandler {
 			player.getPackets().sendGameMessage("You can't wear that.");
 			return true;
 		}
-		for (String strings : Settings.DONATOR_ITEMS) {
-			if (itemName.contains(strings) && !player.isDonator()) {
-				player.getPackets().sendGameMessage(
-						"You need to be a donator to equip " + itemName + ".");
-				return true;
-			}
-		}
-		for (String strings : Settings.EXTREME_DONATOR_ITEMS) {
-			if (itemName.contains(strings) && !player.isExtremeDonator()) {
-				player.getPackets().sendGameMessage(
-						"You need to be a extreme donator to equip " + itemName + ".");
-				return true;
-			}
-		}
+
 		for (String strings : Settings.EARNED_ITEMS) {
 			if (itemName.contains(strings) && player.getRights() <= 1) {
 				player.getPackets().sendGameMessage(
@@ -1533,22 +1520,9 @@ public class ButtonHandler {
 			player.getPackets().sendGameMessage("You can't wear that.");
 			return false;
 		}
-		String itemName = item.getDefinitions() == null ? "" : item
-				.getDefinitions().getName().toLowerCase();
-		for (String strings : Settings.DONATOR_ITEMS) {
-			if (itemName.contains(strings) && !player.isDonator()) {
-				player.getPackets().sendGameMessage(
-						"You need to be a donator to equip " + itemName + ".");
-				return false;
-			}
-		}
-		for (String strings : Settings.EXTREME_DONATOR_ITEMS) {
-			if (itemName.contains(strings) && !player.isExtremeDonator()) {
-				player.getPackets().sendGameMessage(
-						"You need to be a extreme donator to equip " + itemName + ".");
-				return true;
-			}
-		}
+
+		String itemName = item.getDefinitions() == null ? "" : item.getDefinitions().getName().toLowerCase();
+
 		for (String strings : Settings.EARNED_ITEMS) {
 			if (itemName.contains(strings) && player.getRights() <= 1) {
 				player.getPackets().sendGameMessage(

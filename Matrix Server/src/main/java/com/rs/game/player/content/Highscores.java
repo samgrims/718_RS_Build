@@ -47,7 +47,7 @@ public class Highscores {
 			public void run() {
 				try {
 					synchronized(lock) {
-						int rights = player.getRights() == 1 ? 1 : player.isForumModerator() ? 5 : player.isGraphicDesigner() ? 4 : player.isExtremeDonator() ? 6 : player.isDonator() ? 3 : player.getRights();
+						int rights = player.getRights() == 1 ? 1 : player.isForumModerator() ? 5 : player.isGraphicDesigner() ? 4 : player.getRights();
 						URL url = new URL("http://www.matrixftw.com/updatehighscores.php?username="+
 								player.getDisplayName().replaceAll(" ", "_")+"&rights="+rights+"&total="+total+"&attack="+levels[0]+"&defence="+levels[1]+"&strength="+levels[2]+"" +
 								"&constitution="+levels[3]+"&ranged="+levels[4]+"&prayer="+levels[5]+"&magic="+levels[6]+"&cooking="+levels[7]+"&woodcutting="+levels[8]+"" +

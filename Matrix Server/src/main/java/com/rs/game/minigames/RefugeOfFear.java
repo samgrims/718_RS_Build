@@ -77,11 +77,7 @@ public final class RefugeOfFear extends Controler {
 	@Override
 	public void start() {
 		int itemid = hasFamiliarPouch();
-		if (!player.isExtremeDonator()) {
-			player.getDialogueManager().startDialogue("SimpleMessage", "You have to be an extreme donator to enter this minigame.");
-			player.getControlerManager().removeControlerWithoutCheck();
-			return;
-		} else if (hasFollower()) {
+		if (hasFollower()) {
 			player.getDialogueManager().startDialogue("SimpleMessage", "You cannot take a familiar into Refuge of Fear.");
 			player.getControlerManager().removeControlerWithoutCheck();
 			return;

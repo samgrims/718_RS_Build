@@ -111,14 +111,6 @@ public final class Settings {
 	public static final BigInteger MODULUS = new BigInteger("102876637271116124732338500663639643113504464789339249490399312659674772039314875904176809267475033772367707882873773291786014475222178654932442254125731622781524413208523465520758537060408541610254619166907142593731337618490879831401461945679478046811438574041131738117063340726565226753787565780501845348613");
 
 	/**
-	 * Donator settings
-	 */
-	public static String[] DONATOR_ITEMS = { "primal", /* "virtus", "pernix", */
-		"promethium", "(i)", "thok's", "trident" };
-	
-	public static String[] EXTREME_DONATOR_ITEMS = {"donator", "corruption", "salvation", "harmony"};
-
-	/**
 	 * Item settings
 	 */
 	public static String[] EARNED_ITEMS = { "tokkul", "castle wars ticket", "(class",

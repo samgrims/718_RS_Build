@@ -1257,65 +1257,8 @@ public final class Commands {
 				target.applyHit(new Hit(target, player.getHitpoints(),
 						HitLook.REGULAR_DAMAGE));
 				target.stopAll();
-				return true; 
+				return true;
 
-			case "permdonator":
-				name = "";
-				for (int i = 1; i < cmd.length; i++)
-					name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
-				target = World.getPlayerByDisplayName(name);
-				loggedIn = true;
-				if (target == null) {
-					target = SerializableFilesManager.loadPlayer(Utils
-							.formatPlayerNameForProtocol(name));
-					if (target != null)
-						target.setUsername(Utils
-								.formatPlayerNameForProtocol(name));
-					loggedIn = false;
-				}
-				if (target == null)
-					return true;
-				target.setDonator(true);
-				SerializableFilesManager.savePlayer(target);
-				if (loggedIn)
-					target.getPackets().sendGameMessage(
-							"You have been given donator by "
-									+ Utils.formatPlayerNameForDisplay(player
-											.getUsername()), true);
-				player.getPackets().sendGameMessage(
-						"You gave donator to "
-								+ Utils.formatPlayerNameForDisplay(target
-										.getUsername()), true);
-				return true; 
-
-			case "makesupport":
-				name = "";
-				for (int i = 1; i < cmd.length; i++)
-					name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
-				target = World.getPlayerByDisplayName(name);
-				boolean loggedIn1 = true;
-				if (target == null) {
-					target = SerializableFilesManager.loadPlayer(Utils
-							.formatPlayerNameForProtocol(name));
-					if (target != null)
-						target.setUsername(Utils
-								.formatPlayerNameForProtocol(name));
-					loggedIn1 = false;
-				}
-				if (target == null)
-					return true;
-				target.setSupporter(true);
-				SerializableFilesManager.savePlayer(target);
-				if (loggedIn1)
-					target.getPackets().sendGameMessage(
-							"You have been given supporter rank by "
-									+ Utils.formatPlayerNameForDisplay(player
-											.getUsername()), true);
-				player.getPackets().sendGameMessage(
-						"You gave supporter rank to "
-								+ Utils.formatPlayerNameForDisplay(target
-										.getUsername()), true);
-				return true; 
 			case "takesupport":
 				name = "";
 				for (int i = 1; i < cmd.length; i++)
@@ -1468,109 +1411,6 @@ public final class Commands {
 								+ Utils.formatPlayerNameForDisplay(target
 										.getUsername()), true);
 				return true;
-			case "permextremedonator":
-				name = "";
-				for (int i = 1; i < cmd.length; i++)
-					name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
-				target = World.getPlayerByDisplayName(name);
-				boolean loggedIn111 = true;
-				if (target == null) {
-					target = SerializableFilesManager.loadPlayer(Utils
-							.formatPlayerNameForProtocol(name));
-					if (target != null)
-						target.setUsername(Utils
-								.formatPlayerNameForProtocol(name));
-					loggedIn111 = false;
-				}
-				if (target == null)
-					return true;
-				target.setExtremeDonator(true);
-				SerializableFilesManager.savePlayer(target);
-				if (loggedIn111)
-					target.getPackets().sendGameMessage(
-							"You have been given extreme donator by "
-									+ Utils.formatPlayerNameForDisplay(player
-											.getUsername()), true);
-				player.getPackets().sendGameMessage(
-						"You gave extreme donator to "
-								+ Utils.formatPlayerNameForDisplay(target
-										.getUsername()), true);
-				return true; 
-
-			case "takeextremedonator":
-				name = "";
-				for (int i = 1; i < cmd.length; i++)
-					name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
-				target = World.getPlayerByDisplayName(name);
-				boolean loggedIn1111 = true;
-				if (target == null) {
-					target = SerializableFilesManager.loadPlayer(Utils
-							.formatPlayerNameForProtocol(name));
-					if (target != null)
-						target.setUsername(Utils
-								.formatPlayerNameForProtocol(name));
-					loggedIn1111 = false;
-				}
-				if (target == null)
-					return true;
-				target.setExtremeDonator(false);
-				SerializableFilesManager.savePlayer(target);
-				if (loggedIn1111)
-					target.getPackets().sendGameMessage(
-							"Your extreme donator was removed by "
-									+ Utils.formatPlayerNameForDisplay(player
-											.getUsername()), true);
-				player.getPackets().sendGameMessage(
-						"You removed extreme donator from "
-								+ Utils.formatPlayerNameForDisplay(target
-										.getUsername()), true);
-				return true; 
-
-			case "monthdonator":
-				name = cmd[1].substring(cmd[1].indexOf(" ") + 1);
-				target = World.getPlayerByDisplayName(name);
-				if (target == null)
-					return true;
-				target.makeDonator(1);
-				SerializableFilesManager.savePlayer(target);
-				target.getPackets().sendGameMessage(
-						"You have been given donator by "
-								+ Utils.formatPlayerNameForDisplay(player
-										.getUsername()), true);
-				player.getPackets().sendGameMessage(
-						"You gave donator to "
-								+ Utils.formatPlayerNameForDisplay(target
-										.getUsername()), true);
-				return true; 
-
-			case "takedonator":
-				name = "";
-				for (int i = 1; i < cmd.length; i++)
-					name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
-				target = World.getPlayerByDisplayName(name);
-				boolean loggedIn121 = true;
-				if (target == null) {
-					target = SerializableFilesManager.loadPlayer(Utils
-							.formatPlayerNameForProtocol(name));
-					if (target != null)
-						target.setUsername(Utils
-								.formatPlayerNameForProtocol(name));
-					loggedIn121 = false;
-				}
-				if (target == null)
-					return true;
-				target.setDonator(false);
-				SerializableFilesManager.savePlayer(target);
-				if (loggedIn121)
-					target.getPackets().sendGameMessage(
-							"Your donator was removed by "
-									+ Utils.formatPlayerNameForDisplay(player
-											.getUsername()), true);
-				player.getPackets().sendGameMessage(
-						"You removed donator from "
-								+ Utils.formatPlayerNameForDisplay(target
-										.getUsername()), true);
-				return true; 
 
 			case "bank":
 				player.getBank().openBank();
@@ -2293,7 +2133,7 @@ public final class Commands {
 	}
 
 	public static void sendYell(Player player, String message, boolean staffYell) {
-		if (!player.isDonator() && !player.isExtremeDonator() && player.getRights() == 0 && !player.isSupporter() && !player.isGraphicDesigner())
+		if (player.getRights() == 0 && !player.isSupporter() && !player.isGraphicDesigner())
 			return;
 		if (player.getMuted() > Utils.currentTimeMillis()) {
 			player.getPackets().sendGameMessage(
@@ -2342,24 +2182,15 @@ public final class Commands {
 						+ ": <col=33CC00><shad=000000>" + message + "", false);
 
 			else if (player.isSupporter() && player.getRights() == 0)
-				World.sendWorldMessage("[<col=58ACFA><shad=2E2EFE>Support Team</shad></col>] "+player.getDisplayName()+": <col=58ACFA><shad=2E2EFE>"+message+"</shad></col>.", false);
-
-			else if(player.isExtremeDonator() && player.getRights() == 0)
-				World.sendWorldMessage("[<col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "ff0000" : player.getYellColor())+">Extreme Donator</col>] <img=11>"
-						+ player.getDisplayName() + ": <col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "ff0000" : player.getYellColor())+">" + message
-						+ "</col>", false);
-
-			else if (player.isDonator() && player.getRights() == 0)
-				World.sendWorldMessage("[<col=02ab2f>Donator</col>] <img=8>"
-						+ player.getDisplayName() + ": <col=02ab2f>" + message
-						+ "</col>", false);
+				World.sendWorldMessage("[<col=58ACFA><shad=2E2EFE>Support Team</shad></col>] " +
+						player.getDisplayName()+": <col=58ACFA><shad=2E2EFE>"+message+"</shad></col>.", false);
 
 			else
-				World.sendWorldMessage("[<img=0><col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "000099" : player.getYellColor())+">"
-						+((player.getRights() == 1 && player.getUsername().contains("famous")) ? "Head Mod" : "Global Mod")+
-						"</col><img=0>]" 
-						+ player.getDisplayName() + ": <col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "000099" : player.getYellColor())+">" 
-						+ message + "</col>", false);
+				World.sendWorldMessage("[<img=0><col="+(player.getYellColor() == "ff0000" ||
+						player.getYellColor() == null ? "000099" : player.getYellColor())+">" +
+						((player.getRights() == 1 && player.getUsername().contains("famous")) ? "Head Mod" : "Global Mod")+
+						"</col><img=0>]" + player.getDisplayName() + ": <col="+(player.getYellColor() == "ff0000" ||
+						player.getYellColor() == null ? "000099" : player.getYellColor())+">" + message + "</col>", false);
 			return;
 		} else if (player.getUsername().equalsIgnoreCase("richard")) {
 			World.sendWorldMessage("[<img=1><col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "ff0000" : player.getYellColor())+"><shad=000000>Flamable</shad></col>] <img=1>"
@@ -2368,12 +2199,10 @@ public final class Commands {
 					+ message + "", false);
 			return;
 		} else if (player.getUsername().equalsIgnoreCase("apache_ah64")) {
-			/**
-			 * Property of Apache Ah64, modify it and risk your life.
-			 */
-			World.sendWorldMessage("[<img=1><col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "ff0000" : player.getYellColor())+"><shad=000000>Web Developer</shad></col>] <img=1>"
-					+ player.getDisplayName()
-					+ ": <col="+(player.getYellColor() == "ff0000" || player.getYellColor() == null ? "ff0000" : player.getYellColor())+"><shad=000000>"
+			World.sendWorldMessage("[<img=1><col="+(player.getYellColor() == "ff0000" ||
+					player.getYellColor() == null ? "ff0000" : player.getYellColor())+"><shad=000000>Web Developer</shad></col>] <img=1>"
+					+ player.getDisplayName() + ": <col="+(player.getYellColor() == "ff0000" ||
+					player.getYellColor() == null ? "ff0000" : player.getYellColor())+"><shad=000000>"
 					+ message + "", false);
 			return;
 		}
@@ -2392,10 +2221,6 @@ public final class Commands {
 			case "setyellcolor":
 			case "changeyellcolor":
 			case "yellcolor":
-				if(!player.isExtremeDonator() && player.getRights() == 0) {
-					player.getDialogueManager().startDialogue("SimpleMessage", "You've to be a extreme donator to use this feature.");
-					return true;
-				}
 				player.getPackets().sendRunScript(109, new Object[] { "Please enter the yell color in HEX format." });
 				player.getTemporaryAttributtes().put("yellcolor", Boolean.TRUE);
 				return true;
@@ -2408,141 +2233,114 @@ public final class Commands {
 				return true; 
 
 			case "barrage":
-				if (player.isDonator()) {
-					if (!player.canSpawn()) {
-						player.getPackets().sendGameMessage(
-								"You can't spawn while you're in this area.");
-						return true;
-					}
-					player.getInventory().addItem(555, 200000);
-					player.getInventory().addItem(565, 200000);
-					player.getInventory().addItem(560, 200000);
+				if (!player.canSpawn()) {
+					player.getPackets().sendGameMessage(
+							"You can't spawn while you're in this area.");
+					return true;
 				}
+				player.getInventory().addItem(555, 200000);
+				player.getInventory().addItem(565, 200000);
+				player.getInventory().addItem(560, 200000);
+
 				return true; 
 
 			case "veng":
-				if (player.isDonator()) {
-					if (!player.canSpawn()) {
-						player.getPackets().sendGameMessage(
-								"You can't spawn while you're in this area.");
-						return true;
-					}
-					player.getInventory().addItem(557, 200000);
-					player.getInventory().addItem(560, 200000);
-					player.getInventory().addItem(9075, 200000);
+				if (!player.canSpawn()) {
+					player.getPackets().sendGameMessage(
+							"You can't spawn while you're in this area.");
+					return true;
 				}
+				player.getInventory().addItem(557, 200000);
+				player.getInventory().addItem(560, 200000);
+				player.getInventory().addItem(9075, 200000);
+
 				return true; 
 
 			case "dharok":
-				if (player.isDonator()) {
-					if (!player.canSpawn()) {
-						player.getPackets().sendGameMessage(
-								"You can't spawn while you're in this area.");
-						return true;
-					}
-					player.getInventory().addItem(4716, 1);
-					player.getInventory().addItem(4718, 1);
-					player.getInventory().addItem(4720, 1);
-					player.getInventory().addItem(4722, 1);
+				if (!player.canSpawn()) {
+					player.getPackets().sendGameMessage(
+							"You can't spawn while you're in this area.");
+					return true;
 				}
-				return true; 
+				player.getInventory().addItem(4716, 1);
+				player.getInventory().addItem(4718, 1);
+				player.getInventory().addItem(4720, 1);
+				player.getInventory().addItem(4722, 1);
+				return true;
 
 			case "dz":
 			case "donatorzone":
-				if (player.isDonator()) {
-					DonatorZone.enterDonatorzone(player);
-				}
+				DonatorZone.enterDonatorzone(player);
+
 				return true;
 			case "itemn":
-				if (player.isDonator()) {
-					if (!player.canSpawn()) {
-						player.getPackets().sendGameMessage(
-								"You can't spawn while you're in this area.");
-						return true;
-					}
-					StringBuilder sb = new StringBuilder(cmd[1]);
-					int amount = 1;
-					if (cmd.length > 2) {
-						for (int i = 2; i < cmd.length; i++) {
-							if (cmd[i].startsWith("+")) {
-								amount = Integer.parseInt(cmd[i].replace("+", ""));
-							} else {
-								sb.append(" ").append(cmd[i]);
-							}
-						}
-					}
-					String name = sb.toString().toLowerCase().replace("[", "(")
-							.replace("]", ")").replaceAll(",", "'");
-					if (name.contains("Sacred clay")) {
-						return true;
-					}
-					if(name.toLowerCase().contains("donator") || name.toLowerCase().contains("basket of eggs") || name.toLowerCase().contains("sled")) {
-						player.getDialogueManager().startDialogue("SimpleMessage", "This items can only be earned in the Extreme Donator Refuge of Fear minigame.");
-						return true;
-					}
-					for (String string : Settings.DONATOR_ITEMS) {
-						if (!player.isDonator() && name.contains(string)) {
-							player.getPackets().sendGameMessage(
-									"You need to be a donator to spawn " + name
-									+ ".");
-							return true;
-						}
-					}
-					for (String string : Settings.EXTREME_DONATOR_ITEMS) {
-						if (!player.isExtremeDonator() && name.contains(string)) {
-							player.getPackets().sendGameMessage(
-									"You need to be a extreme donator to spawn " + name
-									+ ".");
-							return true;
-						}
-					}
-					for (String string : Settings.EARNED_ITEMS) {
-						if (name.contains(string) && player.getRights() <= 1) {
-							player.getPackets().sendGameMessage(
-									"You must earn " + name + ".");
-							return true;
-						}
-					}
-					for (String string : Settings.VOTE_REQUIRED_ITEMS) {
-						if (name.toLowerCase().contains(string) && !player.hasVoted()) {
-							player.getPackets().sendGameMessage("You must vote to spawn the item: "+name);
-							return true;
-						}
-					}
-					for (int i = 0; i < Utils.getItemDefinitionsSize(); i++) {
-						ItemDefinitions def = ItemDefinitions
-								.getItemDefinitions(i);
-						if (def.getName().toLowerCase().equalsIgnoreCase(name)) {
-							player.getInventory().addItem(i, amount);
-							player.stopAll();
-							player.getPackets().sendGameMessage("Found item " + name + " - id: " + i + ".");
-							return true;
-						}
-					}
+				if (!player.canSpawn()) {
 					player.getPackets().sendGameMessage(
-							"Could not find item by the name " + name + ".");
+							"You can't spawn while you're in this area.");
+					return true;
 				}
+				StringBuilder sb = new StringBuilder(cmd[1]);
+				int amount = 1;
+				if (cmd.length > 2) {
+					for (int i = 2; i < cmd.length; i++) {
+						if (cmd[i].startsWith("+")) {
+							amount = Integer.parseInt(cmd[i].replace("+", ""));
+						} else {
+							sb.append(" ").append(cmd[i]);
+						}
+					}
+				}
+				String name = sb.toString().toLowerCase().replace("[", "(")
+						.replace("]", ")").replaceAll(",", "'");
+				if (name.contains("Sacred clay")) {
+					return true;
+				}
+				if(name.toLowerCase().contains("donator") || name.toLowerCase().contains("basket of eggs") || name.toLowerCase().contains("sled")) {
+					player.getDialogueManager().startDialogue("SimpleMessage", "This items can only be earned in the Extreme Donator Refuge of Fear minigame.");
+					return true;
+				}
+				for (String string : Settings.EARNED_ITEMS) {
+					if (name.contains(string) && player.getRights() <= 1) {
+						player.getPackets().sendGameMessage(
+								"You must earn " + name + ".");
+						return true;
+					}
+				}
+				for (String string : Settings.VOTE_REQUIRED_ITEMS) {
+					if (name.toLowerCase().contains(string) && !player.hasVoted()) {
+						player.getPackets().sendGameMessage("You must vote to spawn the item: "+name);
+						return true;
+					}
+				}
+				for (int i = 0; i < Utils.getItemDefinitionsSize(); i++) {
+					ItemDefinitions def = ItemDefinitions
+							.getItemDefinitions(i);
+					if (def.getName().toLowerCase().equalsIgnoreCase(name)) {
+						player.getInventory().addItem(i, amount);
+						player.stopAll();
+						player.getPackets().sendGameMessage("Found item " + name + " - id: " + i + ".");
+						return true;
+					}
+				}
+				player.getPackets().sendGameMessage(
+						"Could not find item by the name " + name + ".");
 				return true; 
 			case "resettrollname":
 				player.getPetManager().setTrollBabyName(null);
 				return true;
 			case "settrollname":
-				if (!player.isExtremeDonator()) {
-					player.getPackets().sendGameMessage("This is an extreme donator only feature!");
-					return true;
-				}
-				String name = "";
+				String new_name = "";
 				for (int i = 1; i < cmd.length; i++) {
-					name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
+					new_name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
 				}
-				name = Utils.formatPlayerNameForDisplay(name);
-				if (name.length() < 3 || name.length() > 14) {
+				new_name = Utils.formatPlayerNameForDisplay(new_name);
+				if (new_name.length() < 3 || new_name.length() > 14) {
 					player.getPackets().sendGameMessage("You can't use a name shorter than 3 or longer than 14 characters.");
 					return true;
 				}
-				player.getPetManager().setTrollBabyName(name);
+				player.getPetManager().setTrollBabyName(new_name);
 				if (player.getPet() != null && player.getPet().getId() == Pets.TROLL_BABY.getBabyNpcId()) {
-					player.getPet().setName(name);
+					player.getPet().setName(new_name);
 				}
 				return true;
 			case "spawn":
@@ -2654,41 +2452,25 @@ public final class Commands {
 						player.getPackets().sendGameMessage("The item appears to be oversized.");
 						return true;
 					}
-					name = defs == null ? "" : defs.getName()
+					new_name = defs == null ? "" : defs.getName()
 							.toLowerCase();
-					if (name.contains("Sacred clay")) {
+					if (new_name.contains("Sacred clay")) {
 						return true;
 					}
-					if(name.toLowerCase().contains("donator") || name.toLowerCase().contains("basket of eggs") || name.toLowerCase().contains("sled")) {
+					if(new_name.toLowerCase().contains("donator") || new_name.toLowerCase().contains("basket of eggs") || new_name.toLowerCase().contains("sled")) {
 						player.getDialogueManager().startDialogue("SimpleMessage", "This items can only be earned in the Extreme Donator Refuge of Fear minigame.");
 						return true;
 					}
 					for (String string : Settings.VOTE_REQUIRED_ITEMS) {
-						if (name.toLowerCase().contains(string) && !player.hasVoted()) {
-							player.getPackets().sendGameMessage("You must vote to spawn the item: "+name);
-							return true;
-						}
-					}
-					for (String string : Settings.DONATOR_ITEMS) {
-						if (!player.isDonator() && name.contains(string)) {
-							player.getPackets().sendGameMessage(
-									"You need to be a donator to spawn " + name
-									+ ".");
-							return true;
-						}
-					}
-					for (String string : Settings.EXTREME_DONATOR_ITEMS) {
-						if (!player.isExtremeDonator() && name.contains(string)) {
-							player.getPackets().sendGameMessage(
-									"You need to be a extreme donator to spawn " + name
-									+ ".");
+						if (new_name.toLowerCase().contains(string) && !player.hasVoted()) {
+							player.getPackets().sendGameMessage("You must vote to spawn the item: "+new_name);
 							return true;
 						}
 					}
 					for (String string : Settings.EARNED_ITEMS) {
-						if (name.contains(string) && player.getRights() <= 1) {
+						if (new_name.contains(string) && player.getRights() <= 1) {
 							player.getPackets().sendGameMessage(
-									"You must earn " + name + ".");
+									"You must earn " + new_name + ".");
 							return true;
 						}
 					}
@@ -2727,11 +2509,6 @@ public final class Commands {
 				return true; 
 
 			case "setdisplay":
-				if (!player.isDonator() && !player.isExtremeDonator()) {
-					player.getPackets().sendGameMessage(
-							"You do not have the privileges to use this.");
-					return true;
-				}
 				player.getTemporaryAttributtes().put("setdisplay", Boolean.TRUE);
 				player.getPackets().sendInputNameScript("Enter the display name you wish:");
 				return true; 
@@ -2741,11 +2518,6 @@ public final class Commands {
 				return true; 
 
 			case "bank":
-				if (!player.isDonator()) {
-					player.getPackets().sendGameMessage(
-							"You do not have the privileges to use this.");
-					return true;
-				}
 				if (!player.canSpawn()) {
 					player.getPackets().sendGameMessage(
 							"You can't bank while you're in this area.");
@@ -2756,21 +2528,11 @@ public final class Commands {
 				return true; 
 
 			case "blueskin":
-				if (!player.isDonator()) {
-					player.getPackets().sendGameMessage(
-							"You do not have the privileges to use this.");
-					return true;
-				}
 				player.getAppearence().setSkinColor(12);
 				player.getAppearence().generateAppearenceData();
 				return true;
 
 			case "greenskin":
-				if (!player.isDonator()) {
-					player.getPackets().sendGameMessage(
-							"You do not have the privileges to use this.");
-					return true;
-				}
 				player.getAppearence().setSkinColor(13);
 				player.getAppearence().generateAppearenceData();
 				return true; 
@@ -2831,11 +2593,7 @@ public final class Commands {
 				for (int i = 1; i < cmd.length; i++)
 					message += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
 				sendYell(player, Utils.fixChatMessage(message), false);
-				return true; 
-
-			case "checkdonation":
-				Donations.checkDonation(player);
-				return true; 
+				return true;
 
 			case "testhomescene":
 				player.getCutscenesManager().play(new HomeCutScene());
@@ -2862,11 +2620,6 @@ public final class Commands {
 				player.getPackets().sendGameMessage("You are now playing with " + (player.isOldItemsLook() ? "old" : "new") + " item looks.");
 				return true; 
 			case "copy":
-				if (!player.isDonator() && !player.isExtremeDonator()) {
-					player.getPackets().sendGameMessage(
-							"You do not have the privileges to use this.");
-					return true;
-				}
 				String username = "";
 				for (int i = 1; i < cmd.length; i++)
 					username += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
@@ -2877,10 +2630,6 @@ public final class Commands {
 				}
 				if (p2.getRights() > 0 && player.getRights() == 0) {
 					player.getPackets().sendGameMessage("Dont copy staff!!!");
-					return true;
-				}
-				if (p2.isExtremeDonator() && !player.isExtremePermDonator()) {
-					player.getPackets().sendGameMessage("You can't copy extreme donators.");
 					return true;
 				}
 				if (!player.canSpawn() || !p2.canSpawn()) {
@@ -2895,11 +2644,6 @@ public final class Commands {
 				for (int i = 0; i < items.length; i++) {
 					if (items[i] == null)
 						continue;
-					for (String string : Settings.EXTREME_DONATOR_ITEMS) {
-						if (!player.isExtremeDonator() && items[i].getDefinitions().getName().toLowerCase().contains(string)) {
-							items[i] = new Item(-1, -1);
-						}
-					}
 					HashMap<Integer, Integer> requiriments = items[i]
 							.getDefinitions().getWearingSkillRequiriments();
 					boolean hasRequiriments = true;
@@ -2916,12 +2660,12 @@ public final class Commands {
 									.sendGameMessage(
 											"You are not high enough level to use this item.");
 								hasRequiriments = false;
-								name = Skills.SKILL_NAME[skillId]
+								new_name = Skills.SKILL_NAME[skillId]
 										.toLowerCase();
 								player.getPackets().sendGameMessage(
 										"You need to have a"
-												+ (name.startsWith("a") ? "n"
-														: "") + " " + name
+												+ (new_name.startsWith("a") ? "n"
+														: "") + " " + new_name
 														+ " level of " + level + ".");
 							}
 
