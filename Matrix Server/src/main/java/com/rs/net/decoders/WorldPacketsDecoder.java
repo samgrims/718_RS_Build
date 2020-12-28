@@ -267,20 +267,17 @@ public final class WorldPacketsDecoder extends Decoder {
 		int packetId = packet.getId();
 		InputStream stream = new InputStream(packet.getData());
 		if (packetId == WALKING_PACKET || packetId == MINI_WALKING_PACKET) {
-			if (!player.hasStarted() || !player.clientHasLoadedMapRegion()
-					|| player.isDead())
+			if (!player.hasStarted() || !player.clientHasLoadedMapRegion() || player.isDead())
 				return;
 			long currentTime = Utils.currentTimeMillis();
 			if (player.getLockDelay() > currentTime)
 				return;
 			if (player.getFreezeDelay() >= currentTime) {
-				player.getPackets().sendGameMessage(
-						"A magical force prevents you from moving.");
+				player.getPackets().sendGameMessage("A magical force prevents you from moving.");
 				return;
 			}
 			int length = stream.getLength();
-			/*if (packetId == MINI_WALKING_PACKET)
-				length -= 13;*/
+
 			int baseX = stream.readUnsignedShort128();
 			boolean forceRun = stream.readUnsigned128Byte() == 1;
 			int baseY = stream.readUnsignedShort128();
@@ -291,9 +288,7 @@ public final class WorldPacketsDecoder extends Decoder {
 			if(forceRun)
 				player.setRun(forceRun);
 			for (int step = 0; step < steps; step++)
-				if (!player.addWalkSteps(baseX + stream.readUnsignedByte(),
-						baseY + stream.readUnsignedByte(), 25,
-						true))
+				if (!player.addWalkSteps(baseX + stream.readUnsignedByte(),baseY + stream.readUnsignedByte(), 25,true))
 					break;
 		} else if (packetId == INTERFACE_ON_OBJECT) {
 			boolean forceRun = stream.readByte128() == 1;
@@ -433,8 +428,7 @@ public final class WorldPacketsDecoder extends Decoder {
 			player.stopAll(false);
 			player.getActionManager().setAction(new PlayerCombat(p2));
 		} else if (packetId == ATTACK_NPC) {
-			if (!player.hasStarted() || !player.clientHasLoadedMapRegion()
-					|| player.isDead()) {
+			if (!player.hasStarted() || !player.clientHasLoadedMapRegion() || player.isDead()) {
 				return;
 			}
 			if (player.getLockDelay() > Utils.currentTimeMillis()) {
@@ -445,9 +439,7 @@ public final class WorldPacketsDecoder extends Decoder {
 			if(forceRun)
 				player.setRun(forceRun);
 			NPC npc = World.getNPCs().get(npcIndex);
-			if (npc == null || npc.isDead() || npc.hasFinished()
-					|| !player.getMapRegionsIds().contains(npc.getRegionId())
-					|| !npc.getDefinitions().hasAttackOption()) {
+			if (npc == null || npc.isDead() || npc.hasFinished() || !player.getMapRegionsIds().contains(npc.getRegionId()) || !npc.getDefinitions().hasAttackOption()) {
 				return;
 			}
 			if (!player.getControlerManager().canAttack(npc)) {
@@ -456,29 +448,21 @@ public final class WorldPacketsDecoder extends Decoder {
 			if (npc instanceof Familiar) {
 				Familiar familiar = (Familiar) npc;
 				if (familiar == player.getFamiliar()) {
-					player.getPackets().sendGameMessage(
-							"You can't attack your own familiar.");
+					player.getPackets().sendGameMessage("You can't attack your own familiar.");
 					return;
 				}
 				if (!familiar.canAttack(player)) {
-					player.getPackets().sendGameMessage(
-							"You can't attack this npc.");
+					player.getPackets().sendGameMessage("You can't attack this npc.");
 					return;
 				}
 			} else if (!npc.isForceMultiAttacked()) {
 				if (!npc.isAtMultiArea() || !player.isAtMultiArea()) {
-					if (player.getAttackedBy() != npc
-							&& player.getAttackedByDelay() > Utils
-							.currentTimeMillis()) {
-						player.getPackets().sendGameMessage(
-								"You are already in combat.");
+					if (player.getAttackedBy() != npc && player.getAttackedByDelay() > Utils.currentTimeMillis()) {
+						player.getPackets().sendGameMessage("You are already in combat.");
 						return;
 					}
-					if (npc.getAttackedBy() != player
-							&& npc.getAttackedByDelay() > Utils
-							.currentTimeMillis()) {
-						player.getPackets().sendGameMessage(
-								"This npc is already in combat.");
+					if (npc.getAttackedBy() != player && npc.getAttackedByDelay() > Utils.currentTimeMillis()) {
+						player.getPackets().sendGameMessage("This npc is already in combat.");
 						return;
 					}
 				}

@@ -68,8 +68,7 @@ public class NPCHandler {
 		player.stopAll(false);
 		if(forceRun)
 			player.setRun(forceRun);
-		if (npc.getDefinitions().name.contains("Banker")
-				|| npc.getDefinitions().name.contains("banker")) {
+		if (npc.getDefinitions().name.contains("Banker") || npc.getDefinitions().name.contains("banker")) {
 			player.faceEntity(npc);
 			if (!player.withinDistance(npc, 2))
 				return;
@@ -96,8 +95,7 @@ public class NPCHandler {
 				}
 				npc.faceEntity(player);
 				if (npc.getId() == 3709)
-					player.getDialogueManager().startDialogue("MrEx",
-							npc.getId());
+					player.getDialogueManager().startDialogue("MrEx", npc.getId());
 				else if (npc.getId() == 5532)
 					player.getDialogueManager().startDialogue("SorceressGardenNPCs", npc);
 				else if (npc.getId() == 5563)
