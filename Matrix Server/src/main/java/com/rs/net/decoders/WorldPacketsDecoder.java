@@ -42,7 +42,7 @@ import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
 
 public final class WorldPacketsDecoder extends Decoder {
-	//TODO: Make Esc close interfaces
+	//TODO: Learn how to decode a packet
 	//TODO: create a welcome banner based on Avalon
 
 	private static final byte[] PACKET_SIZES = new byte[104];
@@ -68,7 +68,7 @@ public final class WorldPacketsDecoder extends Decoder {
 	private final static int INTERFACE_ON_OBJECT = 37;
 	private final static int CLICK_PACKET = -1;
 	private final static int MOUVE_MOUSE_PACKET = -1;
-	private final static int KEY_TYPED_PACKET = -1;
+	private final static int KEY_TYPED_PACKET = 1;
 	private final static int CLOSE_INTERFACE_PACKET = 54;
 	private final static int COMMANDS_PACKET = 60;
 	private final static int ITEM_ON_ITEM_PACKET = 3;
@@ -233,13 +233,11 @@ public final class WorldPacketsDecoder extends Decoder {
 
 	@Override
 	public void decode(InputStream stream) {
-		while (stream.getRemaining() > 0 && session.getChannel().isConnected()
-				&& !player.hasFinished()) {
+		while (stream.getRemaining() > 0 && session.getChannel().isConnected() && !player.hasFinished()) {
 			int packetId = stream.readPacket(player);
 			if (packetId >= PACKET_SIZES.length || packetId < 0) {
 				if (Settings.DEBUG)
-					System.out.println("PacketId " + packetId
-							+ " has fake packet id.");
+					System.out.println("PacketId " + packetId + " has fake packet id.");
 				break;
 			}
 			int length = PACKET_SIZES[packetId];
@@ -252,14 +250,12 @@ public final class WorldPacketsDecoder extends Decoder {
 			else if (length == -4) {
 				length = stream.getRemaining();
 				if (Settings.DEBUG)
-					System.out.println("Invalid size for PacketId " + packetId
-							+ ". Size guessed to be " + length);
+					System.out.println("Invalid size for PacketId " + packetId + ". Size guessed to be " + length);
 			}
 			if (length > stream.getRemaining()) {
 				length = stream.getRemaining();
 				if (Settings.DEBUG)
 					System.out.println("PacketId " + packetId + " has fake size. - expected size " + length);
-				// break;
 			}
 			int startOffset = stream.getOffset();
 			processPackets(packetId, stream, length);
@@ -982,12 +978,17 @@ public final class WorldPacketsDecoder extends Decoder {
 	public void processPackets(final int packetId, InputStream stream, int length) {
 		player.setPacketsDecoderPing(Utils.currentTimeMillis());
 
-		if (packetId == CHAT_TYPE_PACKET && stream.readByte() == 0) {
-			//KEY_TYPED_PACKET should be decoded and used instead
-			player.closeInterfaces();
-		}
-
-		if (packetId == PING_PACKET) {
+		if (packetId == KEY_TYPED_PACKET) {
+			int keyPressed = stream.readByte();
+			switch (keyPressed) {
+				case 13:
+					player.closeInterfaces();
+					if (player.getInterfaceManager().containsInterface(755)) {//World map
+						player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746 : 548, 2);
+						player.animate(new Animation(-1));
+					}
+			}
+		} else if (packetId == PING_PACKET) {
 			// kk we ping :)
 		} else if (packetId == MOUVE_MOUSE_PACKET) {
 			// USELESS PACKET
@@ -1542,10 +1543,7 @@ public final class WorldPacketsDecoder extends Decoder {
 			@SuppressWarnings("unused")
 			String unknown2 = stream.readString();
 		} else {
-			if (Settings.DEBUG)
-				Logger.log(this, "Missing packet " + packetId
-						+ ", expected size: " + length + ", actual size: "
-						+ PACKET_SIZES[packetId]);
+			;
 		}
 	}
 

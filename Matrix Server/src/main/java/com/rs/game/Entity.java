@@ -108,6 +108,12 @@ public abstract class Entity extends WorldTile {
 		poison.setEntity(this);
 	}
 
+	public void animate(Animation nextAnimation) {
+		if (nextAnimation != null && nextAnimation.getIds()[0] >= 0)
+			lastAnimationEnd = Utils.currentTimeMillis() + AnimationDefinitions.getAnimationDefinitions(nextAnimation.getIds()[0]).getEmoteTime();
+		this.nextAnimation = nextAnimation;
+	}
+
 	public int getClientIndex() {
 		return index + (this instanceof Player ? 32768 : 0);
 	}
