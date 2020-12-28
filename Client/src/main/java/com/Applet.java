@@ -2,7 +2,6 @@ package com;
 
 import com.jagex.*;
 
-import java.applet.Applet;
 import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -46,7 +45,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 
-public class Loader extends Applet implements ActionListener {
+public class Applet extends java.applet.Applet implements ActionListener {
 
     private static final long serialVersionUID = 7639088664641445302L;
     public static Properties client_parameters = new Properties();
@@ -80,7 +79,7 @@ public class Loader extends Applet implements ActionListener {
 
     public static String LOBBY_IP = host_IP;
     public static String ICON_URL = "http://vignette1.wikia.nocookie.net/gtawiki/images/f/fa/Rockstar_London_Logo.png/revision/latest?cb=20100211093254";
-    public static Loader instance;
+    public static Applet instance;
     public static int[] outSizes = new int[256];
 
     public static TrayIcon trayIcon;
@@ -125,11 +124,11 @@ public class Loader extends Applet implements ActionListener {
 		e.printStackTrace();
 	    }
 	}
-	Loader loader = new Loader();
+	Applet applet = new Applet();
 	final JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	panel.setLayout(new BorderLayout());
-	panel.add(loader);
+	panel.add(applet);
 	panel.setPreferredSize(new Dimension(768, 503));
 	frame.setMinimumSize(new Dimension(768, 503));
 	panel.setBackground(Color.BLACK);
@@ -226,7 +225,7 @@ public class Loader extends Applet implements ActionListener {
 	frame.setVisible(true);
 	frame.toFront();
 	client clnt = new client();
-	clnt.supplyApplet(loader);
+	clnt.supplyApplet(applet);
 	clnt.init();
 	clnt.start();
     }

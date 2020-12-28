@@ -2,7 +2,7 @@ package com.jagex;
 /* Class460 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.Loader;
+import com.Applet;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -138,16 +138,16 @@ public class Class460 implements Iterator {
 									// login
 				Class360.aClass25_3905.method389((Class264_Sub4.method2515(Class474.aClass471_5979.method6056(295506052), 15000, -649048480)), Class474.aClass471_5979.address, (byte) 0);
 			    else
-				Class360.aClass25_3905.method389((Class264_Sub4.method2515(IPAddress.createSocket(Loader.LOBBY_IP, Loader.LOBBY_PORT), 15000, -649048480)), Class241.aClass471_2705.address, (byte) 0);
+				Class360.aClass25_3905.method389((Class264_Sub4.method2515(IPAddress.createSocket(Applet.LOBBY_IP, Applet.LOBBY_PORT), 15000, -649048480)), Class241.aClass471_2705.address, (byte) 0);
 			    Class360.aClass25_3905.method383((short) 8191);
 			    Class298_Sub36 class298_sub36 = Class82_Sub6.method885(-1825045529);
 			    if (Class360.aBoolean3886) {
 				class298_sub36.out.writeByte((HandshakePacket.aClass211_2413.opcode * -1813470547));
 				class298_sub36.out.writeShort(0, 16711935);
 				int i_1_ = 385051775 * (class298_sub36.out.index);
-				class298_sub36.out.writeInt(Loader.REVISION, -1354427278);
-				if (Loader.SUB_REVISION != -1) {
-				    class298_sub36.out.writeInt(Loader.SUB_REVISION, 376398822);
+				class298_sub36.out.writeInt(Applet.REVISION, -1354427278);
+				if (Applet.SUB_REVISION != -1) {
+				    class298_sub36.out.writeInt(Applet.SUB_REVISION, 376398822);
 				}
 				if (-122629167 * Class360.anInt3868 == 264)
 				    class298_sub36.out.writeByte((5 == client.anInt8752 * -1233866115 ? 1 : 0));
@@ -243,9 +243,9 @@ public class Class460 implements Iterator {
 				int i_5_ = (385051775 * stream.index);
 				int i_6_ = (385051775 * stream.index);
 				if (!Class360.aBoolean3886) {
-				    stream.writeInt(Loader.REVISION, 711122101);
-				    if (Loader.SUB_REVISION != -1) {
-					stream.writeInt(Loader.SUB_REVISION, 98092954);
+				    stream.writeInt(Applet.REVISION, 711122101);
+				    if (Applet.SUB_REVISION != -1) {
+					stream.writeInt(Applet.SUB_REVISION, 98092954);
 				    }
 				    stream.writeByte((client.anInt8752 * -1233866115 == 5 ? 1 : 0));
 				    i_6_ = (385051775 * stream.index);
@@ -271,7 +271,7 @@ public class Class460 implements Iterator {
 				stream.writeByte(385051775 * class298_sub53.index);
 				stream.writeBytes(class298_sub53.buffer, 0, class298_sub53.index * 385051775, (short) -20549);
 				client.aBoolean8666 = true;
-				if (Loader.usingRS) {
+				if (Applet.usingRS) {
 				    RsByteBuffer class298_sub53_7_ = (new RsByteBuffer(Class12.aClass298_Sub44_9946.method3530(-1431420237)));
 				    Class12.aClass298_Sub44_9946.writeMachineInformation(class298_sub53_7_, 652337983);
 				    stream.writeBytes(class298_sub53_7_.buffer, 0, class298_sub53_7_.buffer.length, (short) -1355);
@@ -315,9 +315,9 @@ public class Class460 implements Iterator {
 				int i_8_ = (385051775 * stream.index);
 				int i_9_ = (385051775 * stream.index);
 				if (!Class360.aBoolean3886) {
-				    stream.writeInt(Loader.REVISION, -452164382);
-				    if (Loader.SUB_REVISION != -1) {
-					stream.writeInt(Loader.SUB_REVISION, 317411115);
+				    stream.writeInt(Applet.REVISION, -452164382);
+				    if (Applet.SUB_REVISION != -1) {
+					stream.writeInt(Applet.SUB_REVISION, 317411115);
 				    }
 				    RsByteBuffer class298_sub53 = Class_ta_Sub2.method6003(-1358767373);
 				    stream.writeBytes(class298_sub53.buffer, 0, class298_sub53.index * 385051775, (short) -22572);

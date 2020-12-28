@@ -2,7 +2,7 @@ package com.jagex;/* Class489 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.Loader;
+import com.Applet;
 
 public class Class489 {
     static int anInt6070 = 3;
@@ -13,7 +13,7 @@ public class Class489 {
     }
 
     static boolean method6167(int i) {
-	if (Loader.ACCOUNT_CREATION_DISABLED)
+	if (Applet.ACCOUNT_CREATION_DISABLED)
 	    return false;
 	try {
 	    return null != Class525.accountCreationStage;

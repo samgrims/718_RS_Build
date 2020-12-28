@@ -2,7 +2,7 @@ package com.jagex;
 /* IsaacCipher - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.Loader;
+import com.Applet;
 
 import java.awt.Canvas;
 import java.io.File;
@@ -26,7 +26,7 @@ public final class IsaacCipher {
 		method5917((byte) 84);
 		this.anInt5625 = -1303269632;
 	    }
-	    if (!Loader.useIsaac)
+	    if (!Applet.useIsaac)
 		return 0;
 	    return (this.anIntArray5629[(this.anInt5625 -= 1857180079) * 815637839]);
 	}
@@ -169,7 +169,7 @@ public final class IsaacCipher {
 		method5917((byte) -13);
 		this.anInt5625 = -1303269632;
 	    }
-	    if (!Loader.useIsaac)
+	    if (!Applet.useIsaac)
 		return 0;
 	    return (this.anIntArray5629[815637839 * this.anInt5625 - 1]);
 	}

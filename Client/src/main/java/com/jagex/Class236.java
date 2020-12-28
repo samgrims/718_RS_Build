@@ -2,7 +2,7 @@ package com.jagex;/* Class236 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.Loader;
+import com.Applet;
 
 public class Class236 {
     public static int anInt2601 = 4;
@@ -42,7 +42,7 @@ public class Class236 {
 	    return is_4_;
 	}
 	catch (Throwable runtimeexception) {
-	    if (Loader.DISABLE_XTEA_CRASH)
+	    if (Applet.DISABLE_XTEA_CRASH)
 		return new byte[100];
 	    else
 		throw Class346.method4175(runtimeexception, new StringBuilder().append("jy.ad(").append(')').toString());

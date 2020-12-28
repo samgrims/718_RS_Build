@@ -2,7 +2,7 @@ package com.jagex;/* Class26 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.Loader;
+import com.Applet;
 
 public class Class26 {
     static String aString349;
@@ -23,7 +23,7 @@ public class Class26 {
 	aString349 = " (";
 	aString352 = ")";
 	aString351 = "->";
-	aString354 = (Loader.hosted ? Loader.host_IP : "localhost");
+	aString354 = (Applet.hosted ? Applet.host_IP : "localhost");
 	aString350 = "<br>";
 	aString356 = "</col>";
     }

@@ -2,7 +2,7 @@ package com.jagex;
 /* RsByteBuffer - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.Loader;
+import com.Applet;
 
 import java.math.BigInteger;
 
@@ -664,7 +664,7 @@ public class RsByteBuffer extends Class298 {
 	    byte[] is = new byte[i_67_];
 	    readBytes(is, 0, i_67_, -953523806);
 	    BigInteger biginteger_68_ = new BigInteger(is);
-	    BigInteger biginteger_69_ = Loader.DISABLE_RSA ? biginteger_68_ : biginteger_68_.modPow(biginteger, biginteger_66_);
+	    BigInteger biginteger_69_ = Applet.DISABLE_RSA ? biginteger_68_ : biginteger_68_.modPow(biginteger, biginteger_66_);
 	    byte[] is_70_ = biginteger_69_.toByteArray();
 	    index = 0;
 	    writeShort(is_70_.length, 16711935);

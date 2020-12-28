@@ -2,7 +2,7 @@ package com.jagex;/* Class365_Sub1 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.Loader;
+import com.Applet;
 
 public abstract class Class365_Sub1 extends Class365 {
     Class365_Sub1 aClass365_Sub1_7721;
@@ -188,7 +188,7 @@ public abstract class Class365_Sub1 extends Class365 {
 
     static void method4403(byte i) {
 	try {
-	    if (Loader.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -114) == 1)
+	    if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -114) == 1)
 		Class62.aClass248_612.method2385(new Class267(Class266.aClass266_2852, null), -1108671657);
 	    else {
 		client.aClass283_8716.method2667(1601177628);

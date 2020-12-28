@@ -2,7 +2,7 @@ package com.jagex;/* Class401 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.Loader;
+import com.Applet;
 
 public class Class401 implements Interface21 {
     int anInt6551;
@@ -232,12 +232,12 @@ public class Class401 implements Interface21 {
 
 			Routes.findRoute(dstX, dstY, true, Routes.createExactStrategy(dstX, dstY));
 			if (walktype == 1) {
-			    if (Loader.useRoute)
+			    if (Applet.useRoute)
 				Routes.sendLastWalkPathAsMinimapWalk();
 			    else
 				Routes.sendPlainMinimapWalk(dstX, dstY);
 			} else {
-			    if (Loader.useRoute)
+			    if (Applet.useRoute)
 				Routes.sendLastWalkPathAsStdwalk();
 			    else
 				Routes.sendPlainStdWalk(dstX, dstY);

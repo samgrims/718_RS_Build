@@ -2,7 +2,7 @@ package com.jagex;/* Class384 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.Loader;
+import com.Applet;
 
 public class Class384 {
     static Class57 aClass57_4127;
@@ -32,7 +32,7 @@ public class Class384 {
 	    int i_3_ = (class403.anIntArray5244[class403.anInt5239 * 681479919 + 2]);
 	    int i_4_ = (class403.anIntArray5244[3 + 681479919 * class403.anInt5239]);
 	    ClientScriptMap class483 = Class51.aClass475_506.getClientScriptMap(i_3_, 1528209569);
-	    if (!Loader.DISABLE_CS_MAP_CHAR_CHECK)
+	    if (!Applet.DISABLE_CS_MAP_CHAR_CHECK)
 		if (class483.aChar6042 != i_1_ || class483.aChar6037 != i_2_)
 		    throw new RuntimeException(new StringBuilder().append(i_3_).append(" ").append(i_4_).toString());
 	    if (i_2_ == 115)

@@ -61,12 +61,10 @@ public final class ObjectHandler {
 	}
 
 	public static void handleOption(final Player player, InputStream stream, int option) {
-		if (!player.hasStarted() || !player.clientHasLoadedMapRegion()
-				|| player.isDead())
+		if (!player.hasStarted() || !player.clientHasLoadedMapRegion() || player.isDead())
 			return;
 		long currentTime = Utils.currentTimeMillis();
-		if (player.getLockDelay() >= currentTime
-				|| player.getEmotesManager().getNextEmoteEnd() >= currentTime)
+		if (player.getLockDelay() >= currentTime || player.getEmotesManager().getNextEmoteEnd() >= currentTime)
 			return;
 		boolean forceRun = stream.readUnsignedByte128() == 1;
 		final int id = stream.readIntLE();
@@ -76,12 +74,10 @@ public final class ObjectHandler {
 		if (player.isAtDynamicRegion()) {
 			rotation = World.getRotation(player.getPlane(), x, y);
 			if(rotation == 1) {
-				ObjectDefinitions defs = ObjectDefinitions
-						.getObjectDefinitions(id);
+				ObjectDefinitions defs = ObjectDefinitions.getObjectDefinitions(id);
 				y += defs.getSizeY() - 1;
 			}else if(rotation == 2) {
-				ObjectDefinitions defs = ObjectDefinitions
-						.getObjectDefinitions(id);
+				ObjectDefinitions defs = ObjectDefinitions.getObjectDefinitions(id);
 				x += defs.getSizeY() - 1;
 			}
 		}
@@ -92,18 +88,13 @@ public final class ObjectHandler {
 		WorldObject mapObject = World.getRegion(regionId).getObject(id, tile);
 		if (mapObject == null || mapObject.getId() != id) 
 			return;
-		if (player.isAtDynamicRegion()
-				&& World.getRotation(player.getPlane(), x, y) != 0) { //temp fix
-			ObjectDefinitions defs = ObjectDefinitions
-					.getObjectDefinitions(id);
+		if (player.isAtDynamicRegion() && World.getRotation(player.getPlane(), x, y) != 0) { //temp fix
+			ObjectDefinitions defs = ObjectDefinitions.getObjectDefinitions(id);
 			if (defs.getSizeX() > 1 || defs.getSizeY() > 1) {
-				for (int xs = 0; xs < defs.getSizeX() + 1
-						&& (mapObject == null || mapObject.getId() != id); xs++) {
-					for (int ys = 0; ys < defs.getSizeY() + 1
-							&& (mapObject == null || mapObject.getId() != id); ys++) {
+				for (int xs = 0; xs < defs.getSizeX() + 1 && (mapObject == null || mapObject.getId() != id); xs++) {
+					for (int ys = 0; ys < defs.getSizeY() + 1 && (mapObject == null || mapObject.getId() != id); ys++) {
 						tile.setLocation(x + xs, y + ys, tile.getPlane());
-						mapObject = World.getRegion(regionId).getObject(id,
-								tile);
+						mapObject = World.getRegion(regionId).getObject(id, tile);
 					}
 				}
 			}

@@ -1,6 +1,6 @@
 package com.jagex;
 
-import com.Loader;
+import com.Applet;
 
 import java.awt.AWTException;
 import java.awt.Image;
@@ -111,11 +111,11 @@ public class PacketsDecoder {
 		    return true;
 		}
 		Image image = Toolkit.getDefaultToolkit().getImage("src/resources/icon.png");
-		Loader.trayIcon = new TrayIcon(image, "Avalon");
+		Applet.trayIcon = new TrayIcon(image, "Avalon");
 		try {
 		    SystemTray tray = SystemTray.getSystemTray();
-		    tray.add(Loader.trayIcon);
-		    Loader.trayIcon.displayMessage("Avalon", message, messageType);
+		    tray.add(Applet.trayIcon);
+		    Applet.trayIcon.displayMessage("Avalon", message, messageType);
 		}
 		catch (AWTException e1) {
 		    e1.printStackTrace();
@@ -871,7 +871,7 @@ public class PacketsDecoder {
 		System.arraycopy((class25.aClass298_Sub53_Sub2_333.buffer), 385051775 * (class25.aClass298_Sub53_Sub2_333.index), class298_sub53_sub2_217_.buffer, 0, -866602563 * class25.anInt336);
 		Class119.method1304(1536628978);
 		System.out.println("Map1 setting value:" + Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -123));
-		if (Loader.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -123) == 1)
+		if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -123) == 1)
 		    Class62.aClass248_612.method2385(new Class267(Class266.LOAD_MAP_SCENE_NORMAL, class298_sub53_sub2_217_), 1122139565);
 		else
 		    client.aClass283_8716.sendMapScene(new Class267(Class266.LOAD_MAP_SCENE_NORMAL, class298_sub53_sub2_217_), -1991819579);
@@ -2165,7 +2165,7 @@ public class PacketsDecoder {
 		System.arraycopy((class25.aClass298_Sub53_Sub2_333.buffer), (class25.aClass298_Sub53_Sub2_333.index) * 385051775, class298_sub53_sub2_455_.buffer, 0, class25.anInt336 * -866602563);
 		Class119.method1304(1849823335);
 		System.out.println("Map2 setting value:" + Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -123));
-		if (Loader.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -70) == 1)
+		if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -70) == 1)
 		    Class62.aClass248_612.method2385(new Class267(Class266.LOAD_MAP_SCENE_DYNAMIC, class298_sub53_sub2_455_), 1563574437);
 		else
 		    client.aClass283_8716.sendMapScene(new Class267(Class266.LOAD_MAP_SCENE_DYNAMIC, class298_sub53_sub2_455_), -1991819579);

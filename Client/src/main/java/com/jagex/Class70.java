@@ -2,7 +2,7 @@ package com.jagex;/* Class70 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.Loader;
+import com.Applet;
 
 public final class Class70 {
     int anInt682;
@@ -189,7 +189,7 @@ public final class Class70 {
     }
 
     static void method805(byte i) {
-	if (Loader.ACCOUNT_CREATION_DISABLED)
+	if (Applet.ACCOUNT_CREATION_DISABLED)
 	    return;
 	try {
 	    Class525.accountCreationStage = AccountCreationStage.aClass486_6060;
