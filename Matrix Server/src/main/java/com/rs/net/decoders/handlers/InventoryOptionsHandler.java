@@ -215,15 +215,9 @@ public class InventoryOptionsHandler {
 					new BoxAction(HunterEquipment.BRID_SNARE));
 		else if (item.getDefinitions().getName().startsWith("Burnt")) 
 			player.getDialogueManager().startDialogue("SimplePlayerMessage", "Ugh, this is inedible.");
-		
-		if (Settings.DEBUG)
-			Logger.log("ItemHandler", "Item Select:" + itemId + ", Slot Id:"
-					+ slotId);
 	}
 
-	/*
-	 * returns the other
-	 */
+
 	public static Item contains(int id1, Item item1, Item item2) {
 		if (item1.getId() == id1)
 			return item2;

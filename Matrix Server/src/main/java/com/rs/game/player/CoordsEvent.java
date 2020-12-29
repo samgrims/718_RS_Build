@@ -38,8 +38,7 @@ public final class CoordsEvent {
 			return true;
 		int distanceX = player.getX() - tile.getX();
 		int distanceY = player.getY() - tile.getY();
-		if (distanceX > sizeX || distanceX < -1 || distanceY > sizeY
-				|| distanceY < -1) 
+		if (distanceX > sizeX || distanceX < -1 || distanceY > sizeY || distanceY < -1)
 			return cantReach(player);
 		if (player.hasWalkSteps()) 
 			player.resetWalkSteps();

@@ -1161,10 +1161,7 @@ public final class ObjectHandler {
 				else
 					player.getPackets().sendGameMessage("Nothing interesting happens.");
 
-				if (Settings.DEBUG)
-					Logger.log("ObjectHandler", "clicked 2 at object id : " + object_id
-							+ ", " + world_object.getX() + ", " + world_object.getY()
-							+ ", " + world_object.getPlane());
+				DebugLine.print("clicked 2 at object id : " + object_id + ", " + world_object.getX() + ", " + world_object.getY() + ", " + world_object.getPlane());
 			}
 		}, objectDef.getSizeX(), objectDef.getSizeY(), world_object.getRotation()));
 	}

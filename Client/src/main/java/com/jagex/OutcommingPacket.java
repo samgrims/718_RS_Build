@@ -4,7 +4,7 @@ package com.jagex;/* Class198 - Decompiled by JODE
 
 public class OutcommingPacket {
     public static OutcommingPacket aClass198_1993;
-    public static OutcommingPacket aClass198_1994;
+    public static OutcommingPacket KEY_TYPED_PACKET;
     public static OutcommingPacket aClass198_1995;
     public static OutcommingPacket ITEM_ON_ITEM;
     public static OutcommingPacket ADD_IGNORE_PACKET;
@@ -112,7 +112,7 @@ public class OutcommingPacket {
     public static int anInt2099;
 
     static {
-	aClass198_1994 = new OutcommingPacket(1, -2);
+	KEY_TYPED_PACKET = new OutcommingPacket(1, -2);
 	aClass198_1995 = new OutcommingPacket(2, -1);
 	ITEM_ON_ITEM = new OutcommingPacket(3, 16);
 	ADD_IGNORE_PACKET = new OutcommingPacket(4, -1);

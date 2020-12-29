@@ -40,16 +40,14 @@ import com.rs.utils.DisplayNames;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
+import sun.security.ssl.Debug;
 
 public final class WorldPacketsDecoder extends Decoder {
-	//TODO: Learn how to decode a packet
-	//TODO: create a welcome banner based on Avalon
-
 	private static final byte[] PACKET_SIZES = new byte[104];
 
 	private final static int WALKING_PACKET = 8;
 	private final static int MINI_WALKING_PACKET = 58;
-	private final static int AFK_PACKET = -1;
+	private final static int AFK_PACKET = 16;
 	public final static int ACTION_BUTTON1_PACKET = 14;
 	public final static int ACTION_BUTTON2_PACKET = 67;
 	public final static int ACTION_BUTTON3_PACKET = 5;
@@ -235,6 +233,8 @@ public final class WorldPacketsDecoder extends Decoder {
 	public void decode(InputStream stream) {
 		while (stream.getRemaining() > 0 && session.getChannel().isConnected() && !player.hasFinished()) {
 			int packetId = stream.readPacket(player);
+			if(packetId != 21)
+				DebugLine.print("Packet ID: " + packetId);
 			if (packetId >= PACKET_SIZES.length || packetId < 0) {
 				if (Settings.DEBUG)
 					System.out.println("PacketId " + packetId + " has fake packet id.");
@@ -1049,7 +1049,7 @@ public final class WorldPacketsDecoder extends Decoder {
 				System.out.println("Spell:" + spellId + ", Item:" + itemId);
 			}
 		} else if (packetId == AFK_PACKET) {
-			player.getSession().getChannel().close();
+
 		} else if (packetId == CLOSE_INTERFACE_PACKET) {
 			if (player.hasStarted() && !player.hasFinished() && !player.isRunning()) { //used for old welcome screen
 				player.run();
@@ -1527,7 +1527,7 @@ public final class WorldPacketsDecoder extends Decoder {
 			@SuppressWarnings("unused")
 			String unknown2 = stream.readString();
 		} else {
-			;
+			DebugLine.print("Missing packet " + packetId + ", expected size: " + length + ", actual size: " + PACKET_SIZES[packetId]);
 		}
 	}
 

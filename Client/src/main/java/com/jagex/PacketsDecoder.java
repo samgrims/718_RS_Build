@@ -789,60 +789,58 @@ public class PacketsDecoder {
 		return true;
 	    }
 	    if (class25.INCOMMING_PACKET == IncommingPacket.aClass202_2298) {
-		if (Class452.aBoolean5642 && Class231.aFrame2589 != null)
-		    Class357.method4276(Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub12_7543.method5669((byte) 92), -1, -1, false, 1686359227);
-		byte[] is = new byte[class25.anInt336 * -866602563];
-		stream.method3662(is, 0, -866602563 * class25.anInt336, (byte) 1);
-		String string = Class52.method556(is, 0, (class25.anInt336 * -866602563), 1174912789);
-		String string_204_ = "opensn";
-		if (!client.aBoolean8638 || !Class65.method762(string, 1, string_204_, -2024310199))
-		    Class273.method2559(string, true, Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub14_7571.method5677(-446024577) == 5, string_204_, client.aBoolean8867, client.aBoolean8651, -1865929375);
-		class25.INCOMMING_PACKET = null;
-		return true;
+			if (Class452.aBoolean5642 && Class231.aFrame2589 != null)
+				Class357.method4276(Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub12_7543.method5669((byte) 92), -1, -1, false, 1686359227);
+			byte[] is = new byte[class25.anInt336 * -866602563];
+			stream.method3662(is, 0, -866602563 * class25.anInt336, (byte) 1);
+			String string = Class52.method556(is, 0, (class25.anInt336 * -866602563), 1174912789);
+			String string_204_ = "opensn";
+			if (!client.aBoolean8638 || !Class65.method762(string, 1, string_204_, -2024310199))
+				Class273.method2559(string, true, Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub14_7571.method5677(-446024577) == 5, string_204_, client.aBoolean8867, client.aBoolean8651, -1865929375);
+			class25.INCOMMING_PACKET = null;
+			return true;
 	    }
 	    if (class25.INCOMMING_PACKET == IncommingPacket.ICOMPONENT_ANIMATION_PACKET) {
-		int i_205_ = stream.readIntV2((byte) 94);
-		int i_206_ = stream.readInt((byte) -79);
-		Class343.method4162(1691449694);
-		Class298_Sub1.method2846(i_206_, i_205_, (byte) -84);
-		class25.INCOMMING_PACKET = null;
-		return true;
+			int i_205_ = stream.readIntV2((byte) 94);
+			int i_206_ = stream.readInt((byte) -79);
+			Class343.method4162(1691449694);
+			Class298_Sub1.method2846(i_206_, i_205_, (byte) -84);
+			class25.INCOMMING_PACKET = null;
+			return true;
 	    }
 	    if (IncommingPacket.aClass202_2178 == class25.INCOMMING_PACKET) {
-		Class396.method4908(stream.readString(-1156862569), 2117221193);
-		class25.INCOMMING_PACKET = null;
-		return true;
+			Class396.method4908(stream.readString(-1156862569), 2117221193);
+			class25.INCOMMING_PACKET = null;
+			return true;
 	    }
 	    if (class25.INCOMMING_PACKET == IncommingPacket.HIDE_ICOMPONENT_PACKET) {
-		int i_207_ = stream.readIntV2((byte) 86);
-		int i_208_ = stream.readUnsignedByte();
-		Class343.method4162(1919173680);
-		Class491.method6178(i_207_, i_208_, -109953213);
-		class25.INCOMMING_PACKET = null;
-		return true;
+			int i_207_ = stream.readIntV2((byte) 86);
+			int i_208_ = stream.readUnsignedByte();
+			Class343.method4162(1919173680);
+			Class491.method6178(i_207_, i_208_, -109953213);
+			class25.INCOMMING_PACKET = null;
+			return true;
 	    }
 	    if (class25.INCOMMING_PACKET == IncommingPacket.WORLD_LIST_PACKET) {
-		boolean bool = stream.readUnsignedByte() == 1;
-		byte[] is = new byte[-866602563 * class25.anInt336 - 1];
-		stream.readBytes(is, 0, -866602563 * class25.anInt336 - 1, -953523806);
-		ConfigDefinitions.method3979(bool, is, 1637029392);
-		class25.INCOMMING_PACKET = null;
-		return true;
+			boolean bool = stream.readUnsignedByte() == 1;
+			byte[] is = new byte[-866602563 * class25.anInt336 - 1];
+			stream.readBytes(is, 0, -866602563 * class25.anInt336 - 1, -953523806);
+			ConfigDefinitions.method3979(bool, is, 1637029392);
+			class25.INCOMMING_PACKET = null;
+			return true;
 	    }
-	    if (class25.INCOMMING_PACKET == IncommingPacket.INTERFACE_PACKET) { // interface
-										// definitions
-										// way
-		int interfaceId = stream.readUnsignedShort();
-		int key1 = stream.readInt((byte) -24);
-		int key2 = stream.readIntV2((byte) 113);
-		int parentHash = stream.readIntV1(1955887955);
-		int clipped = stream.readUnsignedByte();
-		int key4 = stream.readIntV1(1660153737);
-		int key3 = stream.readIntV2((byte) 4);
-		Class343.method4162(1799178442);
+	    if (class25.INCOMMING_PACKET == IncommingPacket.INTERFACE_PACKET) {
+			int interfaceId = stream.readUnsignedShort();
+			int key1 = stream.readInt((byte) -24);
+			int key2 = stream.readIntV2((byte) 113);
+			int parentHash = stream.readIntV1(1955887955);
+			int clipped = stream.readUnsignedByte();
+			int key4 = stream.readIntV1(1660153737);
+			int key3 = stream.readIntV2((byte) 4);
+			Class343.method4162(1799178442);
 		try {
-//			if(interfaceId != 3002 && interfaceId != 3039)//For Matrix Cache
-			Class113.method1254(parentHash, new Interface(interfaceId, clipped), new int[]{key1, key2, key3, key4}, false);
+			if(interfaceId != 3002 && interfaceId != 3039)//For Matrix Cache
+				Class113.method1254(parentHash, new Interface(interfaceId, clipped), new int[]{key1, key2, key3, key4}, false);
 		} catch(Exception e) {
 			System.out.println(interfaceId);
 		}
@@ -850,46 +848,46 @@ public class PacketsDecoder {
 		return true;
 	    }
 	    if (class25.INCOMMING_PACKET == IncommingPacket.RUN_SCRIPT_PACKET) {
-		String string = stream.readString(1468234041);
-		Object[] objects = new Object[string.length() + 1];
-		for (int i_216_ = string.length() - 1; i_216_ >= 0; i_216_--) {
-		    if (string.charAt(i_216_) == 's')
-			objects[i_216_ + 1] = stream.readString(1977322513);
-		    else
-			objects[i_216_ + 1] = new Integer(stream.readInt((byte) -5));
-		}
-		objects[0] = new Integer(stream.readInt((byte) 18));
-		Class343.method4162(1722404314);
-		ScriptEnvironment script = new ScriptEnvironment();
-		script.arguements = objects;
-		Class444.executeScript(script);
-		class25.INCOMMING_PACKET = null;
-		return true;
+			String string = stream.readString(1468234041);
+			Object[] objects = new Object[string.length() + 1];
+			for (int i_216_ = string.length() - 1; i_216_ >= 0; i_216_--) {
+				if (string.charAt(i_216_) == 's')
+				objects[i_216_ + 1] = stream.readString(1977322513);
+				else
+				objects[i_216_ + 1] = new Integer(stream.readInt((byte) -5));
+			}
+			objects[0] = new Integer(stream.readInt((byte) 18));
+			Class343.method4162(1722404314);
+			ScriptEnvironment script = new ScriptEnvironment();
+			script.arguements = objects;
+			Class444.executeScript(script);
+			class25.INCOMMING_PACKET = null;
+			return true;
 	    }
 	    if (IncommingPacket.LOAD_MAP_SCENE_PACKET == class25.INCOMMING_PACKET) {
-		RsBitsBuffer class298_sub53_sub2_217_ = new RsBitsBuffer(class25.anInt336 * -866602563);
-		System.arraycopy((class25.aClass298_Sub53_Sub2_333.buffer), 385051775 * (class25.aClass298_Sub53_Sub2_333.index), class298_sub53_sub2_217_.buffer, 0, -866602563 * class25.anInt336);
-		Class119.method1304(1536628978);
-		System.out.println("Map1 setting value:" + Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -123));
-		if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -123) == 1)
-		    Class62.aClass248_612.method2385(new Class267(Class266.LOAD_MAP_SCENE_NORMAL, class298_sub53_sub2_217_), 1122139565);
-		else
-		    client.aClass283_8716.sendMapScene(new Class267(Class266.LOAD_MAP_SCENE_NORMAL, class298_sub53_sub2_217_), -1991819579);
-		class25.INCOMMING_PACKET = null;
-		return false;
+			RsBitsBuffer class298_sub53_sub2_217_ = new RsBitsBuffer(class25.anInt336 * -866602563);
+			System.arraycopy((class25.aClass298_Sub53_Sub2_333.buffer), 385051775 * (class25.aClass298_Sub53_Sub2_333.index), class298_sub53_sub2_217_.buffer, 0, -866602563 * class25.anInt336);
+			Class119.method1304(1536628978);
+			System.out.println("Map1 setting value:" + Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -123));
+			if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -123) == 1)
+				Class62.aClass248_612.method2385(new Class267(Class266.LOAD_MAP_SCENE_NORMAL, class298_sub53_sub2_217_), 1122139565);
+			else
+				client.aClass283_8716.sendMapScene(new Class267(Class266.LOAD_MAP_SCENE_NORMAL, class298_sub53_sub2_217_), -1991819579);
+			class25.INCOMMING_PACKET = null;
+			return false;
 	    }
 	    if (class25.INCOMMING_PACKET == IncommingPacket.aClass202_2234) {
-		client.anInt8886 = client.anInt8933 * -1469951735;
-		boolean bool = stream.readUnsignedByte() == 1;
-		Class152 class152 = new Class152(stream);
-		ClanChannel class298_sub25;
-		if (bool)
-		    class298_sub25 = Class350.aClass298_Sub25_3757;
-		else
-		    class298_sub25 = Class375.aClass298_Sub25_4084;
-		class152.method1651(class298_sub25, (byte) -33);
-		class25.INCOMMING_PACKET = null;
-		return true;
+			client.anInt8886 = client.anInt8933 * -1469951735;
+			boolean bool = stream.readUnsignedByte() == 1;
+			Class152 class152 = new Class152(stream);
+			ClanChannel class298_sub25;
+			if (bool)
+				class298_sub25 = Class350.aClass298_Sub25_3757;
+			else
+				class298_sub25 = Class375.aClass298_Sub25_4084;
+			class152.method1651(class298_sub25, (byte) -33);
+			class25.INCOMMING_PACKET = null;
+			return true;
 	    }
 	    if (IncommingPacket.LOBBY_LOGOUT_PACKET == class25.INCOMMING_PACKET) {
 		// Lobby logout
@@ -946,20 +944,20 @@ public class PacketsDecoder {
 		return true;
 	    }
 	    if (IncommingPacket.aClass202_2217 == class25.INCOMMING_PACKET) {
-		Class313.anObjectArray3298 = new Object[2143828057 * Class99.aClass517_951.anInt6268];
-		class25.INCOMMING_PACKET = null;
-		return true;
+			Class313.anObjectArray3298 = new Object[2143828057 * Class99.aClass517_951.anInt6268];
+			class25.INCOMMING_PACKET = null;
+			return true;
 	    }
 	    if (class25.INCOMMING_PACKET == IncommingPacket.SET_CAMERA_LOOK_PACKET) {
-		int viewLocalY = stream.readUnsignedByte128(-1014855659);
-		int speed1 = stream.readUnsignedByte();
-		int viewLocalX = stream.readUnsignedByteC((short) -4149);
-		int speed2 = stream.readUnsignedByte();
-		int viewZ = stream.readUnsignedShort128(-638464143) << 2;
-		Class343.method4162(1712816736);
-		Class173.method1822(viewLocalX, viewLocalY, viewZ, speed1, speed2, (byte) 92);
-		class25.INCOMMING_PACKET = null;
-		return true;
+			int viewLocalY = stream.readUnsignedByte128(-1014855659);
+			int speed1 = stream.readUnsignedByte();
+			int viewLocalX = stream.readUnsignedByteC((short) -4149);
+			int speed2 = stream.readUnsignedByte();
+			int viewZ = stream.readUnsignedShort128(-638464143) << 2;
+			Class343.method4162(1712816736);
+			Class173.method1822(viewLocalX, viewLocalY, viewZ, speed1, speed2, (byte) 92);
+			class25.INCOMMING_PACKET = null;
+			return true;
 	    }
 	    if (IncommingPacket.RECEIVE_PRIVATE_QUICK_CHAT_MESSAGE_PACKET == class25.INCOMMING_PACKET) {
 		boolean bool = stream.readUnsignedByte() == 1;

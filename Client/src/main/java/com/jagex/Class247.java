@@ -276,7 +276,7 @@ public abstract class Class247 {
 	    ClientScriptsExecutor.aClass374_Sub1_4125.method4626(2074664377);
 	    ClientScriptsExecutor.aClass374_Sub2_4121.method4626(2003457775);
 	    if (-1625219821 * client.anInt8687 > 0) {
-			Class298_Sub36 class298_sub36 = Class18.method359(OutcommingPacket.aClass198_1994, client.aClass25_8711.aClass449_330, (byte) 79);
+			Class298_Sub36 class298_sub36 = Class18.method359(OutcommingPacket.KEY_TYPED_PACKET, client.aClass25_8711.aClass449_330, (byte) 79);
 			class298_sub36.out.writeShort(2089055308 * client.anInt8687, 16711935);
 			for (int i_9_ = 0; i_9_ < client.anInt8687 * -1625219821; i_9_++) {
 				Interface16 interface16 = client.anInterface16Array8688[i_9_];
