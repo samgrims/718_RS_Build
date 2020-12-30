@@ -2,7 +2,7 @@ package com.jagex;/* Class497 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.Applet;
+import com.AvalonApplet;
 
 public class Class497 {
     char aChar6099;
@@ -73,8 +73,8 @@ public class Class497 {
 
     static void method6208(String string, String string_2_, int i) {
 	try {
-	    Class360.anInt3868 = Applet.LOBBY_ENABLED ? -1058684408 : 471358088;
-	    Class360.aClass25_3905 = Applet.LOBBY_ENABLED ? client.aClass25_8693 : client.aClass25_8711;
+	    Class360.anInt3868 = AvalonApplet.LOBBY_ENABLED ? -1058684408 : 471358088;
+	    Class360.aClass25_3905 = AvalonApplet.LOBBY_ENABLED ? client.aClass25_8693 : client.aClass25_8711;
 	    Class460.method5981(false, false, string, string_2_, -1L);
 	}
 	catch (RuntimeException runtimeexception) {

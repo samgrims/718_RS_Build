@@ -2,7 +2,7 @@ package com.jagex;
 /* Class288_Sub1 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.Applet;
+import com.AvalonApplet;
 
 import java.io.IOException;
 
@@ -68,8 +68,8 @@ public class Class288_Sub1 extends Class288 implements Runnable {
 			class298_sub36.out.writeByte(-1813470547 * HandshakePacket.ACCOUNT_CREATION.opcode);
 			class298_sub36.out.writeShort(0, 16711935);
 			int i_1_ = ((class298_sub36.out.index) * 385051775);
-			class298_sub36.out.writeShort(Applet.REVISION, 16711935);
-			class298_sub36.out.writeShort(Applet.SUB_REVISION, 16711935);
+			class298_sub36.out.writeShort(AvalonApplet.REVISION, 16711935);
+			class298_sub36.out.writeShort(AvalonApplet.SUB_REVISION, 16711935);
 			Class361.anIntArray3913 = Class256.method2446(class298_sub36, -201782073);
 			int i_2_ = ((class298_sub36.out.index) * 385051775);
 			class298_sub36.out.writeString(client.aString8655, 2134259589);

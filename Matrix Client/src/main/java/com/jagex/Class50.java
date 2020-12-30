@@ -1,7 +1,7 @@
 package com.jagex;/* Class50 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.AppletLoader;
+import com.Applet;
 
 import java.math.BigInteger;
 
@@ -11,7 +11,7 @@ public class Class50 {
 	public static BigInteger aBigInteger502;
 	static BigInteger aBigInteger503 = 
 			
-			AppletLoader.usingRS ?
+			Applet.usingRS ?
 			(new BigInteger(
 			"ac548ab1174bf4dc38ff9a47be125012b9dd859bb4a5a7e9b1b655f16697740410813e98a46091042f3bc873ddb3e38e7e9432b5466b21a7feec65f0eee0a147",
 			16)) :
@@ -26,7 +26,7 @@ public class Class50 {
 	static {
 		aBigInteger502 = new BigInteger("10001", 16);
 		aBigInteger501 = 
-				AppletLoader.usingRS ?
+				Applet.usingRS ?
 				
 				(new BigInteger(
 				"9246d9c7c5037426c7dd3e91f727ac10ca4e0c5c60760ff20201c9ff6d3f6a5e25c352b59e13364497e01c182d5e2a2cfacd63871a52d56d0c9aa5e9916d31d87ba3cd88fa0b83b44fb26ce0fe5460c2f1b2b44d433d297047e6432c84864f89a8b83d43402cac854ec0436356d54c994d63306086159fa65b319e307aef815162443137f80c2876049a95549fdf7edb0c2ad75b39586c12c1b3abd06d9652addae6021c2fce9edd2db4fa6a2a6882931fba2817f1c9faebcf72701d917b105f5ff1708e3b5529279a20e54be7aad9faa3f8331ea3d5ee308c3882c35ecf069209d75d32340eb2a2bc6919e315c003df93ae2288f52a2e68bd981fe32c7c7bcc305cf44fd00a52e6bcaaaf791875156e94a494bb5e3628106d64600ea5f423aa1859a136cb0b3fa05260b616681e57030e9fb8fc4e139df5369874eb5518bcd8325dc4df05730be59b5939d30464507567a5c8cdbe6d1607fc0907d781be51a694cdd56acdb7dc62e930842d42e7fb0aef1a9b0f937cb1c3f8c8b1ad433353eb907e0dddd6b6a3269da319ba8899fb3dcd39011c205fbb9bed2335915a98ef9bb656420fc0dc2c18f90adc427f6a66a1f920c275b8ea027db03b874ccff7ff955b75c999ac232fc7ccfef3df6f34b1213a07bdd72add252966d5906d93ad70272b4e3277b31ddaecf0d750a53e17dcfc1490133ee03107870d6bfd2e63cf99fb",

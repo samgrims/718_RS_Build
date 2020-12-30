@@ -15,7 +15,7 @@ import java.util.Random;
 import java.util.TimeZone;
 import java.util.Vector;
 
-import com.AppletLoader;
+import com.Applet;
 import jaclib.ping.Ping;
 
 public final class client extends Class291 {
@@ -4503,7 +4503,7 @@ public final class client extends Class291 {
 			else {
 				try {
 					if (0 == anInt8692 * -333700189) {
-						Class423.aSocket5355 = AppletLoader.LOBBY_ENABLED ? IPAddress.createSocket(AppletLoader.LOBBY_IP, AppletLoader.LOBBY_PORT) : Class474.aClass471_5979.method6056(295506052);
+						Class423.aSocket5355 = Applet.LOBBY_ENABLED ? IPAddress.createSocket(Applet.LOBBY_IP, Applet.LOBBY_PORT) : Class474.aClass471_5979.method6056(295506052);
 						anInt8692 += -244111349;
 					}
 					if (anInt8692 * -333700189 == 1) {
@@ -4517,9 +4517,9 @@ public final class client extends Class291 {
 								(Class211.aClass211_2408.anInt2418)
 										* -1813470547);
 						class298_sub53.writeByte(i_164_);
-						class298_sub53.writeInt(AppletLoader.REVISION, 662709758);
-						if(AppletLoader.SUB_REVISION != 0)
-							class298_sub53.writeInt(AppletLoader.SUB_REVISION, -899867170);
+						class298_sub53.writeInt(Applet.REVISION, 662709758);
+						if(Applet.SUB_REVISION != 0)
+							class298_sub53.writeInt(Applet.SUB_REVISION, -899867170);
 						class298_sub53.writeString(aString8655, 2115753617);
 						Class365_Sub1_Sub5_Sub2.aClass318_9940.method3868(
 								class298_sub53.buffer, 0, i_164_ + 2,

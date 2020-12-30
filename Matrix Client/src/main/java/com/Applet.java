@@ -2,7 +2,6 @@ package com;
 
 import com.jagex.client;
 
-import java.applet.Applet;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.IOException;
@@ -13,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class AppletLoader extends Applet {
+public class Applet extends java.applet.Applet {
 	private static final long serialVersionUID = 7639088664641445302L;
 	public static Properties client_parameters = new Properties();
 	public JFrame client_frame;
@@ -32,7 +31,7 @@ public class AppletLoader extends Applet {
 	public static final int LOBBY_PORT = 41116;
 	public static String LOBBY_IP = "72.191.29.70";
 	public static int SUB_REVISION = 3;
-	public static AppletLoader instance;
+	public static Applet instance;
 	public static int[] outSizes = new int[256];
 
 	public static void main(String[] args) {
@@ -42,7 +41,7 @@ public class AppletLoader extends Applet {
 			LOBBY_ENABLED = Boolean.parseBoolean(args[1]);
 			SUB_REVISION = Integer.parseInt(args[2]);
 		}
-		AppletLoader loader = instance = new AppletLoader();
+		Applet loader = instance = new Applet();
 		loader.doFrame();
 	}
 	

@@ -2,7 +2,7 @@ package com.jagex;
 /* Class471 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.Applet;
+import com.AvalonApplet;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -15,19 +15,19 @@ public class IPAddress {
     public String address;
     public int anInt5954 = 1723266594;
     public int anInt5955 = -2031127069;
-    boolean aBoolean5956 = Applet.hosted;
+    boolean aBoolean5956 = AvalonApplet.hosted;
     public int worldId;
     public static int anInt5958;
     public static int cameraLookViewLocalY;
 
     public Socket method6056(int i) throws IOException {
 	try {
-	    if (Applet.RS) {
+	    if (AvalonApplet.RS) {
 		if (!this.aBoolean5952)
 		    return new Socket(InetAddress.getByName(address), (this.aBoolean5956 ? anInt5955 * 1407732809 : anInt5954 * -346820395));
 		return Class292.method2815(address, (this.aBoolean5956 ? 1407732809 * anInt5955 : anInt5954 * -346820395), 1749425053).method6111(-1212127239);
 	    }
-	    return new Socket(InetAddress.getByName((Applet.hosted ? Applet.host_IP : "localhost")), Applet.PORT);
+	    return new Socket(InetAddress.getByName((AvalonApplet.hosted ? AvalonApplet.host_IP : "localhost")), AvalonApplet.PORT);
 	}
 	catch (RuntimeException runtimeexception) {
 	    throw Class346.method4175(runtimeexception, new StringBuilder().append("tk.a(").append(')').toString());

@@ -1,7 +1,7 @@
 package com.jagex;/* Class471 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.AppletLoader;
+import com.Applet;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class IPAddress {
 					(((IPAdress) this).aBoolean5956 ? 1407732809 * anInt5955
 							: anInt5954 * -346820395), 1749425053).method6111(
 					-1212127239);*/
-			return new Socket(InetAddress.getByName(AppletLoader.IP), 43594);
+			return new Socket(InetAddress.getByName(Applet.IP), 43594);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("tk.a(").append(')').toString());

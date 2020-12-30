@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.URL;
 
-import com.Applet;
+import com.AvalonApplet;
 import jaclib.nanotime.QueryPerformanceCounter;
 
 public abstract class Class291 implements Interface14, Runnable, FocusListener, WindowListener {
@@ -330,7 +330,7 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener, 
 		return true;
 	    if (string.equals("stellardawn.com") || string.endsWith(".stellardawn.com"))
 		return true;
-	    if (string.endsWith("127.0.0.1") || string.endsWith(Applet.hosted ? Applet.host_IP : "localhost"))
+	    if (string.endsWith("127.0.0.1") || string.endsWith(AvalonApplet.hosted ? AvalonApplet.host_IP : "localhost"))
 		return true;
 	    for (/**/; (string.length() > 0 && string.charAt(string.length() - 1) >= '0' && string.charAt(string.length() - 1) <= '9'); string = string.substring(0, string.length() - 1)) {
 		/* empty */

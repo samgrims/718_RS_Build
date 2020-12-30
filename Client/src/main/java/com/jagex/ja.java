@@ -2,7 +2,7 @@ package com.jagex;
 /* ja - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.Applet;
+import com.AvalonApplet;
 
 import java.awt.Canvas;
 import java.lang.reflect.AccessibleObject;
@@ -811,7 +811,7 @@ public class ja extends GraphicsToolkit implements Interface25 {
 	this.anInt6685 = 4096;
 	this.aBoolean6713 = false;
 	try {
-	    if (!Class85.method955(2126469897).method265("sw3d", 1499520275) || Applet.DISABLE_SOFTWARE_MODE)
+	    if (!Class85.method955(2126469897).method265("sw3d", 1499520275) || AvalonApplet.DISABLE_SOFTWARE_MODE)
 		throw new RuntimeException("");
 	    Class71.method811(-1686477693);
 	    q(anInterface_ma5299, anInterface_ma5299.method177(452373566), 0);

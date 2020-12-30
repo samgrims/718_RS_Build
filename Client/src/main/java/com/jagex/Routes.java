@@ -1,6 +1,6 @@
 package com.jagex;
 
-import com.Applet;
+import com.AvalonApplet;
 
 public class Routes {
 
@@ -202,7 +202,7 @@ public class Routes {
     }
 
     public static void sendLastWalkPathAsStdwalk() {
-	if (!Applet.useRoute)
+	if (!AvalonApplet.useRoute)
 	    return;
 	int stepsCount = client.lastPathStepsCount;
 	if (stepsCount > 0) { // dont need to waste bw by sending empty packets
@@ -221,7 +221,7 @@ public class Routes {
     }
 
     public static void sendLastWalkPathAsMinimapWalk() {
-	if (!Applet.useRoute)
+	if (!AvalonApplet.useRoute)
 	    return;
 	int stepsCount = client.lastPathStepsCount;
 	if (stepsCount > 0) { // dont need to waste bw by sending empty packets
@@ -240,7 +240,7 @@ public class Routes {
     }
 
     public static void sendPlainStdWalk(int dstX, int dstY) {
-	if (Applet.useRoute)
+	if (AvalonApplet.useRoute)
 	    return;
 	Class298_Sub36 packet = Class18.method359(OutcommingPacket.WALKING_PACKET, client.aClass25_8711.aClass449_330, (byte) 51);
 	packet.out.writeByte(7);
@@ -254,7 +254,7 @@ public class Routes {
     }
 
     public static void sendPlainMinimapWalk(int dstX, int dstY) {
-	if (Applet.useRoute)
+	if (AvalonApplet.useRoute)
 	    return;
 	Class298_Sub36 packet = Class18.method359(OutcommingPacket.MINI_WALKING_PACKET, client.aClass25_8711.aClass449_330, (byte) 28);
 	packet.out.writeByte(7);

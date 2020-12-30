@@ -1,7 +1,7 @@
 package com.jagex;/* Class225 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.AppletLoader;
+import com.Applet;
 
 import java.math.BigInteger;
 
@@ -37,7 +37,7 @@ public class Class225 {
 			class298_sub53.readBytes(is, 0, is.length, -953523806);
 			byte[] hash;
 			if (null == ((Class225) this).aBigInteger2506
-					|| ((Class225) this).aBigInteger2508 == null || AppletLoader.DISABLE_RSA)
+					|| ((Class225) this).aBigInteger2508 == null || Applet.DISABLE_RSA)
 				hash = is;
 			else {
 				BigInteger biginteger = new BigInteger(is);

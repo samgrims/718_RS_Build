@@ -1,7 +1,7 @@
 package com.jagex;/* Class78 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import com.AppletLoader;
+import com.Applet;
 
 import java.io.FileOutputStream;
 
@@ -69,9 +69,9 @@ public class Class78 {
 
 	static void method845(int i, int i_7_) {
 		try {
-			if (!AppletLoader.LOBBY_ENABLED || 136 == Class360.anInt3868 * -122629167)
+			if (!Applet.LOBBY_ENABLED || 136 == Class360.anInt3868 * -122629167)
 				Class360.anInt3892 = i * -1674285757;
-			else if (AppletLoader.LOBBY_ENABLED && 264 == Class360.anInt3868 * -122629167)
+			else if (Applet.LOBBY_ENABLED && 264 == Class360.anInt3868 * -122629167)
 				Class360.anInt3871 = i * -1653306319;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

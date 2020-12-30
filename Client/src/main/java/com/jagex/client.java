@@ -16,7 +16,7 @@ import java.util.Random;
 import java.util.TimeZone;
 import java.util.Vector;
 
-import com.Applet;
+import com.AvalonApplet;
 import jaclib.ping.Ping;
 
 public final class client extends Class291 {
@@ -569,7 +569,7 @@ public final class client extends Class291 {
 	    if (Class401.aClass401_6557 != Class242.aClass401_2708)
 		Class98.aByteArrayArray949 = new byte[50][];
 	    Class422_Sub25.aClass298_Sub48_8425 = Class121.method1315(815058743);
-	    if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -54) == 1)
+	    if (AvalonApplet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -54) == 1)
 		Class331.aBoolean3540 = false;
 	    if (Class401.aClass401_6557 == Class242.aClass401_2708)
 		Class474.aClass471_5976.address = ClientScriptMap.anApplet6044.getCodeBase().getHost();
@@ -2243,7 +2243,7 @@ public final class client extends Class291 {
 	if (Class401.aClass401_6557 != Class242.aClass401_2708)
 	    Class98.aByteArrayArray949 = new byte[50][];
 	Class422_Sub25.aClass298_Sub48_8425 = Class121.method1315(1281460883);
-	if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -114) == 1)
+	if (AvalonApplet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -114) == 1)
 	    Class331.aBoolean3540 = false;
 	if (Class401.aClass401_6557 == Class242.aClass401_2708)
 	    Class474.aClass471_5976.address = ClientScriptMap.anApplet6044.getCodeBase().getHost();
@@ -2469,7 +2469,7 @@ public final class client extends Class291 {
 	if (Class401.aClass401_6557 != Class242.aClass401_2708)
 	    Class98.aByteArrayArray949 = new byte[50][];
 	Class422_Sub25.aClass298_Sub48_8425 = Class121.method1315(1110000568);
-	if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -45) == 1)
+	if (AvalonApplet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -45) == 1)
 	    Class331.aBoolean3540 = false;
 	if (Class401.aClass401_6557 == Class242.aClass401_2708)
 	    Class474.aClass471_5976.address = ClientScriptMap.anApplet6044.getCodeBase().getHost();
@@ -2535,7 +2535,7 @@ public final class client extends Class291 {
 	if (Class401.aClass401_6557 != Class242.aClass401_2708)
 	    Class98.aByteArrayArray949 = new byte[50][];
 	Class422_Sub25.aClass298_Sub48_8425 = Class121.method1315(719994704);
-	if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -48) == 1)
+	if (AvalonApplet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -48) == 1)
 	    Class331.aBoolean3540 = false;
 	if (Class401.aClass401_6557 == Class242.aClass401_2708)
 	    Class474.aClass471_5976.address = ClientScriptMap.anApplet6044.getCodeBase().getHost();
@@ -3070,7 +3070,7 @@ public final class client extends Class291 {
 	if (Class401.aClass401_6557 != Class242.aClass401_2708)
 	    Class98.aByteArrayArray949 = new byte[50][];
 	Class422_Sub25.aClass298_Sub48_8425 = Class121.method1315(1638033926);
-	if (Applet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -41) == 1)
+	if (AvalonApplet.useMapsTest || Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub21_7580.method5703((byte) -41) == 1)
 	    Class331.aBoolean3540 = false;
 	if (Class401.aClass401_6557 == Class242.aClass401_2708)
 	    Class474.aClass471_5976.address = ClientScriptMap.anApplet6044.getCodeBase().getHost();
@@ -3436,7 +3436,7 @@ public final class client extends Class291 {
 	    else {
 		try {
 		    if (0 == anInt8692 * -333700189) {
-			Class423.aSocket5355 = Applet.LOBBY_ENABLED ? IPAddress.createSocket(Applet.LOBBY_IP, Applet.LOBBY_PORT) : Class474.aClass471_5979.method6056(295506052);
+			Class423.aSocket5355 = AvalonApplet.LOBBY_ENABLED ? IPAddress.createSocket(AvalonApplet.LOBBY_IP, AvalonApplet.LOBBY_PORT) : Class474.aClass471_5979.method6056(295506052);
 			anInt8692 += -244111349;
 		    }
 		    if (anInt8692 * -333700189 == 1) {
@@ -3445,9 +3445,9 @@ public final class client extends Class291 {
 			RsByteBuffer class298_sub53 = new RsByteBuffer(i_164_ + 2);
 			class298_sub53.writeByte((HandshakePacket.JAGGRAB.opcode) * -1813470547);
 			class298_sub53.writeByte(i_164_);
-			class298_sub53.writeInt(Applet.REVISION, 662709758);
-			if (Applet.SUB_REVISION != 0)
-			    class298_sub53.writeInt(Applet.SUB_REVISION, -899867170);
+			class298_sub53.writeInt(AvalonApplet.REVISION, 662709758);
+			if (AvalonApplet.SUB_REVISION != 0)
+			    class298_sub53.writeInt(AvalonApplet.SUB_REVISION, -899867170);
 			class298_sub53.writeString(aString8655, 2115753617);
 			Class365_Sub1_Sub5_Sub2.aClass318_9940.method3868(class298_sub53.buffer, 0, i_164_ + 2, 2087409715);
 			anInt8692 += -244111349;

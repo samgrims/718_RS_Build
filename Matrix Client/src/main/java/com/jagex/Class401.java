@@ -2,7 +2,7 @@ package com.jagex;/* Class401 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.AppletLoader;
+import com.Applet;
 
 public class Class401 implements Interface21 {
 	int anInt6551;
@@ -252,7 +252,7 @@ public class Class401 implements Interface21 {
 												* 283514611, 2043472934);
 					else {
 						
-						if(AppletLoader.usingRS) {
+						if(Applet.usingRS) {
 							Class298_Sub36 class298_sub36 = Class277.createWalkPacket(
 									i_32_, i_33_, i_35_);
 							if (1 == i_35_) {

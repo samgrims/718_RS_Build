@@ -233,8 +233,6 @@ public final class WorldPacketsDecoder extends Decoder {
 	public void decode(InputStream stream) {
 		while (stream.getRemaining() > 0 && session.getChannel().isConnected() && !player.hasFinished()) {
 			int packetId = stream.readPacket(player);
-			if(packetId != 21)
-				DebugLine.print("Packet ID: " + packetId);
 			if (packetId >= PACKET_SIZES.length || packetId < 0) {
 				if (Settings.DEBUG)
 					System.out.println("PacketId " + packetId + " has fake packet id.");
@@ -1527,7 +1525,7 @@ public final class WorldPacketsDecoder extends Decoder {
 			@SuppressWarnings("unused")
 			String unknown2 = stream.readString();
 		} else {
-			DebugLine.print("Missing packet " + packetId + ", expected size: " + length + ", actual size: " + PACKET_SIZES[packetId]);
+			//DebugLine.print("Missing packet " + packetId + ", expected size: " + length + ", actual size: " + PACKET_SIZES[packetId]);
 		}
 	}
 

@@ -37,6 +37,7 @@ import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.io.InputStream;
 import com.rs.net.decoders.WorldPacketsDecoder;
+import com.rs.tools.DebugLine;
 import com.rs.utils.ItemExamines;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
@@ -61,20 +62,16 @@ public class ButtonHandler {
 		final int slotId2 = stream.readUnsignedShort128();
 		final int slotId = stream.readUnsignedShortLE128();
 
+
+
 		if (!player.getControlerManager().processButtonClick(interfaceId,
 				componentId, slotId, packetId))
 			return;
 
 		if (interfaceId == 548 || interfaceId == 746) {
-			if ((interfaceId == 548 && componentId == 148)
-					|| (interfaceId == 746 && componentId == 199)) {
-				if (player.getInterfaceManager().containsScreenInter()
-						|| player.getInterfaceManager()
-						.containsInventoryInter()) {
-
-					player.getPackets()
-					.sendGameMessage(
-							"Please finish what you're doing before opening the world map.");
+			if ((interfaceId == 548 && componentId == 148) || (interfaceId == 746 && componentId == 199)) {
+				if (player.getInterfaceManager().containsScreenInter() || player.getInterfaceManager().containsInventoryInter()) {
+					player.getPackets().sendGameMessage("Please finish what you're doing before opening the world map.");
 					return;
 				}
 				// world map open
@@ -285,11 +282,9 @@ public class ButtonHandler {
 				else if(packetId == WorldPacketsDecoder.ACTION_BUTTON4_PACKET)
 					player.getTrade().removeItem(slotId, Integer.MAX_VALUE);
 				else if(packetId == WorldPacketsDecoder.ACTION_BUTTON5_PACKET) {
-					player.getTemporaryAttributtes().put("trade_item_X_Slot",
-							slotId);
+					player.getTemporaryAttributtes().put("trade_item_X_Slot", slotId);
 					player.getTemporaryAttributtes().put("trade_isRemove", Boolean.TRUE);
-					player.getPackets().sendRunScript(108,
-							new Object[] { "Enter Amount:" });
+					player.getPackets().sendRunScript(108, new Object[] { "Enter Amount:" });
 				}else if(packetId == WorldPacketsDecoder.ACTION_BUTTON9_PACKET)
 					player.getTrade().sendValue(slotId, false);
 				else if(packetId == WorldPacketsDecoder.ACTION_BUTTON8_PACKET)
@@ -313,8 +308,7 @@ public class ButtonHandler {
 				else if(packetId == WorldPacketsDecoder.ACTION_BUTTON5_PACKET) {
 					player.getTemporaryAttributtes().put("trade_item_X_Slot", slotId);
 					player.getTemporaryAttributtes().remove("trade_isRemove");
-					player.getPackets().sendRunScript(108,
-							new Object[] { "Enter Amount:" });
+					player.getPackets().sendRunScript(108, new Object[] { "Enter Amount:" });
 				}else if(packetId == WorldPacketsDecoder.ACTION_BUTTON9_PACKET)
 					player.getTrade().sendValue(slotId);
 				else if(packetId == WorldPacketsDecoder.ACTION_BUTTON8_PACKET)
@@ -331,15 +325,11 @@ public class ButtonHandler {
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON3_PACKET)
 					player.getPriceCheckManager().removeItem(slotId, 10);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON4_PACKET)
-					player.getPriceCheckManager().removeItem(slotId,
-							Integer.MAX_VALUE);
+					player.getPriceCheckManager().removeItem(slotId, Integer.MAX_VALUE);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON5_PACKET) {
-					player.getTemporaryAttributtes().put("pc_item_X_Slot",
-							slotId);
-					player.getTemporaryAttributtes().put("pc_isRemove",
-							Boolean.TRUE);
-					player.getPackets().sendRunScript(108,
-							new Object[] { "Enter Amount:" });
+					player.getTemporaryAttributtes().put("pc_item_X_Slot", slotId);
+					player.getTemporaryAttributtes().put("pc_isRemove",	Boolean.TRUE);
+					player.getPackets().sendRunScript(108, new Object[] { "Enter Amount:" });
 				}
 			}
 		} else if (interfaceId == 672) {
@@ -351,16 +341,11 @@ public class ButtonHandler {
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON3_PACKET)
 					Summoning.sendCreatePouch(player, slotId2, 10);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON4_PACKET)
-					Summoning.sendCreatePouch(player, slotId2,
-							Integer.MAX_VALUE);
+					Summoning.sendCreatePouch(player, slotId2, Integer.MAX_VALUE);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON5_PACKET)
 					Summoning.sendCreatePouch(player, slotId2, 28);// x
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON6_PACKET) {
-					player.getPackets().sendGameMessage(
-							"You currently need "
-									+ ItemDefinitions.getItemDefinitions(
-											slotId2)
-											.getCreateItemRequirements());
+					player.getPackets().sendGameMessage("You currently need " + ItemDefinitions.getItemDefinitions(slotId2).getCreateItemRequirements());
 				}
 			}
 		} else if (interfaceId == 207) {
@@ -372,20 +357,16 @@ public class ButtonHandler {
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON3_PACKET)
 					player.getPriceCheckManager().addItem(slotId, 10);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON4_PACKET)
-					player.getPriceCheckManager().addItem(slotId,
-							Integer.MAX_VALUE);
+					player.getPriceCheckManager().addItem(slotId, Integer.MAX_VALUE);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON5_PACKET) {
-					player.getTemporaryAttributtes().put("pc_item_X_Slot",
-							slotId);
+					player.getTemporaryAttributtes().put("pc_item_X_Slot", slotId);
 					player.getTemporaryAttributtes().remove("pc_isRemove");
-					player.getPackets().sendRunScript(108,
-							new Object[] { "Enter Amount:" });
+					player.getPackets().sendRunScript(108, new Object[] { "Enter Amount:" });
 				} else if (packetId == WorldPacketsDecoder.ACTION_BUTTON9_PACKET)
 					player.getInventory().sendExamine(slotId);
 			}
 		} else if (interfaceId == 665) {
-			if (player.getFamiliar() == null
-					|| player.getFamiliar().getBob() == null)
+			if (player.getFamiliar() == null || player.getFamiliar().getBob() == null)
 				return;
 			if (componentId == 0) {
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
@@ -395,20 +376,16 @@ public class ButtonHandler {
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON3_PACKET)
 					player.getFamiliar().getBob().addItem(slotId, 10);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON4_PACKET)
-					player.getFamiliar().getBob()
-					.addItem(slotId, Integer.MAX_VALUE);
+					player.getFamiliar().getBob().addItem(slotId, Integer.MAX_VALUE);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON5_PACKET) {
-					player.getTemporaryAttributtes().put("bob_item_X_Slot",
-							slotId);
+					player.getTemporaryAttributtes().put("bob_item_X_Slot",	slotId);
 					player.getTemporaryAttributtes().remove("bob_isRemove");
-					player.getPackets().sendRunScript(108,
-							new Object[] { "Enter Amount:" });
+					player.getPackets().sendRunScript(108, new Object[] { "Enter Amount:" });
 				} else if (packetId == WorldPacketsDecoder.ACTION_BUTTON9_PACKET)
 					player.getInventory().sendExamine(slotId);
 			}
 		} else if (interfaceId == 671) {
-			if (player.getFamiliar() == null
-					|| player.getFamiliar().getBob() == null)
+			if (player.getFamiliar() == null || player.getFamiliar().getBob() == null)
 				return;
 			if (componentId == 27) {
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
@@ -418,15 +395,11 @@ public class ButtonHandler {
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON3_PACKET)
 					player.getFamiliar().getBob().removeItem(slotId, 10);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON4_PACKET)
-					player.getFamiliar().getBob()
-					.removeItem(slotId, Integer.MAX_VALUE);
+					player.getFamiliar().getBob().removeItem(slotId, Integer.MAX_VALUE);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON5_PACKET) {
-					player.getTemporaryAttributtes().put("bob_item_X_Slot",
-							slotId);
-					player.getTemporaryAttributtes().put("bob_isRemove",
-							Boolean.TRUE);
-					player.getPackets().sendRunScript(108,
-							new Object[] { "Enter Amount:" });
+					player.getTemporaryAttributtes().put("bob_item_X_Slot",	slotId);
+					player.getTemporaryAttributtes().put("bob_isRemove", Boolean.TRUE);
+					player.getPackets().sendRunScript(108, new Object[] { "Enter Amount:" });
 				}
 			} else if (componentId == 29)
 				player.getFamiliar().takeBob();
@@ -499,8 +472,7 @@ public class ButtonHandler {
 					if (componentId == 8 || componentId == 42)
 						player.getPrayer().switchPrayer(slotId);
 
-					else if (componentId == 43
-							&& player.getPrayer().isUsingQuickPrayer())
+					else if (componentId == 43 && player.getPrayer().isUsingQuickPrayer())
 						player.getPrayer().switchSettingQuickPrayer();
 				}
 			});
@@ -1342,10 +1314,7 @@ public class ButtonHandler {
 			else if (componentId == 13)
 				player.closeInterfaces();
 		}
-		if (Settings.DEBUG)
-			Logger.log("ButtonHandler", "InterfaceId " + interfaceId
-					+ ", componentId " + componentId + ", slotId " + slotId
-					+ ", slotId2 " + slotId2 + ", PacketId: " + packetId);
+//		DebugLine.print("InterfaceId " + interfaceId + ", componentId " + componentId + ", slotId " + slotId + ", slotId2 " + slotId2 + ", PacketId: " + packetId);
 	}
 
 	public static void sendRemove(Player player, int slotId) {
@@ -1553,8 +1522,7 @@ public class ButtonHandler {
 					"Not enough free space in your inventory.");
 			return false;
 		}
-		HashMap<Integer, Integer> requiriments = item.getDefinitions()
-				.getWearingSkillRequiriments();
+		HashMap<Integer, Integer> requiriments = item.getDefinitions().getWearingSkillRequiriments();
 		boolean hasRequiriments = true;
 		if (requiriments != null) {
 			for (int skillId : requiriments.keySet()) {
@@ -1565,14 +1533,10 @@ public class ButtonHandler {
 					continue;
 				if (player.getSkills().getLevelForXp(skillId) < level) {
 					if (hasRequiriments)
-						player.getPackets()
-						.sendGameMessage(
-								"You are not high enough level to use this item.");
+						player.getPackets().sendGameMessage("You are not high enough level to use this item.");
 					hasRequiriments = false;
 					String name = Skills.SKILL_NAME[skillId].toLowerCase();
-					player.getPackets().sendGameMessage(
-							"You need to have a"
-									+ (name.startsWith("a") ? "n" : "") + " "
+					player.getPackets().sendGameMessage("You need to have a" + (name.startsWith("a") ? "n" : "") + " "
 									+ name + " level of " + level + ".");
 				}
 
@@ -1585,8 +1549,7 @@ public class ButtonHandler {
 		player.getInventory().getItems().remove(slotId, item);
 		if (targetSlot == 3) {
 			if (isTwoHandedWeapon && player.getEquipment().getItem(5) != null) {
-				if (!player.getInventory().getItems()
-						.add(player.getEquipment().getItem(5))) {
+				if (!player.getInventory().getItems().add(player.getEquipment().getItem(5))) {
 					player.getInventory().getItems().set(slotId, item);
 					return false;
 				}

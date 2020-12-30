@@ -1,7 +1,6 @@
 package com.jagex;/* Class291 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
-import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -19,7 +18,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.URL;
 
-import com.AppletLoader;
+import com.Applet;
 import jaclib.nanotime.QueryPerformanceCounter;
 
 public abstract class Class291 implements Interface14, Runnable, FocusListener,
@@ -70,7 +69,7 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 		}
 	}
 
-	public void supplyApplet(Applet applet) {
+	public void supplyApplet(java.applet.Applet applet) {
 		try {
 			ClientScriptMap.anApplet6044 = applet;
 		} catch (RuntimeException runtimeexception) {
@@ -359,7 +358,7 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 			if (string.equals("stellardawn.com")
 					|| string.endsWith(".stellardawn.com"))
 				return true;
-			if (string.endsWith("127.0.0.1") || string.endsWith(AppletLoader.IP))
+			if (string.endsWith("127.0.0.1") || string.endsWith(Applet.IP))
 				return true;
 			for (/**/; (string.length() > 0
 					&& string.charAt(string.length() - 1) >= '0' && string

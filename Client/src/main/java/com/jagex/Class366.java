@@ -2,7 +2,7 @@ package com.jagex;/* Class366 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-import com.Applet;
+import com.AvalonApplet;
 
 public class Class366 {
     long aLong3966;
@@ -512,7 +512,7 @@ public class Class366 {
     }
 
     static void method4547(int i) {
-	if (Applet.ACCOUNT_CREATION_DISABLED)
+	if (AvalonApplet.ACCOUNT_CREATION_DISABLED)
 	    return;
 	try {
 	    client.aClass25_8693.method384((byte) 4);
