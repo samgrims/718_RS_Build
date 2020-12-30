@@ -45,7 +45,7 @@ import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
 
 public final class Server {
-	//TODO: Learn to move the player back and forth
+
 	public static void main(String[] args) throws Exception {
 		Settings.HOSTED = false;
 		Settings.DEBUG = true;

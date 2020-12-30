@@ -85,7 +85,7 @@ public class Routes {
 	    strategy = Routes.createObjectExactStrategy(dstX, dstY, 0, 0, typedef, rotation);
 	    Routes.findRoute(dstX, dstY, true, strategy);
 	    
-	    // TODO check if walls are done in proper way*/
+	    */
 
 	}
 	catch (RuntimeException runtimeexception) {

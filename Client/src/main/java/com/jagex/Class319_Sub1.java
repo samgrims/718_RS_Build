@@ -269,7 +269,7 @@ public class Class319_Sub1 extends Class319 implements MouseListener, MouseMotio
 	    throw Class346.method4175(runtimeexception, new StringBuilder().append("aci.mouseWheelMoved(").append(')').toString());
 	}
 	if (!mousewheelevent.isControlDown() && client.Zoom) {
-	    //TODO check if mouse is over screen interface or not in gameframe
+
 		int decrement = 12;
 		int maxZoomin = 608;
 		int maxZoomout = 156;

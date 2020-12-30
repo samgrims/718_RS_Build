@@ -29,7 +29,7 @@ public class Class500 {
     public Class298_Sub37_Sub7 method6219(int i, int i_0_) {
 	try {
 
-	    // TODO TEMPORARY FIX
+
 	    if (i < 0 || i >= aClass298_Sub37_Sub7Array6116.length)
 		return new Class298_Sub37_Sub7();
 	    return this.aClass298_Sub37_Sub7Array6116[i];

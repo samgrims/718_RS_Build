@@ -524,7 +524,7 @@ public class Class460 implements Iterator {
 				    Class52_Sub2.anInt6815 = (stream.readUnsignedShort() * 580840459);
 				    Class406.aBoolean5274 = stream.readUnsignedByte() == 1;
 				    Class287.myPlayer.aString10195 = Class287.myPlayer.aString10200 = RuntimeException_Sub2.aString6305 = stream.readJagString(681479919);
-				    Class95.anInt924 = (stream.readUnsignedByte() * 821936487); // TODO:
+				    Class95.anInt924 = (stream.readUnsignedByte() * 821936487);
 				    Class216.anInt6659 = (stream.readInt((byte) -28) * 2029589759);
 				    client.aBoolean8640 = stream.readUnsignedByte() == 1;
 				    Class386.aClass471_4146 = new IPAddress();

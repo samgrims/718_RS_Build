@@ -39,7 +39,7 @@ public class Class249 implements Interface_ma {
     @Override
     public Class53 method174(int i, int i_2_) {
 	try {
-	    if (i >= aClass53Array6462.length) // TODO TEMP fix
+	    if (i >= aClass53Array6462.length)
 		return aClass53Array6462[0];
 	    return this.aClass53Array6462[i];
 	}
