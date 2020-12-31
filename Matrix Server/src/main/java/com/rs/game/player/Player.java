@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.rs.Settings;
 import com.rs.cores.CoresManager;
+import com.rs.custom.data_structures.Toolbelt;
 import com.rs.game.Animation;
 import com.rs.game.Entity;
 import com.rs.game.ForceTalk;
@@ -78,6 +79,7 @@ public class Player extends Entity {
 	private int totalMinutesPlayed;
 	private int spinsEarnedByMinutes;
 	private boolean isBrandNew;
+	private Toolbelt toolbelt;
 
 	// transient stuff
 	private transient String username;
@@ -253,6 +255,7 @@ public class Player extends Entity {
 		this.totalMinutesPlayed = 0;
 		this.spinsEarnedByMinutes = 0;
 		this.isBrandNew = true;
+		this.toolbelt = new Toolbelt();
 
 		//Matrix stuff
 		setHitpoints(Settings.START_PLAYER_HITPOINTS);
@@ -301,6 +304,8 @@ public class Player extends Entity {
 	public void init(Session session, String username, int displayMode,	int screenWidth, int screenHeight, MachineInformation machineInformation, IsaacKeyPair isaacKeyPair) {
 		//custom properties
 		this.timeOfLogin = System.currentTimeMillis();
+		if(toolbelt == null)
+			toolbelt = new Toolbelt();
 
 		// temporary deleted after reset all chars
 		if (dominionTower == null)
@@ -362,6 +367,10 @@ public class Player extends Entity {
 		if(ipList == null)
 			ipList = new ArrayList<String>();
 		updateIPnPass();
+	}
+
+	public Toolbelt getToolbelt() {
+		return this.toolbelt;
 	}
 
 	private void giveStartingItems() {
@@ -488,6 +497,9 @@ public class Player extends Entity {
 			giveStartingItems();
 			isBrandNew = false;
 		}
+//		this.toolbelt = new Toolbelt();
+		toolbelt.setPlayer(this);
+		toolbelt.init();
 	}
 
 	public void stopAll() {

@@ -1,9 +1,12 @@
 package com.rs.net.decoders.handlers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.rs.Settings;
 import com.rs.cores.WorldThread;
+import com.rs.custom.data_structures.Toolbelt;
 import com.rs.game.Animation;
 import com.rs.game.World;
 import com.rs.game.WorldTile;
@@ -352,14 +355,18 @@ public class InventoryOptionsHandler {
 		System.out.println("Option 5");
 	}
 
-	public static void handleItemOption6(Player player, int slotId, int itemId,
-			Item item) {
+	public static void handleItemOption6(Player player, int inventorySlot, int itemId,	Item item) {
 		long time = Utils.currentTimeMillis();
-		if (player.getLockDelay() >= time
-				|| player.getEmotesManager().getNextEmoteEnd() >= time)
+		if (player.getLockDelay() >= time || player.getEmotesManager().getNextEmoteEnd() >= time)
 			return;
 		player.stopAll(false);
 		Pouches pouches = Pouches.forId(itemId);
+
+		List<Integer> list = Toolbelt.getToolbeltItems();
+
+		if(list.contains(itemId))
+			player.getToolbelt().addItem(inventorySlot, item);
+
 		if (pouches != null)
 			Summoning.spawnFamiliar(player, pouches);
 		else if (itemId == 1438)
@@ -374,22 +381,15 @@ public class InventoryOptionsHandler {
 			Runecrafting.locate(player, 3053, 3445);
 		else if (itemId == 1448)
 			Runecrafting.locate(player, 2982, 3514);
-		else if (itemId <= 1712 && itemId >= 1706 || itemId >= 10354
-				&& itemId <= 10362)
-			player.getDialogueManager().startDialogue("Transportation",
-					"Edgeville", new WorldTile(3087, 3496, 0), "Karamja",
-					new WorldTile(2918, 3176, 0), "Draynor Village",
-					new WorldTile(3105, 3251, 0), "Al Kharid",
+		else if (itemId <= 1712 && itemId >= 1706 || itemId >= 10354 && itemId <= 10362)
+			player.getDialogueManager().startDialogue("Transportation","Edgeville", new WorldTile(3087, 3496, 0), "Karamja",
+					new WorldTile(2918, 3176, 0), "Draynor Village", new WorldTile(3105, 3251, 0), "Al Kharid",
 					new WorldTile(3293, 3163, 0), itemId);
 		else if (itemId == 1704 || itemId == 10352)
-			player.getPackets()
-					.sendGameMessage(
-							"The amulet has ran out of charges. You need to recharge it if you wish it use it once more.");
+			player.getPackets().sendGameMessage("The amulet has ran out of charges. You need to recharge it if you wish it use it once more.");
 		else if (itemId >= 3853 && itemId <= 3867)
-			player.getDialogueManager().startDialogue("Transportation",
-					"Burthrope Games Room", new WorldTile(2880, 3559, 0),
-					"Barbarian Outpost", new WorldTile(2519, 3571, 0),
-					"Gamers' Grotto", new WorldTile(2970, 9679, 0),
+			player.getDialogueManager().startDialogue("Transportation","Burthrope Games Room", new WorldTile(2880, 3559, 0),
+					"Barbarian Outpost", new WorldTile(2519, 3571, 0), "Gamers' Grotto", new WorldTile(2970, 9679, 0),
 					"Corporeal Beast", new WorldTile(2886, 4377, 0), itemId);
 	}
 

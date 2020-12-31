@@ -2152,6 +2152,13 @@ public final class Commands {
 			case "position":
 				player.getPackets().sendGameMessage("X: " + Integer.toString(player.getLocation().getX()) + " Y: " + Integer.toString(player.getLocation().getY()));
 				return true;
+			case "item":
+				if(cmd.length != 3 || !cmd[1].matches("\\d+") || !cmd[2].matches("\\d+")) {
+					player.getPackets().sendGameMessage("The format is \";;item [id] [amt]\"");
+					return true;
+				}
+				player.getInventory().addItem(Integer.parseInt(cmd[1]), Integer.parseInt(cmd[2]));
+				return true;
 			case "setyellcolor":
 			case "changeyellcolor":
 			case "yellcolor":
@@ -2364,58 +2371,6 @@ public final class Commands {
 						+ " PLAYERS AND BEEN SLAYED "
 						+ player.getDeathCount() + " TIMES. DR: " + dr));
 				return true;
-
-			case "item":
-				if (cmd.length < 2) {
-					player.getPackets().sendGameMessage(
-							"Use: ::item id (optional:amount)");
-					return true;
-				}
-				try {
-					if (!player.canSpawn()) {
-						player.getPackets().sendGameMessage(
-								"You can't spawn while you're in this area.");
-						return true;
-					}
-					int itemId = Integer.valueOf(cmd[1]);
-					ItemDefinitions defs = ItemDefinitions
-							.getItemDefinitions(itemId);
-					if (defs.isLended())
-						return true;
-					if (defs.isOverSized()) {
-						player.getPackets().sendGameMessage("The item appears to be oversized.");
-						return true;
-					}
-					new_name = defs == null ? "" : defs.getName()
-							.toLowerCase();
-					if (new_name.contains("Sacred clay")) {
-						return true;
-					}
-					if(new_name.toLowerCase().contains("donator") || new_name.toLowerCase().contains("basket of eggs") || new_name.toLowerCase().contains("sled")) {
-						player.getDialogueManager().startDialogue("SimpleMessage", "This items can only be earned in the Extreme Donator Refuge of Fear minigame.");
-						return true;
-					}
-					for (String string : Settings.VOTE_REQUIRED_ITEMS) {
-						if (new_name.toLowerCase().contains(string) && !player.hasVoted()) {
-							player.getPackets().sendGameMessage("You must vote to spawn the item: "+new_name);
-							return true;
-						}
-					}
-					for (String string : Settings.EARNED_ITEMS) {
-						if (new_name.contains(string) && player.getRights() <= 1) {
-							player.getPackets().sendGameMessage(
-									"You must earn " + new_name + ".");
-							return true;
-						}
-					}
-					player.getInventory().addItem(itemId,
-							cmd.length >= 3 ? Integer.valueOf(cmd[2]) : 1);
-				} catch (NumberFormatException e) {
-					player.getPackets().sendGameMessage(
-							"Use: ::item id (optional:amount)");
-				}
-				return true;
-
 			case "players":
 				player.getPackets().sendGameMessage(
 						"There are currently " + World.getPlayers().size()
