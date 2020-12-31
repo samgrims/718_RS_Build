@@ -83,11 +83,9 @@ public class Firemaking extends Action {
 	public boolean start(Player player) {
 		if (!checkAll(player))
 			return false;
-		player.getPackets().sendGameMessage("You attempt to light the logs.",
-				true);
+		player.getPackets().sendGameMessage("You attempt to light the logs.",true);
 		player.getInventory().deleteItem(fire.getLogId(), 1);
-		World.addGroundItem(new Item(fire.getLogId(), 1),
-				new WorldTile(player), player, false, 180, true);
+		World.addGroundItem(new Item(fire.getLogId(), 1), new WorldTile(player), player, false, 180, true);
 		Long time = (Long) player.getTemporaryAttributtes().remove("Fire");
 		boolean quickFire = time != null && time > Utils.currentTimeMillis();
 		setActionDelay(player, quickFire ? 1 : 2);
@@ -116,26 +114,20 @@ public class Firemaking extends Action {
 
 	public static void startFamiliarFire(Player player, Familiar familiar,
 			Fire fire) {
-		if (player.getFamiliar().getId() == 7378
-				|| player.getFamiliar().getId() == 7377) {
+		if (player.getFamiliar().getId() == 7378 || player.getFamiliar().getId() == 7377) {
 		}
 	}
 
 	public boolean checkAll(Player player) {
-		if (!player.getInventory().containsItem(590, 1)) {
-			player.getPackets().sendGameMessage(
-					"You do not have the required items to light this.");
+		if (!player.getInventory().containsItem(590, 1) && !player.getToolbelt().containsItem(590)) {
+			player.getPackets().sendGameMessage("You do not have the required items to light this.");
 			return false;
 		}
 		if (player.getSkills().getLevel(Skills.FIREMAKING) < fire.getLevel()) {
-			player.getPackets().sendGameMessage(
-					"You do not have the required level to light this.");
+			player.getPackets().sendGameMessage("You do not have the required level to light this.");
 			return false;
 		}
-		if (!World.canMoveNPC(player.getPlane(), player.getX(), player.getY(),
-				1) // cliped
-				|| World.getRegion(player.getRegionId()).getSpawnedObject(
-						player) != null
+		if (!World.canMoveNPC(player.getPlane(), player.getX(), player.getY(),1) || World.getRegion(player.getRegionId()).getSpawnedObject(player) != null
 						|| player.getControlerManager().getControler() instanceof DuelArena || player.getControlerManager().getControler() instanceof DuelControler) { // contains
 			// object
 			player.getPackets().sendGameMessage("You can't light a fire here.");
