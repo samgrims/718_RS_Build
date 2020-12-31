@@ -48,7 +48,7 @@ public class Class298_Sub37_Sub4 extends Class298_Sub37 {
 			Class458 class458 = new Class458();
 			int[] is;
 			synchronized (Class317.aClass243_3321) {
-				int i_3_ = (Class317.aClass243_3321.method2316(
+				int i_3_ = (Class317.aClass243_3321.filesCount(
 						((Class298_Sub37_Sub4) this).anInt9580 * 1899473659,
 						-222662329));
 				((Class298_Sub37_Sub4) this).aClass96Array9579 = new Class96[i_3_];

@@ -83,7 +83,7 @@ public class Class422_Sub30 extends Class422 {
 				Class365_Sub1_Sub1_Sub3 class365_sub1_sub1_sub3 = (((Class298_Sub37_Sub3) class298_sub37_sub3).aClass365_Sub1_Sub1_Sub3_9578);
 				class365_sub1_sub1_sub3.method4483(1, -748759469);
 				if (class365_sub1_sub1_sub3.method4484(1662190190)) {
-					class298_sub37_sub3.method2839(-1460969981);
+					class298_sub37_sub3.unlink(-1460969981);
 					class365_sub1_sub1_sub3.method4480((byte) 54);
 				} else if ((client.aClass283_8716.method2675(-1611682495) != null)
 						&& class365_sub1_sub1_sub3.method4481((byte) -116))

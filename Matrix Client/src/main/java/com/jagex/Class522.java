@@ -44,7 +44,7 @@ public class Class522 {
 			if (-1 == -1309843523 * class105.anInt1154
 					&& !class119.aBoolean1403)
 				Class422
-						.method5623(-440872681 * class105.anInt1142, 1613777968);
+						.method5623(-440872681 * class105.idHash, 1613777968);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("w.hw(").append(')').toString());

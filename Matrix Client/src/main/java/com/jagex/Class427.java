@@ -21,7 +21,7 @@ public class Class427 {
 	public Class427(Class411 class411, Class429 class429, Class243 class243) {
 		((Class427) this).aClass243_5361 = class243;
 		if (((Class427) this).aClass243_5361 != null)
-			((Class427) this).aClass243_5361.method2316(
+			((Class427) this).aClass243_5361.filesCount(
 					Class120.aClass120_1430.anInt1460 * -1006924897,
 					-1236940551);
 	}

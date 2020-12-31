@@ -9,7 +9,7 @@ public class Class317 {
 
 	public Class317(Class411 class411, Class429 class429, Class243 class243) {
 		((Class317) this).aClass243_3319 = class243;
-		((Class317) this).aClass243_3319.method2316(
+		((Class317) this).aClass243_3319.filesCount(
 				(-1006924897 * (Class120.aClass120_1434.anInt1460)),
 				-1713499559);
 	}
@@ -126,7 +126,7 @@ public class Class317 {
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403)
 				Class422
-						.method5623(class105.anInt1142 * -440872681, 1592451280);
+						.method5623(class105.idHash * -440872681, 1592451280);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("nf.iw(").append(')').toString());
@@ -153,7 +153,7 @@ public class Class317 {
 			IComponentDefinition class105_8_ = Class523.method6331(class119, class105,
 					-635605619);
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = (class105_8_ == null ? -1
-					: -440872681 * class105_8_.anInt1142);
+					: -440872681 * class105_8_.idHash);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("nf.rt(").append(')').toString());

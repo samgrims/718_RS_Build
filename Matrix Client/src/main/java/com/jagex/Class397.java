@@ -27,9 +27,9 @@ public class Class397 {
 
 	public static void method4912(short i) {
 		try {
-			Class389.aClass119Array4165 = new Class119[Class270.aClass243_2894
+			Class389.aClass119Array4165 = new Class119[Class270.INTERFACE_INDEX
 					.method2296(949346193)];
-			Class441.aBooleanArray5590 = new boolean[Class270.aClass243_2894
+			Class441.aBooleanArray5590 = new boolean[Class270.INTERFACE_INDEX
 					.method2296(1513726492)];
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -148,26 +148,26 @@ public class Class397 {
 				Class57 class57 = Class74.aClass57Array699[i_26_];
 				int i_33_ = class57.method623();
 				int i_34_ = class57.method625();
-				int i_35_ = i_31_ + -2093041337 * class105.anInt1156 / 2
+				int i_35_ = i_31_ + -2093041337 * class105.width / 2
 						- i_33_ / 2;
 				int i_36_ = i_35_ + i_33_;
-				int i_37_ = class105.anInt1162 * 457937409 / 2 + -i_32_ - i_34_;
+				int i_37_ = class105.height * 457937409 / 2 + -i_32_ - i_34_;
 				int i_38_ = i_34_ + i_37_;
 				if (!class117.method1274(i_35_, i_37_, -1933314892)
 						|| !class117.method1274(i_36_, i_37_, -1940258831)
 						|| !class117.method1274(i_35_, i_38_, -1423315727)
 						|| !class117.method1274(i_36_, i_38_, -1131709831)) {
 					double d = Math.atan2((double) i_31_, (double) i_32_);
-					int i_39_ = Math.min(class105.anInt1156 * -2093041337 / 2,
-							class105.anInt1162 * 457937409 / 2);
+					int i_39_ = Math.min(class105.width * -2093041337 / 2,
+							class105.height * 457937409 / 2);
 					i_39_ -= 6;
 					int i_40_ = (int) (Math.sin(d) * (double) i_39_);
 					int i_41_ = (int) (Math.cos(d) * (double) i_39_);
 					Class250.aClass57Array2766[i_26_].method673(
-							((float) (-2093041337 * class105.anInt1156) / 2.0F
+							((float) (-2093041337 * class105.width) / 2.0F
 									+ (float) i + (float) i_40_),
 							((float) i_23_
-									+ (float) (class105.anInt1162 * 457937409)
+									+ (float) (class105.height * 457937409)
 									/ 2.0F - (float) i_41_), 4096,
 							(int) (-d / 6.283185307179586 * 65535.0));
 				} else

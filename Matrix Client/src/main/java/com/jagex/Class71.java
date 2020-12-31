@@ -35,7 +35,7 @@ public class Class71 {
 					break;
 				}
 				((Interface25) class298_sub29.anObject7366).ma(true);
-				class298_sub29.method2839(-1460969981);
+				class298_sub29.unlink(-1460969981);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

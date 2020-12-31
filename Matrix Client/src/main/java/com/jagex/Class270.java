@@ -9,7 +9,7 @@ public class Class270 {
 	static int anInt2891 = 14;
 	int anInt2892;
 	int[][] anIntArrayArray2893;
-	static Class243 aClass243_2894;
+	static Class243 INTERFACE_INDEX;
 
 	byte[] method2532(byte[] is, int i) {
 		try {
@@ -146,21 +146,21 @@ public class Class270 {
 			((Class403) class403).anInt5239 -= -783761378;
 			class105.anInt1166 = -970389233
 					* (((Class403) class403).anIntArray5244[681479919 * ((Class403) class403).anInt5239]);
-			if (class105.anInt1166 * 684246511 > (1867913305 * class105.anInt1168 - class105.anInt1156
+			if (class105.anInt1166 * 684246511 > (1867913305 * class105.anInt1168 - class105.width
 					* -2093041337))
-				class105.anInt1166 = (1227329079 * class105.anInt1168 - class105.anInt1156 * 2072992297);
+				class105.anInt1166 = (1227329079 * class105.anInt1168 - class105.width * 2072992297);
 			if (684246511 * class105.anInt1166 < 0)
 				class105.anInt1166 = 0;
 			class105.anInt1167 = (-1915192419 * (((Class403) class403).anIntArray5244[1 + 681479919 * ((Class403) class403).anInt5239]));
-			if (-1424956747 * class105.anInt1167 > (class105.anInt1169 * 2053897963 - 457937409 * class105.anInt1162))
+			if (-1424956747 * class105.anInt1167 > (class105.anInt1169 * 2053897963 - 457937409 * class105.height))
 				class105.anInt1167 = (2097037087 * class105.anInt1169 - -900266595
-						* class105.anInt1162);
+						* class105.height);
 			if (class105.anInt1167 * -1424956747 < 0)
 				class105.anInt1167 = 0;
 			Tradution.method6054(class105, -830371764);
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403)
-				Class422_Sub14.method5682(class105.anInt1142 * -440872681,
+				Class422_Sub14.method5682(class105.idHash * -440872681,
 						-754597349);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

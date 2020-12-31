@@ -13,7 +13,7 @@ public class Class344 {
 	static int anInt3681;
 	static int anInt3682;
 	static List aList3683;
-	static Class437 aClass437_3684;
+	static IterableNodeMap aClass437_3684;
 	static int anInt3685;
 	static int anInt3686 = 0;
 	public static String aString3687;
@@ -24,7 +24,7 @@ public class Class344 {
 		anInt3681 = 0;
 		anInt3682 = 0;
 		anInt3677 = 0;
-		aClass437_3684 = new Class437(8);
+		aClass437_3684 = new IterableNodeMap(8);
 		anInt3685 = 0;
 		anInt3675 = 1483930890;
 	}

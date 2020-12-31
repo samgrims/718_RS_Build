@@ -5,7 +5,7 @@ package com.jagex;/* Class340 - Decompiled by JODE
 public class Class340 {
 	int anInt3639;
 	Class461 aClass461_3640 = new Class461();
-	Class437 aClass437_3641;
+	IterableNodeMap aClass437_3641;
 	int anInt3642;
 
 	public final void method4127(Object object, Interface18 interface18) {
@@ -15,7 +15,7 @@ public class Class340 {
 	final void method4128(Interface18 interface18) {
 		long l = interface18.method231();
 		for (Class298_Sub37_Sub1 class298_sub37_sub1 = ((Class298_Sub37_Sub1) ((Class340) this).aClass437_3641
-				.method5812(l)); class298_sub37_sub1 != null; class298_sub37_sub1 = (Class298_Sub37_Sub1) ((Class340) this).aClass437_3641
+				.get(l)); class298_sub37_sub1 != null; class298_sub37_sub1 = (Class298_Sub37_Sub1) ((Class340) this).aClass437_3641
 				.method5813(-2034265675)) {
 			if (((Class298_Sub37_Sub1) class298_sub37_sub1).anInterface18_9575
 					.method232(interface18)) {
@@ -27,7 +27,7 @@ public class Class340 {
 
 	final void method4129(Class298_Sub37_Sub1 class298_sub37_sub1) {
 		if (class298_sub37_sub1 != null) {
-			class298_sub37_sub1.method2839(-1460969981);
+			class298_sub37_sub1.unlink(-1460969981);
 			class298_sub37_sub1.method3402(460842830);
 			((Class340) this).anInt3642 += ((Class298_Sub37_Sub1) class298_sub37_sub1).anInt9576;
 		}
@@ -45,7 +45,7 @@ public class Class340 {
 		}
 		Class298_Sub37_Sub1_Sub1 class298_sub37_sub1_sub1 = new Class298_Sub37_Sub1_Sub1(
 				interface18, object, i);
-		((Class340) this).aClass437_3641.method5817(class298_sub37_sub1_sub1,
+		((Class340) this).aClass437_3641.put(class298_sub37_sub1_sub1,
 				interface18.method231());
 		((Class340) this).aClass461_3640.method5982(class298_sub37_sub1_sub1,
 				(byte) -62);
@@ -58,7 +58,7 @@ public class Class340 {
 				.method5985(-216095047))) {
 			if (class298_sub37_sub1.method3407()) {
 				if (class298_sub37_sub1.method3406() == null) {
-					class298_sub37_sub1.method2839(-1460969981);
+					class298_sub37_sub1.unlink(-1460969981);
 					class298_sub37_sub1.method3402(-1671221720);
 					((Class340) this).anInt3642 += (((Class298_Sub37_Sub1) class298_sub37_sub1).anInt9576);
 				}
@@ -67,12 +67,12 @@ public class Class340 {
 						(((Class298_Sub37_Sub1) class298_sub37_sub1).anInterface18_9575),
 						class298_sub37_sub1.method3406(),
 						(((Class298_Sub37_Sub1) class298_sub37_sub1).anInt9576)));
-				((Class340) this).aClass437_3641.method5817(
+				((Class340) this).aClass437_3641.put(
 						class298_sub37_sub1_sub2,
-						class298_sub37_sub1.aLong3188 * 7051297995265073167L);
+						class298_sub37_sub1.pointer * 7051297995265073167L);
 				Class458.method5973(class298_sub37_sub1_sub2,
 						class298_sub37_sub1, -1652592361);
-				class298_sub37_sub1.method2839(-1460969981);
+				class298_sub37_sub1.unlink(-1460969981);
 				class298_sub37_sub1.method3402(-1787171462);
 			}
 		}
@@ -91,13 +91,13 @@ public class Class340 {
 	public final Object method4134(Interface18 interface18) {
 		long l = interface18.method231();
 		for (Class298_Sub37_Sub1 class298_sub37_sub1 = ((Class298_Sub37_Sub1) ((Class340) this).aClass437_3641
-				.method5812(l)); class298_sub37_sub1 != null; class298_sub37_sub1 = (Class298_Sub37_Sub1) ((Class340) this).aClass437_3641
+				.get(l)); class298_sub37_sub1 != null; class298_sub37_sub1 = (Class298_Sub37_Sub1) ((Class340) this).aClass437_3641
 				.method5813(-1776975649)) {
 			if (((Class298_Sub37_Sub1) class298_sub37_sub1).anInterface18_9575
 					.method232(interface18)) {
 				Object object = class298_sub37_sub1.method3406();
 				if (object == null) {
-					class298_sub37_sub1.method2839(-1460969981);
+					class298_sub37_sub1.unlink(-1460969981);
 					class298_sub37_sub1.method3402(307674222);
 					((Class340) this).anInt3642 += (((Class298_Sub37_Sub1) class298_sub37_sub1).anInt9576);
 				} else {
@@ -107,13 +107,13 @@ public class Class340 {
 								object,
 								(((Class298_Sub37_Sub1) class298_sub37_sub1).anInt9576)));
 						((Class340) this).aClass437_3641
-								.method5817(
+								.put(
 										class298_sub37_sub1_sub1,
-										(class298_sub37_sub1.aLong3188 * 7051297995265073167L));
+										(class298_sub37_sub1.pointer * 7051297995265073167L));
 						((Class340) this).aClass461_3640.method5982(
 								class298_sub37_sub1_sub1, (byte) -106);
 						class298_sub37_sub1_sub1.aLong7406 = 0L;
-						class298_sub37_sub1.method2839(-1460969981);
+						class298_sub37_sub1.unlink(-1460969981);
 						class298_sub37_sub1.method3402(-869627360);
 					} else {
 						((Class340) this).aClass461_3640.method5982(
@@ -134,7 +134,7 @@ public class Class340 {
 		for (i_0_ = 1; i_0_ + i_0_ < i; i_0_ += i_0_) {
 			/* empty */
 		}
-		((Class340) this).aClass437_3641 = new Class437(i_0_);
+		((Class340) this).aClass437_3641 = new IterableNodeMap(i_0_);
 	}
 
 	public final int method4135() {
@@ -146,7 +146,7 @@ public class Class340 {
 				.method5984(707727981)); class298_sub37_sub1 != null; class298_sub37_sub1 = ((Class298_Sub37_Sub1) ((Class340) this).aClass461_3640
 				.method5985(590574136))) {
 			if (class298_sub37_sub1.method3407()) {
-				class298_sub37_sub1.method2839(-1460969981);
+				class298_sub37_sub1.unlink(-1460969981);
 				class298_sub37_sub1.method3402(243040905);
 				((Class340) this).anInt3642 += ((Class298_Sub37_Sub1) class298_sub37_sub1).anInt9576;
 			}

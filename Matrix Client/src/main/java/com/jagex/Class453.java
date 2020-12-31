@@ -11,7 +11,7 @@ public class Class453 implements Iterable, Collection {
 	public void method5935(Class298 class298, int i) {
 		try {
 			if (null != class298.aClass298_3189)
-				class298.method2839(-1460969981);
+				class298.unlink(-1460969981);
 			class298.aClass298_3189 = aClass298_5643.aClass298_3189;
 			class298.aClass298_3187 = aClass298_5643;
 			class298.aClass298_3189.aClass298_3187 = class298;
@@ -27,7 +27,7 @@ public class Class453 implements Iterable, Collection {
 			Class298 class298 = aClass298_5643.aClass298_3187;
 			if (class298 == aClass298_5643)
 				return null;
-			class298.method2839(-1460969981);
+			class298.unlink(-1460969981);
 			return class298;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -233,7 +233,7 @@ public class Class453 implements Iterable, Collection {
 	public void method5943(byte i) {
 		try {
 			while (aClass298_5643.aClass298_3187 != aClass298_5643)
-				aClass298_5643.aClass298_3187.method2839(-1460969981);
+				aClass298_5643.aClass298_3187.unlink(-1460969981);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("sr.a(").append(')').toString());
@@ -379,7 +379,7 @@ public class Class453 implements Iterable, Collection {
 								.method3048(((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7426);
 						((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7426 = null;
 					}
-					class298_sub41.method2839(-1460969981);
+					class298_sub41.unlink(-1460969981);
 					break;
 				}
 			}

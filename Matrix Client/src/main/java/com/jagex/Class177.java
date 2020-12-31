@@ -35,7 +35,7 @@ public class Class177 {
 			if (Class389.aClass119Array4165[i_1_] == null)
 				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = 0;
 			else
-				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = (Class389.aClass119Array4165[i_1_].aClass105Array1405).length;
+				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = (Class389.aClass119Array4165[i_1_].components).length;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("hj.alg(").append(')').toString());

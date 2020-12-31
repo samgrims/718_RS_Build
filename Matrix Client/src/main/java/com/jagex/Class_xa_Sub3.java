@@ -329,7 +329,7 @@ public class Class_xa_Sub3 extends Class_xa {
 								is_40_[i_41_] = ((Class298_Sub20) class298).aShort7314;
 								i_68_ = is_40_[i_41_] & 0xffff;
 								if (i_46_ != -1
-										&& ((class298_sub5s_15_[i_41_].aLong3188 * 7051297995265073167L) < (class298_sub5s[i_68_].aLong3188 * 7051297995265073167L)))
+										&& ((class298_sub5s_15_[i_41_].pointer * 7051297995265073167L) < (class298_sub5s[i_68_].pointer * 7051297995265073167L)))
 									class298_sub5s[i_68_] = class298_sub5s_15_[i_41_];
 							}
 							for (int i_75_ = 0; i_75_ < i_37_; i_75_++)
@@ -368,14 +368,14 @@ public class Class_xa_Sub3 extends Class_xa {
 								class298_sub5_85_.method2856(i_77_, i_78_,
 										i_80_);
 								if (class298_sub5_87_ == null
-										|| ((class298_sub5_85_.aLong3188 * 7051297995265073167L) < (class298_sub5_87_.aLong3188 * 7051297995265073167L)))
+										|| ((class298_sub5_85_.pointer * 7051297995265073167L) < (class298_sub5_87_.pointer * 7051297995265073167L)))
 									class298_sub5_87_ = class298_sub5_85_;
 							}
 							if (class298_sub5_86_ != null) {
 								class298_sub5_86_.method2856(i_77_, i_78_,
 										i_80_);
 								if (class298_sub5_87_ == null
-										|| ((class298_sub5_86_.aLong3188 * 7051297995265073167L) < (class298_sub5_87_.aLong3188 * 7051297995265073167L)))
+										|| ((class298_sub5_86_.pointer * 7051297995265073167L) < (class298_sub5_87_.pointer * 7051297995265073167L)))
 									class298_sub5_87_ = class298_sub5_86_;
 							}
 							if (class298_sub5_87_ != null) {
@@ -419,7 +419,7 @@ public class Class_xa_Sub3 extends Class_xa {
 			long[] ls = new long[((Class_xa_Sub3) this).aClass298Array8534.length];
 			for (int i_89_ = 0; i_89_ < ((Class_xa_Sub3) this).aClass298Array8534.length; i_89_++) {
 				Class298_Sub5 class298_sub5 = ((Class298_Sub5) ((Class_xa_Sub3) this).aClass298Array8534[i_89_]);
-				ls[i_89_] = class298_sub5.aLong3188 * 7051297995265073167L;
+				ls[i_89_] = class298_sub5.pointer * 7051297995265073167L;
 				class298_sub5.method2860(((Class_xa_Sub3) this).anInt8526);
 			}
 			Class365_Sub1_Sub3_Sub1.method4507(ls,
@@ -1526,7 +1526,7 @@ public class Class_xa_Sub3 extends Class_xa {
 								is_292_[i_293_] = ((Class298_Sub20) class298).aShort7314;
 								i_320_ = is_292_[i_293_] & 0xffff;
 								if (i_298_ != -1
-										&& ((class298_sub5s_267_[i_293_].aLong3188 * 7051297995265073167L) < (class298_sub5s[i_320_].aLong3188 * 7051297995265073167L)))
+										&& ((class298_sub5s_267_[i_293_].pointer * 7051297995265073167L) < (class298_sub5s[i_320_].pointer * 7051297995265073167L)))
 									class298_sub5s[i_320_] = class298_sub5s_267_[i_293_];
 							}
 							for (int i_327_ = 0; i_327_ < i_289_; i_327_++)
@@ -1566,14 +1566,14 @@ public class Class_xa_Sub3 extends Class_xa {
 								class298_sub5_337_.method2856(i_329_, i_330_,
 										i_332_);
 								if (class298_sub5_339_ == null
-										|| ((class298_sub5_337_.aLong3188 * 7051297995265073167L) < (class298_sub5_339_.aLong3188 * 7051297995265073167L)))
+										|| ((class298_sub5_337_.pointer * 7051297995265073167L) < (class298_sub5_339_.pointer * 7051297995265073167L)))
 									class298_sub5_339_ = class298_sub5_337_;
 							}
 							if (class298_sub5_338_ != null) {
 								class298_sub5_338_.method2856(i_329_, i_330_,
 										i_332_);
 								if (class298_sub5_339_ == null
-										|| ((class298_sub5_338_.aLong3188 * 7051297995265073167L) < (class298_sub5_339_.aLong3188 * 7051297995265073167L)))
+										|| ((class298_sub5_338_.pointer * 7051297995265073167L) < (class298_sub5_339_.pointer * 7051297995265073167L)))
 									class298_sub5_339_ = class298_sub5_338_;
 							}
 							if (class298_sub5_339_ != null) {
@@ -1617,7 +1617,7 @@ public class Class_xa_Sub3 extends Class_xa {
 			long[] ls = new long[((Class_xa_Sub3) this).aClass298Array8534.length];
 			for (int i_341_ = 0; i_341_ < ((Class_xa_Sub3) this).aClass298Array8534.length; i_341_++) {
 				Class298_Sub5 class298_sub5 = ((Class298_Sub5) ((Class_xa_Sub3) this).aClass298Array8534[i_341_]);
-				ls[i_341_] = class298_sub5.aLong3188 * 7051297995265073167L;
+				ls[i_341_] = class298_sub5.pointer * 7051297995265073167L;
 				class298_sub5.method2860(((Class_xa_Sub3) this).anInt8526);
 			}
 			Class365_Sub1_Sub3_Sub1.method4507(ls,

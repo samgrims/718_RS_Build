@@ -175,7 +175,7 @@ public abstract class Class98 {
 								for (int i_41_ = 0; i_41_ < -1230451913
 										* client.anInt8703; i_41_++) {
 									Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-											.method5812((long) client.anIntArray8699[i_41_])));
+											.get((long) client.anIntArray8699[i_41_])));
 									if (null == class298_sub29) {
 										if (i_15_ == 202437353) {
 											/* empty */
@@ -277,7 +277,7 @@ public abstract class Class98 {
 									for (int i_53_ = 0; (i_53_ < client.anInt8703
 											* -1230451913); i_53_++) {
 										Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-												.method5812((long) client.anIntArray8699[i_53_])));
+												.get((long) client.anIntArray8699[i_53_])));
 										if (class298_sub29 == null) {
 											if (i_15_ == 202437353) {
 												/* empty */
@@ -363,7 +363,7 @@ public abstract class Class98 {
 									+ i_36_;
 							int i_64_ = 283514611 * class341.gameSceneBaseY + i_37_;
 							Class298_Sub2 class298_sub2 = ((Class298_Sub2) (client.aClass437_8685
-									.method5812((long) ((class335.aClass365_Sub1_3616.plane) << 28
+									.get((long) ((class335.aClass365_Sub1_3616.plane) << 28
 											| i_64_ << 14 | i_63_))));
 							if (null != class298_sub2) {
 								int i_65_ = 0;

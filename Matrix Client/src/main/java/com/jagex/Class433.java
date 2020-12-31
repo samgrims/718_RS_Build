@@ -132,7 +132,7 @@ public class Class433 {
 		if (null != ((Class433) this).aClass243_5446) {
 			int i = ((Class433) this).aClass243_5446.method2296(1680210708) - 1;
 			Class120.aClass120_1443.method1306((short) 23751);
-			((Class433) this).aClass243_5446.method2316(i, -1017296855);
+			((Class433) this).aClass243_5446.filesCount(i, -1017296855);
 		}
 		if (((Class433) this).aClass411_5455 == Class411.aClass411_5320)
 			((Class433) this).aStringArray5454 = (new String[] {

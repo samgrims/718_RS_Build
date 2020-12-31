@@ -80,7 +80,7 @@ public class Class497 {
 		try {
 			Class360.anInt3868 = Applet.LOBBY_ENABLED ? -1058684408 : 471358088;
 			Class360.aClass25_3905 = Applet.LOBBY_ENABLED ? client.aClass25_8693 : client.aClass25_8711;
-			Class460.method5981(false, false, string, string_2_, -1L);
+			HashTableIterator.method5981(false, false, string, string_2_, -1L);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("um.z(").append(')').toString());

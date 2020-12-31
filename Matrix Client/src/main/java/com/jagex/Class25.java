@@ -100,7 +100,7 @@ public class Class25 {
 									0, class298_sub36.anInt7399 * 58571303,
 									(short) -5547);
 					((Class25) this).anInt346 -= class298_sub36.anInt7399 * 20706419;
-					class298_sub36.method2839(-1460969981);
+					class298_sub36.unlink(-1460969981);
 					class298_sub36.out
 							.method3650(-2079366553);
 					class298_sub36.method3400(939112928);

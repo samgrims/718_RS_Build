@@ -37,7 +37,7 @@ public class Class378 {
 		try {
 			if (Class441.aBooleanArray5590[i])
 				return true;
-			Class389.aClass119Array4165[i] = Class338.method4115(i, is,
+			Class389.aClass119Array4165[i] = Class338.getInterface(i, is,
 					Class389.aClass119Array4165[i], false, (byte) 3);
 			if (null == Class389.aClass119Array4165[i])
 				return false;

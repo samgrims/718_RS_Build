@@ -63,13 +63,13 @@ public abstract class Class288 implements Runnable {
 		try {
 			String string = (String) (((Class403) class403).anObjectArray5240[(((Class403) class403).anInt5241 -= 969361751)
 					* -203050393]);
-			if (!string.equals(class105.aString1212)) {
-				class105.aString1212 = string;
+			if (!string.equals(class105.text)) {
+				class105.text = string;
 				Tradution.method6054(class105, 1811665074);
 			}
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403)
-				Class302_Sub4.method3731(-440872681 * class105.anInt1142,
+				Class302_Sub4.method3731(-440872681 * class105.idHash,
 						(byte) -31);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

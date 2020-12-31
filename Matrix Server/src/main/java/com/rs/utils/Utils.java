@@ -248,26 +248,19 @@ public final class Utils {
 
 	public static final int getObjectDefinitionsSize() {
 		int lastArchiveId = Cache.STORE.getIndexes()[16].getLastArchiveId();
-		return lastArchiveId
-				* 256
-				+ Cache.STORE.getIndexes()[16]
-						.getValidFilesCount(lastArchiveId);
+		return lastArchiveId * 256 + Cache.STORE.getIndexes()[16].getValidFilesCount(lastArchiveId);
 	}
 
 	public static final int getNPCDefinitionsSize() {
 		int lastArchiveId = Cache.STORE.getIndexes()[18].getLastArchiveId();
-		return lastArchiveId
-				* 128
-				+ Cache.STORE.getIndexes()[18]
-						.getValidFilesCount(lastArchiveId);
+		return lastArchiveId * 128 + Cache.STORE.getIndexes()[18].getValidFilesCount(lastArchiveId);
 	}
 	//22314
 
 
 	public static final int getItemDefinitionsSize() {
 		int lastArchiveId = Cache.STORE.getIndexes()[19].getLastArchiveId();
-		return (lastArchiveId * 256 + Cache.STORE.getIndexes()[19]
-				.getValidFilesCount(lastArchiveId)) - 22314;
+		return (lastArchiveId * 256 + Cache.STORE.getIndexes()[19].getValidFilesCount(lastArchiveId)) - 22314;
 	}
 	
 	public static boolean itemExists(int id) {
@@ -280,8 +273,7 @@ public final class Utils {
 		return Cache.STORE.getIndexes()[3].getLastArchiveId() + 1;
 	}
 
-	public static final int getInterfaceDefinitionsComponentsSize(
-			int interfaceId) {
+	public static final int getInterfaceDefinitionsComponentsSize(int interfaceId) {
 		return Cache.STORE.getIndexes()[3].getLastFileId(interfaceId) + 1;
 	}
 

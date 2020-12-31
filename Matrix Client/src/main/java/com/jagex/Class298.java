@@ -4,13 +4,13 @@ package com.jagex;/* Class298 - Decompiled by JODE
 
 public class Class298 {
 	public Class298 aClass298_3187;
-	public long aLong3188;
+	public long pointer;
 	public Class298 aClass298_3189;
 	public static int anInt3190;
 	static int anInt3191;
 	static int anInt3192;
 
-	public void method2839(int i) {
+	public void unlink(int i) {
 		try {
 			if (aClass298_3189 != null) {
 				aClass298_3189.aClass298_3187 = aClass298_3187;

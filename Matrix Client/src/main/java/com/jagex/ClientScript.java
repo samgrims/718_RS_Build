@@ -15,7 +15,7 @@ public class ClientScript extends Class298_Sub37 {
 	public int anInt9682;
 	public Object[] anObjectArray9683;
 	public int anInt9684;
-	public Class437[] aClass437Array9685;
+	public IterableNodeMap[] aClass437Array9685;
 
 	int method3473(RsByteBuffer class298_sub53, int i) {
 		try {
@@ -32,16 +32,16 @@ public class ClientScript extends Class298_Sub37 {
 			anInt9684 = class298_sub53.readUnsignedShort() * 896501837;
 			int i_3_ = class298_sub53.readUnsignedByte();
 			if (i_3_ > 0) {
-				aClass437Array9685 = new Class437[i_3_];
+				aClass437Array9685 = new IterableNodeMap[i_3_];
 				for (int i_4_ = 0; i_4_ < i_3_; i_4_++) {
 					int i_5_ = class298_sub53.readUnsignedShort();
-					Class437 class437 = new Class437(Class416.method5590(i_5_,
+					IterableNodeMap class437 = new IterableNodeMap(Class416.method5590(i_5_,
 							(byte) 16));
 					aClass437Array9685[i_4_] = class437;
 					while (i_5_-- > 0) {
 						int i_6_ = class298_sub53.readInt((byte) 61);
 						int i_7_ = class298_sub53.readInt((byte) -1);
-						class437.method5817(new Class298_Sub35(i_7_),
+						class437.put(new Class298_Sub35(i_7_),
 								(long) i_6_);
 					}
 				}

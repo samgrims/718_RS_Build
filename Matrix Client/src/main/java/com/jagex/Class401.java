@@ -572,7 +572,7 @@ public class Class401 implements Interface21 {
 					class198_37_ = OutcommingPacket.NPC_EXAMINE_PACKET;
 				if (null != class198_37_) {
 					Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-							.method5812((long) i_35_));
+							.get((long) i_35_));
 					if (null != class298_sub29) {
 						NPC npc = ((NPC) class298_sub29.anObject7366);
 						if(class198_37_ != OutcommingPacket.NPC_EXAMINE_PACKET) {
@@ -690,7 +690,7 @@ public class Class401 implements Interface21 {
 				}
 				if (8 == i_34_) {
 					Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-							.method5812((long) i_35_));
+							.get((long) i_35_));
 					if (class298_sub29 != null) {
 						NPC npc = ((NPC) class298_sub29.anObject7366);
 						Class277.sendWalkPacket(Class325
@@ -745,7 +745,7 @@ public class Class401 implements Interface21 {
 					if (class105 != null) {
 						Class144.method1587((byte) 4);
 						Class298_Sub38 class298_sub38 = client
-								.method2801(class105);
+								.getIComponentSettings(class105);
 						Class147.method1600(class105, class298_sub38
 								.method3497((byte) -122),
 								(class298_sub38.anInt7410 * -1133219011),

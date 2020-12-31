@@ -230,7 +230,7 @@ public abstract class Class127 implements Interface6 {
 	static final void method1419(IComponentDefinition class105, Class119 class119,
 			Class403 class403, int i) {
 		try {
-			if (5 == -1215239439 * class105.anInt1144)
+			if (5 == -1215239439 * class105.type)
 				Class165
 						.method1781(class105, class119, class403, (short) -9019);
 		} catch (RuntimeException runtimeexception) {

@@ -3,7 +3,7 @@ package com.jagex;/* Class298_Sub37_Sub7 - Decompiled by JODE
  */
 
 public class Class298_Sub37_Sub7 extends Class298_Sub37 {
-	Class437 aClass437_9594;
+	IterableNodeMap aClass437_9594;
 
 	void method3424(RsByteBuffer class298_sub53, int i) {
 		try {
@@ -28,7 +28,7 @@ public class Class298_Sub37_Sub7 extends Class298_Sub37 {
 			if (((Class298_Sub37_Sub7) this).aClass437_9594 == null)
 				return i_1_;
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class298_Sub37_Sub7) this).aClass437_9594
-					.method5812((long) i);
+					.get((long) i);
 			if (null == class298_sub35)
 				return i_1_;
 			return class298_sub35.anInt7394 * -774922497;
@@ -48,7 +48,7 @@ public class Class298_Sub37_Sub7 extends Class298_Sub37 {
 				int i_4_ = class298_sub53.readUnsignedByte();
 				if (null == ((Class298_Sub37_Sub7) this).aClass437_9594) {
 					int i_5_ = Class416.method5590(i_4_, (byte) 16);
-					((Class298_Sub37_Sub7) this).aClass437_9594 = new Class437(
+					((Class298_Sub37_Sub7) this).aClass437_9594 = new IterableNodeMap(
 							i_5_);
 				}
 				for (int i_6_ = 0; i_6_ < i_4_; i_6_++) {
@@ -61,7 +61,7 @@ public class Class298_Sub37_Sub7 extends Class298_Sub37 {
 					else
 						class298 = new Class298_Sub35(class298_sub53
 								.readInt((byte) -72));
-					((Class298_Sub37_Sub7) this).aClass437_9594.method5817(
+					((Class298_Sub37_Sub7) this).aClass437_9594.put(
 							class298, (long) i_7_);
 				}
 			}
@@ -76,7 +76,7 @@ public class Class298_Sub37_Sub7 extends Class298_Sub37 {
 			if (((Class298_Sub37_Sub7) this).aClass437_9594 == null)
 				return string;
 			Class298_Sub29 class298_sub29 = (Class298_Sub29) ((Class298_Sub37_Sub7) this).aClass437_9594
-					.method5812((long) i);
+					.get((long) i);
 			if (class298_sub29 == null)
 				return string;
 			return (String) class298_sub29.anObject7366;
@@ -129,7 +129,7 @@ public class Class298_Sub37_Sub7 extends Class298_Sub37 {
 								|| !class438_sub2_sub1.method5819((byte) -3)) {
 							class438_sub2_sub1 = class365_sub1_sub1_sub2.aClass438_Sub2_Sub1Array10112[i_15_] = (new Class438_Sub2_Sub1(
 									class365_sub1_sub1_sub2));
-							class438_sub2_sub1.method5821(i_12_, -1608832147);
+							class438_sub2_sub1.update(i_12_, -1608832147);
 							class438_sub2_sub1.anInt9874 = -731066289 * i_14_;
 						}
 					}

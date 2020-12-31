@@ -62,7 +62,7 @@ public class ButtonHandler {
 		final int slotId2 = stream.readUnsignedShort128();
 		final int slotId = stream.readUnsignedShortLE128();
 
-
+		DebugLine.print("InterfaceId " + interfaceId + ", componentId " + componentId + ", slotId " + slotId + ", slotId2 " + slotId2 + ", PacketId: " + packetId);
 
 		if (!player.getControlerManager().processButtonClick(interfaceId,
 				componentId, slotId, packetId))
@@ -82,8 +82,7 @@ public class ButtonHandler {
 				// pos
 				player.getPackets().sendGlobalConfig(674, posHash); // player
 				// position
-			} else if ((interfaceId == 548 && componentId == 17)
-					|| (interfaceId == 746 && componentId == 54)) {
+			} else if ((interfaceId == 548 && componentId == 17) || (interfaceId == 746 && componentId == 54)) {
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
 					player.getSkills().switchXPDisplay();
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET)
@@ -93,9 +92,7 @@ public class ButtonHandler {
 			}else if ((interfaceId == 746 && componentId == 207) || (interfaceId == 548 && componentId == 159)) {
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON4_PACKET) {
 					if (player.getInterfaceManager().containsScreenInter()) {
-						player.getPackets()
-						.sendGameMessage(
-								"Please finish what you're doing before opening the price checker.");
+						player.getPackets().sendGameMessage("Please finish what you're doing before opening the price checker.");
 						return;
 					}
 					player.stopAll();
@@ -435,9 +432,7 @@ public class ButtonHandler {
 				return;
 			if (componentId == 22) {
 				if (player.getInterfaceManager().containsScreenInter()) {
-					player.getPackets()
-					.sendGameMessage(
-							"Please close the interface you have open before setting your graphic options.");
+					player.getPackets().sendGameMessage("Please close the interface you have open before setting your graphic options.");
 					return;
 				}
 				player.stopAll();
@@ -459,8 +454,7 @@ public class ButtonHandler {
 			if (componentId == 5)
 				player.getInterfaceManager().sendSettings();
 			else if (componentId == 41)
-				player.setPrivateChatSetup(player.getPrivateChatSetup() == 0 ? 1
-						: 0);
+				player.setPrivateChatSetup(player.getPrivateChatSetup() == 0 ? 1 : 0);
 			else if (componentId >= 49 && componentId <= 66)
 				player.setPrivateChatSetup(componentId - 48);
 			else if (componentId >= 72 && componentId <= 91)
@@ -471,7 +465,6 @@ public class ButtonHandler {
 				public void run() {
 					if (componentId == 8 || componentId == 42)
 						player.getPrayer().switchPrayer(slotId);
-
 					else if (componentId == 43 && player.getPrayer().isUsingQuickPrayer())
 						player.getPrayer().switchSettingQuickPrayer();
 				}
@@ -1314,7 +1307,6 @@ public class ButtonHandler {
 			else if (componentId == 13)
 				player.closeInterfaces();
 		}
-//		DebugLine.print("InterfaceId " + interfaceId + ", componentId " + componentId + ", slotId " + slotId + ", slotId2 " + slotId2 + ", PacketId: " + packetId);
 	}
 
 	public static void sendRemove(Player player, int slotId) {

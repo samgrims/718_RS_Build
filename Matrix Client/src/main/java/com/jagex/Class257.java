@@ -43,7 +43,7 @@ public class Class257 {
 									i,
 									((((Class298_Sub39) class298_sub39_2_).anInt7419) * -1113693749));
 							((Class257) this).aClass298_Sub39Array2811[1544880463 * ((Class298_Sub39) class298_sub39_2_).anInt7418] = null;
-							class298_sub39_2_.method2839(-1460969981);
+							class298_sub39_2_.unlink(-1460969981);
 						} else {
 							class298_sub39 = new Class298_Sub39(i,
 									(((Class257) this).anInt2808) * 851327335);

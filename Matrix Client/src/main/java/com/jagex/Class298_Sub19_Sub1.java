@@ -125,7 +125,7 @@ public class Class298_Sub19_Sub1 extends Class298_Sub19 {
 			for (Class298_Sub28 class298_sub28 = (Class298_Sub28) ((Class298_Sub13) class298_sub13).aClass440_7259
 					.method5856(-1972132134); null != class298_sub28; class298_sub28 = (Class298_Sub28) ((Class298_Sub13) class298_sub13).aClass440_7259
 					.method5857((byte) -88)) {
-				int i_8_ = (int) (7051297995265073167L * class298_sub28.aLong3188);
+				int i_8_ = (int) (7051297995265073167L * class298_sub28.pointer);
 				Class298_Sub34 class298_sub34 = ((Class298_Sub34) ((Class298_Sub19_Sub1) this).aClass440_9222
 						.method5852((long) i_8_));
 				if (class298_sub34 == null) {
@@ -168,7 +168,7 @@ public class Class298_Sub19_Sub1 extends Class298_Sub19 {
 			for (Class298_Sub34 class298_sub34 = (Class298_Sub34) ((Class298_Sub19_Sub1) this).aClass440_9222
 					.method5856(-1054359069); class298_sub34 != null; class298_sub34 = (Class298_Sub34) ((Class298_Sub19_Sub1) this).aClass440_9222
 					.method5857((byte) -24))
-				class298_sub34.method2839(-1460969981);
+				class298_sub34.unlink(-1460969981);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("aib.as(").append(')').toString());
@@ -449,7 +449,7 @@ public class Class298_Sub19_Sub1 extends Class298_Sub19 {
 					}
 					if ((1595133323 * ((Class298_Sub11) class298_sub11).anInt7248) < 0)
 						((Class298_Sub19_Sub1) this).aClass298_Sub11ArrayArray9206[(((Class298_Sub11) class298_sub11).anInt7254 * 70539643)][(1458878633 * ((Class298_Sub11) class298_sub11).anInt7239)] = null;
-					class298_sub11.method2839(-1460969981);
+					class298_sub11.unlink(-1460969981);
 				}
 			}
 		} catch (RuntimeException runtimeexception) {
@@ -744,7 +744,7 @@ public class Class298_Sub19_Sub1 extends Class298_Sub19 {
 					&& (null == (((Class298_Sub11) class298_sub11).aClass298_Sub19_Sub2_7252) || ((Class298_Sub11) class298_sub11).aClass298_Sub19_Sub2_7252
 							.method3002())) {
 				class298_sub11.method2902((byte) 20);
-				class298_sub11.method2839(-1460969981);
+				class298_sub11.unlink(-1460969981);
 				if (((Class298_Sub11) class298_sub11).anInt7235 * 279429195 > 0
 						&& (((Class298_Sub19_Sub1) this).aClass298_Sub11ArrayArray9230[(((Class298_Sub11) class298_sub11).anInt7254 * 70539643)][279429195 * (((Class298_Sub11) class298_sub11).anInt7235)]) == class298_sub11)
 					((Class298_Sub19_Sub1) this).aClass298_Sub11ArrayArray9230[(70539643 * ((Class298_Sub11) class298_sub11).anInt7254)][(279429195 * ((Class298_Sub11) class298_sub11).anInt7235)] = null;
@@ -833,7 +833,7 @@ public class Class298_Sub19_Sub1 extends Class298_Sub19 {
 							.method3043(((Class298_Sub11) class298_sub11).aClass298_Sub19_Sub2_7252);
 				class298_sub11.method2902((byte) -27);
 				if (((Class298_Sub11) class298_sub11).anInt7248 * 1595133323 >= 0) {
-					class298_sub11.method2839(-1460969981);
+					class298_sub11.unlink(-1460969981);
 					if ((279429195 * ((Class298_Sub11) class298_sub11).anInt7235) > 0
 							&& (((Class298_Sub19_Sub1) this).aClass298_Sub11ArrayArray9230[(((Class298_Sub11) class298_sub11).anInt7254 * 70539643)][279429195 * (((Class298_Sub11) class298_sub11).anInt7235)]) == class298_sub11)
 						((Class298_Sub19_Sub1) this).aClass298_Sub11ArrayArray9230[(70539643 * ((Class298_Sub11) class298_sub11).anInt7254)][(279429195 * ((Class298_Sub11) class298_sub11).anInt7235)] = null;
@@ -1343,7 +1343,7 @@ public class Class298_Sub19_Sub1 extends Class298_Sub19 {
 		try {
 			if (null == (((Class298_Sub11) class298_sub11).aClass298_Sub19_Sub2_7252)) {
 				if (1595133323 * ((Class298_Sub11) class298_sub11).anInt7248 >= 0) {
-					class298_sub11.method2839(-1460969981);
+					class298_sub11.unlink(-1460969981);
 					if ((((Class298_Sub11) class298_sub11).anInt7235 * 279429195) > 0
 							&& (class298_sub11 == (((Class298_Sub19_Sub1) this).aClass298_Sub11ArrayArray9230[(((Class298_Sub11) class298_sub11).anInt7254 * 70539643)][(((Class298_Sub11) class298_sub11).anInt7235 * 279429195)])))
 						((Class298_Sub19_Sub1) this).aClass298_Sub11ArrayArray9230[(70539643 * ((Class298_Sub11) class298_sub11).anInt7254)][(279429195 * ((Class298_Sub11) class298_sub11).anInt7235)] = null;

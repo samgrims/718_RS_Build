@@ -21,9 +21,9 @@ public class Class210 {
 
 	static final void method1942(Class403 class403, int i) {
 		try {
-			Class437 class437 = (((Class403) class403).aClass298_Sub37_Sub17_5260.aClass437Array9685[(((Class403) class403).anIntArray5257[1883543357 * ((Class403) class403).anInt5259])]);
+			IterableNodeMap class437 = (((Class403) class403).aClass298_Sub37_Sub17_5260.aClass437Array9685[(((Class403) class403).anIntArray5257[1883543357 * ((Class403) class403).anInt5259])]);
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) class437
-					.method5812((long) ((Class403) class403).anIntArray5244[(((Class403) class403).anInt5239 -= -391880689) * 681479919]));
+					.get((long) ((Class403) class403).anIntArray5244[(((Class403) class403).anInt5239 -= -391880689) * 681479919]));
 			if (null != class298_sub35)
 				((Class403) class403).anInt5259 += -1065839893
 						* class298_sub35.anInt7394;

@@ -38,7 +38,7 @@ public class Class362 {
 		((Class362) this).aClass243_3917 = class243;
 		if (((Class362) this).aClass243_3917 != null)
 			((Class362) this).anInt3916 = (((Class362) this).aClass243_3917
-					.method2316(
+					.filesCount(
 							-1006924897 * Class120.aClass120_1440.anInt1460,
 							-941078932)) * 70760625;
 		else

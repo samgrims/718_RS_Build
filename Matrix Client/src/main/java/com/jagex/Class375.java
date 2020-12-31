@@ -43,7 +43,7 @@ public class Class375 {
 
 	public Class375(Class411 class411, Class429 class429, Class243 class243) {
 		((Class375) this).aClass243_4082 = class243;
-		anInt4081 = (((Class375) this).aClass243_4082.method2316(
+		anInt4081 = (((Class375) this).aClass243_4082.filesCount(
 				(-1006924897 * (Class120.aClass120_1439.anInt1460)), 774356441) * 1970250293);
 	}
 

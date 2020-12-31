@@ -844,7 +844,7 @@ public class Class298_Sub32_Sub26 extends Class298_Sub32 {
 				if (class298_sub51 != null
 						&& !class298_sub51.method3573(364199740))
 					Class173
-							.method1821(class298_sub51, true, false, -113822480);
+							.closeChildren(class298_sub51, true, false, -113822480);
 				else {
 					Class119 class119 = Class389.aClass119Array4165[i];
 					client.method2800(class119,

@@ -117,7 +117,7 @@ public class Class422_Sub3 extends Class422 {
 			for (int i_3_ = 0; i_3_ < -1230451913 * client.anInt8703; i_3_++) {
 				long l = (long) client.anIntArray8699[i_3_];
 				Class298_Sub29 class298_sub29 = (Class298_Sub29) client.aClass437_8696
-						.method5812(l);
+						.get(l);
 				if (null == class298_sub29) {
 					if (i == -1062447355)
 						throw new IllegalStateException();

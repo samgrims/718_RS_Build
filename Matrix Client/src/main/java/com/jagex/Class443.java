@@ -121,8 +121,8 @@ public class Class443 {
 					i_14_ = (int) client.aFloat8949 & 0x3fff;
 				else
 					i_14_ = ((int) client.aFloat8949 + client.anInt8801 * 1227356013) & 0x3fff;
-				int i_15_ = (Math.max(class105.anInt1156 * -2093041337 / 2,
-						457937409 * class105.anInt1162 / 2) + 10);
+				int i_15_ = (Math.max(class105.width * -2093041337 / 2,
+						457937409 * class105.height / 2) + 10);
 				int i_16_ = i_12_ * i_12_ + i_11_ * i_11_;
 				if (i_16_ <= i_15_ * i_15_) {
 					int i_17_ = Class220.anIntArray2483[i_14_];
@@ -138,10 +138,10 @@ public class Class443 {
 					class57
 							.method654(
 									(i_19_
-											+ (class105.anInt1156 * -2093041337
+											+ (class105.width * -2093041337
 													/ 2 + i) - class57
 											.method271() / 2), (457937409
-											* class105.anInt1162 / 2 + i_10_
+											* class105.height / 2 + i_10_
 											- i_20_ - class57.method626() / 2),
 									class_ta, i, i_10_);
 				}
@@ -156,7 +156,7 @@ public class Class443 {
 		try {
 			if (Class378.method4671(i, null, -1926955800))
 				Class411.method5578(
-						(Class389.aClass119Array4165[i].aClass105Array1405),
+						(Class389.aClass119Array4165[i].components),
 						-1, (byte) 1);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

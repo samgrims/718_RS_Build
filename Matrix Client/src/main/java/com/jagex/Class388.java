@@ -41,11 +41,11 @@ public final class Class388 {
 	static final void method4854(IComponentDefinition class105, Class119 class119,
 			Class403 class403, byte i) {
 		try {
-			class105.aBoolean1211 = (((Class403) class403).anIntArray5244[(((Class403) class403).anInt5239 -= -391880689) * 681479919]) == 1;
+			class105.monospaced = (((Class403) class403).anIntArray5244[(((Class403) class403).anInt5239 -= -391880689) * 681479919]) == 1;
 			Tradution.method6054(class105, 37472514);
 			if (-1 == -1309843523 * class105.anInt1154
 					&& !class119.aBoolean1403)
-				Class508.method6281(-440872681 * class105.anInt1142, 473698218);
+				Class508.method6281(-440872681 * class105.idHash, 473698218);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("qb.ga(").append(')').toString());

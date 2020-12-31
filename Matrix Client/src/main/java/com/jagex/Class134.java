@@ -69,7 +69,7 @@ public class Class134 implements Interface5 {
 					: ((Class403) class403).aClass390_5246);
 			IComponentDefinition class105 = ((Class390) class390).aClass105_4168;
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = client
-					.method2801(class105).method3497((byte) -44);
+					.getIComponentSettings(class105).method3497((byte) -44);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("fk.ph(").append(')').toString());

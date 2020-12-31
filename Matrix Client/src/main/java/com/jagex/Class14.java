@@ -21,7 +21,7 @@ public class Class14 {
 	public static void method341(int i, int[] is, int i_0_) {
 		try {
 			if (i != -1 && Class378.method4671(i, is, -2060750983)) {
-				IComponentDefinition[] class105s = Class389.aClass119Array4165[i].aClass105Array1405;
+				IComponentDefinition[] class105s = Class389.aClass119Array4165[i].components;
 				Graphics.method611(class105s, -1178956884);
 			}
 		} catch (RuntimeException runtimeexception) {
@@ -85,7 +85,7 @@ public class Class14 {
 				Class365_Sub1_Sub1_Sub1 class365_sub1_sub1_sub1 = (((Class298_Sub37_Sub2) class298_sub37_sub2).aClass365_Sub1_Sub1_Sub1_9577);
 				if (443738891 * client.anInt8884 > class365_sub1_sub1_sub1.anInt10049
 						* -1349988959) {
-					class298_sub37_sub2.method2839(-1460969981);
+					class298_sub37_sub2.unlink(-1460969981);
 					class365_sub1_sub1_sub1.method4411(686828159);
 				} else if (client.anInt8884 * 443738891 >= (class365_sub1_sub1_sub1.anInt10044 * 1113390887)) {
 					class365_sub1_sub1_sub1.method4406(-36689971);
@@ -117,7 +117,7 @@ public class Class14 {
 							}
 						} else {
 							Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-									.method5812((long) ((1894383945 * (class365_sub1_sub1_sub1.anInt10058)) - 1))));
+									.get((long) ((1894383945 * (class365_sub1_sub1_sub1.anInt10058)) - 1))));
 							if (class298_sub29 != null) {
 								NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 								Class217 class217 = (class365_sub1_sub1_sub2_sub1

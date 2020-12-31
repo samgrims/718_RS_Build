@@ -162,8 +162,8 @@ public class SubIncommingPacket {
 					int i_8_ = 0;
 					int i_9_ = 0;
 					if (Class113.aClass105_1373 != null) {
-						i_8_ = 1354508417 * Class113.aClass105_1373.anInt1143;
-						i_9_ = Class113.aClass105_1373.anInt1155 * -749038817;
+						i_8_ = 1354508417 * Class113.aClass105_1373.x;
+						i_9_ = Class113.aClass105_1373.y * -749038817;
 					}
 					((Class403) class403).anIntArray5248[0] = (Class165.aClass319_6366
 							.method3894((byte) -93) - i_8_);

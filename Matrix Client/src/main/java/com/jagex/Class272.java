@@ -58,7 +58,7 @@ public class Class272 {
 			class298_sub26_sub1 = class298_sub23.method3067(is);
 			if (null == class298_sub26_sub1)
 				return null;
-			class298_sub23.method2839(-1460969981);
+			class298_sub23.unlink(-1460969981);
 			((Class272) this).aClass440_2902.method5858(class298_sub26_sub1, l);
 			return class298_sub26_sub1;
 		} catch (RuntimeException runtimeexception) {
@@ -71,7 +71,7 @@ public class Class272 {
 		try {
 			if (((Class272) this).aClass243_2901.method2296(1029061077) == 1)
 				return method2549(0, i, is, 1909168122);
-			if (((Class272) this).aClass243_2901.method2316(i, -1941901563) == 1)
+			if (((Class272) this).aClass243_2901.filesCount(i, -1941901563) == 1)
 				return method2549(i, 0, is, -1018556227);
 			throw new RuntimeException();
 		} catch (RuntimeException runtimeexception) {
@@ -84,7 +84,7 @@ public class Class272 {
 		try {
 			if (((Class272) this).aClass243_2900.method2296(853704793) == 1)
 				return method2550(0, i, is, -745389241);
-			if (((Class272) this).aClass243_2900.method2316(i, -1796273847) == 1)
+			if (((Class272) this).aClass243_2900.filesCount(i, -1796273847) == 1)
 				return method2550(i, 0, is, -745389241);
 			throw new RuntimeException();
 		} catch (RuntimeException runtimeexception) {

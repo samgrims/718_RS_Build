@@ -17,7 +17,7 @@ public class Class298_Sub37_Sub12 extends Class298_Sub37 {
 	static int anInt9618 = 8;
 	static int anInt9619 = 10;
 	static int anInt9620 = 1;
-	static Class437 aClass437_9621;
+	static IterableNodeMap aClass437_9621;
 	static int anInt9622 = 12;
 	static int anInt9623 = 13;
 	static int anInt9624 = 14;
@@ -48,12 +48,12 @@ public class Class298_Sub37_Sub12 extends Class298_Sub37 {
 	}
 
 	Class298_Sub37_Sub12(int i, long l) {
-		aLong3188 = ((long) i << 56 | l) * 4191220306876042991L;
+		pointer = ((long) i << 56 | l) * 4191220306876042991L;
 	}
 
 	int method3446(int i) {
 		try {
-			return (int) (aLong3188 * 7051297995265073167L >>> 56 & 0xffL);
+			return (int) (pointer * 7051297995265073167L >>> 56 & 0xffL);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ais.by(").append(')').toString());
@@ -62,7 +62,7 @@ public class Class298_Sub37_Sub12 extends Class298_Sub37 {
 
 	long method3447(int i) {
 		try {
-			return 7051297995265073167L * aLong3188 & 0xffffffffffffffL;
+			return 7051297995265073167L * pointer & 0xffffffffffffffL;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ais.bm(").append(')').toString());
@@ -71,7 +71,7 @@ public class Class298_Sub37_Sub12 extends Class298_Sub37 {
 
 	static {
 		aClass461_9607 = new Class461();
-		aClass437_9621 = new Class437(16);
+		aClass437_9621 = new IterableNodeMap(16);
 	}
 
 	long method3448(int i) {

@@ -620,7 +620,7 @@ public class Class505 {
 			byte i) {
 		try {
 			if (class298.aClass298_3189 != null)
-				class298.method2839(-1460969981);
+				class298.unlink(-1460969981);
 			class298.aClass298_3189 = class298_85_.aClass298_3189;
 			class298.aClass298_3187 = class298_85_;
 			class298.aClass298_3189.aClass298_3187 = class298;

@@ -11,12 +11,12 @@ public final class Class298_Sub38 extends Class298 {
 	public static int anInt7413 = 32;
 	public static int anInt7414 = 8;
 	static Class298_Sub38 aClass298_Sub38_7415 = new Class298_Sub38(0, -1);
-	public int anInt7416;
+	public int settingsHash;
 	public static int anInt7417 = 1;
 
 	public final boolean method3492(byte i) {
 		try {
-			return 0 != (-1266165749 * anInt7416 & 0x1);
+			return 0 != (-1266165749 * settingsHash & 0x1);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("abw.a(").append(')').toString());
@@ -25,7 +25,7 @@ public final class Class298_Sub38 extends Class298 {
 
 	public final int method3493(byte i) {
 		try {
-			return anInt7416 * -1266165749 >> 18 & 0x7;
+			return settingsHash * -1266165749 >> 18 & 0x7;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("abw.i(").append(')').toString());
@@ -34,7 +34,7 @@ public final class Class298_Sub38 extends Class298 {
 
 	public final boolean method3494(int i) {
 		try {
-			return 0 != (-1266165749 * anInt7416 >> 21 & 0x1);
+			return 0 != (-1266165749 * settingsHash >> 21 & 0x1);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("abw.k(").append(')').toString());
@@ -43,7 +43,7 @@ public final class Class298_Sub38 extends Class298 {
 
 	public final boolean method3495(int i) {
 		try {
-			return 0 != (-1266165749 * anInt7416 >> 22 & 0x1);
+			return 0 != (-1266165749 * settingsHash >> 22 & 0x1);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("abw.d(").append(')').toString());
@@ -52,7 +52,7 @@ public final class Class298_Sub38 extends Class298 {
 
 	public final boolean method3496(int i) {
 		try {
-			return 0 != (-1266165749 * anInt7416 >> 23 & 0x1);
+			return 0 != (-1266165749 * settingsHash >> 23 & 0x1);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("abw.u(").append(')').toString());
@@ -61,7 +61,7 @@ public final class Class298_Sub38 extends Class298 {
 
 	public final int method3497(byte i) {
 		try {
-			return Class68.method784(anInt7416 * -1266165749, (byte) 105);
+			return Class68.method784(settingsHash * -1266165749, (byte) 105);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("abw.b(").append(')').toString());
@@ -70,7 +70,7 @@ public final class Class298_Sub38 extends Class298 {
 
 	public final boolean method3498(int i, byte i_0_) {
 		try {
-			return 0 != (-1266165749 * anInt7416 >> i + 1 & 0x1);
+			return 0 != (-1266165749 * settingsHash >> i + 1 & 0x1);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("abw.f(").append(')').toString());
@@ -78,7 +78,7 @@ public final class Class298_Sub38 extends Class298 {
 	}
 
 	public Class298_Sub38(int i, int i_1_) {
-		anInt7416 = i * -726797405;
+		settingsHash = i * -726797405;
 		anInt7410 = -751469547 * i_1_;
 	}
 

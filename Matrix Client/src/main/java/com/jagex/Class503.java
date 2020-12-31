@@ -38,7 +38,7 @@ public class Class503 {
 	int anInt6156;
 	byte aByte6157;
 	public byte aByte6158;
-	Class437 aClass437_6159;
+	IterableNodeMap aClass437_6159;
 	int anInt6160;
 	public int anInt6161;
 	int anInt6162;
@@ -497,7 +497,7 @@ public class Class503 {
 			if (((Class503) this).aClass437_6159 == null)
 				return i_45_;
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((Class503) this).aClass437_6159
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub35 == null)
 				return i_45_;
 			return class298_sub35.anInt7394 * -774922497;
@@ -856,7 +856,7 @@ public class Class503 {
 				int i_72_ = class298_sub53.readUnsignedByte();
 				if (((Class503) this).aClass437_6159 == null) {
 					int i_73_ = Class416.method5590(i_72_, (byte) 16);
-					((Class503) this).aClass437_6159 = new Class437(i_73_);
+					((Class503) this).aClass437_6159 = new IterableNodeMap(i_73_);
 				}
 				for (int i_74_ = 0; i_74_ < i_72_; i_74_++) {
 					boolean bool = class298_sub53.readUnsignedByte() == 1;
@@ -868,7 +868,7 @@ public class Class503 {
 					else
 						class298 = new Class298_Sub35(class298_sub53
 								.readInt((byte) -18));
-					((Class503) this).aClass437_6159.method5817(class298,
+					((Class503) this).aClass437_6159.put(class298,
 							(long) i_75_);
 				}
 			}
@@ -883,7 +883,7 @@ public class Class503 {
 			if (null == ((Class503) this).aClass437_6159)
 				return string;
 			Class298_Sub29 class298_sub29 = ((Class298_Sub29) ((Class503) this).aClass437_6159
-					.method5812((long) i));
+					.get((long) i));
 			if (null == class298_sub29)
 				return string;
 			return (String) class298_sub29.anObject7366;

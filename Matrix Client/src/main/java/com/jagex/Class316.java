@@ -202,10 +202,10 @@ public class Class316 implements Runnable {
 		((Class316) this).aThread3316.start();
 	}
 
-	static final void method3844(int i, Class437 class437, int i_10_) {
+	static final void method3844(int i, IterableNodeMap class437, int i_10_) {
 		try {
-			if (-1 != i && class437.method5812((long) i) == null)
-				class437.method5817(new Class298(), (long) i);
+			if (-1 != i && class437.get((long) i) == null)
+				class437.put(new Class298(), (long) i);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ne.d(").append(')').toString());

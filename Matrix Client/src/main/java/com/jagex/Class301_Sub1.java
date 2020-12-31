@@ -16,8 +16,8 @@ public class Class301_Sub1 extends Class301 {
 	static int anInt7633;
 	static Class446 aClass446_7634;
 	public static boolean aBoolean7635;
-	public static Class437 aClass437_7636;
-	public static Class437 aClass437_7637;
+	public static IterableNodeMap aClass437_7636;
+	public static IterableNodeMap aClass437_7637;
 	static String[] aStringArray7638;
 	static int anInt7639;
 
@@ -37,8 +37,8 @@ public class Class301_Sub1 extends Class301 {
 		anInt7633 = -2138103821;
 		anInt7630 = -1998014133;
 		aBoolean7635 = false;
-		aClass437_7636 = new Class437(8);
-		aClass437_7637 = new Class437(8);
+		aClass437_7636 = new IterableNodeMap(8);
+		aClass437_7637 = new IterableNodeMap(8);
 		aClass446_7634 = new Class446(new Class453());
 	}
 
@@ -52,7 +52,7 @@ public class Class301_Sub1 extends Class301 {
 			if (class105.anInt1154 * -1309843523 == -1
 					&& !class119.aBoolean1403)
 				Class422
-						.method5623(class105.anInt1142 * -440872681, 1575385059);
+						.method5623(class105.idHash * -440872681, 1575385059);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("acu.dr(").append(')').toString());
@@ -72,7 +72,7 @@ public class Class301_Sub1 extends Class301 {
 					class298_sub46.anObjectArray7530 = class105.anObjectArray1264;
 					Class444.method5889(class298_sub46, (byte) -29);
 				}
-				if (client.method2801(class105).method3498(i - 1, (byte) -25)) {
+				if (client.getIComponentSettings(class105).method3498(i - 1, (byte) -25)) {
 					Class25 class25 = Class429.method5760((short) 512);
 					if (-1233866115 * client.anInt8752 == 14
 							|| 0 == client.anInt8752 * -1233866115) {

@@ -44,7 +44,7 @@ public class Class390 {
 	IComponentDefinition method4868(int i) {
 		try {
 			return (((Class390) this).aClass119_4167.method1297(
-					((Class390) this).aClass105_4168.anInt1142 * -440872681,
+					((Class390) this).aClass105_4168.idHash * -440872681,
 					(short) 10433));
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

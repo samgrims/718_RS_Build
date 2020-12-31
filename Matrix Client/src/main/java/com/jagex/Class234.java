@@ -209,7 +209,7 @@ public class Class234 {
 					}
 				}
 				class298_sub53_sub2.method3614(i_14_, -184215611);
-				class298_sub47.method2839(-1460969981);
+				class298_sub47.unlink(-1460969981);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -333,13 +333,13 @@ public class Class234 {
 			Class403 class403, byte i) {
 		try {
 			boolean bool = ((((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]) == 1);
-			if (class105.aBoolean1161 != bool) {
-				class105.aBoolean1161 = bool;
+			if (class105.hidden != bool) {
+				class105.hidden = bool;
 				Tradution.method6054(class105, -1214371857);
 			}
 			if (-1 == -1309843523 * class105.anInt1154
 					&& !class119.aBoolean1403)
-				Class413.method5583(-440872681 * class105.anInt1142,
+				Class413.method5583(-440872681 * class105.idHash,
 						(short) 945);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

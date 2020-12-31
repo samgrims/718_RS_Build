@@ -57,7 +57,7 @@ public class Class314 {
 		if (((Class314) this).aClass243_3302 != null) {
 			int i = ((Class314) this).aClass243_3302.method2296(2088108840) - 1;
 			Class120.aClass120_1406.method1306((short) 7909);
-			((Class314) this).aClass243_3302.method2316(i, 967571472);
+			((Class314) this).aClass243_3302.filesCount(i, 967571472);
 		}
 	}
 

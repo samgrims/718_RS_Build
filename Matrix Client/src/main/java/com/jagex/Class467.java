@@ -23,7 +23,7 @@ public final class Class467 {
 			for (int i_2_ = 0; i_2_ < i_0_; i_2_++) {
 				int i_3_ = client.anIntArray8699[i_2_];
 				NPC class365_sub1_sub1_sub2_sub1 = ((NPC) (((Class298_Sub29) client.aClass437_8696
-						.method5812((long) i_3_)).anObject7366));
+						.get((long) i_3_)).anObject7366));
 				int i_4_ = class298_sub53_sub2.readBits(1);
 				if (i_4_ == 0) {
 					client.anIntArray8699[(client.anInt8703 += -409937273)

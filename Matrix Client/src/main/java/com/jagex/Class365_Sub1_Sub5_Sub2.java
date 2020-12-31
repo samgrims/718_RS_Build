@@ -655,12 +655,12 @@ public class Class365_Sub1_Sub5_Sub2 extends Class365_Sub1_Sub5 implements
 			boolean bool = ((((Class403) class403).anIntArray5244[((Class403) class403).anInt5239 * 681479919 + 1]) == 1);
 			if (Class301_Sub1.aClass437_7636 != null) {
 				Class298 class298 = Class301_Sub1.aClass437_7636
-						.method5812((long) i_29_);
+						.get((long) i_29_);
 				if (class298 != null && !bool)
-					class298.method2839(-1460969981);
+					class298.unlink(-1460969981);
 				else if (class298 == null && bool) {
 					class298 = new Class298();
-					Class301_Sub1.aClass437_7636.method5817(class298,
+					Class301_Sub1.aClass437_7636.put(class298,
 							(long) i_29_);
 				}
 			}

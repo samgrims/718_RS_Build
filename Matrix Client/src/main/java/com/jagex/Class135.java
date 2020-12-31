@@ -200,12 +200,12 @@ public class Class135 implements Interface6 {
 							.method2629(-2045914503) - 1) * 512))
 					|| ((int) class217.aFloat2454 >= ((client.aClass283_8716
 							.method2630(2070989013) - 1) * 512))) {
-				class365_sub1_sub1_sub2.aClass438_10078.method5821(-1,
+				class365_sub1_sub1_sub2.aClass438_10078.update(-1,
 						-1660674133);
 				for (int i_21_ = 0; i_21_ < class365_sub1_sub1_sub2.currentGraphics.length; i_21_++) {
 					class365_sub1_sub1_sub2.currentGraphics[i_21_].id = -1313669563;
 					class365_sub1_sub1_sub2.currentGraphics[i_21_].aClass438_569
-							.method5821(-1, -1698848994);
+							.update(-1, -1698848994);
 				}
 				class365_sub1_sub1_sub2.anIntArray10093 = null;
 				class365_sub1_sub1_sub2.anInt10095 = 0;
@@ -227,12 +227,12 @@ public class Class135 implements Interface6 {
 							|| ((int) class217.aFloat2451 >= (client.aClass283_8716
 									.method2629(-2000317727) - 12) * 512) || ((int) class217.aFloat2454 >= ((client.aClass283_8716
 							.method2630(52673101) - 12) * 512)))) {
-				class365_sub1_sub1_sub2.aClass438_10078.method5821(-1,
+				class365_sub1_sub1_sub2.aClass438_10078.update(-1,
 						-1994577841);
 				for (int i_22_ = 0; i_22_ < class365_sub1_sub1_sub2.currentGraphics.length; i_22_++) {
 					class365_sub1_sub1_sub2.currentGraphics[i_22_].id = -1313669563;
 					class365_sub1_sub1_sub2.currentGraphics[i_22_].aClass438_569
-							.method5821(-1, -2027122238);
+							.update(-1, -2027122238);
 				}
 				class365_sub1_sub1_sub2.anIntArray10093 = null;
 				class365_sub1_sub1_sub2.anInt10095 = 0;

@@ -60,7 +60,7 @@ public class Class298_Sub37_Sub5 extends Class298_Sub37 {
 			class298_sub37_sub15.method3402(-1148037047);
 			((Class298_Sub37_Sub5) this).anInt9583 -= -130647835;
 			if (-628325139 * ((Class298_Sub37_Sub5) this).anInt9583 == 0) {
-				method2839(-1460969981);
+				unlink(-1460969981);
 				method3402(-1345021644);
 				Class436.anInt5479 -= -1658575779;
 				Class436.aClass348_5464

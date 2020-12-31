@@ -18,7 +18,7 @@ public class ClanSettings {
 	public int anInt1661;
 	long[] aLongArray1662;
 	long aLong1663;
-	Class437 aClass437_1664;
+	IterableNodeMap aClass437_1664;
 	int[] anIntArray1665;
 	public int[] anIntArray1666;
 	long[] aLongArray1667;
@@ -132,7 +132,7 @@ public class ClanSettings {
 			if (null == ((ClanSettings) this).aClass437_1664)
 				return null;
 			Class298 class298 = ((ClanSettings) this).aClass437_1664
-					.method5812((long) i);
+					.get((long) i);
 			if (null == class298 || !(class298 instanceof Class298_Sub35))
 				return null;
 			return new Integer(((Class298_Sub35) class298).anInt7394
@@ -148,7 +148,7 @@ public class ClanSettings {
 			if (((ClanSettings) this).aClass437_1664 == null)
 				return null;
 			Class298 class298 = ((ClanSettings) this).aClass437_1664
-					.method5812((long) i);
+					.get((long) i);
 			if (null == class298 || !(class298 instanceof Class298_Sub35))
 				return null;
 			int i_11_ = i_9_ == 31 ? -1 : (1 << 1 + i_9_) - 1;
@@ -165,7 +165,7 @@ public class ClanSettings {
 			if (null == ((ClanSettings) this).aClass437_1664)
 				return null;
 			Class298 class298 = ((ClanSettings) this).aClass437_1664
-					.method5812((long) i);
+					.get((long) i);
 			if (class298 == null || !(class298 instanceof Class298_Sub29))
 				return null;
 			return (String) ((Class298_Sub29) class298).anObject7366;
@@ -288,27 +288,27 @@ public class ClanSettings {
 				string = string.substring(0, 80);
 			if (((ClanSettings) this).aClass437_1664 != null) {
 				Class298 class298 = ((ClanSettings) this).aClass437_1664
-						.method5812((long) i);
+						.get((long) i);
 				if (class298 != null) {
 					if (class298 instanceof Class298_Sub29) {
 						Class298_Sub29 class298_sub29 = (Class298_Sub29) class298;
 						if (class298_sub29.anObject7366 instanceof String) {
 							if (string.equals(class298_sub29.anObject7366))
 								return false;
-							class298_sub29.method2839(-1460969981);
-							class298_sub29.method2839(-1460969981);
+							class298_sub29.unlink(-1460969981);
+							class298_sub29.unlink(-1460969981);
 							((ClanSettings) this).aClass437_1664
-									.method5817(
+									.put(
 											new Class298_Sub29(string),
-											(7051297995265073167L * class298_sub29.aLong3188));
+											(7051297995265073167L * class298_sub29.pointer));
 							return true;
 						}
 					}
-					class298.method2839(-1460969981);
+					class298.unlink(-1460969981);
 				}
 			} else
-				((ClanSettings) this).aClass437_1664 = new Class437(4);
-			((ClanSettings) this).aClass437_1664.method5817(new Class298_Sub29(
+				((ClanSettings) this).aClass437_1664 = new IterableNodeMap(4);
+			((ClanSettings) this).aClass437_1664.put(new Class298_Sub29(
 					string), (long) i);
 			return true;
 		} catch (RuntimeException runtimeexception) {
@@ -321,7 +321,7 @@ public class ClanSettings {
 		try {
 			if (((ClanSettings) this).aClass437_1664 != null) {
 				Class298 class298 = ((ClanSettings) this).aClass437_1664
-						.method5812((long) i);
+						.get((long) i);
 				if (class298 != null) {
 					if (class298 instanceof Class298_Sub35) {
 						Class298_Sub35 class298_sub35 = (Class298_Sub35) class298;
@@ -330,11 +330,11 @@ public class ClanSettings {
 						class298_sub35.anInt7394 = i_19_ * -898670337;
 						return true;
 					}
-					class298.method2839(-1460969981);
+					class298.unlink(-1460969981);
 				}
 			} else
-				((ClanSettings) this).aClass437_1664 = new Class437(4);
-			((ClanSettings) this).aClass437_1664.method5817(new Class298_Sub35(
+				((ClanSettings) this).aClass437_1664 = new IterableNodeMap(4);
+			((ClanSettings) this).aClass437_1664.put(new Class298_Sub35(
 					i_19_), (long) i);
 			return true;
 		} catch (RuntimeException runtimeexception) {
@@ -352,7 +352,7 @@ public class ClanSettings {
 			i_21_ &= i_27_;
 			if (((ClanSettings) this).aClass437_1664 != null) {
 				Class298 class298 = ((ClanSettings) this).aClass437_1664
-						.method5812((long) i);
+						.get((long) i);
 				if (class298 != null) {
 					if (class298 instanceof Class298_Sub35) {
 						Class298_Sub35 class298_sub35 = (Class298_Sub35) class298;
@@ -367,11 +367,11 @@ public class ClanSettings {
 								* class298_sub35_29_.anInt7394 | i_21_));
 						return true;
 					}
-					class298.method2839(-1460969981);
+					class298.unlink(-1460969981);
 				}
 			} else
-				((ClanSettings) this).aClass437_1664 = new Class437(4);
-			((ClanSettings) this).aClass437_1664.method5817(new Class298_Sub35(
+				((ClanSettings) this).aClass437_1664 = new IterableNodeMap(4);
+			((ClanSettings) this).aClass437_1664.put(new Class298_Sub35(
 					i_21_), (long) i);
 			return true;
 		} catch (RuntimeException runtimeexception) {
@@ -384,7 +384,7 @@ public class ClanSettings {
 		try {
 			if (((ClanSettings) this).aClass437_1664 != null) {
 				Class298 class298 = ((ClanSettings) this).aClass437_1664
-						.method5812((long) i);
+						.get((long) i);
 				if (class298 != null) {
 					if (class298 instanceof Class298_Sub33) {
 						Class298_Sub33 class298_sub33 = (Class298_Sub33) class298;
@@ -393,11 +393,11 @@ public class ClanSettings {
 						class298_sub33.aLong7385 = 2132790236050020951L * l;
 						return true;
 					}
-					class298.method2839(-1460969981);
+					class298.unlink(-1460969981);
 				}
 			} else
-				((ClanSettings) this).aClass437_1664 = new Class437(4);
-			((ClanSettings) this).aClass437_1664.method5817(new Class298_Sub33(l),
+				((ClanSettings) this).aClass437_1664 = new IterableNodeMap(4);
+			((ClanSettings) this).aClass437_1664.put(new Class298_Sub33(l),
 					(long) i);
 			return true;
 		} catch (RuntimeException runtimeexception) {
@@ -497,7 +497,7 @@ public class ClanSettings {
 			if (i_30_ >= 3) {
 				int i_34_ = class298_sub53.readUnsignedShort();
 				if (i_34_ > 0) {
-					((ClanSettings) this).aClass437_1664 = new Class437(
+					((ClanSettings) this).aClass437_1664 = new IterableNodeMap(
 							i_34_ < 16 ? Class416.method5590(i_34_, (byte) 16)
 									: 16);
 					while (i_34_-- > 0) {
@@ -506,16 +506,16 @@ public class ClanSettings {
 						int i_37_ = i_35_ >>> 30;
 						if (0 == i_37_) {
 							int i_38_ = class298_sub53.readInt((byte) -111);
-							((ClanSettings) this).aClass437_1664.method5817(
+							((ClanSettings) this).aClass437_1664.put(
 									new Class298_Sub35(i_38_), (long) i_36_);
 						} else if (i_37_ == 1) {
 							long l = class298_sub53.readLong((short) 2486);
-							((ClanSettings) this).aClass437_1664.method5817(
+							((ClanSettings) this).aClass437_1664.put(
 									new Class298_Sub33(l), (long) i_36_);
 						} else if (i_37_ == 2) {
 							String string = class298_sub53
 									.readString(478616247);
-							((ClanSettings) this).aClass437_1664.method5817(
+							((ClanSettings) this).aClass437_1664.put(
 									new Class298_Sub29(string), (long) i_36_);
 						}
 					}
@@ -559,7 +559,7 @@ public class ClanSettings {
 			if (((ClanSettings) this).aClass437_1664 == null)
 				return null;
 			Class298 class298 = ((ClanSettings) this).aClass437_1664
-					.method5812((long) i);
+					.get((long) i);
 			if (null == class298 || !(class298 instanceof Class298_Sub33))
 				return null;
 			return new Long(((Class298_Sub33) class298).aLong7385

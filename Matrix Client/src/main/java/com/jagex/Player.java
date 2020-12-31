@@ -225,7 +225,7 @@ public class Player extends Entity {
 				Class350 class350 = method4426(-244281365);
 				if (!class350.method4209(
 						aClass438_10077.method5823(1971304294), (byte) -15)) {
-					aClass438_10077.method5821(-1, -2110667700);
+					aClass438_10077.update(-1, -2110667700);
 					aBoolean10094 = false;
 				}
 			}
@@ -317,7 +317,7 @@ public class Player extends Entity {
 					if (null != class19 && class19.anInt263 * 408071539 != -1) {
 						if (958933333 * class19.anInt266 == 1) {
 							Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-									.method5812((long) (-841622081 * class19.anInt256))));
+									.get((long) (-841622081 * class19.anInt256))));
 							if (null != class298_sub29) {
 								NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 								Class217 class217 = (Class217
@@ -553,7 +553,7 @@ public class Player extends Entity {
 			if (aClass438_10078.method5819((byte) -119)
 					&& (aClass438_10078.method5820(1546485881).anInt4189 * -882531177) == 1) {
 				anIntArray10093 = null;
-				aClass438_10078.method5821(-1, -1739646413);
+				aClass438_10078.update(-1, -1739646413);
 			}
 			for (int i_56_ = 0; i_56_ < currentGraphics.length; i_56_++) {
 				if (-1 != currentGraphics[i_56_].id * -967533709) {
@@ -566,7 +566,7 @@ public class Player extends Entity {
 							&& (Class501.aClass395_6122.method4903(
 									class398.anInt5205 * 1505778629, (byte) 83).anInt4189)
 									* -882531177 == 1) {
-						currentGraphics[i_56_].aClass438_569.method5821(-1,
+						currentGraphics[i_56_].aClass438_569.update(-1,
 								-1843943010);
 						currentGraphics[i_56_].id = -1313669563;
 					}
@@ -677,7 +677,7 @@ public class Player extends Entity {
 					string,
 					i,
 					i_66_,
-					(Class82_Sub5.method883((byte) 6) * (453178367 * Class437.aClass371_5520.anInt4037)),
+					(Class82_Sub5.method883((byte) 6) * (453178367 * IterableNodeMap.aClass371_5520.anInt4037)),
 					(byte) -79);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -715,7 +715,7 @@ public class Player extends Entity {
 
 	public boolean method4429(byte i) {
 		try {
-			return Class437.aClass371_5520.aBoolean4043;
+			return IterableNodeMap.aClass371_5520.aBoolean4043;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("akm.by(").append(')').toString());
@@ -820,7 +820,7 @@ public class Player extends Entity {
 				if (null != class19 && class19.anInt263 * 408071539 != -1) {
 					if (958933333 * class19.anInt266 == 1) {
 						Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-								.method5812((long) (-841622081 * class19.anInt256))));
+								.get((long) (-841622081 * class19.anInt256))));
 						if (null != class298_sub29) {
 							NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 							Class217 class217 = (Class217
@@ -1028,7 +1028,7 @@ public class Player extends Entity {
 	}
 
 	public boolean method4452() {
-		return Class437.aClass371_5520.aBoolean4043;
+		return IterableNodeMap.aClass371_5520.aBoolean4043;
 	}
 
 	int method4447() {
@@ -1124,7 +1124,7 @@ public class Player extends Entity {
 	}
 
 	public boolean method4440() {
-		return Class437.aClass371_5520.aBoolean4043;
+		return IterableNodeMap.aClass371_5520.aBoolean4043;
 	}
 
 	final void method4378() {

@@ -263,7 +263,7 @@ public abstract class Entity extends Class365_Sub1_Sub1 {
 		try {
 			boolean bool = true;
 			boolean bool_38_ = true;
-			for (int i_39_ = 0; i_39_ < Class437.aClass371_5520.anInt4032
+			for (int i_39_ = 0; i_39_ < IterableNodeMap.aClass371_5520.anInt4032
 					* -942466371; i_39_++) {
 				if (anIntArray10080[i_39_] > i_34_)
 					bool = false;
@@ -289,7 +289,7 @@ public abstract class Entity extends Class365_Sub1_Sub1 {
 				else if (i_41_ == 1)
 					i_43_ = anIntArray10079[0];
 				for (int i_44_ = 1; i_44_ < -942466371
-						* Class437.aClass371_5520.anInt4032; i_44_++) {
+						* IterableNodeMap.aClass371_5520.anInt4032; i_44_++) {
 					if (i_41_ == 0) {
 						if (anIntArray10080[i_44_] < i_43_) {
 							i_40_ = i_44_;
@@ -305,10 +305,10 @@ public abstract class Entity extends Class365_Sub1_Sub1 {
 			} else {
 				if (bool)
 					((Entity) this).aByte10133 = (byte) 0;
-				for (int i_45_ = 0; i_45_ < Class437.aClass371_5520.anInt4032
+				for (int i_45_ = 0; i_45_ < IterableNodeMap.aClass371_5520.anInt4032
 						* -942466371; i_45_++) {
 					int i_46_ = ((Entity) this).aByte10133;
-					((Entity) this).aByte10133 = (byte) ((((Entity) this).aByte10133 + 1) % (-942466371 * Class437.aClass371_5520.anInt4032));
+					((Entity) this).aByte10133 = (byte) ((((Entity) this).aByte10133 + 1) % (-942466371 * IterableNodeMap.aClass371_5520.anInt4032));
 					if (anIntArray10080[i_46_] <= i_34_) {
 						i_40_ = i_46_;
 						break;
@@ -663,11 +663,11 @@ public abstract class Entity extends Class365_Sub1_Sub1 {
 			if (1097409519 * anInt10132 == i)
 				return true;
 			aClass119_10131 = Class338
-					.method4115(i, null, null, true, (byte) 3);
+					.getInterface(i, null, null, true, (byte) 3);
 			if (aClass119_10131 == null)
 				return false;
 			anInt10132 = i * 441346831;
-			Graphics.method611(aClass119_10131.aClass105Array1405, -1178956884);
+			Graphics.method611(aClass119_10131.components, -1178956884);
 			return true;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -809,7 +809,7 @@ public abstract class Entity extends Class365_Sub1_Sub1 {
 	public void method4442(int i, int i_123_, boolean bool, int i_124_) {
 		try {
 			if (method4439(-551216163))
-				Class372.method4591(aClass119_10131.aClass105Array1405, -1, i,
+				Class372.method4591(aClass119_10131.components, -1, i,
 						i_123_, bool, (short) -1055);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -845,16 +845,16 @@ public abstract class Entity extends Class365_Sub1_Sub1 {
 		((Entity) this).anInt10122 = 0;
 		((Entity) this).aByte10133 = (byte) 0;
 		anIntArray10102 = new int[-942466371
-				* Class437.aClass371_5520.anInt4032];
+				* IterableNodeMap.aClass371_5520.anInt4032];
 		anIntArray10079 = new int[-942466371
-				* Class437.aClass371_5520.anInt4032];
+				* IterableNodeMap.aClass371_5520.anInt4032];
 		anIntArray10080 = new int[-942466371
-				* Class437.aClass371_5520.anInt4032];
-		anIntArray10081 = new int[Class437.aClass371_5520.anInt4032
+				* IterableNodeMap.aClass371_5520.anInt4032];
+		anIntArray10081 = new int[IterableNodeMap.aClass371_5520.anInt4032
 				* -942466371];
-		anIntArray10127 = new int[Class437.aClass371_5520.anInt4032
+		anIntArray10127 = new int[IterableNodeMap.aClass371_5520.anInt4032
 				* -942466371];
-		anIntArray10083 = new int[Class437.aClass371_5520.anInt4032
+		anIntArray10083 = new int[IterableNodeMap.aClass371_5520.anInt4032
 				* -942466371];
 		anInt10116 = 1208121000;
 		anInt10086 = 875976968;

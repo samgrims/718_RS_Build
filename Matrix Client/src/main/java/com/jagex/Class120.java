@@ -157,7 +157,7 @@ public class Class120 {
 	public static String method1308(int i, byte i_3_) {
 		try {
 			Class298_Sub49 class298_sub49 = ((Class298_Sub49) Class423.aClass437_5354
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub49 != null) {
 				Class298_Sub24_Sub4 class298_sub24_sub4 = ((Class298_Sub49) class298_sub49).aClass308_Sub1_7591
 						.method3772((byte) -78);
@@ -208,7 +208,7 @@ public class Class120 {
 			if (122690138525332847L * Class360.aLong3874 < 0L)
 				Class78.method845(35, 1176559477);
 			else
-				Class460.method5981(false, true, "", "",
+				HashTableIterator.method5981(false, true, "", "",
 						Class360.aLong3874 * 122690138525332847L);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

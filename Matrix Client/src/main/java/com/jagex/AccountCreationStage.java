@@ -180,13 +180,13 @@ public class AccountCreationStage {
 									(byte) 123)) * 908204397;
 					Class438 class438 = (Class287.myPlayer.aClass438_10077);
 					if (null != class438) {
-						if (class105.aClass438_1152 == null)
-							class105.aClass438_1152 = new Class438_Sub1();
-						class105.anInt1290 = class438.method5823(1818062906) * 1587382585;
-						class105.aClass438_1152
+						if (class105.anim == null)
+							class105.anim = new Class438_Sub1();
+						class105.animation = class438.method5823(1818062906) * 1587382585;
+						class105.anim
 								.method5840(class438, -947942211);
 					} else
-						class105.aClass438_1152 = null;
+						class105.anim = null;
 				}
 			}
 		} catch (RuntimeException runtimeexception) {

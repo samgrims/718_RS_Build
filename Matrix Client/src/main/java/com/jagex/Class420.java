@@ -85,7 +85,7 @@ public final class Class420 {
 									.method2630(-1895886966)))
 						Class117.method1285(class298_sub1, 147943234);
 				} else
-					class298_sub1.method2839(-1460969981);
+					class298_sub1.unlink(-1460969981);
 			}
 			for (Class298_Sub1 class298_sub1 = ((Class298_Sub1) Class298_Sub1.aClass453_7162
 					.method5939(1766612795)); null != class298_sub1; class298_sub1 = (Class298_Sub1) Class298_Sub1.aClass453_7162
@@ -93,7 +93,7 @@ public final class Class420 {
 				if (!((Class298_Sub1) class298_sub1).aBoolean7160)
 					((Class298_Sub1) class298_sub1).aBoolean7159 = true;
 				else
-					class298_sub1.method2839(-1460969981);
+					class298_sub1.unlink(-1460969981);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

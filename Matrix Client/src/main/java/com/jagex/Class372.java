@@ -96,24 +96,24 @@ public class Class372 {
 					if (i_10_ == 255) {
 						/* empty */
 					}
-				} else if (1573706803 * class105.anInt1160 != i) {
+				} else if (1573706803 * class105.parent != i) {
 					if (i_10_ == 255)
 						break;
 				} else {
-					Class82_Sub10.method904(class105, i_8_, i_9_, bool,
+					Class82_Sub10.initSizes(class105, i_8_, i_9_, bool,
 							(byte) 59);
 					Class292.method2816(class105, i_8_, i_9_, (byte) -3);
 					if (684246511 * class105.anInt1166 > (1867913305 * class105.anInt1168 - -2093041337
-							* class105.anInt1156))
-						class105.anInt1166 = (1227329079 * class105.anInt1168 - 2072992297 * class105.anInt1156);
+							* class105.width))
+						class105.anInt1166 = (1227329079 * class105.anInt1168 - 2072992297 * class105.width);
 					if (684246511 * class105.anInt1166 < 0)
 						class105.anInt1166 = 0;
-					if (-1424956747 * class105.anInt1167 > (2053897963 * class105.anInt1169 - class105.anInt1162 * 457937409))
-						class105.anInt1167 = (2097037087 * class105.anInt1169 - class105.anInt1162
+					if (-1424956747 * class105.anInt1167 > (2053897963 * class105.anInt1169 - class105.height * 457937409))
+						class105.anInt1167 = (2097037087 * class105.anInt1169 - class105.height
 								* -900266595);
 					if (-1424956747 * class105.anInt1167 < 0)
 						class105.anInt1167 = 0;
-					if (class105.anInt1144 * -1215239439 == 0)
+					if (class105.type * -1215239439 == 0)
 						Class117.method1282(class105s, class105, bool,
 								(short) 319);
 				}

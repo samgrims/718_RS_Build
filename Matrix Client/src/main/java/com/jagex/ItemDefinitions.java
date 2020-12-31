@@ -72,7 +72,7 @@ public class ItemDefinitions {
 	public int anInt5763;
 	int anInt5764;
 	public int anInt5765;
-	Class437 aClass437_5766;
+	IterableNodeMap aClass437_5766;
 	public int[] anIntArray5767;
 	public int anInt5768;
 	int anInt5769;
@@ -716,7 +716,7 @@ public class ItemDefinitions {
 			if (null == ((ItemDefinitions) this).aClass437_5766)
 				return i_62_;
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((ItemDefinitions) this).aClass437_5766
-					.method5812((long) i));
+					.get((long) i));
 			if (null == class298_sub35)
 				return i_62_;
 			return class298_sub35.anInt7394 * -774922497;
@@ -922,7 +922,7 @@ public class ItemDefinitions {
 				int i_73_ = stream.readUnsignedByte();
 				if (null == ((ItemDefinitions) this).aClass437_5766) {
 					int i_74_ = Class416.method5590(i_73_, (byte) 16);
-					((ItemDefinitions) this).aClass437_5766 = new Class437(i_74_);
+					((ItemDefinitions) this).aClass437_5766 = new IterableNodeMap(i_74_);
 				}
 				for (int i_75_ = 0; i_75_ < i_73_; i_75_++) {
 					boolean bool = stream.readUnsignedByte() == 1;
@@ -934,7 +934,7 @@ public class ItemDefinitions {
 					else
 						class298 = new Class298_Sub35(stream
 								.readInt((byte) 69));
-					((ItemDefinitions) this).aClass437_5766.method5817(class298,
+					((ItemDefinitions) this).aClass437_5766.put(class298,
 							(long) i_76_);
 				}
 			}
@@ -1067,7 +1067,7 @@ public class ItemDefinitions {
 			if (((ItemDefinitions) this).aClass437_5766 == null)
 				return string;
 			Class298_Sub29 class298_sub29 = ((Class298_Sub29) ((ItemDefinitions) this).aClass437_5766
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub29 == null)
 				return string;
 			return (String) class298_sub29.anObject7366;
@@ -1297,7 +1297,7 @@ public class ItemDefinitions {
 
 	public static int method6043(int i, int i_90_, int i_91_) {
 		try {
-			if (Class437.aClass371_5520.anInt4035 * -1919698893 == -1)
+			if (IterableNodeMap.aClass371_5520.anInt4035 * -1919698893 == -1)
 				return 1;
 			if (i != Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub14_7571
 					.method5677(-2106508116)) {
@@ -1315,7 +1315,7 @@ public class ItemDefinitions {
 						Class373.aClass_ra4071, Class343.aClass264_3673,
 						Class422_Sub2.aClass505_8369, (byte) 5);
 				Class64 class64 = Class64.method751(Class341.aClass243_3646,
-						(-1919698893 * Class437.aClass371_5520.anInt4035), 0);
+						(-1919698893 * IterableNodeMap.aClass371_5520.anInt4035), 0);
 				long l = Class122.method1319((byte) 1);
 				Class373.aClass_ra4071.L();
 				client.aClass222_8871.method2062(0.0F, 256.0F, 0.0F);

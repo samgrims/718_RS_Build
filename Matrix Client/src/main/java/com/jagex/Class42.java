@@ -203,7 +203,7 @@ public class Class42 {
 	void method485(Class298_Sub8 class298_sub8) {
 		((Class298_Sub8) class298_sub8).aBoolean7221 = false;
 		class298_sub8.method2870();
-		class298_sub8.method2839(-1460969981);
+		class298_sub8.unlink(-1460969981);
 		method487();
 	}
 

@@ -978,7 +978,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 
 	final synchronized void method5229(int i, int i_130_) {
 		Class298_Sub35 class298_sub35 = new Class298_Sub35(i_130_);
-		class298_sub35.aLong3188 = (long) i * 4191220306876042991L;
+		class298_sub35.pointer = (long) i * 4191220306876042991L;
 		((Class_ra_Sub2) this).aClass458_8073.method5968(class298_sub35,
 				91285961);
 	}
@@ -2028,7 +2028,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 		while (!((Class_ra_Sub2) this).aClass458_8153.method5970((byte) 109)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8153
 					.method5971(1624694038);
-			anIntArray8079[i_282_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			anIntArray8079[i_282_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			((Class_ra_Sub2) this).anInt8112 -= class298_sub35.anInt7394
 					* -774922497;
 			if (i_282_ == 1000) {
@@ -2043,7 +2043,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 		while (!((Class_ra_Sub2) this).aClass458_8073.method5970((byte) 109)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8073
 					.method5971(1990742795);
-			anIntArray8079[i_282_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			anIntArray8079[i_282_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			((Class_ra_Sub2) this).anInt8175 -= class298_sub35.anInt7394
 					* -774922497;
 			if (i_282_ == 1000) {
@@ -2071,7 +2071,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 		while (!((Class_ra_Sub2) this).aClass458_8075.method5970((byte) 109)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8075
 					.method5971(1834890584);
-			anIntArray8079[i_282_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			anIntArray8079[i_282_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			((Class_ra_Sub2) this).anInt8070 -= class298_sub35.anInt7394
 					* -774922497;
 			if (i_282_ == 1000) {
@@ -2087,26 +2087,26 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8071
 					.method5971(1957497379);
 			OpenGL.glDeleteLists(
-					(int) (class298_sub35.aLong3188 * 7051297995265073167L),
+					(int) (class298_sub35.pointer * 7051297995265073167L),
 					class298_sub35.anInt7394 * -774922497);
 		}
 		while (!((Class_ra_Sub2) this).aClass458_8076.method5970((byte) 76)) {
 			Class298 class298 = ((Class_ra_Sub2) this).aClass458_8076
 					.method5971(1672075374);
 			OpenGL
-					.glDeleteProgramARB((int) (class298.aLong3188 * 7051297995265073167L));
+					.glDeleteProgramARB((int) (class298.pointer * 7051297995265073167L));
 		}
 		while (!((Class_ra_Sub2) this).aClass458_8161.method5970((byte) 105)) {
 			Class298 class298 = ((Class_ra_Sub2) this).aClass458_8161
 					.method5971(1793950137);
 			OpenGL
-					.glDeleteShader((int) (class298.aLong3188 * 7051297995265073167L));
+					.glDeleteShader((int) (class298.pointer * 7051297995265073167L));
 		}
 		while (!((Class_ra_Sub2) this).aClass458_8071.method5970((byte) 88)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8071
 					.method5971(1623809962);
 			OpenGL.glDeleteLists(
-					(int) (class298_sub35.aLong3188 * 7051297995265073167L),
+					(int) (class298_sub35.pointer * 7051297995265073167L),
 					class298_sub35.anInt7394 * -774922497);
 		}
 		((Class_ra_Sub2) this).aClass61_8052.method717();
@@ -2182,7 +2182,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 
 	final synchronized void method5267(int i, int i_285_) {
 		Class298_Sub35 class298_sub35 = new Class298_Sub35(i_285_);
-		class298_sub35.aLong3188 = (long) i * 4191220306876042991L;
+		class298_sub35.pointer = (long) i * 4191220306876042991L;
 		((Class_ra_Sub2) this).aClass458_8153.method5968(class298_sub35,
 				161198069);
 	}
@@ -2197,7 +2197,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 
 	final synchronized void method5268(int i, int i_286_) {
 		Class298_Sub35 class298_sub35 = new Class298_Sub35(i_286_);
-		class298_sub35.aLong3188 = (long) i * 4191220306876042991L;
+		class298_sub35.pointer = (long) i * 4191220306876042991L;
 		((Class_ra_Sub2) this).aClass458_8075.method5968(class298_sub35,
 				1393821197);
 	}
@@ -2241,7 +2241,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 
 	final synchronized void method5269(int i) {
 		Class298 class298 = new Class298();
-		class298.aLong3188 = (long) i * 4191220306876042991L;
+		class298.pointer = (long) i * 4191220306876042991L;
 		((Class_ra_Sub2) this).aClass458_8076.method5968(class298, 577290901);
 	}
 
@@ -2332,7 +2332,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 		while (!((Class_ra_Sub2) this).aClass458_8153.method5970((byte) 96)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8153
 					.method5971(1817899200);
-			anIntArray8079[i_296_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			anIntArray8079[i_296_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			((Class_ra_Sub2) this).anInt8112 -= class298_sub35.anInt7394
 					* -774922497;
 			if (i_296_ == 1000) {
@@ -2347,7 +2347,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 		while (!((Class_ra_Sub2) this).aClass458_8073.method5970((byte) 53)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8073
 					.method5971(1913013745);
-			anIntArray8079[i_296_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			anIntArray8079[i_296_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			((Class_ra_Sub2) this).anInt8175 -= class298_sub35.anInt7394
 					* -774922497;
 			if (i_296_ == 1000) {
@@ -2375,7 +2375,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 		while (!((Class_ra_Sub2) this).aClass458_8075.method5970((byte) 74)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8075
 					.method5971(1659174916);
-			anIntArray8079[i_296_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			anIntArray8079[i_296_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			((Class_ra_Sub2) this).anInt8070 -= class298_sub35.anInt7394
 					* -774922497;
 			if (i_296_ == 1000) {
@@ -2391,26 +2391,26 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8071
 					.method5971(1908940488);
 			OpenGL.glDeleteLists(
-					(int) (class298_sub35.aLong3188 * 7051297995265073167L),
+					(int) (class298_sub35.pointer * 7051297995265073167L),
 					class298_sub35.anInt7394 * -774922497);
 		}
 		while (!((Class_ra_Sub2) this).aClass458_8076.method5970((byte) 73)) {
 			Class298 class298 = ((Class_ra_Sub2) this).aClass458_8076
 					.method5971(1809693478);
 			OpenGL
-					.glDeleteProgramARB((int) (class298.aLong3188 * 7051297995265073167L));
+					.glDeleteProgramARB((int) (class298.pointer * 7051297995265073167L));
 		}
 		while (!((Class_ra_Sub2) this).aClass458_8161.method5970((byte) 40)) {
 			Class298 class298 = ((Class_ra_Sub2) this).aClass458_8161
 					.method5971(1808532873);
 			OpenGL
-					.glDeleteShader((int) (class298.aLong3188 * 7051297995265073167L));
+					.glDeleteShader((int) (class298.pointer * 7051297995265073167L));
 		}
 		while (!((Class_ra_Sub2) this).aClass458_8071.method5970((byte) 94)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub2) this).aClass458_8071
 					.method5971(1903219721);
 			OpenGL.glDeleteLists(
-					(int) (class298_sub35.aLong3188 * 7051297995265073167L),
+					(int) (class298_sub35.pointer * 7051297995265073167L),
 					class298_sub35.anInt7394 * -774922497);
 		}
 		((Class_ra_Sub2) this).aClass61_8052.method717();
@@ -2549,7 +2549,7 @@ public class Class_ra_Sub2 extends GraphicsToolkit {
 
 	final synchronized void method5272(long l) {
 		Class298 class298 = new Class298();
-		class298.aLong3188 = l * 4191220306876042991L;
+		class298.pointer = l * 4191220306876042991L;
 		((Class_ra_Sub2) this).aClass458_8161.method5968(class298, 1529923054);
 	}
 

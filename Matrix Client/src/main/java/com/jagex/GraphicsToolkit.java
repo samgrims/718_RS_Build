@@ -1006,10 +1006,10 @@ public abstract class GraphicsToolkit {
 			Class117 class117 = class105.method1116(class_ra, 1502538903);
 			if (null != class117) {
 				Class_ta class_ta = class117.aClass_ta1397;
-				class_ra.r(i, i_496_, -2093041337 * class105.anInt1156 + i,
-						457937409 * class105.anInt1162 + i_496_);
-				if ((-2093041337 * class105.anInt1156 != class117.anInt1393 * 1633695381)
-						|| (-60174999 * class117.anInt1394 != 457937409 * class105.anInt1162))
+				class_ra.r(i, i_496_, -2093041337 * class105.width + i,
+						457937409 * class105.height + i_496_);
+				if ((-2093041337 * class105.width != class117.anInt1393 * 1633695381)
+						|| (-60174999 * class117.anInt1394 != 457937409 * class105.height))
 					throw new IllegalStateException("");
 				if (2 != -64305285 * Class3.anInt56
 						&& 5 != Class3.anInt56 * -64305285
@@ -1038,8 +1038,8 @@ public abstract class GraphicsToolkit {
 							.method2630(789210081) * 4 - i_499_ / 128);
 					Class384.aClass57_4127
 							.method659(
-									((float) i + (float) (class105.anInt1156 * -2093041337) / 2.0F),
-									((float) i_496_ + (float) (457937409 * class105.anInt1162) / 2.0F),
+									((float) i + (float) (class105.width * -2093041337) / 2.0F),
+									((float) i_496_ + (float) (457937409 * class105.height) / 2.0F),
 									(float) i_502_, (float) i_503_, i_501_,
 									i_500_ << 2, class_ta, i, i_496_);
 					Class296 class296 = client.aClass283_8716
@@ -1081,11 +1081,11 @@ public abstract class GraphicsToolkit {
 					for (Class298_Sub2 class298_sub2 = ((Class298_Sub2) client.aClass437_8685
 							.method5816(1742338274)); class298_sub2 != null; class298_sub2 = ((Class298_Sub2) client.aClass437_8685
 							.method5815((byte) 24))) {
-						int i_512_ = (int) ((class298_sub2.aLong3188 * 7051297995265073167L) >> 28 & 0x3L);
+						int i_512_ = (int) ((class298_sub2.pointer * 7051297995265073167L) >> 28 & 0x3L);
 						if (i_512_ == Class3.anInt57 * -1694437021) {
-							int i_513_ = ((int) ((class298_sub2.aLong3188 * 7051297995265073167L) & 0x3fffL) - -1760580017
+							int i_513_ = ((int) ((class298_sub2.pointer * 7051297995265073167L) & 0x3fffL) - -1760580017
 									* class341.gameSceneBaseX);
-							int i_514_ = ((int) ((class298_sub2.aLong3188 * 7051297995265073167L) >> 14 & 0x3fffL) - class341.gameSceneBaseY * 283514611);
+							int i_514_ = ((int) ((class298_sub2.pointer * 7051297995265073167L) >> 14 & 0x3fffL) - class341.gameSceneBaseY * 283514611);
 							int i_515_ = 2 + i_513_ * 4 - i_498_ / 128;
 							int i_516_ = 2 + i_514_ * 4 - i_499_ / 128;
 							Class443.method5883(class105, class_ta, i, i_496_,
@@ -1120,8 +1120,8 @@ public abstract class GraphicsToolkit {
 						}
 						if (!Class287.myPlayer.hidden)
 							class_ra.method5015(i
-									+ (-2093041337 * class105.anInt1156 / 2)
-									- 1, (457937409 * class105.anInt1162 / 2)
+									+ (-2093041337 * class105.width / 2)
+									- 1, (457937409 * class105.height / 2)
 									+ i_496_ - 1, 3, 3, -1, (byte) 7);
 					}
 				} else

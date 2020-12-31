@@ -529,7 +529,7 @@ public class Class264_Sub4 extends Class264 {
 							.method3048(((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7426);
 					((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7426 = null;
 				}
-				class298_sub41.method2839(-1460969981);
+				class298_sub41.unlink(-1460969981);
 			}
 			if (bool) {
 				for (Class298_Sub41 class298_sub41 = (Class298_Sub41) Class298_Sub41.aClass453_7455
@@ -540,7 +540,7 @@ public class Class264_Sub4 extends Class264 {
 								.method3048(((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7447);
 						((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7447 = null;
 					}
-					class298_sub41.method2839(-1460969981);
+					class298_sub41.unlink(-1460969981);
 				}
 				for (Class298_Sub41 class298_sub41 = (Class298_Sub41) Class298_Sub41.aClass437_7440
 						.method5816(1763526126); class298_sub41 != null; class298_sub41 = (Class298_Sub41) Class298_Sub41.aClass437_7440
@@ -550,7 +550,7 @@ public class Class264_Sub4 extends Class264 {
 								.method3048(((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7447);
 						((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7447 = null;
 					}
-					class298_sub41.method2839(-1460969981);
+					class298_sub41.unlink(-1460969981);
 				}
 			}
 		} catch (RuntimeException runtimeexception) {

@@ -94,12 +94,12 @@ public class Class442 {
 			boolean bool = 1 == (((Class403) class403).anIntArray5244[681479919 * ((Class403) class403).anInt5239 + 1]);
 			if (null != Class301_Sub1.aClass437_7637) {
 				Class298 class298 = Class301_Sub1.aClass437_7637
-						.method5812((long) i_0_);
+						.get((long) i_0_);
 				if (class298 != null && !bool)
-					class298.method2839(-1460969981);
+					class298.unlink(-1460969981);
 				else if (null == class298 && bool) {
 					class298 = new Class298();
-					Class301_Sub1.aClass437_7637.method5817(class298,
+					Class301_Sub1.aClass437_7637.put(class298,
 							(long) i_0_);
 				}
 			}

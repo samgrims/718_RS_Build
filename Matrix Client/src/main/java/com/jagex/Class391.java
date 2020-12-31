@@ -25,14 +25,14 @@ public class Class391 {
 	public int[] anIntArray4188;
 	public int anInt4189 = 1424483545;
 	public int[] anIntArray4190;
-	Class437 aClass437_4191;
+	IterableNodeMap aClass437_4191;
 
 	public String method4877(int i, String string, int i_0_) {
 		try {
 			if (((Class391) this).aClass437_4191 == null)
 				return string;
 			Class298_Sub29 class298_sub29 = ((Class298_Sub29) ((Class391) this).aClass437_4191
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub29 == null)
 				return string;
 			return (String) class298_sub29.anObject7366;
@@ -137,7 +137,7 @@ public class Class391 {
 				int i_18_ = class298_sub53.readUnsignedByte();
 				if (((Class391) this).aClass437_4191 == null) {
 					int i_19_ = Class416.method5590(i_18_, (byte) 16);
-					((Class391) this).aClass437_4191 = new Class437(i_19_);
+					((Class391) this).aClass437_4191 = new IterableNodeMap(i_19_);
 				}
 				for (int i_20_ = 0; i_20_ < i_18_; i_20_++) {
 					boolean bool = class298_sub53.readUnsignedByte() == 1;
@@ -149,7 +149,7 @@ public class Class391 {
 					else
 						class298 = new Class298_Sub35(class298_sub53
 								.readInt((byte) 14));
-					((Class391) this).aClass437_4191.method5817(class298,
+					((Class391) this).aClass437_4191.put(class298,
 							(long) i_21_);
 				}
 			}
@@ -203,7 +203,7 @@ public class Class391 {
 			if (((Class391) this).aClass437_4191 == null)
 				return i_24_;
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((Class391) this).aClass437_4191
-					.method5812((long) i));
+					.get((long) i));
 			if (null == class298_sub35)
 				return i_24_;
 			return class298_sub35.anInt7394 * -774922497;
@@ -338,7 +338,7 @@ public class Class391 {
 				((Class298_Sub41) class298_sub41).anInt7441 = -900102912;
 				((Class298_Sub41) class298_sub41).anInt7429 = 0;
 				Class298_Sub41.aClass437_7440
-						.method5817(
+						.put(
 								class298_sub41,
 								(long) (class365_sub1_sub1_sub2_sub2.anInt10064 * 1888274983));
 			}

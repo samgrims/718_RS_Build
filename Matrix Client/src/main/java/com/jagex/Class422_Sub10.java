@@ -90,7 +90,7 @@ public class Class422_Sub10 extends Class422 {
 		try {
 			for (int i_6_ = 0; i_6_ < client.anInt8703 * -1230451913; i_6_++) {
 				Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-						.method5812((long) client.anIntArray8699[i_6_]));
+						.get((long) client.anIntArray8699[i_6_]));
 				if (class298_sub29 != null) {
 					NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 					if (class365_sub1_sub1_sub2_sub1.method4457(1140952765)

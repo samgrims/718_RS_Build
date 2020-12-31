@@ -1,5 +1,6 @@
 package com.rs.net.encoders;
 
+import com.rs.tools.DebugLine;
 import org.jboss.netty.channel.ChannelFuture;
 import org.jboss.netty.channel.ChannelFutureListener;
 
@@ -93,8 +94,7 @@ public class WorldPacketsEncoder extends Encoder {
 		session.write(stream);
 	}
 
-	public void sendIComponentModel(int interfaceId, int componentId,
-			int modelId) {
+	public void sendIComponentModel(int interfaceId, int componentId, int modelId) {
 		OutputStream stream = new OutputStream(9);
 		stream.writePacket(player, 102);
 		stream.writeIntV1(modelId);
@@ -102,8 +102,7 @@ public class WorldPacketsEncoder extends Encoder {
 		session.write(stream);
 	}
 
-	public void sendHideIComponent(int interfaceId, int componentId,
-			boolean hidden) {
+	public void sendHideIComponent(int interfaceId, int componentId, boolean hidden) {
 		OutputStream stream = new OutputStream(6);
 		stream.writePacket(player, 112);
 		stream.writeIntV2(interfaceId << 16 | componentId);
@@ -113,10 +112,8 @@ public class WorldPacketsEncoder extends Encoder {
 
 	public void sendRemoveGroundItem(FloorItem item) {
 		OutputStream stream = createWorldTileStream(item.getTile());
-		int localX = item.getTile().getLocalX(
-				player.getLastLoadedMapRegionTile(), player.getMapSize());
-		int localY = item.getTile().getLocalY(
-				player.getLastLoadedMapRegionTile(), player.getMapSize());
+		int localX = item.getTile().getLocalX(player.getLastLoadedMapRegionTile(), player.getMapSize());
+		int localY = item.getTile().getLocalY(player.getLastLoadedMapRegionTile(), player.getMapSize());
 		int offsetX = localX - ((localX >> 3) << 3);
 		int offsetY = localY - ((localY >> 3) << 3);
 		stream.writePacket(player, 108);
@@ -128,10 +125,8 @@ public class WorldPacketsEncoder extends Encoder {
 
 	public void sendGroundItem(FloorItem item) {
 		OutputStream stream = createWorldTileStream(item.getTile());
-		int localX = item.getTile().getLocalX(
-				player.getLastLoadedMapRegionTile(), player.getMapSize());
-		int localY = item.getTile().getLocalY(
-				player.getLastLoadedMapRegionTile(), player.getMapSize());
+		int localX = item.getTile().getLocalX(player.getLastLoadedMapRegionTile(), player.getMapSize());
+		int localY = item.getTile().getLocalY(player.getLastLoadedMapRegionTile(), player.getMapSize());
 		int offsetX = localX - ((localX >> 3) << 3);
 		int offsetY = localY - ((localY >> 3) << 3);
 		stream.writePacket(player, 125);
@@ -141,32 +136,24 @@ public class WorldPacketsEncoder extends Encoder {
 		session.write(stream);
 	}
 
-	public void sendProjectile(Entity receiver, WorldTile startTile,
-			WorldTile endTile, int gfxId, int startHeight, int endHeight,
-			int speed, int delay, int curve, int startDistanceOffset,
-			int creatorSize) {
+	public void sendProjectile(Entity receiver, WorldTile startTile, WorldTile endTile, int gfxId, int startHeight, int endHeight,
+			int speed, int delay, int curve, int startDistanceOffset, int creatorSize) {
 		OutputStream stream = createWorldTileStream(startTile);
 		stream.writePacket(player, 20);
-		int localX = startTile.getLocalX(player.getLastLoadedMapRegionTile(),
-				player.getMapSize());
-		int localY = startTile.getLocalY(player.getLastLoadedMapRegionTile(),
-				player.getMapSize());
+		int localX = startTile.getLocalX(player.getLastLoadedMapRegionTile(), player.getMapSize());
+		int localY = startTile.getLocalY(player.getLastLoadedMapRegionTile(), player.getMapSize());
 		int offsetX = localX - ((localX >> 3) << 3);
 		int offsetY = localY - ((localY >> 3) << 3);
 		stream.writeByte((offsetX << 3) | offsetY);
 		stream.writeByte(endTile.getX() - startTile.getX());
 		stream.writeByte(endTile.getY() - startTile.getY());
-		stream.writeShort(receiver == null ? 0
-				: (receiver instanceof Player ? -(receiver.getIndex() + 1)
-						: receiver.getIndex() + 1));
+		stream.writeShort(receiver == null ? 0 : (receiver instanceof Player ? -(receiver.getIndex() + 1) : receiver.getIndex() + 1));
 		stream.writeShort(gfxId);
 		stream.writeByte(startHeight);
 		stream.writeByte(endHeight);
 		stream.writeShort(delay);
-		int duration = (Utils.getDistance(startTile.getX(), startTile.getY(),
-				endTile.getX(), endTile.getY()) * 30 / ((speed / 10) < 1 ? 1
-				: (speed / 10)))
-				+ delay;
+		int duration = (Utils.getDistance(startTile.getX(), startTile.getY(), endTile.getX(), endTile.getY()) * 30 / ((speed / 10) < 1 ? 1
+				: (speed / 10))) + delay;
 		stream.writeShort(duration);
 		stream.writeByte(curve);
 		stream.writeShort(creatorSize * 64 + startDistanceOffset * 64);
@@ -174,17 +161,14 @@ public class WorldPacketsEncoder extends Encoder {
 
 	}
 
-	public void sendUnlockIComponentOptionSlots(int interfaceId,
-			int componentId, int fromSlot, int toSlot, int... optionsSlots) {
+	public void sendUnlockIComponentOptionSlots(int interfaceId, int componentId, int fromSlot, int toSlot, int... optionsSlots) {
 		int settingsHash = 0;
 		for (int slot : optionsSlots)
 			settingsHash |= 2 << slot;
-		sendIComponentSettings(interfaceId, componentId, fromSlot, toSlot,
-				settingsHash);
+		sendIComponentSettings(interfaceId, componentId, fromSlot, toSlot, settingsHash);
 	}
 
-	public void sendIComponentSettings(int interfaceId, int componentId,
-			int fromSlot, int toSlot, int settingsHash) {
+	public void sendIComponentSettings(int interfaceId, int componentId, int fromSlot, int toSlot, int settingsHash) {
 		OutputStream stream = new OutputStream(13);
 		stream.writePacket(player, 40);
 		stream.writeIntV2(settingsHash);
@@ -194,8 +178,7 @@ public class WorldPacketsEncoder extends Encoder {
 		session.write(stream);
 	}
 
-	public void sendInterFlashScript(int interfaceId,
-			int componentId, int width, int height, int slot) {
+	public void sendInterFlashScript(int interfaceId, int componentId, int width, int height, int slot) {
 		Object[] parameters = new Object[4];
 		int index = 0;
 		parameters[index++] = slot;
@@ -205,13 +188,11 @@ public class WorldPacketsEncoder extends Encoder {
 		sendRunScript(143, parameters); 
 	}
 	
-	public void sendInterSetItemsOptionsScript(int interfaceId,
-			int componentId, int key, int width, int height, String... options) {
+	public void sendInterSetItemsOptionsScript(int interfaceId, int componentId, int key, int width, int height, String... options) {
 		sendInterSetItemsOptionsScript(interfaceId, componentId, key, false, width, height, options);
 	}
 	
-	public void sendInterSetItemsOptionsScript(int interfaceId,
-			int componentId, int key, boolean negativeKey, int width, int height, String... options) {
+	public void sendInterSetItemsOptionsScript(int interfaceId, int componentId, int key, boolean negativeKey, int width, int height, String... options) {
 		Object[] parameters = new Object[6 + options.length];
 		int index = 0;
 		for (int count = options.length - 1; count >= 0; count--)
@@ -940,8 +921,7 @@ public class WorldPacketsEncoder extends Encoder {
 			hash = n.getIndex() & 0xffff | 1 << 29;
 		} else {
 			WorldTile tile = (WorldTile) target;
-			hash = tile.getPlane() << 28 | tile.getX() << 14 | tile.getY()
-					& 0x3fff | 1 << 30;
+			hash = tile.getPlane() << 28 | tile.getX() << 14 | tile.getY() & 0x3fff | 1 << 30;
 		}
 		stream.writePacket(player, 90);
 		stream.writeShort(graphics.getId());
@@ -958,9 +938,7 @@ public class WorldPacketsEncoder extends Encoder {
 	}
 
 	public void closeInterface(int windowComponentId) {
-		closeInterface(
-				player.getInterfaceManager().getTabWindow(windowComponentId),
-				windowComponentId);
+		closeInterface(player.getInterfaceManager().getTabWindow(windowComponentId), windowComponentId);
 		player.getInterfaceManager().removeTab(windowComponentId);
 	}
 
@@ -971,19 +949,13 @@ public class WorldPacketsEncoder extends Encoder {
 		session.write(stream);
 	}
 
-	public void sendInterface(boolean nocliped, int windowId,
-			int windowComponentId, int interfaceId) {
-		// currently fixes the inter engine.. not ready for same component
-		// ids(tabs), different inters
-		if (!(windowId == 752 && (windowComponentId == 9 || windowComponentId == 12))) { // if
-																							// chatbox
-			if (player.getInterfaceManager().containsInterface(
-					windowComponentId, interfaceId))
+	public void sendInterface(boolean nocliped, int windowId, int windowComponentId, int interfaceId) {
+		if (!(windowId == 752 && (windowComponentId == 9 || windowComponentId == 12))) {
+			if (player.getInterfaceManager().containsInterface(windowComponentId, interfaceId))
 				closeInterface(windowComponentId);
 			if (!player.getInterfaceManager().addInterface(windowId,
 					windowComponentId, interfaceId)) {
-				Logger.log(this, "Error adding interface: " + windowId + " , "
-						+ windowComponentId + " , " + interfaceId);
+				Logger.log(this, "Error adding interface: " + windowId + " , " + windowComponentId + " , " + interfaceId);
 				return;
 			}
 		}

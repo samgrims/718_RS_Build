@@ -11,7 +11,7 @@ public class Class475 {
 		if (null != ((Class475) this).aClass243_5981) {
 			int i = ((Class475) this).aClass243_5981.method2296(1572683796) - 1;
 			Class120.aClass120_1413.method1306((short) 19923);
-			((Class475) this).aClass243_5981.method2316(i, 146505674);
+			((Class475) this).aClass243_5981.filesCount(i, 146505674);
 		}
 	}
 

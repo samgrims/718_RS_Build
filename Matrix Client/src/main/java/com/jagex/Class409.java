@@ -78,11 +78,11 @@ public class Class409 {
 			Class403 class403, byte i) {
 		try {
 			((Class403) class403).anInt5239 -= -783761378;
-			class105.anInt1158 = (((Class403) class403).anIntArray5244[((Class403) class403).anInt5239 * 681479919]) * 349940087;
-			class105.anInt1242 = ((((Class403) class403).anIntArray5244[1 + 681479919 * ((Class403) class403).anInt5239]) * 153098785);
+			class105.aspectX = (((Class403) class403).anIntArray5244[((Class403) class403).anInt5239 * 681479919]) * 349940087;
+			class105.aspectY = ((((Class403) class403).anIntArray5244[1 + 681479919 * ((Class403) class403).anInt5239]) * 153098785);
 			Tradution.method6054(class105, 909224475);
 			Class438.method5845(class119, class105, -1959938301);
-			if (0 == -1215239439 * class105.anInt1144)
+			if (0 == -1215239439 * class105.type)
 				Class65.method761(class119, class105, false, 112223880);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

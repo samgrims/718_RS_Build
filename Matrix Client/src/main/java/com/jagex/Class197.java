@@ -225,7 +225,7 @@ public class Class197 {
 			Class298_Sub9 class298_sub9 = Class255.method2437(i, bool,
 					1277483186);
 			if (class298_sub9 != null)
-				class298_sub9.method2839(-1460969981);
+				class298_sub9.unlink(-1460969981);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ii.x(").append(')').toString());

@@ -94,7 +94,7 @@ public abstract class Class309 {
 			class105.anInt1168 = (-1609060375 * (((Class403) class403).anIntArray5244[((Class403) class403).anInt5239 * 681479919]));
 			class105.anInt1169 = (-1638942269 * (((Class403) class403).anIntArray5244[1 + 681479919 * ((Class403) class403).anInt5239]));
 			Tradution.method6054(class105, -1480345787);
-			if (0 == class105.anInt1144 * -1215239439)
+			if (0 == class105.type * -1215239439)
 				Class65.method761(class119, class105, false, 112223880);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

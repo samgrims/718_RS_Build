@@ -3,7 +3,7 @@ package com.jagex;/* Class348 - Decompiled by JODE
  */
 
 public final class Class348 {
-	Class437 aClass437_3702;
+	IterableNodeMap aClass437_3702;
 	Class461 aClass461_3703 = new Class461();
 	int anInt3704;
 	int anInt3705;
@@ -11,7 +11,7 @@ public final class Class348 {
 	void method4182(Class298_Sub37_Sub9 class298_sub37_sub9, int i) {
 		try {
 			if (null != class298_sub37_sub9) {
-				class298_sub37_sub9.method2839(-1460969981);
+				class298_sub37_sub9.unlink(-1460969981);
 				class298_sub37_sub9.method3402(-2141988967);
 				((Class348) this).anInt3704 += -1044171843
 						* ((Class298_Sub37_Sub9) class298_sub37_sub9).anInt9600;
@@ -41,12 +41,12 @@ public final class Class348 {
 	public Object method4184(long l) {
 		try {
 			Class298_Sub37_Sub9 class298_sub37_sub9 = ((Class298_Sub37_Sub9) ((Class348) this).aClass437_3702
-					.method5812(l));
+					.get(l));
 			if (null == class298_sub37_sub9)
 				return null;
 			Object object = class298_sub37_sub9.method3437(-1395408926);
 			if (null == object) {
-				class298_sub37_sub9.method2839(-1460969981);
+				class298_sub37_sub9.unlink(-1460969981);
 				class298_sub37_sub9.method3402(-300474257);
 				((Class348) this).anInt3704 += (((Class298_Sub37_Sub9) class298_sub37_sub9).anInt9600 * -1044171843);
 				return null;
@@ -55,13 +55,13 @@ public final class Class348 {
 				Class298_Sub37_Sub9_Sub1 class298_sub37_sub9_sub1 = new Class298_Sub37_Sub9_Sub1(
 						object,
 						(1980662847 * (((Class298_Sub37_Sub9) class298_sub37_sub9).anInt9600)));
-				((Class348) this).aClass437_3702.method5817(
+				((Class348) this).aClass437_3702.put(
 						class298_sub37_sub9_sub1,
-						class298_sub37_sub9.aLong3188 * 7051297995265073167L);
+						class298_sub37_sub9.pointer * 7051297995265073167L);
 				((Class348) this).aClass461_3703.method5982(
 						class298_sub37_sub9_sub1, (byte) -4);
 				class298_sub37_sub9_sub1.aLong7406 = 0L;
-				class298_sub37_sub9.method2839(-1460969981);
+				class298_sub37_sub9.unlink(-1460969981);
 				class298_sub37_sub9.method3402(1072331765);
 			} else {
 				((Class348) this).aClass461_3703.method5982(
@@ -88,7 +88,7 @@ public final class Class348 {
 			}
 			Class298_Sub37_Sub9_Sub1 class298_sub37_sub9_sub1 = new Class298_Sub37_Sub9_Sub1(
 					object, i);
-			((Class348) this).aClass437_3702.method5817(
+			((Class348) this).aClass437_3702.put(
 					class298_sub37_sub9_sub1, l);
 			((Class348) this).aClass461_3703.method5982(
 					class298_sub37_sub9_sub1, (byte) -108);
@@ -106,7 +106,7 @@ public final class Class348 {
 					.method5985(1372068776)) {
 				if (class298_sub37_sub9.method3438(504566053)) {
 					if (class298_sub37_sub9.method3437(1618549592) == null) {
-						class298_sub37_sub9.method2839(-1460969981);
+						class298_sub37_sub9.unlink(-1460969981);
 						class298_sub37_sub9.method3402(932803925);
 						((Class348) this).anInt3704 += -1044171843
 								* ((Class298_Sub37_Sub9) class298_sub37_sub9).anInt9600;
@@ -117,12 +117,12 @@ public final class Class348 {
 							class298_sub37_sub9.method3437(1802409899),
 							(((Class298_Sub37_Sub9) class298_sub37_sub9).anInt9600) * 1980662847));
 					((Class348) this).aClass437_3702
-							.method5817(
+							.put(
 									class298_sub37_sub9_sub2,
-									7051297995265073167L * class298_sub37_sub9.aLong3188);
+									7051297995265073167L * class298_sub37_sub9.pointer);
 					Class458.method5973(class298_sub37_sub9_sub2,
 							class298_sub37_sub9, -2008394772);
-					class298_sub37_sub9.method2839(-1460969981);
+					class298_sub37_sub9.unlink(-1460969981);
 					class298_sub37_sub9.method3402(357875821);
 				}
 			}
@@ -162,7 +162,7 @@ public final class Class348 {
 					.method5984(-1664121892); null != class298_sub37_sub9; class298_sub37_sub9 = (Class298_Sub37_Sub9) ((Class348) this).aClass461_3703
 					.method5985(-1665993458)) {
 				if (class298_sub37_sub9.method3438(2031877244)) {
-					class298_sub37_sub9.method2839(-1460969981);
+					class298_sub37_sub9.unlink(-1460969981);
 					class298_sub37_sub9.method3402(784746714);
 					((Class348) this).anInt3704 += -1044171843
 							* ((Class298_Sub37_Sub9) class298_sub37_sub9).anInt9600;
@@ -189,7 +189,7 @@ public final class Class348 {
 					Class298_Sub37_Sub9 class298_sub37_sub9_3_ = class298_sub37_sub9;
 					class298_sub37_sub9 = (Class298_Sub37_Sub9) ((Class348) this).aClass437_3702
 							.method5815((byte) 18);
-					class298_sub37_sub9_3_.method2839(-1460969981);
+					class298_sub37_sub9_3_.unlink(-1460969981);
 					class298_sub37_sub9_3_.method3402(600406320);
 					((Class348) this).anInt3704 += -1044171843
 							* ((Class298_Sub37_Sub9) class298_sub37_sub9_3_).anInt9600;
@@ -218,7 +218,7 @@ public final class Class348 {
 					Class298_Sub37_Sub9 class298_sub37_sub9_4_ = class298_sub37_sub9;
 					class298_sub37_sub9 = (Class298_Sub37_Sub9) ((Class348) this).aClass437_3702
 							.method5815((byte) 35);
-					class298_sub37_sub9_4_.method2839(-1460969981);
+					class298_sub37_sub9_4_.unlink(-1460969981);
 					class298_sub37_sub9_4_.method3402(538286919);
 					((Class348) this).anInt3704 += -1044171843
 							* ((Class298_Sub37_Sub9) class298_sub37_sub9_4_).anInt9600;
@@ -244,7 +244,7 @@ public final class Class348 {
 	public void method4193(long l) {
 		try {
 			Class298_Sub37_Sub9 class298_sub37_sub9 = ((Class298_Sub37_Sub9) ((Class348) this).aClass437_3702
-					.method5812(l));
+					.get(l));
 			method4182(class298_sub37_sub9, -1811015164);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -268,7 +268,7 @@ public final class Class348 {
 		for (i_6_ = 1; i_6_ + i_6_ < i && i_6_ < i_5_; i_6_ += i_6_) {
 			/* empty */
 		}
-		((Class348) this).aClass437_3702 = new Class437(i_6_);
+		((Class348) this).aClass437_3702 = new IterableNodeMap(i_6_);
 	}
 
 	static final void method4195(Class403 class403, int i) {

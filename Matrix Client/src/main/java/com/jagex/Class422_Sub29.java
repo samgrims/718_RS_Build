@@ -82,10 +82,10 @@ public class Class422_Sub29 extends Class422 {
 					655699987))
 				return false;
 			if (Class301_Sub1.aClass437_7636
-					.method5812((long) (-1262065485 * class352.anInt3784)) != null)
+					.get((long) (-1262065485 * class352.anInt3784)) != null)
 				return false;
 			if (Class301_Sub1.aClass437_7637
-					.method5812((long) (class352.anInt3817 * -804513353)) != null)
+					.get((long) (class352.anInt3817 * -804513353)) != null)
 				return false;
 			return true;
 		} catch (RuntimeException runtimeexception) {

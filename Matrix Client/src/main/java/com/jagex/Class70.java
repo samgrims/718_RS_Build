@@ -4,7 +4,7 @@ package com.jagex;/* Class70 - Decompiled by JODE
 
 public final class Class70 {
 	int anInt682;
-	Class437 aClass437_683;
+	IterableNodeMap aClass437_683;
 
 	public void method797(byte i) {
 		try {
@@ -19,7 +19,7 @@ public final class Class70 {
 	public int method798(int i, int i_0_) {
 		try {
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((Class70) this).aClass437_683
-					.method5812((long) i));
+					.get((long) i));
 			if (null != class298_sub35)
 				return class298_sub35.anInt7394 * -774922497;
 			Class207 class207 = Class440.aClass205_5582
@@ -55,15 +55,15 @@ public final class Class70 {
 	public void method800(int i, int i_4_, byte i_5_) {
 		try {
 			if (((Class70) this).aClass437_683 == null)
-				((Class70) this).aClass437_683 = new Class437(
+				((Class70) this).aClass437_683 = new IterableNodeMap(
 						1793476641 * ((Class70) this).anInt682);
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((Class70) this).aClass437_683
-					.method5812((long) i));
+					.get((long) i));
 			if (null != class298_sub35)
 				class298_sub35.anInt7394 = i_4_ * -898670337;
 			else {
 				class298_sub35 = new Class298_Sub35(i_4_);
-				((Class70) this).aClass437_683.method5817(class298_sub35,
+				((Class70) this).aClass437_683.put(class298_sub35,
 						(long) i);
 			}
 		} catch (RuntimeException runtimeexception) {

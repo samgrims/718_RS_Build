@@ -23,7 +23,7 @@ public class Class298_Sub41 extends Class298 {
 	boolean aBoolean7437;
 	static int anInt7438 = 3;
 	int anInt7439 = 0;
-	static Class437 aClass437_7440;
+	static IterableNodeMap aClass437_7440;
 	int anInt7441;
 	static int anInt7442 = 0;
 	int anInt7443;
@@ -134,7 +134,7 @@ public class Class298_Sub41 extends Class298 {
 	}
 
 	static {
-		aClass437_7440 = new Class437(16);
+		aClass437_7440 = new IterableNodeMap(16);
 	}
 
 	Class298_Sub41() {

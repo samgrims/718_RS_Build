@@ -21,7 +21,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 		if (!((Class298_Sub19_Sub3) this).aBoolean9256) {
 			if (method3033(753213382) == null) {
 				if (((Class298_Sub19_Sub3) this).aBoolean9264) {
-					method2839(-1460969981);
+					unlink(-1460969981);
 					aClass253_9258.method2416(-406924186);
 				}
 			} else {
@@ -66,7 +66,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 			if (!((Class298_Sub19_Sub3) this).aBoolean9256) {
 				if (method3033(753213382) == null) {
 					if (((Class298_Sub19_Sub3) this).aBoolean9264) {
-						method2839(-1460969981);
+						unlink(-1460969981);
 						aClass253_9258.method2416(-600702180);
 					}
 				} else {
@@ -107,7 +107,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 					Class298_Sub30 class298_sub30 = method3033(753213382);
 					if (null == class298_sub30) {
 						if (((Class298_Sub19_Sub3) this).aBoolean9264) {
-							method2839(-1460969981);
+							unlink(-1460969981);
 							aClass253_9258.method2416(952112097);
 						}
 						break;
@@ -233,7 +233,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 			for (int i_11_ = 0; i_11_ < -1230451913 * client.anInt8703; i_11_++) {
 				int i_12_ = client.anIntArray8699[i_11_];
 				Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-						.method5812((long) i_12_));
+						.get((long) i_12_));
 				if (class298_sub29 != null) {
 					NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 					Class135.method1494(class365_sub1_sub1_sub2_sub1, false,
@@ -252,7 +252,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 				Class298_Sub30 class298_sub30 = method3033(753213382);
 				if (null == class298_sub30) {
 					if (((Class298_Sub19_Sub3) this).aBoolean9264) {
-						method2839(-1460969981);
+						unlink(-1460969981);
 						aClass253_9258.method2416(768907089);
 					}
 					break;
@@ -330,7 +330,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 		try {
 			Class298_Sub30 class298_sub30 = method3033(753213382);
 			if (class298_sub30 != null) {
-				class298_sub30.method2839(-1460969981);
+				class298_sub30.unlink(-1460969981);
 				((Class298_Sub19_Sub3) this).anInt9261 = 0;
 				((Class298_Sub19_Sub3) this).anInt9260 -= -1862483835;
 				aClass253_9258.method2411(Long.valueOf(class298_sub30
@@ -348,7 +348,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 				Class298_Sub30 class298_sub30 = method3033(753213382);
 				if (null == class298_sub30) {
 					if (((Class298_Sub19_Sub3) this).aBoolean9264) {
-						method2839(-1460969981);
+						unlink(-1460969981);
 						aClass253_9258.method2416(-1289624266);
 					}
 					break;
@@ -369,7 +369,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 				Class298_Sub30 class298_sub30 = method3033(753213382);
 				if (null == class298_sub30) {
 					if (((Class298_Sub19_Sub3) this).aBoolean9264) {
-						method2839(-1460969981);
+						unlink(-1460969981);
 						aClass253_9258.method2416(-1874609537);
 					}
 					break;
@@ -393,7 +393,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 		if (!((Class298_Sub19_Sub3) this).aBoolean9256) {
 			if (method3033(753213382) == null) {
 				if (((Class298_Sub19_Sub3) this).aBoolean9264) {
-					method2839(-1460969981);
+					unlink(-1460969981);
 					aClass253_9258.method2416(-1691027577);
 				}
 			} else {
@@ -435,7 +435,7 @@ public class Class298_Sub19_Sub3 extends Class298_Sub19 {
 		if (!((Class298_Sub19_Sub3) this).aBoolean9256) {
 			if (method3033(753213382) == null) {
 				if (((Class298_Sub19_Sub3) this).aBoolean9264) {
-					method2839(-1460969981);
+					unlink(-1460969981);
 					aClass253_9258.method2416(-701511465);
 				}
 			} else {

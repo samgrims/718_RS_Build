@@ -369,7 +369,7 @@ public class Class126 implements Interface6 {
 							if (client.anInt8724 * 1596783995 == 3) {
 								ClanSettings.method1771(921260863);
 								Class298_Sub19_Sub3.method3037(1729319705);
-							} else if (Class437.aClass377_5519.anInterface19_4091
+							} else if (IterableNodeMap.aClass377_5519.anInterface19_4091
 									.method239(class298_sub50,
 											client.anInterface16Array8688,
 											-1625219821 * client.anInt8687,
@@ -496,7 +496,7 @@ public class Class126 implements Interface6 {
 								IComponentDefinition class105 = class298_sub46.aClass105_7525;
 								if (-1309843523 * class105.anInt1154 >= 0) {
 									IComponentDefinition class105_11_ = Class50.getIComponentDefinitions(
-											(class105.anInt1160 * 1573706803),
+											(class105.parent * 1573706803),
 											(byte) 54);
 									if (class105_11_ == null
 											|| (class105_11_.aClass105Array1292 == null)
@@ -525,7 +525,7 @@ public class Class126 implements Interface6 {
 								IComponentDefinition class105 = class298_sub46.aClass105_7525;
 								if (-1309843523 * class105.anInt1154 >= 0) {
 									IComponentDefinition class105_12_ = Class50.getIComponentDefinitions(
-											(class105.anInt1160 * 1573706803),
+											(class105.parent * 1573706803),
 											(byte) 80);
 									if (null == class105_12_
 											|| (class105_12_.aClass105Array1292 == null)
@@ -553,7 +553,7 @@ public class Class126 implements Interface6 {
 								IComponentDefinition class105 = class298_sub46.aClass105_7525;
 								if (class105.anInt1154 * -1309843523 >= 0) {
 									IComponentDefinition class105_13_ = Class50.getIComponentDefinitions(
-											(class105.anInt1160 * 1573706803),
+											(class105.parent * 1573706803),
 											(byte) 36);
 									if (null == class105_13_
 											|| (null == class105_13_.aClass105Array1292)

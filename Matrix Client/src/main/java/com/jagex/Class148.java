@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.Insets;
 
 public class Class148 implements Interface23 {
-	Class437 aClass437_6647 = new Class437(128);
+	IterableNodeMap aClass437_6647 = new IterableNodeMap(128);
 	static long aLong6648 = 4611686018427387903L;
 	static long aLong6649 = 4611686018427387904L;
 	static int[] anIntArray6650 = new int[32];
@@ -53,7 +53,7 @@ public class Class148 implements Interface23 {
 				((Class148) this).anIntArray6652[i_7_] = 0;
 				anIntArray6654[i_7_] = 0;
 			}
-			((Class148) this).aClass437_6647 = new Class437(128);
+			((Class148) this).aClass437_6647 = new IterableNodeMap(128);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("g.f(").append(')').toString());
@@ -64,13 +64,13 @@ public class Class148 implements Interface23 {
 		try {
 			anIntArray6654[i] = i_8_;
 			Class298_Sub33 class298_sub33 = ((Class298_Sub33) ((Class148) this).aClass437_6647
-					.method5812((long) i));
+					.get((long) i));
 			if (null != class298_sub33)
 				class298_sub33.aLong7385 = (Class122.method1319((byte) 1) + 500L) * 2132790236050020951L;
 			else {
 				class298_sub33 = new Class298_Sub33(Class122
 						.method1319((byte) 1) + 500L);
-				((Class148) this).aClass437_6647.method5817(class298_sub33,
+				((Class148) this).aClass437_6647.put(class298_sub33,
 						(long) i);
 			}
 		} catch (RuntimeException runtimeexception) {
@@ -83,14 +83,14 @@ public class Class148 implements Interface23 {
 		try {
 			((Class148) this).anIntArray6652[i] = i_10_;
 			Class298_Sub33 class298_sub33 = ((Class298_Sub33) ((Class148) this).aClass437_6647
-					.method5812((long) i));
+					.get((long) i));
 			if (null != class298_sub33) {
 				if (4611686018427387905L != class298_sub33.aLong7385
 						* -959724544626478745L)
 					class298_sub33.aLong7385 = (Class122.method1319((byte) 1) + 500L | 0x4000000000000000L) * 2132790236050020951L;
 			} else {
 				class298_sub33 = new Class298_Sub33(4611686018427387905L);
-				((Class148) this).aClass437_6647.method5817(class298_sub33,
+				((Class148) this).aClass437_6647.put(class298_sub33,
 						(long) i);
 			}
 		} catch (RuntimeException runtimeexception) {
@@ -168,12 +168,12 @@ public class Class148 implements Interface23 {
 					.method5815((byte) -66)) {
 				if ((class298_sub33.aLong7385 * -959724544626478745L & 0x3fffffffffffffffL) < l) {
 					if ((-959724544626478745L * class298_sub33.aLong7385 & 0x4000000000000000L) != 0L) {
-						int i_24_ = (int) (7051297995265073167L * class298_sub33.aLong3188);
+						int i_24_ = (int) (7051297995265073167L * class298_sub33.pointer);
 						anIntArray6654[i_24_] = ((Class148) this).anIntArray6652[i_24_];
-						class298_sub33.method2839(-1460969981);
+						class298_sub33.unlink(-1460969981);
 						return i_24_;
 					}
-					class298_sub33.method2839(-1460969981);
+					class298_sub33.unlink(-1460969981);
 				}
 			}
 			return -1;
@@ -330,7 +330,7 @@ public class Class148 implements Interface23 {
 			Tradution.method6054(class105, 2100669842);
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403)
-				Class509.method6286(class105.anInt1142 * -440872681,
+				Class509.method6286(class105.idHash * -440872681,
 						-1977969421);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

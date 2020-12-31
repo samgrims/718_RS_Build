@@ -229,7 +229,7 @@ public class Class255 implements Runnable {
 	static Class298_Sub9 method2437(int i, boolean bool, int i_14_) {
 		try {
 			long l = (long) (i | (bool ? -2147483648 : 0));
-			return (Class298_Sub9) Class298_Sub9.aClass437_7224.method5812(l);
+			return (Class298_Sub9) Class298_Sub9.aClass437_7224.get(l);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("kr.k(").append(')').toString());

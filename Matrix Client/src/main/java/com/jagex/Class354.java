@@ -7,14 +7,14 @@ public final class Class354 {
 	Class298_Sub37 aClass298_Sub37_3821 = new Class298_Sub37();
 	int anInt3822;
 	int anInt3823;
-	Class437 aClass437_3824;
+	IterableNodeMap aClass437_3824;
 	Class461 aClass461_3825 = new Class461();
 	public static Class243 aClass243_3826;
 
 	public Class298_Sub37 method4253(long l) {
 		try {
 			Class298_Sub37 class298_sub37 = ((Class298_Sub37) ((Class354) this).aClass437_3824
-					.method5812(l));
+					.get(l));
 			if (null != class298_sub37)
 				((Class354) this).aClass461_3825.method5982(class298_sub37,
 						(byte) -98);
@@ -32,7 +32,7 @@ public final class Class354 {
 		for (i_0_ = 1; i_0_ + i_0_ < i; i_0_ += i_0_) {
 			/* empty */
 		}
-		((Class354) this).aClass437_3824 = new Class437(i_0_);
+		((Class354) this).aClass437_3824 = new IterableNodeMap(i_0_);
 	}
 
 	public void method4254(int i) {
@@ -53,17 +53,17 @@ public final class Class354 {
 			if (0 == ((Class354) this).anInt3823 * -78285179) {
 				Class298_Sub37 class298_sub37_1_ = ((Class354) this).aClass461_3825
 						.method5983(-2130705221);
-				class298_sub37_1_.method2839(-1460969981);
+				class298_sub37_1_.unlink(-1460969981);
 				class298_sub37_1_.method3402(1224116599);
 				if (class298_sub37_1_ == ((Class354) this).aClass298_Sub37_3821) {
 					class298_sub37_1_ = ((Class354) this).aClass461_3825
 							.method5983(-2124650372);
-					class298_sub37_1_.method2839(-1460969981);
+					class298_sub37_1_.unlink(-1460969981);
 					class298_sub37_1_.method3402(-1522621021);
 				}
 			} else
 				((Class354) this).anInt3823 -= -1442966963;
-			((Class354) this).aClass437_3824.method5817(class298_sub37, l);
+			((Class354) this).aClass437_3824.put(class298_sub37, l);
 			((Class354) this).aClass461_3825.method5982(class298_sub37,
 					(byte) -113);
 		} catch (RuntimeException runtimeexception) {
@@ -77,7 +77,7 @@ public final class Class354 {
 			int i_2_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
 			IComponentDefinition class105 = Class50.getIComponentDefinitions(i_2_, (byte) -49);
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = client
-					.method2801(class105).method3497((byte) 14);
+					.getIComponentSettings(class105).method3497((byte) 14);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ot.sr(").append(')').toString());

@@ -72,7 +72,7 @@ public class Class23 {
 	public static Class57 method376(GraphicsToolkit class_ra, int i, byte i_1_) {
 		try {
 			Class298_Sub49 class298_sub49 = ((Class298_Sub49) Class423.aClass437_5354
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub49 != null) {
 				Class298_Sub24_Sub3 class298_sub24_sub3 = ((Class298_Sub49) class298_sub49).aClass308_Sub1_7591
 						.method3770((byte) 9);

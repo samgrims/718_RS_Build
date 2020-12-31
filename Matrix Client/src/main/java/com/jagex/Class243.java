@@ -92,7 +92,7 @@ public final class Class243 {
 		}
 	}
 
-	public synchronized byte[] method2289(int i, int i_4_, int[] is, int i_5_) {
+	public synchronized byte[] getFile(int i, int i_4_, int[] is, int i_5_) {
 		try {
 			if (!method2286(i, i_4_, (byte) 106))
 				return null;
@@ -1049,14 +1049,14 @@ public final class Class243 {
 
 	public byte[] method2315(int i, int i_150_, byte i_151_) {
 		try {
-			return method2289(i, i_150_, null, -1954204331);
+			return getFile(i, i_150_, null, -1954204331);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ke.d(").append(')').toString());
 		}
 	}
 
-	public int method2316(int i, int i_152_) {
+	public int filesCount(int i, int i_152_) {
 		try {
 			if (!method2309(i, (byte) 1))
 				return 0;

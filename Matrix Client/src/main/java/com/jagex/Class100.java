@@ -271,7 +271,7 @@ public class Class100 {
 							(((Class403) class403).anIntArray5244[(((Class403) class403).anInt5239 -= -391880689) * 681479919]),
 							(byte) -124);
 			class105.aClass105Array1292 = null;
-			class105.aClass105Array1293 = null;
+			class105.itemSlots = null;
 			Tradution.method6054(class105, -1793194156);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

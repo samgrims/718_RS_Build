@@ -77,9 +77,9 @@ public class Class12 implements Interface8_Impl1_Impl2 {
 				int i_7_ = Class294.anIntArray3165[i_6_];
 				Class216.method2000(false, true, (short) 10143);
 				class_ra.B(i,
-						((63 - i_5_) * (class105.anInt1162 * 457937409) >> 6)
-								+ i_1_, -2093041337 * class105.anInt1156,
-						1 + (class105.anInt1162 * 457937409 >> 6), i_7_, 0);
+						((63 - i_5_) * (class105.height * 457937409) >> 6)
+								+ i_1_, -2093041337 * class105.width,
+						1 + (class105.height * 457937409 >> 6), i_7_, 0);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -157,14 +157,14 @@ public class Class12 implements Interface8_Impl1_Impl2 {
 			Class403 class403, byte i) {
 		try {
 			int i_9_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
-			if (i_9_ != 1411971043 * class105.anInt1175) {
-				class105.anInt1175 = 1986266571 * i_9_;
+			if (i_9_ != 1411971043 * class105.spriteId) {
+				class105.spriteId = 1986266571 * i_9_;
 				Tradution.method6054(class105, -668406254);
 			}
 			if (class105.anInt1154 * -1309843523 == -1
 					&& !class119.aBoolean1403)
 				Class325
-						.method3966(-440872681 * class105.anInt1142, 1038434674);
+						.method3966(-440872681 * class105.idHash, 1038434674);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("am.da(").append(')').toString());

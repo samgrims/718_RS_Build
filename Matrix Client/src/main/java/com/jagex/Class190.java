@@ -14,7 +14,7 @@ public class Class190 {
 	static int anInt1925 = 1;
 	public static Class190[] aClass190Array1926 = new Class190[16];
 	boolean aBoolean1927;
-	public static Class437 aClass437_1928;
+	public static IterableNodeMap aClass437_1928;
 	static Class348 aClass348_1929;
 	public int anInt1930;
 	public long aLong1931;
@@ -32,7 +32,7 @@ public class Class190 {
 	public int anInt1943;
 
 	static {
-		aClass437_1928 = new Class437(16);
+		aClass437_1928 = new IterableNodeMap(16);
 		aClass348_1929 = new Class348(64);
 	}
 
@@ -119,7 +119,7 @@ public class Class190 {
 			int i_4_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
 			IComponentDefinition class105 = Class50.getIComponentDefinitions(i_4_, (byte) 2);
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = -2093041337
-					* class105.anInt1156;
+					* class105.width;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("hy.qh(").append(')').toString());

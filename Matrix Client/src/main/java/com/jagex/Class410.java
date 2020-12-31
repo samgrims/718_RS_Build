@@ -31,7 +31,7 @@ public class Class410 {
 			Tradution.method6054(class105, 230725327);
 			if (class105.anInt1154 * -1309843523 == -1
 					&& !class119.aBoolean1403)
-				Class298_Sub52.method3581(-440872681 * class105.anInt1142,
+				Class298_Sub52.method3581(-440872681 * class105.idHash,
 						(byte) -11);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -80,12 +80,12 @@ public class Class410 {
 	static Class298_Sub37_Sub12 method4985(int i, long l) {
 		try {
 			Class298_Sub37_Sub12 class298_sub37_sub12 = (Class298_Sub37_Sub12) Class298_Sub37_Sub12.aClass437_9621
-					.method5812((long) i << 56 | l);
+					.get((long) i << 56 | l);
 			if (class298_sub37_sub12 == null) {
 				class298_sub37_sub12 = new Class298_Sub37_Sub12(i, l);
-				Class298_Sub37_Sub12.aClass437_9621.method5817(
+				Class298_Sub37_Sub12.aClass437_9621.put(
 						class298_sub37_sub12,
-						7051297995265073167L * class298_sub37_sub12.aLong3188);
+						7051297995265073167L * class298_sub37_sub12.pointer);
 			}
 			return class298_sub37_sub12;
 		} catch (RuntimeException runtimeexception) {

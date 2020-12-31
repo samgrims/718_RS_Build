@@ -293,7 +293,7 @@ public class Class219 implements Runnable {
 			Class390 class390 = (((Class403) class403).aBoolean5261 ? ((Class403) class403).aClass390_5247
 					: ((Class403) class403).aClass390_5246);
 			IComponentDefinition class105 = ((Class390) class390).aClass105_4168;
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = 1508815983 * class105.anInt1210;
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = 1508815983 * class105.fontId;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("jf.pe(").append(')').toString());
@@ -315,7 +315,7 @@ public class Class219 implements Runnable {
 			int i_14_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
 			IComponentDefinition class105 = Class50.getIComponentDefinitions(i_14_, (byte) -71);
 			((Class403) class403).anObjectArray5240[((((Class403) class403).anInt5241 += 969361751)
-					* -203050393 - 1)] = class105.aString1212;
+					* -203050393 - 1)] = class105.text;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("jf.rk(").append(')').toString());

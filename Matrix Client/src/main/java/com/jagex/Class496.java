@@ -100,7 +100,7 @@ public class Class496 {
 			int i_7_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
 			if (null != Class301_Sub1.aClass437_7636) {
 				Class298 class298 = Class301_Sub1.aClass437_7636
-						.method5812((long) i_7_);
+						.get((long) i_7_);
 				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = class298 != null ? 1
 						: 0;
 			} else

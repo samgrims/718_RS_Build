@@ -101,7 +101,7 @@ public class Class173 {
 					&& i_6_ < client.aClass283_8716.method2630(-1685955624)) {
 				long l = (long) (i << 28 | i_9_ << 14 | i_8_);
 				Class298_Sub2 class298_sub2 = (Class298_Sub2) client.aClass437_8685
-						.method5812(l);
+						.get(l);
 				if (class298_sub2 == null)
 					client.aClass283_8716.method2675(-1611682495).method4059(i,
 							i_5_, i_6_, (byte) 86);
@@ -191,34 +191,28 @@ public class Class173 {
 				}
 			}
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("he.jy(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("he.jy(").append(')').toString());
 		}
 	}
 
-	public static final void method1821(Interface class298_sub51,
-			boolean bool, boolean bool_14_, int i) {
+	public static final void closeChildren(Interface parentInterface, boolean bool, boolean bool_14_, int i) {
 		try {
-			int i_15_ = class298_sub51.interfaceId * -1617025021;
-			int i_16_ = (int) (7051297995265073167L * class298_sub51.aLong3188);
-			class298_sub51.method2839(-1460969981);
+			int i_15_ = parentInterface.interfaceId * -1617025021;
+			int interfaceHash = (int) (7051297995265073167L * parentInterface.pointer);
+			parentInterface.unlink(-1460969981);
 			if (bool)
-				Class82_Sub8.method893(i_15_, -2042512871);
+				Class82_Sub8.unloadInterface(i_15_, -2042512871);
 			Class242_Sub1.method2280(i_15_, (byte) -97);
-			IComponentDefinition class105 = Class50.getIComponentDefinitions(i_16_, (byte) 18);
-			if (null != class105)
-				Tradution.method6054(class105, 999173);
+			IComponentDefinition component = Class50.getIComponentDefinitions(interfaceHash, (byte) 18);
+			if (null != component)
+				Tradution.method6054(component, 999173);
 			Class247.method2376(-1483926701);
 			if (!bool_14_ && client.WINDOW_PANE_ID * -257444687 != -1)
-				Class82_Sub10.method903(-257444687 * client.WINDOW_PANE_ID, 1,
-						-80338519);
-			Class460 class460 = new Class460(client.aClass437_8841);
-			for (Interface class298_sub51_17_ = (Interface) class460
-					.method5979(-2012602178); null != class298_sub51_17_; class298_sub51_17_ = (Interface) class460
-					.next()) {
+				Class82_Sub10.method903(-257444687 * client.WINDOW_PANE_ID, 1,-80338519);
+			HashTableIterator class460 = new HashTableIterator(client.OPEN_INTERFACES);
+			for (Interface class298_sub51_17_ = (Interface) class460.method5979(-2012602178); null != class298_sub51_17_; class298_sub51_17_ = (Interface) class460.next()) {
 				if (!class298_sub51_17_.method2840(-629325116)) {
-					class298_sub51_17_ = (Interface) class460
-							.method5979(-2012602178);
+					class298_sub51_17_ = (Interface) class460.method5979(-2012602178);
 					if (null == class298_sub51_17_) {
 						if (i == -113822480)
 							break;
@@ -226,15 +220,13 @@ public class Class173 {
 					}
 				}
 				if (class298_sub51_17_.clipped * 27137839 == 3) {
-					int i_18_ = (int) (7051297995265073167L * class298_sub51_17_.aLong3188);
+					int i_18_ = (int) (7051297995265073167L * class298_sub51_17_.pointer);
 					if (i_18_ >>> 16 == i_15_)
-						method1821(class298_sub51_17_, true, bool_14_,
-								-113822480);
+						closeChildren(class298_sub51_17_, true, bool_14_,-113822480);
 				}
 			}
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("he.lw(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("he.lw(").append(')').toString());
 		}
 	}
 

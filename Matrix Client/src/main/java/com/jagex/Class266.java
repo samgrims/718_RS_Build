@@ -105,7 +105,7 @@ public class Class266 {
 				Entity class365_sub1_sub1_sub2_7_ = null;
 				if (class365_sub1_sub1_sub2.anInt10090 * 1433412323 < 32768) {
 					Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-							.method5812((long) (1433412323 * class365_sub1_sub1_sub2.anInt10090))));
+							.get((long) (1433412323 * class365_sub1_sub1_sub2.anInt10090))));
 					if (class298_sub29 != null)
 						class365_sub1_sub1_sub2_7_ = ((Entity) class298_sub29.anObject7366);
 				} else if (class365_sub1_sub1_sub2.anInt10090 * 1433412323 >= 32768)

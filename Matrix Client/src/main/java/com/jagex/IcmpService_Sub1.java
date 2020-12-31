@@ -413,13 +413,13 @@ public class IcmpService_Sub1 extends IcmpService {
 		try {
 			if (bool) {
 				if (-1 != -257444687 * client.WINDOW_PANE_ID)
-					Class82_Sub8.method893(-257444687 * client.WINDOW_PANE_ID,
+					Class82_Sub8.unloadInterface(-257444687 * client.WINDOW_PANE_ID,
 							-2042512871);
-				for (Interface class298_sub51 = ((Interface) client.aClass437_8841
-						.method5816(2118062141)); class298_sub51 != null; class298_sub51 = ((Interface) client.aClass437_8841
+				for (Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
+						.method5816(2118062141)); class298_sub51 != null; class298_sub51 = ((Interface) client.OPEN_INTERFACES
 						.method5815((byte) 56))) {
 					if (!class298_sub51.method2840(-629325116)) {
-						class298_sub51 = ((Interface) client.aClass437_8841
+						class298_sub51 = ((Interface) client.OPEN_INTERFACES
 								.method5816(1715939754));
 						if (null == class298_sub51) {
 							if (i == -743785313) {
@@ -429,13 +429,13 @@ public class IcmpService_Sub1 extends IcmpService {
 						}
 					}
 					Class173
-							.method1821(class298_sub51, true, false, -113822480);
+							.closeChildren(class298_sub51, true, false, -113822480);
 				}
 				client.WINDOW_PANE_ID = -1785861201;
-				client.aClass437_8841 = new Class437(8);
+				client.OPEN_INTERFACES = new IterableNodeMap(8);
 				Class397.method4912((short) 255);
 				client.WINDOW_PANE_ID = -391544995
-						* Class437.aClass371_5520.anInt4031;
+						* IterableNodeMap.aClass371_5520.anInt4031;
 				Class257.method2453(false, (byte) 8);
 				Class360.method4301(-1204145082);
 				Class14.method341(-257444687 * client.WINDOW_PANE_ID, null,

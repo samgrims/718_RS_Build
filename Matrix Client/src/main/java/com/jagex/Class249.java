@@ -3334,7 +3334,7 @@ public class Class249 implements Interface_ma {
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403)
 				Class422
-						.method5623(-440872681 * class105.anInt1142, 1872852053);
+						.method5623(-440872681 * class105.idHash, 1872852053);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("kk.if(").append(')').toString());

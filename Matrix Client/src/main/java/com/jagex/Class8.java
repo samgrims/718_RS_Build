@@ -151,11 +151,11 @@ public class Class8 {
 	static final void method321(int i, int[] keys, int i_1_) {
 		try {
 			if (Class378.method4671(i, keys, -1347754722)) {
-				IComponentDefinition[] class105s = Class389.aClass119Array4165[i].aClass105Array1405;
+				IComponentDefinition[] class105s = Class389.aClass119Array4165[i].components;
 				for (int i_2_ = 0; i_2_ < class105s.length; i_2_++) {
 					IComponentDefinition class105 = class105s[i_2_];
-					if (class105 != null && class105.aClass438_1152 != null)
-						class105.aClass438_1152.method5834(-341211018);
+					if (class105 != null && class105.anim != null)
+						class105.anim.method5834(-341211018);
 				}
 			}
 		} catch (RuntimeException runtimeexception) {

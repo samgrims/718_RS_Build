@@ -3,7 +3,7 @@ package com.jagex;/* Class73 - Decompiled by JODE
  */
 
 public final class Class73 {
-	Class437 aClass437_687;
+	IterableNodeMap aClass437_687;
 	int anInt688;
 	public static int anInt689;
 
@@ -14,15 +14,15 @@ public final class Class73 {
 	public void method814(int i, int i_0_, int i_1_) {
 		try {
 			if (null == ((Class73) this).aClass437_687)
-				((Class73) this).aClass437_687 = new Class437(-1623767683
+				((Class73) this).aClass437_687 = new IterableNodeMap(-1623767683
 						* ((Class73) this).anInt688);
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((Class73) this).aClass437_687
-					.method5812((long) i));
+					.get((long) i));
 			if (null != class298_sub35)
 				class298_sub35.anInt7394 = -898670337 * i_0_;
 			else {
 				class298_sub35 = new Class298_Sub35(i_0_);
-				((Class73) this).aClass437_687.method5817(class298_sub35,
+				((Class73) this).aClass437_687.put(class298_sub35,
 						(long) i);
 			}
 		} catch (RuntimeException runtimeexception) {
@@ -59,7 +59,7 @@ public final class Class73 {
 	public int method817(int i, int i_5_) {
 		try {
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((Class73) this).aClass437_687
-					.method5812((long) i));
+					.get((long) i));
 			if (null != class298_sub35)
 				return class298_sub35.anInt7394 * -774922497;
 			Class485 class485 = Class422_Sub7.aClass445_8384.method5892(i,
@@ -120,20 +120,20 @@ public final class Class73 {
 			Class403 class403, short i) {
 		try {
 			int i_8_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
-			if (i_8_ != class105.anInt1290 * 1347982601) {
+			if (i_8_ != class105.animation * 1347982601) {
 				if (-1 != i_8_) {
-					if (null == class105.aClass438_1152)
-						class105.aClass438_1152 = new Class438_Sub1();
-					class105.aClass438_1152.method5821(i_8_, -1614086942);
+					if (null == class105.anim)
+						class105.anim = new Class438_Sub1();
+					class105.anim.update(i_8_, -1614086942);
 				} else
-					class105.aClass438_1152 = null;
-				class105.anInt1290 = 1587382585 * i_8_;
+					class105.anim = null;
+				class105.animation = 1587382585 * i_8_;
 				Tradution.method6054(class105, -1503687245);
 			}
 			if (-1 == -1309843523 * class105.anInt1154
 					&& !class119.aBoolean1403)
 				Class365_Sub1_Sub1_Sub5.method4490(-440872681
-						* class105.anInt1142, -1349352488);
+						* class105.idHash, -1349352488);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("cz.eu(").append(')').toString());

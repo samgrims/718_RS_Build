@@ -73,7 +73,7 @@ public class Class473 {
 								if ((1888275831 * class365_sub1_sub1_sub2.anInt10125) > 0
 										&& ((class365_sub1_sub1_sub2.anInt10095 * -412225079) <= client.anInt8884 * 443738891)
 										&& ((1450943713 * class365_sub1_sub1_sub2.anInt10103) < 443738891 * client.anInt8884)) {
-									class438_3_.method5821(-1, -1544973787);
+									class438_3_.update(-1, -1544973787);
 									class365_sub1_sub1_sub2.currentGraphics[i_2_].id = -1313669563;
 									continue;
 								}
@@ -89,7 +89,7 @@ public class Class473 {
 					}
 					if (class438_3_.method5822(1, 2118435651)
 							&& class438_3_.method5832(-618238980)) {
-						class438_3_.method5821(-1, -1633965272);
+						class438_3_.update(-1, -1633965272);
 						class365_sub1_sub1_sub2.currentGraphics[i_2_].id = -1313669563;
 					}
 				}
@@ -104,7 +104,7 @@ public class Class473 {
 										* -412225079 <= client.anInt8884 * 443738891)
 								&& (class365_sub1_sub1_sub2.anInt10103 * 1450943713 < 443738891 * client.anInt8884)) {
 							class365_sub1_sub1_sub2.anIntArray10093 = null;
-							class438_4_.method5821(-1, -1775890638);
+							class438_4_.update(-1, -1775890638);
 							break;
 						}
 					} else if (class391.anInt4182 * 62820525 == 1) {
@@ -120,7 +120,7 @@ public class Class473 {
 					if (class438_4_.method5822(1, 1800694800)
 							&& class438_4_.method5832(2113161557)) {
 						class365_sub1_sub1_sub2.anIntArray10093 = null;
-						class438_4_.method5821(-1, -1505745932);
+						class438_4_.update(-1, -1505745932);
 					}
 				}
 			} while (false);

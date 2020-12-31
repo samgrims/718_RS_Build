@@ -130,7 +130,7 @@ public class Class160 {
 			IComponentDefinition class105 = Class140.method1558(i_3_ << 16 | i_4_, i_5_,
 					-156511736);
 			Class144.method1587((byte) 4);
-			Class298_Sub38 class298_sub38 = client.method2801(class105);
+			Class298_Sub38 class298_sub38 = client.getIComponentSettings(class105);
 			Class147.method1600(class105,
 					class298_sub38.method3497((byte) -10), -1133219011
 							* class298_sub38.anInt7410, 1387537939);

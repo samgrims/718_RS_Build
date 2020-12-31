@@ -835,7 +835,7 @@ public class Class283 {
 								class298_sub53.readUnsignedShort(),
 								-806262033));
 						Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-								.method5812((long) i_82_));
+								.get((long) i_82_));
 						if (class298_sub29 == null
 								&& (class503.aByte6170 & 0x1) > 0
 								&& i_87_ >= 0
@@ -849,7 +849,7 @@ public class Class283 {
 							class365_sub1_sub1_sub2_sub1.anInt10064 = i_82_ * 1714292119;
 							Class298_Sub29 class298_sub29_89_ = (new Class298_Sub29(
 									class365_sub1_sub1_sub2_sub1));
-							client.aClass437_8696.method5817(
+							client.aClass437_8696.put(
 									class298_sub29_89_, (long) i_82_);
 							client.aClass298_Sub29Array8816[((client.anInt8772 += -118843751) * 1962237353) - 1] = class298_sub29_89_;
 							client.anIntArray8699[((client.anInt8703 += -409937273) * -1230451913) - 1] = i_82_;
@@ -938,7 +938,7 @@ public class Class283 {
 								|| (int) class217.aFloat2454 > i_96_) {
 							class365_sub1_sub1_sub2_sub1.method4464(null,
 									1741344135);
-							class298_sub29.method2839(-1460969981);
+							class298_sub29.unlink(-1460969981);
 							bool = true;
 						} else {
 							boolean bool_98_ = true;
@@ -956,7 +956,7 @@ public class Class283 {
 							else {
 								class365_sub1_sub1_sub2_sub1.method4464(null,
 										2025506166);
-								class298_sub29.method2839(-1460969981);
+								class298_sub29.unlink(-1460969981);
 								bool = true;
 							}
 						}
@@ -1011,7 +1011,7 @@ public class Class283 {
 										* -991330803) || (-2146829167
 								* class298_sub1.anInt7155 >= ((Class283) this).anInt3011
 								* -1456212765)))
-					class298_sub1.method2839(-1460969981);
+					class298_sub1.unlink(-1460969981);
 			}
 			for (Class298_Sub1 class298_sub1 = ((Class298_Sub1) Class298_Sub1.aClass453_7162
 					.method5939(1766612795)); null != class298_sub1; class298_sub1 = (Class298_Sub1) Class298_Sub1.aClass453_7162
@@ -1025,16 +1025,16 @@ public class Class283 {
 										* -991330803) || (-2146829167
 								* class298_sub1.anInt7155 >= -1456212765
 								* ((Class283) this).anInt3011)))
-					class298_sub1.method2839(-1460969981);
+					class298_sub1.unlink(-1460969981);
 			}
 			for (Class298_Sub2 class298_sub2 = ((Class298_Sub2) client.aClass437_8685
 					.method5816(1670233657)); null != class298_sub2; class298_sub2 = (Class298_Sub2) client.aClass437_8685
 					.method5815((byte) -33)) {
-				int i_104_ = (int) ((class298_sub2.aLong3188 * 7051297995265073167L >> 28) & 0x3L);
-				int i_105_ = (int) (7051297995265073167L * class298_sub2.aLong3188 & 0x3fffL);
+				int i_104_ = (int) ((class298_sub2.pointer * 7051297995265073167L >> 28) & 0x3L);
+				int i_105_ = (int) (7051297995265073167L * class298_sub2.pointer & 0x3fffL);
 				int i_106_ = i_105_
 						- (-1760580017 * ((Class283) this).aClass341_3006.gameSceneBaseX);
-				int i_107_ = (int) ((class298_sub2.aLong3188 * 7051297995265073167L >> 14) & 0x3fffL);
+				int i_107_ = (int) ((class298_sub2.pointer * 7051297995265073167L >> 14) & 0x3fffL);
 				int i_108_ = i_107_ - 283514611
 						* (((Class283) this).aClass341_3006.gameSceneBaseY);
 				if (null != ((Class283) this).aClass331_3037) {
@@ -1047,7 +1047,7 @@ public class Class283 {
 							|| i_106_ >= (((Class283) this).aClass331_3037.anInt3514) * 1988988347
 							|| i_108_ >= 1340714547 * (((Class283) this).aClass331_3037.anInt3549)) {
 						if (((Class283) this).aClass266_3001 != Class266.aClass266_2850)
-							class298_sub2.method2839(-1460969981);
+							class298_sub2.unlink(-1460969981);
 					} else if ((((Class283) this).aClass331_3037.aClass326ArrayArrayArray3516) != null)
 						((Class283) this).aClass331_3037.method4059(i_104_,
 								i_106_, i_108_, (byte) 116);
@@ -1422,7 +1422,7 @@ public class Class283 {
 				if (-1 != ((Class283) this).anIntArray3033[i_153_]
 						&& null == ((Class283) this).aByteArrayArray3014[i_153_]) {
 					((Class283) this).aByteArrayArray3014[i_153_] = (Class65.aClass243_665
-							.method2289(
+							.getFile(
 									((Class283) this).anIntArray3033[i_153_],
 									0,
 									((Class283) this).anIntArrayArray3042[i_153_],
@@ -1452,7 +1452,7 @@ public class Class283 {
 						&& null == ((Class283) this).aByteArrayArray3044[i_153_]
 						&& ((Class283) this).anIntArray3034[i_153_] != -1) {
 					((Class283) this).aByteArrayArray3044[i_153_] = (Class65.aClass243_665
-							.method2289(
+							.getFile(
 									((Class283) this).anIntArray3034[i_153_],
 									0,
 									((Class283) this).anIntArrayArray3042[i_153_],

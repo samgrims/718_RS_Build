@@ -126,16 +126,16 @@ public class Class77 {
 			int i_5_ = i >> 16;
 			int i_6_ = i & 0xffff;
 			if (Class389.aClass119Array4165[i_5_] == null
-					|| null == (Class389.aClass119Array4165[i_5_].aClass105Array1405[i_6_]))
+					|| null == (Class389.aClass119Array4165[i_5_].components[i_6_]))
 				return false;
-			IComponentDefinition class105 = Class389.aClass119Array4165[i_5_].aClass105Array1405[i_6_];
-			if (i_3_ != -1 || class105.anInt1144 * -1215239439 != 0) {
+			IComponentDefinition class105 = Class389.aClass119Array4165[i_5_].components[i_6_];
+			if (i_3_ != -1 || class105.type * -1215239439 != 0) {
 				for (Class298_Sub37_Sub15 class298_sub37_sub15 = ((Class298_Sub37_Sub15) Class436.aClass453_5480
 						.method5939(1766612795)); class298_sub37_sub15 != null; class298_sub37_sub15 = ((Class298_Sub37_Sub15) Class436.aClass453_5480
 						.method5944(49146))) {
 					if (-887503319
 							* ((Class298_Sub37_Sub15) class298_sub37_sub15).anInt9658 == i_3_
-							&& (-440872681 * class105.anInt1142 == (((Class298_Sub37_Sub15) class298_sub37_sub15).anInt9663)
+							&& (-440872681 * class105.idHash == (((Class298_Sub37_Sub15) class298_sub37_sub15).anInt9663)
 									* -502720623)
 							&& (946432351 * ((Class298_Sub37_Sub15) class298_sub37_sub15).anInt9662 == 58
 									|| (946432351 * ((Class298_Sub37_Sub15) class298_sub37_sub15).anInt9662 == 1007)
@@ -157,10 +157,10 @@ public class Class77 {
 										(((Class298_Sub37_Sub15) class298_sub37_sub15).anInt9663)
 												* -502720623, (byte) -39); null != class105_7_; class105_7_ = Class523
 								.method6331(
-										(Class389.aClass119Array4165[(((class105_7_.anInt1142) * -440872681) >> 16)]),
+										(Class389.aClass119Array4165[(((class105_7_.idHash) * -440872681) >> 16)]),
 										class105_7_, -1653818376)) {
-							if (-440872681 * class105_7_.anInt1142 == -440872681
-									* class105.anInt1142)
+							if (-440872681 * class105_7_.idHash == -440872681
+									* class105.idHash)
 								return true;
 						}
 					}

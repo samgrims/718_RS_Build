@@ -88,11 +88,11 @@ public class Class244 {
 		try {
 			((Class403) class403).anInt5239 -= -391880689;
 			int i_14_ = (((Class403) class403).anIntArray5244[((Class403) class403).anInt5239 * 681479919]);
-			Interface class298_sub51 = ((Interface) client.aClass437_8841
-					.method5812((long) i_14_));
+			Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
+					.get((long) i_14_));
 			if (null != class298_sub51
 					&& 3 == 27137839 * class298_sub51.clipped)
-				Class173.method1821(class298_sub51, true, true, -113822480);
+				Class173.closeChildren(class298_sub51, true, true, -113822480);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("kf.sh(").append(')').toString());
@@ -177,7 +177,7 @@ public class Class244 {
 								.method3048(((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7447);
 						((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7447 = null;
 					}
-					class298_sub41.method2839(-1460969981);
+					class298_sub41.unlink(-1460969981);
 					break;
 				}
 			}

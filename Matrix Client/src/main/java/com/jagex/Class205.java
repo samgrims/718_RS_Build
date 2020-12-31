@@ -71,7 +71,7 @@ public class Class205 {
 	public Class205(Class411 class411, Class429 class429, Class243 class243) {
 		((Class205) this).aClass243_2338 = class243;
 		if (null != ((Class205) this).aClass243_2338)
-			anInt2339 = (((Class205) this).aClass243_2338.method2316(
+			anInt2339 = (((Class205) this).aClass243_2338.filesCount(
 					Class120.aClass120_1421.anInt1460 * -1006924897, 487068051)) * 1946957321;
 		else
 			anInt2339 = 0;

@@ -142,22 +142,22 @@ public class Class117 {
 			boolean bool, short i) {
 		try {
 			int i_13_ = (0 != 1867913305 * class105.anInt1168 ? 1867913305 * class105.anInt1168
-					: -2093041337 * class105.anInt1156);
+					: -2093041337 * class105.width);
 			int i_14_ = (0 != 2053897963 * class105.anInt1169 ? class105.anInt1169 * 2053897963
-					: 457937409 * class105.anInt1162);
-			Class372.method4591(class105s, -440872681 * class105.anInt1142,
+					: 457937409 * class105.height);
+			Class372.method4591(class105s, -440872681 * class105.idHash,
 					i_13_, i_14_, bool, (short) 17804);
-			if (null != class105.aClass105Array1293)
+			if (null != class105.itemSlots)
 				Class372
-						.method4591(class105.aClass105Array1293, -440872681
-								* class105.anInt1142, i_13_, i_14_, bool,
+						.method4591(class105.itemSlots, -440872681
+								* class105.idHash, i_13_, i_14_, bool,
 								(short) -9832);
-			Interface class298_sub51 = ((Interface) client.aClass437_8841
-					.method5812((long) (class105.anInt1142 * -440872681)));
+			Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
+					.get((long) (class105.idHash * -440872681)));
 			if (class298_sub51 != null)
 				Class95.method1033(-1617025021 * class298_sub51.interfaceId,
 						i_13_, i_14_, bool, 1828905535);
-			if (class105 == client.aClass105_8819) {
+			if (class105 == client.GAME_SCREENINTERFACE) {
 				int i_15_ = Class10.anInt129 * 1168366243;
 				int[] is = Class10.anIntArray135;
 				for (int i_16_ = 0; i_16_ < i_15_; i_16_++) {
@@ -169,7 +169,7 @@ public class Class117 {
 				for (int i_17_ = 0; i_17_ < client.anInt8703 * -1230451913; i_17_++) {
 					int i_18_ = client.anIntArray8699[i_17_];
 					Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-							.method5812((long) i_18_));
+							.get((long) i_18_));
 					if (null != class298_sub29)
 						((Entity) class298_sub29.anObject7366)
 								.method4442(i_13_, i_14_, bool, 1554634008);
@@ -203,7 +203,7 @@ public class Class117 {
 			if (null == Class389.aClass119Array4165[i_19_])
 				((Class403) class403).anObjectArray5240[((((Class403) class403).anInt5241 += 969361751) * -203050393) - 1] = "";
 			else {
-				String string = (Class389.aClass119Array4165[i_19_].aClass105Array1405[i_20_].aString1259);
+				String string = (Class389.aClass119Array4165[i_19_].components[i_20_].aString1259);
 				if (string == null)
 					((Class403) class403).anObjectArray5240[((((Class403) class403).anInt5241 += 969361751) * -203050393) - 1] = "";
 				else

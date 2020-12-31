@@ -60,7 +60,7 @@ public final class Class418 {
 			if (Class360.aLong3874 * 122690138525332847L < 0L)
 				Class78.method845(35, 1368689895);
 			else
-				Class460.method5981(false, true, "", "",
+				HashTableIterator.method5981(false, true, "", "",
 						Class360.aLong3874 * 122690138525332847L);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

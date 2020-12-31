@@ -153,24 +153,21 @@ public class Class305 implements Interface27 {
 		try {
 			return ((Class305) this).aHashtable6737.containsKey(string);
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-			.append("mr.p(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("mr.p(").append(')').toString());
 		}
 	}
 
 	public boolean method265(String string, int i) {
 		try {
-			return method3746(string, Class294.class, 891469368);
+			return loadLibrary(string, Class294.class, 891469368);
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-			.append("mr.k(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("mr.k(").append(')').toString());
 		}
 	}
 
-	boolean method3746(String string, Class var_class, int i) {
+	boolean loadLibrary(String string, Class var_class, int i) {
 		try {
-			Class var_class_7_ = (Class) ((Class305) this).aHashtable6738
-					.get(string);
+			Class var_class_7_ = (Class) ((Class305) this).aHashtable6738.get(string);
 			if (var_class_7_ != null) {
 				if (var_class_7_.getClassLoader() != var_class.getClassLoader())
 					return false;
@@ -184,22 +181,19 @@ public class Class305 implements Interface27 {
 					boolean bool;
 					try {
 						file = new File(file.getCanonicalPath());
+						System.load(System.getProperty("java.home")+"\\bin\\jawt.dll");
 						Class var_class_8_ = java.lang.Runtime.class;
 						Class var_class_9_ = java.lang.reflect.AccessibleObject.class;
-						Method method = var_class_9_
-								.getDeclaredMethod("setAccessible",
-										(new Class[] { Boolean.TYPE }));
-						Method method_10_ = (var_class_8_.getDeclaredMethod(
-								"load0", (new Class[] {
+						Method method = var_class_9_.getDeclaredMethod("setAccessible", (new Class[] { Boolean.TYPE }));
+						Method method_10_ = (var_class_8_.getDeclaredMethod("load0", (new Class[] {
 										java.lang.Class.class,
 										java.lang.String.class })));
-						method
-						.invoke(method_10_,
-								new Object[] { Boolean.TRUE });
+						method.invoke(method_10_, new Object[] { Boolean.TRUE });
 						method_10_.invoke(Runtime.getRuntime(), new Object[] {
-							var_class, file.getPath() });
-						method.invoke(method_10_,
-								new Object[] { Boolean.FALSE });
+							var_class, file.getPath()
+						});
+
+						method.invoke(method_10_, new Object[] { Boolean.FALSE });
 						((Class305) this).aHashtable6738.put(string, var_class);
 						bool = true;
 					} catch (NoSuchMethodException nosuchmethodexception) {
@@ -547,11 +541,11 @@ public class Class305 implements Interface27 {
 	}
 
 	public boolean method270(String string) {
-		return method3746(string, Class294.class, 156464109);
+		return loadLibrary(string, Class294.class, 156464109);
 	}
 
 	public boolean method267(String string) {
-		return method3746(string, Class294.class, 783446283);
+		return loadLibrary(string, Class294.class, 783446283);
 	}
 
 	public boolean method3747(String string, int i) {

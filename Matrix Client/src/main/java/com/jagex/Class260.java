@@ -81,7 +81,7 @@ public class Class260 {
 				Tradution.method6054(class105, 1064187264);
 				if (class105.anInt1154 * -1309843523 == -1
 						&& !class119.aBoolean1403)
-					Class85.method958(-440872681 * class105.anInt1142, i_2_,
+					Class85.method958(-440872681 * class105.idHash, i_2_,
 							(byte) 1);
 			}
 		} catch (RuntimeException runtimeexception) {

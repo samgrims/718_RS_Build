@@ -24,14 +24,14 @@ public abstract class Class_v extends Class298 {
 			Player class365_sub1_sub1_sub2_sub2, byte i) {
 		try {
 			Class298_Sub41 class298_sub41 = ((Class298_Sub41) (Class298_Sub41.aClass437_7440
-					.method5812((long) (1888274983 * class365_sub1_sub1_sub2_sub2.anInt10064))));
+					.get((long) (1888274983 * class365_sub1_sub1_sub2_sub2.anInt10064))));
 			if (null != class298_sub41) {
 				if (null != (((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7447)) {
 					Class285.aClass298_Sub19_Sub4_3083
 							.method3048(((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7447);
 					((Class298_Sub41) class298_sub41).aClass298_Sub19_Sub2_7447 = null;
 				}
-				class298_sub41.method2839(-1460969981);
+				class298_sub41.unlink(-1460969981);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

@@ -61,7 +61,7 @@ final class Class393 implements Runnable {
 			if (class105.anInt1154 * -1309843523 == -1
 					&& !class119.aBoolean1403)
 				Class422
-						.method5623(class105.anInt1142 * -440872681, 2026838544);
+						.method5623(class105.idHash * -440872681, 2026838544);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("qg.hx(").append(')').toString());

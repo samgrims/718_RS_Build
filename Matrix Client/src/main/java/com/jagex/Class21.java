@@ -31,10 +31,10 @@ public class Class21 {
 			int i_5_ = (((Class403) class403).anIntArray5244[681479919 * ((Class403) class403).anInt5239 + 1]);
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403) {
-				Class298_Sub50.method3567(-440872681 * class105.anInt1142,
+				Class298_Sub50.method3567(-440872681 * class105.idHash,
 						1388671560);
-				Class509.method6286(-440872681 * class105.anInt1142, 106150101);
-				Class70.method808(class105.anInt1142 * -440872681, 2057190103);
+				Class509.method6286(-440872681 * class105.idHash, 106150101);
+				Class70.method808(class105.idHash * -440872681, 2057190103);
 			}
 			if (-1 == i_4_) {
 				class105.anInt1184 = -1530138943;
@@ -56,9 +56,9 @@ public class Class21 {
 				if (-692202853 * class105.anInt1221 > 0)
 					class105.anInt1284 = (class105.anInt1284 * 237251296
 							/ (class105.anInt1221 * -692202853) * -1066050969);
-				else if (1769572195 * class105.anInt1253 > 0)
+				else if (1769572195 * class105.baseWidth > 0)
 					class105.anInt1284 = (237251296 * class105.anInt1284
-							/ (class105.anInt1253 * 1769572195) * -1066050969);
+							/ (class105.baseWidth * 1769572195) * -1066050969);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

@@ -141,7 +141,7 @@ public abstract class Class323 {
 	static final void method3947(IComponentDefinition class105, Class119 class119,
 			Class403 class403, int i) {
 		try {
-			if (4 == class105.anInt1144 * -1215239439)
+			if (4 == class105.type * -1215239439)
 				Class165.method1781(class105, class119, class403, (short) 8629);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

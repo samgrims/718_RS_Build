@@ -46,7 +46,7 @@ public class Class341 {
 			int i_2_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
 			IComponentDefinition class105 = Class50.getIComponentDefinitions(i_2_, (byte) -13);
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = -749038817
-					* class105.anInt1155;
+					* class105.y;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("of.qq(").append(')').toString());
@@ -321,7 +321,7 @@ public class Class341 {
 
 	static void method4142(int i, int i_21_, IComponentDefinition class105, int i_22_) {
 		try {
-			int i_23_ = class105.anInt1156 * -2093041337 + i;
+			int i_23_ = class105.width * -2093041337 + i;
 			int i_24_ = 15 + i_21_;
 			if (client.aBoolean8667) {
 				int i_25_ = -256;

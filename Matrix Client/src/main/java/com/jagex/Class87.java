@@ -4,7 +4,7 @@ package com.jagex;/* Class87 - Decompiled by JODE
 
 public class Class87 {
 	static short aShort792;
-	public static Class437 aClass437_793;
+	public static IterableNodeMap aClass437_793;
 	public static Class94[] aClass94Array794;
 	static Class80[] aClass80Array795;
 	public static Interface23 anInterface23_796;
@@ -23,7 +23,7 @@ public class Class87 {
 	}
 
 	static {
-		aClass437_793 = new Class437(32);
+		aClass437_793 = new IterableNodeMap(32);
 		anInt803 = 2029434363;
 		anInt800 = 0;
 		anInt801 = 0;
@@ -98,7 +98,7 @@ public class Class87 {
 						.method6251((831522399 * (Class132.anInt1508)),
 								-1080440130)
 						: null);
-				if (client.method2801(class105).method3495(1299208806)
+				if (client.getIComponentSettings(class105).method3495(1299208806)
 						&& 0 != (Class298.anInt3192 * -112110875 & 0x20)
 						&& (null == class497 || (class105.method1117(
 								Class132.anInt1508 * 831522399,
@@ -118,10 +118,10 @@ public class Class87 {
 									class105.anInt1280 * -1232467723,
 									0L,
 									class105.anInt1154 * -1309843523,
-									-440872681 * class105.anInt1142,
+									-440872681 * class105.idHash,
 									true,
 									false,
-									(long) (class105.anInt1154 * -1309843523 << 32 | class105.anInt1142
+									(long) (class105.anInt1154 * -1309843523 << 32 | class105.idHash
 											* -440872681), false, -1876457786);
 			}
 			for (int i_8_ = 9; i_8_ >= 5; i_8_--) {
@@ -137,11 +137,11 @@ public class Class87 {
 									class105.anInt1280 * -1232467723,
 									(long) (1 + i_8_),
 									-1309843523 * class105.anInt1154,
-									-440872681 * class105.anInt1142,
+									-440872681 * class105.idHash,
 									true,
 									false,
 									(long) (-1309843523 * class105.anInt1154 << 32 | -440872681
-											* class105.anInt1142), false,
+											* class105.idHash), false,
 									-1971978132);
 			}
 			String string = Class88.method977(class105, -1338609331);
@@ -155,11 +155,11 @@ public class Class87 {
 								-1232467723 * class105.anInt1280,
 								0L,
 								-1309843523 * class105.anInt1154,
-								class105.anInt1142 * -440872681,
+								class105.idHash * -440872681,
 								true,
 								false,
 								(long) ((class105.anInt1154 * -1309843523 << 32) | -440872681
-										* class105.anInt1142), false,
+										* class105.idHash), false,
 								-1797794884);
 			for (int i_9_ = 4; i_9_ >= 0; i_9_--) {
 				String string_10_ = Class380.method4682(class105, i_9_,
@@ -175,13 +175,13 @@ public class Class87 {
 									class105.anInt1280 * -1232467723,
 									(long) (1 + i_9_),
 									-1309843523 * class105.anInt1154,
-									-440872681 * class105.anInt1142,
+									-440872681 * class105.idHash,
 									true,
 									false,
-									(long) (class105.anInt1154 * -1309843523 << 32 | class105.anInt1142
+									(long) (class105.anInt1154 * -1309843523 << 32 | class105.idHash
 											* -440872681), false, -1801587230);
 			}
-			if (client.method2801(class105).method3492((byte) -120)) {
+			if (client.getIComponentSettings(class105).method3492((byte) -120)) {
 				if (class105.aString1230 != null)
 					Class234
 							.method2174(
@@ -192,11 +192,11 @@ public class Class87 {
 									-1232467723 * class105.anInt1280,
 									0L,
 									class105.anInt1154 * -1309843523,
-									-440872681 * class105.anInt1142,
+									-440872681 * class105.idHash,
 									true,
 									false,
 									(long) (-1309843523 * class105.anInt1154 << 32 | -440872681
-											* class105.anInt1142), false,
+											* class105.idHash), false,
 									-1225913379);
 				else
 					Class234
@@ -211,11 +211,11 @@ public class Class87 {
 									class105.anInt1280 * -1232467723,
 									0L,
 									-1309843523 * class105.anInt1154,
-									-440872681 * class105.anInt1142,
+									-440872681 * class105.idHash,
 									true,
 									false,
 									(long) (-1309843523 * class105.anInt1154 << 32 | -440872681
-											* class105.anInt1142), false,
+											* class105.idHash), false,
 									-1304653626);
 			}
 		} catch (RuntimeException runtimeexception) {

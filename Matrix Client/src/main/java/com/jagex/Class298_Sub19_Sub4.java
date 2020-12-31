@@ -351,7 +351,7 @@ public class Class298_Sub19_Sub4 extends Class298_Sub19 {
 	}
 
 	public final synchronized void method3048(Class298_Sub19 class298_sub19) {
-		class298_sub19.method2839(-1460969981);
+		class298_sub19.unlink(-1460969981);
 	}
 
 	Class298_Sub19 method2939() {
@@ -370,7 +370,7 @@ public class Class298_Sub19_Sub4 extends Class298_Sub19 {
 	}
 
 	void method3049(Class298_Sub22 class298_sub22) {
-		class298_sub22.method2839(-1460969981);
+		class298_sub22.unlink(-1460969981);
 		class298_sub22.method3055();
 		Class298 class298 = (((Class298_Sub19_Sub4) this).aClass458_9267.aClass298_5668.aClass298_3187);
 		if (class298 == ((Class298_Sub19_Sub4) this).aClass458_9267.aClass298_5668)

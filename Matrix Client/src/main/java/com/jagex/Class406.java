@@ -34,7 +34,7 @@ public final class Class406 {
 			if (null == Class389.aClass119Array4165[i_1_])
 				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = 0;
 			else
-				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = (Class389.aClass119Array4165[i_1_].aClass105Array1405[i_2_].anInt1141)
+				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = (Class389.aClass119Array4165[i_1_].components[i_2_].anInt1141)
 						* -914988669;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -54,7 +54,7 @@ public final class Class406 {
 			for (int i_4_ = 0; i_4_ < client.anInt8708 * -1508392173; i_4_++) {
 				int i_5_ = client.anIntArray8709[i_4_];
 				Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-						.method5812((long) i_5_));
+						.get((long) i_5_));
 				NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 				if (-1402769421 * class365_sub1_sub1_sub2_sub1.anInt10075 != client.anInt8707 * 440189755) {
 					if (Class436.aBoolean5478
@@ -65,7 +65,7 @@ public final class Class406 {
 						Class244.method2330(class365_sub1_sub1_sub2_sub1,
 								(byte) 35);
 					class365_sub1_sub1_sub2_sub1.method4464(null, 1734282756);
-					class298_sub29.method2839(-1460969981);
+					class298_sub29.unlink(-1460969981);
 					bool_3_ = true;
 				}
 			}
@@ -97,7 +97,7 @@ public final class Class406 {
 			}
 			for (int i_9_ = 0; i_9_ < -1230451913 * client.anInt8703; i_9_++) {
 				if (client.aClass437_8696
-						.method5812((long) client.anIntArray8699[i_9_]) == null) {
+						.get((long) client.anIntArray8699[i_9_]) == null) {
 					/*throw new RuntimeException(new StringBuilder().append(i_9_)
 							.append(" ").append(client.anInt8703 * -1230451913)
 							.toString());*/

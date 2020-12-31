@@ -45,27 +45,27 @@ public class IComponentDefinition {
 	public static boolean aBoolean1139;
 	public int anInt1140;
 	public int anInt1141;
-	public int anInt1142 = -533296807;
-	public int anInt1143;
-	public int anInt1144;
+	public int idHash = -533296807;
+	public int x;
+	public int type;
 	public int anInt1145;
-	public byte aByte1146;
-	public byte aByte1147;
-	public byte aByte1148;
-	public byte aByte1149;
+	public byte aspectXType;
+	public byte aspectYType;
+	public byte aspectWidthType;
+	public byte aspectHeightType;
 	public Object[] anObjectArray1150;
 	public int anInt1151;
-	public Class438 aClass438_1152;
-	public int anInt1153;
+	public Class438 anim;
+	public int baseHeight;
 	public int anInt1154 = 263105643;
-	public int anInt1155;
-	public int anInt1156;
+	public int y;
+	public int width;
 	public Object[] anObjectArray1157;
-	public int anInt1158;
-	public int anInt1159;
-	public int anInt1160;
-	public boolean aBoolean1161;
-	public int anInt1162;
+	public int aspectX;
+	public int basePositionY;
+	public int parent;
+	public boolean hidden;
+	public int height;
 	public int anInt1163;
 	public Object[] anObjectArray1164;
 	public boolean aBoolean1165;
@@ -78,7 +78,7 @@ public class IComponentDefinition {
 	public Object[] anObjectArray1172;
 	public int anInt1173;
 	public boolean aBoolean1174;
-	public int anInt1175;
+	public int spriteId;
 	public int anInt1176;
 	public Object[] anObjectArray1177;
 	public int anInt1178;
@@ -113,9 +113,9 @@ public class IComponentDefinition {
 	public int anInt1207;
 	public int anInt1208;
 	public Object[] anObjectArray1209;
-	public int anInt1210;
-	public boolean aBoolean1211;
-	public String aString1212;
+	public int fontId;
+	public boolean monospaced;
+	public String text;
 	public boolean aBoolean1213;
 	public int anInt1214;
 	public int anInt1215;
@@ -145,7 +145,7 @@ public class IComponentDefinition {
 	public int anInt1239;
 	public Object[] anObjectArray1240;
 	public int anInt1241;
-	public int anInt1242;
+	public int aspectY;
 	public Object[] anObjectArray1243;
 	public Object[] anObjectArray1244;
 	public Object[] anObjectArray1245;
@@ -156,7 +156,7 @@ public class IComponentDefinition {
 	public Object[] anObjectArray1250;
 	public int anInt1251;
 	public int anInt1252;
-	public int anInt1253;
+	public int baseWidth;
 	public int[] anIntArray1254;
 	public Object[] anObjectArray1255;
 	public int[] anIntArray1256;
@@ -182,21 +182,21 @@ public class IComponentDefinition {
 	public int[] anIntArray1276;
 	public Object[] anObjectArray1277;
 	public int anInt1278;
-	Class437 aClass437_1279;
+	IterableNodeMap aClass437_1279;
 	public int anInt1280;
 	public int anInt1281;
 	public int anInt1282;
 	public int anInt1283;
 	public int anInt1284;
 	public Object[] anObjectArray1285;
-	public int anInt1286;
+	public int basePositionX;
 	public Object[] anObjectArray1287;
 	public int anInt1288;
 	public int anInt1289;
-	public int anInt1290;
+	public int animation;
 	public Object[] anObjectArray1291;
 	public IComponentDefinition[] aClass105Array1292;
-	public IComponentDefinition[] aClass105Array1293;
+	public IComponentDefinition[] itemSlots;
 	public boolean aBoolean1294;
 	public boolean aBoolean1295;
 	static Class348 aClass348_1296;
@@ -217,7 +217,7 @@ public class IComponentDefinition {
 			if (null == ((IComponentDefinition) this).aClass437_1279)
 				return string;
 			Class298_Sub29 class298_sub29 = ((Class298_Sub29) ((IComponentDefinition) this).aClass437_1279
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub29 == null)
 				return string;
 			return (String) class298_sub29.anObject7366;
@@ -227,44 +227,44 @@ public class IComponentDefinition {
 		}
 	}
 
-	void method1110(RsByteBuffer class298_sub53, int i) {
+	void readValues(RsByteBuffer class298_sub53, int i) {
 		try {
 			int i_1_ = class298_sub53.readUnsignedByte();
 			if (i_1_ == 255)
 				i_1_ = -1;
-			anInt1144 = class298_sub53.readUnsignedByte() * -800405999;
-			if ((-1215239439 * anInt1144 & 0x80) != 0) {
-				anInt1144 = -800405999 * (anInt1144 * -1215239439 & 0x7f);
+			type = class298_sub53.readUnsignedByte() * -800405999;
+			if ((-1215239439 * type & 0x80) != 0) {
+				type = -800405999 * (type * -1215239439 & 0x7f);
 				aString1259 = class298_sub53.readString(-53135184);
 			}
 			anInt1145 = class298_sub53.readUnsignedShort() * -680446123;
-			anInt1286 = class298_sub53.readShort(1719356411) * 2145953887;
-			anInt1159 = class298_sub53.readShort(2010058143) * 1215865909;
-			anInt1253 = class298_sub53.readUnsignedShort() * -478399925;
-			anInt1153 = class298_sub53.readUnsignedShort() * -1661995333;
-			aByte1148 = class298_sub53.readByte(-12558881);
-			aByte1149 = class298_sub53.readByte(-12558881);
-			aByte1146 = class298_sub53.readByte(-12558881);
-			aByte1147 = class298_sub53.readByte(-12558881);
-			anInt1160 = class298_sub53.readUnsignedShort() * -1171161349;
-			if (65535 == anInt1160 * 1573706803)
-				anInt1160 = 1171161349;
+			basePositionX = class298_sub53.readShort(1719356411) * 2145953887;
+			basePositionY = class298_sub53.readShort(2010058143) * 1215865909;
+			baseWidth = class298_sub53.readUnsignedShort() * -478399925;
+			baseHeight = class298_sub53.readUnsignedShort() * -1661995333;
+			aspectWidthType = class298_sub53.readByte(-12558881);
+			aspectHeightType = class298_sub53.readByte(-12558881);
+			aspectXType = class298_sub53.readByte(-12558881);
+			aspectYType = class298_sub53.readByte(-12558881);
+			parent = class298_sub53.readUnsignedShort() * -1171161349;
+			if (65535 == parent * 1573706803)
+				parent = 1171161349;
 			else
-				anInt1160 = (anInt1160 * 1573706803 + (-440872681 * anInt1142 & ~0xffff))
+				parent = (parent * 1573706803 + (-440872681 * idHash & ~0xffff))
 						* -1171161349;
 			int i_2_ = class298_sub53.readUnsignedByte();
-			aBoolean1161 = 0 != (i_2_ & 0x1);
+			hidden = 0 != (i_2_ & 0x1);
 			if (i_1_ >= 0)
 				aBoolean1165 = (i_2_ & 0x2) != 0;
-			if (0 == anInt1144 * -1215239439) {
+			if (0 == type * -1215239439) {
 				anInt1168 = class298_sub53.readUnsignedShort()
 						* -1609060375;
 				anInt1169 = class298_sub53.readUnsignedShort() * -1638942269;
 				if (i_1_ < 0)
 					aBoolean1165 = class298_sub53.readUnsignedByte() == 1;
 			}
-			if (-1215239439 * anInt1144 == 5) {
-				anInt1175 = class298_sub53.readInt((byte) 91) * 1986266571;
+			if (-1215239439 * type == 5) {
+				spriteId = class298_sub53.readInt((byte) 91) * 1986266571;
 				anInt1306 = class298_sub53.readUnsignedShort() * -216431639;
 				int i_3_ = class298_sub53.readUnsignedByte();
 				aBoolean1196 = 0 != (i_3_ & 0x1);
@@ -278,7 +278,7 @@ public class IComponentDefinition {
 				if (i_1_ >= 3)
 					aBoolean1183 = class298_sub53.readUnsignedByte() == 1;
 			}
-			if (6 == -1215239439 * anInt1144) {
+			if (6 == -1215239439 * type) {
 				anInt1184 = -1530138943;
 				anInt1151 = class298_sub53.readBigSmart(1235052657) * -1825442367;
 				int i_4_ = class298_sub53.readUnsignedByte();
@@ -309,21 +309,21 @@ public class IComponentDefinition {
 					anInt1284 = class298_sub53.readShort(1622637773)
 							* -1066050969;
 				}
-				anInt1290 = class298_sub53.readBigSmart(1235052657) * 1587382585;
-				if (0 != aByte1148)
+				animation = class298_sub53.readBigSmart(1235052657) * 1587382585;
+				if (0 != aspectWidthType)
 					anInt1221 = class298_sub53.readUnsignedShort() * 1811727251;
-				if (0 != aByte1149)
+				if (0 != aspectHeightType)
 					anInt1198 = class298_sub53.readUnsignedShort() * 1572578003;
 			}
-			if (anInt1144 * -1215239439 == 4) {
-				anInt1210 = class298_sub53.readBigSmart(1235052657) * -2074006897;
+			if (type * -1215239439 == 4) {
+				fontId = class298_sub53.readBigSmart(1235052657) * -2074006897;
 				if (i_1_ >= 2)
-					aBoolean1211 = class298_sub53.readUnsignedByte() == 1;
-				aString1212 = class298_sub53.readString(332948556);
-				if(aString1212.toLowerCase().contains("runescape")) {
-					aString1212 = aString1212.replace("runescape", "Matrix");
-					aString1212 = aString1212.replace("RuneScape", "Matrix");
-					aString1212 = aString1212.replace("Runescape", "Matrix");
+					monospaced = class298_sub53.readUnsignedByte() == 1;
+				text = class298_sub53.readString(332948556);
+				if(text.toLowerCase().contains("runescape")) {
+					text = text.replace("runescape", "Matrix");
+					text = text.replace("RuneScape", "Matrix");
+					text = text.replace("Runescape", "Matrix");
 				}
 				anInt1191 = class298_sub53.readUnsignedByte() * 1629063197;
 				anInt1214 = class298_sub53.readUnsignedByte()
@@ -336,12 +336,12 @@ public class IComponentDefinition {
 					anInt1217 = class298_sub53.readUnsignedByte()
 							* -1455284437;
 			}
-			if (3 == -1215239439 * anInt1144) {
+			if (3 == -1215239439 * type) {
 				anInt1170 = class298_sub53.readInt((byte) -80) * -695431873;
 				aBoolean1171 = class298_sub53.readUnsignedByte() == 1;
 				anInt1223 = class298_sub53.readUnsignedByte() * 728904583;
 			}
-			if (9 == -1215239439 * anInt1144) {
+			if (9 == -1215239439 * type) {
 				anInt1173 = class298_sub53.readUnsignedByte() * -1041514725;
 				anInt1170 = class298_sub53.readInt((byte) -33) * -695431873;
 				aBoolean1174 = class298_sub53.readUnsignedByte() == 1;
@@ -419,14 +419,14 @@ public class IComponentDefinition {
 				for (int i_19_ = 0; i_19_ < i_18_; i_19_++) {
 					int i_20_ = class298_sub53.read24BitUnsignedInteger((byte) 10);
 					int i_21_ = class298_sub53.readInt((byte) 29);
-					((IComponentDefinition) this).aClass437_1279.method5817(
+					((IComponentDefinition) this).aClass437_1279.put(
 							new Class298_Sub35(i_21_), (long) i_20_);
 				}
 				int i_22_ = class298_sub53.readUnsignedByte();
 				for (int i_23_ = 0; i_23_ < i_22_; i_23_++) {
 					int i_24_ = class298_sub53.read24BitUnsignedInteger((byte) 19);
 					String string = class298_sub53.readJagString(681479919);
-					((IComponentDefinition) this).aClass437_1279.method5817(
+					((IComponentDefinition) this).aClass437_1279.put(
 							new Class298_Sub29(string), (long) i_24_);
 				}
 			}
@@ -488,7 +488,7 @@ public class IComponentDefinition {
 	public Class264 method1112(Class197 class197, Interface10 interface10, int i) {
 		try {
 			Class264 class264 = ((Class264) class197.method1883(interface10,
-					1508815983 * anInt1210, false, aBoolean1211, -2063324548));
+					1508815983 * fontId, false, monospaced, -2063324548));
 			aBoolean1139 = class264 == null;
 			return class264;
 		} catch (RuntimeException runtimeexception) {
@@ -501,7 +501,7 @@ public class IComponentDefinition {
 			byte i) {
 		try {
 			Class505 class505 = class197.method1879(interface10,
-					anInt1210 * 1508815983, 522165232);
+					fontId * 1508815983, 522165232);
 			aBoolean1139 = null == class505;
 			return class505;
 		} catch (RuntimeException runtimeexception) {
@@ -547,10 +547,10 @@ public class IComponentDefinition {
 
 	public Class117 method1116(GraphicsToolkit class_ra, int i) {
 		try {
-			long l = ((long) (anInt1142 * -440872681) << 32 | (long) (-1309843523 * anInt1154) & 0xffffffffL);
+			long l = ((long) (idHash * -440872681) << 32 | (long) (-1309843523 * anInt1154) & 0xffffffffL);
 			Class117 class117 = (Class117) aClass348_1136.method4184(l);
 			if (class117 != null) {
-				if (anInt1175 * 1411971043 != ((Class117) class117).anInt1398 * 1509093479) {
+				if (spriteId * 1411971043 != ((Class117) class117).anInt1398 * 1509093479) {
 					aClass348_1136.method4193(l);
 					class117 = null;
 				}
@@ -558,7 +558,7 @@ public class IComponentDefinition {
 					return class117;
 			}
 			IndexedImage class89 = IndexedImage.method987(Class124.aClass243_1480,
-					1411971043 * anInt1175, 0);
+					1411971043 * spriteId, 0);
 			if (null == class89)
 				return null;
 			int i_31_ = class89.anInt812 + class89.anInt815 + class89.anInt814;
@@ -587,7 +587,7 @@ public class IComponentDefinition {
 			if (null == class_ta)
 				return null;
 			class117 = new Class117(i_31_, i_32_, is_33_, is, class_ta,
-					1411971043 * anInt1175);
+					1411971043 * spriteId);
 			aClass348_1136.method4194(class117, l);
 			return class117;
 		} catch (RuntimeException runtimeexception) {
@@ -601,7 +601,7 @@ public class IComponentDefinition {
 			if (null == ((IComponentDefinition) this).aClass437_1279)
 				return i_39_;
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((IComponentDefinition) this).aClass437_1279
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub35 == null)
 				return i_39_;
 			return class298_sub35.anInt7394 * -774922497;
@@ -629,15 +629,15 @@ public class IComponentDefinition {
 	public void method1119(int i, String string, byte i_43_) {
 		try {
 			if (null == ((IComponentDefinition) this).aClass437_1279) {
-				((IComponentDefinition) this).aClass437_1279 = new Class437(16);
-				((IComponentDefinition) this).aClass437_1279.method5817(new Class298_Sub29(
+				((IComponentDefinition) this).aClass437_1279 = new IterableNodeMap(16);
+				((IComponentDefinition) this).aClass437_1279.put(new Class298_Sub29(
 						string), (long) i);
 			} else {
 				Class298_Sub29 class298_sub29 = ((Class298_Sub29) ((IComponentDefinition) this).aClass437_1279
-						.method5812((long) i));
+						.get((long) i));
 				if (null != class298_sub29)
-					class298_sub29.method2839(-1460969981);
-				((IComponentDefinition) this).aClass437_1279.method5817(new Class298_Sub29(
+					class298_sub29.unlink(-1460969981);
+				((IComponentDefinition) this).aClass437_1279.put(new Class298_Sub29(
 						string), (long) i);
 			}
 		} catch (RuntimeException runtimeexception) {
@@ -754,9 +754,9 @@ public class IComponentDefinition {
 		try {
 			if (((IComponentDefinition) this).aClass437_1279 != null) {
 				Class298 class298 = ((IComponentDefinition) this).aClass437_1279
-						.method5812((long) i);
+						.get((long) i);
 				if (class298 != null)
-					class298.method2839(-1460969981);
+					class298.unlink(-1460969981);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -913,14 +913,14 @@ public class IComponentDefinition {
 	public void method1125(int i, int i_58_, int i_59_) {
 		try {
 			if (null == ((IComponentDefinition) this).aClass437_1279) {
-				((IComponentDefinition) this).aClass437_1279 = new Class437(16);
-				((IComponentDefinition) this).aClass437_1279.method5817(new Class298_Sub35(
+				((IComponentDefinition) this).aClass437_1279 = new IterableNodeMap(16);
+				((IComponentDefinition) this).aClass437_1279.put(new Class298_Sub35(
 						i_58_), (long) i);
 			} else {
 				Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((IComponentDefinition) this).aClass437_1279
-						.method5812((long) i));
+						.get((long) i));
 				if (class298_sub35 == null)
-					((IComponentDefinition) this).aClass437_1279.method5817(
+					((IComponentDefinition) this).aClass437_1279.put(
 							new Class298_Sub35(i_58_), (long) i);
 				else
 					class298_sub35.anInt7394 = -898670337 * i_58_;
@@ -968,22 +968,22 @@ public class IComponentDefinition {
 
 	public IComponentDefinition() {
 		anInt1145 = 0;
-		aByte1146 = (byte) 0;
-		aByte1147 = (byte) 0;
-		aByte1148 = (byte) 0;
-		aByte1149 = (byte) 0;
-		anInt1286 = 0;
-		anInt1159 = 0;
-		anInt1253 = 0;
-		anInt1153 = 0;
-		anInt1143 = 0;
-		anInt1155 = 0;
-		anInt1156 = 0;
-		anInt1162 = 0;
-		anInt1158 = 349940087;
-		anInt1242 = 153098785;
-		anInt1160 = 1171161349;
-		aBoolean1161 = false;
+		aspectXType = (byte) 0;
+		aspectYType = (byte) 0;
+		aspectWidthType = (byte) 0;
+		aspectHeightType = (byte) 0;
+		basePositionX = 0;
+		basePositionY = 0;
+		baseWidth = 0;
+		baseHeight = 0;
+		x = 0;
+		y = 0;
+		width = 0;
+		height = 0;
+		aspectX = 349940087;
+		aspectY = 153098785;
+		parent = 1171161349;
+		hidden = false;
 		anInt1179 = -2021607495;
 		anInt1163 = -1830595391;
 		anInt1272 = 1122372539;
@@ -997,7 +997,7 @@ public class IComponentDefinition {
 		anInt1223 = 0;
 		anInt1173 = -1041514725;
 		aBoolean1174 = false;
-		anInt1175 = -1986266571;
+		spriteId = -1986266571;
 		anInt1306 = 0;
 		aBoolean1196 = false;
 		anInt1178 = 0;
@@ -1020,9 +1020,9 @@ public class IComponentDefinition {
 		aBoolean1199 = false;
 		aBoolean1186 = false;
 		anInt1201 = -1251584190;
-		anInt1210 = 2074006897;
-		aBoolean1211 = true;
-		aString1212 = "";
+		fontId = 2074006897;
+		monospaced = true;
+		text = "";
 		anInt1191 = 0;
 		anInt1214 = 0;
 		anInt1124 = 0;
@@ -1044,7 +1044,7 @@ public class IComponentDefinition {
 		aBoolean1213 = false;
 		anInt1283 = 153142767;
 		anInt1289 = -1025047959;
-		anInt1290 = -1587382585;
+		animation = -1587382585;
 		aBoolean1294 = false;
 		aBoolean1295 = false;
 		anInt1215 = -607532293;
@@ -1063,13 +1063,13 @@ public class IComponentDefinition {
 			aBoolean1139 = false;
 			long l = (((aBoolean1180 ? 1L : 0L) << 38)
 					+ (((aBoolean1182 ? 1L : 0L) << 35)
-							+ (long) (anInt1175 * 1411971043) + ((long) (anInt1178 * 547522005) << 36))
+							+ (long) (spriteId * 1411971043) + ((long) (anInt1178 * 547522005) << 36))
 					+ ((aBoolean1181 ? 1L : 0L) << 39) + ((long) (anInt1251 * -2065110161) << 40));
 			Class57 class57 = (Class57) aClass348_1135.method4184(l);
 			if (null != class57)
 				return class57;
 			IndexedImage class89 = IndexedImage.method987(Class124.aClass243_1480,
-					1411971043 * anInt1175, 0);
+					1411971043 * spriteId, 0);
 			if (class89 == null) {
 				aBoolean1139 = true;
 				return null;

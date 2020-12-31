@@ -270,7 +270,7 @@ public class Class60 {
 							.method5650(-184271029) == 2)
 						((Class60) this).aBoolean600 = false;
 					if (((Class60) this).aClass438_593.method5832(-1768742219)) {
-						((Class60) this).aClass438_593.method5821(-1,
+						((Class60) this).aClass438_593.update(-1,
 								-1793536388);
 						((Class60) this).aBoolean592 = false;
 						method704(false, -1, 0, 66091574);
@@ -479,7 +479,7 @@ public class Class60 {
 				Tradution.method6054(class105, -882757286);
 				if (class105.anInt1154 * -1309843523 == -1
 						&& !class119.aBoolean1403)
-					Class440.method5862(class105.anInt1142 * -440872681, i_22_,
+					Class440.method5862(class105.idHash * -440872681, i_22_,
 							227307662);
 			}
 		} catch (RuntimeException runtimeexception) {

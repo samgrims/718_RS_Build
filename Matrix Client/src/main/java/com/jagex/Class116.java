@@ -5,14 +5,14 @@ package com.jagex;/* Class116 - Decompiled by JODE
 public class Class116 {
 	Class298_Sub31[] aClass298_Sub31Array1390;
 	Interface4 anInterface4_1391;
-	Class437 aClass437_1392;
+	IterableNodeMap aClass437_1392;
 
 	public Class298_Sub31 method1263(String string, int i) {
 		try {
 			long l = ((Class116) this).anInterface4_1391.method47(string,
 					(byte) 93);
 			for (Class298_Sub31 class298_sub31 = ((Class298_Sub31) ((Class116) this).aClass437_1392
-					.method5812(l)); null != class298_sub31; class298_sub31 = (Class298_Sub31) ((Class116) this).aClass437_1392
+					.get(l)); null != class298_sub31; class298_sub31 = (Class298_Sub31) ((Class116) this).aClass437_1392
 					.method5813(-1712985598)) {
 				if (((Class298_Sub31) class298_sub31).aString7370
 						.equals(string))
@@ -29,7 +29,7 @@ public class Class116 {
 		try {
 			Class298_Sub31 class298_sub31 = method1266(i, (byte) -123);
 			if (class298_sub31 != null) {
-				class298_sub31.method2839(-1460969981);
+				class298_sub31.unlink(-1460969981);
 				((Class116) this).aClass298_Sub31Array1390[-1836037967
 						* ((Class298_Sub31) class298_sub31).anInt7369] = null;
 			}
@@ -52,14 +52,14 @@ public class Class116 {
 				for (i_3_ = ((Class116) this).aClass298_Sub31Array1390.length; i >= i_3_; i_3_ += i_3_) {
 					/* empty */
 				}
-				((Class116) this).aClass437_1392 = new Class437(i_3_);
+				((Class116) this).aClass437_1392 = new IterableNodeMap(i_3_);
 				for (int i_4_ = 0; i_4_ < ((Class116) this).aClass298_Sub31Array1390.length; i_4_++) {
 					Class298_Sub31 class298_sub31_5_ = ((Class116) this).aClass298_Sub31Array1390[i_4_];
 					if (class298_sub31_5_ != null)
 						((Class116) this).aClass437_1392
-								.method5817(
+								.put(
 										class298_sub31_5_,
-										(class298_sub31_5_.aLong3188 * 7051297995265073167L));
+										(class298_sub31_5_.pointer * 7051297995265073167L));
 				}
 				Class298_Sub31[] class298_sub31s = new Class298_Sub31[i_3_];
 				for (int i_6_ = 0; i_6_ < ((Class116) this).aClass298_Sub31Array1390.length; i_6_++)
@@ -68,7 +68,7 @@ public class Class116 {
 			}
 			((Class298_Sub31) class298_sub31).anInt7369 = -1138163631 * i;
 			((Class298_Sub31) class298_sub31).aString7370 = string;
-			((Class116) this).aClass437_1392.method5817(class298_sub31,
+			((Class116) this).aClass437_1392.put(class298_sub31,
 					((Class116) this).anInterface4_1391.method47(string,
 							(byte) -48));
 			((Class116) this).aClass298_Sub31Array1390[i] = class298_sub31;
@@ -83,7 +83,7 @@ public class Class116 {
 		for (i_7_ = 1; i_7_ < i; i_7_ += i_7_) {
 			/* empty */
 		}
-		((Class116) this).aClass437_1392 = new Class437(i_7_);
+		((Class116) this).aClass437_1392 = new IterableNodeMap(i_7_);
 		((Class116) this).aClass298_Sub31Array1390 = new Class298_Sub31[i_7_];
 		((Class116) this).anInterface4_1391 = interface4;
 	}
@@ -131,7 +131,7 @@ public class Class116 {
 					: ((Class403) class403).aClass390_5246);
 			IComponentDefinition class105 = ((Class390) class390).aClass105_4168;
 			((Class403) class403).anObjectArray5240[((((Class403) class403).anInt5241 += 969361751)
-					* -203050393 - 1)] = class105.aString1212;
+					* -203050393 - 1)] = class105.text;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("es.pf(").append(')').toString());
@@ -182,7 +182,7 @@ public class Class116 {
 							}
 						} else {
 							Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-									.method5812((long) i_11_));
+									.get((long) i_11_));
 							if (null != class298_sub29) {
 								NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 								Class217 class217_21_ = (class365_sub1_sub1_sub2_sub1
@@ -219,8 +219,8 @@ public class Class116 {
 			Class403 class403, byte i) {
 		try {
 			((Class403) class403).anInt5239 -= -1567522756;
-			class105.anInt1286 = (((Class403) class403).anIntArray5244[((Class403) class403).anInt5239 * 681479919]) * 2145953887;
-			class105.anInt1159 = (1215865909 * (((Class403) class403).anIntArray5244[1 + 681479919 * ((Class403) class403).anInt5239]));
+			class105.basePositionX = (((Class403) class403).anIntArray5244[((Class403) class403).anInt5239 * 681479919]) * 2145953887;
+			class105.basePositionY = (1215865909 * (((Class403) class403).anIntArray5244[1 + 681479919 * ((Class403) class403).anInt5239]));
 			int i_22_ = (((Class403) class403).anIntArray5244[681479919 * ((Class403) class403).anInt5239 + 2]);
 			if (i_22_ < 0)
 				i_22_ = 0;
@@ -231,16 +231,16 @@ public class Class116 {
 				i_23_ = 0;
 			else if (i_23_ > 5)
 				i_23_ = 5;
-			class105.aByte1146 = (byte) i_22_;
-			class105.aByte1147 = (byte) i_23_;
+			class105.aspectXType = (byte) i_22_;
+			class105.aspectYType = (byte) i_23_;
 			Tradution.method6054(class105, -1806072234);
 			Class438.method5845(class119, class105, -1959938301);
-			if (0 == class105.anInt1144 * -1215239439)
+			if (0 == class105.type * -1215239439)
 				Class65.method761(class119, class105, false, 112223880);
 			if (class105.anInt1154 * -1309843523 == -1
 					&& !class119.aBoolean1403)
 				Class288
-						.method2729(class105.anInt1142 * -440872681, 1058352947);
+						.method2729(class105.idHash * -440872681, 1058352947);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("es.cy(").append(')').toString());

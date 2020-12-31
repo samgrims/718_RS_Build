@@ -162,7 +162,7 @@ public class Class74 {
 						&& client.anInt8884 * 443738891 % 20 < 10) {
 					if (1 == 958933333 * class19.anInt266) {
 						Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-								.method5812((long) (-841622081 * class19.anInt256))));
+								.get((long) (-841622081 * class19.anInt256))));
 						if (null != class298_sub29) {
 							NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 							Class217 class217 = (class365_sub1_sub1_sub2_sub1

@@ -56,7 +56,7 @@ public class Class372_Sub3 extends Class372 {
 			if (-1309843523 * class105.anInt1154 == -1
 					&& !class119.aBoolean1403)
 				Class422
-						.method5623(-440872681 * class105.anInt1142, 1454915163);
+						.method5623(-440872681 * class105.idHash, 1454915163);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("adx.hq(").append(')').toString());

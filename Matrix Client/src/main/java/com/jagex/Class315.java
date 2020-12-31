@@ -241,7 +241,7 @@ public final class Class315 {
 				int i_69_ = class298_sub53_sub2.readUnsignedShort();
 				if (null != client.aClass437_8685) {
 					Class298_Sub2 class298_sub2 = ((Class298_Sub2) (client.aClass437_8685
-							.method5812((long) (-191892109 * Class375.basePlane << 28
+							.get((long) (-191892109 * Class375.basePlane << 28
 									| i_64_ << 14 | i_66_))));
 					if (class298_sub2 != null) {
 						for (Class298_Sub12 class298_sub12 = ((Class298_Sub12) class298_sub2.aClass453_7166
@@ -249,7 +249,7 @@ public final class Class315 {
 								.method5944(49146)) {
 							if ((class298_sub12.anInt7257 * 1768239597 == (i_67_ & 0x7fff))
 									&& (567630807 * ((Class298_Sub12) class298_sub12).anInt7256 == i_68_)) {
-								class298_sub12.method2839(-1460969981);
+								class298_sub12.unlink(-1460969981);
 								((Class298_Sub12) class298_sub12).anInt7256 = i_69_
 										* -1076181017;
 								Class411.method5576(
@@ -374,7 +374,7 @@ public final class Class315 {
 						i_103_ <<= 2;
 						i_104_ <<= 2;
 						i_108_ <<= 2;
-						Class437
+						IterableNodeMap
 								.method5818(i_102_, i_100_, i_101_, i_97_,
 										i_103_, i_104_, i_93_, i_94_, i_98_,
 										i_99_, i_105_, i_106_, i_107_, i_108_,
@@ -443,11 +443,11 @@ public final class Class315 {
 									.method2630(210266167))) {
 						if (-1 == i_123_) {
 							Class298_Sub37_Sub3 class298_sub37_sub3 = ((Class298_Sub37_Sub3) (client.aClass437_8825
-									.method5812((long) (i_121_ << 16 | i_122_))));
+									.get((long) (i_121_ << 16 | i_122_))));
 							if (class298_sub37_sub3 != null) {
 								((Class298_Sub37_Sub3) class298_sub37_sub3).aClass365_Sub1_Sub1_Sub3_9578
 										.method4480((byte) 26);
-								class298_sub37_sub3.method2839(-1460969981);
+								class298_sub37_sub3.unlink(-1460969981);
 							}
 						} else {
 							int i_127_ = 256 + i_121_ * 512;
@@ -468,7 +468,7 @@ public final class Class315 {
 											-1861382449)
 											- i_124_, i_128_, i_121_, i_121_,
 									i_122_, i_122_, i_126_, false));
-							client.aClass437_8825.method5817(
+							client.aClass437_8825.put(
 									(new Class298_Sub37_Sub3(
 											class365_sub1_sub1_sub3)),
 									(long) (i_121_ << 16 | i_122_));
@@ -528,19 +528,19 @@ public final class Class315 {
 						+ (i_142_ >> 4 & 0x7);
 				int i_146_ = i_145_ + -1760580017 * class341.gameSceneBaseX;
 				Class298_Sub2 class298_sub2 = ((Class298_Sub2) (client.aClass437_8685
-						.method5812((long) (Class375.basePlane * -191892109 << 28
+						.get((long) (Class375.basePlane * -191892109 << 28
 								| i_144_ << 14 | i_146_))));
 				if (class298_sub2 != null) {
 					for (Class298_Sub12 class298_sub12 = (Class298_Sub12) class298_sub2.aClass453_7166
 							.method5939(1766612795); class298_sub12 != null; class298_sub12 = (Class298_Sub12) class298_sub2.aClass453_7166
 							.method5944(49146)) {
 						if ((i_141_ & 0x7fff) == class298_sub12.anInt7257 * 1768239597) {
-							class298_sub12.method2839(-1460969981);
+							class298_sub12.unlink(-1460969981);
 							break;
 						}
 					}
 					if (class298_sub2.aClass453_7166.method5946(-1293494081))
-						class298_sub2.method2839(-1460969981);
+						class298_sub2.unlink(-1460969981);
 					if (i_145_ >= 0
 							&& i_143_ >= 0
 							&& (i_145_ < client.aClass283_8716

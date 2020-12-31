@@ -261,13 +261,13 @@ public class Class455 {
 					class_ra
 							.B(
 									i
-											+ (class105.anInt1156 * -2093041337
+											+ (class105.width * -2093041337
 													* i_37_ >> 7),
 									i_33_
 											+ ((7 - i_36_)
-													* (class105.anInt1162 * 457937409) >> 3),
-									(class105.anInt1156 * -2093041337 >> 7) + 1,
-									(457937409 * class105.anInt1162 >> 3) + 1,
+													* (class105.height * 457937409) >> 3),
+									(class105.width * -2093041337 >> 7) + 1,
+									(457937409 * class105.height >> 3) + 1,
 									i_39_, 0);
 				}
 			}

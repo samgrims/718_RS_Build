@@ -362,7 +362,7 @@ public class Class302_Sub3_Sub1_Sub1 extends Class302_Sub3_Sub1 {
 			if (class182.anIntArray1846 != null) {
 				for (int i_62_ = 0; i_62_ < class182.anIntArray1846.length; i_62_++) {
 					Class298_Sub45 class298_sub45 = ((Class298_Sub45) (Class344.aClass437_3684
-							.method5812((long) class182.anIntArray1846[i_62_])));
+							.get((long) class182.anIntArray1846[i_62_])));
 					while (class298_sub45 != null) {
 						Class190 class190 = ((Class298_Sub45) class298_sub45).aClass190_7514;
 						double d_63_ = (double) (i_31_ - (((Class298_Sub45) class298_sub45).anInt7516)
@@ -439,7 +439,7 @@ public class Class302_Sub3_Sub1_Sub1 extends Class302_Sub3_Sub1 {
 						Class140.method1554(class182.anIntArray1829[i_73_],
 								1300932054);
 						class182.anIntArray1848[i_73_] = (((Class298_Sub35) (Class190.aClass437_1928
-								.method5812((long) class182.anIntArray1829[i_73_]))).anInt7394)
+								.get((long) class182.anIntArray1829[i_73_]))).anInt7394)
 								* -774922497;
 					}
 				}

@@ -217,7 +217,7 @@ public class Class132 {
 			if (Class389.aClass119Array4165[i_20_] == null)
 				((Class403) class403).anObjectArray5240[((((Class403) class403).anInt5241 += 969361751) * -203050393) - 1] = "";
 			else {
-				String string = (Class389.aClass119Array4165[i_20_].aClass105Array1405[0].aString1259);
+				String string = (Class389.aClass119Array4165[i_20_].components[0].aString1259);
 				if (null == string)
 					((Class403) class403).anObjectArray5240[((((Class403) class403).anInt5241 += 969361751) * -203050393) - 1] = "";
 				else

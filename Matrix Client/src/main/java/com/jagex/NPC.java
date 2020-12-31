@@ -295,7 +295,7 @@ public class NPC extends Entity {
 			if (aClass438_10078.method5819((byte) -128)
 					&& (aClass438_10078.method5820(1057375366).anInt4189 * -882531177) == 1) {
 				anIntArray10093 = null;
-				aClass438_10078.method5821(-1, -1581174742);
+				aClass438_10078.update(-1, -1581174742);
 			}
 			for (int i_18_ = 0; i_18_ < currentGraphics.length; i_18_++) {
 				if (currentGraphics[i_18_].id * -967533709 != -1) {
@@ -310,7 +310,7 @@ public class NPC extends Entity {
 											class398.anInt5205 * 1505778629,
 											(byte) -23).anInt4189)
 									* -882531177 == 1) {
-						currentGraphics[i_18_].aClass438_569.method5821(-1,
+						currentGraphics[i_18_].aClass438_569.update(-1,
 								-1871121711);
 						currentGraphics[i_18_].id = -1313669563;
 					}
@@ -342,7 +342,7 @@ public class NPC extends Entity {
 			if (aClass438_10078.method5819((byte) -33)
 					&& (aClass438_10078.method5820(1592092831).anInt4189 * -882531177) == 1) {
 				anIntArray10093 = null;
-				aClass438_10078.method5821(-1, -1899534119);
+				aClass438_10078.update(-1, -1899534119);
 			}
 			for (int i_24_ = 0; i_24_ < currentGraphics.length; i_24_++) {
 				if (-1 != currentGraphics[i_24_].id * -967533709) {
@@ -355,7 +355,7 @@ public class NPC extends Entity {
 							&& (Class501.aClass395_6122.method4903(
 									class398.anInt5205 * 1505778629, (byte) 83).anInt4189)
 									* -882531177 == 1) {
-						currentGraphics[i_24_].aClass438_569.method5821(-1,
+						currentGraphics[i_24_].aClass438_569.update(-1,
 								-1950379754);
 						currentGraphics[i_24_].id = -1313669563;
 					}
@@ -533,7 +533,7 @@ public class NPC extends Entity {
 
 	public boolean method4429(byte i) {
 		try {
-			return Class437.aClass371_5520.aBoolean4041;
+			return IterableNodeMap.aClass371_5520.aBoolean4041;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ake.by(").append(')').toString());
@@ -554,7 +554,7 @@ public class NPC extends Entity {
 
 	public void method4461(String string, int i, int i_38_, int i_39_) {
 		try {
-			int i_40_ = (Class82_Sub5.method883((byte) 6) * (Class437.aClass371_5520.anInt4036 * -478874963));
+			int i_40_ = (Class82_Sub5.method883((byte) 6) * (IterableNodeMap.aClass371_5520.anInt4036 * -478874963));
 			method4430(string, i, i_38_, i_40_, (byte) -1);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -937,7 +937,7 @@ public class NPC extends Entity {
 	}
 
 	public boolean method4452() {
-		return Class437.aClass371_5520.aBoolean4041;
+		return IterableNodeMap.aClass371_5520.aBoolean4041;
 	}
 
 	final void method4355(GraphicsToolkit class_ra, Class365_Sub1 class365_sub1,
@@ -965,7 +965,7 @@ public class NPC extends Entity {
 	}
 
 	public boolean method4440() {
-		return Class437.aClass371_5520.aBoolean4041;
+		return IterableNodeMap.aClass371_5520.aBoolean4041;
 	}
 
 	final void method4375(GraphicsToolkit class_ra, Class365_Sub1 class365_sub1,

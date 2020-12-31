@@ -345,43 +345,32 @@ public class Class113 {
 		}
 	}
 
-	public static final Interface method1254(int parentHash,
-			Interface class298_sub51, int[] is, boolean bool, int i_44_) {
+	public static final Interface method1254(int parentHash, Interface currentInterface, int[] is, boolean bool, int i_44_) {
 		try {
-			Interface class298_sub51_45_ = (Interface) client.aClass437_8841
-					.method5812((long) parentHash);
-			if (class298_sub51_45_ != null)
-				Class173
-						.method1821(
-								class298_sub51_45_,
-								(class298_sub51_45_.interfaceId * -1617025021 != (-1617025021 * class298_sub51.interfaceId)),
-								bool, -113822480);
-			client.aClass437_8841.method5817(class298_sub51, (long) parentHash);
-			Class8.method321(-1617025021 * class298_sub51.interfaceId, is,
-					888891171);
-			IComponentDefinition class105 = Class50.getIComponentDefinitions(parentHash, (byte) 49);
-			if (class105 != null)
-				Tradution.method6054(class105, -702811353);
+			Interface class298_sub51_45_ = (Interface) client.OPEN_INTERFACES.get((long) parentHash);
+
+			if (class298_sub51_45_ != null) {
+				Class173.closeChildren(class298_sub51_45_, (class298_sub51_45_.interfaceId * -1617025021 != (-1617025021 * currentInterface.interfaceId)), bool, -113822480);
+			}
+			client.OPEN_INTERFACES.put(currentInterface, (long) parentHash);
+			Class8.method321(-1617025021 * currentInterface.interfaceId, is, 888891171);
+			IComponentDefinition parent2Def = Class50.getIComponentDefinitions(parentHash, (byte) 49);
+			if (parent2Def != null)
+				Tradution.method6054(parent2Def, -702811353);
 			if (null != client.aClass105_8652) {
 				Tradution.method6054(client.aClass105_8652, 961005010);
 				client.aClass105_8652 = null;
 			}
 			Class247.method2376(-662741241);
-			if (null != class105)
-				Class65.method761(
-						(Class389.aClass119Array4165[class105.anInt1142
-								* -440872681 >>> 16]), class105, !bool,
-						112223880);
+			if (null != parent2Def)
+				Class65.method761((Class389.aClass119Array4165[parent2Def.idHash * -440872681 >>> 16]), parent2Def, !bool,112223880);
 			if (!bool)
-				Class14.method341(-1617025021 * class298_sub51.interfaceId, is,
-						-746339380);
+				Class14.method341(-1617025021 * currentInterface.interfaceId, is,-746339380);
 			if (!bool && -257444687 * client.WINDOW_PANE_ID != -1)
-				Class82_Sub10.method903(client.WINDOW_PANE_ID * -257444687, 1,
-						-2018560763);
-			return class298_sub51;
+				Class82_Sub10.method903(client.WINDOW_PANE_ID * -257444687, 1,-2018560763);
+			return currentInterface;
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("ep.ld(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("ep.ld(").append(')').toString());
 		}
 	}
 

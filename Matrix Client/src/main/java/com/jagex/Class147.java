@@ -29,7 +29,7 @@ public class Class147 {
 					Class444.method5889(class298_sub46, (byte) -26);
 				}
 				client.aBoolean8835 = true;
-				Class379.anInt4099 = class105.anInt1142 * 1167811111;
+				Class379.anInt4099 = class105.idHash * 1167811111;
 				client.anInt8836 = class105.anInt1154 * -298861091;
 				Class298.anInt3192 = 1282349805 * i;
 				Class132.anInt1508 = i_1_ * 1881265567;

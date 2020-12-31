@@ -73,7 +73,7 @@ public class Class349 {
 			Class405 class405) {
 		((Class349) this).aClass243_3709 = class243;
 		((Class349) this).aClass243_3709
-				.method2316(
+				.filesCount(
 						(-1006924897 * (Class120.aClass120_1437.anInt1460)),
 						-994427694);
 		((Class349) this).aClass405_3707 = class405;

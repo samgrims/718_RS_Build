@@ -11,12 +11,12 @@ public class Class82_Sub8 extends Class82 {
 	public void method866(int i) {
 		try {
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) Class87.aClass437_793
-					.method5812(8017746467363524815L * (((Class82_Sub8) this).aLong6853)));
+					.get(8017746467363524815L * (((Class82_Sub8) this).aLong6853)));
 			if (class298_sub35 != null)
 				class298_sub35.anInt7394 = -1178949921
 						* ((Class82_Sub8) this).anInt6854;
 			else
-				Class87.aClass437_793.method5817(new Class298_Sub35(
+				Class87.aClass437_793.put(new Class298_Sub35(
 						825940513 * ((Class82_Sub8) this).anInt6854),
 						((Class82_Sub8) this).aLong6853 * 8017746467363524815L);
 		} catch (RuntimeException runtimeexception) {
@@ -27,12 +27,12 @@ public class Class82_Sub8 extends Class82 {
 
 	public void method868() {
 		Class298_Sub35 class298_sub35 = ((Class298_Sub35) Class87.aClass437_793
-				.method5812(8017746467363524815L * (((Class82_Sub8) this).aLong6853)));
+				.get(8017746467363524815L * (((Class82_Sub8) this).aLong6853)));
 		if (class298_sub35 != null)
 			class298_sub35.anInt7394 = -1178949921
 					* ((Class82_Sub8) this).anInt6854;
 		else
-			Class87.aClass437_793.method5817(new Class298_Sub35(
+			Class87.aClass437_793.put(new Class298_Sub35(
 					825940513 * ((Class82_Sub8) this).anInt6854),
 					((Class82_Sub8) this).aLong6853 * 8017746467363524815L);
 	}
@@ -51,12 +51,12 @@ public class Class82_Sub8 extends Class82 {
 
 	public void method869() {
 		Class298_Sub35 class298_sub35 = ((Class298_Sub35) Class87.aClass437_793
-				.method5812(8017746467363524815L * (((Class82_Sub8) this).aLong6853)));
+				.get(8017746467363524815L * (((Class82_Sub8) this).aLong6853)));
 		if (class298_sub35 != null)
 			class298_sub35.anInt7394 = -1178949921
 					* ((Class82_Sub8) this).anInt6854;
 		else
-			Class87.aClass437_793.method5817(new Class298_Sub35(
+			Class87.aClass437_793.put(new Class298_Sub35(
 					825940513 * ((Class82_Sub8) this).anInt6854),
 					((Class82_Sub8) this).aLong6853 * 8017746467363524815L);
 	}
@@ -72,7 +72,7 @@ public class Class82_Sub8 extends Class82 {
 		}
 	}
 
-	public static void method893(int i, int i_1_) {
+	public static void unloadInterface(int i, int i_1_) {
 		try {
 			Class441.aBooleanArray5590[i] = false;
 			Class140.method1560(i, -175879726);
@@ -110,10 +110,10 @@ public class Class82_Sub8 extends Class82 {
 		try {
 			long l = (long) (i | (bool ? -2147483648 : 0));
 			Class298_Sub9 class298_sub9 = (Class298_Sub9) Class298_Sub9.aClass437_7224
-					.method5812(l);
+					.get(l);
 			if (class298_sub9 == null) {
 				class298_sub9 = new Class298_Sub9();
-				Class298_Sub9.aClass437_7224.method5817(class298_sub9, l);
+				Class298_Sub9.aClass437_7224.put(class298_sub9, l);
 			}
 			if (((Class298_Sub9) class298_sub9).anIntArray7226.length <= i_5_) {
 				int[] is = new int[i_5_ + 1];

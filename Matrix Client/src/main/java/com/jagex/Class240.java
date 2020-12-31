@@ -2107,7 +2107,7 @@ public class Class240 {
 						class365_sub1_sub1_sub2 = (client.aClass365_Sub1_Sub1_Sub2_Sub2Array8805[is[i_352_]]);
 					else {
 						class365_sub1_sub1_sub2 = ((Entity) ((Class298_Sub29) (client.aClass437_8696
-								.method5812((long) client.anIntArray8699[i_352_
+								.get((long) client.anIntArray8699[i_352_
 										- i_350_]))).anObject7366);
 						class503 = ((NPC) class365_sub1_sub1_sub2).aClass503_10190;
 						if (null != class503.anIntArray6188) {
@@ -2379,7 +2379,7 @@ public class Class240 {
 							i_353_ -= i_372_ + 2;
 					}
 					int i_375_ = 0;
-					for (/**/; (i_375_ < Class437.aClass371_5520.anInt4032
+					for (/**/; (i_375_ < IterableNodeMap.aClass371_5520.anInt4032
 							* -942466371); i_375_++) {
 						int i_376_ = class365_sub1_sub1_sub2.anIntArray10080[i_375_];
 						int i_377_ = class365_sub1_sub1_sub2.anIntArray10102[i_375_];
@@ -2425,8 +2425,8 @@ public class Class240 {
 								Class255.method2440(class365_sub1_sub1_sub2,
 										i_382_, -1043067647);
 								if (client.aFloatArray8891[0] > -1.0F) {
-									client.aFloatArray8891[0] += (float) (Class437.aClass371_5520.anIntArray4033[i_375_]);
-									client.aFloatArray8891[1] += (float) (Class437.aClass371_5520.anIntArray4034[i_375_]);
+									client.aFloatArray8891[0] += (float) (IterableNodeMap.aClass371_5520.anIntArray4033[i_375_]);
+									client.aFloatArray8891[1] += (float) (IterableNodeMap.aClass371_5520.anIntArray4034[i_375_]);
 									Object object = null;
 									Object object_383_ = null;
 									Object object_384_ = null;
@@ -2837,14 +2837,14 @@ public class Class240 {
 					class365_sub1_sub1_sub2 = (client.aClass365_Sub1_Sub1_Sub2_Sub2Array8805[i_465_]);
 				else
 					class365_sub1_sub1_sub2 = ((Entity) (((Class298_Sub29) client.aClass437_8696
-							.method5812((long) (i_465_ - 2048))).anObject7366));
+							.get((long) (i_465_ - 2048))).anObject7366));
 				int i_466_ = client.anIntArray8779[i_464_];
 				Entity class365_sub1_sub1_sub2_467_;
 				if (i_466_ < 2048)
 					class365_sub1_sub1_sub2_467_ = (client.aClass365_Sub1_Sub1_Sub2_Sub2Array8805[i_466_]);
 				else
 					class365_sub1_sub1_sub2_467_ = ((Entity) (((Class298_Sub29) client.aClass437_8696
-							.method5812((long) (i_466_ - 2048))).anObject7366));
+							.get((long) (i_466_ - 2048))).anObject7366));
 				Class122.method1320(class365_sub1_sub1_sub2,
 						class365_sub1_sub1_sub2_467_,
 						(class365_sub1_sub1_sub2.anInt10069 -= 512067143)

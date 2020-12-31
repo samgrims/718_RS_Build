@@ -17,7 +17,7 @@ public class Class400 {
 	public Class365_Sub1_Sub4_Sub1 method4927(byte i) {
 		try {
 			Class298_Sub2 class298_sub2 = ((Class298_Sub2) (client.aClass437_8685
-					.method5812((long) ((((Class400) this).aClass341_5221.anInt3645 * 1008331379) << 28
+					.get((long) ((((Class400) this).aClass341_5221.anInt3645 * 1008331379) << 28
 							| 283514611 * (((Class400) this).aClass341_5221.gameSceneBaseY) << 14 | -1760580017
 							* (((Class400) this).aClass341_5221.gameSceneBaseX)))));
 			if (class298_sub2 == null)

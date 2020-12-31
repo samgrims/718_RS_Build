@@ -44,7 +44,7 @@ public class Class152 {
 
 	public void method1651(Class298_Sub25 class298_sub25, byte i) {
 		try {
-			if ((-6615773310558494831L * ((Class152) this).aLong1592 != class298_sub25.aLong3188 * 7051297995265073167L)
+			if ((-6615773310558494831L * ((Class152) this).aLong1592 != class298_sub25.pointer * 7051297995265073167L)
 					|| (-3106107963843196613L * ((Class152) this).aLong1588 != (((Class298_Sub25) class298_sub25).aLong7361 * -3244420319926665157L)))
 				throw new RuntimeException("");
 			for (Class298_Sub17 class298_sub17 = (Class298_Sub17) ((Class152) this).aClass453_1587

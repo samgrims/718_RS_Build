@@ -79,16 +79,16 @@ public class Class367 {
 					1629882987);
 			if (null != class117) {
 				Class373.aClass_ra4071.r(i, i_5_, -2093041337
-						* class105.anInt1156 + i,
-						(i_5_ + class105.anInt1162 * 457937409));
+						* class105.width + i,
+						(i_5_ + class105.height * 457937409));
 				if (Class3.anInt56 * -64305285 < 3) {
 					int i_7_ = (int) -client.aFloat8949;
 					i_7_ = i_7_ + -1840255270 * client.anInt8801 & 0x3fff;
 					i_7_ <<= 2;
 					Class144.aClass57_1562
 							.method639(
-									((float) i + (float) (class105.anInt1156 * -2093041337) / 2.0F),
-									((float) i_5_ + (float) (class105.anInt1162 * 457937409) / 2.0F),
+									((float) i + (float) (class105.width * -2093041337) / 2.0F),
+									((float) i_5_ + (float) (class105.height * 457937409) / 2.0F),
 									4135, i_7_, class117.aClass_ta1397, i, i_5_);
 				} else
 					Class373.aClass_ra4071.DA(-16777216,
@@ -104,7 +104,7 @@ public class Class367 {
 		try {
 			int i_8_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
 			IComponentDefinition class105 = Class50.getIComponentDefinitions(i_8_, (byte) -5);
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.aBoolean1161 ? 1
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.hidden ? 1
 					: 0;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

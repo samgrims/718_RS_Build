@@ -307,7 +307,7 @@ public class Class350 {
 
 	public int[] method4210(int i) {
 		try {
-			Class437 class437 = new Class437(16);
+			IterableNodeMap class437 = new IterableNodeMap(16);
 			Class316.method3844(-809747019 * anInt3711, class437, -518506092);
 			if (null != anIntArray3712) {
 				int[] is = anIntArray3712;
@@ -341,7 +341,7 @@ public class Class350 {
 			Iterator iterator = class437.iterator();
 			while (iterator.hasNext()) {
 				Class298 class298 = (Class298) iterator.next();
-				is[i_24_++] = (int) (class298.aLong3188 * 7051297995265073167L);
+				is[i_24_++] = (int) (class298.pointer * 7051297995265073167L);
 			}
 			return is;
 		} catch (RuntimeException runtimeexception) {

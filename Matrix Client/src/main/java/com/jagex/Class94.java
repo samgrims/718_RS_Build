@@ -245,10 +245,10 @@ public final class Class94 {
 				}
 				i_12_--;
 			}
-			Interface class298_sub51 = ((Interface) client.aClass437_8841
+			Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
 					.method5816(1645730647));
 			while (i_12_-- > 0)
-				class298_sub51 = (Interface) client.aClass437_8841
+				class298_sub51 = (Interface) client.OPEN_INTERFACES
 						.method5815((byte) -33);
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = -1617025021
 					* class298_sub51.interfaceId;

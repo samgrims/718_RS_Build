@@ -93,7 +93,7 @@ public abstract class Class374 {
 							throw new IllegalStateException();
 						break;
 					}
-					class298_sub50.method2839(-1460969981);
+					class298_sub50.unlink(-1460969981);
 					int i_4_ = class298_sub50.method3560(-1730629098);
 					if (i_4_ < -1)
 						i_4_ = -1;

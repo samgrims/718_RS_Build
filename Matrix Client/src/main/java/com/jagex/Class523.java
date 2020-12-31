@@ -68,19 +68,19 @@ final class Class523 implements Interface17 {
 	public static final IComponentDefinition method6331(Class119 class119,
 			IComponentDefinition class105, int i) {
 		try {
-			if (-1 != 1573706803 * class105.anInt1160)
-				return class119.method1297(class105.anInt1160 * 1573706803,
+			if (-1 != 1573706803 * class105.parent)
+				return class119.method1297(class105.parent * 1573706803,
 						(short) 8481);
 			if (!class119.aBoolean1403) {
-				int i_4_ = class105.anInt1142 * -440872681 >>> 16;
-				Class460 class460 = new Class460(client.aClass437_8841);
+				int i_4_ = class105.idHash * -440872681 >>> 16;
+				HashTableIterator class460 = new HashTableIterator(client.OPEN_INTERFACES);
 				for (Interface class298_sub51 = (Interface) class460
 						.method5979(-2012602178); null != class298_sub51; class298_sub51 = (Interface) class460
 						.next()) {
 					if (-1617025021 * class298_sub51.interfaceId == i_4_)
 						return Class50
 								.getIComponentDefinitions(
-										(int) (7051297995265073167L * (class298_sub51.aLong3188)),
+										(int) (7051297995265073167L * (class298_sub51.pointer)),
 										(byte) -3);
 				}
 			}

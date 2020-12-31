@@ -72,9 +72,9 @@ public class Class380 {
 			class298_sub36.out.writeShortLE128(
 					class105_3_.anInt1280 * -1232467723);
 			class298_sub36.out.writeIntV1(
-					class105.anInt1142 * -440872681, (byte) -22);
+					class105.idHash * -440872681, (byte) -22);
 			class298_sub36.out.writeInt(
-					class105_3_.anInt1142 * -440872681, -855626208);
+					class105_3_.idHash * -440872681, -855626208);
 			class298_sub36.out.writeShort(-1309843523
 					* class105.anInt1154, 16711935);
 			class298_sub36.out.writeShortLE128(
@@ -116,7 +116,7 @@ public class Class380 {
 
 	static String method4682(IComponentDefinition class105, int i, byte i_4_) {
 		try {
-			if (!client.method2801(class105).method3498(i, (byte) -47)
+			if (!client.getIComponentSettings(class105).method3498(i, (byte) -47)
 					&& class105.anObjectArray1264 == null)
 				return null;
 			if (null == class105.aStringArray1195

@@ -11,7 +11,7 @@ public class Class518 {
 
 	public Class518(Class411 class411, Class429 class429, Class243 class243) {
 		((Class518) this).aClass243_6271 = class243;
-		((Class518) this).aClass243_6271.method2316(
+		((Class518) this).aClass243_6271.filesCount(
 				(-1006924897 * (Class120.aClass120_1427.anInt1460)), 689615038);
 	}
 

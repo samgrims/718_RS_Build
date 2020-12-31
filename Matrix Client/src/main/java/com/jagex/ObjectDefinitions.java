@@ -75,7 +75,7 @@ public class ObjectDefinitions {
 	public boolean aBoolean5432;
 	public boolean aBoolean5433;
 	public boolean aBoolean5434;
-	Class437 aClass437_5435;
+	IterableNodeMap aClass437_5435;
 	public int anInt5436;
 	public int anInt5437;
 	public int anInt5438;
@@ -345,7 +345,7 @@ public class ObjectDefinitions {
 				int i_23_ = stream.readUnsignedByte();
 				if (((ObjectDefinitions) this).aClass437_5435 == null) {
 					int i_24_ = Class416.method5590(i_23_, (byte) 16);
-					((ObjectDefinitions) this).aClass437_5435 = new Class437(i_24_);
+					((ObjectDefinitions) this).aClass437_5435 = new IterableNodeMap(i_24_);
 				}
 				for (int i_25_ = 0; i_25_ < i_23_; i_25_++) {
 					boolean bool = stream.readUnsignedByte() == 1;
@@ -357,7 +357,7 @@ public class ObjectDefinitions {
 					else
 						class298 = new Class298_Sub35(stream
 								.readInt((byte) -68));
-					((ObjectDefinitions) this).aClass437_5435.method5817(class298,
+					((ObjectDefinitions) this).aClass437_5435.put(class298,
 							(long) i_26_);
 				}
 			}
@@ -372,7 +372,7 @@ public class ObjectDefinitions {
 			if (((ObjectDefinitions) this).aClass437_5435 == null)
 				return string;
 			Class298_Sub29 class298_sub29 = ((Class298_Sub29) ((ObjectDefinitions) this).aClass437_5435
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub29 == null)
 				return string;
 			return (String) class298_sub29.anObject7366;
@@ -709,7 +709,7 @@ public class ObjectDefinitions {
 			if (null == ((ObjectDefinitions) this).aClass437_5435)
 				return i_59_;
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((ObjectDefinitions) this).aClass437_5435
-					.method5812((long) i));
+					.get((long) i));
 			if (null == class298_sub35)
 				return i_59_;
 			return -774922497 * class298_sub35.anInt7394;

@@ -44,8 +44,7 @@ public class Class224 implements Interface12 {
 				return (Class462.anInt5683 * -2110394505 - i) / 2;
 			return 0;
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("jm.a(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("jm.a(").append(')').toString());
 		}
 	}
 

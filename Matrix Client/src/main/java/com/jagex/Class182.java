@@ -322,7 +322,7 @@ public class Class182 {
 				for (int i_22_ = 0; i_22_ < -1230451913 * client.anInt8703; i_22_++) {
 					int i_23_ = client.anIntArray8699[i_22_];
 					Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-							.method5812((long) i_23_));
+							.get((long) i_23_));
 					if (class298_sub29 != null)
 						((Entity) class298_sub29.anObject7366)
 								.method4441(i, i_13_, i_14_, i_15_, i_16_,

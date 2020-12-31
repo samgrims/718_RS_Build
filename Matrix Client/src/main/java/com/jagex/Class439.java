@@ -211,12 +211,12 @@ public final class Class439 {
 					Class501
 							.method6227(
 									(8 == -1233866115 * client.anInt8752
-											|| -1233866115 * client.anInt8752 == 2 || (747461259 * (Class437.aClass371_5520.anInt4042) != (client.WINDOW_PANE_ID * -257444687))),
+											|| -1233866115 * client.anInt8752 == 2 || (747461259 * (IterableNodeMap.aClass371_5520.anInt4042) != (client.WINDOW_PANE_ID * -257444687))),
 									-1608675861);
 				if (i == 14)
 					IcmpService_Sub1
 							.method6382(
-									(client.WINDOW_PANE_ID * -257444687 != (Class437.aClass371_5520.anInt4031) * 1349088077),
+									(client.WINDOW_PANE_ID * -257444687 != (IterableNodeMap.aClass371_5520.anInt4031) * 1349088077),
 									-687019075);
 				if (i == 4 || 6 == i)
 					Class147.method1601((byte) -8);

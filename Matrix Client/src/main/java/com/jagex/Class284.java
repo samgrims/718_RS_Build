@@ -386,7 +386,7 @@ public class Class284 {
 			Class390 class390 = (((Class403) class403).aBoolean5261 ? ((Class403) class403).aClass390_5247
 					: ((Class403) class403).aClass390_5246);
 			IComponentDefinition class105 = ((Class390) class390).aClass105_4168;
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.anInt1156
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.width
 					* -2093041337;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

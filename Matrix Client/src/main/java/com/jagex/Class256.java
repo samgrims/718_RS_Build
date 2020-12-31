@@ -42,9 +42,9 @@ public class Class256 {
 		((Class256) this).aClass243_2796 = class243;
 		((Class256) this).aClass243_2797 = class243_1_;
 		if (((Class256) this).aClass243_2796 != null)
-			((Class256) this).aClass243_2796.method2316(0, 1395155699);
+			((Class256) this).aClass243_2796.filesCount(0, 1395155699);
 		if (((Class256) this).aClass243_2797 != null)
-			((Class256) this).aClass243_2797.method2316(0, 393673779);
+			((Class256) this).aClass243_2797.filesCount(0, 393673779);
 	}
 
 	static final void method2442(Class403 class403, int i) {

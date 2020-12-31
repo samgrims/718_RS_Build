@@ -104,7 +104,7 @@ public class Class95 {
 		try {
 			if (Class378.method4671(i, null, -1346924535))
 				Class372.method4591(
-						(Class389.aClass119Array4165[i].aClass105Array1405),
+						(Class389.aClass119Array4165[i].components),
 						-1, i_0_, i_1_, bool, (short) -10580);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

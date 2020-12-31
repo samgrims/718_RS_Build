@@ -18,8 +18,8 @@ public class Class338 {
 	static final void method4113(Class403 class403, int i) {
 		try {
 			int i_0_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
-			Interface class298_sub51 = ((Interface) client.aClass437_8841
-					.method5812((long) i_0_));
+			Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
+					.get((long) i_0_));
 			if (null != class298_sub51)
 				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = 1;
 			else
@@ -49,46 +49,97 @@ public class Class338 {
 			}
 			throw new IllegalArgumentException();
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("oc.f(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("oc.f(").append(')').toString());
 		}
 	}
 
-	public static Class119 method4115(int i, int[] is, Class119 class119,
-			boolean bool, byte i_1_) {
+	public static Class119 getInterface(int interfaceId, int[] is, Class119 interface_21, boolean bool, byte i_1_) {
 		try {
-			if (!Class270.aClass243_2894.method2291(i, 2091513640))
+			if (!Class270.INTERFACE_INDEX.method2291(interfaceId, 2091513640))
 				return null;
-			int i_2_ = Class270.aClass243_2894.method2316(i, -1254954272);
-			IComponentDefinition[] class105s;
-			if (i_2_ == 0)
-				class105s = new IComponentDefinition[0];
-			else if (null == class119)
-				class105s = new IComponentDefinition[i_2_];
+			int componentSize = Class270.INTERFACE_INDEX.filesCount(interfaceId, -1254954272);
+			IComponentDefinition[] arrIComp1;
+			if (componentSize == 0)
+				arrIComp1 = new IComponentDefinition[0];
+			else if (null == interface_21)
+				arrIComp1 = new IComponentDefinition[componentSize];
 			else
-				class105s = class119.aClass105Array1405;
-			if (class119 == null)
-				class119 = new Class119(bool, class105s);
+				arrIComp1 = interface_21.components;
+			if (interface_21 == null)
+				interface_21 = new Class119(bool, arrIComp1);
 			else {
-				class119.aClass105Array1405 = class105s;
-				class119.aBoolean1403 = bool;
+				interface_21.components = arrIComp1;
+				interface_21.aBoolean1403 = bool;
 			}
-			for (int i_3_ = 0; i_3_ < i_2_; i_3_++) {
-				if (class119.aClass105Array1405[i_3_] == null) {
-					byte[] is_4_ = Class270.aClass243_2894.method2289(i, i_3_,
-							is, -1925510913);
-					if (null != is_4_) {
-						IComponentDefinition class105 = (class119.aClass105Array1405[i_3_] = new IComponentDefinition());
-						class105.anInt1142 = (i_3_ + (i << 16)) * 533296807;
-						class105.method1110(new RsByteBuffer(is_4_),
-								1142190823);
+			for (int i = 0; i < componentSize; i++) {
+				if (interface_21.components[i] == null) {
+					byte[] bytesArr_8 = Class270.INTERFACE_INDEX.getFile(interfaceId, i, is, -1925510913);
+					if (null != bytesArr_8) {
+						IComponentDefinition component = (interface_21.components[i] = new IComponentDefinition());
+						component.idHash = (i + (interfaceId << 16)) * 533296807;
+						component.readValues(new RsByteBuffer(bytesArr_8), 1142190823);
+
+						if(interfaceId == 596) {
+							component = changeLogin(component, interface_21, interfaceId, i);
+						}
+
 					}
 				}
 			}
-			return class119;
+			return interface_21;
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("oc.k(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("oc.k(").append(')').toString());
 		}
 	}
+
+
+	private static IComponentDefinition changeLogin(IComponentDefinition component, Class119 interfaceObj, int interfaceId, int i) {
+
+		if (interfaceId == 596) {
+			//reduce size of background
+			if (i == 3) {
+				component.baseHeight -= 75* -1661995333;
+				component.basePositionY -= 10 * 1215865909;
+
+			}
+
+
+			if (i == 35 || (i >= 38 && i <= 41) || i == 44) {
+				component.basePositionY += 40  * 1215865909;
+			}
+
+			//Remove excess children of a conatiner with filler components
+			if(component.parent == 39059460 * -1171161349) {
+				if(component.type != 0 && component.type != 4) {
+					if(i >= 36) {
+						component.hidden = true;
+					}
+				}
+			}
+			System.out.println(component.idHash*-440872681);
+			//remove Facebook icons and a background sprite
+			if (component.spriteId  * 1411971043 == 6041 || i == 1) {
+				component.hidden = true;
+			}
+
+			//Move Create new account container down
+			if(component.idHash*-440872681 == 39059501) {
+				component.basePositionY +=45  * 1215865909;
+			}
+
+			//Change the text
+			if (component.text.equalsIgnoreCase("<u=C8C8C8>Recover Your Password")) { //TODO: Change the link?
+				component.text = "Create new account";
+			}
+
+			//Remove excess texts
+			if (component.text.equalsIgnoreCase("(Opens a popup window)") ||	component.text.equalsIgnoreCase("<u=C8C8C8>Create Account Now") ||
+					component.text.equalsIgnoreCase("Or log in with:")){
+				component.hidden = true;
+			}
+		}
+		return component;
+	}
+
+
 }

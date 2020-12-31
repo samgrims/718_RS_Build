@@ -118,12 +118,12 @@ public class Class429 implements Interface21 {
 
 	static final void method5758(IComponentDefinition class105, Class403 class403, int i) {
 		try {
-			if (client.method2801(class105).method3492((byte) -12)
+			if (client.getIComponentSettings(class105).method3492((byte) -12)
 					&& null == client.aClass105_8652) {
-				Class117.method1280(class105.anInt1142 * -440872681,
+				Class117.method1280(class105.idHash * -440872681,
 						class105.anInt1154 * -1309843523, 1723723267);
 				client.aClass105_8652 = Class140.method1558(-440872681
-						* class105.anInt1142, class105.anInt1154 * -1309843523,
+						* class105.idHash, class105.anInt1154 * -1309843523,
 						-156511736);
 				Tradution.method6054(client.aClass105_8652, 1608408687);
 			}

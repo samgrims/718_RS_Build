@@ -59,7 +59,7 @@ public class Class282 implements Interface21 {
 								.equals(((Class298_Sub37_Sub15) class298_sub37_sub15).aString9657)) {
 					long l = ((((Class298_Sub37_Sub15) class298_sub37_sub15).aLong9666) * 6619564980435866523L);
 					for (class298_sub37_sub5 = ((Class298_Sub37_Sub5) Class436.aClass437_5470
-							.method5812(l)); class298_sub37_sub5 != null; class298_sub37_sub5 = ((Class298_Sub37_Sub5) Class436.aClass437_5470
+							.get(l)); class298_sub37_sub5 != null; class298_sub37_sub5 = ((Class298_Sub37_Sub5) Class436.aClass437_5470
 							.method5813(-1492262664))) {
 						if (((Class298_Sub37_Sub5) class298_sub37_sub5).aString9585
 								.equals(((Class298_Sub37_Sub15) class298_sub37_sub15).aString9657)) {
@@ -78,7 +78,7 @@ public class Class282 implements Interface21 {
 						if (class298_sub37_sub5 == null)
 							class298_sub37_sub5 = (new Class298_Sub37_Sub5(
 									((Class298_Sub37_Sub15) class298_sub37_sub15).aString9657));
-						Class436.aClass437_5470.method5817(class298_sub37_sub5,
+						Class436.aClass437_5470.put(class298_sub37_sub5,
 								l);
 						Class436.anInt5479 += -1658575779;
 					}
@@ -183,7 +183,7 @@ public class Class282 implements Interface21 {
 		try {
 			Class360.anInt3868 = 471358088;
 			Class360.aClass25_3905 = client.aClass25_8711;
-			Class460.method5981(
+			HashTableIterator.method5981(
 					(122690138525332847L * Class360.aLong3874 == -1L), true,
 					"", "", Class360.aLong3874 * 122690138525332847L);
 		} catch (RuntimeException runtimeexception) {

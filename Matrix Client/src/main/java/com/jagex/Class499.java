@@ -9,7 +9,7 @@ public class Class499 {
 
 	public Class499(Class411 class411, Class429 class429, Class243 class243) {
 		((Class499) this).aClass243_6112 = class243;
-		((Class499) this).aClass243_6112.method2316(
+		((Class499) this).aClass243_6112.filesCount(
 				(Class120.aClass120_1436.anInt1460) * -1006924897, 236791533);
 	}
 

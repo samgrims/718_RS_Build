@@ -112,12 +112,12 @@ public final class Class298_Sub43 extends Class298 implements Interface16 {
 	static final void method3527(IComponentDefinition class105, Class119 class119,
 			Class403 class403, byte i) {
 		try {
-			class105.anInt1210 = (((Class403) class403).anIntArray5244[(((Class403) class403).anInt5239 -= -391880689) * 681479919])
+			class105.fontId = (((Class403) class403).anIntArray5244[(((Class403) class403).anInt5239 -= -391880689) * 681479919])
 					* -2074006897;
 			Tradution.method6054(class105, -542693615);
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403)
-				Class82_Sub20.method934(class105.anInt1142 * -440872681,
+				Class82_Sub20.method934(class105.idHash * -440872681,
 						(byte) 7);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

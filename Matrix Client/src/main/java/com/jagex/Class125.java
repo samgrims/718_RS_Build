@@ -473,25 +473,25 @@ public class Class125 {
 				Class74.method824((Class399.aClass243_5219.method2294(
 						(Class380.aClass380_4103.anInt4108 * -363169051),
 						(byte) 90)), 745625463);
-				Class437.aClass371_5520 = new Class371(Class399.aClass243_5219);
-				Class366.aShortArrayArray3970 = Class437.aClass371_5520.aShortArrayArray4039;
-				Class22.aShortArrayArrayArray278 = Class437.aClass371_5520.aShortArrayArrayArray4044;
-				if (-1 != 1352949337 * Class437.aClass371_5520.anInt4045
-						&& -1 != 133542095 * Class437.aClass371_5520.anInt4046) {
+				IterableNodeMap.aClass371_5520 = new Class371(Class399.aClass243_5219);
+				Class366.aShortArrayArray3970 = IterableNodeMap.aClass371_5520.aShortArrayArray4039;
+				Class22.aShortArrayArrayArray278 = IterableNodeMap.aClass371_5520.aShortArrayArrayArray4044;
+				if (-1 != 1352949337 * IterableNodeMap.aClass371_5520.anInt4045
+						&& -1 != 133542095 * IterableNodeMap.aClass371_5520.anInt4046) {
 					client.anInt8794 = -2081728285
-							* Class437.aClass371_5520.anInt4045;
-					client.anInt8803 = Class437.aClass371_5520.anInt4046 * 437692501;
+							* IterableNodeMap.aClass371_5520.anInt4045;
+					client.anInt8803 = IterableNodeMap.aClass371_5520.anInt4046 * 437692501;
 				}
 				Class82_Sub18.aClass405_6892 = new Class405(
 						Class399.aClass243_5219);
 				Class144.aClass381_1563 = new Class381(Class399.aClass243_5219);
-				Class437.aClass377_5519 = new Class377(Class399.aClass243_5219);
+				IterableNodeMap.aClass377_5519 = new Class377(Class399.aClass243_5219);
 			}
 			if (Class227.aClass227_2537 == Class82_Sub6.aClass227_6843) {
-				if (-1919698893 * Class437.aClass371_5520.anInt4035 != -1
+				if (-1919698893 * IterableNodeMap.aClass371_5520.anInt4035 != -1
 						&& !Class341.aClass243_3646
 								.method2290(
-										(-1919698893 * (Class437.aClass371_5520.anInt4035)),
+										(-1919698893 * (IterableNodeMap.aClass371_5520.anInt4035)),
 										0, -1803759646))
 					return 99;
 				Class253.anInterface_ma2785 = new Class249(
@@ -639,16 +639,16 @@ public class Class125 {
 			}
 			if (Class227.aClass227_2544 == Class82_Sub6.aClass227_6843) {
 				if (!Class378.method4671(
-						(Class437.aClass371_5520.anInt4042 * 747461259), null,
+						(IterableNodeMap.aClass371_5520.anInt4042 * 747461259), null,
 						-2054647884))
 					return 0;
 				boolean bool = true;
-				for (int i_30_ = 0; i_30_ < (Class389.aClass119Array4165[747461259 * Class437.aClass371_5520.anInt4042].aClass105Array1405).length; i_30_++) {
-					IComponentDefinition class105 = (Class389.aClass119Array4165[Class437.aClass371_5520.anInt4042 * 747461259].aClass105Array1405[i_30_]);
-					if (-1215239439 * class105.anInt1144 == 5
-							&& -1 != class105.anInt1175 * 1411971043
+				for (int i_30_ = 0; i_30_ < (Class389.aClass119Array4165[747461259 * IterableNodeMap.aClass371_5520.anInt4042].components).length; i_30_++) {
+					IComponentDefinition class105 = (Class389.aClass119Array4165[IterableNodeMap.aClass371_5520.anInt4042 * 747461259].components[i_30_]);
+					if (-1215239439 * class105.type == 5
+							&& -1 != class105.spriteId * 1411971043
 							&& !(Class158.idx8.method2290(
-									1411971043 * class105.anInt1175, 0,
+									1411971043 * class105.spriteId, 0,
 									-1154476799)))
 						bool = false;
 				}

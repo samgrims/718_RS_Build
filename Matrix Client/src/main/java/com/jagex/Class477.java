@@ -100,10 +100,10 @@ public class Class477 {
 							.method5815((byte) -94)) {
 						Class497 class497 = (((Class477) this).aClass504_5989
 								.method6251(
-										(int) (class298.aLong3188 * 7051297995265073167L),
+										(int) (class298.pointer * 7051297995265073167L),
 										-1474104007));
 						if (class497.aBoolean6102)
-							class298.method2839(-1460969981);
+							class298.unlink(-1460969981);
 						else
 							bool = true;
 					}
@@ -243,7 +243,7 @@ public class Class477 {
 			if(true)
 				itemDefinitionsLength = 30000 * -1797723349;
 			else
-				itemDefinitionsLength = (i * Class120.aClass120_1429.method1306((short) 15063) + ((Class477) this).aClass243_5990.method2316(i, -1996628421)) * -1797723349;
+				itemDefinitionsLength = (i * Class120.aClass120_1429.method1306((short) 15063) + ((Class477) this).aClass243_5990.filesCount(i, -1996628421)) * -1797723349;
 		} else
 			itemDefinitionsLength = 0;
 		if (((Class477) this).aClass411_5998 == Class411.aClass411_5320)
@@ -349,8 +349,8 @@ public class Class477 {
 	static final void method6095(Class403 class403, int i) {
 		try {
 			Class298_Sub36.method3401(0, 0,
-					(client.aClass105_8819.anInt1156 * -2093041337),
-					(client.aClass105_8819.anInt1162 * 457937409), false,
+					(client.GAME_SCREENINTERFACE.width * -2093041337),
+					(client.GAME_SCREENINTERFACE.height * 457937409), false,
 					1934343255);
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = -505673857
 					* client.anInt8664;

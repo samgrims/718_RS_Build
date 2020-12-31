@@ -32,7 +32,7 @@ public abstract class Class481 {
 			RsBitsBuffer stream = ((Class25) client.aClass25_8711).aClass298_Sub53_Sub2_333;
 			for (int i_0_ = 0; i_0_ < client.anInt8808 * -976358333; i_0_++) {
 				int npcIndex = client.anIntArray8706[i_0_];
-				NPC npc = ((NPC) (((Class298_Sub29) client.aClass437_8696.method5812((long) npcIndex)).anObject7366));
+				NPC npc = ((NPC) (((Class298_Sub29) client.aClass437_8696.get((long) npcIndex)).anObject7366));
 			
 				int mask = stream.readUnsignedByte();
 				if (0 != (mask & 0x2)) {

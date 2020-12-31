@@ -31,7 +31,7 @@ public final class Class170 {
 			Class390 class390 = (((Class403) class403).aBoolean5261 ? ((Class403) class403).aClass390_5247
 					: ((Class403) class403).aClass390_5246);
 			IComponentDefinition class105 = ((Class390) class390).aClass105_4168;
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.anInt1175 * 1411971043;
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.spriteId * 1411971043;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ha.pb(").append(')').toString());
@@ -87,12 +87,12 @@ public final class Class170 {
 					if (i_6_ <= 1)
 						break;
 				} else {
-					if (-1215239439 * class105.anInt1144 == 0) {
-						if (null != class105.aClass105Array1293)
-							method1812(class105.aClass105Array1293, i,
+					if (-1215239439 * class105.type == 0) {
+						if (null != class105.itemSlots)
+							method1812(class105.itemSlots, i,
 									(byte) 26);
-						Interface class298_sub51 = ((Interface) (client.aClass437_8841
-								.method5812((long) (class105.anInt1142 * -440872681))));
+						Interface class298_sub51 = ((Interface) (client.OPEN_INTERFACES
+								.get((long) (class105.idHash * -440872681))));
 						if (class298_sub51 != null)
 							Class82_Sub10.method903(
 									(class298_sub51.interfaceId * -1617025021),
@@ -107,7 +107,7 @@ public final class Class170 {
 					if (1 == i && class105.anObjectArray1250 != null) {
 						if (class105.anInt1154 * -1309843523 >= 0) {
 							IComponentDefinition class105_8_ = Class50.getIComponentDefinitions(
-									(class105.anInt1142 * -440872681),
+									(class105.idHash * -440872681),
 									(byte) -12);
 							if (class105_8_ == null
 									|| class105_8_.aClass105Array1292 == null

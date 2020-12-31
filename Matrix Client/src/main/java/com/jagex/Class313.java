@@ -16,7 +16,7 @@ public class Class313 {
 
 	public static void method3820(int i, int i_0_, boolean bool, int i_1_) {
 		try {
-			if (Class423.aClass437_5354.method5812((long) i) == null) {
+			if (Class423.aClass437_5354.get((long) i) == null) {
 				if (!client.aBoolean8806)
 					Class125.method1395(i, bool, 1982223094);
 				else {
@@ -28,7 +28,7 @@ public class Class313 {
 							.method3764(Class321.aClass429_3357
 									.method5753(1748854882), (byte) 104);
 					Class423.aClass437_5354
-							.method5817(class298_sub49, (long) i);
+							.put(class298_sub49, (long) i);
 				}
 			}
 		} catch (RuntimeException runtimeexception) {
@@ -57,7 +57,7 @@ public class Class313 {
 							946432351 * (((Class298_Sub37_Sub15) class298_sub37_sub15).anInt9662),
 							-838004269)) {
 				Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-						.method5812((long) (int) (2236412381003659263L * ((Class298_Sub37_Sub15) class298_sub37_sub15).aLong9661))));
+						.get((long) (int) (2236412381003659263L * ((Class298_Sub37_Sub15) class298_sub37_sub15).aLong9661))));
 				if (class298_sub29 != null) {
 					NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 					Class503 class503 = class365_sub1_sub1_sub2_sub1.aClass503_10190;

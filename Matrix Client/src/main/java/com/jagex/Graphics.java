@@ -250,7 +250,7 @@ public class Graphics {
 						.method5944(49146))) {
 					int i_21_ = 946432351 * ((Class298_Sub37_Sub15) class298_sub37_sub15).anInt9662;
 					if (i_21_ < 1000) {
-						class298_sub37_sub15.method2839(-1460969981);
+						class298_sub37_sub15.unlink(-1460969981);
 						if (59 == i_21_ || i_21_ == 2 || 8 == i_21_
 								|| i_21_ == 17 || i_21_ == 15 || 16 == i_21_
 								|| i_21_ == 58)
@@ -602,7 +602,7 @@ public class Graphics {
 			Class390 class390 = (((Class403) class403).aBoolean5261 ? ((Class403) class403).aClass390_5247
 					: ((Class403) class403).aClass390_5246);
 			IComponentDefinition class105 = ((Class390) class390).aClass105_4168;
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = 457937409 * class105.anInt1162;
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = 457937409 * class105.height;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("cg.ow(").append(')').toString());
@@ -614,7 +614,7 @@ public class Graphics {
 			Class390 class390 = (((Class403) class403).aBoolean5261 ? ((Class403) class403).aClass390_5247
 					: ((Class403) class403).aClass390_5246);
 			IComponentDefinition class105 = ((Class390) class390).aClass105_4168;
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.anInt1160 * 1573706803;
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.parent * 1573706803;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("cg.oi(").append(')').toString());

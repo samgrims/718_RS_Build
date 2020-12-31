@@ -47,12 +47,7 @@ public class ClientScriptsExecutor {
 						if (Class388.aBoolean4154
 								&& (null == Class388.aString4155 || (null != (((Class403) class403).aClass298_Sub37_Sub17_5260.aString9673) && (((Class403) class403).aClass298_Sub37_Sub17_5260.aString9673
 										.indexOf(Class388.aString4155) != -1))))
-							System.out
-									.println(new StringBuilder()
-											.append(
-													((Class403) class403).aClass298_Sub37_Sub17_5260.aString9673)
-											.append(": ").append(class394)
-											.toString());
+							System.out.println(new StringBuilder().append(((Class403) class403).aClass298_Sub37_Sub17_5260.aString9673).append(": ").append(class394).toString());
 						if ((((Class403) class403).anIntArray5257[1883543357 * ((Class403) class403).anInt5259]) == 1)
 							((Class403) class403).aBoolean5261 = true;
 						else
@@ -70,13 +65,13 @@ public class ClientScriptsExecutor {
 					stringbuilder
 							.append("")
 							.append(
-									7051297995265073167L * (((Class403) class403).aClass298_Sub37_Sub17_5260.aLong3188))
+									7051297995265073167L * (((Class403) class403).aClass298_Sub37_Sub17_5260.pointer))
 							.append(" ");
 					for (int i_1_ = (((Class403) class403).anInt5250 * -932179775) - 1; i_1_ >= 0; i_1_--)
 						stringbuilder
 								.append("")
 								.append(
-										7051297995265073167L * (((Class402) (((Class403) class403).aClass402Array5249[i_1_])).aClass298_Sub37_Sub17_5229.aLong3188))
+										7051297995265073167L * (((Class402) (((Class403) class403).aClass402Array5249[i_1_])).aClass298_Sub37_Sub17_5229.pointer))
 								.append(" ");
 					stringbuilder.append("").append(
 							Integer.valueOf(-2008816077 * class394.anInt5187));

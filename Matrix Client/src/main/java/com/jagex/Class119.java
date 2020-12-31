@@ -5,11 +5,11 @@ package com.jagex;/* Class119 - Decompiled by JODE
 public class Class119 {
 	public boolean aBoolean1403;
 	IComponentDefinition[] aClass105Array1404;
-	public IComponentDefinition[] aClass105Array1405;
+	public IComponentDefinition[] components;
 
 	public IComponentDefinition[] method1295(byte i) {
 		try {
-			return (null == ((Class119) this).aClass105Array1404 ? aClass105Array1405
+			return (null == ((Class119) this).aClass105Array1404 ? components
 					: ((Class119) this).aClass105Array1404);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -20,11 +20,11 @@ public class Class119 {
 	public IComponentDefinition[] method1296(byte i) {
 		try {
 			if (((Class119) this).aClass105Array1404 == null) {
-				int i_0_ = aClass105Array1405.length;
+				int i_0_ = components.length;
 				((Class119) this).aClass105Array1404 = new IComponentDefinition[i_0_];
-				System.arraycopy(aClass105Array1405, 0,
+				System.arraycopy(components, 0,
 						((Class119) this).aClass105Array1404, 0,
-						aClass105Array1405.length);
+						components.length);
 			}
 			return ((Class119) this).aClass105Array1404;
 		} catch (RuntimeException runtimeexception) {
@@ -35,9 +35,9 @@ public class Class119 {
 
 	public IComponentDefinition method1297(int i, short i_1_) {
 		try {
-			if (aClass105Array1405[0].anInt1142 * -440872681 >>> 16 != i >>> 16)
+			if (components[0].idHash * -440872681 >>> 16 != i >>> 16)
 				throw new IllegalArgumentException();
-			return aClass105Array1405[i & 0xffff];
+			return components[i & 0xffff];
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ev.b(").append(')').toString());
@@ -45,7 +45,7 @@ public class Class119 {
 	}
 
 	Class119(boolean bool, IComponentDefinition[] class105s) {
-		aClass105Array1405 = class105s;
+		components = class105s;
 		aBoolean1403 = bool;
 	}
 
@@ -58,7 +58,7 @@ public class Class119 {
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403)
 				Class422
-						.method5623(class105.anInt1142 * -440872681, 1429753437);
+						.method5623(class105.idHash * -440872681, 1429753437);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ev.iz(").append(')').toString());
@@ -78,7 +78,7 @@ public class Class119 {
 	public static void method1300(int i, int i_2_) {
 		try {
 			Class298_Sub49 class298_sub49 = ((Class298_Sub49) Class423.aClass437_5354
-					.method5812((long) i));
+					.get((long) i));
 			if (null != class298_sub49) {
 				((Class298_Sub49) class298_sub49).aBoolean7592 = !((Class298_Sub49) class298_sub49).aBoolean7592;
 				((Class298_Sub49) class298_sub49).aClass308_Sub1_7591

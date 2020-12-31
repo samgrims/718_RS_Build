@@ -16,7 +16,7 @@ public final class Class440 {
 			((Class440) this).aLong5578 = l * 236245195989619781L;
 			Class298 class298 = (((Class440) this).aClass298Array5576[(int) (l & (long) (1721892305 * ((Class440) this).anInt5577 - 1))]);
 			for (((Class440) this).aClass298_5580 = class298.aClass298_3187; class298 != ((Class440) this).aClass298_5580; ((Class440) this).aClass298_5580 = ((Class440) this).aClass298_5580.aClass298_3187) {
-				if ((((Class440) this).aClass298_5580.aLong3188 * 7051297995265073167L) == l) {
+				if ((((Class440) this).aClass298_5580.pointer * 7051297995265073167L) == l) {
 					Class298 class298_0_ = ((Class440) this).aClass298_5580;
 					((Class440) this).aClass298_5580 = ((Class440) this).aClass298_5580.aClass298_3187;
 					return class298_0_;
@@ -35,7 +35,7 @@ public final class Class440 {
 			if (((Class440) this).aClass298_5580 == null)
 				return null;
 			for (Class298 class298 = (((Class440) this).aClass298Array5576[(int) ((((Class440) this).aLong5578 * 4770221757987511949L) & (long) ((1721892305 * ((Class440) this).anInt5577) - 1))]); class298 != ((Class440) this).aClass298_5580; ((Class440) this).aClass298_5580 = ((Class440) this).aClass298_5580.aClass298_3187) {
-				if ((((Class440) this).aClass298_5580.aLong3188 * 7051297995265073167L) == 4770221757987511949L * ((Class440) this).aLong5578) {
+				if ((((Class440) this).aClass298_5580.pointer * 7051297995265073167L) == 4770221757987511949L * ((Class440) this).aLong5578) {
 					Class298 class298_1_ = ((Class440) this).aClass298_5580;
 					((Class440) this).aClass298_5580 = ((Class440) this).aClass298_5580.aClass298_3187;
 					return class298_1_;
@@ -127,13 +127,13 @@ public final class Class440 {
 	public void method5858(Class298 class298, long l) {
 		try {
 			if (null != class298.aClass298_3189)
-				class298.method2839(-1460969981);
+				class298.unlink(-1460969981);
 			Class298 class298_9_ = (((Class440) this).aClass298Array5576[(int) (l & (long) (((Class440) this).anInt5577 * 1721892305 - 1))]);
 			class298.aClass298_3189 = class298_9_.aClass298_3189;
 			class298.aClass298_3187 = class298_9_;
 			class298.aClass298_3189.aClass298_3187 = class298;
 			class298.aClass298_3187.aClass298_3189 = class298;
-			class298.aLong3188 = l * 4191220306876042991L;
+			class298.pointer = l * 4191220306876042991L;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("se.i(").append(')').toString());

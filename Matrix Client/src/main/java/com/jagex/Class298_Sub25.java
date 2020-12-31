@@ -71,7 +71,7 @@ public class Class298_Sub25 extends Class298 {
 				((Class298_Sub25) this).aBoolean7353 = true;
 			if ((i_2_ & 0x2) != 0)
 				((Class298_Sub25) this).aBoolean7354 = true;
-			aLong3188 = (class298_sub53.readLong((short) 1568) * 4191220306876042991L);
+			pointer = (class298_sub53.readLong((short) 1568) * 4191220306876042991L);
 			((Class298_Sub25) this).aLong7361 = (class298_sub53
 					.readLong((short) 25426) * 8816161044679006451L);
 			aString7358 = class298_sub53.readString(1262859658);

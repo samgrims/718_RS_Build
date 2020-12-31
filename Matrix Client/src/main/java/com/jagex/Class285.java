@@ -37,7 +37,7 @@ public final class Class285 {
 	public static void method2710(int i, byte i_1_) {
 		try {
 			Class298_Sub49 class298_sub49 = ((Class298_Sub49) Class423.aClass437_5354
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub49 != null) {
 				((Class298_Sub49) class298_sub49).aClass308_Sub1_7591
 						.method3771((byte) 57);
@@ -46,7 +46,7 @@ public final class Class285 {
 								1566028323 * ((Class298_Sub49) class298_sub49).anInt7589,
 								(((Class298_Sub49) class298_sub49).aBoolean7588),
 								1982223094);
-				class298_sub49.method2839(-1460969981);
+				class298_sub49.unlink(-1460969981);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -105,13 +105,13 @@ public final class Class285 {
 	static void method2714(Class298_Sub37_Sub15 class298_sub37_sub15, byte i) {
 		try {
 			if (!Class436.aBoolean5478) {
-				class298_sub37_sub15.method2839(-1460969981);
+				class298_sub37_sub15.unlink(-1460969981);
 				Class436.anInt5506 -= -970198067;
 				if (!((Class298_Sub37_Sub15) class298_sub37_sub15).aBoolean9668) {
 					long l = (6619564980435866523L * (((Class298_Sub37_Sub15) class298_sub37_sub15).aLong9666));
 					Class298_Sub37_Sub5 class298_sub37_sub5;
 					for (class298_sub37_sub5 = ((Class298_Sub37_Sub5) Class436.aClass437_5470
-							.method5812(l)); class298_sub37_sub5 != null; class298_sub37_sub5 = ((Class298_Sub37_Sub5) Class436.aClass437_5470
+							.get(l)); class298_sub37_sub5 != null; class298_sub37_sub5 = ((Class298_Sub37_Sub5) Class436.aClass437_5470
 							.method5813(-1565779381))) {
 						if (((Class298_Sub37_Sub5) class298_sub37_sub5).aString9585
 								.equals(((Class298_Sub37_Sub15) class298_sub37_sub15).aString9657)) {

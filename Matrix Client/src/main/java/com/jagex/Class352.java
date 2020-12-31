@@ -38,7 +38,7 @@ public class Class352 {
 	public int anInt3808;
 	public static int anInt3809 = 0;
 	public boolean aBoolean3810;
-	Class437 aClass437_3811;
+	IterableNodeMap aClass437_3811;
 	public int anInt3812;
 	public int anInt3813;
 	public int[] anIntArray3814;
@@ -162,7 +162,7 @@ public class Class352 {
 				int i_8_ = class298_sub53.readUnsignedByte();
 				if (((Class352) this).aClass437_3811 == null) {
 					int i_9_ = Class416.method5590(i_8_, (byte) 16);
-					((Class352) this).aClass437_3811 = new Class437(i_9_);
+					((Class352) this).aClass437_3811 = new IterableNodeMap(i_9_);
 				}
 				for (int i_10_ = 0; i_10_ < i_8_; i_10_++) {
 					boolean bool = class298_sub53.readUnsignedByte() == 1;
@@ -174,7 +174,7 @@ public class Class352 {
 					else
 						class298 = new Class298_Sub35(class298_sub53
 								.readInt((byte) 97));
-					((Class352) this).aClass437_3811.method5817(class298,
+					((Class352) this).aClass437_3811.put(class298,
 							(long) i_11_);
 				}
 			}
@@ -295,7 +295,7 @@ public class Class352 {
 			if (null == ((Class352) this).aClass437_3811)
 				return string;
 			Class298_Sub29 class298_sub29 = ((Class298_Sub29) ((Class352) this).aClass437_3811
-					.method5812((long) i));
+					.get((long) i));
 			if (null == class298_sub29)
 				return string;
 			return (String) class298_sub29.anObject7366;
@@ -337,7 +337,7 @@ public class Class352 {
 			if (((Class352) this).aClass437_3811 == null)
 				return i_18_;
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((Class352) this).aClass437_3811
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub35 == null)
 				return i_18_;
 			return class298_sub35.anInt7394 * -774922497;

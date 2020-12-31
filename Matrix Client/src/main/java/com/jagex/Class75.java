@@ -121,7 +121,7 @@ public class Class75 {
 			int i_6_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
 			if (Class301_Sub1.aClass437_7637 != null) {
 				Class298 class298 = Class301_Sub1.aClass437_7637
-						.method5812((long) i_6_);
+						.get((long) i_6_);
 				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = class298 != null ? 1
 						: 0;
 			} else

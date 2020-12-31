@@ -16,7 +16,7 @@ public class Class298_Sub33 extends Class298 {
 			Tradution.method6054(class105, 1442702884);
 			if (-1309843523 * class105.anInt1154 == -1
 					&& !class119.aBoolean1403)
-				Class290.method2750(class105.anInt1142 * -440872681, 475870643);
+				Class290.method2750(class105.idHash * -440872681, 475870643);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("abr.es(").append(')').toString());

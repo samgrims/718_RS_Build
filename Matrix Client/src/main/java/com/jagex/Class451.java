@@ -70,7 +70,7 @@ public class Class451 {
 	public Class451(Class411 class411, Class429 class429, Class243 class243) {
 		((Class451) this).aClass243_5639 = class243;
 		((Class451) this).aClass243_5639
-				.method2316(
+				.filesCount(
 						(-1006924897 * (Class120.aClass120_1428.anInt1460)),
 						-978414795);
 	}
@@ -100,7 +100,7 @@ public class Class451 {
 			Player class365_sub1_sub1_sub2_sub2, byte i) {
 		try {
 			Class298_Sub41 class298_sub41 = ((Class298_Sub41) (Class298_Sub41.aClass437_7440
-					.method5812((long) (1888274983 * class365_sub1_sub1_sub2_sub2.anInt10064))));
+					.get((long) (1888274983 * class365_sub1_sub1_sub2_sub2.anInt10064))));
 			if (null == class298_sub41)
 				Class391.method4884(class365_sub1_sub1_sub2_sub2.plane,
 						(class365_sub1_sub1_sub2_sub2.scenePositionXQueue[0]),

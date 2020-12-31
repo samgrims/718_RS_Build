@@ -89,7 +89,7 @@ public class Class351 {
 		while (iterator.hasNext()) {
 			Class298_Sub45 class298_sub45 = (Class298_Sub45) iterator.next();
 			if ((((Class298_Sub45) class298_sub45).aClass190_7514.anInt1940 * -1955592777) == 1)
-				class298_sub45.method2839(-1460969981);
+				class298_sub45.unlink(-1460969981);
 		}
 		for (int i = 0; i < ((Class351) this).aClass302_Sub3_Sub1_Sub1Array3762.length; i++) {
 			if (((Class351) this).aClass302_Sub3_Sub1_Sub1Array3762[i] != null) {
@@ -160,10 +160,10 @@ public class Class351 {
 				}
 			}
 			if (!bool) {
-				class298_sub45.method2839(-1460969981);
+				class298_sub45.unlink(-1460969981);
 				((Class351) this).anInt3769--;
 				if (class298_sub45.method2840(-629325116)) {
-					class298_sub45.method2839(-1460969981);
+					class298_sub45.unlink(-1460969981);
 					Class344.anInt3685 -= 817588661;
 				}
 			}
@@ -175,7 +175,7 @@ public class Class351 {
 					if ((class68s[i].method775((byte) 3).anInt1940 * -1955592777) == 1
 							&& Class344.anInt3685 * -1237648227 < 32) {
 						class298_sub45 = new Class298_Sub45(class68s[i], this);
-						Class344.aClass437_3684.method5817(class298_sub45,
+						Class344.aClass437_3684.put(class298_sub45,
 								(long) (class68s[i].anInt673 * 617796067));
 						Class344.anInt3685 += 817588661;
 					}

@@ -41,7 +41,7 @@ public class Class65 {
 	public static void method761(Class119 class119, IComponentDefinition class105,
 			boolean bool, int i) {
 		try {
-			Class117.method1282(class119.aClass105Array1405, class105, bool,
+			Class117.method1282(class119.components, class105, bool,
 					(short) -2046);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

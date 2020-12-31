@@ -217,7 +217,7 @@ public class Class226 {
 		try {
 			int i_36_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
 			IComponentDefinition class105 = Class50.getIComponentDefinitions(i_36_, (byte) -58);
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = 1508815983 * class105.anInt1210;
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = 1508815983 * class105.fontId;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("jo.rs(").append(')').toString());
@@ -238,8 +238,8 @@ public class Class226 {
 
 	static final void method2108(Class403 class403, short i) {
 		try {
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = (null == client.aClass105_8819 ? -1
-					: -440872681 * client.aClass105_8819.anInt1142);
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = (null == client.GAME_SCREENINTERFACE ? -1
+					: -440872681 * client.GAME_SCREENINTERFACE.idHash);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("jo.api(").append(')').toString());

@@ -20,7 +20,7 @@ public abstract class Class308 {
 	boolean aBoolean3276;
 	boolean aBoolean3277;
 	Class298_Sub24_Sub3 aClass298_Sub24_Sub3_3278;
-	Class437 aClass437_3279;
+	IterableNodeMap aClass437_3279;
 	Class298_Sub24_Sub4 aClass298_Sub24_Sub4_3280;
 	boolean aBoolean3281;
 	boolean aBoolean3282;
@@ -284,12 +284,12 @@ public abstract class Class308 {
 					else
 						class298_sub24 = new Class298_Sub24_Sub2(oggstreamstate);
 				}
-				((Class308) this).aClass437_3279.method5817(class298_sub24,
+				((Class308) this).aClass437_3279.put(class298_sub24,
 						(long) i_2_);
 				return class298_sub24;
 			}
 			Class298_Sub24 class298_sub24 = ((Class298_Sub24) ((Class308) this).aClass437_3279
-					.method5812((long) i_2_));
+					.get((long) i_2_));
 			if (!((Class298_Sub24) class298_sub24).anOggStreamState7351
 					.pageIn(((Class308) this).anOggPage3271))
 				throw new IllegalStateException();
@@ -353,7 +353,7 @@ public abstract class Class308 {
 						((Class308) this).aBoolean3281 = true;
 					} else
 						class298_sub24 = ((Class298_Sub24) (((Class308) this).aClass437_3279
-								.method5812((long) ((Class308) this).anOggPage3271
+								.get((long) ((Class308) this).anOggPage3271
 										.getSerialNumber())));
 					if (class298_sub24 == ((Class308) this).aClass298_Sub24_Sub1_3268) {
 						if (((Class308) this).aClass298_Sub24_Sub1_3268
@@ -424,7 +424,7 @@ public abstract class Class308 {
 		((Class308) this).anOggSyncState3273 = new OggSyncState();
 		((Class308) this).anOggPage3271 = new OggPage();
 		((Class308) this).anOggPacket3272 = new OggPacket();
-		((Class308) this).aClass437_3279 = new Class437(8);
+		((Class308) this).aClass437_3279 = new IterableNodeMap(8);
 	}
 
 	static final void method3781(Class403 class403, byte i) {

@@ -6,7 +6,7 @@ import java.net.Socket;
 public class Class423 {
 	static Class431 aClass431_5352;
 	static int anInt5353 = 4096;
-	static Class437 aClass437_5354 = new Class437(4);
+	static IterableNodeMap aClass437_5354 = new IterableNodeMap(4);
 	static Socket aSocket5355;
 	public static Class57 aClass57_5356;
 

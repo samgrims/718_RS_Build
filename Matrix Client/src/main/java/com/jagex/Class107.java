@@ -19,8 +19,8 @@ public class Class107 {
 			((Class403) class403).anInt5239 -= -783761378;
 			int i_0_ = (((Class403) class403).anIntArray5244[681479919 * ((Class403) class403).anInt5239]);
 			int i_1_ = (((Class403) class403).anIntArray5244[1 + ((Class403) class403).anInt5239 * 681479919]);
-			Interface class298_sub51 = ((Interface) client.aClass437_8841
-					.method5812((long) i_0_));
+			Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
+					.get((long) i_0_));
 			if (null != class298_sub51
 					&& class298_sub51.interfaceId * -1617025021 == i_1_)
 				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = 1;

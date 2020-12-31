@@ -232,11 +232,11 @@ public class PacketsDecoder {
 									.method2630(-1604198619))) {
 						if (graphicsId == -1) {
 							Class298_Sub37_Sub3 class298_sub37_sub3 = ((Class298_Sub37_Sub3) (client.aClass437_8825
-									.method5812((long) (i_102_ << 16 | i_103_))));
+									.get((long) (i_102_ << 16 | i_103_))));
 							if (class298_sub37_sub3 != null) {
 								((Class298_Sub37_Sub3) class298_sub37_sub3).aClass365_Sub1_Sub1_Sub3_9578
 										.method4480((byte) 12);
-								class298_sub37_sub3.method2839(-1460969981);
+								class298_sub37_sub3.unlink(-1460969981);
 							}
 						} else {
 							int i_104_ = 256 + i_102_ * 512;
@@ -255,7 +255,7 @@ public class PacketsDecoder {
 													-1215922012)
 											- graphicsHeight, i_105_, i_102_, i_102_,
 									i_103_, i_103_, i_99_, bool));
-							client.aClass437_8825.method5817(
+							client.aClass437_8825.put(
 									(new Class298_Sub37_Sub3(
 											class365_sub1_sub1_sub3)),
 									(long) (i_102_ << 16 | i_103_));
@@ -264,7 +264,7 @@ public class PacketsDecoder {
 				} else if (targetHash >> 29 != 0) {
 					int i_107_ = targetHash & 0xffff;
 					Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-							.method5812((long) i_107_));
+							.get((long) i_107_));
 					if (null != class298_sub29) {
 						NPC class365_sub1_sub1_sub2_sub1 = ((NPC) class298_sub29.anObject7366);
 						Graphics class56 = (class365_sub1_sub1_sub2_sub1.currentGraphics[slotId]);
@@ -323,7 +323,7 @@ public class PacketsDecoder {
 										1505778629 * class398.anInt5205, speed,
 										i_113_, false, (byte) 0);
 							} else
-								class56.aClass438_569.method5821(-1,
+								class56.aClass438_569.update(-1,
 										-1461567794);
 						}
 					}
@@ -392,7 +392,7 @@ public class PacketsDecoder {
 										1505778629 * class398.anInt5205, speed,
 										i_120_, false, (byte) 0);
 							} else
-								class56.aClass438_569.method5821(-1,
+								class56.aClass438_569.update(-1,
 										-1498678101);
 						}
 					}
@@ -758,7 +758,7 @@ public class PacketsDecoder {
 				for (int slot = fromSlot; slot <= toSlot; slot++) {
 					long l = (long) slot + ((long) icomponentHash << 32);
 					Class298_Sub38 class298_sub38 = (Class298_Sub38) client.aClass437_8896
-							.method5812(l);
+							.get(l);
 					Class298_Sub38 class298_sub38_178_;
 					if (class298_sub38 == null) {
 						if (-1 == slot)
@@ -770,9 +770,9 @@ public class PacketsDecoder {
 					} else {
 						class298_sub38_178_ = new Class298_Sub38(settingsHash,
 								(-1133219011 * class298_sub38.anInt7410));
-						class298_sub38.method2839(-1460969981);
+						class298_sub38.unlink(-1460969981);
 					}
-					client.aClass437_8896.method5817(class298_sub38_178_, l);
+					client.aClass437_8896.put(class298_sub38_178_, l);
 				}
 				((Class25) class25).INCOMMING_PACKET = null;
 				return true;
@@ -1013,7 +1013,7 @@ public class PacketsDecoder {
 				((Class25) class25).INCOMMING_PACKET = null;
 				return true;
 			}
-			if (((Class25) class25).INCOMMING_PACKET == IncommingPacket.INTERFACE_PACKET) { //interface definitions way
+			if(class25.INCOMMING_PACKET == IncommingPacket.INTERFACE_PACKET) {
 				int interfaceId = stream.readUnsignedShort();
 				int key1 = stream.readInt((byte) -24);
 				int key2 = stream.readIntV2((byte) 113);
@@ -1023,8 +1023,7 @@ public class PacketsDecoder {
 				int key3 = stream.readIntV2((byte) 4);
 				Class343.method4162(1799178442);
 				if(interfaceId != 3002 && interfaceId != 3039)
-					Class113.method1254(parentHash, new Interface(interfaceId, clipped), new int[] { key1, key2, key3, key4 }, false,
-							-37609880);
+					Class113.method1254(parentHash, new Interface(interfaceId, clipped), new int[] { key1, key2, key3, key4 }, false,-37609880);
 				((Class25) class25).INCOMMING_PACKET = null;
 				return true;
 			}
@@ -1250,22 +1249,22 @@ public class PacketsDecoder {
 				for (int i_248_ = fromSlot; i_248_ <= i_247_; i_248_++) {
 					long l = (long) i_248_ + ((long) i_246_ << 32);
 					Class298_Sub38 class298_sub38 = (Class298_Sub38) client.aClass437_8896
-							.method5812(l);
+							.get(l);
 					Class298_Sub38 class298_sub38_249_;
 					if (class298_sub38 == null) {
 						if (i_248_ == -1)
 							class298_sub38_249_ = new Class298_Sub38(
-									((Class50.getIComponentDefinitions(i_246_, (byte) -9).aClass298_Sub38_1219.anInt7416) * -1266165749),
+									((Class50.getIComponentDefinitions(i_246_, (byte) -9).aClass298_Sub38_1219.settingsHash) * -1266165749),
 									i_245_);
 						else
 							class298_sub38_249_ = new Class298_Sub38(0, i_245_);
 					} else {
 						class298_sub38_249_ = new Class298_Sub38(
-								(-1266165749 * class298_sub38.anInt7416),
+								(-1266165749 * class298_sub38.settingsHash),
 								i_245_);
-						class298_sub38.method2839(-1460969981);
+						class298_sub38.unlink(-1460969981);
 					}
-					client.aClass437_8896.method5817(class298_sub38_249_, l);
+					client.aClass437_8896.put(class298_sub38_249_, l);
 				}
 				((Class25) class25).INCOMMING_PACKET = null;
 				return true;
@@ -1659,13 +1658,13 @@ public class PacketsDecoder {
 					if (client.aClass365_Sub1_Sub1_Sub2_Sub2Array8805[i_313_] != null) {
 						client.aClass365_Sub1_Sub1_Sub2_Sub2Array8805[i_313_].anIntArray10093 = null;
 						client.aClass365_Sub1_Sub1_Sub2_Sub2Array8805[i_313_].aClass438_10078
-								.method5821(-1, -1564622591);
+								.update(-1, -1564622591);
 					}
 				}
 				for (int i_314_ = 0; i_314_ < client.anInt8772 * 1962237353; i_314_++) {
 					((Entity) client.aClass298_Sub29Array8816[i_314_].anObject7366).anIntArray10093 = null;
 					((Entity) client.aClass298_Sub29Array8816[i_314_].anObject7366).aClass438_10078
-							.method5821(-1, -2064932982);
+							.update(-1, -2064932982);
 				}
 				((Class25) class25).INCOMMING_PACKET = null;
 				return true;
@@ -1674,19 +1673,19 @@ public class PacketsDecoder {
 				int i_315_ = stream.readInt((byte) 69);
 				int i_316_ = stream.readInt((byte) -11);
 				Class343.method4162(1838306305);
-				Interface class298_sub51 = ((Interface) client.aClass437_8841
-						.method5812((long) i_315_));
-				Interface class298_sub51_317_ = ((Interface) client.aClass437_8841
-						.method5812((long) i_316_));
+				Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
+						.get((long) i_315_));
+				Interface class298_sub51_317_ = ((Interface) client.OPEN_INTERFACES
+						.get((long) i_316_));
 				if (null != class298_sub51_317_)
 					Class173
-							.method1821(
+							.closeChildren(
 									class298_sub51_317_,
 									(class298_sub51 == null || ((class298_sub51_317_.interfaceId * -1617025021) != (-1617025021 * class298_sub51.interfaceId))),
 									false, -113822480);
 				if (class298_sub51 != null) {
-					class298_sub51.method2839(-1460969981);
-					client.aClass437_8841.method5817(class298_sub51,
+					class298_sub51.unlink(-1460969981);
+					client.OPEN_INTERFACES.put(class298_sub51,
 							(long) i_316_);
 				}
 				IComponentDefinition class105 = Class50.getIComponentDefinitions(i_315_, (byte) -52);
@@ -1696,7 +1695,7 @@ public class PacketsDecoder {
 				if (class105 != null) {
 					Tradution.method6054(class105, -904794130);
 					Class65.method761((Class389.aClass119Array4165[(-440872681
-							* class105.anInt1142 >>> 16)]), class105, true,
+							* class105.idHash >>> 16)]), class105, true,
 							112223880);
 				}
 				if (client.WINDOW_PANE_ID * -257444687 != -1)
@@ -1865,7 +1864,7 @@ public class PacketsDecoder {
 					i_358_ <<= 2;
 					i_355_ <<= 2;
 					i_350_ <<= 2;
-					Class437.method5818(i_348_, i_349_, i_353_, i_363_, i_358_,
+					IterableNodeMap.method5818(i_348_, i_349_, i_353_, i_363_, i_358_,
 							i_355_, i_364_, i_365_, i_351_, i_361_, i_360_,
 							i_359_, i_352_, i_350_, bool, 2141342802);
 				}
@@ -2260,7 +2259,7 @@ public class PacketsDecoder {
 				int i_424_ = stream.readUnsignedByte();
 				int i_425_ = stream.readUnsignedShort();
 				Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-						.method5812((long) i_425_));
+						.get((long) i_425_));
 				if (class298_sub29 != null)
 					Class431
 							.method5768(
@@ -2279,17 +2278,17 @@ public class PacketsDecoder {
 				for (Class298_Sub2 class298_sub2 = ((Class298_Sub2) client.aClass437_8685
 						.method5816(1564654282)); class298_sub2 != null; class298_sub2 = ((Class298_Sub2) client.aClass437_8685
 						.method5815((byte) 10))) {
-					int i_426_ = (int) ((class298_sub2.aLong3188 * 7051297995265073167L) >> 28 & 0x3L);
-					int i_427_ = (int) (7051297995265073167L * class298_sub2.aLong3188 & 0x3fffL);
+					int i_426_ = (int) ((class298_sub2.pointer * 7051297995265073167L) >> 28 & 0x3L);
+					int i_427_ = (int) (7051297995265073167L * class298_sub2.pointer & 0x3fffL);
 					int i_428_ = i_427_ - -1760580017 * class341.gameSceneBaseX;
-					int i_429_ = (int) ((7051297995265073167L * class298_sub2.aLong3188) >> 14 & 0x3fffL);
+					int i_429_ = (int) ((7051297995265073167L * class298_sub2.pointer) >> 14 & 0x3fffL);
 					int i_430_ = i_429_ - 283514611 * class341.gameSceneBaseY;
 					if (i_426_ == Class375.basePlane * -191892109
 							&& i_428_ >= 134435705 * ClanSettings.baseTileX
 							&& i_428_ < 8 + 134435705 * ClanSettings.baseTileX
 							&& i_430_ >= -105526719 * Class216.baseTileY
 							&& i_430_ < 8 + Class216.baseTileY * -105526719) {
-						class298_sub2.method2839(-1460969981);
+						class298_sub2.unlink(-1460969981);
 						if (i_428_ >= 0
 								&& i_430_ >= 0
 								&& i_428_ < client.aClass283_8716
@@ -2352,9 +2351,9 @@ public class PacketsDecoder {
 				if (Class389.aClass119Array4165[i_432_] != null) {
 					for (int i_435_ = i_433_; i_435_ < i_434_; i_435_++) {
 						int i_436_ = stream.read24BitUnsignedInteger((byte) -1);
-						if (i_435_ < (Class389.aClass119Array4165[i_432_].aClass105Array1405).length
-								&& (Class389.aClass119Array4165[i_432_].aClass105Array1405[i_435_]) != null)
-							Class389.aClass119Array4165[i_432_].aClass105Array1405[i_435_].anInt1141 = i_436_
+						if (i_435_ < (Class389.aClass119Array4165[i_432_].components).length
+								&& (Class389.aClass119Array4165[i_432_].components[i_435_]) != null)
+							Class389.aClass119Array4165[i_432_].components[i_435_].anInt1141 = i_436_
 									* -177949397;
 					}
 				}
@@ -2779,11 +2778,11 @@ public class PacketsDecoder {
 			if (((Class25) class25).INCOMMING_PACKET == IncommingPacket.CLOSE_INTERFACE_PACKET) {
 				int i_481_ = stream.readIntLE(-2020536115);
 				Class343.method4162(1762312694);
-				Interface class298_sub51 = ((Interface) client.aClass437_8841
-						.method5812((long) i_481_));
+				Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
+						.get((long) i_481_));
 				if (class298_sub51 != null)
 					Class173
-							.method1821(class298_sub51, true, false, -113822480);
+							.closeChildren(class298_sub51, true, false, -113822480);
 				if (client.aClass105_8652 != null) {
 					Tradution.method6054(client.aClass105_8652, -760560936);
 					client.aClass105_8652 = null;

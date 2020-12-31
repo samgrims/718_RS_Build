@@ -276,7 +276,7 @@ public class Class86 {
 		try {
 			Class360.anInt3868 = 471358088;
 			Class360.aClass25_3905 = client.aClass25_8711;
-			Class460.method5981(false, false, string, string_27_, -1L);
+			HashTableIterator.method5981(false, false, string, string_27_, -1L);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("dm.t(").append(')').toString());

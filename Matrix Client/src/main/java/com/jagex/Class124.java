@@ -101,7 +101,7 @@ public class Class124 implements Runnable {
 		try {
 			Class360.anInt3868 = -1058684408;
 			Class360.aClass25_3905 = client.aClass25_8693;
-			Class460.method5981(
+			HashTableIterator.method5981(
 					(-1L == 122690138525332847L * Class360.aLong3874), true,
 					"", "", Class360.aLong3874 * 122690138525332847L);
 		} catch (RuntimeException runtimeexception) {

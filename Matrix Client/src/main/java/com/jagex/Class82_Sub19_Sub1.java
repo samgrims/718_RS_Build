@@ -39,7 +39,7 @@ public class Class82_Sub19_Sub1 extends Class82_Sub19 {
 					((Class82_Sub19_Sub1) this).anInt9112 * -1269328247,
 					((Class82_Sub19_Sub1) this).anInt6894 * 87600989, false));
 			client.aClass437_8825
-					.method5817(
+					.put(
 							new Class298_Sub37_Sub3(class365_sub1_sub1_sub3),
 							(long) ((467113987 * ((Class82_Sub19_Sub1) this).anInt9114 << 16) | (((Class82_Sub19_Sub1) this).anInt9112 * -1269328247)));
 		} catch (RuntimeException runtimeexception) {
@@ -83,7 +83,7 @@ public class Class82_Sub19_Sub1 extends Class82_Sub19 {
 				((Class82_Sub19_Sub1) this).anInt9112 * -1269328247,
 				((Class82_Sub19_Sub1) this).anInt6894 * 87600989, false));
 		client.aClass437_8825
-				.method5817(
+				.put(
 						new Class298_Sub37_Sub3(class365_sub1_sub1_sub3),
 						(long) (467113987 * ((Class82_Sub19_Sub1) this).anInt9114 << 16 | ((Class82_Sub19_Sub1) this).anInt9112
 								* -1269328247));
@@ -115,7 +115,7 @@ public class Class82_Sub19_Sub1 extends Class82_Sub19 {
 				((Class82_Sub19_Sub1) this).anInt9112 * -1269328247,
 				((Class82_Sub19_Sub1) this).anInt6894 * 87600989, false));
 		client.aClass437_8825
-				.method5817(
+				.put(
 						new Class298_Sub37_Sub3(class365_sub1_sub1_sub3),
 						(long) (467113987 * ((Class82_Sub19_Sub1) this).anInt9114 << 16 | ((Class82_Sub19_Sub1) this).anInt9112
 								* -1269328247));

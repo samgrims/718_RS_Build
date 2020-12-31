@@ -12,7 +12,7 @@ public class Class500 {
 			boolean bool) {
 		((Class500) this).aClass243_6114 = class243;
 		((Class500) this).anInt6115 = (((Class500) this).aClass243_6114
-				.method2316(
+				.filesCount(
 						(-1006924897 * (Class120.aClass120_1431.anInt1460)),
 						-1837337583) * 1005943745);
 		if (bool) {

@@ -28,7 +28,7 @@ public class Class82_Sub10 extends Class82 {
 		try {
 			if (Class378.method4671(i, null, -1864950961))
 				Class170.method1812(
-						(Class389.aClass119Array4165[i].aClass105Array1405),
+						(Class389.aClass119Array4165[i].components),
 						i_0_, (byte) 65);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -36,63 +36,47 @@ public class Class82_Sub10 extends Class82 {
 		}
 	}
 
-	static void method904(IComponentDefinition class105, int i, int i_2_, boolean bool,
-			byte i_3_) {
+	static void initSizes(IComponentDefinition iCompDef, int i_1, int i_2_, boolean bool, byte i_3_) {
 		try {
-			int i_4_ = -2093041337 * class105.anInt1156;
-			int i_5_ = class105.anInt1162 * 457937409;
-			if (class105.aByte1148 == 0)
-				class105.anInt1156 = class105.anInt1253 * -86683899;
-			else if (1 == class105.aByte1148)
-				class105.anInt1156 = -614915977
-						* (i - 1769572195 * class105.anInt1253);
-			else if (2 == class105.aByte1148)
-				class105.anInt1156 = -614915977
-						* (i * (1769572195 * class105.anInt1253) >> 14);
-			if (0 == class105.aByte1149)
-				class105.anInt1162 = -472364941 * class105.anInt1153;
-			else if (1 == class105.aByte1149)
-				class105.anInt1162 = (i_2_ - class105.anInt1153 * -1747263885)
-						* -67604991;
-			else if (class105.aByte1149 == 2)
-				class105.anInt1162 = -67604991
-						* (i_2_ * (-1747263885 * class105.anInt1153) >> 14);
-			if (class105.aByte1148 == 4)
-				class105.anInt1156 = -614915977
-						* (class105.anInt1158 * 1183580231
-								* (class105.anInt1162 * 457937409) / (class105.anInt1242 * 1289873889));
-			if (class105.aByte1149 == 4)
-				class105.anInt1162 = -67604991
-						* (-2093041337 * class105.anInt1156
-								* (1289873889 * class105.anInt1242) / (1183580231 * class105.anInt1158));
-			if (client.aBoolean8846
-					&& (client.method2801(class105).anInt7416 * -1266165749 != 0 || class105.anInt1144
-							* -1215239439 == 0)) {
-				if (class105.anInt1162 * 457937409 < 5
-						&& -2093041337 * class105.anInt1156 < 5) {
-					class105.anInt1162 = -338024955;
-					class105.anInt1156 = 1220387411;
+			int i_4_ = -2093041337 * iCompDef.width;
+			int i_5_ = iCompDef.height * 457937409;
+			if (iCompDef.aspectWidthType == 0)
+				iCompDef.width = iCompDef.baseWidth * -86683899;
+			else if (1 == iCompDef.aspectWidthType)
+				iCompDef.width = -614915977	* (i_1 - 1769572195 * iCompDef.baseWidth);
+			else if (2 == iCompDef.aspectWidthType)
+				iCompDef.width = -614915977	* (i_1 * (1769572195 * iCompDef.baseWidth) >> 14);
+			if (0 == iCompDef.aspectHeightType)
+				iCompDef.height = -472364941 * iCompDef.baseHeight;
+			else if (1 == iCompDef.aspectHeightType)
+				iCompDef.height = (i_2_ - iCompDef.baseHeight * -1747263885) * -67604991;
+			else if (iCompDef.aspectHeightType == 2)
+				iCompDef.height = -67604991	* (i_2_ * (-1747263885 * iCompDef.baseHeight) >> 14);
+			if (iCompDef.aspectWidthType == 4)
+				iCompDef.width = -614915977	* (iCompDef.aspectX * 1183580231 * (iCompDef.height * 457937409) / (iCompDef.aspectY * 1289873889));
+			if (iCompDef.aspectHeightType == 4)
+				iCompDef.height = -67604991	* (-2093041337 * iCompDef.width	* (1289873889 * iCompDef.aspectY) / (1183580231 * iCompDef.aspectX));
+			if (client.aBoolean8846	&& (client.getIComponentSettings(iCompDef).settingsHash * -1266165749 != 0 || iCompDef.type * -1215239439 == 0)) {
+				if (iCompDef.height * 457937409 < 5	&& -2093041337 * iCompDef.width < 5) {
+					iCompDef.height = -338024955;
+					iCompDef.width = 1220387411;
 				} else {
-					if (457937409 * class105.anInt1162 <= 0)
-						class105.anInt1162 = -338024955;
-					if (class105.anInt1156 * -2093041337 <= 0)
-						class105.anInt1156 = 1220387411;
+					if (457937409 * iCompDef.height <= 0)
+						iCompDef.height = -338024955;
+					if (iCompDef.width * -2093041337 <= 0)
+						iCompDef.width = 1220387411;
 				}
 			}
-			if (class105.anInt1145 * 907611645 == IComponentDefinition.anInt1269
-					* -451364727)
-				client.aClass105_8819 = class105;
-			if (bool
-					&& class105.anObjectArray1164 != null
-					&& (i_4_ != class105.anInt1156 * -2093041337 || 457937409 * class105.anInt1162 != i_5_)) {
+			if (iCompDef.anInt1145 * 907611645 == IComponentDefinition.anInt1269 * -451364727)
+				client.GAME_SCREENINTERFACE = iCompDef;
+			if (bool && iCompDef.anObjectArray1164 != null && (i_4_ != iCompDef.width * -2093041337 || 457937409 * iCompDef.height != i_5_)) {
 				Class298_Sub46 class298_sub46 = new Class298_Sub46();
-				class298_sub46.aClass105_7525 = class105;
-				class298_sub46.anObjectArray7530 = class105.anObjectArray1164;
+				class298_sub46.aClass105_7525 = iCompDef;
+				class298_sub46.anObjectArray7530 = iCompDef.anObjectArray1164;
 				client.aClass453_8893.method5935(class298_sub46, 528123519);
 			}
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("xv.kj(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("xv.kj(").append(')').toString());
 		}
 	}
 

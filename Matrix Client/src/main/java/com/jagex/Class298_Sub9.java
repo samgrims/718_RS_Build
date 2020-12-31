@@ -4,7 +4,7 @@ package com.jagex;/* Class298_Sub9 - Decompiled by JODE
 
 public class Class298_Sub9 extends Class298 {
 	static Class348 aClass348_7223;
-	static Class437 aClass437_7224 = new Class437(32);
+	static IterableNodeMap aClass437_7224 = new IterableNodeMap(32);
 	static int anInt7225;
 	int[] anIntArray7226 = { -1 };
 	int[] anIntArray7227 = { 0 };

@@ -9,22 +9,22 @@ import java.net.NetworkInterface;
 import java.net.URL;
 import java.util.Iterator;
 
-public class Class460 implements Iterator {
-	Class437 aClass437_5675;
+public class HashTableIterator implements Iterator {
+	IterableNodeMap aClass437_5675;
 	Class298 aClass298_5676;
 	int anInt5677;
 	Class298 aClass298_5678 = null;
 
 	public boolean hasNext() {
 		try {
-			if ((((Class437) ((Class460) this).aClass437_5675).aClass298Array5512[1772241843 * ((Class460) this).anInt5677 - 1]) != ((Class460) this).aClass298_5676)
+			if ((((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).aClass298Array5512[1772241843 * ((HashTableIterator) this).anInt5677 - 1]) != ((HashTableIterator) this).aClass298_5676)
 				return true;
-			while (((Class460) this).anInt5677 * 1772241843 < 577108745 * (((Class437) ((Class460) this).aClass437_5675).anInt5515)) {
-				if ((((Class437) ((Class460) this).aClass437_5675).aClass298Array5512[((((Class460) this).anInt5677 += -317185157) * 1772241843 - 1)].aClass298_3187) != (((Class437) ((Class460) this).aClass437_5675).aClass298Array5512[((Class460) this).anInt5677 * 1772241843 - 1])) {
-					((Class460) this).aClass298_5676 = (((Class437) ((Class460) this).aClass437_5675).aClass298Array5512[((Class460) this).anInt5677 * 1772241843 - 1].aClass298_3187);
+			while (((HashTableIterator) this).anInt5677 * 1772241843 < 577108745 * (((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).anInt5515)) {
+				if ((((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).aClass298Array5512[((((HashTableIterator) this).anInt5677 += -317185157) * 1772241843 - 1)].aClass298_3187) != (((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).aClass298Array5512[((HashTableIterator) this).anInt5677 * 1772241843 - 1])) {
+					((HashTableIterator) this).aClass298_5676 = (((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).aClass298Array5512[((HashTableIterator) this).anInt5677 * 1772241843 - 1].aClass298_3187);
 					return true;
 				}
-				((Class460) this).aClass298_5676 = (((Class437) ((Class460) this).aClass437_5675).aClass298Array5512[1772241843 * ((Class460) this).anInt5677 - 1]);
+				((HashTableIterator) this).aClass298_5676 = (((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).aClass298Array5512[1772241843 * ((HashTableIterator) this).anInt5677 - 1]);
 			}
 			return false;
 		} catch (RuntimeException runtimeexception) {
@@ -35,26 +35,26 @@ public class Class460 implements Iterator {
 
 	void method5978(int i) {
 		try {
-			((Class460) this).aClass298_5676 = (((Class437) ((Class460) this).aClass437_5675).aClass298Array5512[0].aClass298_3187);
-			((Class460) this).anInt5677 = -317185157;
-			((Class460) this).aClass298_5678 = null;
+			((HashTableIterator) this).aClass298_5676 = (((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).aClass298Array5512[0].aClass298_3187);
+			((HashTableIterator) this).anInt5677 = -317185157;
+			((HashTableIterator) this).aClass298_5678 = null;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 			.append("sy.d(").append(')').toString());
 		}
 	}
 
-	public Class460(Class437 class437) {
-		((Class460) this).aClass437_5675 = class437;
+	public HashTableIterator(IterableNodeMap class437) {
+		((HashTableIterator) this).aClass437_5675 = class437;
 		method5978(-751580615);
 	}
 
 	public void remove() {
 		try {
-			if (((Class460) this).aClass298_5678 == null)
+			if (((HashTableIterator) this).aClass298_5678 == null)
 				throw new IllegalStateException();
-			((Class460) this).aClass298_5678.method2839(-1460969981);
-			((Class460) this).aClass298_5678 = null;
+			((HashTableIterator) this).aClass298_5678.unlink(-1460969981);
+			((HashTableIterator) this).aClass298_5678 = null;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 			.append("sy.remove(").append(')').toString());
@@ -63,21 +63,21 @@ public class Class460 implements Iterator {
 
 	public Object next() {
 		try {
-			if ((((Class437) ((Class460) this).aClass437_5675).aClass298Array5512[((Class460) this).anInt5677 * 1772241843 - 1]) != ((Class460) this).aClass298_5676) {
-				Class298 class298 = ((Class460) this).aClass298_5676;
-				((Class460) this).aClass298_5676 = class298.aClass298_3187;
-				((Class460) this).aClass298_5678 = class298;
+			if ((((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).aClass298Array5512[((HashTableIterator) this).anInt5677 * 1772241843 - 1]) != ((HashTableIterator) this).aClass298_5676) {
+				Class298 class298 = ((HashTableIterator) this).aClass298_5676;
+				((HashTableIterator) this).aClass298_5676 = class298.aClass298_3187;
+				((HashTableIterator) this).aClass298_5678 = class298;
 				return class298;
 			}
 			while_106_: do {
 				Class298 class298;
 				do {
-					if (((Class460) this).anInt5677 * 1772241843 >= (577108745 * (((Class437) ((Class460) this).aClass437_5675).anInt5515)))
+					if (((HashTableIterator) this).anInt5677 * 1772241843 >= (577108745 * (((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).anInt5515)))
 						break while_106_;
-					class298 = (((Class437) ((Class460) this).aClass437_5675).aClass298Array5512[((((Class460) this).anInt5677 += -317185157) * 1772241843) - 1].aClass298_3187);
-				} while (class298 == (((Class437) ((Class460) this).aClass437_5675).aClass298Array5512[((Class460) this).anInt5677 * 1772241843 - 1]));
-				((Class460) this).aClass298_5676 = class298.aClass298_3187;
-				((Class460) this).aClass298_5678 = class298;
+					class298 = (((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).aClass298Array5512[((((HashTableIterator) this).anInt5677 += -317185157) * 1772241843) - 1].aClass298_3187);
+				} while (class298 == (((IterableNodeMap) ((HashTableIterator) this).aClass437_5675).aClass298Array5512[((HashTableIterator) this).anInt5677 * 1772241843 - 1]));
+				((HashTableIterator) this).aClass298_5676 = class298.aClass298_3187;
+				((HashTableIterator) this).aClass298_5678 = class298;
 				return class298;
 			} while (false);
 			return null;

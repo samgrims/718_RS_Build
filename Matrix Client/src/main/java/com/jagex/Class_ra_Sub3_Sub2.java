@@ -2532,7 +2532,7 @@ public class Class_ra_Sub3_Sub2 extends Class_ra_Sub3 {
 	void method5565(Interface11 interface11) {
 		Class298_Sub21 class298_sub21 = method5541(interface11);
 		if (class298_sub21 != null)
-			class298_sub21.method2839(-1460969981);
+			class298_sub21.unlink(-1460969981);
 	}
 
 	public final void method5516(Class187 class187, int i, int i_151_,

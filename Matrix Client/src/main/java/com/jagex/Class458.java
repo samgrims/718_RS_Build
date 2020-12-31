@@ -24,7 +24,7 @@ public class Class458 {
 	public void method5965(Class298 class298, int i) {
 		try {
 			if (null != class298.aClass298_3189)
-				class298.method2839(-1460969981);
+				class298.unlink(-1460969981);
 			class298.aClass298_3189 = aClass298_5668;
 			class298.aClass298_3187 = aClass298_5668.aClass298_3187;
 			class298.aClass298_3189.aClass298_3187 = class298;
@@ -68,7 +68,7 @@ public class Class458 {
 	public void method5968(Class298 class298, int i) {
 		try {
 			if (class298.aClass298_3189 != null)
-				class298.method2839(-1460969981);
+				class298.unlink(-1460969981);
 			class298.aClass298_3189 = aClass298_5668.aClass298_3189;
 			class298.aClass298_3187 = aClass298_5668;
 			class298.aClass298_3189.aClass298_3187 = class298;
@@ -108,7 +108,7 @@ public class Class458 {
 			Class298 class298 = aClass298_5668.aClass298_3187;
 			if (aClass298_5668 == class298)
 				return null;
-			class298.method2839(-1460969981);
+			class298.unlink(-1460969981);
 			return class298;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -125,7 +125,7 @@ public class Class458 {
 						break;
 					return;
 				}
-				class298.method2839(-1460969981);
+				class298.unlink(-1460969981);
 			}
 			((Class458) this).aClass298_5669 = null;
 		} catch (RuntimeException runtimeexception) {

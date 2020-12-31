@@ -53,7 +53,7 @@ public class Class446 implements Iterator {
 		try {
 			if (null == ((Class446) this).aClass298_5613)
 				throw new IllegalStateException();
-			((Class446) this).aClass298_5613.method2839(-1460969981);
+			((Class446) this).aClass298_5613.unlink(-1460969981);
 			((Class446) this).aClass298_5613 = null;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

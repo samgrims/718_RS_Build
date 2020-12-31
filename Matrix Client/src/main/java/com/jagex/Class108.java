@@ -97,11 +97,11 @@ public class Class108 {
 					OutcommingPacket.CLOSE_INTERFACE_PACKET,
 					client.aClass25_8711.aClass449_330, (byte) 111);
 			client.aClass25_8711.method390(class298_sub36, (byte) -21);
-			for (Interface class298_sub51 = ((Interface) client.aClass437_8841
-					.method5816(1892786919)); null != class298_sub51; class298_sub51 = ((Interface) client.aClass437_8841
+			for (Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
+					.method5816(1892786919)); null != class298_sub51; class298_sub51 = ((Interface) client.OPEN_INTERFACES
 					.method5815((byte) -93))) {
 				if (!class298_sub51.method2840(-629325116)) {
-					class298_sub51 = ((Interface) client.aClass437_8841
+					class298_sub51 = ((Interface) client.OPEN_INTERFACES
 							.method5816(1676096674));
 					if (class298_sub51 == null) {
 						if (i <= 0) {
@@ -111,7 +111,7 @@ public class Class108 {
 					}
 				}
 				if (0 == class298_sub51.clipped * 27137839)
-					Class173.method1821(class298_sub51, true, bool, -113822480);
+					Class173.closeChildren(class298_sub51, true, bool, -113822480);
 			}
 			if (client.aClass105_8652 != null) {
 				Tradution.method6054(client.aClass105_8652, -1209330591);

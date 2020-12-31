@@ -71,7 +71,7 @@ public class Class239 {
 									((((Class298_Sub27) class298_sub27_5_).anInt7364) * -1217806945));
 							((Class239) this).aClass298_Sub27Array2611[(((Class298_Sub27) class298_sub27_5_).anInt7363)
 									* -1336494225] = null;
-							class298_sub27_5_.method2839(-1460969981);
+							class298_sub27_5_.unlink(-1460969981);
 						} else {
 							class298_sub27 = new Class298_Sub27(
 									i,
@@ -162,8 +162,8 @@ public class Class239 {
 			Class505 class505 = class105.method1113(Class497.aClass197_6105,
 					client.anInterface10_8700, (byte) -46);
 			int i_12_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
-			Point point = class505.method6263(class105.aString1212,
-					class105.anInt1156 * -2093041337,
+			Point point = class505.method6263(class105.text,
+					class105.width * -2093041337,
 					class105.anInt1191 * 418216501, i_12_,
 					Class130_Sub2.aClass57Array6959, 946663112);
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = point.x;

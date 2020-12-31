@@ -207,9 +207,9 @@ public class Class248 implements Runnable {
 							i_14_ = (i_14_ * 256 / (256 + 356727603 * client.anInt8749));
 						}
 						is[i_11_ * 2] = ((((i_8_ + 4 * (class352.anIntArray3803[i_11_ * 2 + 1]))
-								* i_13_ + ((i_7_ + 4 * class352.anIntArray3803[i_11_ * 2]) * i_14_)) >> 14) + (class105.anInt1156
+								* i_13_ + ((i_7_ + 4 * class352.anIntArray3803[i_11_ * 2]) * i_14_)) >> 14) + (class105.width
 								* -2093041337 / 2 + i));
-						is[i_11_ * 2 + 1] = (i_6_ + class105.anInt1162
+						is[i_11_ * 2 + 1] = (i_6_ + class105.height
 								* 457937409 / 2 - ((i_14_
 								* ((class352.anIntArray3803[1 + 2 * i_11_]) * 4 + i_8_) - (4 * class352.anIntArray3803[2 * i_11_] + i_7_)
 								* i_13_) >> 14));

@@ -66,7 +66,7 @@ public class Class128 implements Interface5 {
 			Tradution.method6054(class105, 100999784);
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403)
-				Class298_Sub52.method3582(class105.anInt1142 * -440872681,
+				Class298_Sub52.method3582(class105.idHash * -440872681,
 						-285766228);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

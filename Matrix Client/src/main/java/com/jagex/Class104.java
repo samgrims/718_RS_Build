@@ -94,7 +94,7 @@ public class Class104 {
 								Class462.anInt5683 * -2110394505,
 								-1111710645 * Class298_Sub40_Sub9.anInt9716,
 								Class216.anInt6660 * -391533651,
-								Class437.anInt5518 * -514549911,
+								IterableNodeMap.anInt5518 * -514549911,
 								(Class82_Sub3.aClass105_6825 == client.aClass105_8712 ? -1
 										: client.aClass105_8712.anInt1303 * 91937559),
 								true, (byte) 0);

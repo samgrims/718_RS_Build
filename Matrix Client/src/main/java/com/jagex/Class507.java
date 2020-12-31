@@ -152,7 +152,7 @@ public class Class507 {
 		if (((Class507) this).aClass243_6207 != null) {
 			int i = ((Class507) this).aClass243_6207.method2296(2037724352) - 1;
 			Class120.aClass120_1410.method1306((short) 12429);
-			((Class507) this).aClass243_6207.method2316(i, 678420951);
+			((Class507) this).aClass243_6207.filesCount(i, 678420951);
 		}
 		if (Class411.aClass411_5320 == ((Class507) this).aClass411_6205)
 			((Class507) this).aStringArray6213 = (new String[] {

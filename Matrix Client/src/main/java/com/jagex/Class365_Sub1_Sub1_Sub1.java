@@ -108,7 +108,7 @@ public class Class365_Sub1_Sub1_Sub1 extends Class365_Sub1_Sub1 {
 					} else {
 						int i_7_ = ((132125965 * ((Class365_Sub1_Sub1_Sub1) this).anInt10043) - 1);
 						Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696
-								.method5812((long) i_7_));
+								.get((long) i_7_));
 						if (null != class298_sub29)
 							class365_sub1_sub1_sub2 = ((Entity) class298_sub29.anObject7366);
 					}
@@ -523,7 +523,7 @@ public class Class365_Sub1_Sub1_Sub1 extends Class365_Sub1_Sub1 {
 				-1811500435).anInt5205) * 1505778629;
 		((Class365_Sub1_Sub1_Sub1) this).aClass438_10047 = new Class438_Sub2(
 				this, false);
-		((Class365_Sub1_Sub1_Sub1) this).aClass438_10047.method5821(i_44_,
+		((Class365_Sub1_Sub1_Sub1) this).aClass438_10047.update(i_44_,
 				-1768064453);
 		method4362(1, 291576769);
 	}

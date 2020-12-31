@@ -103,7 +103,7 @@ public class Class389 {
 		((Class389) this).aClass243_4160 = class243_3_;
 		int i = ((Class389) this).aClass243_4159.method2296(1921321046) - 1;
 		Class120.aClass120_1449.method1306((short) 3745);
-		((Class389) this).aClass243_4159.method2316(i, -1103317672);
+		((Class389) this).aClass243_4159.filesCount(i, -1103317672);
 	}
 
 	static final void method4861(Class403 class403, int i) {

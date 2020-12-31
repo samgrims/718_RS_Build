@@ -408,8 +408,8 @@ public class Class484 {
 			if (class105.anInt1154 * -1309843523 == -1
 					&& !class119.aBoolean1403) {
 				Class509
-						.method6286(class105.anInt1142 * -440872681, 1280161457);
-				Class70.method808(class105.anInt1142 * -440872681, 1365886574);
+						.method6286(class105.idHash * -440872681, 1280161457);
+				Class70.method808(class105.idHash * -440872681, 1365886574);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

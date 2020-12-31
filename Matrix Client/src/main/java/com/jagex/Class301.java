@@ -13,7 +13,7 @@ public class Class301 {
 	protected static Interface23 anInterface23_3223;
 	static byte[] aByteArray3224;
 	protected static Class487 aClass487_3225;
-	static Class437 aClass437_3226 = new Class437(16);
+	static IterableNodeMap aClass437_3226 = new IterableNodeMap(16);
 	protected static int anInt3227 = (int) (Math.random() * 11.0) - 5;
 	protected static int anInt3228 = (int) (Math.random() * 17.0) - 8;
 	protected static byte[][][] aByteArrayArrayArray3229;
@@ -285,7 +285,7 @@ public class Class301 {
 			for (int i_58_ = 0; i_58_ < is.length; i_58_++) {
 				MapDetails class298_sub37_sub13 = Class469
 						.method6048(aClass243_3248, i, is[i_58_], 1783056581);
-				aClass437_3226.method5817(class298_sub37_sub13,
+				aClass437_3226.put(class298_sub37_sub13,
 						(long) ((class298_sub37_sub13.anInt9643) * -947282109));
 			}
 		}
@@ -306,7 +306,7 @@ public class Class301 {
 
 	static void method3692(int i) {
 		aClass298_Sub37_Sub13_3218 = (MapDetails) aClass437_3226
-				.method5812((long) i);
+				.get((long) i);
 	}
 
 	public static Class461 method3693(int i, int i_59_) {
@@ -818,7 +818,7 @@ public class Class301 {
 	}
 
 	public static MapDetails method3705(int i) {
-		return (MapDetails) aClass437_3226.method5812((long) i);
+		return (MapDetails) aClass437_3226.get((long) i);
 	}
 
 	static void method3706() {

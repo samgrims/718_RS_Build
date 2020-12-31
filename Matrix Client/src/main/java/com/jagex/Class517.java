@@ -74,7 +74,7 @@ public class Class517 {
 	public Class517(Class411 class411, Class429 class429, Class243 class243) {
 		((Class517) this).aClass243_6269 = class243;
 		if (((Class517) this).aClass243_6269 != null)
-			anInt6268 = (((Class517) this).aClass243_6269.method2316(
+			anInt6268 = (((Class517) this).aClass243_6269.filesCount(
 					-1006924897 * Class120.aClass120_1452.anInt1460, 650803238)) * 2084802537;
 		else
 			anInt6268 = 0;
@@ -102,7 +102,7 @@ public class Class517 {
 										Class298_Sub46.aClass264_7534,
 										(((Class298_Sub14) class298_sub14).aBoolean7265 ? (Class287.myPlayer.aClass366_10209)
 												: null), 1788760477);
-						class298_sub14.method2839(-1460969981);
+						class298_sub14.unlink(-1460969981);
 					}
 					Class360.method4301(-1387034810);
 				} else {
@@ -137,7 +137,7 @@ public class Class517 {
 										Class522.aClass264_6284,
 										(((Class298_Sub14) class298_sub14).aBoolean7265 ? (Class287.myPlayer.aClass366_10209)
 												: null), 1451736551);
-						class298_sub14.method2839(-1460969981);
+						class298_sub14.unlink(-1460969981);
 					}
 				}
 			}

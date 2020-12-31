@@ -14,7 +14,7 @@ public class Class298_Sub27 extends Class298 {
 
 	public static void method3105(short i) {
 		try {
-			Class344.aClass437_3684 = new Class437(8);
+			Class344.aClass437_3684 = new IterableNodeMap(8);
 			Class344.anInt3685 = 0;
 			Iterator iterator = Class344.aList3683.iterator();
 			while (iterator.hasNext()) {

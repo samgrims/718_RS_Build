@@ -82,7 +82,7 @@ public abstract class Class336 {
 
 	static final void method4094(Class403 class403, byte i) {
 		try {
-			int i_12_ = client.aClass437_8841.method5814(2031939050);
+			int i_12_ = client.OPEN_INTERFACES.method5814(2031939050);
 			if (-1 != -257444687 * client.WINDOW_PANE_ID)
 				i_12_++;
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = i_12_;

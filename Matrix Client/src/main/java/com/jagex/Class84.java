@@ -105,7 +105,7 @@ public class Class84 {
 			Class390 class390 = (((Class403) class403).aBoolean5261 ? ((Class403) class403).aClass390_5247
 					: ((Class403) class403).aClass390_5246);
 			IComponentDefinition class105 = ((Class390) class390).aClass105_4168;
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.anInt1210 * 1508815983;
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.fontId * 1508815983;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("dk.pp(").append(')').toString());
@@ -119,7 +119,7 @@ public class Class84 {
 							(((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]),
 							(short) 13294));
 			class105.aClass105Array1292 = null;
-			class105.aClass105Array1293 = null;
+			class105.itemSlots = null;
 			Tradution.method6054(class105, -1361442228);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

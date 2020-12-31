@@ -59,7 +59,7 @@ public class Class131 {
 
 	public Class131(Class411 class411, Class429 class429, Class243 class243) {
 		((Class131) this).aClass243_1497 = class243;
-		((Class131) this).aClass243_1497.method2316(
+		((Class131) this).aClass243_1497.filesCount(
 				(Class120.aClass120_1417.anInt1460) * -1006924897, -1961959383);
 	}
 
@@ -79,20 +79,20 @@ public class Class131 {
 			if (class105 != null) {
 				if (class105.anInt1154 * -1309843523 != -1) {
 					IComponentDefinition class105_2_ = class119.method1297(
-							1573706803 * class105.anInt1160, (short) 26063);
+							1573706803 * class105.parent, (short) 26063);
 					if (class105_2_ != null) {
-						if (class105_2_.aClass105Array1293 == class105_2_.aClass105Array1292) {
-							class105_2_.aClass105Array1293 = (new IComponentDefinition[class105_2_.aClass105Array1292.length]);
-							class105_2_.aClass105Array1293[class105_2_.aClass105Array1293.length - 1] = class105;
+						if (class105_2_.itemSlots == class105_2_.aClass105Array1292) {
+							class105_2_.itemSlots = (new IComponentDefinition[class105_2_.aClass105Array1292.length]);
+							class105_2_.itemSlots[class105_2_.itemSlots.length - 1] = class105;
 							Class425.method5737(class105_2_.aClass105Array1292,
-									0, class105_2_.aClass105Array1293, 0,
+									0, class105_2_.itemSlots, 0,
 									(-1309843523 * class105.anInt1154));
 							Class425
 									.method5737(
 											class105_2_.aClass105Array1292,
 											1 + class105.anInt1154
 													* -1309843523,
-											class105_2_.aClass105Array1293,
+											class105_2_.itemSlots,
 											-1309843523 * class105.anInt1154,
 											(class105_2_.aClass105Array1292.length
 													- class105.anInt1154
@@ -100,7 +100,7 @@ public class Class131 {
 						} else {
 							int i_3_ = 0;
 							IComponentDefinition[] class105s;
-							for (class105s = class105_2_.aClass105Array1293; i_3_ < class105s.length; i_3_++) {
+							for (class105s = class105_2_.itemSlots; i_3_ < class105s.length; i_3_++) {
 								if (class105s[i_3_] == class105) {
 									if (i == -1270501871)
 										break;
@@ -111,7 +111,7 @@ public class Class131 {
 								Class425.method5737(class105s, 1 + i_3_,
 										class105s, i_3_, (class105s.length
 												- i_3_ - 1));
-								class105s[class105_2_.aClass105Array1293.length - 1] = class105;
+								class105s[class105_2_.itemSlots.length - 1] = class105;
 							}
 						}
 					}

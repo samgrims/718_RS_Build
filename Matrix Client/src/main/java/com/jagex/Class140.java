@@ -101,8 +101,8 @@ public class Class140 implements Runnable {
 				class190.method1853(new RsByteBuffer(is), 1143811540);
 			class190.method1855(-1168443566);
 			if (2 == class190.anInt1940 * -1955592777
-					&& Class190.aClass437_1928.method5812((long) i) == null) {
-				Class190.aClass437_1928.method5817(new Class298_Sub35(
+					&& Class190.aClass437_1928.get((long) i) == null) {
+				Class190.aClass437_1928.put(new Class298_Sub35(
 						Class190.anInt1932 * 1105746915), (long) i);
 				Class190.aClass190Array1926[(Class190.anInt1932 += -34356789) * 1105746915 - 1] = class190;
 			}
@@ -387,7 +387,7 @@ public class Class140 implements Runnable {
 	public static void method1560(int i, int i_19_) {
 		try {
 			if (i != -1 && !Class441.aBooleanArray5590[i]) {
-				Class270.aClass243_2894.method2297(i, -692047844);
+				Class270.INTERFACE_INDEX.method2297(i, -692047844);
 				Class389.aClass119Array4165[i] = null;
 			}
 		} catch (RuntimeException runtimeexception) {

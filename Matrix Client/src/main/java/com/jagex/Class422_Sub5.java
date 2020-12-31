@@ -115,7 +115,7 @@ public class Class422_Sub5 extends Class422 {
 				class298_sub36.out.writeInt(
 						Class379.anInt4099 * 1262526353, -935068496);
 				class298_sub36.out.writeInt(-440872681
-						* class105.anInt1142, -1060289644);
+						* class105.idHash, -1060289644);
 				class298_sub36.out.writeShort(
 						392084321 * client.anInt8836, 16711935);
 				class298_sub36.out.writeShortLE128(
@@ -151,8 +151,8 @@ public class Class422_Sub5 extends Class422 {
 				} else if (i_4_ == 3) {
 					IComponentDefinition class105 = Class50.getIComponentDefinitions((int) l, (byte) -62);
 					if (!((Class298_Sub37_Sub12) class298_sub37_sub12).aString9611
-							.equals(class105.aString1212)) {
-						class105.aString1212 = (((Class298_Sub37_Sub12) class298_sub37_sub12).aString9611);
+							.equals(class105.text)) {
+						class105.text = (((Class298_Sub37_Sub12) class298_sub37_sub12).aString9611);
 						Tradution.method6054(class105, 753227077);
 					}
 				} else if (i_4_ == 22) {
@@ -178,17 +178,17 @@ public class Class422_Sub5 extends Class422 {
 					}
 				} else if (5 == i_4_) {
 					IComponentDefinition class105 = Class50.getIComponentDefinitions((int) l, (byte) 56);
-					if (class105.anInt1290 * 1347982601 != (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * 479598359) {
+					if (class105.animation * 1347982601 != (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * 479598359) {
 						if (479598359 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610 != -1) {
-							if (null == class105.aClass438_1152)
-								class105.aClass438_1152 = new Class438_Sub1();
-							class105.aClass438_1152
-									.method5821(
+							if (null == class105.anim)
+								class105.anim = new Class438_Sub1();
+							class105.anim
+									.update(
 											(((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * 479598359,
 											-1984687950);
 						} else
-							class105.aClass438_1152 = null;
-						class105.anInt1290 = (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * 1256289055;
+							class105.anim = null;
+						class105.animation = (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * 1256289055;
 						Tradution.method6054(class105, -2102110719);
 					}
 				} else if (6 == i_4_) {
@@ -205,8 +205,8 @@ public class Class422_Sub5 extends Class422 {
 				} else if (i_4_ == 7) {
 					IComponentDefinition class105 = Class50.getIComponentDefinitions((int) l, (byte) -71);
 					boolean bool = 1 == 479598359 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610;
-					if (bool != class105.aBoolean1161) {
-						class105.aBoolean1161 = bool;
+					if (bool != class105.hidden) {
+						class105.hidden = bool;
 						Tradution.method6054(class105, -1924243832);
 					}
 				} else if (i_4_ == 8) {
@@ -227,10 +227,10 @@ public class Class422_Sub5 extends Class422 {
 								class105.anInt1284 = (class105.anInt1284
 										* 237251296
 										/ (-692202853 * class105.anInt1221) * -1066050969);
-							else if (class105.anInt1253 * 1769572195 > 0)
+							else if (class105.baseWidth * 1769572195 > 0)
 								class105.anInt1284 = (class105.anInt1284
 										* 237251296
-										/ (class105.anInt1253 * 1769572195) * -1066050969);
+										/ (class105.baseWidth * 1769572195) * -1066050969);
 						}
 						Tradution.method6054(class105, -1617809711);
 					}
@@ -261,19 +261,19 @@ public class Class422_Sub5 extends Class422 {
 					}
 				} else if (11 == i_4_) {
 					IComponentDefinition class105 = Class50.getIComponentDefinitions((int) l, (byte) 37);
-					class105.aByte1146 = (byte) 0;
-					class105.anInt1143 = ((class105.anInt1286 = 1890691465 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * -1672688609);
-					class105.aByte1147 = (byte) 0;
-					class105.anInt1155 = (class105.anInt1159 = (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9608)
+					class105.aspectXType = (byte) 0;
+					class105.x = ((class105.basePositionX = 1890691465 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * -1672688609);
+					class105.aspectYType = (byte) 0;
+					class105.y = (class105.basePositionY = (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9608)
 							* -1822519589) * 705123139;
 					Tradution.method6054(class105, -429816482);
 				} else if (i_4_ == 12) {
 					IComponentDefinition class105 = Class50.getIComponentDefinitions((int) l, (byte) 43);
 					int i_13_ = 479598359 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610;
 					if (null != class105
-							&& 0 == class105.anInt1144 * -1215239439) {
-						if (i_13_ > (class105.anInt1169 * 2053897963 - 457937409 * class105.anInt1162))
-							i_13_ = (class105.anInt1169 * 2053897963 - 457937409 * class105.anInt1162);
+							&& 0 == class105.type * -1215239439) {
+						if (i_13_ > (class105.anInt1169 * 2053897963 - 457937409 * class105.height))
+							i_13_ = (class105.anInt1169 * 2053897963 - 457937409 * class105.height);
 						if (i_13_ < 0)
 							i_13_ = 0;
 						if (class105.anInt1167 * -1424956747 != i_13_) {
@@ -283,17 +283,17 @@ public class Class422_Sub5 extends Class422 {
 					}
 				} else if (i_4_ == 14) {
 					IComponentDefinition class105 = Class50.getIComponentDefinitions((int) l, (byte) 63);
-					class105.anInt1175 = 947110461 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610;
+					class105.spriteId = 947110461 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610;
 				} else if (15 == i_4_) {
 					Class3.aBoolean63 = true;
 					Class3.anInt62 = (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * 20118889;
 					Class3.anInt54 = (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9608) * 1038073637;
 				} else if (i_4_ == 16) {
 					IComponentDefinition class105 = Class50.getIComponentDefinitions((int) l, (byte) -2);
-					class105.anInt1210 = 861383641 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610;
+					class105.fontId = 861383641 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610;
 				} else if (i_4_ == 20) {
 					IComponentDefinition class105 = Class50.getIComponentDefinitions((int) l, (byte) -1);
-					class105.aBoolean1211 = 1 == (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * 479598359;
+					class105.monospaced = 1 == (((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610) * 479598359;
 				} else if (21 == i_4_) {
 					IComponentDefinition class105 = Class50.getIComponentDefinitions((int) l, (byte) -52);
 					class105.aBoolean1183 = 1 == 479598359 * ((Class298_Sub37_Sub12) class298_sub37_sub12).anInt9610;

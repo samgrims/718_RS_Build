@@ -84,7 +84,7 @@ public class Class491 {
 		((Class491) this).aClass348_6078 = new Class348(2);
 		((Class491) this).aClass243_6076 = class243;
 		((Class491) this).aClass243_6077 = class243_2_;
-		((Class491) this).aClass243_6076.method2316(
+		((Class491) this).aClass243_6076.filesCount(
 				(Class120.aClass120_1438.anInt1460) * -1006924897, -1015661848);
 	}
 

@@ -15,7 +15,7 @@ public class Class369 {
 	int[] anIntArray4015;
 	public int[] anIntArray4016;
 	public int[][] anIntArrayArray4017;
-	Class437 aClass437_4018;
+	IterableNodeMap aClass437_4018;
 	public int[] anIntArray4019;
 	int[] anIntArray4020;
 	int[][] anIntArrayArray4021;
@@ -145,7 +145,7 @@ public class Class369 {
 				int i_16_ = class298_sub53.readUnsignedByte();
 				if (((Class369) this).aClass437_4018 == null) {
 					int i_17_ = Class416.method5590(i_16_, (byte) 16);
-					((Class369) this).aClass437_4018 = new Class437(i_17_);
+					((Class369) this).aClass437_4018 = new IterableNodeMap(i_17_);
 				}
 				for (int i_18_ = 0; i_18_ < i_16_; i_18_++) {
 					boolean bool = class298_sub53.readUnsignedByte() == 1;
@@ -157,7 +157,7 @@ public class Class369 {
 					else
 						class298 = new Class298_Sub35(class298_sub53
 								.readInt((byte) -24));
-					((Class369) this).aClass437_4018.method5817(class298,
+					((Class369) this).aClass437_4018.put(class298,
 							(long) i_19_);
 				}
 			}
@@ -338,7 +338,7 @@ public class Class369 {
 			if (null == ((Class369) this).aClass437_4018)
 				return i_36_;
 			Class298_Sub35 class298_sub35 = ((Class298_Sub35) ((Class369) this).aClass437_4018
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub35 == null)
 				return i_36_;
 			return class298_sub35.anInt7394 * -774922497;
@@ -365,7 +365,7 @@ public class Class369 {
 			if (null == ((Class369) this).aClass437_4018)
 				return string;
 			Class298_Sub29 class298_sub29 = ((Class298_Sub29) ((Class369) this).aClass437_4018
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub29 == null)
 				return string;
 			return (String) class298_sub29.anObject7366;

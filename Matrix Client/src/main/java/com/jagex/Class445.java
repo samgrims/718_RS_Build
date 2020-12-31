@@ -68,7 +68,7 @@ public class Class445 {
 		((Class445) this).aClass243_5609 = class243;
 		if (null != ((Class445) this).aClass243_5609)
 			((Class445) this).aClass243_5609
-					.method2316(
+					.filesCount(
 							Class120.aClass120_1411.anInt1460 * -1006924897,
 							1281975621);
 	}

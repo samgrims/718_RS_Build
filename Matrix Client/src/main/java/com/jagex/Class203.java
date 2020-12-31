@@ -59,7 +59,7 @@ public class Class203 {
 							i_6_ = -54723935 * class298_sub46.anInt7527;
 						if (i_6_ == -2147483645)
 							i_6_ = (class298_sub46.aClass105_7525 != null ? -440872681
-									* (class298_sub46.aClass105_7525.anInt1142)
+									* (class298_sub46.aClass105_7525.idHash)
 									: -1);
 						if (-2147483644 == i_6_)
 							i_6_ = 426539335 * class298_sub46.anInt7528;
@@ -69,7 +69,7 @@ public class Class203 {
 									: -1);
 						if (-2147483642 == i_6_)
 							i_6_ = (null != class298_sub46.aClass105_7529 ? -440872681
-									* (class298_sub46.aClass105_7529.anInt1142)
+									* (class298_sub46.aClass105_7529.idHash)
 									: -1);
 						if (i_6_ == -2147483641)
 							i_6_ = (class298_sub46.aClass105_7529 != null ? (class298_sub46.aClass105_7529.anInt1154 * -1309843523)
@@ -109,7 +109,7 @@ public class Class203 {
 			IComponentDefinition class105_7_ = Class523.method6331(class119, class105,
 					-1926129754);
 			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = (null == class105_7_ ? -1
-					: class105_7_.anInt1142 * -440872681);
+					: class105_7_.idHash * -440872681);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("io.oq(").append(')').toString());

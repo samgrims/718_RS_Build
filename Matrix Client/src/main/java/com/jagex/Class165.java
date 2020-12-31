@@ -37,7 +37,7 @@ public class Class165 implements Interface5 {
 			}
 			if (-1 == class105.anInt1154 * -1309843523
 					&& !class119.aBoolean1403)
-				Class302_Sub2.method3720(-440872681 * class105.anInt1142,
+				Class302_Sub2.method3720(-440872681 * class105.idHash,
 						(byte) 12);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

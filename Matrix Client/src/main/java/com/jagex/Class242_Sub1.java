@@ -4,7 +4,7 @@ package com.jagex;/* Class242_Sub1 - Decompiled by JODE
 import java.util.zip.CRC32;
 
 public class Class242_Sub1 extends Class242 {
-	Class437 aClass437_7085;
+	IterableNodeMap aClass437_7085;
 	Class247 aClass247_7086;
 	byte[] aByteArray7087;
 	int anInt7088;
@@ -54,11 +54,11 @@ public class Class242_Sub1 extends Class242 {
 			for (Class298 class298 = ((Class242_Sub1) this).aClass453_7105
 					.method5939(1766612795); null != class298; class298 = ((Class242_Sub1) this).aClass453_7105
 					.method5944(49146)) {
-				if (7051297995265073167L * class298.aLong3188 == (long) i)
+				if (7051297995265073167L * class298.pointer == (long) i)
 					return;
 			}
 			Class298 class298 = new Class298();
-			class298.aLong3188 = (long) i * 4191220306876042991L;
+			class298.pointer = (long) i * 4191220306876042991L;
 			((Class242_Sub1) this).aClass453_7105.method5935(class298,
 					1807588241);
 		}
@@ -70,11 +70,11 @@ public class Class242_Sub1 extends Class242 {
 				for (Class298 class298 = ((Class242_Sub1) this).aClass453_7105
 						.method5939(1766612795); null != class298; class298 = ((Class242_Sub1) this).aClass453_7105
 						.method5944(49146)) {
-					if (7051297995265073167L * class298.aLong3188 == (long) i)
+					if (7051297995265073167L * class298.pointer == (long) i)
 						return;
 				}
 				Class298 class298 = new Class298();
-				class298.aLong3188 = (long) i * 4191220306876042991L;
+				class298.pointer = (long) i * 4191220306876042991L;
 				((Class242_Sub1) this).aClass453_7105.method5935(class298,
 						-68518310);
 			}
@@ -87,12 +87,12 @@ public class Class242_Sub1 extends Class242 {
 	Class298_Sub37_Sub16 method2271(int i, int i_1_, byte i_2_) {
 		try {
 			Class298_Sub37_Sub16 class298_sub37_sub16 = ((Class298_Sub37_Sub16) ((Class242_Sub1) this).aClass437_7085
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub37_sub16 != null
 					&& 0 == i_1_
 					&& !((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672
 					&& (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9670)) {
-				class298_sub37_sub16.method2839(-1460969981);
+				class298_sub37_sub16.unlink(-1460969981);
 				class298_sub37_sub16 = null;
 			}
 			if (null == class298_sub37_sub16) {
@@ -133,7 +133,7 @@ public class Class242_Sub1 extends Class242 {
 						return null;
 				} else
 					throw new RuntimeException();
-				((Class242_Sub1) this).aClass437_7085.method5817(
+				((Class242_Sub1) this).aClass437_7085.put(
 						class298_sub37_sub16, (long) i);
 			}
 			if (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9670)
@@ -170,11 +170,11 @@ public class Class242_Sub1 extends Class242 {
 						((Class242_Sub1) this).aByteArray7098[i] = (byte) 1;
 					}
 					if (!((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672)
-						class298_sub37_sub16.method2839(-1460969981);
+						class298_sub37_sub16.unlink(-1460969981);
 					class298_sub37_sub16_3_ = class298_sub37_sub16;
 				} catch (Exception exception) {
 					((Class242_Sub1) this).aByteArray7098[i] = (byte) -1;
-					class298_sub37_sub16.method2839(-1460969981);
+					class298_sub37_sub16.unlink(-1460969981);
 					if ((((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672)
 							&& !((Class242_Sub1) this).aClass247_7086
 									.method2340((byte) 14)) {
@@ -182,7 +182,7 @@ public class Class242_Sub1 extends Class242 {
 								.method2338(-553176479
 										* ((Class242_Sub1) this).anInt7088, i,
 										(byte) 2, true, 61291917));
-						((Class242_Sub1) this).aClass437_7085.method5817(
+						((Class242_Sub1) this).aClass437_7085.put(
 								class298_sub37_sub16_sub1, (long) i);
 					}
 					return null;
@@ -211,7 +211,7 @@ public class Class242_Sub1 extends Class242 {
 				((Class242_Sub1) this).aClass247_7086.anInt2745 = 0;
 			} catch (RuntimeException runtimeexception) {
 				((Class242_Sub1) this).aClass247_7086.method2359(-1195501767);
-				class298_sub37_sub16.method2839(-1460969981);
+				class298_sub37_sub16.unlink(-1460969981);
 				if (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672
 						&& !((Class242_Sub1) this).aClass247_7086
 								.method2340((byte) 14)) {
@@ -219,7 +219,7 @@ public class Class242_Sub1 extends Class242 {
 							.method2338(-553176479
 									* ((Class242_Sub1) this).anInt7088, i,
 									(byte) 2, true, -791962540));
-					((Class242_Sub1) this).aClass437_7085.method5817(
+					((Class242_Sub1) this).aClass437_7085.put(
 							class298_sub37_sub16_sub1, (long) i);
 				}
 				return null;
@@ -235,7 +235,7 @@ public class Class242_Sub1 extends Class242 {
 				}
 			}
 			if (!((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672)
-				class298_sub37_sub16.method2839(-1460969981);
+				class298_sub37_sub16.unlink(-1460969981);
 			return class298_sub37_sub16;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -250,19 +250,19 @@ public class Class242_Sub1 extends Class242 {
 				for (Class298 class298 = ((Class242_Sub1) this).aClass453_7105
 						.method5939(1766612795); class298 != null; class298 = ((Class242_Sub1) this).aClass453_7105
 						.method5944(49146)) {
-					int i_13_ = (int) (7051297995265073167L * class298.aLong3188);
+					int i_13_ = (int) (7051297995265073167L * class298.pointer);
 					if (i_13_ < 0
 							|| i_13_ >= -1583970959
 									* ((Class226) (((Class242_Sub1) this).aClass226_7094)).anInt2521
 							|| 0 == (((Class226) ((Class242_Sub1) this).aClass226_7094).anIntArray2525[i_13_]))
-						class298.method2839(-1460969981);
+						class298.unlink(-1460969981);
 					else {
 						if (((Class242_Sub1) this).aByteArray7098[i_13_] == 0)
 							method2271(i_13_, 1, (byte) 96);
 						if (-1 == ((Class242_Sub1) this).aByteArray7098[i_13_])
 							method2271(i_13_, 2, (byte) 26);
 						if (1 == ((Class242_Sub1) this).aByteArray7098[i_13_])
-							class298.method2839(-1460969981);
+							class298.unlink(-1460969981);
 					}
 				}
 			}
@@ -282,11 +282,11 @@ public class Class242_Sub1 extends Class242 {
 					for (Class298 class298 = ((Class242_Sub1) this).aClass453_7100
 							.method5939(1766612795); null != class298; class298 = ((Class242_Sub1) this).aClass453_7100
 							.method5944(49146)) {
-						int i_14_ = (int) (class298.aLong3188 * 7051297995265073167L);
+						int i_14_ = (int) (class298.pointer * 7051297995265073167L);
 						if (((Class242_Sub1) this).aByteArray7098[i_14_] == 0)
 							method2271(i_14_, 1, (byte) 113);
 						if (0 != ((Class242_Sub1) this).aByteArray7098[i_14_])
-							class298.method2839(-1460969981);
+							class298.unlink(-1460969981);
 						else
 							bool = false;
 					}
@@ -304,7 +304,7 @@ public class Class242_Sub1 extends Class242 {
 										1, (byte) 122);
 							if ((((Class242_Sub1) this).aByteArray7098[(((Class242_Sub1) this).anInt7101 * 2044090087)]) == 0) {
 								Class298 class298 = new Class298();
-								class298.aLong3188 = ((long) ((Class242_Sub1) this).anInt7101 * -1525375729483922519L);
+								class298.pointer = ((long) ((Class242_Sub1) this).anInt7101 * -1525375729483922519L);
 								((Class242_Sub1) this).aClass453_7100
 										.method5935(class298, 2047339116);
 								bool = false;
@@ -321,11 +321,11 @@ public class Class242_Sub1 extends Class242 {
 					for (Class298 class298 = ((Class242_Sub1) this).aClass453_7100
 							.method5939(1766612795); null != class298; class298 = ((Class242_Sub1) this).aClass453_7100
 							.method5944(49146)) {
-						int i_15_ = (int) (7051297995265073167L * class298.aLong3188);
+						int i_15_ = (int) (7051297995265073167L * class298.pointer);
 						if (((Class242_Sub1) this).aByteArray7098[i_15_] != 1)
 							method2271(i_15_, 2, (byte) 80);
 						if (1 == ((Class242_Sub1) this).aByteArray7098[i_15_])
-							class298.method2839(-1460969981);
+							class298.unlink(-1460969981);
 						else
 							bool = false;
 					}
@@ -344,7 +344,7 @@ public class Class242_Sub1 extends Class242 {
 										2, (byte) 99);
 							if (1 != (((Class242_Sub1) this).aByteArray7098[(((Class242_Sub1) this).anInt7101 * 2044090087)])) {
 								Class298 class298 = new Class298();
-								class298.aLong3188 = (-1525375729483922519L * (long) (((Class242_Sub1) this).anInt7101));
+								class298.pointer = (-1525375729483922519L * (long) (((Class242_Sub1) this).anInt7101));
 								((Class242_Sub1) this).aClass453_7100
 										.method5935(class298, 120115319);
 								bool = false;
@@ -370,7 +370,7 @@ public class Class242_Sub1 extends Class242 {
 					} else if (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9671) {
 						if (!((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672)
 							throw new RuntimeException();
-						class298_sub37_sub16.method2839(-1460969981);
+						class298_sub37_sub16.unlink(-1460969981);
 					} else
 						((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9671 = true;
 				}
@@ -386,7 +386,7 @@ public class Class242_Sub1 extends Class242 {
 	Class242_Sub1(int i, Class329 class329, Class329 class329_16_,
 			Class247 class247, Class255 class255, int i_17_, byte[] is,
 			int i_18_, boolean bool) {
-		((Class242_Sub1) this).aClass437_7085 = new Class437(16);
+		((Class242_Sub1) this).aClass437_7085 = new IterableNodeMap(16);
 		((Class242_Sub1) this).anInt7101 = 0;
 		((Class242_Sub1) this).aClass453_7105 = new Class453();
 		((Class242_Sub1) this).aLong7107 = 0L;
@@ -430,7 +430,7 @@ public class Class242_Sub1 extends Class242 {
 					.method5939(1766612795);
 			if (null == class298)
 				return 0;
-			return (int) (7051297995265073167L * class298.aLong3188);
+			return (int) (7051297995265073167L * class298.pointer);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("aaz.j(").append(')').toString());
@@ -442,7 +442,7 @@ public class Class242_Sub1 extends Class242 {
 		if (null == class298_sub37_sub16)
 			return null;
 		byte[] is = class298_sub37_sub16.method3465((short) 9305);
-		class298_sub37_sub16.method2839(-1460969981);
+		class298_sub37_sub16.unlink(-1460969981);
 		return is;
 	}
 
@@ -519,7 +519,7 @@ public class Class242_Sub1 extends Class242 {
 	int method2253(int i, int i_19_) {
 		try {
 			Class298_Sub37_Sub16 class298_sub37_sub16 = ((Class298_Sub37_Sub16) ((Class242_Sub1) this).aClass437_7085
-					.method5812((long) i));
+					.get((long) i));
 			if (class298_sub37_sub16 != null)
 				return class298_sub37_sub16.method3468(-2048847327);
 			return 0;
@@ -606,7 +606,7 @@ public class Class242_Sub1 extends Class242 {
 			if (null == class298_sub37_sub16)
 				return null;
 			byte[] is = class298_sub37_sub16.method3465((short) 6593);
-			class298_sub37_sub16.method2839(-1460969981);
+			class298_sub37_sub16.unlink(-1460969981);
 			return is;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
@@ -619,17 +619,17 @@ public class Class242_Sub1 extends Class242 {
 		if (null == class298_sub37_sub16)
 			return null;
 		byte[] is = class298_sub37_sub16.method3465((short) -8951);
-		class298_sub37_sub16.method2839(-1460969981);
+		class298_sub37_sub16.unlink(-1460969981);
 		return is;
 	}
 
 	Class298_Sub37_Sub16 method2276(int i, int i_21_) {
 		Class298_Sub37_Sub16 class298_sub37_sub16 = ((Class298_Sub37_Sub16) ((Class242_Sub1) this).aClass437_7085
-				.method5812((long) i));
+				.get((long) i));
 		if (class298_sub37_sub16 != null && 0 == i_21_
 				&& !((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672
 				&& ((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9670) {
-			class298_sub37_sub16.method2839(-1460969981);
+			class298_sub37_sub16.unlink(-1460969981);
 			class298_sub37_sub16 = null;
 		}
 		if (null == class298_sub37_sub16) {
@@ -669,7 +669,7 @@ public class Class242_Sub1 extends Class242 {
 					return null;
 			} else
 				throw new RuntimeException();
-			((Class242_Sub1) this).aClass437_7085.method5817(
+			((Class242_Sub1) this).aClass437_7085.put(
 					class298_sub37_sub16, (long) i);
 		}
 		if (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9670)
@@ -706,11 +706,11 @@ public class Class242_Sub1 extends Class242 {
 					((Class242_Sub1) this).aByteArray7098[i] = (byte) 1;
 				}
 				if (!((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672)
-					class298_sub37_sub16.method2839(-1460969981);
+					class298_sub37_sub16.unlink(-1460969981);
 				class298_sub37_sub16_22_ = class298_sub37_sub16;
 			} catch (Exception exception) {
 				((Class242_Sub1) this).aByteArray7098[i] = (byte) -1;
-				class298_sub37_sub16.method2839(-1460969981);
+				class298_sub37_sub16.unlink(-1460969981);
 				if (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672
 						&& !((Class242_Sub1) this).aClass247_7086
 								.method2340((byte) 14)) {
@@ -718,7 +718,7 @@ public class Class242_Sub1 extends Class242 {
 							.method2338(-553176479
 									* ((Class242_Sub1) this).anInt7088, i,
 									(byte) 2, true, 65779920));
-					((Class242_Sub1) this).aClass437_7085.method5817(
+					((Class242_Sub1) this).aClass437_7085.put(
 							class298_sub37_sub16_sub1, (long) i);
 				}
 				return null;
@@ -747,7 +747,7 @@ public class Class242_Sub1 extends Class242 {
 			((Class242_Sub1) this).aClass247_7086.anInt2745 = 0;
 		} catch (RuntimeException runtimeexception) {
 			((Class242_Sub1) this).aClass247_7086.method2359(106727223);
-			class298_sub37_sub16.method2839(-1460969981);
+			class298_sub37_sub16.unlink(-1460969981);
 			if (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672
 					&& !((Class242_Sub1) this).aClass247_7086
 							.method2340((byte) 14)) {
@@ -755,7 +755,7 @@ public class Class242_Sub1 extends Class242 {
 						.method2338(-553176479
 								* ((Class242_Sub1) this).anInt7088, i,
 								(byte) 2, true, 1559389901));
-				((Class242_Sub1) this).aClass437_7085.method5817(
+				((Class242_Sub1) this).aClass437_7085.put(
 						class298_sub37_sub16_sub1, (long) i);
 			}
 			return null;
@@ -771,7 +771,7 @@ public class Class242_Sub1 extends Class242 {
 			}
 		}
 		if (!((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672)
-			class298_sub37_sub16.method2839(-1460969981);
+			class298_sub37_sub16.unlink(-1460969981);
 		return class298_sub37_sub16;
 	}
 
@@ -780,13 +780,13 @@ public class Class242_Sub1 extends Class242 {
 		if (null == class298_sub37_sub16)
 			return null;
 		byte[] is = class298_sub37_sub16.method3465((short) -19395);
-		class298_sub37_sub16.method2839(-1460969981);
+		class298_sub37_sub16.unlink(-1460969981);
 		return is;
 	}
 
 	int method2257(int i) {
 		Class298_Sub37_Sub16 class298_sub37_sub16 = ((Class298_Sub37_Sub16) ((Class242_Sub1) this).aClass437_7085
-				.method5812((long) i));
+				.get((long) i));
 		if (class298_sub37_sub16 != null)
 			return class298_sub37_sub16.method3468(-2007766703);
 		return 0;
@@ -794,7 +794,7 @@ public class Class242_Sub1 extends Class242 {
 
 	int method2261(int i) {
 		Class298_Sub37_Sub16 class298_sub37_sub16 = ((Class298_Sub37_Sub16) ((Class242_Sub1) this).aClass437_7085
-				.method5812((long) i));
+				.get((long) i));
 		if (class298_sub37_sub16 != null)
 			return class298_sub37_sub16.method3468(-2126560995);
 		return 0;
@@ -802,11 +802,11 @@ public class Class242_Sub1 extends Class242 {
 
 	Class298_Sub37_Sub16 method2277(int i, int i_32_) {
 		Class298_Sub37_Sub16 class298_sub37_sub16 = ((Class298_Sub37_Sub16) ((Class242_Sub1) this).aClass437_7085
-				.method5812((long) i));
+				.get((long) i));
 		if (class298_sub37_sub16 != null && 0 == i_32_
 				&& !((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672
 				&& ((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9670) {
-			class298_sub37_sub16.method2839(-1460969981);
+			class298_sub37_sub16.unlink(-1460969981);
 			class298_sub37_sub16 = null;
 		}
 		if (null == class298_sub37_sub16) {
@@ -846,7 +846,7 @@ public class Class242_Sub1 extends Class242 {
 					return null;
 			} else
 				throw new RuntimeException();
-			((Class242_Sub1) this).aClass437_7085.method5817(
+			((Class242_Sub1) this).aClass437_7085.put(
 					class298_sub37_sub16, (long) i);
 		}
 		if (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9670)
@@ -883,11 +883,11 @@ public class Class242_Sub1 extends Class242 {
 					((Class242_Sub1) this).aByteArray7098[i] = (byte) 1;
 				}
 				if (!((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672)
-					class298_sub37_sub16.method2839(-1460969981);
+					class298_sub37_sub16.unlink(-1460969981);
 				class298_sub37_sub16_33_ = class298_sub37_sub16;
 			} catch (Exception exception) {
 				((Class242_Sub1) this).aByteArray7098[i] = (byte) -1;
-				class298_sub37_sub16.method2839(-1460969981);
+				class298_sub37_sub16.unlink(-1460969981);
 				if (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672
 						&& !((Class242_Sub1) this).aClass247_7086
 								.method2340((byte) 14)) {
@@ -895,7 +895,7 @@ public class Class242_Sub1 extends Class242 {
 							.method2338(-553176479
 									* ((Class242_Sub1) this).anInt7088, i,
 									(byte) 2, true, -155086608));
-					((Class242_Sub1) this).aClass437_7085.method5817(
+					((Class242_Sub1) this).aClass437_7085.put(
 							class298_sub37_sub16_sub1, (long) i);
 				}
 				return null;
@@ -924,7 +924,7 @@ public class Class242_Sub1 extends Class242 {
 			((Class242_Sub1) this).aClass247_7086.anInt2745 = 0;
 		} catch (RuntimeException runtimeexception) {
 			((Class242_Sub1) this).aClass247_7086.method2359(556604655);
-			class298_sub37_sub16.method2839(-1460969981);
+			class298_sub37_sub16.unlink(-1460969981);
 			if (((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672
 					&& !((Class242_Sub1) this).aClass247_7086
 							.method2340((byte) 14)) {
@@ -932,7 +932,7 @@ public class Class242_Sub1 extends Class242 {
 						.method2338(-553176479
 								* ((Class242_Sub1) this).anInt7088, i,
 								(byte) 2, true, -1299366949));
-				((Class242_Sub1) this).aClass437_7085.method5817(
+				((Class242_Sub1) this).aClass437_7085.put(
 						class298_sub37_sub16_sub1, (long) i);
 			}
 			return null;
@@ -948,7 +948,7 @@ public class Class242_Sub1 extends Class242 {
 			}
 		}
 		if (!((Class298_Sub37_Sub16) class298_sub37_sub16).aBoolean9672)
-			class298_sub37_sub16.method2839(-1460969981);
+			class298_sub37_sub16.unlink(-1460969981);
 		return class298_sub37_sub16;
 	}
 
@@ -1120,7 +1120,7 @@ public class Class242_Sub1 extends Class242 {
 		if (null == class298_sub37_sub16)
 			return null;
 		byte[] is = class298_sub37_sub16.method3465((short) 20083);
-		class298_sub37_sub16.method2839(-1460969981);
+		class298_sub37_sub16.unlink(-1460969981);
 		return is;
 	}
 
@@ -1129,11 +1129,11 @@ public class Class242_Sub1 extends Class242 {
 			for (Class298 class298 = ((Class242_Sub1) this).aClass453_7105
 					.method5939(1766612795); null != class298; class298 = ((Class242_Sub1) this).aClass453_7105
 					.method5944(49146)) {
-				if (7051297995265073167L * class298.aLong3188 == (long) i)
+				if (7051297995265073167L * class298.pointer == (long) i)
 					return;
 			}
 			Class298 class298 = new Class298();
-			class298.aLong3188 = (long) i * 4191220306876042991L;
+			class298.pointer = (long) i * 4191220306876042991L;
 			((Class242_Sub1) this).aClass453_7105.method5935(class298,
 					1192203281);
 		}
@@ -1155,11 +1155,11 @@ public class Class242_Sub1 extends Class242 {
 			for (Class298 class298 = ((Class242_Sub1) this).aClass453_7105
 					.method5939(1766612795); null != class298; class298 = ((Class242_Sub1) this).aClass453_7105
 					.method5944(49146)) {
-				if (7051297995265073167L * class298.aLong3188 == (long) i)
+				if (7051297995265073167L * class298.pointer == (long) i)
 					return;
 			}
 			Class298 class298 = new Class298();
-			class298.aLong3188 = (long) i * 4191220306876042991L;
+			class298.pointer = (long) i * 4191220306876042991L;
 			((Class242_Sub1) this).aClass453_7105.method5935(class298,
 					429546119);
 		}
@@ -1170,11 +1170,11 @@ public class Class242_Sub1 extends Class242 {
 			for (Class298 class298 = ((Class242_Sub1) this).aClass453_7105
 					.method5939(1766612795); null != class298; class298 = ((Class242_Sub1) this).aClass453_7105
 					.method5944(49146)) {
-				if (7051297995265073167L * class298.aLong3188 == (long) i)
+				if (7051297995265073167L * class298.pointer == (long) i)
 					return;
 			}
 			Class298 class298 = new Class298();
-			class298.aLong3188 = (long) i * 4191220306876042991L;
+			class298.pointer = (long) i * 4191220306876042991L;
 			((Class242_Sub1) this).aClass453_7105.method5935(class298,
 					1262906259);
 		}
@@ -1185,8 +1185,8 @@ public class Class242_Sub1 extends Class242 {
 			for (Class298 class298 = client.aClass437_8896
 					.method5816(2109381941); null != class298; class298 = client.aClass437_8896
 					.method5815((byte) -58)) {
-				if ((long) i == (7051297995265073167L * class298.aLong3188 >> 48 & 0xffffL))
-					class298.method2839(-1460969981);
+				if ((long) i == (7051297995265073167L * class298.pointer >> 48 & 0xffffL))
+					class298.unlink(-1460969981);
 			}
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

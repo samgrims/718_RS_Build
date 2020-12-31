@@ -235,7 +235,7 @@ public abstract class Class110 implements Interface8 {
 
 	static void method1226(int i, int i_61_, byte i_62_) {
 		try {
-			if (Class437.aClass371_5520.aBoolean4038
+			if (IterableNodeMap.aClass371_5520.aBoolean4038
 					|| (Class436.anInt5506 * -278777595 != 1 && (!Class396.aBoolean5196
 							|| 2 != -278777595 * Class436.anInt5506 || !(((Class298_Sub37_Sub15) Class436.aClass298_Sub37_Sub15_5477).aString9667
 							.equals(Tradution.aClass470_5910.method6049(
@@ -310,7 +310,7 @@ public abstract class Class110 implements Interface8 {
 			Class390 class390 = (((Class403) class403).aBoolean5261 ? ((Class403) class403).aClass390_5247
 					: ((Class403) class403).aClass390_5246);
 			IComponentDefinition class105 = ((Class390) class390).aClass105_4168;
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.anInt1143 * 1354508417;
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = class105.x * 1354508417;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("em.os(").append(')').toString());

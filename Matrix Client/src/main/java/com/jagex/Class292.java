@@ -62,72 +62,53 @@ public class Class292 {
 		}
 	}
 
-	static void method2816(IComponentDefinition class105, int i, int i_6_, byte i_7_) {
+	static void method2816(IComponentDefinition icompdef_0, int i_1, int i_2, byte i_7_) {
 		try {
-			if (class105.aByte1146 == 0)
-				class105.anInt1143 = -1672688609 * class105.anInt1286;
-			else if (class105.aByte1146 == 1)
-				class105.anInt1143 = (-1014229119 * (class105.anInt1286 * 1499181983 + (i - -2093041337
-						* class105.anInt1156) / 2));
-			else if (2 == class105.aByte1146)
-				class105.anInt1143 = -1014229119
-						* (i - class105.anInt1156 * -2093041337 - 1499181983 * class105.anInt1286);
-			else if (class105.aByte1146 == 3)
-				class105.anInt1143 = (i * (1499181983 * class105.anInt1286) >> 14)
-						* -1014229119;
-			else if (4 == class105.aByte1146)
-				class105.anInt1143 = -1014229119
-						* ((i - -2093041337 * class105.anInt1156) / 2 + (i
-								* (1499181983 * class105.anInt1286) >> 14));
+			if (icompdef_0.aspectXType == 0)
+				icompdef_0.x = -1672688609 * icompdef_0.basePositionX;
+			else if (icompdef_0.aspectXType == 1)
+				icompdef_0.x = (-1014229119 * (icompdef_0.basePositionX * 1499181983 + (i_1 - -2093041337 * icompdef_0.width) / 2));
+			else if (2 == icompdef_0.aspectXType)
+				icompdef_0.x = -1014229119 * (i_1 - icompdef_0.width * -2093041337 - 1499181983 * icompdef_0.basePositionX);
+			else if (icompdef_0.aspectXType == 3)
+				icompdef_0.x = (i_1 * (1499181983 * icompdef_0.basePositionX) >> 14) * -1014229119;
+			else if (4 == icompdef_0.aspectXType)
+				icompdef_0.x = -1014229119 * ((i_1 - -2093041337 * icompdef_0.width) / 2 + (i_1	* (1499181983 * icompdef_0.basePositionX) >> 14));
 			else
-				class105.anInt1143 = (i - -2093041337 * class105.anInt1156 - (1499181983
-						* class105.anInt1286 * i >> 14))
-						* -1014229119;
-			if (class105.aByte1147 == 0)
-				class105.anInt1155 = 705123139 * class105.anInt1159;
-			else if (class105.aByte1147 == 1)
-				class105.anInt1155 = ((class105.anInt1159 * -901738979 + (i_6_ - 457937409 * class105.anInt1162) / 2) * 1145252063);
-			else if (class105.aByte1147 == 2)
-				class105.anInt1155 = (i_6_ - 457937409 * class105.anInt1162 - -901738979
-						* class105.anInt1159) * 1145252063;
-			else if (3 == class105.aByte1147)
-				class105.anInt1155 = 1145252063 * (class105.anInt1159
-						* -901738979 * i_6_ >> 14);
-			else if (class105.aByte1147 == 4)
-				class105.anInt1155 = (((-901738979 * class105.anInt1159 * i_6_ >> 14) + (i_6_ - 457937409 * class105.anInt1162) / 2) * 1145252063);
+				icompdef_0.x = (i_1 - -2093041337 * icompdef_0.width - (1499181983 * icompdef_0.basePositionX * i_1 >> 14)) * -1014229119;
+			if (icompdef_0.aspectYType == 0)
+				icompdef_0.y = 705123139 * icompdef_0.basePositionY;
+			else if (icompdef_0.aspectYType == 1)
+				icompdef_0.y = ((icompdef_0.basePositionY * -901738979 + (i_2 - 457937409 * icompdef_0.height) / 2) * 1145252063);
+			else if (icompdef_0.aspectYType == 2)
+				icompdef_0.y = (i_2 - 457937409 * icompdef_0.height - -901738979 * icompdef_0.basePositionY) * 1145252063;
+			else if (3 == icompdef_0.aspectYType)
+				icompdef_0.y = 1145252063 * (icompdef_0.basePositionY * -901738979 * i_2 >> 14);
+			else if (icompdef_0.aspectYType == 4)
+				icompdef_0.y = (((-901738979 * icompdef_0.basePositionY * i_2 >> 14) + (i_2 - 457937409 * icompdef_0.height) / 2) * 1145252063);
 			else
-				class105.anInt1155 = 1145252063 * (i_6_ - class105.anInt1162
-						* 457937409 - (class105.anInt1159 * -901738979 * i_6_ >> 14));
-			if (client.aBoolean8846
-					&& (client.method2801(class105).anInt7416 * -1266165749 != 0 || 0 == class105.anInt1144
-							* -1215239439)) {
-				if (class105.anInt1143 * 1354508417 < 0)
-					class105.anInt1143 = 0;
-				else if ((class105.anInt1143 * 1354508417 + -2093041337
-						* class105.anInt1156) > i)
-					class105.anInt1143 = -1014229119
-							* (i - -2093041337 * class105.anInt1156);
-				if (class105.anInt1155 * -749038817 < 0)
-					class105.anInt1155 = 0;
-				else if ((class105.anInt1155 * -749038817 + 457937409 * class105.anInt1162) > i_6_)
-					class105.anInt1155 = 1145252063 * (i_6_ - 457937409 * class105.anInt1162);
+				icompdef_0.y = 1145252063 * (i_2 - icompdef_0.height * 457937409 - (icompdef_0.basePositionY * -901738979 * i_2 >> 14));
+			if (client.aBoolean8846	&& (client.getIComponentSettings(icompdef_0).settingsHash * -1266165749 != 0 || 0 == icompdef_0.type * -1215239439)) {
+				if (icompdef_0.x * 1354508417 < 0)
+					icompdef_0.x = 0;
+				else if ((icompdef_0.x * 1354508417 + -2093041337 * icompdef_0.width) > i_1)
+					icompdef_0.x = -1014229119 * (i_1 - -2093041337 * icompdef_0.width);
+				if (icompdef_0.y * -749038817 < 0)
+					icompdef_0.y = 0;
+				else if ((icompdef_0.y * -749038817 + 457937409 * icompdef_0.height) > i_2)
+					icompdef_0.y = 1145252063 * (i_2 - 457937409 * icompdef_0.height);
 			}
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("md.li(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("md.li(").append(')').toString());
 		}
 	}
 
 	public static void method2817(int i) {
 		try {
-			for (Class298_Sub49 class298_sub49 = ((Class298_Sub49) Class423.aClass437_5354
-					.method5816(2004354413)); null != class298_sub49; class298_sub49 = ((Class298_Sub49) Class423.aClass437_5354
+			for (Class298_Sub49 class298_sub49 = ((Class298_Sub49) Class423.aClass437_5354.method5816(2004354413)); null != class298_sub49; class298_sub49 = ((Class298_Sub49) Class423.aClass437_5354
 					.method5815((byte) -69))) {
 				if (!((Class298_Sub49) class298_sub49).aBoolean7594)
-					Class285
-							.method2710(
-									(((Class298_Sub49) class298_sub49).anInt7589) * 1566028323,
-									(byte) 49);
+					Class285.method2710((((Class298_Sub49) class298_sub49).anInt7589) * 1566028323, (byte) 49);
 				else
 					((Class298_Sub49) class298_sub49).aBoolean7594 = false;
 			}

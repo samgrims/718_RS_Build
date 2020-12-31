@@ -66,7 +66,7 @@ public class Class395 {
 		if (null != ((Class395) this).aClass243_5189) {
 			int i = ((Class395) this).aClass243_5189.method2296(1196471561) - 1;
 			Class120.aClass120_1409.method1306((short) 21776);
-			((Class395) this).aClass243_5189.method2316(i, -1829120689);
+			((Class395) this).aClass243_5189.filesCount(i, -1829120689);
 		}
 		Class_ta_Sub2.method6006(class243_2_, class243_3_, 2, (byte) 2);
 	}

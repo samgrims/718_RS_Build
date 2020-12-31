@@ -56,7 +56,7 @@ public class Class419 {
 
 	static boolean method5603(IComponentDefinition class105, int i) {
 		try {
-			Class298_Sub38 class298_sub38 = client.method2801(class105);
+			Class298_Sub38 class298_sub38 = client.getIComponentSettings(class105);
 			if (class298_sub38.method3493((byte) 1) > 0)
 				return true;
 			if (class298_sub38.method3496(-1320707999))

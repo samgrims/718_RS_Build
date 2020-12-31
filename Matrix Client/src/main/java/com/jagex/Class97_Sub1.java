@@ -56,7 +56,7 @@ final class Class97_Sub1 extends Class97 {
 	public static void method1044(Class298 class298, Class298 class298_5_, int i) {
 		try {
 			if (null != class298.aClass298_3189)
-				class298.method2839(-1460969981);
+				class298.unlink(-1460969981);
 			class298.aClass298_3189 = class298_5_.aClass298_3189;
 			class298.aClass298_3187 = class298_5_;
 			class298.aClass298_3189.aClass298_3187 = class298;
@@ -76,7 +76,7 @@ final class Class97_Sub1 extends Class97 {
 					/* empty */
 				}
 			} else {
-				class298_sub37_sub12.method2839(-1460969981);
+				class298_sub37_sub12.unlink(-1460969981);
 				class298_sub37_sub12.method3402(-834696673);
 				return class298_sub37_sub12;
 			}
@@ -88,7 +88,7 @@ final class Class97_Sub1 extends Class97 {
 				if (class298_sub37_sub12.method3448(1111075384) > Class122
 						.method1319((byte) 1))
 					return null;
-				class298_sub37_sub12.method2839(-1460969981);
+				class298_sub37_sub12.unlink(-1460969981);
 				class298_sub37_sub12.method3402(1430055356);
 			} while (0L == (class298_sub37_sub12.aLong7406
 					* -5533549728640346679L & ~0x7fffffffffffffffL));

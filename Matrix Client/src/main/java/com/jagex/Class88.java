@@ -77,7 +77,7 @@ public class Class88 {
 
 	static String method977(IComponentDefinition class105, int i) {
 		try {
-			if (client.method2801(class105).method3497((byte) -122) == 0)
+			if (client.getIComponentSettings(class105).method3497((byte) -122) == 0)
 				return null;
 			if (null == class105.aString1237
 					|| class105.aString1237.trim().length() == 0) {

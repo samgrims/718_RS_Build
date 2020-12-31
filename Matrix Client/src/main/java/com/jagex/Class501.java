@@ -169,13 +169,13 @@ public final class Class501 {
 		try {
 			if (bool) {
 				if (-1 != client.WINDOW_PANE_ID * -257444687)
-					Class82_Sub8.method893(-257444687 * client.WINDOW_PANE_ID,
+					Class82_Sub8.unloadInterface(-257444687 * client.WINDOW_PANE_ID,
 							-2042512871);
-				for (Interface class298_sub51 = ((Interface) client.aClass437_8841
-						.method5816(1741120464)); null != class298_sub51; class298_sub51 = ((Interface) client.aClass437_8841
+				for (Interface class298_sub51 = ((Interface) client.OPEN_INTERFACES
+						.method5816(1741120464)); null != class298_sub51; class298_sub51 = ((Interface) client.OPEN_INTERFACES
 						.method5815((byte) 42))) {
 					if (!class298_sub51.method2840(-629325116)) {
-						class298_sub51 = ((Interface) client.aClass437_8841
+						class298_sub51 = ((Interface) client.OPEN_INTERFACES
 								.method5816(1941104676));
 						if (class298_sub51 == null) {
 							if (i < -995600773)
@@ -184,12 +184,12 @@ public final class Class501 {
 						}
 					}
 					Class173
-							.method1821(class298_sub51, true, false, -113822480);
+							.closeChildren(class298_sub51, true, false, -113822480);
 				}
 				client.WINDOW_PANE_ID = -1785861201;
-				client.aClass437_8841 = new Class437(8);
+				client.OPEN_INTERFACES = new IterableNodeMap(8);
 				Class397.method4912((short) 255);
-				client.WINDOW_PANE_ID = 62030331 * Class437.aClass371_5520.anInt4042;
+				client.WINDOW_PANE_ID = 62030331 * IterableNodeMap.aClass371_5520.anInt4042;
 				Class257.method2453(false, (byte) 8);
 				Class360.method4301(-960032596);
 				Class14.method341(-257444687 * client.WINDOW_PANE_ID, null,
@@ -230,7 +230,7 @@ public final class Class501 {
 		try {
 			int i_13_ = (((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]);
 			IComponentDefinition class105 = Class50.getIComponentDefinitions(i_13_, (byte) -38);
-			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = 1354508417 * class105.anInt1143;
+			((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919 - 1)] = 1354508417 * class105.x;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("us.qx(").append(')').toString());

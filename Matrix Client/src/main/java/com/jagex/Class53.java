@@ -45,20 +45,20 @@ public class Class53 {
 		try {
 			if (null != class105) {
 				if (-1 != -1309843523 * class105.anInt1154) {
-					IComponentDefinition class105_0_ = (class119.aClass105Array1405[class105.anInt1160 * 1573706803 & 0xffff]);
+					IComponentDefinition class105_0_ = (class119.components[class105.parent * 1573706803 & 0xffff]);
 					if (class105_0_ != null) {
-						if (class105_0_.aClass105Array1293 == class105_0_.aClass105Array1292) {
-							class105_0_.aClass105Array1293 = (new IComponentDefinition[class105_0_.aClass105Array1292.length]);
-							class105_0_.aClass105Array1293[0] = class105;
+						if (class105_0_.itemSlots == class105_0_.aClass105Array1292) {
+							class105_0_.itemSlots = (new IComponentDefinition[class105_0_.aClass105Array1292.length]);
+							class105_0_.itemSlots[0] = class105;
 							Class425.method5737(class105_0_.aClass105Array1292,
-									0, class105_0_.aClass105Array1293, 1,
+									0, class105_0_.itemSlots, 1,
 									(class105.anInt1154 * -1309843523));
 							Class425
 									.method5737(
 											class105_0_.aClass105Array1292,
 											1 + class105.anInt1154
 													* -1309843523,
-											class105_0_.aClass105Array1293,
+											class105_0_.itemSlots,
 											1 + -1309843523
 													* class105.anInt1154,
 											(class105_0_.aClass105Array1292.length
@@ -67,7 +67,7 @@ public class Class53 {
 						} else {
 							int i_1_ = 0;
 							IComponentDefinition[] class105s;
-							for (class105s = class105_0_.aClass105Array1293; i_1_ < class105s.length; i_1_++) {
+							for (class105s = class105_0_.itemSlots; i_1_ < class105s.length; i_1_++) {
 								if (class105 == class105s[i_1_]) {
 									if (i >= 0)
 										throw new IllegalStateException();
@@ -144,17 +144,17 @@ public class Class53 {
 				i_4_ -= -938469429 * client.anInt8853;
 				if (i_3_ < client.anInt8856 * -343518257)
 					i_3_ = -343518257 * client.anInt8856;
-				if (i_3_ + -2093041337 * client.aClass105_8850.anInt1156 > (client.anInt8858
+				if (i_3_ + -2093041337 * client.aClass105_8850.width > (client.anInt8858
 						* -1221279965 + -343518257 * client.anInt8856))
 					i_3_ = (-343518257 * client.anInt8856 + client.anInt8858
 							* -1221279965 - -2093041337
-							* client.aClass105_8850.anInt1156);
+							* client.aClass105_8850.width);
 				if (i_4_ < 1325631359 * client.anInt8800)
 					i_4_ = 1325631359 * client.anInt8800;
-				if (457937409 * client.aClass105_8850.anInt1162 + i_4_ > (1325631359 * client.anInt8800 + -609231901
+				if (457937409 * client.aClass105_8850.height + i_4_ > (1325631359 * client.anInt8800 + -609231901
 						* client.anInt8966))
 					i_4_ = (-609231901 * client.anInt8966 + client.anInt8800
-							* 1325631359 - 457937409 * client.aClass105_8850.anInt1162);
+							* 1325631359 - 457937409 * client.aClass105_8850.height);
 				int i_5_;
 				int i_6_;
 				if (Class82_Sub3.aClass105_6825 == client.aClass105_8712) {

@@ -72,13 +72,13 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 	public synchronized void method2993(int i) {
 		if (i == 0) {
 			method3006(0);
-			method2839(-1460969981);
+			unlink(-1460969981);
 		} else if (((Class298_Sub19_Sub2) this).anInt9246 == 0
 				&& ((Class298_Sub19_Sub2) this).anInt9247 == 0) {
 			((Class298_Sub19_Sub2) this).anInt9252 = 0;
 			((Class298_Sub19_Sub2) this).anInt9243 = 0;
 			((Class298_Sub19_Sub2) this).anInt9241 = 0;
-			method2839(-1460969981);
+			unlink(-1460969981);
 		} else {
 			int i_3_ = -((Class298_Sub19_Sub2) this).anInt9241;
 			if (((Class298_Sub19_Sub2) this).anInt9241 > i_3_)
@@ -156,7 +156,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9247 = 0;
 					((Class298_Sub19_Sub2) this).anInt9246 = 0;
 					((Class298_Sub19_Sub2) this).anInt9241 = 0;
-					method2839(-1460969981);
+					unlink(-1460969981);
 					i = ((Class298_Sub19_Sub2) this).anInt9252;
 				}
 				((Class298_Sub19_Sub2) this).anInt9252 = 0;
@@ -183,7 +183,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				((Class298_Sub19_Sub2) this).anInt9248 = 0;
 			else {
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 				return;
 			}
 		}
@@ -192,7 +192,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				((Class298_Sub19_Sub2) this).anInt9248 = i_9_ - 1;
 			else {
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 				return;
 			}
 		}
@@ -286,12 +286,12 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				if (((Class298_Sub19_Sub2) this).anInt9248 < 0) {
 					((Class298_Sub19_Sub2) this).anInt9248 = -1;
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 				}
 			} else if (((Class298_Sub19_Sub2) this).anInt9248 >= i_9_) {
 				((Class298_Sub19_Sub2) this).anInt9248 = i_9_;
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 			}
 		}
 	}
@@ -324,7 +324,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9247 = 0;
 					((Class298_Sub19_Sub2) this).anInt9246 = 0;
 					((Class298_Sub19_Sub2) this).anInt9241 = 0;
-					method2839(-1460969981);
+					unlink(-1460969981);
 					i = ((Class298_Sub19_Sub2) this).anInt9252;
 				}
 				((Class298_Sub19_Sub2) this).anInt9252 = 0;
@@ -351,7 +351,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				((Class298_Sub19_Sub2) this).anInt9248 = 0;
 			else {
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 				return;
 			}
 		}
@@ -360,7 +360,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				((Class298_Sub19_Sub2) this).anInt9248 = i_16_ - 1;
 			else {
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 				return;
 			}
 		}
@@ -453,12 +453,12 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				if (((Class298_Sub19_Sub2) this).anInt9248 < 0) {
 					((Class298_Sub19_Sub2) this).anInt9248 = -1;
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 				}
 			} else if (((Class298_Sub19_Sub2) this).anInt9248 >= i_16_) {
 				((Class298_Sub19_Sub2) this).anInt9248 = i_16_;
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 			}
 		}
 	}
@@ -489,7 +489,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9248 = 0;
 				else {
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 					return;
 				}
 			}
@@ -498,7 +498,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9248 = i_23_ - 1;
 				else {
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 					return;
 				}
 			}
@@ -666,14 +666,14 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					if (((Class298_Sub19_Sub2) this).anInt9248 < 0) {
 						((Class298_Sub19_Sub2) this).anInt9248 = -1;
 						method2998();
-						method2839(-1460969981);
+						unlink(-1460969981);
 					}
 				} else {
 					method3004(is, i_25_, i_23_, i_20_, 0);
 					if (((Class298_Sub19_Sub2) this).anInt9248 >= i_23_) {
 						((Class298_Sub19_Sub2) this).anInt9248 = i_23_;
 						method2998();
-						method2839(-1460969981);
+						unlink(-1460969981);
 					}
 				}
 			}
@@ -1205,7 +1205,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9247 = 0;
 					((Class298_Sub19_Sub2) this).anInt9246 = 0;
 					((Class298_Sub19_Sub2) this).anInt9241 = 0;
-					method2839(-1460969981);
+					unlink(-1460969981);
 					i = ((Class298_Sub19_Sub2) this).anInt9252;
 				}
 				((Class298_Sub19_Sub2) this).anInt9252 = 0;
@@ -1232,7 +1232,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				((Class298_Sub19_Sub2) this).anInt9248 = 0;
 			else {
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 				return;
 			}
 		}
@@ -1241,7 +1241,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				((Class298_Sub19_Sub2) this).anInt9248 = i_134_ - 1;
 			else {
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 				return;
 			}
 		}
@@ -1337,12 +1337,12 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				if (((Class298_Sub19_Sub2) this).anInt9248 < 0) {
 					((Class298_Sub19_Sub2) this).anInt9248 = -1;
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 				}
 			} else if (((Class298_Sub19_Sub2) this).anInt9248 >= i_134_) {
 				((Class298_Sub19_Sub2) this).anInt9248 = i_134_;
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 			}
 		}
 	}
@@ -1355,7 +1355,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9247 = 0;
 					((Class298_Sub19_Sub2) this).anInt9246 = 0;
 					((Class298_Sub19_Sub2) this).anInt9241 = 0;
-					method2839(-1460969981);
+					unlink(-1460969981);
 					i = ((Class298_Sub19_Sub2) this).anInt9252;
 				}
 				((Class298_Sub19_Sub2) this).anInt9252 = 0;
@@ -1382,7 +1382,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				((Class298_Sub19_Sub2) this).anInt9248 = 0;
 			else {
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 				return;
 			}
 		}
@@ -1391,7 +1391,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				((Class298_Sub19_Sub2) this).anInt9248 = i_140_ - 1;
 			else {
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 				return;
 			}
 		}
@@ -1487,12 +1487,12 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 				if (((Class298_Sub19_Sub2) this).anInt9248 < 0) {
 					((Class298_Sub19_Sub2) this).anInt9248 = -1;
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 				}
 			} else if (((Class298_Sub19_Sub2) this).anInt9248 >= i_140_) {
 				((Class298_Sub19_Sub2) this).anInt9248 = i_140_;
 				method2998();
-				method2839(-1460969981);
+				unlink(-1460969981);
 			}
 		}
 	}
@@ -1622,7 +1622,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 			((Class298_Sub19_Sub2) this).anInt9247 = 0;
 			((Class298_Sub19_Sub2) this).anInt9246 = 0;
 			((Class298_Sub19_Sub2) this).anInt9241 = 0;
-			method2839(-1460969981);
+			unlink(-1460969981);
 			return true;
 		}
 		method2990();
@@ -1695,7 +1695,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9248 = 0;
 				else {
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 					return;
 				}
 			}
@@ -1704,7 +1704,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9248 = i_173_ - 1;
 				else {
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 					return;
 				}
 			}
@@ -1872,14 +1872,14 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					if (((Class298_Sub19_Sub2) this).anInt9248 < 0) {
 						((Class298_Sub19_Sub2) this).anInt9248 = -1;
 						method2998();
-						method2839(-1460969981);
+						unlink(-1460969981);
 					}
 				} else {
 					method3004(is, i_175_, i_173_, i_170_, 0);
 					if (((Class298_Sub19_Sub2) this).anInt9248 >= i_173_) {
 						((Class298_Sub19_Sub2) this).anInt9248 = i_173_;
 						method2998();
-						method2839(-1460969981);
+						unlink(-1460969981);
 					}
 				}
 			}
@@ -1941,7 +1941,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9248 = 0;
 				else {
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 					return;
 				}
 			}
@@ -1950,7 +1950,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9248 = i_186_ - 1;
 				else {
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 					return;
 				}
 			}
@@ -2118,14 +2118,14 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					if (((Class298_Sub19_Sub2) this).anInt9248 < 0) {
 						((Class298_Sub19_Sub2) this).anInt9248 = -1;
 						method2998();
-						method2839(-1460969981);
+						unlink(-1460969981);
 					}
 				} else {
 					method3004(is, i_188_, i_186_, i_183_, 0);
 					if (((Class298_Sub19_Sub2) this).anInt9248 >= i_186_) {
 						((Class298_Sub19_Sub2) this).anInt9248 = i_186_;
 						method2998();
-						method2839(-1460969981);
+						unlink(-1460969981);
 					}
 				}
 			}
@@ -2290,7 +2290,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9248 = 0;
 				else {
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 					return;
 				}
 			}
@@ -2299,7 +2299,7 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					((Class298_Sub19_Sub2) this).anInt9248 = i_210_ - 1;
 				else {
 					method2998();
-					method2839(-1460969981);
+					unlink(-1460969981);
 					return;
 				}
 			}
@@ -2467,14 +2467,14 @@ public class Class298_Sub19_Sub2 extends Class298_Sub19 {
 					if (((Class298_Sub19_Sub2) this).anInt9248 < 0) {
 						((Class298_Sub19_Sub2) this).anInt9248 = -1;
 						method2998();
-						method2839(-1460969981);
+						unlink(-1460969981);
 					}
 				} else {
 					method3004(is, i_212_, i_210_, i_207_, 0);
 					if (((Class298_Sub19_Sub2) this).anInt9248 >= i_210_) {
 						((Class298_Sub19_Sub2) this).anInt9248 = i_210_;
 						method2998();
-						method2839(-1460969981);
+						unlink(-1460969981);
 					}
 				}
 			}

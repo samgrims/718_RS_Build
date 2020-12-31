@@ -18,10 +18,10 @@ public class Class469 {
 		((Class469) this).aClass243_5776 = class243_0_;
 		((Class469) this).anInterface20_5780 = interface20;
 		if (null != ((Class469) this).aClass243_5778)
-			anInt5775 = (((Class469) this).aClass243_5778.method2316(1,
+			anInt5775 = (((Class469) this).aClass243_5778.filesCount(1,
 					-331738803) * -1970727647);
 		if (((Class469) this).aClass243_5776 != null)
-			anInt5777 = (((Class469) this).aClass243_5776.method2316(1,
+			anInt5777 = (((Class469) this).aClass243_5776.filesCount(1,
 					1090973479) * 1286548437);
 	}
 

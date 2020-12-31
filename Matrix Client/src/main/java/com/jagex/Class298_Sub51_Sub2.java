@@ -7,7 +7,7 @@ public class Class298_Sub51_Sub2 extends Interface {
 
 	public boolean method3578() {
 		Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-				.method5812((long) (119655585 * ((Class298_Sub51_Sub2) this).anInt9777))));
+				.get((long) (119655585 * ((Class298_Sub51_Sub2) this).anInt9777))));
 		if (class298_sub29 != null) {
 			Class62.method729(Class502.aClass502_6728, -1617025021 * interfaceId,
 					-1,
@@ -27,7 +27,7 @@ public class Class298_Sub51_Sub2 extends Interface {
 	public boolean method3573(int i) {
 		try {
 			Class298_Sub29 class298_sub29 = ((Class298_Sub29) (client.aClass437_8696
-					.method5812((long) (119655585 * ((Class298_Sub51_Sub2) this).anInt9777))));
+					.get((long) (119655585 * ((Class298_Sub51_Sub2) this).anInt9777))));
 			if (class298_sub29 != null) {
 				Class62
 						.method729(

@@ -37,7 +37,7 @@ public class Class438 {
 		}
 	}
 
-	public final void method5821(int i, int i_0_) {
+	public final void update(int i, int i_0_) {
 		try {
 			method5824(i, 0, 0, false, (byte) 0);
 		} catch (RuntimeException runtimeexception) {
@@ -524,10 +524,10 @@ public class Class438 {
 				i_27_ = Class462.anInt5683 * -2110394505;
 				i_28_ = Class298_Sub40_Sub9.anInt9716 * -1111710645;
 			} else {
-				i_27_ = -2093041337 * class105_26_.anInt1156;
-				i_28_ = class105_26_.anInt1162 * 457937409;
+				i_27_ = -2093041337 * class105_26_.width;
+				i_28_ = class105_26_.height * 457937409;
 			}
-			Class82_Sub10.method904(class105, i_27_, i_28_, false, (byte) -73);
+			Class82_Sub10.initSizes(class105, i_27_, i_28_, false, (byte) -73);
 			Class292.method2816(class105, i_27_, i_28_, (byte) 6);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

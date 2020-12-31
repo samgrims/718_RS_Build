@@ -126,9 +126,9 @@ public abstract class Class318 {
 			Class403 class403, int i) {
 		try {
 			((Class403) class403).anInt5239 -= -1567522756;
-			class105.anInt1253 = -478399925
+			class105.baseWidth = -478399925
 					* (((Class403) class403).anIntArray5244[((Class403) class403).anInt5239 * 681479919]);
-			class105.anInt1153 = (-1661995333 * (((Class403) class403).anIntArray5244[1 + 681479919 * ((Class403) class403).anInt5239]));
+			class105.baseHeight = (-1661995333 * (((Class403) class403).anIntArray5244[1 + 681479919 * ((Class403) class403).anInt5239]));
 			class105.anInt1221 = 0;
 			class105.anInt1198 = 0;
 			int i_15_ = (((Class403) class403).anIntArray5244[681479919 * ((Class403) class403).anInt5239 + 2]);
@@ -141,11 +141,11 @@ public abstract class Class318 {
 				i_16_ = 0;
 			else if (i_16_ > 4)
 				i_16_ = 4;
-			class105.aByte1148 = (byte) i_15_;
-			class105.aByte1149 = (byte) i_16_;
+			class105.aspectWidthType = (byte) i_15_;
+			class105.aspectHeightType = (byte) i_16_;
 			Tradution.method6054(class105, -903706483);
 			Class438.method5845(class119, class105, -1959938301);
-			if (0 == class105.anInt1144 * -1215239439)
+			if (0 == class105.type * -1215239439)
 				Class65.method761(class119, class105, false, 112223880);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

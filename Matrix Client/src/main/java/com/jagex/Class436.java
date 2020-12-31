@@ -9,7 +9,7 @@ public class Class436 {
 	static int anInt5467 = -372312112;
 	static int anInt5468 = 0;
 	static int anInt5469 = 31;
-	static Class437 aClass437_5470;
+	static IterableNodeMap aClass437_5470;
 	static boolean aBoolean5471;
 	static Class298_Sub37_Sub5 aClass298_Sub37_Sub5_5472;
 	static int anInt5473 = 0;
@@ -59,7 +59,7 @@ public class Class436 {
 		anInt5506 = 0;
 		anInt5479 = 0;
 		aClass453_5480 = new Class453();
-		aClass437_5470 = new Class437(16);
+		aClass437_5470 = new IterableNodeMap(16);
 		aClass461_5482 = new Class461();
 		aClass453_5511 = new Class453();
 		aClass453_5505 = new Class453();

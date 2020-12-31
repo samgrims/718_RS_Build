@@ -120,8 +120,8 @@ public class Class7 {
 					class264.method2485(string,
 							-828992241 * Class436.anInt5487,
 							1604938967 * Class436.anInt5502, -2093041337
-									* Class436.aClass105_5486.anInt1156,
-							Class436.aClass105_5486.anInt1162 * 457937409,
+									* Class436.aClass105_5486.width,
+							Class436.aClass105_5486.height * 457937409,
 							1045422783 * Class436.aClass105_5486.anInt1170,
 							-2065110161 * Class436.aClass105_5486.anInt1251,
 							872550387 * Class436.aClass105_5486.anInt1214,

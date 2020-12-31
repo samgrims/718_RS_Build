@@ -333,8 +333,8 @@ public class Class358 {
 			else
 				i_15_ = (client.anInt8801 * 1227356013
 						+ (int) client.aFloat8949 & 0x3fff);
-			int i_16_ = (Math.max(class105.anInt1156 * -2093041337 / 2,
-					457937409 * class105.anInt1162 / 2) + 10);
+			int i_16_ = (Math.max(class105.width * -2093041337 / 2,
+					457937409 * class105.height / 2) + 10);
 			int i_17_ = i_10_ * i_10_ + i_11_ * i_11_;
 			if (i_17_ <= i_16_ * i_16_) {
 				int i_18_ = Class220.anIntArray2483[i_15_];
@@ -349,13 +349,13 @@ public class Class358 {
 				int i_23_ = class505.method6260(string, 100, 0, null,
 						-1739368935);
 				i_20_ -= i_22_ / 2;
-				if (i_20_ >= -(class105.anInt1156 * -2093041337)
-						&& i_20_ <= -2093041337 * class105.anInt1156
-						&& i_21_ >= -(457937409 * class105.anInt1162)
-						&& i_21_ <= 457937409 * class105.anInt1162)
+				if (i_20_ >= -(class105.width * -2093041337)
+						&& i_20_ <= -2093041337 * class105.width
+						&& i_21_ >= -(457937409 * class105.height)
+						&& i_21_ <= 457937409 * class105.height)
 					class264.method2475(string, (-2093041337
-							* class105.anInt1156 / 2 + (i_20_ + i)),
-							(457937409 * class105.anInt1162 / 2 + i_9_ - i_21_
+							* class105.width / 2 + (i_20_ + i)),
+							(457937409 * class105.height / 2 + i_9_ - i_21_
 									- i_12_ - i_23_), i_22_, 50, i_13_, 0, 1,
 							0, 0, null, null, class_ta, i, i_9_, -45995166);
 			}

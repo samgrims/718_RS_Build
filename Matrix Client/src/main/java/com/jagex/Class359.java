@@ -62,39 +62,39 @@ public class Class359 implements Interface19 {
 		try {
 			if (i_5_ == 0)
 				throw new RuntimeException();
-			IComponentDefinition class105 = class119.aClass105Array1405[i];
+			IComponentDefinition class105 = class119.components[i];
 			if (null == class105.aClass105Array1292) {
 				class105.aClass105Array1292 = new IComponentDefinition[i_6_ + 1];
-				class105.aClass105Array1293 = class105.aClass105Array1292;
+				class105.itemSlots = class105.aClass105Array1292;
 			}
 			if (class105.aClass105Array1292.length <= i_6_) {
-				if (class105.aClass105Array1293 == class105.aClass105Array1292) {
+				if (class105.itemSlots == class105.aClass105Array1292) {
 					IComponentDefinition[] class105s = new IComponentDefinition[1 + i_6_];
 					for (int i_8_ = 0; i_8_ < class105.aClass105Array1292.length; i_8_++)
 						class105s[i_8_] = class105.aClass105Array1292[i_8_];
-					class105.aClass105Array1292 = class105.aClass105Array1293 = class105s;
+					class105.aClass105Array1292 = class105.itemSlots = class105s;
 				} else {
 					IComponentDefinition[] class105s = new IComponentDefinition[1 + i_6_];
 					IComponentDefinition[] class105s_9_ = new IComponentDefinition[1 + i_6_];
 					for (int i_10_ = 0; i_10_ < class105.aClass105Array1292.length; i_10_++) {
 						class105s[i_10_] = class105.aClass105Array1292[i_10_];
-						class105s_9_[i_10_] = class105.aClass105Array1293[i_10_];
+						class105s_9_[i_10_] = class105.itemSlots[i_10_];
 					}
 					class105.aClass105Array1292 = class105s;
-					class105.aClass105Array1293 = class105s_9_;
+					class105.itemSlots = class105s_9_;
 				}
 			}
 			if (i_6_ > 0 && null == class105.aClass105Array1292[i_6_ - 1])
 				throw new RuntimeException(new StringBuilder().append("")
 						.append(i_6_ - 1).toString());
 			IComponentDefinition class105_11_ = new IComponentDefinition();
-			class105_11_.anInt1144 = i_5_ * -800405999;
-			class105_11_.anInt1160 = (class105_11_.anInt1142 = 1 * class105.anInt1142)
+			class105_11_.type = i_5_ * -800405999;
+			class105_11_.parent = (class105_11_.idHash = 1 * class105.idHash)
 					* -293252211;
 			class105_11_.anInt1154 = i_6_ * -263105643;
 			class105.aClass105Array1292[i_6_] = class105_11_;
-			if (class105.aClass105Array1293 != class105.aClass105Array1292)
-				class105.aClass105Array1293[i_6_] = class105_11_;
+			if (class105.itemSlots != class105.aClass105Array1292)
+				class105.itemSlots[i_6_] = class105_11_;
 			Class390 class390;
 			if (bool)
 				class390 = ((Class403) class403).aClass390_5247;

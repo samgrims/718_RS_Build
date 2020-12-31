@@ -710,7 +710,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 
 	final synchronized void method5529(int i, int i_53_) {
 		Class298_Sub35 class298_sub35 = new Class298_Sub35(i_53_);
-		class298_sub35.aLong3188 = (long) i * 4191220306876042991L;
+		class298_sub35.pointer = (long) i * 4191220306876042991L;
 		((Class_ra_Sub3_Sub1) this).aClass458_9818.method5968(class298_sub35,
 				454001625);
 	}
@@ -726,14 +726,14 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 
 	final synchronized void method5530(int i, int i_59_) {
 		Class298_Sub35 class298_sub35 = new Class298_Sub35(i_59_);
-		class298_sub35.aLong3188 = (long) i * 4191220306876042991L;
+		class298_sub35.pointer = (long) i * 4191220306876042991L;
 		((Class_ra_Sub3_Sub1) this).aClass458_9820.method5968(class298_sub35,
 				228363819);
 	}
 
 	final synchronized void method5531(long l) {
 		Class298 class298 = new Class298();
-		class298.aLong3188 = l * 4191220306876042991L;
+		class298.pointer = l * 4191220306876042991L;
 		((Class_ra_Sub3_Sub1) this).aClass458_9815.method5968(class298,
 				270678246);
 	}
@@ -1037,7 +1037,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 				.method5970((byte) 43)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9817
 					.method5971(1808910647);
-			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_71_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_71_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			anInt8224 -= class298_sub35.anInt7394 * -774922497;
 			if (i_71_ == 1000) {
 				OpenGL.glDeleteBuffersARB(i_71_,
@@ -1054,7 +1054,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 				.method5970((byte) 46)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9818
 					.method5971(1720149730);
-			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_71_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_71_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			anInt8223 -= class298_sub35.anInt7394 * -774922497;
 			if (i_71_ == 1000) {
 				OpenGL.glDeleteTextures(i_71_,
@@ -1088,7 +1088,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 				.method5970((byte) 42)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9820
 					.method5971(1650317601);
-			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_71_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_71_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			anInt8318 -= class298_sub35.anInt7394 * -774922497;
 			if (i_71_ == 1000) {
 				OpenGL.glDeleteRenderbuffersEXT(i_71_,
@@ -1106,7 +1106,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9816
 					.method5971(1832837170);
 			OpenGL.glDeleteLists(
-					(int) (class298_sub35.aLong3188 * 7051297995265073167L),
+					(int) (class298_sub35.pointer * 7051297995265073167L),
 					class298_sub35.anInt7394 * -774922497);
 		}
 		while (!((Class_ra_Sub3_Sub1) this).aClass458_9821
@@ -1114,21 +1114,21 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 			Class298 class298 = ((Class_ra_Sub3_Sub1) this).aClass458_9821
 					.method5971(1814788261);
 			OpenGL
-					.glDeleteProgram((int) (class298.aLong3188 * 7051297995265073167L));
+					.glDeleteProgram((int) (class298.pointer * 7051297995265073167L));
 		}
 		while (!((Class_ra_Sub3_Sub1) this).aClass458_9815
 				.method5970((byte) 126)) {
 			Class298 class298 = ((Class_ra_Sub3_Sub1) this).aClass458_9815
 					.method5971(1792328753);
 			OpenGL
-					.glDeleteShader((int) (class298.aLong3188 * 7051297995265073167L));
+					.glDeleteShader((int) (class298.pointer * 7051297995265073167L));
 		}
 		while (!((Class_ra_Sub3_Sub1) this).aClass458_9816
 				.method5970((byte) 79)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9816
 					.method5971(1714583295);
 			OpenGL.glDeleteLists(
-					(int) (class298_sub35.aLong3188 * 7051297995265073167L),
+					(int) (class298_sub35.pointer * 7051297995265073167L),
 					class298_sub35.anInt7394 * -774922497);
 		}
 		if (za() > 100663296
@@ -1477,7 +1477,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 
 	final synchronized void method5536(int i, int i_114_) {
 		Class298_Sub35 class298_sub35 = new Class298_Sub35(i_114_);
-		class298_sub35.aLong3188 = (long) i * 4191220306876042991L;
+		class298_sub35.pointer = (long) i * 4191220306876042991L;
 		((Class_ra_Sub3_Sub1) this).aClass458_9817.method5968(class298_sub35,
 				789899827);
 	}
@@ -1779,7 +1779,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 				.method5970((byte) 48)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9817
 					.method5971(1595707002);
-			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_129_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_129_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			anInt8224 -= class298_sub35.anInt7394 * -774922497;
 			if (i_129_ == 1000) {
 				OpenGL.glDeleteBuffersARB(i_129_,
@@ -1796,7 +1796,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 				.method5970((byte) 112)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9818
 					.method5971(1563710334);
-			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_129_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_129_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			anInt8223 -= class298_sub35.anInt7394 * -774922497;
 			if (i_129_ == 1000) {
 				OpenGL.glDeleteTextures(i_129_,
@@ -1830,7 +1830,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 				.method5970((byte) 88)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9820
 					.method5971(2070970334);
-			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_129_++] = (int) (class298_sub35.aLong3188 * 7051297995265073167L);
+			((Class_ra_Sub3_Sub1) this).anIntArray9824[i_129_++] = (int) (class298_sub35.pointer * 7051297995265073167L);
 			anInt8318 -= class298_sub35.anInt7394 * -774922497;
 			if (i_129_ == 1000) {
 				OpenGL.glDeleteRenderbuffersEXT(i_129_,
@@ -1848,7 +1848,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9816
 					.method5971(1996234534);
 			OpenGL.glDeleteLists(
-					(int) (class298_sub35.aLong3188 * 7051297995265073167L),
+					(int) (class298_sub35.pointer * 7051297995265073167L),
 					class298_sub35.anInt7394 * -774922497);
 		}
 		while (!((Class_ra_Sub3_Sub1) this).aClass458_9821
@@ -1856,21 +1856,21 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 			Class298 class298 = ((Class_ra_Sub3_Sub1) this).aClass458_9821
 					.method5971(1584885862);
 			OpenGL
-					.glDeleteProgram((int) (class298.aLong3188 * 7051297995265073167L));
+					.glDeleteProgram((int) (class298.pointer * 7051297995265073167L));
 		}
 		while (!((Class_ra_Sub3_Sub1) this).aClass458_9815
 				.method5970((byte) 47)) {
 			Class298 class298 = ((Class_ra_Sub3_Sub1) this).aClass458_9815
 					.method5971(1940978688);
 			OpenGL
-					.glDeleteShader((int) (class298.aLong3188 * 7051297995265073167L));
+					.glDeleteShader((int) (class298.pointer * 7051297995265073167L));
 		}
 		while (!((Class_ra_Sub3_Sub1) this).aClass458_9816
 				.method5970((byte) 39)) {
 			Class298_Sub35 class298_sub35 = (Class298_Sub35) ((Class_ra_Sub3_Sub1) this).aClass458_9816
 					.method5971(1755537674);
 			OpenGL.glDeleteLists(
-					(int) (class298_sub35.aLong3188 * 7051297995265073167L),
+					(int) (class298_sub35.pointer * 7051297995265073167L),
 					class298_sub35.anInt7394 * -774922497);
 		}
 		if (za() > 100663296
@@ -2679,7 +2679,7 @@ public final class Class_ra_Sub3_Sub1 extends Class_ra_Sub3 {
 
 	final synchronized void method5538(int i) {
 		Class298 class298 = new Class298();
-		class298.aLong3188 = (long) i * 4191220306876042991L;
+		class298.pointer = (long) i * 4191220306876042991L;
 		((Class_ra_Sub3_Sub1) this).aClass458_9821.method5968(class298,
 				1460654582);
 	}
