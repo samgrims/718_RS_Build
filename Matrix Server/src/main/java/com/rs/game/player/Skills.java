@@ -345,22 +345,19 @@ public final class Skills implements Serializable {
 	}
 
 	public void addXp(int skill, double exp) {
+		exp *= Settings.XP_RATE;
 		player.getControlerManager().trackXP(skill, (int) exp);
 		if (player.isXpLocked())
 			return;
-		if (skill != ATTACK && skill != DEFENCE && skill != STRENGTH
-				&& skill != MAGIC && skill != RANGE && skill != HITPOINTS)
-		if (player.getAuraManager().usingWisdom())
-			exp *= 1.025;
+		if (skill != ATTACK && skill != DEFENCE && skill != STRENGTH && skill != MAGIC && skill != RANGE && skill != HITPOINTS)
+			if (player.getAuraManager().usingWisdom())
+				exp *= 1.025;
 		int oldLevel = getLevelForXp(skill);
 		xp[skill] += exp;
 		for(int i = 0; i < trackSkills.length; i++) {
 			if(trackSkills[i]) {
-				if(trackSkillsIds[i] == 30
-					|| (trackSkillsIds[i] == 29 
-					&& (skill == Skills.ATTACK || skill == Skills.DEFENCE || skill == Skills.STRENGTH
-					|| skill == Skills.MAGIC || skill == Skills.RANGE || skill == Skills.HITPOINTS))
-					|| trackSkillsIds[i] == getCounterSkill(skill)) {
+				if(trackSkillsIds[i] == 30 || (trackSkillsIds[i] == 29 && (skill == Skills.ATTACK || skill == Skills.DEFENCE || skill == Skills.STRENGTH
+					|| skill == Skills.MAGIC || skill == Skills.RANGE || skill == Skills.HITPOINTS)) || trackSkillsIds[i] == getCounterSkill(skill)) {
 					xpTracks[i] += exp;
 					refreshCounterXp(i);
 				}
