@@ -273,30 +273,36 @@ public final class Woodcutting extends Action {
 				return true;
 			}
 		}
+		if(player.getToolbelt().containsItem(1351)) {
+			emoteId = 879;
+			axeTime = 1;
+			return true;
+		}
 		return false;
 
 	}
 
 	private boolean hasAxe(Player player) {
-		if (player.getInventory().containsOneItem(1351, 1349, 1353, 1355, 1357,
-				1361, 1359, 6739, 13661))
+		if (player.getInventory().containsOneItem(1351, 1349, 1353, 1355, 1357,	1361, 1359, 6739, 13661))
+			return true;
+		if(player.getToolbelt().containsItem(1351))
 			return true;
 		int weaponId = player.getEquipment().getWeaponId();
 		if (weaponId == -1)
 			return false;
 		switch (weaponId) {
-		case 1351:// Bronze Axe
-		case 1349:// Iron Axe
-		case 1353:// Steel Axe
-		case 1361:// Black Axe
-		case 1355:// Mithril Axe
-		case 1357:// Adamant Axe
-		case 1359:// Rune Axe
-		case 6739:// Dragon Axe
-		case 13661: // Inferno adze
-			return true;
-		default:
-			return false;
+			case 1351:// Bronze Axe
+			case 1349:// Iron Axe
+			case 1353:// Steel Axe
+			case 1361:// Black Axe
+			case 1355:// Mithril Axe
+			case 1357:// Adamant Axe
+			case 1359:// Rune Axe
+			case 6739:// Dragon Axe
+			case 13661: // Inferno adze
+				return true;
+			default:
+				return false;
 		}
 
 	}
@@ -309,6 +315,11 @@ public final class Woodcutting extends Action {
 
 	private boolean usedDeplateAurora;
 
+	/**
+	 * Gives wood then returns a delay in ticks
+	 * @param player
+	 * @return number of ticks
+	 */
 	@Override
 	public int processWithDelay(Player player) {
 		addLog(player);

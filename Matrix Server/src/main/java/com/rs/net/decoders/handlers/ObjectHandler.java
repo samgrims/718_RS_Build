@@ -742,9 +742,7 @@ public final class ObjectHandler {
 					player.getDialogueManager().startDialogue("PartyRoomLever");
 				}else if (id == 61190 || id == 61191 || id == 61192 || id == 61193) {
 					if (objectDef.containsOption(0, "Chop down"))
-						player.getActionManager().setAction(
-								new Woodcutting(object,
-										TreeDefinitions.NORMAL));
+						player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.NORMAL));
 				} else if(id == 20573)
 					player.getControlerManager().startControler("RefugeOfFear");
 				//crucible
@@ -878,66 +876,43 @@ public final class ObjectHandler {
 						// Woodcutting start
 					case "tree":
 						if (objectDef.containsOption(0, "Chop down"))
-							player.getActionManager().setAction(
-									new Woodcutting(object,
-											TreeDefinitions.NORMAL));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.NORMAL));
 						break;
 					case "evergreen":
 						if (objectDef.containsOption(0, "Chop down"))
-							player.getActionManager().setAction(
-									new Woodcutting(object,
-											TreeDefinitions.EVERGREEN));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.EVERGREEN));
 						break;
 					case "dead tree":
 						if (objectDef.containsOption(0, "Chop down"))
-							player.getActionManager().setAction(
-									new Woodcutting(object,
-											TreeDefinitions.DEAD));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.DEAD));
 						break;
 					case "oak":
 						if (objectDef.containsOption(0, "Chop down"))
-							player.getActionManager()
-							.setAction(
-									new Woodcutting(object,
-											TreeDefinitions.OAK));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.OAK));
 						break;
 					case "willow":
 						if (objectDef.containsOption(0, "Chop down"))
-							player.getActionManager().setAction(
-									new Woodcutting(object,
-											TreeDefinitions.WILLOW));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.WILLOW));
 						break;
 					case "maple tree":
 						if (objectDef.containsOption(0, "Chop down"))
-							player.getActionManager().setAction(
-									new Woodcutting(object,
-											TreeDefinitions.MAPLE));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.MAPLE));
 						break;
 					case "ivy":
 						if (objectDef.containsOption(0, "Chop"))
-							player.getActionManager()
-							.setAction(
-									new Woodcutting(object,
-											TreeDefinitions.IVY));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.IVY));
 						break;
 					case "yew":
 						if (objectDef.containsOption(0, "Chop down"))
-							player.getActionManager()
-							.setAction(
-									new Woodcutting(object,
-											TreeDefinitions.YEW));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.YEW));
 						break;
 					case "magic tree":
 						if (objectDef.containsOption(0, "Chop down"))
-							player.getActionManager().setAction(
-									new Woodcutting(object,
-											TreeDefinitions.MAGIC));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.MAGIC));
 						break;
 					case "cursed magic tree":
 						if (objectDef.containsOption(0, "Chop down"))
-							player.getActionManager().setAction(
-									new Woodcutting(object,
-											TreeDefinitions.CURSED_MAGIC));
+							player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.CURSED_MAGIC));
 						break;
 						// Woodcutting end
 					case "gate":
