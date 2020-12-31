@@ -131,11 +131,14 @@ public final class ObjectHandler {
 		}
 	}
 
-	private static void handleOption1(final Player player, final WorldObject object) {
+	private static void handleOption1(final Player player, WorldObject object) {
 		final ObjectDefinitions objectDef = object.getDefinitions();
 		final int id = object.getId();
 		final int x = object.getX();
 		final int y = object.getY();
+
+//		DebugLine.print(id + "");
+
 		if(SihponActionNodes.siphon(player, object)) 
 			return;
 		player.setCoordsEvent(new CoordsEvent(object, new Runnable() {
@@ -143,17 +146,18 @@ public final class ObjectHandler {
 			public void run() {
 				player.stopAll();
 				player.faceObject(object);
-				if (!player.getControlerManager().processObjectClick1(object))
-					return;
+//				if (!player.getControlerManager().processObjectClick1(object))//unknown what this does
+//					return;
 				if (CastleWars.handleObjects(player, id))
 					return;
 				if (object.getId() == 19205)
 					Hunter.createLoggedObject(player, object, true);
-				HunterNPC hunterNpc = HunterNPC.forObjectId(id);
+				HunterNPC hunterNpc = HunterNPC.forObjectId(id);;
+
 				if (hunterNpc != null) {
 					if (OwnedObjectManager.removeObject(player, object)) {
 						player.setNextAnimation(hunterNpc.getEquipment().getPickUpAnimation());
-							player.getInventory().getItems().addAll(hunterNpc.getItems());
+						player.getInventory().getItems().addAll(hunterNpc.getItems());
 						player.getInventory().addItem(hunterNpc.getEquipment().getId(), 1);
 						player.getSkills().addXp(Skills.HUNTER, hunterNpc.getXp());
 					} else {
@@ -171,54 +175,35 @@ public final class ObjectHandler {
 						player.getInventory().addItem(HunterEquipment.BRID_SNARE.getId(), 1);
 					} else
 						player.getPackets().sendGameMessage("This isn't your trap.");
-				} else if (id == 2350
-						&& (object.getX() == 3352 && object.getY() == 3417 && object
-						.getPlane() == 0))
+				} else if (id == 2350 && (object.getX() == 3352 && object.getY() == 3417 && object.getPlane() == 0))
 					player.useStairs(832, new WorldTile(3177, 5731, 0), 1, 2);
-				else if (id == 2353
-						&& (object.getX() == 3177 && object.getY() == 5730 && object
-						.getPlane() == 0))
+				else if (id == 2353 && (object.getX() == 3177 && object.getY() == 5730 && object.getPlane() == 0))
 					player.useStairs(828, new WorldTile(3353, 3416, 0), 1, 2);
 				else if (id == 11554 || id == 11552)
-					player.getPackets().sendGameMessage(
-							"That rock is currently unavailable.");
+					player.getPackets().sendGameMessage("That rock is currently unavailable.");
 				else if (id == 38279)
 					player.getDialogueManager().startDialogue("RunespanPortalD");
 				else if (id == 2491)
-					player.getActionManager()
-					.setAction(
-							new EssenceMining(
-									object,
-									player.getSkills().getLevel(
-											Skills.MINING) < 30 ? EssenceDefinitions.Rune_Essence
+					player.getActionManager().setAction(new EssenceMining(object, player.getSkills().getLevel(Skills.MINING) < 30 ? EssenceDefinitions.Rune_Essence
 													: EssenceDefinitions.Pure_Essence));
 				else if (id == 2478)
-					Runecrafting.craftEssence(player, 556, 1, 5, false, 11, 2,
-							22, 3, 34, 4, 44, 5, 55, 6, 66, 7, 77, 88, 9, 99,
-							10);
+					Runecrafting.craftEssence(player, 556, 1, 5, false, 11, 2, 22, 3, 34, 4, 44, 5, 55, 6, 66, 7, 77, 88, 9, 99, 10);
 				else if (id == 2479)
-					Runecrafting.craftEssence(player, 558, 2, 5.5, false, 14,
-							2, 28, 3, 42, 4, 56, 5, 70, 6, 84, 7, 98, 8);
+					Runecrafting.craftEssence(player, 558, 2, 5.5, false, 14, 2, 28, 3, 42, 4, 56, 5, 70, 6, 84, 7, 98, 8);
 				else if (id == 2480)
-					Runecrafting.craftEssence(player, 555, 5, 6, false, 19, 2,
-							38, 3, 57, 4, 76, 5, 95, 6);
+					Runecrafting.craftEssence(player, 555, 5, 6, false, 19, 2, 38, 3, 57, 4, 76, 5, 95, 6);
 				else if (id == 2481)
-					Runecrafting.craftEssence(player, 557, 9, 6.5, false, 26,
-							2, 52, 3, 78, 4);
+					Runecrafting.craftEssence(player, 557, 9, 6.5, false, 26, 2, 52, 3, 78, 4);
 				else if (id == 2482)
-					Runecrafting.craftEssence(player, 554, 14, 7, false, 35, 2,
-							70, 3);
+					Runecrafting.craftEssence(player, 554, 14, 7, false, 35, 2,	70, 3);
 				else if (id == 2483)
-					Runecrafting.craftEssence(player, 559, 20, 7.5, false, 46,
-							2, 92, 3);
+					Runecrafting.craftEssence(player, 559, 20, 7.5, false, 46, 2, 92, 3);
 				else if (id == 2484)
 					Runecrafting.craftEssence(player, 564, 27, 8, true, 59, 2);
 				else if (id == 2487)
-					Runecrafting
-					.craftEssence(player, 562, 35, 8.5, true, 74, 2);
+					Runecrafting.craftEssence(player, 562, 35, 8.5, true, 74, 2);
 				else if (id == 17010)
-					Runecrafting.craftEssence(player, 9075, 40, 8.7, true, 82,
-							2);
+					Runecrafting.craftEssence(player, 9075, 40, 8.7, true, 82, 2);
 				else if (id == 2486)
 					Runecrafting.craftEssence(player, 561, 45, 9, true, 91, 2);
 				else if (id == 2485)
@@ -229,49 +214,34 @@ public final class ObjectHandler {
 					Runecrafting.craftEssence(player, 565, 77, 10.5, true);
 				else if (id == 2452) {
 					int hatId = player.getEquipment().getHatId();
-					if (hatId == Runecrafting.AIR_TIARA
-							|| hatId == Runecrafting.OMNI_TIARA
-							|| player.getInventory().containsItem(1438, 1))
+					if (hatId == Runecrafting.AIR_TIARA || hatId == Runecrafting.OMNI_TIARA	|| player.getInventory().containsItem(1438, 1))
 						Runecrafting.enterAirAltar(player);
 				} else if (id == 2455) {
 					int hatId = player.getEquipment().getHatId();
-					if (hatId == Runecrafting.EARTH_TIARA
-							|| hatId == Runecrafting.OMNI_TIARA
-							|| player.getInventory().containsItem(1440, 1))
+					if (hatId == Runecrafting.EARTH_TIARA || hatId == Runecrafting.OMNI_TIARA || player.getInventory().containsItem(1440, 1))
 						Runecrafting.enterEarthAltar(player);
 				} else if (id == 2456) {
 					int hatId = player.getEquipment().getHatId();
-					if (hatId == Runecrafting.FIRE_TIARA
-							|| hatId == Runecrafting.OMNI_TIARA
-							|| player.getInventory().containsItem(1442, 1))
+					if (hatId == Runecrafting.FIRE_TIARA || hatId == Runecrafting.OMNI_TIARA || player.getInventory().containsItem(1442, 1))
 						Runecrafting.enterFireAltar(player);
 				} else if (id == 2454) {
 					int hatId = player.getEquipment().getHatId();
-					if (hatId == Runecrafting.WATER_TIARA
-							|| hatId == Runecrafting.OMNI_TIARA
-							|| player.getInventory().containsItem(1444, 1))
+					if (hatId == Runecrafting.WATER_TIARA || hatId == Runecrafting.OMNI_TIARA || player.getInventory().containsItem(1444, 1))
 						Runecrafting.enterWaterAltar(player);
 				} else if (id == 2457) {
 					int hatId = player.getEquipment().getHatId();
-					if (hatId == Runecrafting.BODY_TIARA
-							|| hatId == Runecrafting.OMNI_TIARA
-							|| player.getInventory().containsItem(1446, 1))
+					if (hatId == Runecrafting.BODY_TIARA || hatId == Runecrafting.OMNI_TIARA || player.getInventory().containsItem(1446, 1))
 						Runecrafting.enterBodyAltar(player);
 				} else if (id == 2453) {
 					int hatId = player.getEquipment().getHatId();
-					if (hatId == Runecrafting.MIND_TIARA
-							|| hatId == Runecrafting.OMNI_TIARA
-							|| player.getInventory().containsItem(1448, 1))
+					if (hatId == Runecrafting.MIND_TIARA || hatId == Runecrafting.OMNI_TIARA || player.getInventory().containsItem(1448, 1))
 						Runecrafting.enterMindAltar(player);
 				} else if (id == 47120) { // zaros altar
 					// recharge if needed
-					if (player.getPrayer().getPrayerpoints() < player
-							.getSkills().getLevelForXp(Skills.PRAYER) * 10) {
+					if (player.getPrayer().getPrayerpoints() < player.getSkills().getLevelForXp(Skills.PRAYER) * 10) {
 						player.lock(12);
 						player.setNextAnimation(new Animation(12563));
-						player.getPrayer().setPrayerpoints(
-								(int) ((player.getSkills().getLevelForXp(
-										Skills.PRAYER) * 10) * 1.15));
+						player.getPrayer().setPrayerpoints((int) ((player.getSkills().getLevelForXp(Skills.PRAYER) * 10) * 1.15));
 						player.getPrayer().refreshPrayerPoints();
 					}
 					player.getDialogueManager().startDialogue("ZarosAltar");
@@ -285,13 +255,10 @@ public final class ObjectHandler {
 					player.getDialogueManager().startDialogue("Banker", 553);
 				else if (id == 57437)
 					player.getBank().openBank();
-				else if (id == 42425 && object.getX() == 3220
-						&& object.getY() == 3222) { // zaros portal
-					player.useStairs(10256, new WorldTile(3353, 3416, 0), 4, 5,
-							"And you find yourself into a digsite.");
+				else if (id == 42425 && object.getX() == 3220 && object.getY() == 3222) { // zaros portal
+					player.useStairs(10256, new WorldTile(3353, 3416, 0), 4, 5,"And you find yourself into a digsite.");
 					player.addWalkSteps(3222, 3223, -1, false);
-					player.getPackets().sendGameMessage(
-							"You examine portal and it aborves you...");
+					player.getPackets().sendGameMessage("You examine portal and it aborves you...");
 				} else if (id == 9356) 
 					FightCaves.enterFightCaves(player);
 				else if (id == 68107)
@@ -300,18 +267,12 @@ public final class ObjectHandler {
 					FightPits.enterLobby(player, false);
 				else if (id == 46500 && object.getX() == 3351
 						&& object.getY() == 3415) { // zaros portal
-					player.useStairs(-1, new WorldTile(
-							Settings.RESPAWN_PLAYER_LOCATION.getX(),
-							Settings.RESPAWN_PLAYER_LOCATION.getY(),
-							Settings.RESPAWN_PLAYER_LOCATION.getPlane()), 2, 3,
-							"You found your way back to home.");
+					player.useStairs(-1, new WorldTile(Settings.RESPAWN_PLAYER_LOCATION.getX(), Settings.RESPAWN_PLAYER_LOCATION.getY(),
+							Settings.RESPAWN_PLAYER_LOCATION.getPlane()), 2, 3,"You found your way back to home.");
 					player.addWalkSteps(3351, 3415, -1, false);
 				} else if (id == 9293) {
 					if (player.getSkills().getLevel(Skills.AGILITY) < 70) {
-						player.getPackets()
-						.sendGameMessage(
-								"You need an agility level of 70 to use this obstacle.",
-								true);
+						player.getPackets().sendGameMessage("You need an agility level of 70 to use this obstacle.",true);
 						return;
 					}
 					int x = player.getX() == 2886 ? 2892 : 2886;

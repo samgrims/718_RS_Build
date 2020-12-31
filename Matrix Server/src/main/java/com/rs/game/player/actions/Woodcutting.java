@@ -6,7 +6,12 @@ import com.rs.game.World;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.player.Player;
+import com.rs.tools.DebugLine;
 import com.rs.utils.Utils;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public final class Woodcutting extends Action {
 
@@ -31,7 +36,7 @@ public final class Woodcutting extends Action {
 		MAGIC(75, 250, 1513, 150, 21, 37824, 121, 10),
 
 		CURSED_MAGIC(82, 250, 1513, 150, 21, 37822, 121, 10);
-		
+
 		private int level;
 		private double xp;
 		private int logsId;
@@ -41,9 +46,7 @@ public final class Woodcutting extends Action {
 		private int respawnDelay;
 		private int randomLifeProbability;
 
-		private TreeDefinitions(int level, double xp, int logsId,
-				int logBaseTime, int logRandomTime, int stumpId,
-				int respawnDelay, int randomLifeProbability) {
+		private TreeDefinitions(int level, double xp, int logsId, int logBaseTime, int logRandomTime, int stumpId, int respawnDelay, int randomLifeProbability) {
 			this.level = level;
 			this.xp = xp;
 			this.logsId = logsId;
@@ -103,24 +106,18 @@ public final class Woodcutting extends Action {
 	public boolean start(Player player) {
 		if (!checkAll(player))
 			return false;
-		player.getPackets()
-				.sendGameMessage(
-						usingBeaver ? "Your beaver uses its strong teeth to chop down the tree..."
-								: "You swing your hatchet at the "
-										+ (TreeDefinitions.IVY == definitions ? "ivy"
-												: "tree") + "...", true);
+		player.getPackets().sendGameMessage(usingBeaver ? "Your beaver uses its strong teeth to chop down the tree..."
+								: "You swing your hatchet at the " + (TreeDefinitions.IVY == definitions ? "ivy"
+								: "tree") + "...", true);
 		setActionDelay(player, getWoodcuttingDelay(player));
 		return true;
 	}
 
+
+
 	private int getWoodcuttingDelay(Player player) {
-		int summoningBonus = player.getFamiliar() != null ? (player
-				.getFamiliar().getId() == 6808 || player.getFamiliar().getId() == 6807) ? 10
-				: 0
-				: 0;
-		int wcTimer = definitions.getLogBaseTime()
-				- (player.getSkills().getLevel(8) + summoningBonus)
-				- Utils.getRandom(axeTime);
+		int summoningBonus = player.getFamiliar() != null ? (player.getFamiliar().getId() == 6808 || player.getFamiliar().getId() == 6807) ? 10 : 0 : 0;
+		int wcTimer = definitions.getLogBaseTime() - (player.getSkills().getLevel(8) + summoningBonus) - Utils.getRandom(axeTime);
 		if (wcTimer < 1 + definitions.getLogRandomTime())
 			wcTimer = 1 + Utils.getRandom(definitions.getLogRandomTime());
 		wcTimer /= player.getAuraManager().getWoodcuttingAccurayMultiplier();
@@ -129,20 +126,17 @@ public final class Woodcutting extends Action {
 
 	private boolean checkAll(Player player) {
 		if (!hasAxe(player)) {
-			player.getPackets().sendGameMessage(
-					"You need a hatchet to chop down this tree.");
+			player.getPackets().sendGameMessage("You need a hatchet to chop down this tree.");
 			return false;
 		}
 		if (!setAxe(player)) {
-			player.getPackets().sendGameMessage(
-					"You dont have the required level to use that axe.");
+			player.getPackets().sendGameMessage("You dont have the required level to use that axe.");
 			return false;
 		}
 		if (!hasWoodcuttingLevel(player))
 			return false;
 		if (!player.getInventory().hasFreeSlots()) {
-			player.getPackets().sendGameMessage(
-					"Not enough space in your inventory.");
+			player.getPackets().sendGameMessage("Not enough space in your inventory.");
 			return false;
 		}
 		return true;
@@ -150,9 +144,7 @@ public final class Woodcutting extends Action {
 
 	private boolean hasWoodcuttingLevel(Player player) {
 		if (definitions.getLevel() > player.getSkills().getLevel(8)) {
-			player.getPackets().sendGameMessage(
-					"You need a woodcutting level of " + definitions.getLevel()
-							+ " to chop down this tree.");
+			player.getPackets().sendGameMessage("You need a woodcutting level of " + definitions.getLevel() + " to chop down this tree.");
 			return false;
 		}
 		return true;
@@ -326,23 +318,15 @@ public final class Woodcutting extends Action {
 			usedDeplateAurora = true;
 		} else if (Utils.getRandom(definitions.getRandomLifeProbability()) == 0) {
 			long time = definitions.respawnDelay * 600;
-			World.spawnTemporaryObject(
-					new WorldObject(definitions.getStumpId(), tree.getType(),
-							tree.getRotation(), tree.getX(), tree.getY(), tree
-									.getPlane()), time);
+			World.spawnTemporaryObject(	new WorldObject(definitions.getStumpId(), tree.getType(), tree.getRotation(), tree.getX(), tree.getY(), tree.getPlane()), time);
 			if (tree.getPlane() < 3 && definitions != TreeDefinitions.IVY) {
-				WorldObject object = World.getObject(new WorldTile(
-						tree.getX() - 1, tree.getY() - 1, tree.getPlane() + 1));
-
+				WorldObject object = World.getObject(new WorldTile(	tree.getX() - 1, tree.getY() - 1, tree.getPlane() + 1));
 				if (object == null) {
-					object = World.getObject(new WorldTile(tree.getX(), tree
-							.getY() - 1, tree.getPlane() + 1));
+					object = World.getObject(new WorldTile(tree.getX(), tree.getY() - 1, tree.getPlane() + 1));
 					if (object == null) {
-						object = World.getObject(new WorldTile(tree.getX() - 1,
-								tree.getY(), tree.getPlane() + 1));
+						object = World.getObject(new WorldTile(tree.getX() - 1, tree.getY(), tree.getPlane() + 1));
 						if (object == null) {
-							object = World.getObject(new WorldTile(tree.getX(),
-									tree.getY(), tree.getPlane() + 1));
+							object = World.getObject(new WorldTile(tree.getX(),	tree.getY(), tree.getPlane() + 1));
 						}
 					}
 				}
@@ -355,8 +339,7 @@ public final class Woodcutting extends Action {
 		}
 		if (!player.getInventory().hasFreeSlots()) {
 			player.setNextAnimation(new Animation(-1));
-			player.getPackets().sendGameMessage(
-					"Not enough space in your inventory.");
+			player.getPackets().sendGameMessage("Not enough space in your inventory.");
 			return -1;
 		}
 		return getWoodcuttingDelay(player);
@@ -380,15 +363,11 @@ public final class Woodcutting extends Action {
 		player.getSkills().addXp(8, definitions.getXp() * xpBoost);
 		player.getInventory().addItem(definitions.getLogsId(), 1);
 		if (definitions == TreeDefinitions.IVY) {
-			player.getPackets().sendGameMessage(
-					"You succesfully cut an ivy vine.", true);
+			player.getPackets().sendGameMessage("You succesfully cut an ivy vine.", true);
 
 		} else {
-			String logName = ItemDefinitions
-					.getItemDefinitions(definitions.getLogsId()).getName()
-					.toLowerCase();
-			player.getPackets().sendGameMessage(
-					"You get some " + logName + ".", true);
+			String logName = ItemDefinitions.getItemDefinitions(definitions.getLogsId()).getName().toLowerCase();
+			player.getPackets().sendGameMessage("You get some " + logName + ".", true);
 
 		}
 	}
