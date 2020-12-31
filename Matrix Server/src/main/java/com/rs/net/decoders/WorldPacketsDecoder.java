@@ -1503,16 +1503,14 @@ public final class WorldPacketsDecoder extends Decoder {
 			@SuppressWarnings("unused")
 			boolean unknown = stream.readUnsignedByte() == 1;
 			String command = stream.readString();
-			if (!Commands.processCommand(player, command, true, clientCommand)
-					&& Settings.DEBUG)
+			if (!Commands.processCommand(player, command, true, clientCommand) && Settings.DEBUG)
 				Logger.log(this, "Command: " + command);
 		} else if (packetId == COLOR_ID_PACKET) {
 			if (!player.hasStarted())
 				return;
 			int colorId = stream.readUnsignedShort();
 			if (player.getTemporaryAttributtes().get("SkillcapeCustomize") != null)
-				SkillCapeCustomizer.handleSkillCapeCustomizerColor(player,
-						colorId);
+				SkillCapeCustomizer.handleSkillCapeCustomizerColor(player, colorId);
 		}else if (packetId == REPORT_ABUSE_PACKET) {
 			if (!player.hasStarted())
 				return;

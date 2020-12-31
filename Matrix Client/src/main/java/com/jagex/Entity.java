@@ -662,16 +662,14 @@ public abstract class Entity extends Class365_Sub1_Sub1 {
 		try {
 			if (1097409519 * anInt10132 == i)
 				return true;
-			aClass119_10131 = Class338
-					.getInterface(i, null, null, true, (byte) 3);
+			aClass119_10131 = Class338.getInterface(i, null, null, true, (byte) 3);
 			if (aClass119_10131 == null)
 				return false;
 			anInt10132 = i * 441346831;
 			Graphics.method611(aClass119_10131.components, -1178956884);
 			return true;
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("akn.cd(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("akn.cd(").append(')').toString());
 		}
 	}
 

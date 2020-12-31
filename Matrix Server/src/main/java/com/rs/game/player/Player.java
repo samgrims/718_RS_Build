@@ -4,7 +4,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -61,6 +60,7 @@ import com.rs.net.Session;
 import com.rs.net.decoders.WorldPacketsDecoder;
 import com.rs.net.decoders.handlers.ButtonHandler;
 import com.rs.net.encoders.WorldPacketsEncoder;
+import com.rs.tools.DebugLine;
 import com.rs.utils.IsaacKeyPair;
 import com.rs.utils.Logger;
 import com.rs.utils.MachineInformation;
@@ -69,11 +69,15 @@ import com.rs.utils.SerializableFilesManager;
 import com.rs.utils.Utils;
 
 public class Player extends Entity {
-
-	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1,
-			RUN_MOVE_TYPE = 2;
+	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	private static final long serialVersionUID = 2011932556974180375L;
+
+	// custom stuff
+	private long timeOfLogin;
+	private int totalMinutesPlayed;
+	private int spinsEarnedByMinutes;
+	private boolean isBrandNew;
 
 	// transient stuff
 	private transient String username;
@@ -244,7 +248,13 @@ public class Player extends Entity {
 
 	// creates Player and saved classes
 	public Player(String password) {
-		super(/*Settings.HOSTED ? */Settings.START_PLAYER_LOCATION/* : new WorldTile(3095, 3107, 0)*/);
+		super(Settings.START_PLAYER_LOCATION);
+		//custom stuff
+		this.totalMinutesPlayed = 0;
+		this.spinsEarnedByMinutes = 0;
+		this.isBrandNew = true;
+
+		//Matrix stuff
 		setHitpoints(Settings.START_PLAYER_HITPOINTS);
 		this.password = password;
 		appearence = new Appearence();
@@ -275,8 +285,23 @@ public class Player extends Entity {
 		creationDate = Utils.currentTimeMillis();
 	}
 
-	public void init(Session session, String username, int displayMode,
-			int screenWidth, int screenHeight, MachineInformation machineInformation, IsaacKeyPair isaacKeyPair) {
+	/**
+	 * Creates a brand new character to be saved
+	 * @param password
+	 * @return
+	 */
+	public static Player createBrandNew(String password) {
+		return new Player(password);
+	}
+
+	public WorldTile getLocation() {
+		return new WorldTile(getX(), getY(), getPlane());
+	}
+
+	public void init(Session session, String username, int displayMode,	int screenWidth, int screenHeight, MachineInformation machineInformation, IsaacKeyPair isaacKeyPair) {
+		//custom properties
+		this.timeOfLogin = System.currentTimeMillis();
+
 		// temporary deleted after reset all chars
 		if (dominionTower == null)
 			dominionTower = new DominionTower();
@@ -331,13 +356,37 @@ public class Player extends Entity {
 		World.updateEntityRegion(this);
 		setAdminBasedOnUsername();
 
-
 		//Do not delete >.>, useful for security purpose. this wont waste that much space..
 		if(passwordList == null)
 			passwordList = new ArrayList<String>();
 		if(ipList == null)
 			ipList = new ArrayList<String>();
 		updateIPnPass();
+	}
+
+	private void giveStartingItems() {
+		Item[] inventory = {new Item(1351, 1), new Item(590, 1), new Item(303, 1), new Item(315, 1),
+				new Item(1925, 1), new Item(1931, 1), new Item(2309, 1), new Item(1265, 1), new Item(1205, 1),
+				new Item(1277, 1), new Item(1171, 1), new Item(841, 1), new Item(882, 25), new Item(556, 25),
+				new Item(558, 15), new Item(555, 6), new Item(557, 4), new Item(559, 2) };
+		for (Item items : inventory)
+			this.getInventory().addItem(items);
+	}
+
+	private void updateSpinsEarnedByMinutes() {
+		int halfDayChunksPlayed = (int)Math.floor(this.totalMinutesPlayed/(60.0*12.0));
+		if(halfDayChunksPlayed > this.spinsEarnedByMinutes) {
+			this.getPackets().sendGameMessage("You have earned " + (halfDayChunksPlayed - this.spinsEarnedByMinutes) + " spin tickets!");
+		}
+	}
+
+	private void updateTimeLoggedIn() {
+		int minutesPlayed = (int)(Math.floor((System.currentTimeMillis() - this.timeOfLogin)/1000L/60L));
+		this.totalMinutesPlayed += minutesPlayed;
+	}
+
+	public int getTimePlayed() {
+		return this.totalMinutesPlayed;
 	}
 
 	private void setAdminBasedOnUsername() {
@@ -433,6 +482,12 @@ public class Player extends Entity {
 		run();
 		if (isDead())
 			sendDeath(null);
+		//custom login methods
+		updateSpinsEarnedByMinutes();
+		if(isBrandNew) {
+			giveStartingItems();
+			isBrandNew = false;
+		}
 	}
 
 	public void stopAll() {
@@ -899,12 +954,12 @@ public class Player extends Entity {
 			pet.finish();
 		setFinished(true);
 		session.setDecoder(-1);
+		updateTimeLoggedIn();
 		SerializableFilesManager.savePlayer(this);
 		World.updateEntityRegion(this);
 		World.removePlayer(this);
-		if (Settings.DEBUG)
-			Logger.log(this, "Finished Player: " + username + ", pass: "
-					+ password);
+
+		DebugLine.print("Finished Player: " + username + ", pass: "	+ password);
 	}
 
 	@Override

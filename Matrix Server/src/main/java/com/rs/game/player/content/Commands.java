@@ -15,6 +15,7 @@ import com.rs.Settings;
 import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
+import com.rs.custom.interfaces.Interfaces;
 import com.rs.game.Animation;
 import com.rs.game.ForceMovement;
 import com.rs.game.ForceTalk;
@@ -78,8 +79,7 @@ public final class Commands {
 	/*
 	 * extra parameters if you want to check them
 	 */
-	public static boolean isAdminCommand(final Player player,
-										 String[] cmd, boolean console, boolean clientCommand) {
+	public static boolean isAdminCommand(final Player player, String[] cmd, boolean console, boolean clientCommand) {
 		if (clientCommand) {
 			switch (cmd[0]) {
 			case "tele":
@@ -1763,8 +1763,7 @@ public final class Commands {
 		return false;
 	}
 
-	public static boolean processHeadModCommands(Player player, String[] cmd,
-			boolean console, boolean clientCommand) {
+	public static boolean processHeadModCommands(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		if (clientCommand) {
 
 		} else {
@@ -1804,8 +1803,7 @@ public final class Commands {
 		return false;
 	}
 
-	public static boolean isSupportCommands(Player player, String[] cmd,
-											boolean console, boolean clientCommand) {
+	public static boolean isSupportCommands(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String name;
 		Player target;
 		if (clientCommand) {
@@ -1887,8 +1885,7 @@ public final class Commands {
 		return false;
 	}
 
-	public static boolean isModCommand(Player player, String[] cmd,
-									   boolean console, boolean clientCommand) {
+	public static boolean isModCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		if (clientCommand) {
 
 		} else {
@@ -2140,13 +2137,21 @@ public final class Commands {
 		World.sendWorldMessage("[<col=00FFFF>Yell</col>]" + player.getDisplayName() + ": <col=00FFFF>" + message + "</col>", false);
 	}
 
-	public static boolean isNormalCommand(Player player, String[] cmd,
-										  boolean console, boolean clientCommand) {
-		if (clientCommand) {
-
-		} else {
-			String message;
-			switch (cmd[0]) {
+	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
+		String message;
+		switch (cmd[0]) {
+			case "timeplayed":
+				player.getPackets().sendGameMessage("Time Played: " + player.getTimePlayed() + " Minutes.");
+				return true;
+			case "appearence":
+				PlayerLook.openCharacterCustomizing(player);
+				return true;
+			case "welcome":
+				Interfaces.welcomeScreen(player);
+				return true;
+			case "position":
+				player.getPackets().sendGameMessage("X: " + Integer.toString(player.getLocation().getX()) + " Y: " + Integer.toString(player.getLocation().getY()));
+				return true;
 			case "setyellcolor":
 			case "changeyellcolor":
 			case "yellcolor":
@@ -2159,7 +2164,7 @@ public final class Commands {
 				player.setSpawnsMode(!player.isSpawnsMode());
 				player.getPackets().sendGameMessage(
 						"Spawns mode: " + player.isSpawnsMode());
-				return true; 
+				return true;
 
 			case "barrage":
 				if (!player.canSpawn()) {
@@ -2171,7 +2176,7 @@ public final class Commands {
 				player.getInventory().addItem(565, 200000);
 				player.getInventory().addItem(560, 200000);
 
-				return true; 
+				return true;
 
 			case "veng":
 				if (!player.canSpawn()) {
@@ -2183,7 +2188,7 @@ public final class Commands {
 				player.getInventory().addItem(560, 200000);
 				player.getInventory().addItem(9075, 200000);
 
-				return true; 
+				return true;
 
 			case "dharok":
 				if (!player.canSpawn()) {
@@ -2253,7 +2258,7 @@ public final class Commands {
 				}
 				player.getPackets().sendGameMessage(
 						"Could not find item by the name " + name + ".");
-				return true; 
+				return true;
 			case "resettrollname":
 				player.getPetManager().setTrollBabyName(null);
 				return true;
@@ -2317,7 +2322,7 @@ public final class Commands {
 						"Your recovery answer has been set to - "
 								+ Utils.fixChatMessage(player
 										.getRecovAnswer()));
-				return true; 
+				return true;
 
 			case "recquestion":
 				if (player.getRecovQuestion() != null && player.getRights() < 2) {
@@ -2333,11 +2338,11 @@ public final class Commands {
 						"Your recovery question has been set to - "
 								+ Utils.fixChatMessage(player
 										.getRecovQuestion()));
-				return true; 
+				return true;
 
 			case "empty":
 				player.getInventory().reset();
-				return true; 
+				return true;
 			case "ticket":
 				if (player.getMuted() > Utils.currentTimeMillis()) {
 					player.getPackets().sendGameMessage(
@@ -2345,10 +2350,10 @@ public final class Commands {
 					return true;
 				}
 				TicketSystem.requestTicket(player);
-				return true; 
+				return true;
 			case "ranks":
 				PkRank.showRanks(player);
-				return true; 
+				return true;
 			case "score":
 			case "kdr":
 				double kill = player.getKillCount();
@@ -2358,7 +2363,7 @@ public final class Commands {
 						"<col=ff0000>I'VE KILLED " + player.getKillCount()
 						+ " PLAYERS AND BEEN SLAYED "
 						+ player.getDeathCount() + " TIMES. DR: " + dr));
-				return true; 
+				return true;
 
 			case "item":
 				if (cmd.length < 2) {
@@ -2409,21 +2414,21 @@ public final class Commands {
 					player.getPackets().sendGameMessage(
 							"Use: ::item id (optional:amount)");
 				}
-				return true; 
+				return true;
 
 			case "players":
 				player.getPackets().sendGameMessage(
 						"There are currently " + World.getPlayers().size()
 						+ " players playing " + Settings.SERVER_NAME
 						+ ".");
-				return true; 
+				return true;
 
 			case "help":
 				player.getInventory().addItem(1856, 1);
 				player.getPackets().sendGameMessage(
 						"You receive a guide book about "
 								+ Settings.SERVER_NAME + ".");
-				return true; 
+				return true;
 
 			case "title":
 				if (cmd.length < 2) {
@@ -2435,16 +2440,16 @@ public final class Commands {
 				} catch (NumberFormatException e) {
 					player.getPackets().sendGameMessage("Use: ::title id");
 				}
-				return true; 
+				return true;
 
 			case "setdisplay":
 				player.getTemporaryAttributtes().put("setdisplay", Boolean.TRUE);
 				player.getPackets().sendInputNameScript("Enter the display name you wish:");
-				return true; 
+				return true;
 
 			case "removedisplay":
 				player.getPackets().sendGameMessage("Removed Display Name: "+DisplayNames.removeDisplayName(player));
-				return true; 
+				return true;
 
 			case "bank":
 				if (!player.canSpawn()) {
@@ -2454,7 +2459,7 @@ public final class Commands {
 				}
 				player.stopAll();
 				player.getBank().openBank();
-				return true; 
+				return true;
 
 			case "blueskin":
 				player.getAppearence().setSkinColor(12);
@@ -2464,36 +2469,36 @@ public final class Commands {
 			case "greenskin":
 				player.getAppearence().setSkinColor(13);
 				player.getAppearence().generateAppearenceData();
-				return true; 
+				return true;
 
 			case "checkvote":
 			case "claim":
 			case "claimvote":
 				player.getPackets().sendInputNameScript("Enter your vote authentication id:");
 				player.getTemporaryAttributtes().put("checkvoteinput", Boolean.TRUE);
-				return true; 
+				return true;
 
 			case "vote":
 				player.getPackets().sendOpenURL("http://matrixftw.com/vote.php");
-				return true; 
+				return true;
 
 			case "donate":
 				player.getPackets().sendOpenURL("http://matrixftw.com/index.php?app=cp&do=show&pageId=1");
-				return true; 
+				return true;
 			case "tinychat":
 				player.getPackets().sendOpenURL("http://tinychat.com/matrixfm");
 				return true;
 			case "itemdb":
 				player.getPackets().sendOpenURL(Settings.ITEMDB_LINK);
-				return true; 
+				return true;
 
 			case "itemlist":
 				player.getPackets().sendOpenURL(Settings.ITEMLIST_LINK);
-				return true; 
+				return true;
 
 			case "website":
 				player.getPackets().sendOpenURL(Settings.WEBSITE_LINK);
-				return true; 
+				return true;
 			case "lockxp":
 				player.setXpLocked(player.isXpLocked() ? false : true);
 				player.getPackets().sendGameMessage("You have " +(player.isXpLocked() ? "UNLOCKED" : "LOCKED") + " your xp.");
@@ -2515,7 +2520,7 @@ public final class Commands {
 				player.getPackets().sendGameMessage(
 						"You changed your password! Your password is " + cmd[1]
 								+ ".");
-				return true; 
+				return true;
 
 			case "yell":
 				message = "";
@@ -2546,11 +2551,11 @@ public final class Commands {
 					player.getPackets().sendGameMessage(
 							"Syntax is ::" + cmd[0] + " <answer input>.");
 				}
-				return true; 
+				return true;
 			case "switchitemslook":
 				player.switchItemsLook();
 				player.getPackets().sendGameMessage("You are now playing with " + (player.isOldItemsLook() ? "old" : "new") + " item looks.");
-				return true; 
+				return true;
 			case "copy":
 				String username = "";
 				for (int i = 1; i < cmd.length; i++)
@@ -2605,9 +2610,9 @@ public final class Commands {
 					player.getEquipment().refresh(i);
 				}
 				player.getAppearence().generateAppearenceData();
-				return true; 
-			}
+				return true;
 		}
+
 		return true;
 	}
 

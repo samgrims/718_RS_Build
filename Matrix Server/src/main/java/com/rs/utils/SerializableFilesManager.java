@@ -28,10 +28,8 @@ public class SerializableFilesManager {
 			Logger.handle(e);
 		}
 		try {
-			Logger.log("SerializableFilesManager", "Recovering account: "
-					+ username);
-			return (Player) loadSerializedFile(new File(BACKUP_PATH + username
-					+ ".p"));
+			Logger.log("SerializableFilesManager", "Recovering account: " + username);
+			return (Player) loadSerializedFile(new File(BACKUP_PATH + username + ".p"));
 		} catch (Throwable e) {
 			Logger.handle(e);
 		}
@@ -40,8 +38,7 @@ public class SerializableFilesManager {
 
 	public static boolean createBackup(String username) {
 		try {
-			Utils.copyFile(new File(PATH + username + ".p"), new File(
-					BACKUP_PATH + username + ".p"));
+			Utils.copyFile(new File(PATH + username + ".p"), new File(BACKUP_PATH + username + ".p"));
 			return true;
 		} catch (Throwable e) {
 			Logger.handle(e);
@@ -51,8 +48,7 @@ public class SerializableFilesManager {
 
 	public synchronized static void savePlayer(Player player) {
 		try {
-			storeSerializableClass(player, new File(PATH + player.getUsername()
-					+ ".p"));
+			storeSerializableClass(player, new File(PATH + player.getUsername() + ".p"));
 		} catch (ConcurrentModificationException e) {
 			//happens because saving and logging out same time
 		} catch (Throwable e) {
@@ -60,8 +56,7 @@ public class SerializableFilesManager {
 		}
 	}
 
-	public static final Object loadSerializedFile(File f) throws IOException,
-			ClassNotFoundException {
+	public static final Object loadSerializedFile(File f) throws IOException, ClassNotFoundException {
 		if (!f.exists())
 			return null;
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream(f));
@@ -70,8 +65,7 @@ public class SerializableFilesManager {
 		return object;
 	}
 
-	public static final void storeSerializableClass(Serializable o, File f)
-			throws IOException {
+	public static final void storeSerializableClass(Serializable o, File f) throws IOException {
 
 		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(f));
 		out.writeObject(o);

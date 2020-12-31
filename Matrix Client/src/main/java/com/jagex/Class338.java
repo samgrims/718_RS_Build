@@ -79,10 +79,10 @@ public class Class338 {
 						component.idHash = (i + (interfaceId << 16)) * 533296807;
 						component.readValues(new RsByteBuffer(bytesArr_8), 1142190823);
 
-						if(interfaceId == 596) {
-							component = changeLogin(component, interface_21, interfaceId, i);
-						}
 
+						//Custom hard coded functions
+						component = changeLogin(component, interfaceId, i);
+						component = removeFullscreen(component, interfaceId, i);
 					}
 				}
 			}
@@ -92,9 +92,21 @@ public class Class338 {
 		}
 	}
 
+	private static IComponentDefinition removeFullscreen(IComponentDefinition component, int interfaceId, int i) {
+		if(interfaceId == 978)
+			if(component.type == 0 * -800405999 && (i == 14 || i==16))
+				component.hidden = true;
+		return component;
+	}
 
-	private static IComponentDefinition changeLogin(IComponentDefinition component, Class119 interfaceObj, int interfaceId, int i) {
-
+	/**
+	 * Changes login for interface 596, the login background
+	 * @param component
+	 * @param interfaceId
+	 * @param i
+	 * @return
+	 */
+	private static IComponentDefinition changeLogin(IComponentDefinition component, int interfaceId, int i) {
 		if (interfaceId == 596) {
 			//reduce size of background
 			if (i == 3) {
@@ -116,7 +128,7 @@ public class Class338 {
 					}
 				}
 			}
-			System.out.println(component.idHash*-440872681);
+
 			//remove Facebook icons and a background sprite
 			if (component.spriteId  * 1411971043 == 6041 || i == 1) {
 				component.hidden = true;
@@ -128,7 +140,7 @@ public class Class338 {
 			}
 
 			//Change the text
-			if (component.text.equalsIgnoreCase("<u=C8C8C8>Recover Your Password")) { //TODO: Change the link?
+			if (component.text.equalsIgnoreCase("<u=C8C8C8>Recover Your Password")) {
 				component.text = "Create new account";
 			}
 

@@ -10,21 +10,19 @@ public final class PlayerLook {
 		player.getPackets().sendWindowsPane(1028, 0); // character customizing
 	}
 
-	public static void handleCharacterCustomizingButtons(Player player,
-			int buttonId) {
-		if (buttonId == 117) { // confirm
-			player.getPackets().sendWindowsPane(
-					player.getInterfaceManager().hasRezizableScreen() ? 746
-							: 548, 0);
-		}
+	public static void handleCharacterCustomizingButtons(Player player,	int buttonId) {
+		if (buttonId == 138)  // confirm
+			player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746	: 548, 0);
+		if(buttonId == 62)  //Male
+			setGender(player, true);
+		if(buttonId == 63)  //Female
+			setGender(player, false);
 	}
 
 	public static void handleMageMakeOverButtons(Player player, int buttonId) {
 		if (buttonId == 14 || buttonId == 16 || buttonId == 15 ||buttonId == 17)
-			player.getTemporaryAttributtes().put("MageMakeOverGender",
-					buttonId == 14 || buttonId == 16);
+			player.getTemporaryAttributtes().put("MageMakeOverGender",buttonId == 14 || buttonId == 16);
 		else if (buttonId >= 20 && buttonId <= 31) {
-
 			int skin;
 			if (buttonId == 31)
 				skin = 11;
@@ -52,10 +50,8 @@ public final class PlayerLook {
 				skin = 0;
 			player.getTemporaryAttributtes().put("MageMakeOverSkin", skin);
 		} else if (buttonId == 33) {
-			Boolean male = (Boolean) player.getTemporaryAttributtes().remove(
-					"MageMakeOverGender");
-			Integer skin = (Integer) player.getTemporaryAttributtes().remove(
-					"MageMakeOverSkin");
+			Boolean male = (Boolean) player.getTemporaryAttributtes().remove("MageMakeOverGender");
+			Integer skin = (Integer) player.getTemporaryAttributtes().remove("MageMakeOverSkin");
 			player.closeInterfaces();
 			if (male == null || skin == null)
 				return;
@@ -205,6 +201,17 @@ public final class PlayerLook {
 			}
 			
 		});
+	}
+
+	public static void setGender(Player player, boolean isMale) {
+		if(isMale) {
+			player.getAppearence().male();
+			player.getAppearence().generateAppearenceData();
+		}
+		else {
+			player.getAppearence().female();
+			player.getAppearence().generateAppearenceData();
+		}
 	}
 
 	private PlayerLook() {
