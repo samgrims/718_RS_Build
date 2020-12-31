@@ -35,10 +35,7 @@ import com.rs.game.npc.pet.Pet;
 import com.rs.game.player.actions.PlayerCombat;
 import com.rs.game.player.actions.Slayer.Master;
 import com.rs.game.player.actions.Slayer.SlayerTask;
-import com.rs.game.player.content.FriendChatsManager;
-import com.rs.game.player.content.Notes;
-import com.rs.game.player.content.Pots;
-import com.rs.game.player.content.SkillCapeCustomizer;
+import com.rs.game.player.content.*;
 import com.rs.game.player.content.pet.PetManager;
 import com.rs.game.player.controlers.CorpBeastControler;
 import com.rs.game.player.controlers.CrucibleControler;
@@ -80,6 +77,9 @@ public class Player extends Entity {
 	private int spinsEarnedByMinutes;
 	private boolean isBrandNew;
 	private Toolbelt toolbelt;
+	private transient SquealOfFortune sof;
+	private transient SpinsManager spinsManager;
+	private int spins;
 
 	// transient stuff
 	private transient String username;
@@ -306,6 +306,7 @@ public class Player extends Entity {
 		this.timeOfLogin = System.currentTimeMillis();
 		if(toolbelt == null)
 			toolbelt = new Toolbelt();
+		sof = new SquealOfFortune(this);
 
 		// temporary deleted after reset all chars
 		if (dominionTower == null)
@@ -380,6 +381,22 @@ public class Player extends Entity {
 				new Item(558, 15), new Item(555, 6), new Item(557, 4), new Item(559, 2) };
 		for (Item items : inventory)
 			this.getInventory().addItem(items);
+	}
+
+	public SquealOfFortune getSquealOfFortune() {
+		return sof;
+	}
+
+	public SpinsManager getSpinsManager() {
+		return spinsManager;
+	}
+
+	public void setSpins(int spins) {
+		this.spins = spins;
+	}
+
+	public int getSpins() {
+		return spins;
 	}
 
 	private void updateSpinsEarnedByMinutes() {
@@ -491,14 +508,15 @@ public class Player extends Entity {
 		run();
 		if (isDead())
 			sendDeath(null);
+
 		//custom login methods
 		updateSpinsEarnedByMinutes();
 		if(isBrandNew) {
 			giveStartingItems();
 			isBrandNew = false;
 		}
-//		this.toolbelt = new Toolbelt();
 		toolbelt.setPlayer(this);
+		sof.setPlayer(this);
 		toolbelt.init();
 	}
 

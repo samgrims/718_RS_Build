@@ -64,9 +64,49 @@ public class ButtonHandler {
 
 		DebugLine.print("InterfaceId " + interfaceId + ", componentId " + componentId + ", slotId " + slotId + ", slotId2 " + slotId2 + ", PacketId: " + packetId);
 
-		if (!player.getControlerManager().processButtonClick(interfaceId,
-				componentId, slotId, packetId))
+		if (!player.getControlerManager().processButtonClick(interfaceId, componentId, slotId, packetId))
 			return;
+
+		if (interfaceId == 1253) {
+			player.getSquealOfFortune().handleButtons(player, componentId);
+		}
+
+		if (interfaceId == 1252) {
+			if (componentId == 3) {
+			} else if (componentId == 5) {
+				player.closeInterfaces();
+				player.getPackets().sendGameMessage("The icon will appear the next time you log in");
+			}
+		}
+		if (interfaceId == 1252) {
+			if(componentId == 3) {
+				if(player.getSpins() == 0) {
+					player.getPackets().sendGameMessage("You dont have enough Squeal of fortune spins to play.");
+					return;
+				}
+				player.getSquealOfFortune().start();
+			}
+			if(componentId == 5) {
+				player.getPackets().closeInterface(player.getInterfaceManager().hasRezizableScreen() ? 11 : 0);
+				player.getPackets().sendGameMessage("You closed the Squeal of fortune interface, you can access SOF by clicking on the SOF tab and click Play.");
+			}
+		}
+
+		if (interfaceId == 1139) {
+			if(componentId == 18) {
+				if(player.getSpins() == 0) {
+					player.getPackets().sendGameMessage("You dont have enough Squeal Of Fortune spins to play.");
+					return;
+				}
+				player.getSquealOfFortune().start();
+			}
+			if(componentId == 23) {
+//				player.getPackets().sendOpenURL("LINK HERE FOR BUY SPINS");
+			}
+		}
+		if (interfaceId == 548 && componentId == 68) {
+			player.getPackets().sendIComponentText(1139, 10, " "+ player.getSpins() +" ");
+		}
 
 		if (interfaceId == 548 || interfaceId == 746) {
 			if ((interfaceId == 548 && componentId == 148) || (interfaceId == 746 && componentId == 199)) {
@@ -986,8 +1026,11 @@ public class ButtonHandler {
 				Item item = player.getInventory().getItem(inventorySlot);
 				if (item == null || item.getId() != itemId)
 					return;
-				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET)
+
+				DebugLine.print("action" + packetId);
+				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
 					InventoryOptionsHandler.handleItemOption1(player, inventorySlot, itemId, item);
+				}
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET)
 					InventoryOptionsHandler.handleItemOption2(player, inventorySlot, itemId, item);
 				else if (packetId == WorldPacketsDecoder.ACTION_BUTTON3_PACKET)

@@ -2141,6 +2141,21 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+			case "addspin":
+				if(cmd.length != 2 || !cmd[1].matches("\\d+")) {
+					player.getPackets().sendGameMessage("The format is \";;addspin [amt]\"");
+					return true;
+				}
+				for(int i = 0; i < Integer.parseInt(cmd[1]); i++)
+					new SpinsManager(player).addSpin();
+				return true;
+			case "interface":
+				if(cmd.length != 2 || !cmd[1].matches("\\d+")) {
+					player.getPackets().sendGameMessage("The format is \";;interface [id]\"");
+					return true;
+				}
+				player.getInterfaceManager().sendInterface(Integer.parseInt(cmd[1]));
+				return true;
 			case "firespirit":
 				new FireSpirit(player.getLocation(), player);
 				player.getPackets().sendGameMessage("<col=ff0000>A fire spirit emerges from the bonfire.");
