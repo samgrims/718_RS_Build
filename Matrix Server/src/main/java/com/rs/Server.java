@@ -1,8 +1,7 @@
 package com.rs;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
+import java.net.InetAddress;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -45,8 +44,27 @@ import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
 
 public final class Server {
+	public static String getHostIP() throws Exception {
+		InetAddress localhost = InetAddress.getLocalHost();
+
+		String systemipaddress = "";
+		try
+		{
+			URL url_name = new URL("http://bot.whatismyipaddress.com");
+			BufferedReader sc =	new BufferedReader(new InputStreamReader(url_name.openStream()));
+			systemipaddress = sc.readLine().trim();
+		}
+		catch (Exception e)
+		{
+			systemipaddress = "Cannot Execute Properly";
+		}
+		return systemipaddress;
+	}
 
 	public static void main(String[] args) throws Exception {
+		if(getHostIP().equalsIgnoreCase("72.191.29.70"))
+			Settings.XP_RATE = 100;
+
 		Settings.HOSTED = false;
 		Settings.DEBUG = true;
 		long currentTime = Utils.currentTimeMillis();

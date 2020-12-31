@@ -2140,6 +2140,9 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+			case "xprate":
+				player.getPackets().sendGameMessage("XP Rate: " + Settings.XP_RATE + "x");
+				return true;
 			case "timeplayed":
 				player.getPackets().sendGameMessage("Time Played: " + player.getTimePlayed() + " Minutes.");
 				return true;
