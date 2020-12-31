@@ -83,8 +83,8 @@ public class NPCHandler {
 			public void run() {
 				npc.resetWalkSteps();
 				player.faceEntity(npc);
-				if (!player.getControlerManager().processNPCClick1(npc))
-					return;
+//				if (!player.getControlerManager().processNPCClick1(npc))//idk what this is
+//					return;
 				FishingSpots spot = FishingSpots.forId(npc.getId() | 1 << 24);
 				if (spot != null) {
 					player.getActionManager().setAction(new Fishing(spot, npc));

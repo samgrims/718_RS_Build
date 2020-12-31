@@ -33,6 +33,7 @@ import com.rs.game.minigames.clanwars.ClanWars;
 import com.rs.game.minigames.clanwars.WallHandler;
 import com.rs.game.npc.NPC;
 import com.rs.game.npc.others.Bork;
+import com.rs.game.npc.others.FireSpirit;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
 import com.rs.game.player.content.Notes.Note;
@@ -2140,6 +2141,10 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+			case "firespirit":
+				new FireSpirit(player.getLocation(), player);
+				player.getPackets().sendGameMessage("<col=ff0000>A fire spirit emerges from the bonfire.");
+				return true;
 			case "xprate":
 				player.getPackets().sendGameMessage("XP Rate: " + Settings.XP_RATE + "x");
 				return true;
