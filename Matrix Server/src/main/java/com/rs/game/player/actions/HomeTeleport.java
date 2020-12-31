@@ -36,8 +36,8 @@ public class HomeTeleport extends Action {
 
 	@Override
 	public boolean start(final Player player) {
-		if (!player.getControlerManager().processMagicTeleport(tile))
-			return false;
+//		if (!player.getControlerManager().processMagicTeleport(tile))//idk what this is
+//			return false;
 		return process(player);
 	}
 
