@@ -120,8 +120,7 @@ public class Fishing extends Action {
 				spot.put(spots.id | spots.option << 24, spots);
 		}
 
-		private FishingSpots(int id, int option, int tool, int bait,
-				Animation animation, Fish... fish) {
+		private FishingSpots(int id, int option, int tool, int bait, Animation animation, Fish... fish) {
 			this.id = id;
 			this.tool = tool;
 			this.bait = bait;
@@ -278,7 +277,7 @@ public class Fishing extends Action {
 			player.getDialogueManager().startDialogue("SimpleMessage","You need a fishing level of " + spot.getFish()[fishId].getLevel() + " to fish here.");
 			return false;
 		}
-		if (!player.getInventory().containsOneItem(spot.getTool())) {
+		if (!player.getInventory().containsOneItem(spot.getTool()) && !player.getToolbelt().containsItem(spot.getTool())) {
 			player.getPackets().sendGameMessage("You need a "+ new Item(spot.getTool()).getDefinitions().getName().toLowerCase() + " to fish here.");
 			return false;
 		}

@@ -136,13 +136,17 @@ public abstract class MiningBase extends Action {
 				return true;
 			}
 		}
+		if(player.getToolbelt().containsItem(1265)) {
+			emoteId = 625;
+			pickaxeTime = 1;
+			return true;
+		}
 		return false;
 
 	}
 
 	protected boolean hasPickaxe(Player player) {
-		if (player.getInventory().containsOneItem(15259, 1275, 1271, 1273,
-				1269, 1267, 1265, 13661))
+		if (player.getInventory().containsOneItem(15259, 1275, 1271, 1273,	1269, 1267, 1265, 13661) || player.getToolbelt().containsItem(1265))
 			return true;
 		int weaponId = player.getEquipment().getWeaponId();
 		if (weaponId == -1)

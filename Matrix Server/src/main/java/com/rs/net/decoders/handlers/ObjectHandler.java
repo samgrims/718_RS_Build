@@ -816,48 +816,37 @@ public final class ObjectHandler {
 						}
 						break;
 					case "tin ore rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Tin_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Tin_Ore));
 						break;
 					case "gold ore rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Gold_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Gold_Ore));
 						break;
 					case "iron ore rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Iron_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Iron_Ore));
 						break;
 					case "silver ore rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Silver_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Silver_Ore));
 						break;
 					case "coal rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Coal_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Coal_Ore));
 						break;
 					case "clay rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Clay_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Clay_Ore));
 						break;
 					case "copper ore rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Copper_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Copper_Ore));
 						break;
 					case "adamantite ore rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Adamant_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Adamant_Ore));
 						break;
 					case "runite ore rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Runite_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Runite_Ore));
 						break;
 					case "granite rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Granite_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Granite_Ore));
 						break;
 					case "sandstone rocks":
-						player.getActionManager().setAction(
-								new Mining(object, RockDefinitions.Sandstone_Ore));
+						player.getActionManager().setAction(new Mining(object, RockDefinitions.Sandstone_Ore));
 						break;
 					case "mithril ore rocks":
 						player.getActionManager().setAction(new Mining(object, RockDefinitions.Mithril_Ore));

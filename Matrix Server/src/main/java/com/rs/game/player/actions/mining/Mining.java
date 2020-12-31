@@ -88,8 +88,7 @@ public final class Mining extends MiningBase {
 	public boolean start(Player player) {
 		if (!checkAll(player))
 			return false;
-		player.getPackets().sendGameMessage(
-				"You swing your pickaxe at the rock.", true);
+		player.getPackets().sendGameMessage("You swing your pickaxe at the rock.", true);
 		setActionDelay(player, getMiningDelay(player));
 		return true;
 	}
@@ -115,20 +114,17 @@ public final class Mining extends MiningBase {
 
 	private boolean checkAll(Player player) {
 		if (!hasPickaxe(player)) {
-			player.getPackets().sendGameMessage(
-					"You need a pickaxe to mine this rock.");
+			player.getPackets().sendGameMessage("You need a pickaxe to mine this rock.");
 			return false;
 		}
 		if (!setPickaxe(player)) {
-			player.getPackets().sendGameMessage(
-					"You dont have the required level to use this pickaxe.");
+			player.getPackets().sendGameMessage("You dont have the required level to use this pickaxe.");
 			return false;
 		}
 		if (!hasMiningLevel(player))
 			return false;
 		if (!player.getInventory().hasFreeSlots()) {
-			player.getPackets().sendGameMessage(
-					"Not enough space in your inventory.");
+			player.getPackets().sendGameMessage("Not enough space in your inventory.");
 			return false;
 		}
 		return true;
