@@ -95,7 +95,7 @@ public class InterfaceManager {
 		sendTab(196, 749);
 		sendTab(197, 750);
 		sendTab(198, 747);
-		sendTab(119, 1139);
+		sendTab(119, 1139);//squeal of fortune
 		player.getPackets().sendGlobalConfig(823, 1);
 		player.getPackets().sendHideIComponent(1139, 8, true);
 		player.getPackets().sendHideIComponent(1139, 12, true);

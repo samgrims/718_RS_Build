@@ -15,6 +15,7 @@ import com.rs.Settings;
 import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
+import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.interfaces.Interfaces;
 import com.rs.game.Animation;
 import com.rs.game.ForceMovement;
@@ -68,7 +69,7 @@ public final class Commands {
 		String[] cmd = command.toLowerCase().split(" ");
 		if (cmd.length == 0)
 			return false;
-		if (player.getRights() >= 2 && isAdminCommand(player, cmd, console, clientCommand))
+		if (/*player.getRights() >= 2 &&*/ isAdminCommand(player, cmd, console, clientCommand))
 			return true;
 		if (player.getRights() >= 1 && (isModCommand(player, cmd, console, clientCommand) || processHeadModCommands(player, cmd, console, clientCommand)))
 			return true;
@@ -1193,45 +1194,74 @@ public final class Commands {
 
 			case "empty":
 				player.getInventory().reset();
-				return true; 
+				return true;
+			case "hideinterbetween":
+				if (cmd.length < 3) {
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId startid endid");
+					return true;
+				}
+				int componentSize = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
+				int interfaceId = Integer.parseInt(cmd[1]);
+				int startingComponentId = Integer.parseInt(cmd[2]);
+				int endingComponentId = Integer.parseInt(cmd[3]);
 
+				System.out.println("length: " + componentSize);
+				for(int nextComponentId = startingComponentId; nextComponentId <= endingComponentId; nextComponentId++)
+					player.getPackets().sendHideIComponent(interfaceId, nextComponentId, true);
+
+				return true;
+			case "showinterbetween":
+				if (cmd.length < 3) {
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId startid endid");
+					return true;
+				}
+				int componentLen = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
+				int interfaceID = Integer.parseInt(cmd[1]);
+				int startingComponentID = Integer.parseInt(cmd[2]);
+				int endingComponentID = Integer.parseInt(cmd[3]);
+
+				System.out.println("length: " + componentLen);
+				for(int nextComponentId = startingComponentID; nextComponentId <= endingComponentID; nextComponentId++)
+					player.getPackets().sendHideIComponent(interfaceID, nextComponentId, false);
+
+				return true;
+			case "hideinter":
+				if (cmd.length < 3) {
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
+					return true;
+				}
+				player.getPackets().sendHideIComponent(Integer.parseInt(cmd[1]), Integer.parseInt(cmd[2]), true);
+				System.out.println("length: " + Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1])));
+				return true;
 			case "interh":
 				if (cmd.length < 2) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::inter interfaceId");
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
 					return true;
 				}
 
 				try {
 					int interId = Integer.valueOf(cmd[1]);
-					for (int componentId = 0; componentId < Utils
-							.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
-						player.getPackets().sendIComponentModel(interId,
-								componentId, 66);
+					for (int componentId = 0; componentId < Utils.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
+						player.getPackets().sendIComponentModel(interId, componentId, 66);
 					}
 				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::inter interfaceId");
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
 				}
 				return true;
 
 			case "inters":
 				if (cmd.length < 2) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::inter interfaceId");
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
 					return true;
 				}
 
 				try {
 					int interId = Integer.valueOf(cmd[1]);
-					for (int componentId = 0; componentId < Utils
-							.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
-						player.getPackets().sendIComponentText(interId,
-								componentId, "cid: " + componentId);
+					for (int componentId = 0; componentId < Utils.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
+						player.getPackets().sendIComponentText(interId,	componentId, "cid: " + componentId);
 					}
 				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::inter interfaceId");
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
 				}
 				return true;
 

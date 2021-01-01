@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 import com.rs.Settings;
 import com.rs.cores.CoresManager;
+import com.rs.custom.data_structures.SpinsManager;
+import com.rs.custom.data_structures.SquealOfFortune;
 import com.rs.custom.data_structures.Toolbelt;
 import com.rs.game.Animation;
 import com.rs.game.Entity;
@@ -2061,6 +2063,10 @@ public class Player extends Entity {
 		lockDelay = Long.MAX_VALUE;
 	}
 
+	/**
+	 * Used to stop a player from committing an actionas the player is "locked"
+	 * @param time
+	 */
 	public void lock(long time) {
 		lockDelay = Utils.currentTimeMillis() + (time * 600);
 	}

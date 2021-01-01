@@ -68,7 +68,7 @@ public class ButtonHandler {
 			return;
 
 		if (interfaceId == 1253) {
-			player.getSquealOfFortune().handleButtons(player, componentId);
+			player.getSquealOfFortune().handleSOFButtons(player, componentId);
 		}
 
 		if (interfaceId == 1252) {
@@ -1200,9 +1200,7 @@ public class ButtonHandler {
 				player.getCombatDefinitions().switchAutoRelatie();
 		} else if (interfaceId == 755) {
 			if (componentId == 44)
-				player.getPackets().sendWindowsPane(
-						player.getInterfaceManager().hasRezizableScreen() ? 746
-								: 548, 2);
+				player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746	: 548, 2);
 			else if (componentId == 42) {
 				player.getHintIconsManager().removeAll();
 				player.getPackets().sendConfig(1159, 1);

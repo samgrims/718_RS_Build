@@ -233,8 +233,6 @@ public final class WorldPacketsDecoder extends Decoder {
 	public void decode(InputStream stream) {
 		while (stream.getRemaining() > 0 && session.getChannel().isConnected() && !player.hasFinished()) {
 			int packetId = stream.readPacket(player);
-			if(packetId != 21)
-				DebugLine.print("Packet " + packetId);
 			if (packetId >= PACKET_SIZES.length || packetId < 0) {
 				if (Settings.DEBUG)
 					System.out.println("PacketId " + packetId + " has fake packet id.");
@@ -1137,7 +1135,6 @@ public final class WorldPacketsDecoder extends Decoder {
 				|| packetId == ACTION_BUTTON3_PACKET
 				|| packetId == ACTION_BUTTON9_PACKET
 				|| packetId == ACTION_BUTTON10_PACKET) {
-			DebugLine.print("got here");
 			ButtonHandler.handleButtons(player, stream, packetId);
 		} else if (packetId == ENTER_NAME_PACKET) {
 			if (!player.isRunning() || player.isDead())

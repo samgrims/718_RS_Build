@@ -1,26 +1,26 @@
-package com.rs.game.player.content;
+package com.rs.custom.data_structures;
 
 import java.io.Serializable;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 import com.rs.game.item.Item;
 import com.rs.game.item.ItemsContainer;
 import com.rs.game.player.Player;
+import com.rs.tools.DebugLine;
 import com.rs.utils.Utils;
 
 
 
 
 public class SquealOfFortune implements Serializable {
-
-	/**
-	 * Generated SerialUID.
-	 */
 	private static final long serialVersionUID = -2063410653116131907L;
 
-	public static int INTERFACE_ID = 1253;
+	public static int SOF_INTERFACE_ID = 1253;
 	public static int TAB_INTERFACE_ID = 0;
 	private Player player;
 	private int prizeId;
-	private boolean needPrize;
+	private boolean isDiscarded = false;
 
 	private static int[] UN_COMMON = { 23718, 23722, 23726, 23730, 23734,
 			23738, 23742, 23746, 23750, 23754, 23758, 23762, 23766, 23770,
@@ -78,35 +78,46 @@ public class SquealOfFortune implements Serializable {
 
 
 
-
 	/**
 	 * Starts the fortune. RARE - 0, 4, 8 COMMON - 1, 5, 7, 10, 12 UNCOMMON - 2,
 	 * 6, 9, 11
 	 */
 	public void start() {
-
 		items.clear();
-		player.getPackets().sendConfigByFile(11026, player.getSpins());  //was commented out damx
+		player.getPackets().sendConfigByFile(11026, player.getSpins());
 		player.getPackets().sendConfigByFile(11155, Utils.random(1, 5));
 		player.getPackets().sendGlobalConfig(1928, 1);
-		for (int i = 0; i < 14; i++) {
-			if (i == 8 || i == 4) {
+		for (int slotLocation = 0; slotLocation < 14; slotLocation++) {
+			if (slotLocation == 8 || slotLocation == 4) {
 				items.add(new Item(rare()));
-			} else if (i == 0) {
+			} else if (slotLocation == 0) {
 				items.add(new Item(superRare()));
-			} else if (i == 2 || i == 6 || i == 9 || i == 11) {
+			} else if (slotLocation == 2 || slotLocation == 6 || slotLocation == 9 || slotLocation == 11) {
 				items.add(new Item(uncommon()));
-			} else if (i == 1 || i == 5 || i == 7 || i == 10 || i == 12) {
+			} else if (slotLocation == 1 || slotLocation == 5 || slotLocation == 7 || slotLocation == 10 || slotLocation == 12) {
 				items.add(new Item(common()));
 			} else {
 				items.add(new Item(common()));
 			}
 		}
-		player.getPackets().sendWindowsPane(INTERFACE_ID, 0);
+		player.getPackets().sendWindowsPane(SOF_INTERFACE_ID, 0);
+
+		//set spin amount
+		player.getPackets().sendIComponentText(SOF_INTERFACE_ID, 96, ""+ player.getSpins());
+
+		//Hide Buy Spins1
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 0, true);
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 1, true);
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 2, true);
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 3, true);
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 4, true);
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 5, true);
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 6, true);
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 12, true);
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 14, true);
+		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 15, true);
+
 		sendInterItems();
-
-
-
 	}
 
 	/**
@@ -118,36 +129,37 @@ public class SquealOfFortune implements Serializable {
 		if (random < 10) {
 			superRare = new int[] { 0, 4, 8 };
 			prizeId = (int) superRare[(int) (Math.random() * superRare.length)];
-			System.out.println("You just won super rare!");
+//			System.out.println("You just won super rare!");
 			// super rare
 		} else if (random < 50) {
 			rares = new int[] { 0, 4, 8 };
 			prizeId = (int) rares[(int) (Math.random() * rares.length)];
-			System.out.println("You just won rare!");
+//			System.out.println("You just won rare!");
 			// rare
 		} else if (random < 5000) {
 			// uncommon
 			uncommon = new int[] { 2, 6, 9, 11 };
 			prizeId = (int) uncommon[(int) (Math.random() * uncommon.length)];
-			System.out.println("uncommon");
+//			System.out.println("uncommon");
 		} else {
 			// common
 			common = new int[] { 1, 3, 5, 7, 10, 12 };
 			prizeId = (int) common[(int) (Math.random() * common.length)];
-			System.out.println("common");
+//			System.out.println("common");
 		}
 	}
 
-	public void handleButtons(Player player, int buttonId) {
+	public void handleSOFButtons(Player player, int buttonId) {
 		long currentTime = Utils.currentTimeMillis();
-		if (buttonId == 93) {
+
+		DebugLine.print("buttonId: " + buttonId);
+		if (buttonId == 93) {//red button next screen
 			if (player.getSpins() == 0) {
 				items.clear();
-				player.getPackets().sendWindowsPane(
-						player.getInterfaceManager().hasRezizableScreen() ? 746
-								: 548, 0);
+				player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746	: 548, 0);
 				player.getPackets().sendGlobalConfig(1790, 0);
 				player.getPackets().sendRunScript(5906);
+				isDiscarded = false;
 				return;
 			}  //damx
 			if (player.getLockDelay() >= currentTime) {
@@ -159,19 +171,38 @@ public class SquealOfFortune implements Serializable {
 			player.getPackets().sendGlobalConfig(1790, 1);
 			player.getPackets().sendConfigByFile(10861, prizeId);
 			player.setSpins(player.getSpins() - 1); //damx
+
+			final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(3);
+			executor.schedule(new Runnable() {
+				@Override
+				public void run() {
+					System.out.println("run happened");
+					player.getPackets().sendIComponentText(SOF_INTERFACE_ID, 162, "Spins remaining: "+ player.getSpins());
+					player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 320, true);//But spins sprite
+					player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 247, true);//Claim later text
+					player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 248, true);//Claim later text
+					player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 249, true);//Claim later text
+					player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 250, true);//Claim later text
+					player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 255, true);//Claim later text
+					player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 256, true);//Claim later text
+					player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 257, true);//Claim later text
+					player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 260, true);//Claim later text
+				}
+			}, 8, TimeUnit.SECONDS);
 		}
-
-
-
 		else if (buttonId == 106) {
-			player.getPackets().sendWindowsPane(
-					player.getInterfaceManager().hasRezizableScreen() ? 746
-							: 548, 0);
+			player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746	: 548, 0);
 			items.clear();
 		} else if (buttonId == 273) {
 			start();
-		} else if (buttonId == 192) {
-			player.getInventory().addItem(new Item(items.get(prizeId).getId()));
+		} else if (buttonId == 192) {//claim item
+			if(!isDiscarded)
+				if(player.getInventory().hasFreeSlots())
+					player.getInventory().addItem(new Item(items.get(prizeId).getId()));
+				else {
+					Item[] itemsToBank = new Item[]{new Item(items.get(prizeId).getId())};
+					player.getBank().addItems(itemsToBank, true);
+				}
 			player.getPackets().sendConfigByFile(10861, 0);
 			player.getPackets().sendGlobalConfig(1790, 0);
 			player.getPackets().sendHideIComponent(1253, 240, false);
@@ -179,11 +210,23 @@ public class SquealOfFortune implements Serializable {
 			player.getPackets().sendHideIComponent(1253, 225, false);
 			player.getPackets().sendRunScript(5906);
 			items.clear();
-		} else if (buttonId == 258) {
+			player.getPackets().sendIComponentText(SOF_INTERFACE_ID, 162, "Spins remaining: "+ player.getSpins());
+		} else if (buttonId == 258) {//done
 			items.clear();
 			player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746 : 548, 0);
 			player.getPackets().sendGlobalConfig(1790, 0);
 			player.getPackets().sendRunScript(5906);
+		} else if(buttonId == 239) {//discard
+			isDiscarded = true;
+			player.getPackets().sendConfigByFile(10861, 0);
+			player.getPackets().sendGlobalConfig(1790, 0);
+			player.getPackets().sendHideIComponent(1253, 240, false);
+			player.getPackets().sendHideIComponent(1253, 178, false);
+			player.getPackets().sendHideIComponent(1253, 225, false);
+			player.getPackets().sendRunScript(5906);
+			items.clear();
+			player.getPackets().sendIComponentText(SOF_INTERFACE_ID, 162, "Spins remaining: "+ player.getSpins());
 		}
 	}
+
 }
