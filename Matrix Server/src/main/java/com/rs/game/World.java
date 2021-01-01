@@ -16,7 +16,7 @@ import com.rs.game.minigames.GodWarsBosses;
 import com.rs.game.minigames.ZarosGodwars;
 import com.rs.game.minigames.clanwars.FfaZone;
 import com.rs.game.minigames.clanwars.RequestController;
-import com.rs.game.minigames.duel.DuelControler;
+import com.rs.game.minigames.duel.DuelController;
 import com.rs.game.npc.NPC;
 import com.rs.game.npc.corp.CorporealBeast;
 import com.rs.game.npc.dragons.KingBlackDragon;
@@ -491,12 +491,12 @@ public final class World {
 	}
 
 	private static void checkControlersAtMove(Player player) {
-		if (!(player.getControlerManager().getControler() instanceof RequestController) && RequestController.inWarRequest(player))
-			player.getControlerManager().startControler("clan_wars_request");
-		else if (DuelControler.isAtDuelArena(player)) 
-			player.getControlerManager().startControler("DuelControler");
+		if (!(player.getControlerManager().getController() instanceof RequestController) && RequestController.inWarRequest(player))
+			player.getControlerManager().startController("clan_wars_request");
+		else if (DuelController.isAtDuelArena(player))
+			player.getControlerManager().startController("DuelControler");
 		else if (FfaZone.inArea(player)) 
-			player.getControlerManager().startControler("clan_wars_ffa");
+			player.getControlerManager().startController("clan_wars_ffa");
 	}
 
 	/*

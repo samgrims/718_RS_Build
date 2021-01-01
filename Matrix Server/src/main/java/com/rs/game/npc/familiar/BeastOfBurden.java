@@ -119,18 +119,16 @@ public class BeastOfBurden implements Serializable {
 			item = new Item(item.getId(), amount);
 		else
 			item = new Item(item.getId(), maxAmount);
-		int freeSpace = beastItems.getFreeSlots();
+		int freeSpace = beastItems.countAvailableSlots();
 		if (!item.getDefinitions().isStackable()) {
 			if (freeSpace == 0) {
-				player.getPackets().sendGameMessage(
-						"Not enough space in your Familiar Inventory.");
+				player.getPackets().sendGameMessage("Not enough space in your Familiar Inventory.");
 				return;
 			}
 
 			if (freeSpace < item.getAmount()) {
 				item.setAmount(freeSpace);
-				player.getPackets().sendGameMessage(
-						"Not enough space in your Familiar Inventory.");
+				player.getPackets().sendGameMessage("Not enough space in your Familiar Inventory.");
 			}
 		} else {
 			if (freeSpace == 0 && !beastItems.containsOne(item)) {

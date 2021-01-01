@@ -23,7 +23,7 @@ import com.rs.utils.Logger;
  * @author Emperor
  *
  */
-public final class QueenBlackDragonController extends Controler {
+public final class QueenBlackDragonController extends Controller {
 
 
 	public static final WorldTile OUTSIDE = Settings.RESPAWN_PLAYER_LOCATION;

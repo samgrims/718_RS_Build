@@ -3,9 +3,9 @@ package com.rs.game.player.controlers.pestcontrol;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.minigames.pest.Lander;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 
-public final class PestControlLobby extends Controler {
+public final class PestControlLobby extends Controller {
 	
 	private int landerId;
 	

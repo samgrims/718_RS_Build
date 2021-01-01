@@ -19,7 +19,7 @@ import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Utils;
 
-public final class Barrows extends Controler {
+public final class Barrows extends Controller {
 	
 	private BarrowsBrother target;
 	
@@ -61,7 +61,7 @@ public final class Barrows extends Controler {
 				WorldTasksManager.schedule(new WorldTask() {
 					@Override
 					public void run() {
-						player.getControlerManager().startControler("Barrows");
+						player.getControlerManager().startController("Barrows");
 					}
 				});
 				return true;

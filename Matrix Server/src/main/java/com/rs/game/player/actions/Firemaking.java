@@ -7,7 +7,7 @@ import com.rs.game.WorldTile;
 import com.rs.game.item.FloorItem;
 import com.rs.game.item.Item;
 import com.rs.game.minigames.duel.DuelArena;
-import com.rs.game.minigames.duel.DuelControler;
+import com.rs.game.minigames.duel.DuelController;
 import com.rs.game.npc.familiar.Familiar;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
@@ -128,7 +128,7 @@ public class Firemaking extends Action {
 			return false;
 		}
 		if (!World.canMoveNPC(player.getPlane(), player.getX(), player.getY(),1) || World.getRegion(player.getRegionId()).getSpawnedObject(player) != null
-						|| player.getControlerManager().getControler() instanceof DuelArena || player.getControlerManager().getControler() instanceof DuelControler) { // contains
+						|| player.getControlerManager().getController() instanceof DuelArena || player.getControlerManager().getController() instanceof DuelController) { // contains
 			// object
 			player.getPackets().sendGameMessage("You can't light a fire here.");
 			return false;

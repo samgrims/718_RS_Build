@@ -232,7 +232,7 @@ public final class DominionTower implements Serializable {
 
 	private void teleportToArena(int mode) {
 		player.setNextFaceWorldTile(new WorldTile(getBaseX() + 11, getBaseY() + 29, 0));
-		player.getControlerManager().startControler("DTControler", mode);
+		player.getControlerManager().startController("DTControler", mode);
 		player.unlock();
 		player.setNextWorldTile(new WorldTile(getBaseX() + 10, getBaseY() + 29,
 				2));

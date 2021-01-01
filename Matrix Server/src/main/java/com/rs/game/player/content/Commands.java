@@ -122,10 +122,10 @@ public final class Commands {
 				}
 				return true;
 			case "sgar":
-				player.getControlerManager().startControler("SorceressGarden");
+				player.getControlerManager().startController("SorceressGarden");
 				return true;
 			case "scg":
-				player.getControlerManager().startControler("StealingCreationsGame", true);
+				player.getControlerManager().startController("StealingCreationsGame", true);
 				return true;
 			case"pm":
 				player.getPackets().sendPrivateMessage("test1", "hi");
@@ -142,10 +142,10 @@ public final class Commands {
 				}
 				return true;
 			case "runespan":
-				player.getControlerManager().startControler("RuneSpanControler");
+				player.getControlerManager().startController("RuneSpanControler");
 				return true;
 			case "house":
-				player.getControlerManager().startControler("HouseControler");
+				player.getControlerManager().startController("HouseControler");
 				return true;
 			case "qbd":
 				if (player.getSkills().getLevelForXp(Skills.SUMMONING) < 60) {
@@ -154,7 +154,7 @@ public final class Commands {
 					return true;
 				}
 				player.lock();
-				player.getControlerManager().startControler("QueenBlackDragonControler");
+				player.getControlerManager().startController("QueenBlackDragonControler");
 				return true;
 			case "killall":
 				int hitpointsMinimum = cmd.length > 1 ? Integer.parseInt(cmd[1]) : 0;
@@ -169,7 +169,7 @@ public final class Commands {
 				}
 				return true;
 			case "killingfields":
-				player.getControlerManager().startControler("KillingFields");
+				player.getControlerManager().startController("KillingFields");
 				return true;
 
 			case "nntest":
@@ -330,7 +330,7 @@ public final class Commands {
 				return true; 
 
 			case "agilitytest":
-				player.getControlerManager().startControler("BrimhavenAgility");
+				player.getControlerManager().startController("BrimhavenAgility");
 				return true; 
 
 			case "partyroom":
@@ -410,7 +410,7 @@ public final class Commands {
 					player.getPackets().sendGameMessage(Bork.convertToTime());
 					return true;
 				}
-				player.getControlerManager().startControler("BorkControler", 0,
+				player.getControlerManager().startController("BorkControler", 0,
 						null);
 				return true; 
 
@@ -483,7 +483,7 @@ public final class Commands {
 				return true; 
 
 			case "newtut":
-				player.getControlerManager().startControler("TutorialIsland",
+				player.getControlerManager().startController("TutorialIsland",
 						0);
 				return true; 
 
@@ -494,7 +494,7 @@ public final class Commands {
 
 			case "nomads":
 				for(Player p : World.getPlayers())
-					p.getControlerManager().startControler("NomadsRequiem");
+					p.getControlerManager().startController("NomadsRequiem");
 				return true; 
 
 			case "item":
@@ -1842,7 +1842,7 @@ public final class Commands {
 		} else {
 			switch (cmd[0]) {
 			case "sz":
-				if (player.isLocked() || player.getControlerManager().getControler() != null) {
+				if (player.isLocked() || player.getControlerManager().getController() != null) {
 					player.getPackets().sendGameMessage("You cannot tele anywhere from here.");
 					return true;
 				}
@@ -1987,7 +1987,7 @@ public final class Commands {
 					target.setJailed(Utils.currentTimeMillis()
 							+ (24 * 60 * 60 * 1000));
 					target.getControlerManager()
-					.startControler("JailControler");
+					.startController("JailControler");
 					target.getPackets().sendGameMessage(
 							"You've been Jailed for 24 hours by "+Utils.formatPlayerNameForDisplay(player.getUsername())+".");
 					player.getPackets().sendGameMessage(
@@ -2048,7 +2048,7 @@ public final class Commands {
 				return true;
 
 			case "hide":
-				if (player.getControlerManager().getControler() != null) {
+				if (player.getControlerManager().getController() != null) {
 					player.getPackets().sendGameMessage("You cannot hide in a public event!");
 					return true;
 				}
@@ -2064,7 +2064,7 @@ public final class Commands {
 				if (target != null) {
 					target.setJailed(0);
 					target.getControlerManager()
-					.startControler("JailControler");
+					.startController("JailControler");
 					target.getPackets().sendGameMessage(
 							"You've been unjailed by "+Utils.formatPlayerNameForDisplay(player.getUsername())+".");
 					player.getPackets().sendGameMessage(
@@ -2089,7 +2089,7 @@ public final class Commands {
 				return true;
 
 			case "teleto":
-				if (player.isLocked() || player.getControlerManager().getControler() != null) {
+				if (player.isLocked() || player.getControlerManager().getController() != null) {
 					player.getPackets().sendGameMessage("You cannot tele anywhere from here.");
 					return true;
 				}
@@ -2112,7 +2112,7 @@ public final class Commands {
 					player.getPackets().sendGameMessage(
 							"Couldn't find player " + name + ".");
 				else {
-					if (target.isLocked() || target.getControlerManager().getControler() != null) {
+					if (target.isLocked() || target.getControlerManager().getController() != null) {
 						player.getPackets().sendGameMessage("You cannot teleport this player.");
 						return true;
 					}
@@ -2171,6 +2171,14 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+			case "controller":
+				try {
+					String controler_name = player.getControlerManager().getController().getClass().getName();
+					player.getPackets().sendGameMessage(controler_name);
+				} catch(NullPointerException e) {
+					player.getPackets().sendGameMessage("none");
+				}
+				return true;
 			case "addspin":
 				if(cmd.length != 2 || !cmd[1].matches("\\d+")) {
 					player.getPackets().sendGameMessage("The format is \";;addspin [amt]\"");

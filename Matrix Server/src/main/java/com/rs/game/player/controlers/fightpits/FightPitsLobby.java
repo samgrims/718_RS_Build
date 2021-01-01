@@ -3,9 +3,9 @@ package com.rs.game.player.controlers.fightpits;
 import com.rs.game.WorldObject;
 import com.rs.game.minigames.FightPits;
 import com.rs.game.player.actions.FightPitsViewingOrb;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 
-public class FightPitsLobby extends Controler {
+public class FightPitsLobby extends Controller {
 
 	@Override
 	public void start() {

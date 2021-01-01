@@ -16,12 +16,12 @@ import com.rs.game.npc.others.CastleWarBarricade;
 import com.rs.game.player.Equipment;
 import com.rs.game.player.Inventory;
 import com.rs.game.player.Player;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Utils;
 
-public class CastleWarsPlaying extends Controler {
+public class CastleWarsPlaying extends Controller {
 
 	private int team;
 

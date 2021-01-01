@@ -25,48 +25,58 @@ public class SquealOfFortune implements Serializable {
 	private int prizeId;
 	private boolean isDiscarded = false;
 
-	private static List<Item> UNCOMMON = Arrays.asList(new Item[] { new Item(995, 250), new Item(23718), new Item(23722), new Item(23726), new Item(23730),
+	private static List<Item> COMMON = Arrays.asList(new Item[] {
+			//coins, bones, feathers, bait,
+			new Item(995, 100), new Item(527, 10), new Item(314, 25), new Item(313, 25),
+
+			//seeds: guam marrentill tarromin harralander
+			new Item(3291, 3), new Item(5292, 3), new Item(5293, 3), new Item(5294, 3),
+
+			//Leather:Cowhide snake hide, molten glass, gold ore, iron ore
+			new Item(1740, 3), new Item(6288, 3), new Item(1776, 25), new Item(445, 3), new Item(441, 3),
+
+			//Lamps
+			new Item(23717), new Item(23721), new Item(23725), new Item(23729),
+			new Item(23733), new Item(23737), new Item(23741), new Item(23745), new Item(23749), new Item(23753),
+			new Item(23757), new Item(23761), new Item(23765), new Item(23769), new Item(23774), new Item(23778),
+			new Item(23782), new Item(23786), new Item(23790), new Item(23794), new Item(23798), new Item(23802),
+			new Item(23806), new Item(23810), new Item(23814)});
+
+	private static List<Item> UNCOMMON = Arrays.asList(new Item[] {
+			//coins, wolf bones, big bones, baby dragon bones, snape grass
+			new Item(995, 250), new Item(2860, 10), new Item(533, 10), new Item(535, 10),
+
+			//seeds: Ranarr, Toadflax, irit, avantoe
+			new Item(5295, 3), new Item(5296, 3), new Item(5297, 3), new Item(5298, 3),
+
+			//Dragon Hide
+			new Item(1754, 3), new Item(1752, 3), new Item(1750, 3),
+
+			//Lamps
+			new Item(23718), new Item(23722), new Item(23726), new Item(23730),
 			new Item(23734),	new Item(23738), new Item(23742), new Item(23746), new Item(23750), new Item(23754),
 			new Item(23758), new Item(23762), new Item(23766), new Item(23770), new Item(23775), new Item(23779),
 			new Item(23783), new Item(23787), new Item(23791), new Item(23795), new Item(23799), new Item(23803),
 			new Item(23807),	new Item(23811), new Item(23815) });
-	private static List<Item> RARE = Arrays.asList(new Item[] { new Item(995, 500), new Item(23719), new Item(23723), new Item(23727), new Item(23731),
-			new Item(23735), new Item(23739), new Item(23743), new Item(23747), new Item(23751), new Item(23755),
-			new Item(23759), new Item(23763), new Item(23767), new Item(23771), new Item(23776), new Item(23780),
-			new Item(23784), new Item(23788), new Item(23792), new Item(23796), new Item(23800), new Item(23804),
-			new Item(23808), new Item(23812), new Item(23816) });
-	private static List<Item> COMMON = Arrays.asList(new Item[] { new Item(995, 100), new Item(23717), new Item(23721), new Item(23725), new Item(23729),
-			new Item(23733), new Item(23737), new Item(23741), new Item(23745), new Item(23749), new Item(23753),
-			new Item(23757), new Item(23761), new Item(23765), new Item(23769), new Item(23774), new Item(23778),
-			new Item(23782), new Item(23786), new Item(23790), new Item(23794), new Item(23798), new Item(23802),
-			new Item(23806), new Item(23810), new Item(23814) });
-	private static List<Item> SUPER_RARE = Arrays.asList(new Item[] { new Item(995, 1000), new Item(23720), new Item(23724), new Item(23728), new Item(23732),
-			new Item(23736), new Item(23740), new Item(23744), new Item(23748), new Item(23752), new Item(23756),
-			new Item(23760), new Item(23764), new Item(23768), new Item(23773), new Item(23777), new Item(23781),
-			new Item(23785), new Item(23789), new Item(23793), new Item(23797), new Item(23801), new Item(23805),
-			new Item(23809), new Item(23812) });
+	private static List<Item> RARE = Arrays.asList(new Item[] {
+			//coins, living minerals, dragon bones, ourg bones, black dragonhide
+			new Item(995, 750), new Item(15263, 25), new Item(537, 10), new Item(4835, 10), new Item(2492, 6),
 
+			//Seeds: Kwuarm Snapdragon Cadantine lantadyme dwarfweed
+			new Item(5299, 3), new Item(5300, 3), new Item(5301, 3), new Item(5302, 3), new Item(5303, 3)
+	});
 
-	public void one() {
-		player.getPackets().sendGameMessage("made it past the beginning()");
-	}
+	private static List<Item> SUPER_RARE = Arrays.asList(new Item[] {
+			//coins, christmas cracker, pumpkin, easter egg, green h'ween, blue h'ween, red h'ween, santa hat
+			new Item(995, 3000), new Item(962), new Item(1960, 3), new Item(1961, 3), new Item(1053), new Item(1055), new Item(1057), new Item(1050),
 
+			//frost bones, torstol seeds
+			new Item(18831, 20), new Item(5304, 5)//,
+	});
 
-
-	public static Item getSuperRareItem() {
-		return SUPER_RARE.get((int) (Math.random() * SUPER_RARE.size()));
-	}
-
-	public static Item getRareItem() {
-		return RARE.get((int) (Math.random() * RARE.size()));
-	}
-
-	public static Item getCommonItem() {
-		return COMMON.get((int) (Math.random() * COMMON.size()));
-	}
-
-	public static Item getUncommonItem() {
-		return UNCOMMON.get((int) (Math.random() * UNCOMMON.size()));
+	public Item chooseSOFItem(List<Item> rewards) {
+		Item reward = rewards.get((int) (Math.random() * rewards.size()));
+		return setupTotalLevelScaling(reward);
 	}
 
 	private ItemsContainer<Item> items;
@@ -90,19 +100,19 @@ public class SquealOfFortune implements Serializable {
 	public void start() {
 		items.clear();
 		player.getPackets().sendConfigByFile(11026, player.getSpins());
-		player.getPackets().sendConfigByFile(11155, Utils.random(1, 5));
+		player.getPackets().sendConfigByFile(11155, 1);
 		player.getPackets().sendGlobalConfig(1928, 1);
 		for (int slotLocation = 0; slotLocation < 14; slotLocation++) {
-			if (slotLocation == 8 || slotLocation == 4) {
-				items.add(getRareItem());
-			} else if (slotLocation == 0) {
-				items.add(getSuperRareItem());
+			if (slotLocation == 0) {
+				items.addSOF(chooseSOFItem(SUPER_RARE));
+			} else if (slotLocation == 8 || slotLocation == 4) {
+				items.addSOF(chooseSOFItem(RARE));
 			} else if (slotLocation == 2 || slotLocation == 6 || slotLocation == 9 || slotLocation == 11) {
-				items.add(getUncommonItem());
+				items.addSOF(chooseSOFItem(UNCOMMON));
 			} else if (slotLocation == 1 || slotLocation == 5 || slotLocation == 7 || slotLocation == 10 || slotLocation == 12) {
-				items.add(getCommonItem());
+				items.addSOF(chooseSOFItem(COMMON));
 			} else {
-				items.add(getCommonItem());
+				items.addSOF(chooseSOFItem(COMMON));
 			}
 		}
 		setupSOFSpinInterface();
@@ -117,10 +127,13 @@ public class SquealOfFortune implements Serializable {
 			for(double xp : player.getSkills().getXp())
 				totalXP += (int)xp;
 
-			int levelModifier = totalLevel/100 + 1;
-			int xpModifier = totalXP/(1_000_000 * Settings.XP_RATE) + 1;
+			int levelModifier = totalLevel/100;
+			int xpModifier = totalXP/(1_000_000 * Settings.XP_RATE);
+			int totalModifier = levelModifier + xpModifier;
 
-			item.setAmount(item.getAmount()*(levelModifier+xpModifier));
+			if(totalModifier <= 0)
+				totalModifier = 1;
+			item.setAmount(item.getAmount()*(totalModifier));
 		}
 		return item;
 	}
@@ -154,23 +167,20 @@ public class SquealOfFortune implements Serializable {
 	 */
 	private void sendInterItems() {
 		player.getPackets().sendItems(665, items);
-		int random = Utils.random(15000);
-		if (random < 10) {
+		int random = Utils.random(100_000);
+
+		if (random < 10) {// super rare
 			superRare = new int[] { 0, 4, 8 };
-			prizeId = (int) superRare[(int) (Math.random() * superRare.length)];
-			// super rare
-		} else if (random < 50) {
+			prizeId = superRare[(int) (Math.random() * superRare.length)];
+		} else if (random < 3_000) {// rare
 			rares = new int[] { 0, 4, 8 };
-			prizeId = (int) rares[(int) (Math.random() * rares.length)];
-			// rare
-		} else if (random < 5000) {
-			// uncommon
+			prizeId = rares[(int) (Math.random() * rares.length)];
+		} else if (random < 30_000) {// uncommon
 			uncommon = new int[] { 2, 6, 9, 11 };
-			prizeId = (int) uncommon[(int) (Math.random() * uncommon.length)];
-		} else {
-			// common
+			prizeId = uncommon[(int) (Math.random() * uncommon.length)];
+		} else {// common
 			common = new int[] { 1, 3, 5, 7, 10, 12 };
-			prizeId = (int) common[(int) (Math.random() * common.length)];
+			prizeId = common[(int) (Math.random() * common.length)];
 		}
 	}
 
@@ -191,14 +201,6 @@ public class SquealOfFortune implements Serializable {
 		player.getPackets().sendIComponentText(SOF_INTERFACE_ID, 162, "Spins remaining: "+ player.getSpins());
 		player.getPackets().sendIComponentText(SOF_INTERFACE_ID, 43, "For every 12 hours of play time, you get a spin ticket!");
 		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 320, true);
-		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 247, true);
-		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 248, true);
-		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 249, true);
-		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 250, true);
-		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 255, true);
-		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 256, true);
-		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 257, true);
-		player.getPackets().sendHideIComponent(SOF_INTERFACE_ID, 260, true);
 	}
 
 	public void handleSOFButtons(Player player, int buttonId) {
@@ -229,6 +231,7 @@ public class SquealOfFortune implements Serializable {
 				@Override
 				public void run() {
 					setupSOFRewardInterface();
+					setVisibleExitButton(false);
 				}
 			}, 7, TimeUnit.SECONDS);
 		}

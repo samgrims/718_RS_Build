@@ -356,7 +356,7 @@ public class NPCHandler {
 					PlayerLook.openThessaliasMakeOver(player);
 				else if (npc.getId() == 5532) {
 					npc.setNextForceTalk(new ForceTalk("Senventior Disthinte Molesko!"));
-					player.getControlerManager().startControler("SorceressGarden");
+					player.getControlerManager().startController("SorceressGarden");
 					
 				} else
 					player.getPackets().sendGameMessage(

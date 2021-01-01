@@ -9,7 +9,7 @@ import com.rs.cores.CoresManager;
 import com.rs.game.WorldTile;
 import com.rs.game.item.Item;
 import com.rs.game.minigames.Crucible;
-import com.rs.game.minigames.duel.DuelControler;
+import com.rs.game.minigames.duel.DuelController;
 import com.rs.game.npc.familiar.Familiar;
 import com.rs.game.npc.familiar.Familiar.SpecialAttack;
 import com.rs.game.player.CombatDefinitions;
@@ -977,13 +977,13 @@ public class ButtonHandler {
 				player.getTemporaryAttributtes().put("WillDuelFriendly", false);
 				player.getPackets().sendConfig(283, 134217728);
 			} else if (componentId == 20) {
-				DuelControler.challenge(player);
+				DuelController.challenge(player);
 			}
 		} else if (interfaceId == 650) {
 			if (componentId == 15) {
 				player.stopAll();
 				player.setNextWorldTile(new WorldTile(2974, 4384, player.getPlane()));
-				player.getControlerManager().startControler(
+				player.getControlerManager().startController(
 						"CorpBeastControler");
 			} else if (componentId == 16)
 				player.closeInterfaces();

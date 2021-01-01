@@ -23,7 +23,7 @@ import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 
-public class FightCaves extends Controler {
+public class FightCaves extends Controller {
 
 	public static final WorldTile OUTSIDE = new WorldTile(4610, 5130, 0);
 
@@ -114,7 +114,7 @@ public class FightCaves extends Controler {
 			player.getDialogueManager().startDialogue("SimpleNPCMessage", THHAAR_MEJ_JAL, "No Kimit-Zil in the pits! This is a fight for YOU, not your friends!");
 			return;
 		}
-		player.getControlerManager().startControler("FightCavesControler", 1); //start at wave 1
+		player.getControlerManager().startController("FightCavesControler", 1); //start at wave 1
 	}
 
 	private static enum Stages {

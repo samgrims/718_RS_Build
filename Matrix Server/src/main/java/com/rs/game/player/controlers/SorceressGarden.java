@@ -13,7 +13,7 @@ import com.rs.game.player.content.Magic;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 
-public class SorceressGarden extends Controler {
+public class SorceressGarden extends Controller {
 	
 	public enum Gate {
 		

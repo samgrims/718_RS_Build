@@ -142,7 +142,7 @@ public final class FightPits {
 	
 	public static void enterArena(Player player) {
 		player.lock(5);
-		player.getControlerManager().startControler("FightPitsArena");
+		player.getControlerManager().startController("FightPitsArena");
 		player.setNextWorldTile(new WorldTile(GAME_TELEPORTS[Utils.random(GAME_TELEPORTS.length)], 3));
 		player.getDialogueManager().startDialogue("SimpleNPCMessage", THHAAR_MEJ_KAH, "Please wait for the signal before fight.");
 		player.setCanPvp(true);
@@ -159,7 +159,7 @@ public final class FightPits {
 			player.reset();
 			player.getControlerManager().removeControlerWithoutCheck();
 			if(type != 3) 
-				player.getControlerManager().startControler("FightPitsLobby");
+				player.getControlerManager().startController("FightPitsLobby");
 			if(type == 0) {
 				player.setLocation(4592, 5073, 0);
 			}else {
@@ -194,7 +194,7 @@ public final class FightPits {
 			if(!login) {
 				player.lock(5);
 				player.addWalkSteps(4595, 5066, 5, false);
-				player.getControlerManager().startControler("FightPitsLobby");
+				player.getControlerManager().startController("FightPitsLobby");
 			}
 			lobby.add(player);
 			checkPlayersAmmount();

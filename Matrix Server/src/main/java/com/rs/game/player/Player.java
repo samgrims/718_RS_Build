@@ -27,7 +27,7 @@ import com.rs.game.WorldTile;
 import com.rs.game.item.FloorItem;
 import com.rs.game.item.Item;
 import com.rs.game.minigames.clanwars.FfaZone;
-import com.rs.game.minigames.clanwars.WarControler;
+import com.rs.game.minigames.clanwars.WarController;
 import com.rs.game.minigames.duel.DuelArena;
 import com.rs.game.minigames.duel.DuelRules;
 import com.rs.game.npc.NPC;
@@ -39,16 +39,8 @@ import com.rs.game.player.actions.Slayer.Master;
 import com.rs.game.player.actions.Slayer.SlayerTask;
 import com.rs.game.player.content.*;
 import com.rs.game.player.content.pet.PetManager;
-import com.rs.game.player.controlers.CorpBeastControler;
-import com.rs.game.player.controlers.CrucibleControler;
-import com.rs.game.player.controlers.DTControler;
-import com.rs.game.player.controlers.FightCaves;
-import com.rs.game.player.controlers.FightKiln;
-import com.rs.game.player.controlers.GodWars;
-import com.rs.game.player.controlers.NomadsRequiem;
-import com.rs.game.player.controlers.QueenBlackDragonController;
-import com.rs.game.player.controlers.Wilderness;
-import com.rs.game.player.controlers.ZGDControler;
+import com.rs.game.player.controlers.*;
+import com.rs.game.player.controlers.CorpBeastController;
 import com.rs.game.player.controlers.castlewars.CastleWarsPlaying;
 import com.rs.game.player.controlers.castlewars.CastleWarsWaiting;
 import com.rs.game.player.controlers.fightpits.FightPitsArena;
@@ -1918,7 +1910,7 @@ public class Player extends Entity {
 						killer.setAttackedByDelay(4);
 					}
 				} else if (loop == 3) {
-					controlerManager.startControler("DeathEvent"); 
+					controlerManager.startController("DeathEvent");
 				} else if (loop == 4) {
 					getPackets().sendMusicEffect(90);
 					stop();
@@ -1951,8 +1943,8 @@ public class Player extends Entity {
 		if (containedItems.isEmpty())
 			return;
 		int keptAmount = 0;
-		if(!(controlerManager.getControler() instanceof CorpBeastControler)
-				&& !(controlerManager.getControler() instanceof CrucibleControler)) {
+		if(!(controlerManager.getController() instanceof CorpBeastController)
+				&& !(controlerManager.getController() instanceof CrucibleController)) {
 			keptAmount = hasSkull() ? 0 : 3;
 			if (prayer.usingPrayer(0, 10) || prayer.usingPrayer(1, 0))
 				keptAmount++;
@@ -2578,26 +2570,26 @@ public class Player extends Entity {
 
 	public boolean canSpawn() {
 		if (Wilderness.isAtWild(this)
-				|| getControlerManager().getControler() instanceof FightPitsArena
-				|| getControlerManager().getControler() instanceof CorpBeastControler
-				|| getControlerManager().getControler() instanceof PestControlLobby
-				|| getControlerManager().getControler() instanceof PestControlGame
-				|| getControlerManager().getControler() instanceof ZGDControler
-				|| getControlerManager().getControler() instanceof GodWars
-				|| getControlerManager().getControler() instanceof DTControler
-				|| getControlerManager().getControler() instanceof DuelArena
-				|| getControlerManager().getControler() instanceof CastleWarsPlaying
-				|| getControlerManager().getControler() instanceof CastleWarsWaiting
-				|| getControlerManager().getControler() instanceof FightCaves
-				|| getControlerManager().getControler() instanceof FightKiln
+				|| getControlerManager().getController() instanceof FightPitsArena
+				|| getControlerManager().getController() instanceof CorpBeastController
+				|| getControlerManager().getController() instanceof PestControlLobby
+				|| getControlerManager().getController() instanceof PestControlGame
+				|| getControlerManager().getController() instanceof ZGDController
+				|| getControlerManager().getController() instanceof GodWars
+				|| getControlerManager().getController() instanceof DTController
+				|| getControlerManager().getController() instanceof DuelArena
+				|| getControlerManager().getController() instanceof CastleWarsPlaying
+				|| getControlerManager().getController() instanceof CastleWarsWaiting
+				|| getControlerManager().getController() instanceof FightCaves
+				|| getControlerManager().getController() instanceof FightKiln
 				|| FfaZone.inPvpArea(this)
-				|| getControlerManager().getControler() instanceof NomadsRequiem
-				|| getControlerManager().getControler() instanceof QueenBlackDragonController
-				|| getControlerManager().getControler() instanceof WarControler) {
+				|| getControlerManager().getController() instanceof NomadsRequiem
+				|| getControlerManager().getController() instanceof QueenBlackDragonController
+				|| getControlerManager().getController() instanceof WarController) {
 			return false;
 		}
-		if(getControlerManager().getControler() instanceof CrucibleControler) {
-			CrucibleControler controler = (CrucibleControler) getControlerManager().getControler();
+		if(getControlerManager().getController() instanceof CrucibleController) {
+			CrucibleController controler = (CrucibleController) getControlerManager().getController();
 			return !controler.isInside();
 		}
 		return true;

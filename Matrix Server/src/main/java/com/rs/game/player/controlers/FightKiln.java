@@ -25,7 +25,7 @@ import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 
-public class FightKiln extends Controler {
+public class FightKiln extends Controller {
 
 	public static final WorldTile OUTSIDE = new WorldTile(4744, 5172, 0);
 
@@ -112,7 +112,7 @@ public class FightKiln extends Controler {
 		if(!quickEnter)
 			player.getDialogueManager().startDialogue("FightKilnDialogue");
 		else
-			player.getControlerManager().startControler("FightKilnControler", 1); //start at wave 1
+			player.getControlerManager().startController("FightKilnControler", 1); //start at wave 1
 	}
 
 	private static enum Stages {
@@ -882,7 +882,7 @@ public class FightKiln extends Controler {
 	}
 
 	public static void useCrystal(final Player player, int id) {
-		if(!(player.getControlerManager().getControler() instanceof FightKiln)
+		if(!(player.getControlerManager().getController() instanceof FightKiln)
 				|| player.getTemporaryAttributtes().get("FightKilnCrystal") != null)
 			return;
 		player.getInventory().deleteItem(new Item(id, 1));
@@ -953,7 +953,7 @@ public class FightKiln extends Controler {
 			@Override
 			public void run() {
 				try{
-				if(count++ == 7 || !(player.getControlerManager().getControler() instanceof FightKiln)) {
+				if(count++ == 7 || !(player.getControlerManager().getController() instanceof FightKiln)) {
 					player.getTemporaryAttributtes().remove("FightKilnCrystal");
 					player.getPackets().sendGameMessage("<col=7E2217>The power of the crystal dwindles and your "+Skills.SKILL_NAME[skill]+" prowess returns to normal.");
 					player.getSkills().set(Skills.DEFENCE, player.getSkills().getLevelForXp(Skills.DEFENCE));

@@ -13,7 +13,7 @@ import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Utils;
 
-public class Falconry extends Controler {
+public class Falconry extends Controller {
 
 	public int[] xp = {103, 132, 156};
 	public int[] furRewards = {10125, 10115, 10127};
@@ -27,7 +27,7 @@ public class Falconry extends Controler {
 			player.getDialogueManager().startDialogue("SimpleMessage", "You need a Hunter level of at least 43 to use a falcon, come back later.");
 			return;
 		}
-		player.getControlerManager().startControler("Falconry");
+		player.getControlerManager().startController("Falconry");
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import com.rs.game.player.content.construction.House;
 import com.rs.game.player.content.construction.House.Room;
 import com.rs.game.player.content.construction.House.RoomReference;
 
-public class HouseControler extends Controler {
+public class HouseController extends Controller {
 	
 	private House house;
 	private int[] boundChuncks;

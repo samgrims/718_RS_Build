@@ -1,6 +1,6 @@
 package com.rs.game.player.dialogues;
 
-import com.rs.game.player.controlers.RunespanControler;
+import com.rs.game.player.controlers.RunespanController;
 
 public class RunespanPortalD extends Dialogue {
 
@@ -21,7 +21,7 @@ public class RunespanPortalD extends Dialogue {
 						"That option isn't yet working.", true);
 				end();
 			} else{
-				RunespanControler.enterRunespan(player, componentId == OPTION_3);
+				RunespanController.enterRunespan(player, componentId == OPTION_3);
 				end();
 			} 
 		}

@@ -34,7 +34,7 @@ public class DuelRules {
 				}
 			}
 		}
-		int freeSlots = player.getInventory().getItems().freeSlots() - count;
+		int freeSlots = player.getInventory().getItems().countAvailableSlots() - count;
 		if (freeSlots < 0) {
 			player.getPackets().sendGameMessage("You do not have enough inventory space to remove all the equipment.");
 			getTarget().getPackets().sendGameMessage("Your opponent does not have enough space to remove all the equipment.");

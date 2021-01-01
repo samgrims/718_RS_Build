@@ -58,7 +58,7 @@ public class Lander {
 					return;
 				playing.add(player);
 				player.getControlerManager().forceStop();
-				player.getControlerManager().startControler("PestControlGame", new PestControl(playing));
+				player.getControlerManager().startController("PestControlGame", new PestControl(playing));
 				remove(player);
 			}
 		}
@@ -88,13 +88,13 @@ public class Lander {
 	public void add(Player player) {
 		lobby.add(player);
 		for (Player teamPlayer : lobby)
-			teamPlayer.getControlerManager().getControler().sendInterfaces();
+			teamPlayer.getControlerManager().getController().sendInterfaces();
 	}
 
 	public void remove(Player player) {
 		lobby.remove(player);
 		for (Player teamPlayer : lobby)
-			teamPlayer.getControlerManager().getControler().sendInterfaces();
+			teamPlayer.getControlerManager().getController().sendInterfaces();
 	}
 
 	public List<Player> getPlayers() {

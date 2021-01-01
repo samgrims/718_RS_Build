@@ -9,7 +9,7 @@ import com.rs.game.player.Player;
 import com.rs.game.player.content.Foods.Food;
 import com.rs.game.player.content.Pots.Pot;
 
-public abstract class Controler {
+public abstract class Controller {
 
 	// private static final long serialVersionUID = 8384350746724116339L;
 
@@ -24,11 +24,11 @@ public abstract class Controler {
 	}
 
 	public final Object[] getArguments() {
-		return player.getControlerManager().getLastControlerArguments();
+		return player.getControlerManager().getLastControllerArguments();
 	}
 
 	public final void setArguments(Object[] objects) {
-		player.getControlerManager().setLastControlerArguments(objects);
+		player.getControlerManager().setLastControllerArguments(objects);
 	}
 
 	public final void removeControler() {

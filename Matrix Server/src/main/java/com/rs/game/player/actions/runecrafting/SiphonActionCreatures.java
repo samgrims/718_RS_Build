@@ -9,8 +9,8 @@ import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
 import com.rs.game.player.actions.Action;
 import com.rs.game.player.content.Runecrafting;
-import com.rs.game.player.controlers.Controler;
-import com.rs.game.player.controlers.RunespanControler;
+import com.rs.game.player.controlers.Controller;
+import com.rs.game.player.controlers.RunespanController;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Utils;
@@ -204,9 +204,9 @@ public class SiphonActionCreatures extends Action {
 				if(points >= 1) {
 					int pointsInt = (int) points;
 					points -= pointsInt;
-					Controler controler = player.getControlerManager().getControler();
-					if(controler instanceof RunespanControler) 
-						((RunespanControler)controler).addInventoryPoints(pointsInt);
+					Controller controller = player.getControlerManager().getController();
+					if(controller instanceof RunespanController)
+						((RunespanController) controller).addInventoryPoints(pointsInt);
 				}
 			} else {// When you don't get a rune random chance to get xp.
 				player.getSkills().addXp(Skills.RUNECRAFTING, Utils.random(0 , 2));

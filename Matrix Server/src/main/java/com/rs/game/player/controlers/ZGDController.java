@@ -2,7 +2,7 @@ package com.rs.game.player.controlers;
 
 import com.rs.game.minigames.ZarosGodwars;
 
-public class ZGDControler extends Controler {
+public class ZGDController extends Controller {
 
 	@Override
 	public void start() {

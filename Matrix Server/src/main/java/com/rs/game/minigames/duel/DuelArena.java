@@ -13,14 +13,14 @@ import com.rs.game.player.actions.PlayerCombat;
 import com.rs.game.player.content.Foods.Food;
 import com.rs.game.player.content.ItemConstants;
 import com.rs.game.player.content.Pots.Pot;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.net.decoders.WorldPacketsDecoder;
 import com.rs.net.decoders.handlers.ButtonHandler;
 import com.rs.utils.Utils;
 
-public class DuelArena extends Controler {
+public class DuelArena extends Controller {
 
 	private Player target;
 	private boolean ifFriendly, isDueling;
@@ -74,7 +74,7 @@ public class DuelArena extends Controler {
 		if(accepted && targetAccepted) {
 			if(firstStage) {
 				if(nextStage())
-					((DuelArena) target.getControlerManager().getControler()).nextStage();
+					((DuelArena) target.getControlerManager().getController()).nextStage();
 			} else {
 				player.setCloseInterfacesEvent(null);
 				player.closeInterfaces();
@@ -94,7 +94,7 @@ public class DuelArena extends Controler {
 
 				@Override
 				public void run() {
-					player.getControlerManager().startControler("DuelControler");
+					player.getControlerManager().startController("DuelControler");
 				}
 			});
 			player.getInventory().getItems().addAll(player.getLastDuelRules().getStake());
@@ -104,11 +104,11 @@ public class DuelArena extends Controler {
 			removeEquipment();
 			beginBattle(started);
 		}
-		Controler controler = oldTarget.getControlerManager().getControler();
-		if (controler == null)
+		Controller controller = oldTarget.getControlerManager().getController();
+		if (controller == null)
 			return;
-		DuelArena targetConfiguration = (DuelArena) controler;
-		if (controler instanceof DuelArena) {
+		DuelArena targetConfiguration = (DuelArena) controller;
+		if (controller instanceof DuelArena) {
 			if (targetConfiguration.hasTarget()) {
 				oldTarget.setCloseInterfacesEvent(null);
 				oldTarget.closeInterfaces();
@@ -211,7 +211,7 @@ public class DuelArena extends Controler {
 
 	private void refreshScreenMessages(boolean firstStage, boolean ifFriendly) {
 		refreshScreenMessage(firstStage, ifFriendly);
-		((DuelArena) target.getControlerManager().getControler()).refreshScreenMessage(firstStage, ifFriendly);
+		((DuelArena) target.getControlerManager().getController()).refreshScreenMessage(firstStage, ifFriendly);
 	}
 
 	private void refreshScreenMessage(boolean firstStage, boolean ifFriendly) {
@@ -262,13 +262,13 @@ public class DuelArena extends Controler {
 			if (item == null) continue;
 			victor.getInventory().addItem(item);
 		}
-		if (loser.getControlerManager().getControler() != null && removeLoserControler)
+		if (loser.getControlerManager().getController() != null && removeLoserControler)
 			loser.getControlerManager().removeControlerWithoutCheck();
 		loser.setCanPvp(false);
 		loser.getHintIconsManager().removeUnsavedHintIcon();
 		loser.reset();
 		loser.closeInterfaces();
-		if (victor.getControlerManager().getControler() != null)
+		if (victor.getControlerManager().getController() != null)
 			victor.getControlerManager().removeControlerWithoutCheck();
 		victor.setCanPvp(false);
 		victor.getHintIconsManager().removeUnsavedHintIcon();
@@ -282,8 +282,8 @@ public class DuelArena extends Controler {
 
 			@Override
 			public void run() {
-				victor.getControlerManager().startControler("DuelControler");
-				loser.getControlerManager().startControler("DuelControler");
+				victor.getControlerManager().startController("DuelControler");
+				loser.getControlerManager().startController("DuelControler");
 			}
 		}, 2);
 	}
@@ -525,7 +525,7 @@ public class DuelArena extends Controler {
 	@Override
 	public boolean processButtonClick(int interfaceId, int componentId, int slotId, int packetId) {
 		synchronized (this) {
-			synchronized (target.getControlerManager().getControler()) {
+			synchronized (target.getControlerManager().getController()) {
 				DuelRules rules = player.getLastDuelRules();
 				switch (interfaceId) {
 				case 271:

@@ -23,7 +23,7 @@ import com.rs.utils.Utils;
  * @author Tyler & Dragonkk
  * 
  */
-public class RunespanControler extends Controler {
+public class RunespanController extends Controller {
 	public static WorldTile WIZARD_TOWER = new WorldTile(3106, 6160, 1);
 	public static WorldTile LOWER_LEVEL = new WorldTile(3994, 6105, 1);
 	public static WorldTile HIGHER_LEVEL = new WorldTile(4149, 6104, 1);
@@ -287,7 +287,7 @@ public class RunespanControler extends Controler {
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				player.getControlerManager().startControler("RuneSpanControler");
+				player.getControlerManager().startController("RuneSpanControler");
 			}
 		});
 	}

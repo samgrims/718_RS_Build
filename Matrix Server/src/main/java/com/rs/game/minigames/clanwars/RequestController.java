@@ -6,14 +6,14 @@ import com.rs.game.WorldTile;
 import com.rs.game.minigames.clanwars.ClanWars.Rules;
 import com.rs.game.player.CoordsEvent;
 import com.rs.game.player.Player;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 
 /**
  * A controller subclass handling the clan wars requesting.
  * @author Emperor
  *
  */
-public final class RequestController extends Controler {
+public final class RequestController extends Controller {
 
 	@Override
 	public void start() {
@@ -208,7 +208,7 @@ public final class RequestController extends Controler {
 					return;
 				}
 				if (target == null || target.hasFinished() || !target.withinDistance(player, 14)
-						|| !(target.getControlerManager().getControler() instanceof RequestController)) {
+						|| !(target.getControlerManager().getController() instanceof RequestController)) {
 					player.getPackets().sendGameMessage("Unable to find " 
 						+ (target == null ? "your target" : target.getDisplayName()));
 					return;
@@ -256,11 +256,11 @@ public final class RequestController extends Controler {
 			return false;
 		case 38698: //Safe FFA portal.
 			player.setNextWorldTile(new WorldTile(2815, 5511, 0));
-			player.getControlerManager().startControler("clan_wars_ffa", false);
+			player.getControlerManager().startController("clan_wars_ffa", false);
 			return false;
 		case 38699: //Risk FFA portal.
 			player.setNextWorldTile(new WorldTile(3007, 5511, 0));
-			player.getControlerManager().startControler("clan_wars_ffa", true);
+			player.getControlerManager().startController("clan_wars_ffa", true);
 			return false;
 		}
 		return true;

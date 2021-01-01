@@ -13,7 +13,7 @@ import com.rs.game.player.content.PlayerLook;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 
-public class NewHomeControler extends Controler {
+public class NewHomeController extends Controller {
 
 	@Override
 	public void start() {

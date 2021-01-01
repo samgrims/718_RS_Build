@@ -23,7 +23,7 @@ import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 
-public class NomadsRequiem extends Controler {
+public class NomadsRequiem extends Controller {
 
 	public static final WorldTile OUTSIDE = new WorldTile(1895, 3177, 0);
 	
@@ -31,7 +31,7 @@ public class NomadsRequiem extends Controler {
 	private int[] mapBaseChunks;
 	
 	public static void enterNomadsRequiem(Player player) {
-		player.getControlerManager().startControler("NomadsRequiem"); 
+		player.getControlerManager().startController("NomadsRequiem");
 	}
 	
 	

@@ -10,7 +10,7 @@ import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Utils;
 
-public class CrucibleControler extends Controler {
+public class CrucibleController extends Controller {
 
 	private Player target;
 	
@@ -124,7 +124,7 @@ public class CrucibleControler extends Controler {
 	
 	@Override
 	public boolean sendDeath() {
-		final CrucibleControler thisControler = this;
+		final CrucibleController thisControler = this;
 		WorldTasksManager.schedule(new WorldTask() {
 			int loop;
 

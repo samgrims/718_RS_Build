@@ -3,7 +3,7 @@ package com.rs.game.player.controlers;
 import com.rs.game.WorldTile;
 import com.rs.game.player.Player;
 
-public class Kalaboss extends Controler {
+public class Kalaboss extends Controller {
 
 	private boolean showingOption;
 
@@ -51,7 +51,7 @@ public class Kalaboss extends Controler {
 		if (player.getX() == 3385 && player.getY() == 3615) {
 			setInviteOption(false);
 			removeControler();
-			player.getControlerManager().startControler("Wilderness");
+			player.getControlerManager().startController("Wilderness");
 		} else {
 			if (!isAtKalaboss(player)) {
 				setInviteOption(false);

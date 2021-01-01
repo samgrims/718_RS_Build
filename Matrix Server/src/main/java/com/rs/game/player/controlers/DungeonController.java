@@ -11,7 +11,7 @@ import com.rs.game.player.content.dungeoneering.RoomReference;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 
-public class DungeonControler extends Controler {
+public class DungeonController extends Controller {
 
 	private DungeonManager dungeon;
 

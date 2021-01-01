@@ -32,7 +32,7 @@ public class WildernessDitch extends Dialogue {
 				public void run() {
 					player.setNextWorldTile(toTile);
 					player.faceObject(ditch);
-					player.getControlerManager().startControler("Wilderness");
+					player.getControlerManager().startController("Wilderness");
 					player.resetReceivedDamage();
 				}
 			}, 2);

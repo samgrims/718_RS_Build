@@ -5,7 +5,7 @@ import com.rs.game.npc.NPC;
 import com.rs.game.player.DominionTower;
 import com.rs.game.player.content.Magic;
 
-public class DTControler extends Controler {
+public class DTController extends Controller {
 
 	@Override
 	public void start() {

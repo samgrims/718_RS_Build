@@ -3,10 +3,10 @@ package com.rs.game.minigames.creations;
 import com.rs.game.WorldObject;
 import com.rs.game.item.Item;
 import com.rs.game.player.content.Magic;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.net.decoders.WorldPacketsDecoder;
 
-public class StealingCreationGame extends Controler {
+public class StealingCreationGame extends Controller {
 
 	private int score, index = 0;
 

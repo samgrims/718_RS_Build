@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.rs.game.WorldTile;
 import com.rs.game.player.Player;
-import com.rs.game.player.controlers.Controler;
-import com.rs.game.player.controlers.CrucibleControler;
+import com.rs.game.player.controlers.Controller;
+import com.rs.game.player.controlers.CrucibleController;
 import com.rs.utils.Utils;
 
 public class Crucible {
@@ -25,7 +25,7 @@ public class Crucible {
 	
 	public static void enterArena(Player player) {
 		travel(player, getBankTile());
-		player.getControlerManager().startControler("CrucibleControler");
+		player.getControlerManager().startController("CrucibleControler");
 	}
 	
 	public static void leaveArena(Player player) {
@@ -41,7 +41,7 @@ public class Crucible {
 	private static final List<Player> playersInside = new ArrayList<Player>();
 	private static final Object LOCK = new Object();
 	
-	public static void removePlayer(Player player, CrucibleControler crucibleControler, boolean logout) {
+	public static void removePlayer(Player player, CrucibleController crucibleControler, boolean logout) {
 		synchronized(LOCK) {
 			if(!logout) {
 				player.setForceMultiArea(false);
@@ -49,7 +49,7 @@ public class Crucible {
 				crucibleControler.setInside(false);
 			}
 			if(crucibleControler.getTarget() != null) {
-				CrucibleControler targetControler = getControler(crucibleControler.getTarget());
+				CrucibleController targetControler = getControler(crucibleControler.getTarget());
 				if(targetControler != null) {
 					targetControler.setTarget(null);
 					playersInside.add(crucibleControler.getTarget());
@@ -60,7 +60,7 @@ public class Crucible {
 		}
 	}
 	
-	public static void addPlayer(Player player, CrucibleControler crucibleControler) {
+	public static void addPlayer(Player player, CrucibleController crucibleControler) {
 		synchronized(LOCK) {
 			player.setForceMultiArea(true);
 			crucibleControler.setInside(true);
@@ -71,8 +71,8 @@ public class Crucible {
 		}
 	}
 	
-	public static boolean addTarget(Player player, Player target, CrucibleControler playerControler) {
-		CrucibleControler targetControler = getControler(target);
+	public static boolean addTarget(Player player, Player target, CrucibleController playerControler) {
+		CrucibleController targetControler = getControler(target);
 		if(targetControler == null)
 			return false;
 		if(!playersInside.remove(target))
@@ -82,9 +82,9 @@ public class Crucible {
 		return true;
 	}
 	
-	public static CrucibleControler getControler(Player player) {
-		Controler controler = player.getControlerManager().getControler();
-		return (CrucibleControler) (controler instanceof CrucibleControler ? controler : null);
+	public static CrucibleController getControler(Player player) {
+		Controller controller = player.getControlerManager().getController();
+		return (CrucibleController) (controller instanceof CrucibleController ? controller : null);
 	}
 	
 	public static boolean isImmune(Player player) {
@@ -152,22 +152,22 @@ public class Crucible {
 	}
 	
 	
-	public static void quickTravel(Player player, CrucibleControler controler) {
+	public static void quickTravel(Player player, CrucibleController controler) {
 		travel(player, getFissure(), controler);
 	}
 	
-	public static void goBank(Player player, CrucibleControler controler) {
+	public static void goBank(Player player, CrucibleController controler) {
 		travel(player, BANK_FISSURES[Utils.random(BANK_FISSURES.length)], controler);
 	}
 	
-	public static void payBountyFee(Player player, CrucibleControler controler) {
+	public static void payBountyFee(Player player, CrucibleController controler) {
 		Fissures fissure = (Fissures) player.getTemporaryAttributtes().remove("crucibleBounty");
 		if(fissure == null)
 			return;
 		travel(player, fissure.tile);
 		Crucible.addPlayer(player, controler);
 	}
-	public static void travel(Player player, Fissures fissure, CrucibleControler controler) {
+	public static void travel(Player player, Fissures fissure, CrucibleController controler) {
 		if(fissure == null)
 			return;
 		boolean isInside = controler.isInside();

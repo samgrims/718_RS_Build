@@ -46,17 +46,12 @@ public final class Inventory implements Serializable {
 	}
 
 	public boolean addItem(int itemId, int amount) {
-		if (itemId < 0
-				|| amount < 0
-				|| !Utils.itemExists(itemId)
-				|| !player.getControlerManager().canAddInventoryItem(itemId,
-						amount))
+		if (itemId < 0 || amount < 0 || !Utils.itemExists(itemId) || !player.getControlerManager().canAddInventoryItem(itemId,	amount))
 			return false;
 		Item[] itemsBefore = items.getItemsCopy();
 		if (!items.add(new Item(itemId, amount))) {
-			items.add(new Item(itemId, items.getFreeSlots()));
-			player.getPackets().sendGameMessage(
-					"Not enough space in your inventory.");
+			items.add(new Item(itemId, items.countAvailableSlots()));
+			player.getPackets().sendGameMessage("Not enough space in your inventory.");
 			refreshItems(itemsBefore);
 			return false;
 		}
@@ -73,7 +68,7 @@ public final class Inventory implements Serializable {
 			return false;
 		Item[] itemsBefore = items.getItemsCopy();
 		if (!items.add(item)) {
-			items.add(new Item(item.getId(), items.getFreeSlots()));
+			items.add(new Item(item.getId(), items.countAvailableSlots()));
 			player.getPackets().sendGameMessage(
 					"Not enough space in your inventory.");
 			refreshItems(itemsBefore);
@@ -152,7 +147,7 @@ public final class Inventory implements Serializable {
 	}
 
 	public int getFreeSlots() {
-		return items.getFreeSlots();
+		return items.countAvailableSlots();
 	}
 	
 	public int getNumerOf(int itemId) {

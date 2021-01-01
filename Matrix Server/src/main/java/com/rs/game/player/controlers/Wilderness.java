@@ -14,7 +14,7 @@ import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Utils;
 
-public class Wilderness extends Controler {
+public class Wilderness extends Controller {
 
 	private boolean showingSkull;
 
@@ -257,7 +257,7 @@ public class Wilderness extends Controler {
 			removeIcon();
 			player.setCanPvp(false);
 			removeControler();
-			player.getControlerManager().startControler("Kalaboss");
+			player.getControlerManager().startController("Kalaboss");
 		}
 	}
 

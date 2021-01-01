@@ -4,9 +4,9 @@ import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.minigames.CastleWars;
 import com.rs.game.player.Equipment;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 
-public class CastleWarsWaiting extends Controler {
+public class CastleWarsWaiting extends Controller {
 
 	private int team;
 

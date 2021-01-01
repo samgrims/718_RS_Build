@@ -6,11 +6,11 @@ import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.minigames.FightPits;
 import com.rs.game.player.Player;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 
-public class FightPitsArena extends Controler {
+public class FightPitsArena extends Controller {
 
 	@Override
 	public void start() {

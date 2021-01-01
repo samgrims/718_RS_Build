@@ -29,7 +29,7 @@ public class SorceressGardenNPCs extends Dialogue {
 		} else if (stage == 0) {
 			stage = 1;
 			if (npc.getId() == 5532) {
-				player.getControlerManager().startControler("SorceressGarden");
+				player.getControlerManager().startController("SorceressGarden");
 				npc.setNextForceTalk(new ForceTalk("Senventior Disthinte Molesko!"));
 			}
 			end();

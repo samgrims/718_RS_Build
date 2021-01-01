@@ -1,14 +1,14 @@
 package com.rs.game.minigames.creations;
 
 import com.rs.game.WorldTile;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 
 /**
  * @author Richard
  * @author Khaled
  *
  */
-public class StealingCreationLobby extends Controler {
+public class StealingCreationLobby extends Controller {
 
 	@Override
 	public void start() {

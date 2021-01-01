@@ -1,17 +1,17 @@
 package com.rs.game.player.dialogues;
 
 import com.rs.cache.loaders.NPCDefinitions;
-import com.rs.game.player.controlers.NewHomeControler;
+import com.rs.game.player.controlers.NewHomeController;
 
 public class NewHomeGuide extends Dialogue {
 
-	private NewHomeControler controler;
+	private NewHomeController controler;
 	private int npcId;
 
 	@Override
 	public void start() {
 		npcId = (Integer) parameters[0];
-		controler = (NewHomeControler) parameters[1];
+		controler = (NewHomeController) parameters[1];
 		int s = controler.getStage();
 		if (s == 0) {
 			sendEntityDialogue(

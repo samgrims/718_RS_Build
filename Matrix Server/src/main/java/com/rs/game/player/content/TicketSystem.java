@@ -50,7 +50,7 @@ public class TicketSystem {
 			if (target == null) 
 				continue; // shouldn't happen but k
 			if(target.getInterfaceManager().containsChatBoxInter()
-					|| target.getControlerManager().getControler() != null
+					|| target.getControlerManager().getController() != null
 					|| target.getInterfaceManager().containsInventoryInter()
 					|| target.getInterfaceManager().containsScreenInter()) {
 				tickets.remove(0);
@@ -72,7 +72,7 @@ public class TicketSystem {
 					"Please finish what you're doing before requesting a ticket.");
 			return;
 		}
-		if(!canSubmitTicket() || player.getTemporaryAttributtes().get("ticketRequest") != null || player.getControlerManager().getControler() != null) {
+		if(!canSubmitTicket() || player.getTemporaryAttributtes().get("ticketRequest") != null || player.getControlerManager().getController() != null) {
 			player.getPackets().sendGameMessage("You cannot send a ticket yet!");
 			return;
 		}

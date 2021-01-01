@@ -8,7 +8,7 @@ import com.rs.game.npc.NPC;
 import com.rs.game.player.Player;
 import com.rs.game.player.content.Magic;
 
-public class BorkControler extends Controler {
+public class BorkController extends Controller {
 	
 	
 	public static int borkStage;

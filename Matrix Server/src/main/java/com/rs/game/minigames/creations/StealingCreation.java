@@ -65,16 +65,16 @@ public class StealingCreation {
 			return;
 		} else if (!hasRequiredPlayers())//saves performance
 			CoresManager.fastExecutor.scheduleAtFixedRate(lobbyTask = new LobbyTimer(), 0, 60000);
-		player.getControlerManager().startControler("StealingCreationsLobby", inRedTeam);
+		player.getControlerManager().startController("StealingCreationsLobby", inRedTeam);
 	}
 
 	public static void passToGame() {
 		//createDynamicRegion
 		for (Player player : redTeam) {
-			player.getControlerManager().startControler("StealingCreationsGame", true);
+			player.getControlerManager().startController("StealingCreationsGame", true);
 		}
 		for (Player player : blueTeam) {
-			player.getControlerManager().startControler("StealingCreationsGame", false);
+			player.getControlerManager().startController("StealingCreationsGame", false);
 		}
 	}
 

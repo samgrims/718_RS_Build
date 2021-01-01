@@ -9,9 +9,7 @@ import com.rs.game.player.Skills;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 
-public class StartTutorial extends Controler {
-
-
+public class StartTutorial extends Controller {
 	private static final int QUEST_GUIDE_NPC = 949;
 
 	@Override
@@ -59,8 +57,7 @@ public class StartTutorial extends Controler {
 	public void updateProgress() {
 		setStage(getStage() + 1);
 		if (getStage() == 2) {
-			player.getDialogueManager().startDialogue("QuestGuide",
-					QUEST_GUIDE_NPC, this);
+			player.getDialogueManager().startDialogue("QuestGuide",	QUEST_GUIDE_NPC, this);
 		}
 		refreshStage();
 	}
@@ -68,8 +65,7 @@ public class StartTutorial extends Controler {
 	@Override
 	public boolean processNPCClick1(NPC npc) {
 		if (npc.getId() == QUEST_GUIDE_NPC) {
-			player.getDialogueManager().startDialogue("QuestGuide",
-					QUEST_GUIDE_NPC, this);
+			player.getDialogueManager().startDialogue("QuestGuide",QUEST_GUIDE_NPC, this);
 		}
 		return false;
 	}
@@ -145,21 +141,16 @@ public class StartTutorial extends Controler {
 		player.getMusicsManager().reset();
 		player.setYellOff(false);
 		player.getInventory().addItem(1856, 1);
-		player.getPackets().sendGameMessage(
-				"Congratulations! You finished the start tutorial.");
-		player.getPackets()
-				.sendGameMessage(
-						"You've received a guide book. Use it if you have questions or talk with other players.");
+		player.getPackets().sendGameMessage("Congratulations! You finished the start tutorial.");
+		player.getPackets().sendGameMessage("You've received a guide book. Use it if you have questions or talk with other players.");
 		player.getPackets().sendGameMessage("or talk with other players.");
 
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
 				player.getInterfaceManager().sendInterfaces();
-				player.getInterfaceManager()
-						.closeReplacedRealChatBoxInterface();
-				player.getDialogueManager().startDialogue("QuestGuide",
-						QUEST_GUIDE_NPC, null);
+				player.getInterfaceManager().closeReplacedRealChatBoxInterface();
+				player.getDialogueManager().startDialogue("QuestGuide",	QUEST_GUIDE_NPC, null);
 			}
 		});
 	}

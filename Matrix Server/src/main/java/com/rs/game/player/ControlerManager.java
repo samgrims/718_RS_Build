@@ -10,7 +10,7 @@ import com.rs.game.item.Item;
 import com.rs.game.npc.NPC;
 import com.rs.game.player.content.Foods.Food;
 import com.rs.game.player.content.Pots.Pot;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.game.player.controlers.ControlerHandler;
 
 /**
@@ -21,274 +21,274 @@ public final class ControlerManager implements Serializable {
 	private static final long serialVersionUID = 2084691334731830796L;
 
 	private transient Player player;
-	private transient Controler controler;
+	private transient Controller controller;
 	private transient boolean inited;
-	private Object[] lastControlerArguments;
+	private Object[] lastControllerArguments;
 
-	private String lastControler;
+	private String lastController;
 
 	public ControlerManager() {
-		lastControler = Settings.START_CONTROLER;
+		lastController = Settings.START_CONTROLER;
 	}
 
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
-	public Controler getControler() {
-		return controler;
+	public Controller getController() {
+		return controller;
 	}
 	
-	public void startControler(Object key, Object... parameters) {
-		if (controler != null)
+	public void startController(Object key, Object... parameters) {
+		if (controller != null)
 			forceStop();
-		controler = (Controler) (key instanceof Controler ? key : ControlerHandler.getControler(key));
-		if (controler == null)
+		controller = (Controller) (key instanceof Controller ? key : ControlerHandler.getControler(key));
+		if (controller == null)
 			return;
-		controler.setPlayer(player);
-		lastControlerArguments = parameters;
-		lastControler = (String) key;
-		controler.start();
+		controller.setPlayer(player);
+		lastControllerArguments = parameters;
+		lastController = (String) key;
+		controller.start();
 		inited = true;
 	}
 
 	public void login() {
-		if (lastControler == null)
+		if (lastController == null)
 			return;
-		controler = ControlerHandler.getControler(lastControler);
-		if (controler == null) {
+		controller = ControlerHandler.getControler(lastController);
+		if (controller == null) {
 			forceStop();
 			return;
 		}
-		controler.setPlayer(player);
-		if (controler.login())
+		controller.setPlayer(player);
+		if (controller.login())
 			forceStop();
 		else
 			inited = true;
 	}
 
 	public void logout() {
-		if (controler == null)
+		if (controller == null)
 			return;
-		if (controler.logout())
+		if (controller.logout())
 			forceStop();
 	}
 
 	public boolean canMove(int dir) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canMove(dir);
+		return controller.canMove(dir);
 	}
 
 	public boolean checkWalkStep(int lastX, int lastY, int nextX, int nextY) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.checkWalkStep(lastX, lastY, nextX, nextY);
+		return controller.checkWalkStep(lastX, lastY, nextX, nextY);
 	}
 
 	public boolean keepCombating(Entity target) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.keepCombating(target);
+		return controller.keepCombating(target);
 	}
 
 	public boolean canEquip(int slotId, int itemId) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canEquip(slotId, itemId);
+		return controller.canEquip(slotId, itemId);
 	}
 
 	public boolean canAddInventoryItem(int itemId, int amount) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canAddInventoryItem(itemId, amount);
+		return controller.canAddInventoryItem(itemId, amount);
 	}
 
 	public void trackXP(int skillId, int addedXp) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return;
-		controler.trackXP(skillId, addedXp);
+		controller.trackXP(skillId, addedXp);
 	}
 
 	public boolean canDeleteInventoryItem(int itemId, int amount) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canDeleteInventoryItem(itemId, amount);
+		return controller.canDeleteInventoryItem(itemId, amount);
 	}
 
 	public boolean canUseItemOnItem(Item itemUsed, Item usedWith) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canUseItemOnItem(itemUsed, usedWith);
+		return controller.canUseItemOnItem(itemUsed, usedWith);
 	}
 
 	public boolean canAttack(Entity entity) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canAttack(entity);
+		return controller.canAttack(entity);
 	}
 
 	public boolean canPlayerOption1(Player target) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canPlayerOption1(target);
+		return controller.canPlayerOption1(target);
 	}
 
 	public boolean canHit(Entity entity) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canHit(entity);
+		return controller.canHit(entity);
 	}
 
 	public void moved() {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return;
-		controler.moved();
+		controller.moved();
 	}
 
 	public void magicTeleported(int type) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return;
-		controler.magicTeleported(type);
+		controller.magicTeleported(type);
 	}
 
 	public void sendInterfaces() {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return;
-		controler.sendInterfaces();
+		controller.sendInterfaces();
 	}
 
 	public void process() {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return;
-		controler.process();
+		controller.process();
 	}
 
 	public boolean sendDeath() {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.sendDeath();
+		return controller.sendDeath();
 	}
 
 	public boolean canEat(Food food) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canEat(food);
+		return controller.canEat(food);
 	}
 
 	public boolean canPot(Pot pot) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canPot(pot);
+		return controller.canPot(pot);
 	}
 
 	public boolean useDialogueScript(Object key) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.useDialogueScript(key);
+		return controller.useDialogueScript(key);
 	}
 
 	public boolean processMagicTeleport(WorldTile toTile) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processMagicTeleport(toTile);
+		return controller.processMagicTeleport(toTile);
 	}
 
 	public boolean processItemTeleport(WorldTile toTile) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processItemTeleport(toTile);
+		return controller.processItemTeleport(toTile);
 	}
 
 	public boolean processObjectTeleport(WorldTile toTile) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processObjectTeleport(toTile);
+		return controller.processObjectTeleport(toTile);
 	}
 
 	public boolean processObjectClick1(WorldObject object) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processObjectClick1(object);
+		return controller.processObjectClick1(object);
 	}
 
 	public boolean processButtonClick(int interfaceId, int componentId,
 			int slotId, int packetId) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processButtonClick(interfaceId, componentId, slotId,
+		return controller.processButtonClick(interfaceId, componentId, slotId,
 				packetId);
 	}
 
 	public boolean processNPCClick1(NPC npc) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processNPCClick1(npc);
+		return controller.processNPCClick1(npc);
 	}
 	
 	public boolean canSummonFamiliar() {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canSummonFamiliar();
+		return controller.canSummonFamiliar();
 	}
 
 	public boolean processNPCClick2(NPC npc) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processNPCClick2(npc);
+		return controller.processNPCClick2(npc);
 	}
 	public boolean processNPCClick3(NPC npc) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processNPCClick3(npc);
+		return controller.processNPCClick3(npc);
 	}
 	public boolean processObjectClick2(WorldObject object) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processObjectClick2(object);
+		return controller.processObjectClick2(object);
 	}
 
 	public boolean processObjectClick3(WorldObject object) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processObjectClick3(object);
+		return controller.processObjectClick3(object);
 	}
 
 	public boolean processItemOnNPC(NPC npc, Item item) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processItemOnNPC(npc, item);
+		return controller.processItemOnNPC(npc, item);
 	}
 	
 	public boolean canDropItem(Item item) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.canDropItem(item);
+		return controller.canDropItem(item);
 	}
 
 	public void forceStop() {
-		if (controler != null) {
-			controler.forceClose();
-			controler = null;
+		if (controller != null) {
+			controller.forceClose();
+			controller = null;
 		}
-		lastControlerArguments = null;
-		lastControler = null;
+		lastControllerArguments = null;
+		lastController = null;
 		inited = false;
 	}
 
 	public void removeControlerWithoutCheck() {
-		controler = null;
-		lastControlerArguments = null;
-		lastControler = null;
+		controller = null;
+		lastControllerArguments = null;
+		lastController = null;
 		inited = false;
 	}
 
-	public Object[] getLastControlerArguments() {
-		return lastControlerArguments;
+	public Object[] getLastControllerArguments() {
+		return lastControllerArguments;
 	}
 
-	public void setLastControlerArguments(Object[] lastControlerArguments) {
-		this.lastControlerArguments = lastControlerArguments;
+	public void setLastControllerArguments(Object[] lastControllerArguments) {
+		this.lastControllerArguments = lastControllerArguments;
 	}
 
 	public boolean processObjectClick4(WorldObject object) {
@@ -296,8 +296,8 @@ public final class ControlerManager implements Serializable {
 	}
 	
 	public boolean processObjectClick5(WorldObject object) {
-		if (controler == null || !inited)
+		if (controller == null || !inited)
 			return true;
-		return controler.processObjectClick5(object);
+		return controller.processObjectClick5(object);
 	}
 }

@@ -24,7 +24,7 @@ public final class NexEntrance extends Dialogue {
 		} else if (stage == 0) {
 			if (componentId == OPTION_1) {
 				player.setNextWorldTile(new WorldTile(2911, 5204, 0));
-				player.getControlerManager().startControler("ZGDControler");
+				player.getControlerManager().startController("ZGDControler");
 			}
 			end();
 		}

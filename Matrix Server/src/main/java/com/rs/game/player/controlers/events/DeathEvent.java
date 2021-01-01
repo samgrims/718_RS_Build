@@ -8,11 +8,11 @@ import com.rs.game.RegionBuilder;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.player.content.Magic;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 
-public class DeathEvent extends Controler {
+public class DeathEvent extends Controller {
 
 	public static final WorldTile RESPAWN = new WorldTile(3214, 3423, 0);
 

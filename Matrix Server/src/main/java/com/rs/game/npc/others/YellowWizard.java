@@ -3,15 +3,15 @@ package com.rs.game.npc.others;
 import com.rs.game.WorldTile;
 import com.rs.game.npc.NPC;
 import com.rs.game.player.Player;
-import com.rs.game.player.controlers.RunespanControler;
+import com.rs.game.player.controlers.RunespanController;
 import com.rs.utils.Utils;
 
 @SuppressWarnings("serial")
 public class YellowWizard extends NPC {
 	
-	private RunespanControler controler;
+	private RunespanController controler;
 	private long spawnTime;
-	public YellowWizard(WorldTile tile, RunespanControler controler) {
+	public YellowWizard(WorldTile tile, RunespanController controler) {
 		super(15430, tile, -1, true, true);
 		spawnTime = Utils.currentTimeMillis();
 		this.controler = controler;

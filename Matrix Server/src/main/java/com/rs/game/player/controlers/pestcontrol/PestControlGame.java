@@ -5,11 +5,11 @@ import com.rs.game.Hit;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.minigames.pest.PestControl;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 
-public class PestControlGame extends Controler {
+public class PestControlGame extends Controller {
 
 	private PestControl control;
 

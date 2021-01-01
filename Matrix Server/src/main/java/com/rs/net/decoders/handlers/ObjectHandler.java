@@ -137,7 +137,7 @@ public final class ObjectHandler {
 		final int x = object.getX();
 		final int y = object.getY();
 
-//		DebugLine.print(id + "");
+		DebugLine.print(id + "");
 
 		if(SihponActionNodes.siphon(player, object)) 
 			return;
@@ -146,8 +146,8 @@ public final class ObjectHandler {
 			public void run() {
 				player.stopAll();
 				player.faceObject(object);
-//				if (!player.getControlerManager().processObjectClick1(object))//unknown what this does
-//					return;
+				if (!player.getControlerManager().processObjectClick1(object))//unknown what this does
+					return;
 				if (CastleWars.handleObjects(player, id))
 					return;
 				if (object.getId() == 19205)
@@ -628,7 +628,7 @@ public final class ObjectHandler {
 						&& object.getY() == 4370) {
 					player.stopAll();
 					player.setNextWorldTile(new WorldTile(3214, 3782, 0));
-					player.getControlerManager().startControler("Wilderness");
+					player.getControlerManager().startController("Wilderness");
 				} else if (id == 38815 && object.getX() == 3209
 						&& object.getY() == 3780 && object.getPlane() == 0) {
 					if (player.getSkills().getLevelForXp(Skills.WOODCUTTING) < 37
@@ -660,7 +660,7 @@ public final class ObjectHandler {
 						player.useStairs(828, new WorldTile(3509, 9496, 2), 1, 2);
 					}
 				} else if (id == 9369) {
-					player.getControlerManager().startControler("FightPits");
+					player.getControlerManager().startController("FightPits");
 				} else if (id == 54019 || id == 54020 || id == 55301)
 					PkRank.showRanks(player);
 				else if (id == 1817 && object.getX() == 2273
@@ -674,14 +674,14 @@ public final class ObjectHandler {
 				} else if (id == 32015 && object.getX() == 3069
 						&& object.getY() == 10256) { // kbd stairs
 					player.useStairs(828, new WorldTile(3017, 3848, 0), 1, 2);
-					player.getControlerManager().startControler("Wilderness");
+					player.getControlerManager().startController("Wilderness");
 				} else if (id == 1765 && object.getX() == 3017
 						&& object.getY() == 3849) { // kbd out stairs
 					player.stopAll();
 					player.setNextWorldTile(new WorldTile(3069, 10255, 0));
 					player.getControlerManager().forceStop();
 				} else if (id == 14315) {
-					player.getControlerManager().startControler("PestControlLobby", 1);
+					player.getControlerManager().startController("PestControlLobby", 1);
 				} else if (id == 5959) {
 					Magic.pushLeverTeleport(player,
 							new WorldTile(2539, 4712, 0));
@@ -744,7 +744,7 @@ public final class ObjectHandler {
 					if (objectDef.containsOption(0, "Chop down"))
 						player.getActionManager().setAction(new Woodcutting(object,	TreeDefinitions.NORMAL));
 				} else if(id == 20573)
-					player.getControlerManager().startControler("RefugeOfFear");
+					player.getControlerManager().startController("RefugeOfFear");
 				//crucible
 				else if (id == 67050)
 					player.useStairs(-1, new WorldTile(3359, 6110, 0), 0, 1);

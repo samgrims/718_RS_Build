@@ -417,7 +417,7 @@ public final class ClanWars implements Serializable {
 				c.secondPlayers.add(p);
 				c.timer.refresh(p, false);
 			}
-			p.getControlerManager().startControler("clan_war", c);
+			p.getControlerManager().startController("clan_war", c);
 			CoresManager.slowExecutor.submit(new Runnable() {
 				@Override
 				public void run() {
@@ -467,7 +467,7 @@ public final class ClanWars implements Serializable {
 		boolean resized = p.getInterfaceManager().hasRezizableScreen();
 		p.getPackets().closeInterface(resized ? 746 : 548, resized ? 11 : 27);
 		p.setNextWorldTile(new WorldTile(2992, 9676, 0));
-		p.getControlerManager().startControler("clan_wars_request");
+		p.getControlerManager().startController("clan_wars_request");
 		p.setForceMultiArea(true);
 		updateWar();
 	}
@@ -551,7 +551,7 @@ public final class ClanWars implements Serializable {
 			player.getPackets().closeInterface(resized ? 746 : 548, resized ? 1 : 11);
 			player.getInterfaceManager().sendInterface(790);
 			player.getPackets().sendGlobalConfig(268, firstType);
-			player.getControlerManager().startControler("clan_wars_request");
+			player.getControlerManager().startController("clan_wars_request");
 			player.setForceMultiArea(true);
 			player.stopAll(true, false);
 			player.reset();
@@ -562,7 +562,7 @@ public final class ClanWars implements Serializable {
 			player.getPackets().closeInterface(resized ? 746 : 548, resized ? 1 : 11);
 			player.getInterfaceManager().sendInterface(790);
 			player.getPackets().sendGlobalConfig(268, secondType);
-			player.getControlerManager().startControler("clan_wars_request");
+			player.getControlerManager().startController("clan_wars_request");
 			player.setForceMultiArea(true);
 			player.stopAll(true, false);
 			player.reset();
@@ -573,7 +573,7 @@ public final class ClanWars implements Serializable {
 			p.setNextWorldTile(target);
 			boolean resized = p.getInterfaceManager().hasRezizableScreen();
 			p.getPackets().closeInterface(resized ? 746 : 548, resized ? 1 : 11);
-			p.getControlerManager().startControler("clan_wars_request");
+			p.getControlerManager().startController("clan_wars_request");
 			p.setForceMultiArea(true);
 		}
 		String firstMessage = "Your clan " + (firstType < 4 ? "drawed." : firstType < 8 ? "is victorious!" : "has been defeated!");

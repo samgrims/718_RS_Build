@@ -10,7 +10,7 @@ import com.rs.game.player.Skills;
 import com.rs.game.player.actions.Woodcutting.TreeDefinitions;
 import com.rs.net.decoders.WorldPacketsDecoder;
 
-public final class TutorialIsland extends Controler {
+public final class TutorialIsland extends Controller {
 
 	private static final int RUNESCAPE_GUIDE_NPC = 945,
 			SURVIVAL_EXPERT_NPC = 943,

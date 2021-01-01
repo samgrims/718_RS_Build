@@ -2,7 +2,7 @@ package com.rs.game.player.controlers;
 
 import com.rs.game.WorldObject;
 
-public class GodWars extends Controler {
+public class GodWars extends Controller {
 
 	@Override
 	public void start() {

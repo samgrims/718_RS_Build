@@ -5,7 +5,7 @@ import com.rs.game.Entity;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.player.Player;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.game.player.controlers.Wilderness;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
@@ -15,7 +15,7 @@ import com.rs.game.tasks.WorldTasksManager;
  * @author Emperor
  *
  */
-public final class FfaZone extends Controler {
+public final class FfaZone extends Controller {
 
 	/**
 	 * If the FFA zone is the risk zone.
@@ -62,7 +62,7 @@ public final class FfaZone extends Controler {
 						player.getInventory().init();
 					}
 					player.setNextWorldTile(new WorldTile(2993, 9679, 0));
-					player.getControlerManager().startControler("clan_wars_request");
+					player.getControlerManager().startController("clan_wars_request");
 					player.reset();
 					player.setNextAnimation(new Animation(-1));
 				} else if (loop == 4) {
@@ -85,7 +85,7 @@ public final class FfaZone extends Controler {
 		switch (object.getId()) {
 		case 38700:
 			player.setNextWorldTile(new WorldTile(2993, 9679, 0));
-			player.getControlerManager().startControler("clan_wars_request");
+			player.getControlerManager().startController("clan_wars_request");
 			return false;
 		}
 		return true;
@@ -156,9 +156,9 @@ public final class FfaZone extends Controler {
 	 * @return {@code True} if so.
 	 */
 	public static boolean isOverloadChanged(Player player) {
-		if (!(player.getControlerManager().getControler() instanceof FfaZone)) {
+		if (!(player.getControlerManager().getController() instanceof FfaZone)) {
 			return false;
 		}
-		return player.isCanPvp() && ((FfaZone) player.getControlerManager().getControler()).risk;
+		return player.isCanPvp() && ((FfaZone) player.getControlerManager().getController()).risk;
 	}
 }

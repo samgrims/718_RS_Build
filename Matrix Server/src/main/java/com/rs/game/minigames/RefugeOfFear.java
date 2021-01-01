@@ -22,7 +22,7 @@ import com.rs.game.player.Inventory;
 import com.rs.game.player.actions.Summoning.Pouches;
 import com.rs.game.player.content.Foods.Food;
 import com.rs.game.player.content.Pots;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 
@@ -31,7 +31,7 @@ import com.rs.game.tasks.WorldTasksManager;
  * @author Apache ah64
  * @author Emperor
  */
-public final class RefugeOfFear extends Controler {
+public final class RefugeOfFear extends Controller {
 
 	/**
 	 * The random instance, used for randomizing values.

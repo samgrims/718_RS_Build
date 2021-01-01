@@ -100,7 +100,7 @@ public final class CastleWars {
 		waiting[team].add(player);
 		setCape(player, new Item(team == ZAMORAK ? 4042 : 4041));
 		setHood(player, new Item(team == ZAMORAK ? 4515 : 4513));
-		player.getControlerManager().startControler("CastleWarsWaiting", team);
+		player.getControlerManager().startController("CastleWarsWaiting", team);
 		player.setNextWorldTile(new WorldTile(team == ZAMORAK ? ZAMO_WAITING
 				: SARA_WAITING, 1));
 		player.getMusicsManager().playMusic(318); // temp testing else 5
@@ -203,7 +203,7 @@ public final class CastleWars {
 				playingGame == null ? 0
 						: playingGame.minutesLeft
 						- (player.getControlerManager()
-								.getControler() instanceof CastleWarsPlaying ? 5
+								.getController() instanceof CastleWarsPlaying ? 5
 										: 0));
 	}
 
@@ -254,7 +254,7 @@ public final class CastleWars {
 		player.getPackets().closeInterface(player.getInterfaceManager().hasRezizableScreen() ?  34 : 0);
 		playing[team].add(player);
 		player.setCanPvp(true);
-		player.getControlerManager().startControler("CastleWarsPlaying", team);
+		player.getControlerManager().startController("CastleWarsPlaying", team);
 		player.setNextWorldTile(new WorldTile(team == ZAMORAK ? ZAMO_BASE
 				: SARA_BASE, 1));
 	}

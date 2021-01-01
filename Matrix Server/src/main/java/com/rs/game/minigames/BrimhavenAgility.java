@@ -11,12 +11,12 @@ import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Utils;
 
-public final class BrimhavenAgility extends Controler {
+public final class BrimhavenAgility extends Controller {
 
 
 	private static final List<Player> players = new ArrayList<Player>();

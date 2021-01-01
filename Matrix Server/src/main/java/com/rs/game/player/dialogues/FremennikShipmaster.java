@@ -87,7 +87,7 @@ public class FremennikShipmaster extends Dialogue {
 		if (backing)
 			player.getControlerManager().forceStop();
 		else
-			player.getControlerManager().startControler("Kalaboss");
+			player.getControlerManager().startController("Kalaboss");
 	}
 
 	@Override

@@ -200,7 +200,7 @@ public class Hunter {
 						return 1;//hands
 					}
 				})) {
-					player.getSkills().addXp(Skills.HUNTER, player.getControlerManager().getControler() instanceof PuroPuro ? instance.getPuroExperience() : instance.getRsExperience());
+					player.getSkills().addXp(Skills.HUNTER, player.getControlerManager().getController() instanceof PuroPuro ? instance.getPuroExperience() : instance.getRsExperience());
 					npc.finish();
 					player.getInventory().addItem(new Item(instance.getReward(), 1));
 					player.getPackets().sendGameMessage("...and you successfully caputure the "+ name.toLowerCase());

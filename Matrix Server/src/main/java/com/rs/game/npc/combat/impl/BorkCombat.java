@@ -24,7 +24,7 @@ public class BorkCombat extends CombatScript {
 		if (npc.getHitpoints() <= (cdef.getHitpoints() * 0.4) && !spawnOrk) {
 			Player player = (Player) target;
 			npc.setNextForceTalk(new ForceTalk("Come to my aid, brothers!"));
-			player.getControlerManager().startControler("BorkControler", 1, npc);
+			player.getControlerManager().startController("BorkControler", 1, npc);
 			spawnOrk = true;
 		}
 		npc.setNextAnimation(new Animation(Utils.getRandom(1) == 0 ? cdef.getAttackEmote() : 8757));

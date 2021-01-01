@@ -2,9 +2,9 @@ package com.rs.game.minigames.duel;
 
 import com.rs.game.WorldTile;
 import com.rs.game.player.Player;
-import com.rs.game.player.controlers.Controler;
+import com.rs.game.player.controlers.Controller;
 
-public class DuelControler extends Controler {
+public class DuelController extends Controller {
 
 	@Override
 	public void start() {
@@ -67,8 +67,8 @@ public class DuelControler extends Controler {
 			target.getTemporaryAttributtes().remove("DuelChallenged");
 			player.setLastDuelRules(new DuelRules(player, target));
 			target.setLastDuelRules(new DuelRules(target, player));
-			player.getControlerManager().startControler("DuelArena", target, target.getTemporaryAttributtes().get("DuelFriendly"));
-			target.getControlerManager().startControler("DuelArena", player, target.getTemporaryAttributtes().remove("DuelFriendly"));
+			player.getControlerManager().startController("DuelArena", target, target.getTemporaryAttributtes().get("DuelFriendly"));
+			target.getControlerManager().startController("DuelArena", player, target.getTemporaryAttributtes().remove("DuelFriendly"));
 			return false;
 		}
 		player.getTemporaryAttributtes().put("DuelTarget", target);
@@ -89,7 +89,7 @@ public class DuelControler extends Controler {
 		if (target == null
 				|| target.hasFinished()
 				|| !target.withinDistance(player, 14)
-				|| !(target.getControlerManager().getControler() instanceof DuelControler)) {
+				|| !(target.getControlerManager().getController() instanceof DuelController)) {
 			player.getPackets().sendGameMessage(
 					"Unable to find "
 							+ (target == null ? "your target" : target

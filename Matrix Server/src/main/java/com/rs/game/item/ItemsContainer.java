@@ -12,75 +12,90 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 
 	private static final long serialVersionUID = 1099313426737026107L;
 
-	private Item[] data;
+	private Item[] items;
 	private boolean alwaysStackable = false;
 
 	public ItemsContainer(int size, boolean alwaysStackable) {
-		data = new Item[size];
+		items = new Item[size];
 		this.alwaysStackable = alwaysStackable;
 	}
 
 	public void shift() {
-		Item[] oldData = data;
-		data = new Item[oldData.length];
+		Item[] oldData = items;
+		items = new Item[oldData.length];
 		int ptr = 0;
-		for (int i = 0; i < data.length; i++) {
+		for (int i = 0; i < items.length; i++) {
 			if (oldData[i] != null) {
-				data[ptr++] = oldData[i];
+				items[ptr++] = oldData[i];
 			}
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public T get(int slot) {
-		if (slot < 0 || slot >= data.length) {
+		if (slot < 0 || slot >= items.length) {
 			return null;
 		}
-		return (T) data[slot];
+		return (T) items[slot];
 	}
 
 	public void set(int slot, T item) {
-		if (slot < 0 || slot >= data.length) {
+		if (slot < 0 || slot >= items.length) {
 			return;
 		}
-		data[slot] = item;
+		items[slot] = item;
 	}
 
 	public void set2(int slot, Item item) {
-		if (slot < 0 || slot >= data.length) {
+		if (slot < 0 || slot >= items.length) {
 			return;
 		}
-		data[slot] = item;
+		items[slot] = item;
 	}
 
 	public boolean forceAdd(T item) {
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] == null) {
-				data[i] = item;
+		for (int i = 0; i < items.length; i++) {
+			if (items[i] == null) {
+				items[i] = item;
 				return true;
 			}
 		}
 		return false;
 	}
 
+	public boolean addSOF(T item) {
+		int slot = findAvailableSlot();
+		if (slot == -1) {
+			return false;
+		}
+
+		if(item.getDefinitions().isStackable() || item.getDefinitions().isNoted()){
+			items[slot] = item;
+		}
+		else {
+			item.setAmount(1);
+			items[slot] = item;
+		}
+		return true;
+	}
+
+
 	public boolean add(T item) {
-		if (alwaysStackable || item.getDefinitions().isStackable()
-				|| item.getDefinitions().isNoted()) {
-			for (int i = 0; i < data.length; i++) {
-				if (data[i] != null) {
-					if (data[i].getId() == item.getId()) {
-						data[i] = new Item(data[i].getId(), data[i].getAmount()
-								+ item.getAmount());
+		if (alwaysStackable || item.getDefinitions().isStackable() || item.getDefinitions().isNoted()) {
+			for (int i = 0; i < items.length; i++) {
+				if (items[i] != null) {
+					if (items[i].getId() == item.getId()) {
+						items[i] = new Item(items[i].getId(), items[i].getAmount() + item.getAmount());
 						return true;
 					}
 				}
 			}
 		} else {
 			if (item.getAmount() > 1) {
-				if (freeSlots() >= item.getAmount()) {
+				if (countAvailableSlots() >= item.getAmount()) {
 					for (int i = 0; i < item.getAmount(); i++) {
-						int index = freeSlot();
-						data[index] = new Item(item.getId(), 1);
+						int index = findAvailableSlot();
+						items[index] = new Item(item.getId(), 1);
 					}
 					return true;
 				} else {
@@ -88,40 +103,40 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 				}
 			}
 		}
-		int index = freeSlot();
+		int index = findAvailableSlot();
 		if (index == -1) {
 			return false;
 		}
-		data[index] = item;
+		items[index] = item;
 		return true;
 	}
 
-	public int freeSlots() {
-		int j = 0;
-		for (Item aData : data) {
+	public int countAvailableSlots() {
+		int numberOfSlots = 0;
+		for (Item aData : items) {
 			if (aData == null) {
-				j++;
+				numberOfSlots++;
 			}
 		}
-		return j;
+		return numberOfSlots;
 	}
 
 	public int remove(T item) {
 		int removed = 0, toRemove = item.getAmount();
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] != null) {
-				if (data[i].getId() == item.getId()) {
-					int amt = data[i].getAmount();
+		for (int i = 0; i < items.length; i++) {
+			if (items[i] != null) {
+				if (items[i].getId() == item.getId()) {
+					int amt = items[i].getAmount();
 					if (amt > toRemove) {
 						removed += toRemove;
 						amt -= toRemove;
 						toRemove = 0;
-						data[i] = new Item(data[i].getId(), amt);
+						items[i] = new Item(items[i].getId(), amt);
 						return removed;
 					} else {
 						removed += amt;
 						toRemove -= amt;
-						data[i] = null;
+						items[i] = null;
 					}
 				}
 			}
@@ -130,17 +145,17 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 	}
 
 	public void removeAll(T item) {
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] != null) {
-				if (data[i].getId() == item.getId()) {
-					data[i] = null;
+		for (int i = 0; i < items.length; i++) {
+			if (items[i] != null) {
+				if (items[i].getId() == item.getId()) {
+					items[i] = null;
 				}
 			}
 		}
 	}
 
 	public boolean containsOne(T item) {
-		for (Item aData : data) {
+		for (Item aData : items) {
 			if (aData != null) {
 				if (aData.getId() == item.getId()) {
 					return true;
@@ -152,7 +167,7 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 
 	public boolean contains(T item) {
 		int amtOf = 0;
-		for (Item aData : data) {
+		for (Item aData : items) {
 			if (aData != null) {
 				if (aData.getId() == item.getId()) {
 					amtOf += aData.getAmount();
@@ -162,38 +177,28 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 		return amtOf >= item.getAmount();
 	}
 
-	public int freeSlot() {
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] == null) {
-				return i;
+	public int findAvailableSlot() {
+		for (int slot = 0; slot < items.length; slot++) {
+			if (items[slot] == null) {
+				return slot;
 			}
 		}
 		return -1;
 	}
 
 	public void clear() {
-		for (int i = 0; i < data.length; i++) {
-			data[i] = null;
+		for (int i = 0; i < items.length; i++) {
+			items[i] = null;
 		}
 	}
 
 	public int getSize() {
-		return data.length;
-	}
-
-	public int getFreeSlots() {
-		int s = 0;
-		for (Item aData : data) {
-			if (aData == null) {
-				s++;
-			}
-		}
-		return s;
+		return items.length;
 	}
 
 	public int getUsedSlots() {
 		int s = 0;
-		for (Item aData : data) {
+		for (Item aData : items) {
 			if (aData != null) {
 				s++;
 			}
@@ -203,7 +208,7 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 
 	public int getNumberOf(Item item) {
 		int count = 0;
-		for (Item aData : data) {
+		for (Item aData : items) {
 			if (aData != null) {
 				if (aData.getId() == item.getId()) {
 					count += aData.getAmount();
@@ -215,7 +220,7 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 
 	public int getNumberOf(int item) {
 		int count = 0;
-		for (Item aData : data) {
+		for (Item aData : items) {
 			if (aData != null) {
 				if (aData.getId() == item) {
 					count += aData.getAmount();
@@ -226,25 +231,25 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 	}
 
 	public Item[] getItems() {
-		return data;
+		return items;
 	}
 
 	public Item[] getItemsCopy() {
-		Item[] newData = new Item[data.length];
-		System.arraycopy(data, 0, newData, 0, newData.length);
+		Item[] newData = new Item[items.length];
+		System.arraycopy(items, 0, newData, 0, newData.length);
 		return newData;
 	}
 
 	public ItemsContainer<Item> asItemContainer() {
-		ItemsContainer<Item> c = new ItemsContainer<Item>(data.length,
+		ItemsContainer<Item> c = new ItemsContainer<Item>(items.length,
 				this.alwaysStackable);
-		System.arraycopy(data, 0, c.data, 0, data.length);
+		System.arraycopy(items, 0, c.items, 0, items.length);
 		return c;
 	}
 
 	public int getFreeSlot() {
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] == null) {
+		for (int i = 0; i < items.length; i++) {
+			if (items[i] == null) {
 				return i;
 			}
 		}
@@ -252,9 +257,9 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 	}
 
 	public int getThisItemSlot(T item) {
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] != null) {
-				if (data[i].getId() == item.getId()) {
+		for (int i = 0; i < items.length; i++) {
+			if (items[i] != null) {
+				if (items[i].getId() == item.getId()) {
 					return i;
 				}
 			}
@@ -263,7 +268,7 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 	}
 
 	public Item lookup(int id) {
-		for (Item aData : data) {
+		for (Item aData : items) {
 			if (aData == null) {
 				continue;
 			}
@@ -275,11 +280,11 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 	}
 
 	public int lookupSlot(int id) {
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] == null) {
+		for (int i = 0; i < items.length; i++) {
+			if (items[i] == null) {
 				continue;
 			}
-			if (data[i].getId() == id) {
+			if (items[i].getId() == id) {
 				return i;
 			}
 		}
@@ -287,21 +292,21 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 	}
 
 	public void reset() {
-		data = new Item[data.length];
+		items = new Item[items.length];
 	}
 
 	public int remove(int preferredSlot, Item item) {
 		int removed = 0, toRemove = item.getAmount();
-		if (data[preferredSlot] != null) {
-			if (data[preferredSlot].getId() == item.getId()) {
-				int amt = data[preferredSlot].getAmount();
+		if (items[preferredSlot] != null) {
+			if (items[preferredSlot].getId() == item.getId()) {
+				int amt = items[preferredSlot].getAmount();
 				if (amt > toRemove) {
 					removed += toRemove;
 					amt -= toRemove;
 					toRemove = 0;
 					// data[preferredSlot] = new
 					// Item(data[preferredSlot].getDefinition().getId(), amt);
-					set2(preferredSlot, new Item(data[preferredSlot].getId(),
+					set2(preferredSlot, new Item(items[preferredSlot].getId(),
 							amt));
 					return removed;
 				} else {
@@ -312,17 +317,17 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 				}
 			}
 		}
-		for (int i = 0; i < data.length; i++) {
-			if (data[i] != null) {
-				if (data[i].getId() == item.getId()) {
-					int amt = data[i].getAmount();
+		for (int i = 0; i < items.length; i++) {
+			if (items[i] != null) {
+				if (items[i].getId() == item.getId()) {
+					int amt = items[i].getAmount();
 					if (amt > toRemove) {
 						removed += toRemove;
 						amt -= toRemove;
 						toRemove = 0;
 						// data[i] = new Item(data[i].getDefinition().getId(),
 						// amt);
-						set2(i, new Item(data[i].getId(), amt));
+						set2(i, new Item(items[i].getId(), amt));
 						return removed;
 					} else {
 						removed += amt;
@@ -370,7 +375,7 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 	private boolean hasSpaceForItem(T item) {
 		if (alwaysStackable || item.getDefinitions().isStackable()
 				|| item.getDefinitions().isNoted()) {
-			for (Item aData : data) {
+			for (Item aData : items) {
 				if (aData != null) {
 					if (aData.getId() == item.getId()) {
 						return true;
@@ -379,15 +384,15 @@ public final class ItemsContainer<T extends Item> implements Serializable {
 			}
 		} else {
 			if (item.getAmount() > 1) {
-				return freeSlots() >= item.getAmount();
+				return countAvailableSlots() >= item.getAmount();
 			}
 		}
-		int index = freeSlot();
+		int index = findAvailableSlot();
 		return index != -1;
 	}
 
 	public Item[] toArray() {
-		return data;
+		return items;
 	}
 
 }

@@ -8,7 +8,7 @@ import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Utils;
 
-public class JailControler extends Controler {
+public class JailController extends Controller {
 
 	@Override
 	public void start() {
@@ -19,7 +19,7 @@ public class JailControler extends Controler {
 	@Override
 	public void process() {
 		if (player.getJailed() <= Utils.currentTimeMillis()) {
-			player.getControlerManager().getControler().removeControler();
+			player.getControlerManager().getController().removeControler();
 			player.getPackets().sendGameMessage(
 					"Your account has been unjailed.", true);
 			player.setNextWorldTile(new WorldTile(2677, 10379, 0));
@@ -27,7 +27,7 @@ public class JailControler extends Controler {
 	}
 
 	public static void stopControler(Player p) {
-		p.getControlerManager().getControler().removeControler();
+		p.getControlerManager().getController().removeControler();
 	}
 
 	@Override

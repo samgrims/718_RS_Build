@@ -115,7 +115,7 @@ public class DungeonManager {
 		}
 		for (DungeonPartyPlayer dplayer : party.getTeam()) {
 			Player player = dplayer.getPlayer();
-			player.getControlerManager().startControler("DungeonControler",
+			player.getControlerManager().startController("DungeonControler",
 					this);
 			player.stopAll();
 			player.reset();

@@ -423,7 +423,7 @@ public final class EmotesManager implements Serializable {
 					 */
 					break;
 				case 20763: // Veteran cape
-					if (player.getControlerManager().getControler() != null) {
+					if (player.getControlerManager().getController() != null) {
 						player.getPackets().sendGameMessage("You cannot do this here!");
 						return;
 					}
@@ -431,7 +431,7 @@ public final class EmotesManager implements Serializable {
 					player.setNextGraphics(new Graphics(1446));
 					break;
 				case 20765: // Classic cape
-					if (player.getControlerManager().getControler() != null) {
+					if (player.getControlerManager().getController() != null) {
 						player.getPackets().sendGameMessage("You cannot do this here!");
 						return;
 					}
@@ -441,7 +441,7 @@ public final class EmotesManager implements Serializable {
 							: 1466));
 					break;
 				case 20767: // Max cape
-					if (player.getControlerManager().getControler() != null) {
+					if (player.getControlerManager().getController() != null) {
 						player.getPackets().sendGameMessage("Dont annoy other players!");
 						return;
 					}
@@ -525,7 +525,7 @@ public final class EmotesManager implements Serializable {
 						.sendGameMessage(
 								"Need more space to perform this skillcape emote.");
 						return;
-					} else if (player.getControlerManager().getControler() != null) {
+					} else if (player.getControlerManager().getController() != null) {
 						player.getPackets().sendGameMessage("Dont annoy other players!");
 						return;
 					}

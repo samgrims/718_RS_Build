@@ -8,7 +8,7 @@ import com.rs.game.player.Player;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 
-public class CorpBeastControler extends Controler {
+public class CorpBeastController extends Controller {
 
 	@Override
 	public void start() {

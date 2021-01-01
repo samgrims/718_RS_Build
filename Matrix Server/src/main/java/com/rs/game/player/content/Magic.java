@@ -712,7 +712,7 @@ public class Magic {
 					}
 					player.setNextWorldTile(teleTile);
 					player.getControlerManager().magicTeleported(teleType);
-					if (player.getControlerManager().getControler() == null)
+					if (player.getControlerManager().getController() == null)
 						teleControlersCheck(player, teleTile);
 					if (xp != 0)
 						player.getSkills().addXp(Skills.MAGIC, xp);
@@ -775,7 +775,7 @@ public class Magic {
 					}
 					player.setNextWorldTile(teleTile);
 					player.getControlerManager().magicTeleported(ITEM_TELEPORT);
-					if (player.getControlerManager().getControler() == null)
+					if (player.getControlerManager().getController() == null)
 						teleControlersCheck(player, teleTile);
 					player.setNextFaceWorldTile(new WorldTile(teleTile.getX(),
 							teleTile.getY() - 1, teleTile.getPlane()));
@@ -795,13 +795,13 @@ public class Magic {
 
 	public static void teleControlersCheck(Player player, WorldTile teleTile) {
 		if (Kalaboss.isAtKalaboss(teleTile))
-			player.getControlerManager().startControler("Kalaboss");
+			player.getControlerManager().startController("Kalaboss");
 		else if (Wilderness.isAtWild(teleTile))
-			player.getControlerManager().startControler("Wilderness");
+			player.getControlerManager().startController("Wilderness");
 		else if (RequestController.inWarRequest(player))
-			player.getControlerManager().startControler("clan_wars_request");
+			player.getControlerManager().startController("clan_wars_request");
 		else if (FfaZone.inArea(player))
-			player.getControlerManager().startControler("clan_wars_ffa");
+			player.getControlerManager().startController("clan_wars_ffa");
 	}
 
 	private Magic() {
