@@ -23,9 +23,7 @@ public class InterfaceManager {
 	}
 
 	public void sendTab(int tabId, int interfaceId) {
-		player.getPackets().sendInterface(true,
-				resizableScreen ? RESIZABLE_WINDOW_ID : FIXED_WINDOW_ID, tabId,
-				interfaceId);
+		player.getPackets().sendInterface(true, resizableScreen ? RESIZABLE_WINDOW_ID : FIXED_WINDOW_ID, tabId,	interfaceId);
 	}
 
 	public void sendChatBoxInterface(int interfaceId) {
@@ -96,7 +94,11 @@ public class InterfaceManager {
 		sendTab(195, 748); 
 		sendTab(196, 749);
 		sendTab(197, 750);
-		sendTab(198, 747); 
+		sendTab(198, 747);
+		sendTab(119, 1139);
+		player.getPackets().sendGlobalConfig(823, 1);
+		player.getPackets().sendHideIComponent(1139, 8, true);
+		player.getPackets().sendHideIComponent(1139, 12, true);
 		player.getPackets().sendInterface(true, 752, 9, 137);
 		sendCombatStyles();
 		sendTaskSystem();
@@ -115,7 +117,12 @@ public class InterfaceManager {
 		sendTab(126, 34); // notes
 		sendTab(129, 182); // logout*/
 	}
-	
+	public void sendSof() {
+		sendTab(resizableScreen ? 119 : 179, 1139);
+		player.getPackets().sendGlobalConfig(823, 1);
+		player.getPackets().sendHideIComponent(1139, 8, true);
+		player.getPackets().sendHideIComponent(1139, 12, true);
+	}
 	public void sendFixedInterfaces() {
 		player.getPackets().sendWindowsPane(548, 0);
 		sendTab(161, 752);
@@ -126,11 +133,13 @@ public class InterfaceManager {
 		sendTab(151, 748);
 		sendTab(152, 749);
 		sendTab(153, 750);
+		sendTab(119, 1139);
 		player.getPackets().sendInterface(true, 752, 9, 137);
 		sendMagicBook();
 		sendPrayerBook();
 		sendEquipment();
 		sendInventory();
+		sendSof();
 		sendTab(174, 190);//quest
 		sendTab(181, 1109);// 551 ignore now friendchat
 		sendTab(182, 1110);// 589 old clan chat now new clan chat

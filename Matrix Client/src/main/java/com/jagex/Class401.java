@@ -364,13 +364,7 @@ public class Class401 implements Interface21 {
 									i_32_, i_33_, (short) 808), -1460658515);
 				}
 				if (i_34_ == 57 || i_34_ == 1007)
-					Class301_Sub1
-							.method3713(
-									i_35_,
-									i_33_,
-									i_32_,
-									(((Class298_Sub37_Sub15) class298_sub37_sub15).aString9657),
-									400950689);
+					Class301_Sub1.method3713(i_35_,i_33_,i_32_,	(((Class298_Sub37_Sub15) class298_sub37_sub15).aString9657),400950689);
 				if (1008 == i_34_ || 1009 == i_34_ || i_34_ == 1010
 						|| 1011 == i_34_ || i_34_ == 1012)
 					Class463.method6014(i_34_, i_35_, i_32_, 1889973846);

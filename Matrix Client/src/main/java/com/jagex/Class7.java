@@ -49,23 +49,17 @@ public class Class7 {
 			int i_1_ = (((Class403) class403).anIntArray5244[681479919 * ((Class403) class403).anInt5239]);
 			int i_2_ = (((Class403) class403).anIntArray5244[((Class403) class403).anInt5239 * 681479919 + 1]);
 			int i_3_ = (((Class403) class403).anIntArray5244[2 + ((Class403) class403).anInt5239 * 681479919]);
-			Class301_Sub1
-					.method3713(1, i_1_ << 16 | i_2_, i_3_, "", -172660954);
+			Class301_Sub1.method3713(1, i_1_ << 16 | i_2_, i_3_, "", -172660954);
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("ah.alj(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("ah.alj(").append(')').toString());
 		}
 	}
 
 	static Class98_Sub1 method313(RsByteBuffer class298_sub53, int i) {
 		try {
 			return new Class98_Sub1(class298_sub53.readShort(1844791454),
-					class298_sub53.readShort(1564642079), class298_sub53
-							.readShort(1940740922), class298_sub53
-							.readShort(1868310527), class298_sub53
-							.read24BitUnsignedInteger((byte) 51), class298_sub53
-							.read24BitUnsignedInteger((byte) -10), class298_sub53
-							.readUnsignedByte());
+					class298_sub53.readShort(1564642079), class298_sub53.readShort(1940740922), class298_sub53.readShort(1868310527), class298_sub53
+							.read24BitUnsignedInteger((byte) 51), class298_sub53.read24BitUnsignedInteger((byte) -10), class298_sub53.readUnsignedByte());
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ah.r(").append(')').toString());

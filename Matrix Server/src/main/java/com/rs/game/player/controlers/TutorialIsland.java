@@ -116,10 +116,7 @@ public final class TutorialIsland extends Controler {
 
 	public void sendProgress() {
 		int stage = getStage();
-		player.getInterfaceManager()
-				.sendTab(
-						player.getInterfaceManager().hasRezizableScreen() ? 10
-								: 8, 371);
+		player.getInterfaceManager().sendTab(player.getInterfaceManager().hasRezizableScreen() ? 10 : 8, 371);
 		player.getInterfaceManager().replaceRealChatBoxInterface(372);
 		if (stage == 0) {
 			player.getPackets().sendHideIComponent(371, 4, true); // hides the
@@ -127,8 +124,7 @@ public final class TutorialIsland extends Controler {
 																	// follow
 																	// intrucions
 			player.getPackets().sendIComponentText(372, 0, "Getting Started");
-			player.getPackets()
-					.sendIComponentText(372, 1,
+			player.getPackets().sendIComponentText(372, 1,
 							"To start the tutorial use your left mouse button to click on the");
 			player.getPackets()
 					.sendIComponentText(
@@ -613,6 +609,7 @@ public final class TutorialIsland extends Controler {
 		player.getPackets().closeInterface(rezi ? 34 : 209);// Equipment tab
 		player.getPackets().closeInterface(rezi ? 35 : 210);// pray tab
 		player.getPackets().closeInterface(rezi ? 36 : 211);// magic tab
+		player.getPackets().closeInterface(rezi ? 37 : 212);// SOF tab
 		player.getPackets().closeInterface(rezi ? 38 : 213);// Friend tab
 		player.getPackets().closeInterface(rezi ? 39 : 214);// FriendChat tab
 		player.getPackets().closeInterface(rezi ? 40 : 215);// Clan tab

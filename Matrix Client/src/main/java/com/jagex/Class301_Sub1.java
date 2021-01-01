@@ -74,15 +74,10 @@ public class Class301_Sub1 extends Class301 {
 				}
 				if (client.getIComponentSettings(class105).method3498(i - 1, (byte) -25)) {
 					Class25 class25 = Class429.method5760((short) 512);
-					if (-1233866115 * client.anInt8752 == 14
-							|| 0 == client.anInt8752 * -1233866115) {
+					if (-1233866115 * client.anInt8752 == 14 || 0 == client.anInt8752 * -1233866115) {
 						if (i == 1) {
-							Class298_Sub36 class298_sub36 = Class18.method359(
-									OutcommingPacket.ACTION_BUTTON1_PACKET,
-									class25.aClass449_330, (byte) 40);
-							Class125.method1396(class298_sub36, i_0_, i_1_,
-									(-1232467723 * class105.anInt1280),
-									-1695827903);
+							Class298_Sub36 class298_sub36 = Class18.method359(OutcommingPacket.ACTION_BUTTON1_PACKET, class25.aClass449_330, (byte) 40);
+							Class125.method1396(class298_sub36, i_0_, i_1_, (-1232467723 * class105.anInt1280),	-1695827903);
 							class25.method390(class298_sub36, (byte) -4);
 						}
 						if (i == 2) {

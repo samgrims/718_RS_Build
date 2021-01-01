@@ -104,7 +104,7 @@ public class ButtonHandler {
 //				player.getPackets().sendOpenURL("LINK HERE FOR BUY SPINS");
 			}
 		}
-		if (interfaceId == 548 && componentId == 68) {
+		if (interfaceId == 548 && (componentId == 68) || interfaceId ==746 && componentId == 78) {
 			player.getPackets().sendIComponentText(1139, 10, " "+ player.getSpins() +" ");
 		}
 
