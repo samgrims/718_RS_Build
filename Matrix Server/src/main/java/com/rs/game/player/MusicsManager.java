@@ -2,6 +2,7 @@ package com.rs.game.player;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.rs.Settings;
 import com.rs.cache.loaders.ClientScriptMap;
@@ -60,6 +61,10 @@ public final class MusicsManager implements Serializable {
 
 	public boolean hasMusic(int id) {
 		return unlockedMusics.contains(id);
+	}
+
+	public List<Integer> getUnlockedMusics() {
+		return unlockedMusics;
 	}
 
 	public void setPlayer(Player player) {

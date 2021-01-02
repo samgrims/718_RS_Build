@@ -55,6 +55,28 @@ public class Toolbelt implements Serializable {
         return -1;
     }
 
+    /**
+     * Returns a boolean array which is used to represent
+     * each item as existant in the toolbelt. The position
+     * of the item in the toolbelt is static.
+     * @return boolean array
+     */
+    public boolean[] getItemsDeposited() {
+        return TOOLBELT_ITEMS_TAKEN;
+    }
+
+    public void addItemForce(Item item) {
+        int slot = getItemSlot(item.getId());
+        if (slot == -1)
+            return;
+        if (TOOLBELT_ITEMS_TAKEN[slot])
+            return;
+        else {
+            TOOLBELT_ITEMS_TAKEN[slot] = true;
+            refreshConfigs();
+        }
+    }
+
     public boolean addItem(int invSlot, Item item) {
         int slot = getItemSlot(item.getId());
         if (slot == -1)

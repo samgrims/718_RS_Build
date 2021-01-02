@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.*;
+import java.util.List;
 
 /**
  * Protects player integrity accross player versions
@@ -16,16 +17,18 @@ import java.io.*;
 public class JSONPlayerFile {
     //Skills DONE
     //Misc: Spins, Music, minutes played, creation date
-    //Bank Inventory
+    //Bank Inventory DRAFT ENCODE
     //Inventory DRAFT ENCODE
-    //Equipment Inventory
+    //Equipment Inventory DRAFT ENCODE
     //Toolbelt inventory
 
     public static void savePlayer(Player player) {
         JSONObject playerMeta = new JSONObject();
         playerMeta = encodeSkills(player, playerMeta);
         playerMeta = encodeInventory(player, playerMeta);
-//        playerMeta = encodeEquipment(player, playerMeta);
+        playerMeta = encodeEquipment(player, playerMeta);
+        playerMeta = encodeDetails(player, playerMeta);
+        playerMeta = encodeToolbelt(player, playerMeta);
 
         toFile(player, playerMeta);
     }
@@ -100,10 +103,63 @@ public class JSONPlayerFile {
         return playerMeta;
     }
 
+    private static JSONObject encodeEquipment(Player player, JSONObject playerMeta) {
+        JSONArray equipment = new JSONArray();
+        JSONObject itemJSON = new JSONObject();
+        JSONArray itemMeta = new JSONArray();
+
+        for(int slot = 0; slot < 15; slot++) {
+            Item item = player.getEquipment().getItem(slot);
+            if(item != null) {
+                itemMeta.add(item.getId());
+                itemMeta.add(item.getAmount());
+                itemJSON.put(item.getName().toLowerCase(), itemMeta.clone());
+            }
+            equipment.add(itemJSON.clone());
+            itemJSON.clear();
+            itemMeta.clear();;
+        }
+
+        playerMeta.put("equipment", equipment);
+        return playerMeta;
+    }
+
+    private static JSONObject encodeDetails(Player player, JSONObject playerMeta) {
+        JSONObject details = new JSONObject();
+        JSONArray musicUnlocked = new JSONArray();
+        details.put("creation date", player.getCreationDate());
+        details.put("minutes played", player.getTotalMinutesPlayed());
+        details.put("spins", player.getSpins());
+
+        JSONObject coordinate = new JSONObject();
+        coordinate.put("x", player.getLocation().getX());
+        coordinate.put("y", player.getLocation().getY());
+        coordinate.put("plane", player.getLocation().getPlane());
+        details.put("location", coordinate);
+
+        List<Integer> musicsUnlocked = player.getMusicsManager().getUnlockedMusics();
+        for(int index = 0; index < musicsUnlocked.size(); index++)
+            musicUnlocked.add(musicsUnlocked.get(index));
+        details.put("music unlocked", musicUnlocked);
+
+        playerMeta.put("details", details);
+        return playerMeta;
+    }
+
+    private static JSONObject encodeToolbelt(Player player, JSONObject playerMeta) {
+        JSONArray itemsDepositedJSON = new JSONArray();
+        boolean[] itemsDeposited = player.getToolbelt().getItemsDeposited();
+        for(boolean isDeposited : itemsDeposited)
+            itemsDepositedJSON.add(isDeposited);
+
+        playerMeta.put("toolbelt", itemsDepositedJSON);
+        return playerMeta;
+    }
+
     private static void toFile(Player player, JSONObject playerMeta) {
         try {
             String filePath = Settings.PLAYER_JSON_FOLDER_DIR + player.getUsername().toLowerCase() + ".json";
-            System.out.println(filePath);
+
             File output_json = new File(filePath);
             if(!output_json.exists())
                 output_json.createNewFile();

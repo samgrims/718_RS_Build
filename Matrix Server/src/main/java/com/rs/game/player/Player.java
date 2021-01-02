@@ -307,6 +307,10 @@ public class Player extends Entity {//Player Updater tool
 		return "v" + serialVersionUID;
 	}
 
+	public long getCreationDate() {
+		return creationDate;
+	}
+
 	public WorldTile getLocation() {
 		return new WorldTile(getX(), getY(), getPlane());
 	}
