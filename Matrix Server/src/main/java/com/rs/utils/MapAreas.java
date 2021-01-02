@@ -19,7 +19,7 @@ import com.rs.game.WorldTile;
 public final class MapAreas {
 
 	private final static HashMap<Integer, int[]> mapAreas = new HashMap<Integer, int[]>();
-	private final static String PACKED_PATH = Settings.data_dir + "data/map/packedMapAreas.ma";
+	private final static String PACKED_PATH = Settings.SERVER_DIR + "data/map/packedMapAreas.ma";
 	private final static Object lock = new Object();
 
 	public static final void init() {
@@ -74,7 +74,7 @@ public final class MapAreas {
 		Logger.log("MapAreas", "Packing map areas...");
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					Settings.data_dir + "data/map/unpackedMapAreas.txt"));
+					Settings.SERVER_DIR + "data/map/unpackedMapAreas.txt"));
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(
 					PACKED_PATH));
 			while (true) {

@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public final class NPCBonuses {
 	private final static HashMap<Integer, int[]> npcBonuses = new HashMap<Integer, int[]>();
-	private static final String PACKED_PATH = Settings.data_dir + "data/npcs/packedBonuses.nb";
+	private static final String PACKED_PATH = Settings.SERVER_DIR + "data/npcs/packedBonuses.nb";
 
 	public static void init() {
 		if (new File(PACKED_PATH).exists())
@@ -36,7 +36,7 @@ public final class NPCBonuses {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(
 					PACKED_PATH));
 			BufferedReader in = new BufferedReader(new FileReader(
-					Settings.data_dir + "data/npcs/unpackedBonuses.txt"));
+					Settings.SERVER_DIR + "data/npcs/unpackedBonuses.txt"));
 			while (true) {
 				String line = in.readLine();
 				if (line == null)

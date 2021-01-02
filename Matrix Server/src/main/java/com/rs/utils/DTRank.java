@@ -21,7 +21,7 @@ public final class DTRank implements Serializable {
 
 	private static DTRank[] ranks;
 
-	private static final String PATH = Settings.data_dir + "data/dtRanks.ser";
+	private static final String PATH = Settings.SERVER_DIR + "data/dtRanks.ser";
 
 	public DTRank(Player player, int mode, String bossName) {
 		this.username = player.getUsername();

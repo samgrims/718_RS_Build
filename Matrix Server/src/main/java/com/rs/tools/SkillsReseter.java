@@ -25,7 +25,7 @@ public class SkillsReseter {
 	public static void main(String[] args) throws ClassNotFoundException,
 			IOException {
 		// Cache.init();
-		File[] chars = new File(Settings.data_dir + "data/characters").listFiles();
+		File[] chars = new File(Settings.SERVER_DIR + "data/characters").listFiles();
 		for (File acc : chars) {
 			try {
 				Player player = (Player) SerializableFilesManager

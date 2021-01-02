@@ -21,8 +21,8 @@ public class ShopsHandler {
 
 	private static final HashMap<Integer, Shop> handledShops = new HashMap<Integer, Shop>();
 
-	private static final String PACKED_PATH = Settings.data_dir + "data/items/packedShops.s";
-	private static final String UNPACKED_PATH = Settings.data_dir + "data/items/unpackedShops.txt";
+	private static final String PACKED_PATH = Settings.SERVER_DIR + "data/items/packedShops.s";
+	private static final String UNPACKED_PATH = Settings.SERVER_DIR + "data/items/unpackedShops.txt";
 
 	public static void init() {
 		if (new File(PACKED_PATH).exists())

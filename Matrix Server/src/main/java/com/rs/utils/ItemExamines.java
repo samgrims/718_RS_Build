@@ -19,8 +19,8 @@ import com.rs.game.item.Item;
 public class ItemExamines {
 
 	private final static HashMap<Integer, String> itemExamines = new HashMap<Integer, String>();
-	private final static String PACKED_PATH = Settings.data_dir + "data/items/packedExamines.e";
-	private final static String UNPACKED_PATH = Settings.data_dir + "data/items/unpackedExamines.txt";
+	private final static String PACKED_PATH = Settings.SERVER_DIR + "data/items/packedExamines.e";
+	private final static String UNPACKED_PATH = Settings.SERVER_DIR + "data/items/unpackedExamines.txt";
 
 	public static final void init() {
 		if (new File(PACKED_PATH).exists())

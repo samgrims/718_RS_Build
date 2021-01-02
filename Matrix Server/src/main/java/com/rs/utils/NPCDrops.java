@@ -11,7 +11,7 @@ import com.rs.game.npc.Drop;
 
 public class NPCDrops {
 
-	private final static String PACKED_PATH = Settings.data_dir + "data/npcs/packedDrops.d";
+	private final static String PACKED_PATH = Settings.SERVER_DIR + "data/npcs/packedDrops.d";
 	private static HashMap<Integer, Drop[]> npcDrops;
 
 	public static final void init() {

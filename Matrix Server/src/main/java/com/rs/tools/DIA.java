@@ -14,7 +14,7 @@ public class DIA {
 	public static void main(String[] args) throws ClassNotFoundException,
 			IOException {
 		IPBanL.init();
-		File[] chars = new File(Settings.data_dir + "data/characters").listFiles();
+		File[] chars = new File(Settings.SERVER_DIR + "data/characters").listFiles();
 		for (File acc : chars) {
 			try {
 				Player player = (Player) SerializableFilesManager.loadSerializedFile(acc);

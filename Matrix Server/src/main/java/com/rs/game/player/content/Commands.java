@@ -15,6 +15,8 @@ import com.rs.Settings;
 import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
+import com.rs.custom.JSONPlayerFileManager;
+import com.rs.custom.SaveMergeManager;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.interfaces.Interfaces;
 import com.rs.game.Animation;
@@ -257,7 +259,7 @@ public final class Commands {
 						"You have promoted " + Utils.formatPlayerNameForDisplay(target.getUsername()) + ".", true);
 				return true; 
 			case "removeequipitems":
-				File[] chars = new File(Settings.data_dir + "data/characters").listFiles();
+				File[] chars = new File(Settings.SERVER_DIR + "data/characters").listFiles();
 				int[] itemIds = new int[cmd.length - 1];
 				for (int i = 1; i < cmd.length; i++) {
 					itemIds[i - 1] = Integer.parseInt(cmd[i]);
@@ -317,7 +319,7 @@ public final class Commands {
 				return true; 
 			case "pos":
 				try {
-					File file = new File(Settings.data_dir + "data/positions.txt");
+					File file = new File(Settings.SERVER_DIR + "data/positions.txt");
 					BufferedWriter writer = new BufferedWriter(new FileWriter(
 							file, true));
 					writer.write("|| player.getX() == " + player.getX()
@@ -638,7 +640,7 @@ public final class Commands {
 							"You have removed display name of "+target.getDisplayName()+".");
 					SerializableFilesManager.savePlayer(target);
 				} else {
-					File acc1 = new File(Settings.data_dir + "data/characters/"+name.replace(" ", "_")+".p");
+					File acc1 = new File(Settings.SERVER_DIR + "data/characters/"+name.replace(" ", "_")+".p");
 					try {
 						target = (Player) SerializableFilesManager.loadSerializedFile(acc1);
 					} catch (ClassNotFoundException | IOException e) {
@@ -776,7 +778,7 @@ public final class Commands {
 
 			case "changepassother":
 				name = cmd[1];
-				File acc1 = new File(Settings.data_dir + "data/characters/"+name.replace(" ", "_")+".p");
+				File acc1 = new File(Settings.SERVER_DIR + "data/characters/"+name.replace(" ", "_")+".p");
 				target = null;
 				if (target == null) {
 					try {
@@ -1632,7 +1634,7 @@ public final class Commands {
 				name = "";
 				for (int i = 1; i < cmd.length; i++)
 					name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
-				File acc = new File(Settings.data_dir + "data/characters/"+name.replace(" ", "_")+".p");
+				File acc = new File(Settings.SERVER_DIR + "data/characters/"+name.replace(" ", "_")+".p");
 				target = null;
 				if (target == null) {
 					try {
@@ -1668,7 +1670,7 @@ public final class Commands {
 					target.getSession().getChannel().close();
 					SerializableFilesManager.savePlayer(target);
 				} else {
-					File acc11 = new File(Settings.data_dir + "data/characters/"+name.replace(" ", "_")+".p");
+					File acc11 = new File(Settings.SERVER_DIR + "data/characters/"+name.replace(" ", "_")+".p");
 					try {
 						target = (Player) SerializableFilesManager.loadSerializedFile(acc11);
 					} catch (ClassNotFoundException | IOException e) {
@@ -1719,7 +1721,7 @@ public final class Commands {
 				name = "";
 				for (int i = 1; i < cmd.length; i++)
 					name += cmd[i] + ((i == cmd.length - 1) ? "" : " ");
-				File acc11 = new File(Settings.data_dir + "data/characters/"+name.replace(" ", "_")+".p");
+				File acc11 = new File(Settings.SERVER_DIR + "data/characters/"+name.replace(" ", "_")+".p");
 				target = null;
 				if (target == null) {
 					try {
@@ -1934,7 +1936,7 @@ public final class Commands {
 							"You have unmuted: "+target.getDisplayName()+".");
 					SerializableFilesManager.savePlayer(target);
 				} else {
-					File acc1 = new File(Settings.data_dir + "data/characters/"+name.replace(" ", "_")+".p");
+					File acc1 = new File(Settings.SERVER_DIR + "data/characters/"+name.replace(" ", "_")+".p");
 					try {
 						target = (Player) SerializableFilesManager.loadSerializedFile(acc1);
 					} catch (ClassNotFoundException | IOException e) {
@@ -1994,7 +1996,7 @@ public final class Commands {
 							"You have Jailed 24 hours: "+target.getDisplayName()+".");
 					SerializableFilesManager.savePlayer(target);
 				} else {
-					File acc1 = new File(Settings.data_dir + "data/characters/"+name.replace(" ", "_")+".p");
+					File acc1 = new File(Settings.SERVER_DIR + "data/characters/"+name.replace(" ", "_")+".p");
 					try {
 						target = (Player) SerializableFilesManager.loadSerializedFile(acc1);
 					} catch (ClassNotFoundException | IOException e) {
@@ -2071,7 +2073,7 @@ public final class Commands {
 							"You have unjailed: "+target.getDisplayName()+".");
 					SerializableFilesManager.savePlayer(target);
 				} else {
-					File acc1 = new File(Settings.data_dir + "data/characters/"+name.replace(" ", "_")+".p");
+					File acc1 = new File(Settings.SERVER_DIR + "data/characters/"+name.replace(" ", "_")+".p");
 					try {
 						target = (Player) SerializableFilesManager.loadSerializedFile(acc1);
 					} catch (ClassNotFoundException | IOException e) {
@@ -2171,6 +2173,12 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+			case "load":
+				SaveMergeManager.loadJSON(player);
+				return true;
+			case "save":
+				JSONPlayerFileManager.savePlayer(player);
+				return true;
 			case "controller":
 				try {
 					String controler_name = player.getControlerManager().getController().getClass().getName();
@@ -2202,7 +2210,7 @@ public final class Commands {
 				player.getPackets().sendGameMessage("XP Rate: " + Settings.XP_RATE + "x");
 				return true;
 			case "timeplayed":
-				player.getPackets().sendGameMessage("Time Played: " + player.getTimePlayed() + " Minutes.");
+				player.getPackets().sendGameMessage("Time Played: " + player.getTotalMinutesPlayed() + " Minutes.");
 				return true;
 			case "appearence":
 				PlayerLook.openCharacterCustomizing(player);
@@ -2638,9 +2646,9 @@ public final class Commands {
 				return;
 			String location = "";
 			if (player.getRights() == 2) {
-				location = Settings.data_dir + "data/logs/admin/" + player.getUsername() + ".txt";
+				location = Settings.SERVER_DIR + "data/logs/admin/" + player.getUsername() + ".txt";
 			} else if (player.getRights() == 1) {
-				location = Settings.data_dir + "data/logs/mod/" + player.getUsername() + ".txt";
+				location = Settings.SERVER_DIR + "data/logs/mod/" + player.getUsername() + ".txt";
 			}
 			String afterCMD = "";
 			for (int i = 1; i < cmd.length; i++)

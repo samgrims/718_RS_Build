@@ -17,7 +17,7 @@ public final class PkRank implements Serializable {
 
 	private static PkRank[] ranks;
 
-	private static final String PATH = Settings.data_dir + "data/pkRanks.ser";
+	private static final String PATH = Settings.SERVER_DIR + "data/pkRanks.ser";
 
 	public PkRank(Player player) {
 		this.username = player.getUsername();

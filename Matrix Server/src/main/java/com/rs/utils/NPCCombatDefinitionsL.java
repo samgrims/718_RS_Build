@@ -20,7 +20,7 @@ public final class NPCCombatDefinitionsL {
 	private final static NPCCombatDefinitions DEFAULT_DEFINITION = new NPCCombatDefinitions(
 			1, -1, -1, -1, 5, 1, 33, 0, NPCCombatDefinitions.MELEE, -1, -1,
 			NPCCombatDefinitions.PASSIVE);
-	private static final String PACKED_PATH = Settings.data_dir + "data/npcs/packedCombatDefinitions.ncd";
+	private static final String PACKED_PATH = Settings.SERVER_DIR + "data/npcs/packedCombatDefinitions.ncd";
 
 	public static void init() {
 		if (new File(PACKED_PATH).exists())
@@ -43,7 +43,7 @@ public final class NPCCombatDefinitionsL {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(
 					PACKED_PATH));
 			BufferedReader in = new BufferedReader(new FileReader(
-					Settings.data_dir + "data/npcs/unpackedCombatDefinitionsList.txt"));
+					Settings.SERVER_DIR + "data/npcs/unpackedCombatDefinitionsList.txt"));
 			while (true) {
 				String line = in.readLine();
 				count++;

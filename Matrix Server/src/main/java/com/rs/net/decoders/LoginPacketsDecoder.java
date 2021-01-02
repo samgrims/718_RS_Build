@@ -2,6 +2,7 @@ package com.rs.net.decoders;
 
 import com.rs.Settings;
 import com.rs.cache.Cache;
+import com.rs.custom.SaveMergeManager;
 import com.rs.game.World;
 import com.rs.game.player.Player;
 import com.rs.io.InputStream;
@@ -130,9 +131,9 @@ public final class LoginPacketsDecoder extends Decoder {
 			return;
 		}
 		Player player;
-		if (!SerializableFilesManager.containsPlayer(username)) 
+		if (!SerializableFilesManager.containsPlayer(username)) {
 			player = Player.createBrandNew(password);
-		else {
+		} else {
 			player = SerializableFilesManager.loadPlayer(username);
 			if (player == null) {
 				session.getLoginPackets().sendClientPacket(20);

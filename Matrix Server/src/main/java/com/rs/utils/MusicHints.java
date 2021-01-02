@@ -18,8 +18,8 @@ import java.util.HashMap;
 public class MusicHints {
 
 	private final static HashMap<Integer, String> musicHints = new HashMap<Integer, String>();
-	private final static String PACKED_PATH = Settings.data_dir + "data/musics/packedMusicHints.mh";
-	private final static String UNPACKED_PATH = Settings.data_dir + "data/musics/unpackedMusicHints.txt";
+	private final static String PACKED_PATH = Settings.SERVER_DIR + "data/musics/packedMusicHints.mh";
+	private final static String UNPACKED_PATH = Settings.SERVER_DIR + "data/musics/unpackedMusicHints.txt";
 
 	public static final void init() {
 		if (new File(PACKED_PATH).exists())

@@ -10,7 +10,7 @@ public final class IPBanL {
 
 	public static CopyOnWriteArrayList<String> ipList;
 
-	private static final String PATH = Settings.data_dir + "data/bannedIPS.ser";
+	private static final String PATH = Settings.SERVER_DIR + "data/bannedIPS.ser";
 	private static boolean edited;
 
 	@SuppressWarnings("unchecked")

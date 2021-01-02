@@ -10,7 +10,7 @@ import com.rs.utils.SerializableFilesManager;
 public class IPChecker {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
-		File[] chars = new File(Settings.data_dir + "data/characters").listFiles();
+		File[] chars = new File(Settings.SERVER_DIR + "data/characters").listFiles();
 		//String ip = args[0];
 		for (File acc : chars) {
 			try {

@@ -12,6 +12,7 @@ import com.rs.cache.loaders.ItemsEquipIds;
 import com.rs.cache.loaders.NPCDefinitions;
 import com.rs.cache.loaders.ObjectDefinitions;
 import com.rs.cores.CoresManager;
+import com.rs.custom.SaveMergeManager;
 import com.rs.game.Region;
 import com.rs.game.RegionBuilder;
 import com.rs.game.World;
@@ -38,7 +39,6 @@ import com.rs.utils.NPCDrops;
 import com.rs.utils.NPCSpawns;
 import com.rs.utils.ObjectSpawns;
 import com.rs.utils.PkRank;
-import com.rs.utils.SerializableFilesManager;
 import com.rs.utils.ShopsHandler;
 import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
@@ -65,13 +65,7 @@ public final class Server {
 		if(getHostIP().equalsIgnoreCase("72.191.29.70"))
 			Settings.XP_RATE = 100;
 
-		Settings.HOSTED = false;
-		Settings.DEBUG = true;
 		long currentTime = Utils.currentTimeMillis();
-		if (Settings.HOSTED) {
-			 System.setErr(new PrintStream(new FileOutputStream(Settings.data_dir + "data/auto/err.txt")));
-			 System.setOut(new PrintStream(new FileOutputStream(Settings.data_dir + "data/auto/out.txt")));
-		}
 		Logger.log("Launcher", "Initing Cache...");
 		Cache.init();
 		ItemsEquipIds.init();
@@ -121,8 +115,6 @@ public final class Server {
 		}
 		Logger.log("Launcher", "Server took " + (Utils.currentTimeMillis() - currentTime) + " milli seconds to launch.");
 		addAccountsSavingTask();
-		if (Settings.HOSTED)
-			addUpdatePlayersOnlineTask();
 		addCleanMemoryTask();
 	}
 
@@ -168,14 +160,14 @@ public final class Server {
 				}
 
 			}
-		}, 15, 15, TimeUnit.MINUTES);
+		}, 15, 10, TimeUnit.MINUTES);
 	}
 
 	public static void saveFiles() {
 		for (Player player : World.getPlayers()) {
 			if (player == null || !player.hasStarted() || player.hasFinished())
 				continue;
-			SerializableFilesManager.savePlayer(player);
+			SaveMergeManager.saveJsonSerial(player);
 		}
 		DisplayNames.save();
 		IPBanL.save();
@@ -208,13 +200,6 @@ public final class Server {
 	public static void closeServices() {
 		ServerChannelHandler.shutdown();
 		CoresManager.shutdown();
-		if (Settings.HOSTED) {
-			try {
-				setWebsitePlayersOnline(0);
-			} catch (Throwable e) {
-				Logger.handle(e);
-			}
-		}
 	}
 
 	public static void restart() {

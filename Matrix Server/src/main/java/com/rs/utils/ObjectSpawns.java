@@ -20,18 +20,18 @@ import com.rs.game.WorldTile;
 public final class ObjectSpawns {
 
 	public static final void init() {
-		if (!new File(Settings.data_dir + "data/map/packedSpawns").exists())
+		if (!new File(Settings.SERVER_DIR + "data/map/packedSpawns").exists())
 			packObjectSpawns();
 	}
 
 	private static final void packObjectSpawns() {
 		Logger.log("ObjectSpawns", "Packing object spawns...");
-		if (!new File(Settings.data_dir + "data/map/packedSpawns").mkdir())
+		if (!new File(Settings.SERVER_DIR + "data/map/packedSpawns").mkdir())
 			throw new RuntimeException(
 					"Couldn't create packedSpawns directory.");
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					Settings.data_dir + "data/map/unpackedSpawnsList.txt"));
+					Settings.SERVER_DIR + "data/map/unpackedSpawnsList.txt"));
 			while (true) {
 				String line = in.readLine();
 				if (line == null)
@@ -65,7 +65,7 @@ public final class ObjectSpawns {
 	}
 
 	public static final void loadObjectSpawns(int regionId) {
-		File file = new File(Settings.data_dir + "data/map/packedSpawns/" + regionId + ".os");
+		File file = new File(Settings.SERVER_DIR + "data/map/packedSpawns/" + regionId + ".os");
 		if (!file.exists())
 			return;
 		try {
@@ -97,7 +97,7 @@ public final class ObjectSpawns {
 			int rotation, int regionId, WorldTile tile, boolean cliped) {
 		try {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(
-					Settings.data_dir + "data/map/packedSpawns/" + regionId + ".os", true));
+					Settings.SERVER_DIR + "data/map/packedSpawns/" + regionId + ".os", true));
 			out.writeShort(objectId);
 			out.writeByte(type);
 			out.writeByte(rotation);

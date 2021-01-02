@@ -19,7 +19,7 @@ public class ItemRemoverC {
 			e.printStackTrace();
 		}
 		System.out.println("Starting");
-		File[] chars = new File(Settings.data_dir + "data/characters").listFiles();
+		File[] chars = new File(Settings.SERVER_DIR + "data/characters").listFiles();
 		for (File acc : chars) {
 			if (Utils.invalidAccountName(acc.getName().replace(".p", ""))) {
 				acc.delete();

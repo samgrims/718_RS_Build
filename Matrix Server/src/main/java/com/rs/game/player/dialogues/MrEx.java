@@ -15,11 +15,6 @@ public class MrEx extends Dialogue {
 
 	@Override
 	public void start() {
-		if (Settings.ECONOMY) {
-			player.getPackets().sendGameMessage("Mr.Ex is in no mood to talk to you.");
-			end();
-			return;
-		}
 		npcId = (Integer) parameters[0];
 		sendEntityDialogue(SEND_2_TEXT_CHAT,
 				new String[] { NPCDefinitions.getNPCDefinitions(npcId).name,

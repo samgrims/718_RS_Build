@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.rs.Settings;
 import com.rs.cores.CoresManager;
+import com.rs.custom.SaveMergeManager;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.data_structures.SquealOfFortune;
 import com.rs.custom.data_structures.Toolbelt;
@@ -57,23 +58,28 @@ import com.rs.utils.IsaacKeyPair;
 import com.rs.utils.Logger;
 import com.rs.utils.MachineInformation;
 import com.rs.utils.PkRank;
-import com.rs.utils.SerializableFilesManager;
 import com.rs.utils.Utils;
 
 public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
-	private static final long serialVersionUID = 2;//based on updates
+	//version information
+	private final static long serialVersionUID = 1;//based on updates
+	private static boolean syncedWithJSON;
 
-	// custom stuff
-	private transient long timeOfLogin;
-	private int totalMinutesPlayed;
-	private int spinsEarnedByMinutes;
+	// Portable Information per Base Version
+	private transient int totalMinutesPlayed;
+	private transient int spinsEarnedByMinutes;
+	private transient int spins;
+
+
+
+
+	private long timeOfLogin;
 	private boolean isBrandNew;
 	private Toolbelt toolbelt;
-	private transient SquealOfFortune sof;
-	private transient SpinsManager spinsManager;
-	private int spins;
+	private SquealOfFortune sof;
+	private SpinsManager spinsManager;
 
 	// Matrix transient stuff
 	private transient String username;
@@ -289,8 +295,8 @@ public class Player extends Entity {//Player Updater tool
 		return new Player(password);
 	}
 
-	public static long getPlayerVersionOfServer() {
-		return serialVersionUID;
+	public static String getPlayerVersionOfServer() {
+		return "v" + serialVersionUID;
 	}
 
 	public WorldTile getLocation() {
@@ -407,7 +413,7 @@ public class Player extends Entity {//Player Updater tool
 		this.totalMinutesPlayed += minutesPlayed;
 	}
 
-	public int getTimePlayed() {
+	public int getTotalMinutesPlayed() {
 		return this.totalMinutesPlayed;
 	}
 
@@ -509,11 +515,14 @@ public class Player extends Entity {//Player Updater tool
 		updateSpinsEarnedByMinutes();
 		if(isBrandNew) {
 			giveStartingItems();
+			if(SaveMergeManager.jsonExists(this))
+				this.getPackets().sendGameMessage("<col=FF0000>Your save was loaded from a backup");
 			isBrandNew = false;
 		}
 		toolbelt.setPlayer(this);
 		sof.setPlayer(this);
 		toolbelt.init();
+		SaveMergeManager.loadJSON(this);
 	}
 
 	public void stopAll() {
@@ -981,7 +990,7 @@ public class Player extends Entity {//Player Updater tool
 		setFinished(true);
 		session.setDecoder(-1);
 		updateTimeLoggedIn();
-		SerializableFilesManager.savePlayer(this);
+		SaveMergeManager.saveJsonSerial(this);
 		World.updateEntityRegion(this);
 		World.removePlayer(this);
 

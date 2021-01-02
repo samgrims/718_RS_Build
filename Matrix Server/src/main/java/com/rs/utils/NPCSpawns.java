@@ -25,7 +25,7 @@ public final class NPCSpawns {
 	private static final Object lock = new Object();
 	public static boolean addSpawn(String username, int id, WorldTile tile) throws Throwable {
 		synchronized(lock) {
-			File file = new File(Settings.data_dir + "data/npcs/spawns.txt");
+			File file = new File(Settings.SERVER_DIR + "data/npcs/spawns.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
 			writer.write("// "+NPCDefinitions.getNPCDefinitions(id).name+", "+NPCDefinitions.getNPCDefinitions(id).combatLevel+", added by: "+username);
 			writer.newLine();
@@ -42,7 +42,7 @@ public final class NPCSpawns {
 	public static boolean removeSpawn(NPC npc) throws Throwable {
 		synchronized(lock) {
 			List<String> page = new ArrayList<>();
-			File file = new File(Settings.data_dir + "data/npcs/spawns.txt");
+			File file = new File(Settings.SERVER_DIR + "data/npcs/spawns.txt");
 			BufferedReader in = new BufferedReader(new FileReader(file));
 			String line;
 			boolean removed = false;
@@ -74,18 +74,18 @@ public final class NPCSpawns {
 	 * If you delete packedSpawns it will be regenerated
 	 */
 	public static final void init() {
-		if (!new File(Settings.data_dir + "data/npcs/packedSpawns").exists())
+		if (!new File(Settings.SERVER_DIR + "data/npcs/packedSpawns").exists())
 			packNPCSpawns();
 	}
 
 	private static final void packNPCSpawns() {
 		Logger.log("NPCSpawns", "Packing npc spawns...");
-		if (!new File(Settings.data_dir + "data/npcs/packedSpawns").mkdir())
+		if (!new File(Settings.SERVER_DIR + "data/npcs/packedSpawns").mkdir())
 			throw new RuntimeException(
 					"Couldn't create packedSpawns directory.");
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					Settings.data_dir + "data/npcs/unpackedSpawnsList.txt"));
+					Settings.SERVER_DIR + "data/npcs/unpackedSpawnsList.txt"));
 			while (true) {
 				String line = in.readLine();
 				if (line == null)
@@ -122,7 +122,7 @@ public final class NPCSpawns {
 	}
 
 	public static final void loadNPCSpawns(int regionId) {
-		File file = new File(Settings.data_dir + "data/npcs/packedSpawns/" + regionId + ".ns");
+		File file = new File(Settings.SERVER_DIR + "data/npcs/packedSpawns/" + regionId + ".ns");
 		if (!file.exists())
 			return;
 		try {
@@ -157,7 +157,7 @@ public final class NPCSpawns {
 			boolean canBeAttackFromOutOfArea) {
 		try {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(
-					Settings.data_dir + "data/npcs/packedSpawns/" + regionId + ".ns", true));
+					Settings.SERVER_DIR + "data/npcs/packedSpawns/" + regionId + ".ns", true));
 			out.writeShort(npcId);
 			out.writeByte(tile.getPlane());
 			out.writeShort(tile.getX());

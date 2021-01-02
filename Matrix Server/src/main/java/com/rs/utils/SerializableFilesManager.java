@@ -9,13 +9,13 @@ import com.rs.tools.DebugLine;
 
 public class SerializableFilesManager {
 
-	private static final String PATH = Settings.data_dir + "data/characters/";
-	private static final String BACKUP_PATH = Settings.data_dir + "data/charactersBackup/";
-
 	public synchronized static final boolean containsPlayer(String username) {
-		File folder = new File(PATH);
+		File folder = new File(Settings.PLAYER_FOLDER_DIR);
 		File[] listOfFiles = folder.listFiles();
 
+		if(listOfFiles.length == 0) {
+			return false;
+		}
 		for(File player: listOfFiles) {
 			String usernameOfFile = player.getName().split("\\.")[1];
 			if(usernameOfFile.equalsIgnoreCase(username)) {
@@ -29,28 +29,28 @@ public class SerializableFilesManager {
 
 	public synchronized static Player loadPlayer(String username) {
 		try {
-			Player loadedPlayerFile = (Player) loadSerializedFile(new File(PATH + "v" + Player.getPlayerVersionOfServer() + "." + username + ".p"));
+			Player loadedPlayerFile = (Player) loadSerializedFile(new File(Settings.PLAYER_FOLDER_DIR + Player.getPlayerVersionOfServer() + "." + username + ".p"));
 
 			if(loadedPlayerFile == null)
-				;
+				DebugLine.print("Perhaps there was an update?");
 
 			return loadedPlayerFile;
 
 		} catch (Throwable e) {
 			Logger.handle(e);
 		}
-//		try {
-////			Logger.log("SerializableFilesManager", "Recovering account: " + username);
-//			return (Player) loadSerializedFile(new File(BACKUP_PATH + username + ".p"));
-//		} catch (Throwable e) {
-////			Logger.handle(e);
-//		}
+		try {
+//			Logger.log("SerializableFilesManager", "Recovering account: " + username);
+			return (Player) loadSerializedFile(new File(Settings.BACKUP_DIR + username + ".p"));
+		} catch (Throwable e) {
+//			Logger.handle(e);
+		}
 		return null;
 	}
 
 	public static boolean createBackup(String username) {
 		try {
-			Utils.copyFile(new File(PATH + "v" + Player.getPlayerVersionOfServer() + "." + username + ".p"), new File(BACKUP_PATH + username + ".p"));
+			Utils.copyFile(new File(Settings.PLAYER_FOLDER_DIR + Player.getPlayerVersionOfServer() + "." + username + ".p"), new File(Settings.BACKUP_DIR + username + ".p"));
 			return true;
 		} catch (Throwable e) {
 			Logger.handle(e);
@@ -60,7 +60,7 @@ public class SerializableFilesManager {
 
 	public synchronized static void savePlayer(Player player) {
 		try {
-			storeSerializableClass(player, new File(PATH + "v" + Player.getPlayerVersionOfServer() + "." + player.getUsername() + ".p"));
+			storeSerializableClass(player, new File(Settings.PLAYER_FOLDER_DIR + Player.getPlayerVersionOfServer() + "." + player.getUsername() + ".p"));
 		} catch (ConcurrentModificationException e) {
 			//happens because saving and logging out same time
 		} catch (Throwable e) {

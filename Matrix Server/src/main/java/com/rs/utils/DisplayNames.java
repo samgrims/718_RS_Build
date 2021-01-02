@@ -16,7 +16,7 @@ public final class DisplayNames {
 	
 	
 
-	private static final String PATH = Settings.data_dir + "data/displayNames.ser";
+	private static final String PATH = Settings.SERVER_DIR + "data/displayNames.ser";
 	
 	private DisplayNames() {
 		

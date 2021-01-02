@@ -2,8 +2,6 @@ package com.rs;
 
 import java.math.BigInteger;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import com.rs.game.WorldTile;
 
@@ -13,14 +11,18 @@ public final class Settings {
 		return server_compiled_path.toString().toLowerCase().contains("jar");
 	}
 
-	public static String data_dir = "Matrix718/Matrix server/";
+	public static String SERVER_DIR = "Matrix718/Matrix server/";
 	static {
 		if(isFromJAR()) {
 			System.out.println("Running from JAR, no need for extra path info");
-			data_dir = "";
+			SERVER_DIR = "";
 		}
 
 	}
+	public static final String CACHE_DIR = SERVER_DIR + "data/cache/";
+	public static final String PLAYER_FOLDER_DIR = SERVER_DIR + "data/characters/";
+	public static final String PLAYER_JSON_FOLDER_DIR = SERVER_DIR + "data/characters_json/";
+	public static final String BACKUP_DIR = Settings.SERVER_DIR + "data/charactersBackup/";
 
 	/**
 	 * General client and server settings.
@@ -28,7 +30,7 @@ public final class Settings {
 	public static final String SERVER_NAME = "Matrix";
 	public static final int PORT_ID = 43594;
 	public static final String LASTEST_UPDATE = "<col=FFFF00>Latest update: Hairdresser and cloths changing!";
-	public static final String CACHE_PATH = data_dir + "data/cache/";
+	public static boolean DEBUG = true;
 	public static final int RECEIVE_DATA_LIMIT = 7500;
 	public static final int PACKET_SIZE_LIMIT = 7500;
 	public static final int CLIENT_BUILD = 718;
@@ -41,13 +43,6 @@ public final class Settings {
 	public static final String ITEMLIST_LINK = "http://www.mediafire.com/?znasre8sm11r2m9";
 	public static final String ITEMDB_LINK = "http://matrixftw.com/index.php?app=cp&do=show&pageId=3";
 	public static final String VOTE_LINK = "http://www.matrixftw.com/vote.php";
-
-	/**
-	 * Launching settings
-	 */
-	public static boolean DEBUG;
-	public static boolean HOSTED;
-	public static boolean ECONOMY;
 	
 	/**
 	 * If the use of the managment server is enabled.

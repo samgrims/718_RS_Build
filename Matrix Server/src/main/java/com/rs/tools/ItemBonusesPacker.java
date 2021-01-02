@@ -16,7 +16,7 @@ public class ItemBonusesPacker {
 	public static final void main(String[] args) throws IOException {
 		Cache.init();
 		DataOutputStream out = new DataOutputStream(new FileOutputStream(
-				Settings.data_dir + "data/items/bonuses.ib"));
+				Settings.SERVER_DIR + "data/items/bonuses.ib"));
 		for (int itemId = 0; itemId < Utils.getItemDefinitionsSize(); itemId++) {
 			File file = new File("bonuses/" + itemId + ".txt");
 			if (file.exists()) {

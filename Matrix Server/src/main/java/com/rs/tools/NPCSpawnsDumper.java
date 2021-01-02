@@ -17,13 +17,13 @@ public class NPCSpawnsDumper {
 
 	public static final void main(String[] args) throws IOException {
 		BufferedWriter out = new BufferedWriter(new FileWriter(
-				Settings.data_dir + "data/npcs/unpackedSpawnsList.txt", true));
+				Settings.SERVER_DIR + "data/npcs/unpackedSpawnsList.txt", true));
 		Logger.log("Launcher", "Initing Cache...");
 		Cache.init();
 		Logger.log("Launcher", "Initing Data File...");
 		MapArchiveKeys.init();
 		for (int regionId = 0; regionId < 20000; regionId++) {
-			if (new File(Settings.data_dir + "data/npcs/packedSpawns/" + regionId + ".ns").exists())
+			if (new File(Settings.SERVER_DIR + "data/npcs/packedSpawns/" + regionId + ".ns").exists())
 				continue;
 			dumpRegionNPCs(regionId, out);
 		}
