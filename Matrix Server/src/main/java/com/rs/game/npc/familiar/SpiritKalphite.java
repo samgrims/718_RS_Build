@@ -12,7 +12,7 @@ public class SpiritKalphite extends Familiar {
 	private static final long serialVersionUID = 6110983138725755250L;
 
 	public SpiritKalphite(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                          int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

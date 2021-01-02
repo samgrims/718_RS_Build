@@ -158,18 +158,18 @@ public class StealingCreation {
 			@Override
 			public void run() {
 				sendGameConfig(561, 1);
-				for (Player player : redTeam) 
+				for (Player player : redTeam)
 					player.getPackets().sendHideIComponent(809, 18, false);
-				for (Player player : blueTeam) 
+				for (Player player : blueTeam)
 					player.getPackets().sendHideIComponent(809, 18, false);
 			}
 		});
 	}
 
 	private static void sendGameConfig(int id, int value) {
-		for (Player player : redTeam) 
+		for (Player player : redTeam)
 			player.getPackets().sendGlobalConfig(id, value);
-		for (Player player : blueTeam) 
+		for (Player player : blueTeam)
 			player.getPackets().sendGlobalConfig(id, value);
 	}
 

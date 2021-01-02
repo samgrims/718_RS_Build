@@ -104,7 +104,7 @@ public final class BrimhavenAgility extends Controller {
 		public void run() { //selects dispenser
 			taggedDispenser = getNextDispenser();
 			synchronized (players) {
-				for(Player player : players) 
+				for(Player player : players)
 					addIcon(player);
 			}
 		}

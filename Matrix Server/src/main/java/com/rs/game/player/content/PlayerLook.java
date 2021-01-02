@@ -10,7 +10,7 @@ public final class PlayerLook {
 		player.getPackets().sendWindowsPane(1028, 0); // character customizing
 	}
 
-	public static void handleCharacterCustomizingButtons(Player player,	int buttonId) {
+	public static void handleCharacterCustomizingButtons(Player player, int buttonId) {
 		if (buttonId == 138)  // confirm
 			player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746	: 548, 0);
 		if(buttonId == 62)  //Male
@@ -76,7 +76,7 @@ public final class PlayerLook {
 	}
 
 	public static void handleHairdresserSalonButtons(Player player, int buttonId,
-			int slotId) {// Hair and color match button count so just loop and
+                                                     int slotId) {// Hair and color match button count so just loop and
 							// do ++, but cant find button ids
 		if (buttonId == 6)
 			player.getTemporaryAttributtes().put("hairSaloon", true);

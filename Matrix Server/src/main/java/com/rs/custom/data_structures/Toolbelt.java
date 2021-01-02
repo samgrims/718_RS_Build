@@ -2,7 +2,6 @@ package com.rs.custom.data_structures;
 
 import com.rs.game.item.Item;
 import com.rs.game.player.Player;
-import com.rs.tools.DebugLine;
 
 import java.io.Serializable;
 import java.util.Arrays;

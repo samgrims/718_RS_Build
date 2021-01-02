@@ -113,7 +113,7 @@ public class Firemaking extends Action {
 	}
 
 	public static void startFamiliarFire(Player player, Familiar familiar,
-			Fire fire) {
+                                         Fire fire) {
 		if (player.getFamiliar().getId() == 7378 || player.getFamiliar().getId() == 7377) {
 		}
 	}

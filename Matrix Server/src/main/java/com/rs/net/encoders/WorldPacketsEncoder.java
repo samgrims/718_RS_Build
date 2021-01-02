@@ -1,6 +1,5 @@
 package com.rs.net.encoders;
 
-import com.rs.tools.DebugLine;
 import org.jboss.netty.channel.ChannelFuture;
 import org.jboss.netty.channel.ChannelFutureListener;
 

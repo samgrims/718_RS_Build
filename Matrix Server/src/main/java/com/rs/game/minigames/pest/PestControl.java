@@ -82,7 +82,7 @@ public class PestControl {
 					@Override
 					public void run() {
 						sendBeginningWave();
-						for (Player player : team) 
+						for (Player player : team)
 							player.setNextWorldTile(getWorldTile(35 - Utils.random(4), 54 - (Utils.random(3))));
 					}
 				}, 1200, TimeUnit.MILLISECONDS);

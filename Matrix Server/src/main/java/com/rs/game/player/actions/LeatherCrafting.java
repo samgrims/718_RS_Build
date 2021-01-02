@@ -115,7 +115,7 @@ public class LeatherCrafting extends Action {
 	}
 
 	public static boolean handleItemOnItem(Player player, Item itemUsed,
-			Item usedWith) {
+										   Item usedWith) {
 		for (int i = 0; i < LEATHER.length; i++) {
 			if (itemUsed.getId() == LEATHER[i]
 					|| usedWith.getId() == LEATHER[i]) {

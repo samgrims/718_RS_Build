@@ -107,12 +107,12 @@ public class OwnedObjectManager {
 	}
 
 	public static void addOwnedObjectManager(Player player,
-			WorldObject[] objects, long cycleTime) {
+                                             WorldObject[] objects, long cycleTime) {
 		new OwnedObjectManager(player, objects, cycleTime);
 	}
 
 	private OwnedObjectManager(Player player, WorldObject[] objects,
-			long cycleTime) {
+                               long cycleTime) {
 		managerKey = player.getUsername() + "_" + keyMaker.getAndIncrement();
 		this.cycleTime = cycleTime;
 		this.objects = objects;

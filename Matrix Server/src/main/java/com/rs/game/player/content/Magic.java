@@ -51,7 +51,7 @@ public class Magic {
 	}
 
 	public static final boolean checkCombatSpell(Player player, int spellId,
-			int set, boolean delete) {
+												 int set, boolean delete) {
 		if (spellId == 65535)
 			return true;
 		switch (player.getCombatDefinitions().getSpellBook()) {
@@ -367,7 +367,7 @@ public class Magic {
 	}
 
 	public static final void processLunarSpell(Player player, int spellId,
-			int packetId) {
+											   int packetId) {
 		player.stopAll(false);
 		switch (spellId) {
 		case 37:
@@ -402,7 +402,7 @@ public class Magic {
 	}
 
 	public static final void processAncientSpell(Player player, int spellId,
-			int packetId) {
+												 int packetId) {
 		player.stopAll(false);
 		switch (spellId) {
 		case 28:
@@ -467,7 +467,7 @@ public class Magic {
 	}
 
 	public static final void processNormalSpell(Player player, int spellId,
-			int packetId) {
+												int packetId) {
 		player.stopAll(false);
 		switch (spellId) {
 		case 25: // air strike
@@ -561,7 +561,7 @@ public class Magic {
 	}
 
 	public static final boolean checkSpellRequirements(Player player,
-			int level, boolean delete, int... runes) {
+													   int level, boolean delete, int... runes) {
 		if (player.getSkills().getLevelForXp(Skills.MAGIC) < level) {
 			player.getPackets().sendGameMessage(
 					"Your Magic level is not high enough for this spell.");
@@ -578,7 +578,7 @@ public class Magic {
 	}
 
 	public static final boolean checkRunes(Player player, boolean delete,
-			int... runes) {
+										   int... runes) {
 		int weaponId = player.getEquipment().getWeaponId();
 		int shieldId = player.getEquipment().getShieldId();
 		int runesCount = 0;
@@ -613,20 +613,20 @@ public class Magic {
 	}
 
 	public static final void sendAncientTeleportSpell(Player player, int level,
-			double xp, WorldTile tile, int... runes) {
+													  double xp, WorldTile tile, int... runes) {
 		sendTeleportSpell(player, 1979, -1, 1681, -1, level, xp, tile, 5, true,
 				MAGIC_TELEPORT, runes);
 	}
 
 	public static final void sendNormalTeleportSpell(Player player, int level,
-			double xp, WorldTile tile, int... runes) {
+													 double xp, WorldTile tile, int... runes) {
 		sendTeleportSpell(player, 8939, 8941, 1576, 1577, level, xp, tile, 3,
 				true, MAGIC_TELEPORT, runes);
 	}
 
 	public static final boolean sendItemTeleportSpell(Player player,
-			boolean randomize, int upEmoteId, int upGraphicId, int delay,
-			WorldTile tile) {
+													  boolean randomize, int upEmoteId, int upGraphicId, int delay,
+													  WorldTile tile) {
 		return sendTeleportSpell(player, upEmoteId, -2, upGraphicId, -1, 0, 0,
 				tile, delay, randomize, ITEM_TELEPORT);
 	}
@@ -647,13 +647,13 @@ public class Magic {
 	}
 
 	public static final void sendObjectTeleportSpell(Player player,
-			boolean randomize, WorldTile tile) {
+													 boolean randomize, WorldTile tile) {
 		sendTeleportSpell(player, 8939, 8941, 1576, 1577, 0, 0, tile, 3,
 				randomize, OBJECT_TELEPORT);
 	}
 
 	public static final void sendDelayedObjectTeleportSpell(Player player,
-			int delay, boolean randomize, WorldTile tile) {
+															int delay, boolean randomize, WorldTile tile) {
 		sendTeleportSpell(player, 8939, 8941, 1576, 1577, 0, 0, tile, delay,
 				randomize, OBJECT_TELEPORT);
 	}

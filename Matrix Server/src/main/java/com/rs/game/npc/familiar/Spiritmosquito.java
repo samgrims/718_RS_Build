@@ -12,7 +12,7 @@ public class Spiritmosquito extends Familiar {
 	private static final long serialVersionUID = 3249731229258558109L;
 
 	public Spiritmosquito(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                          int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

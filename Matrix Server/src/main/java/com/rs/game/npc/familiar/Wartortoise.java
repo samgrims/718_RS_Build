@@ -15,7 +15,7 @@ public class Wartortoise extends Familiar {
 	private static final long serialVersionUID = 5092434230714486203L;
 
 	public Wartortoise(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                       int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

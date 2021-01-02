@@ -157,7 +157,7 @@ public class GnomeAgility {
 	}
 
 	public static void enterGnomePipe(final Player player, int objectX,
-			int objectY) {
+                                      int objectY) {
 		final boolean running = player.getRun();
 		player.setRunHidden(false);
 		player.lock(8);

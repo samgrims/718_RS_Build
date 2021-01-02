@@ -60,13 +60,13 @@ import com.rs.utils.PkRank;
 import com.rs.utils.SerializableFilesManager;
 import com.rs.utils.Utils;
 
-public class Player extends Entity {
+public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
-	private static final long serialVersionUID = 2011932556974180375L;
+	private static final long serialVersionUID = 2;//based on updates
 
 	// custom stuff
-	private long timeOfLogin;
+	private transient long timeOfLogin;
 	private int totalMinutesPlayed;
 	private int spinsEarnedByMinutes;
 	private boolean isBrandNew;
@@ -75,7 +75,7 @@ public class Player extends Entity {
 	private transient SpinsManager spinsManager;
 	private int spins;
 
-	// transient stuff
+	// Matrix transient stuff
 	private transient String username;
 	private transient Session session;
 	private transient boolean clientLoadedMapRegion;
@@ -128,8 +128,6 @@ public class Player extends Entity {
 	private transient boolean invulnerable;
 	private transient double hpBoostMultiplier;
 	private transient boolean largeSceneView;
-
-	// interface
 
 	// saving stuff
 	private String password;
@@ -289,6 +287,10 @@ public class Player extends Entity {
 	 */
 	public static Player createBrandNew(String password) {
 		return new Player(password);
+	}
+
+	public static long getPlayerVersionOfServer() {
+		return serialVersionUID;
 	}
 
 	public WorldTile getLocation() {
@@ -1814,77 +1816,37 @@ public class Player extends Entity {
 														HitLook.REGULAR_DAMAGE));
 									}
 								}
-								List<Integer> npcsIndexes = World.getRegion(
-										regionId).getNPCsIndexes();
+								List<Integer> npcsIndexes = World.getRegion(regionId).getNPCsIndexes();
 								if (npcsIndexes != null) {
 									for (int npcIndex : npcsIndexes) {
 										NPC npc = World.getNPCs().get(npcIndex);
-										if (npc == null
-												|| npc.isDead()
-												|| npc.hasFinished()
-												|| !npc.withinDistance(target,
-														2)
-														|| !npc.getDefinitions()
-														.hasAttackOption()
-														|| !target
-														.getControlerManager()
-														.canHit(npc))
+										if (npc == null	|| npc.isDead()	|| npc.hasFinished() || !npc.withinDistance(target,2) || !npc.getDefinitions().hasAttackOption()
+														|| !target.getControlerManager().canHit(npc))
 											continue;
-										npc.applyHit(new Hit(
-												target,
-												Utils.getRandom((skills
-														.getLevelForXp(Skills.PRAYER) * 3)),
-														HitLook.REGULAR_DAMAGE));
+										npc.applyHit(new Hit(target, Utils.getRandom((skills.getLevelForXp(Skills.PRAYER) * 3)), HitLook.REGULAR_DAMAGE));
 									}
 								}
 							}
 						} else {
-							if (source != null && source != target
-									&& !source.isDead()
-									&& !source.hasFinished()
-									&& source.withinDistance(target, 2))
-								source.applyHit(new Hit(
-										target,
-										Utils.getRandom((skills
-												.getLevelForXp(Skills.PRAYER) * 3)),
-												HitLook.REGULAR_DAMAGE));
+							if (source != null && source != target && !source.isDead() && !source.hasFinished() && source.withinDistance(target, 2))
+								source.applyHit(new Hit(target, Utils.getRandom((skills.getLevelForXp(Skills.PRAYER) * 3)),	HitLook.REGULAR_DAMAGE));
 						}
 
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() + 2, getY() + 2,
-										getPlane()));
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() + 2, getY(), getPlane()));
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() + 2, getY() - 2,
-										getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() + 2, getY() + 2, getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() + 2, getY(), getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() + 2, getY() - 2, getPlane()));
 
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() - 2, getY() + 2,
-										getPlane()));
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() - 2, getY(), getPlane()));
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() - 2, getY() - 2,
-										getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() - 2, getY() + 2, getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() - 2, getY(), getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() - 2, getY() - 2, getPlane()));
 
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX(), getY() + 2, getPlane()));
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX(), getY() - 2, getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX(), getY() + 2, getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX(), getY() - 2, getPlane()));
 
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() + 1, getY() + 1,
-										getPlane()));
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() + 1, getY() - 1,
-										getPlane()));
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() - 1, getY() + 1,
-										getPlane()));
-						World.sendGraphics(target, new Graphics(2260),
-								new WorldTile(getX() - 1, getY() - 1,
-										getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() + 1, getY() + 1, getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() + 1, getY() - 1, getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() - 1, getY() + 1, getPlane()));
+						World.sendGraphics(target, new Graphics(2260), new WorldTile(getX() - 1, getY() - 1, getPlane()));
 					}
 				});
 			}

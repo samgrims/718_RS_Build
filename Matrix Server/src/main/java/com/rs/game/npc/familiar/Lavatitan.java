@@ -12,7 +12,7 @@ public class Lavatitan extends Familiar {
 	private static final long serialVersionUID = -778365732778023700L;
 
 	public Lavatitan(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                     int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

@@ -37,7 +37,7 @@ public class GiantMoleCombat extends CombatScript {
 			npc.setNextAnimation(new Animation(3314));
 			npc.setCantInteract(true);
 			npc.getCombat().removeTarget();
-			final Player player = (Player) (target instanceof  Player ? target : null);
+			final Player player = (Player) (target instanceof Player ? target : null);
 			if(player != null)
 				player.getInterfaceManager().sendTab(player.getInterfaceManager().hasRezizableScreen() ? 1 : 11, 226);		
 			final WorldTile middle = npc.getMiddleWorldTile();

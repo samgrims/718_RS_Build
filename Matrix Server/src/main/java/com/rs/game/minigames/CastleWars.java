@@ -301,7 +301,7 @@ public final class CastleWars {
 	}
 
 	public static void takeFlag(Player player, int team, int flagTeam,
-			WorldObject object, boolean droped) {
+                                WorldObject object, boolean droped) {
 		if (playingGame == null)
 			return;
 		playingGame.takeFlag(player, team, flagTeam, object, droped);
@@ -392,7 +392,7 @@ public final class CastleWars {
 		}
 
 		public void takeFlag(Player player, int team, int flagTeam,
-				WorldObject object, boolean droped) {
+                             WorldObject object, boolean droped) {
 			if (!droped && team == flagTeam)
 				return;
 			if (droped && flagStatus[flagTeam] != DROPPED)
@@ -487,7 +487,7 @@ public final class CastleWars {
 	}
 
 	public static void handleInterfaces(Player player, int interfaceId,
-			int componentId) {
+                                        int componentId) {
 		if (interfaceId == 55) {
 			if (componentId == 9)
 				player.closeInterfaces();

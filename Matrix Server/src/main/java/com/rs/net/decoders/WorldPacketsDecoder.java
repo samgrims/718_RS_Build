@@ -35,12 +35,10 @@ import com.rs.net.decoders.handlers.ButtonHandler;
 import com.rs.net.decoders.handlers.InventoryOptionsHandler;
 import com.rs.net.decoders.handlers.NPCHandler;
 import com.rs.net.decoders.handlers.ObjectHandler;
-import com.rs.tools.DebugLine;
 import com.rs.utils.DisplayNames;
 import com.rs.utils.Logger;
 import com.rs.utils.Utils;
 import com.rs.utils.huffman.Huffman;
-import sun.security.ssl.Debug;
 
 public final class WorldPacketsDecoder extends Decoder {
 	private static final byte[] PACKET_SIZES = new byte[104];

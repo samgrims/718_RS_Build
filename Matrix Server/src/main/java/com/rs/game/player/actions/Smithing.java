@@ -366,7 +366,7 @@ public class Smithing extends Action {
 		}
 
 		public static String[] getStrings(Player player, ForgingBar bar,
-				int index, int itemId) {
+										  int index, int itemId) {
 			if (itemId == -1 || index < 0 || index >= bar.getItems().length) {
 				return null;
 			}

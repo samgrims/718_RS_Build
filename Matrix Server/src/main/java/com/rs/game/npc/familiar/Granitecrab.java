@@ -15,7 +15,7 @@ public class Granitecrab extends Familiar {
 	private static final long serialVersionUID = 649164679697311630L;
 
 	public Granitecrab(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                       int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

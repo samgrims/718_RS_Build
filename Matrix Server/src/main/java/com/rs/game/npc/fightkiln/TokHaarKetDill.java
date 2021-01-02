@@ -24,7 +24,7 @@ public class TokHaarKetDill extends FightKilnNPC {
 			return;
 		if(receivedHits != -1) {
 			Entity source = hit.getSource();
-			if (source == null || !(source instanceof Player)) 
+			if (source == null || !(source instanceof Player))
 				return;
 			hit.setDamage(0);
 			Player playerSource = (Player) source;

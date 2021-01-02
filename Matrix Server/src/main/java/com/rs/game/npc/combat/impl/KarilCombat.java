@@ -23,7 +23,7 @@ public class KarilCombat extends CombatScript {
 		final NPCCombatDefinitions defs = npc.getCombatDefinitions();
 		npc.setNextAnimation(new Animation(defs.getAttackEmote()));
 		int damage = getRandomMaxHit(npc, defs.getMaxHit(), NPCCombatDefinitions.RANGE, target);
-		if(damage != 0 && target instanceof Player && Utils.random(3) == 0) {	
+		if(damage != 0 && target instanceof Player && Utils.random(3) == 0) {
 			target.setNextGraphics(new Graphics(401, 0, 100));
 			Player targetPlayer = (Player) target;
 			int drain = (int) (targetPlayer.getSkills().getLevelForXp(Skills.AGILITY) * 0.2);

@@ -2438,14 +2438,14 @@ public class PlayerCombat extends Action {
 	}
 
 	public int getRandomMaxHit(Player player, int weaponId, int attackStyle,
-			boolean ranging) {
+							   boolean ranging) {
 		return getRandomMaxHit(player, weaponId, attackStyle, ranging, true,
 				1.0D, false);
 	}
 
 	public int getRandomMaxHit(Player player, int weaponId, int attackStyle,
-			boolean ranging, boolean defenceAffects, double specMultiplier,
-			boolean usingSpec) {
+							   boolean ranging, boolean defenceAffects, double specMultiplier,
+							   boolean usingSpec) {
 		max_hit = getMaxHit(player, weaponId, attackStyle, ranging, usingSpec,
 				specMultiplier);
 		if (defenceAffects) {
@@ -2525,8 +2525,8 @@ public class PlayerCombat extends Action {
 	}
 
 	private final int getMaxHit(Player player, int weaponId,
-			int attackStyle, boolean ranging, boolean usingSpec,
-			double specMultiplier) {
+								int attackStyle, boolean ranging, boolean usingSpec,
+								double specMultiplier) {
 		if (!ranging) {
 
 			/*//whip hiting 450 no pot no pray? lmao nty

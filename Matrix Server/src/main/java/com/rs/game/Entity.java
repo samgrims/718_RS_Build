@@ -406,7 +406,7 @@ public abstract class Entity extends WorldTile {
 	public boolean clipedProjectile(WorldTile tile, boolean checkClose) {
 		if(tile instanceof NPC) {
 			NPC n = (NPC) tile;
-			if(this instanceof Player) 
+			if(this instanceof Player)
 				return n.clipedProjectile(this, checkClose);
 			tile = n.getMiddleWorldTile();
 		}else if (tile instanceof Player && this instanceof Player){

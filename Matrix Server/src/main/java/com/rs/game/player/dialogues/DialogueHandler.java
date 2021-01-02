@@ -2,6 +2,7 @@ package com.rs.game.player.dialogues;
 
 import java.util.HashMap;
 
+import com.rs.tools.DebugLine;
 import com.rs.utils.Logger;
 
 public final class DialogueHandler {
@@ -11,8 +12,7 @@ public final class DialogueHandler {
 	@SuppressWarnings("unchecked")
 	public static final void init() {
 		try {
-			Class<Dialogue> value1 = (Class<Dialogue>) Class
-					.forName(LevelUp.class.getCanonicalName());
+			Class<Dialogue> value1 = (Class<Dialogue>) Class.forName(LevelUp.class.getCanonicalName());
 			handledDialogues.put("LevelUp", value1);
 			Class<Dialogue> value2 = (Class<Dialogue>) Class
 					.forName(ZarosAltar.class.getCanonicalName());
@@ -113,11 +113,9 @@ public final class DialogueHandler {
 			Class<Dialogue> value36 = (Class<Dialogue>) Class
 					.forName(SetSkills.class.getCanonicalName());
 			handledDialogues.put("SetSkills", value36);
-			Class<Dialogue> value37 = (Class<Dialogue>) Class
-					.forName(DismissD.class.getCanonicalName());
+			Class<Dialogue> value37 = (Class<Dialogue>) Class.forName(DismissD.class.getCanonicalName());
 			handledDialogues.put("DismissD", value37);
-			Class<Dialogue> value38 = (Class<Dialogue>) Class
-					.forName(MrEx.class.getCanonicalName());
+			Class<Dialogue> value38 = (Class<Dialogue>) Class.forName(MrEx.class.getCanonicalName());
 			handledDialogues.put("MrEx", value38);
 			Class<Dialogue> value39 = (Class<Dialogue>) Class
 					.forName(MakeOverMage.class.getCanonicalName());

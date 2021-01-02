@@ -14,7 +14,7 @@ public class Voidravager extends Familiar {
 	private static final long serialVersionUID = 3950385081972248371L;
 
 	public Voidravager(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                       int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

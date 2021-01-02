@@ -19,7 +19,7 @@ public class FriendChatsManager {
 	private String owner;
 	private String ownerDisplayName;
 	private FriendsIgnores settings;
-	private CopyOnWriteArrayList<Player> players; 
+	private CopyOnWriteArrayList<Player> players;
 	private ConcurrentHashMap<String, Long> bannedPlayers;
 	private byte[] dataBlock;
 	

@@ -12,7 +12,7 @@ public class Swamptitan extends Familiar {
 	private static final long serialVersionUID = -6073150798974730997L;
 
 	public Swamptitan(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                      int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

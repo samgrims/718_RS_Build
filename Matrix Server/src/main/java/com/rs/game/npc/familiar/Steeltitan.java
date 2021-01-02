@@ -13,7 +13,7 @@ public class Steeltitan extends Familiar {
 	private static final long serialVersionUID = -6377458256826528627L;
 
 	public Steeltitan(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                      int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 		setNextAnimation(new Animation(8188));
 	}

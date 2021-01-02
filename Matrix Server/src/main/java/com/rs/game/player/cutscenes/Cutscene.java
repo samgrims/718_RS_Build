@@ -69,7 +69,7 @@ public abstract class Cutscene {
 	}
 
 	public void constructArea(final Player player, final int baseChunkX,
-			final int baseChunkY, final int widthChunks, final int heightChunks) {
+                              final int baseChunkY, final int widthChunks, final int heightChunks) {
 		constructingRegion = true;
 		player.getPackets().sendWindowsPane(56, 0);
 		CoresManager.slowExecutor.execute(new Runnable() {

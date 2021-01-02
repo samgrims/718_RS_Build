@@ -135,7 +135,7 @@ public class FriendsIgnores implements Serializable {
 	}
 
 	public void sendQuickChatMessage(Player p2,
-			QuickChatMessage quickChatMessage) {
+									 QuickChatMessage quickChatMessage) {
 		player.getPackets().sendPrivateQuickMessageMessage(p2.getDisplayName(),
 				quickChatMessage);
 		p2.getPackets().receivePrivateChatQuickMessage(

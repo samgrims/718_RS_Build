@@ -35,7 +35,7 @@ public abstract class Familiar extends NPC implements Serializable {
 	private Pouches pouch;
 
 	public Familiar(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+					int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(pouch.getNpcId(), tile, mapAreaNameHash,
 				canBeAttackFromOutOfArea, false);
 		this.owner = owner;
@@ -260,7 +260,7 @@ public abstract class Familiar extends NPC implements Serializable {
 	}
 
 	public static void setLeftclickOption(Player player,
-			int summoningLeftClickOption) {
+										  int summoningLeftClickOption) {
 		if (summoningLeftClickOption == player.getSummoningLeftClickOption())
 			return;
 		player.setSummoningLeftClickOption(summoningLeftClickOption);

@@ -1216,12 +1216,12 @@ public final class World {
 	}
 
 	public static final boolean removeGroundItem(Player player,
-			FloorItem floorItem) {
+												 FloorItem floorItem) {
 		return removeGroundItem(player, floorItem, true);
 	}
 
 	public static final boolean removeGroundItem(Player player,
-			FloorItem floorItem, boolean add) {
+												 FloorItem floorItem, boolean add) {
 		int regionId = floorItem.getTile().getRegionId();
 		Region region = getRegion(regionId);
 		if (!region.forceGetFloorItems().contains(floorItem))

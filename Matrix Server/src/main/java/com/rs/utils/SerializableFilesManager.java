@@ -1,16 +1,11 @@
 package com.rs.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ConcurrentModificationException;
 
 import com.rs.Settings;
 import com.rs.game.player.Player;
+import com.rs.tools.DebugLine;
 
 public class SerializableFilesManager {
 
@@ -18,27 +13,44 @@ public class SerializableFilesManager {
 	private static final String BACKUP_PATH = Settings.data_dir + "data/charactersBackup/";
 
 	public synchronized static final boolean containsPlayer(String username) {
-		return new File(PATH + username + ".p").exists();
+		File folder = new File(PATH);
+		File[] listOfFiles = folder.listFiles();
+
+		for(File player: listOfFiles) {
+			String usernameOfFile = player.getName().split("\\.")[1];
+			if(usernameOfFile.equalsIgnoreCase(username)) {
+				DebugLine.print("Contains " + username);
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public synchronized static Player loadPlayer(String username) {
 		try {
-			return (Player) loadSerializedFile(new File(PATH + username + ".p"));
+			Player loadedPlayerFile = (Player) loadSerializedFile(new File(PATH + "v" + Player.getPlayerVersionOfServer() + "." + username + ".p"));
+
+			if(loadedPlayerFile == null)
+				;
+
+			return loadedPlayerFile;
+
 		} catch (Throwable e) {
 			Logger.handle(e);
 		}
-		try {
-			Logger.log("SerializableFilesManager", "Recovering account: " + username);
-			return (Player) loadSerializedFile(new File(BACKUP_PATH + username + ".p"));
-		} catch (Throwable e) {
-			Logger.handle(e);
-		}
+//		try {
+////			Logger.log("SerializableFilesManager", "Recovering account: " + username);
+//			return (Player) loadSerializedFile(new File(BACKUP_PATH + username + ".p"));
+//		} catch (Throwable e) {
+////			Logger.handle(e);
+//		}
 		return null;
 	}
 
 	public static boolean createBackup(String username) {
 		try {
-			Utils.copyFile(new File(PATH + username + ".p"), new File(BACKUP_PATH + username + ".p"));
+			Utils.copyFile(new File(PATH + "v" + Player.getPlayerVersionOfServer() + "." + username + ".p"), new File(BACKUP_PATH + username + ".p"));
 			return true;
 		} catch (Throwable e) {
 			Logger.handle(e);
@@ -48,7 +60,7 @@ public class SerializableFilesManager {
 
 	public synchronized static void savePlayer(Player player) {
 		try {
-			storeSerializableClass(player, new File(PATH + player.getUsername() + ".p"));
+			storeSerializableClass(player, new File(PATH + "v" + Player.getPlayerVersionOfServer() + "." + player.getUsername() + ".p"));
 		} catch (ConcurrentModificationException e) {
 			//happens because saving and logging out same time
 		} catch (Throwable e) {

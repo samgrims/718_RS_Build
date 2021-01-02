@@ -12,7 +12,7 @@ public class PossessedObject extends WorldObject {
 	private Player owner;
 
 	public PossessedObject(Player owner, int id, int type, int rotation, int x,
-			int y, int plane) {
+                           int y, int plane) {
 		super(id, type, rotation, x, y, plane);
 		setOwner(owner);
 	}

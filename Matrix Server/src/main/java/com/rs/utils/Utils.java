@@ -724,7 +724,7 @@ public final class Utils {
 	}
 
 	public static byte[] completeQuickMessage(Player player, int fileId,
-			byte[] data) {
+											  byte[] data) {
 		if (fileId == 1)
 			data = new byte[] { (byte) player.getSkills().getLevelForXp(
 					Skills.AGILITY) };

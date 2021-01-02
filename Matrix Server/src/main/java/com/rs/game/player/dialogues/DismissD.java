@@ -3,9 +3,7 @@ package com.rs.game.player.dialogues;
 public class DismissD extends Dialogue {
 
 	@Override
-	public void start() {
-		sendOptionsDialogue(player.getPet() != null ? "Free pet?" : "Dismiss Familiar?",
-				"Yes.", "No.");
+	public void start() {sendOptionsDialogue(player.getPet() != null ? "Free pet?" : "Dismiss Familiar?","Yes.", "No.");
 	}
 
 	@Override

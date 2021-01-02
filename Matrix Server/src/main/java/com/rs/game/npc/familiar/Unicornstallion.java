@@ -14,7 +14,7 @@ public class Unicornstallion extends Familiar {
 	private static final long serialVersionUID = -1291968400159646829L;
 
 	public Unicornstallion(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                           int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

@@ -14,7 +14,7 @@ public class Voidspinner extends Familiar {
 	private static final long serialVersionUID = -1639238550551778316L;
 
 	public Voidspinner(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                       int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

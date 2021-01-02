@@ -15,7 +15,7 @@ public class Mosstitan extends Familiar {
 	private static final long serialVersionUID = 2779054495849433214L;
 
 	public Mosstitan(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                     int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

@@ -14,7 +14,7 @@ public class Voidshifter extends Familiar {
 	private static final long serialVersionUID = 2825822265261250357L;
 
 	public Voidshifter(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                       int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

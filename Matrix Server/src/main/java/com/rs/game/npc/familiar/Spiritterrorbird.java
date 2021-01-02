@@ -15,7 +15,7 @@ public class Spiritterrorbird extends Familiar {
 	private static final long serialVersionUID = 5259052583696765531L;
 
 	public Spiritterrorbird(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                            int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

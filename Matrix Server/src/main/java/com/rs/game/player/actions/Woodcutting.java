@@ -6,12 +6,7 @@ import com.rs.game.World;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.player.Player;
-import com.rs.tools.DebugLine;
 import com.rs.utils.Utils;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public final class Woodcutting extends Action {
 

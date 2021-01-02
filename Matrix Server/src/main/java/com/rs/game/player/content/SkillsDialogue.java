@@ -15,14 +15,14 @@ public final class SkillsDialogue {
 	}
 
 	public static void sendSkillsDialogue(Player player, int option,
-			String explanation, int maxQuantity, int[] items,
-			ItemNameFilter filter) {
+                                          String explanation, int maxQuantity, int[] items,
+                                          ItemNameFilter filter) {
 		sendSkillsDialogue(player, option, explanation, maxQuantity, items, filter, true);
 	}
 	
 	public static void sendSkillsDialogue(Player player, int option,
-			String explanation, int maxQuantity, int[] items,
-			ItemNameFilter filter, boolean sendQuantitySelector) {
+                                          String explanation, int maxQuantity, int[] items,
+                                          ItemNameFilter filter, boolean sendQuantitySelector) {
 		player.getInterfaceManager().sendChatBoxInterface(905);
 		player.getPackets().sendInterface(true, 905, 4, 916);
 		if(!sendQuantitySelector) {

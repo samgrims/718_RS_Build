@@ -82,8 +82,8 @@ public final class LoginPacketsDecoder extends Decoder {
 		rsaStream.readLong(); // random value
 		rsaStream.readLong(); // random value
 		stream.decodeXTEA(isaacKeys, stream.getOffset(), stream.getLength());
-		boolean stringUsername = stream.readUnsignedByte() == 1; // unknown
-		String username = Utils.formatPlayerNameForProtocol(stringUsername ? stream.readString() : Utils.longToString(stream.readLong()));
+		boolean stringUsername = stream.readUnsignedByte() == 1;
+		String username = Utils.formatPlayerNameForProtocol(stringUsername ? stream.readString() : Utils.longToString(stream.readLong())/*Reads username*/);
 		int displayMode = stream.readUnsignedByte();
 		int screenWidth = stream.readUnsignedShort();
 		int screenHeight = stream.readUnsignedShort();

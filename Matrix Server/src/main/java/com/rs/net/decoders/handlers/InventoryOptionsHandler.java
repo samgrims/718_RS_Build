@@ -1,7 +1,5 @@
 package com.rs.net.decoders.handlers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.rs.Settings;
@@ -48,7 +46,7 @@ import com.rs.utils.Utils;
 public class InventoryOptionsHandler {
 
 	public static void handleItemOption2(final Player player, final int slotId,
-			final int itemId, Item item) {
+										 final int itemId, Item item) {
 		if (Firemaking.isFiremaking(player, itemId))
 			return;
 		if (itemId >= 5509 && itemId <= 5514) {
@@ -669,7 +667,7 @@ public class InventoryOptionsHandler {
 	}
 
 	public static void handleItemOption3(Player player, int slotId, int itemId,
-			Item item) {
+										 Item item) {
 		long time = Utils.currentTimeMillis();
 		if (player.getLockDelay() >= time
 				|| player.getEmotesManager().getNextEmoteEnd() >= time)
@@ -686,16 +684,16 @@ public class InventoryOptionsHandler {
 	}
 
 	public static void handleItemOption4(Player player, int slotId, int itemId,
-			Item item) {
+										 Item item) {
 		System.out.println("Option 4");
 	}
 
 	public static void handleItemOption5(Player player, int slotId, int itemId,
-			Item item) {
+										 Item item) {
 		System.out.println("Option 5");
 	}
 
-	public static void handleItemOption6(Player player, int inventorySlot, int itemId,	Item item) {
+	public static void handleItemOption6(Player player, int inventorySlot, int itemId, Item item) {
 		long time = Utils.currentTimeMillis();
 		if (player.getLockDelay() >= time || player.getEmotesManager().getNextEmoteEnd() >= time)
 			return;
@@ -734,7 +732,7 @@ public class InventoryOptionsHandler {
 	}
 
 	public static void handleItemOption7(Player player, int slotId, int itemId,
-			Item item) {
+										 Item item) {
 		long time = Utils.currentTimeMillis();
 		if (player.getLockDelay() >= time
 				|| player.getEmotesManager().getNextEmoteEnd() >= time)
@@ -764,7 +762,7 @@ public class InventoryOptionsHandler {
 	}
 	
 	public static void handleItemOption8(Player player, int slotId, int itemId,
-			Item item) {
+										 Item item) {
 		player.getInventory().sendExamine(slotId);
 	}
 

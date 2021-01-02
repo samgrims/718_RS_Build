@@ -6,8 +6,7 @@ import com.rs.net.ServerChannelHandler;
 public final class Logger {
 
 	public static void handle(Throwable throwable) {
-		System.out.println("ERROR! THREAD NAME: "
-				+ Thread.currentThread().getName());
+		System.out.println("ERROR! THREAD NAME: " + Thread.currentThread().getName());
 		throwable.printStackTrace();
 	}
 

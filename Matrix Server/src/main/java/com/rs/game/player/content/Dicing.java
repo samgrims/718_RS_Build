@@ -69,7 +69,7 @@ public class Dicing {
 	}
 
 	public static void privateRoll(final Player player, final int itemId,
-			int graphic, final int lowest, final int highest) {
+                                   int graphic, final int lowest, final int highest) {
 		player.getPackets().sendGameMessage("Rolling...", true);
 		player.getInventory().deleteItem(itemId, 1);
 		player.setNextAnimation(new Animation(11900));
@@ -87,7 +87,7 @@ public class Dicing {
 	}
 	
 	public static void friendsRoll(final Player player, final int itemId,
-			int graphic, final int lowest, final int highest) {
+                                   int graphic, final int lowest, final int highest) {
 		final FriendChatsManager chat = player.getCurrentFriendChat();
 		if (chat == null) {
 			player.getPackets().sendGameMessage("You need to be in a friend chat to use this option.");

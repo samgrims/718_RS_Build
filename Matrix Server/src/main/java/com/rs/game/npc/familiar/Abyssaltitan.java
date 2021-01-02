@@ -14,7 +14,7 @@ public class Abyssaltitan extends Familiar {
 	private static final long serialVersionUID = 7635947578932404484L;
 
 	public Abyssaltitan(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                        int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

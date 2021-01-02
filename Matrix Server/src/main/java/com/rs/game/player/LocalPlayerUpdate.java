@@ -318,7 +318,7 @@ public final class LocalPlayerUpdate {
 	}
 
 	private void appendUpdateBlock(Player p, OutputStream data,
-			boolean needAppearenceUpdate, boolean added) {
+								   boolean needAppearenceUpdate, boolean added) {
 		int maskData = 0;
 		if (p.getNextGraphics1() != null)
 			maskData |= 0x4;

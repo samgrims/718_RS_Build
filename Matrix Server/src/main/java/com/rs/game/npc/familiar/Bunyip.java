@@ -18,7 +18,7 @@ public class Bunyip extends Familiar {
 	private static final long serialVersionUID = 7203440350875823581L;
 
 	public Bunyip(Player owner, Pouches pouch, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+                  int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		super(owner, pouch, tile, mapAreaNameHash, canBeAttackFromOutOfArea);
 	}
 

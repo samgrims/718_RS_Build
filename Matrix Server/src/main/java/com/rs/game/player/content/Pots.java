@@ -218,7 +218,7 @@ public final class Pots {
 		ATTACK_POTION(Skills.ATTACK) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 3 + (realLevel * 0.1));
 			}
@@ -226,7 +226,7 @@ public final class Pots {
 		FISHING_POTION(Skills.FISHING) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (level + 3);
 			}
@@ -249,7 +249,7 @@ public final class Pots {
 				Skills.SUMMONING) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int boost = (int) (realLevel * 0.33);
 				if (actualLevel > realLevel)
 					return actualLevel;
@@ -272,7 +272,7 @@ public final class Pots {
 		SUMMONING_POT(Skills.SUMMONING) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int restore = (int) (Math.floor(player.getSkills().getLevelForXp(Skills.SUMMONING) * 0.25) + 7);
 				if(actualLevel + restore > realLevel)
 					return realLevel;
@@ -343,7 +343,7 @@ public final class Pots {
 		STRENGTH_POTION(Skills.STRENGTH) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 3 + (realLevel * 0.1));
 			}
@@ -351,7 +351,7 @@ public final class Pots {
 		DEFENCE_POTION(Skills.DEFENCE) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 3 + (realLevel * 0.1));
 			}
@@ -360,7 +360,7 @@ public final class Pots {
 
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 5 + (realLevel * 0.1));
 			}
@@ -368,7 +368,7 @@ public final class Pots {
 		MAGIC_POTION(Skills.MAGIC) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return level + 5;
 			}
@@ -387,7 +387,7 @@ public final class Pots {
 		SUPER_STR_POTION(Skills.STRENGTH) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 5 + (realLevel * 0.15));
 			}
@@ -395,7 +395,7 @@ public final class Pots {
 		SUPER_DEF_POTION(Skills.DEFENCE) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 5 + (realLevel * 0.15));
 			}
@@ -403,7 +403,7 @@ public final class Pots {
 		SUPER_ATT_POTION(Skills.ATTACK) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 5 + (realLevel * 0.15));
 			}
@@ -424,7 +424,7 @@ public final class Pots {
 
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 5 + (realLevel * 0.22));
 			}
@@ -444,7 +444,7 @@ public final class Pots {
 
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 5 + (realLevel * 0.22));
 			}
@@ -464,7 +464,7 @@ public final class Pots {
 
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 5 + (realLevel * 0.22));
 			}
@@ -484,7 +484,7 @@ public final class Pots {
 
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return (int) (level + 4 + (Math.floor(realLevel / 5.2)));
 			}
@@ -504,7 +504,7 @@ public final class Pots {
 
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int level = actualLevel > realLevel ? realLevel : actualLevel;
 				return level + 7;
 			}
@@ -546,7 +546,7 @@ public final class Pots {
 
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				if (skillId == Skills.DEFENCE) {
 					int boost = (int) (realLevel * 0.25);
 					int level = actualLevel > realLevel ? realLevel
@@ -632,7 +632,7 @@ public final class Pots {
 				Skills.SUMMONING) {
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int boost = (int) (realLevel * 0.33);
 				if (actualLevel > realLevel)
 					return actualLevel;
@@ -654,7 +654,7 @@ public final class Pots {
 
 			@Override
 			public int getAffectedSkill(Player player, int skillId,
-					int actualLevel, int realLevel) {
+										int actualLevel, int realLevel) {
 				int boost = (int) (realLevel * 0.33);
 				if (actualLevel > realLevel)
 					return actualLevel;
@@ -677,7 +677,7 @@ public final class Pots {
 		}
 
 		public int getAffectedSkill(Player player, int skillId,
-				int actualLevel, int realLevel) {
+									int actualLevel, int realLevel) {
 			return actualLevel;
 		}
 

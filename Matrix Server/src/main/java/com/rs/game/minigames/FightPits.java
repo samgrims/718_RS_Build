@@ -57,7 +57,7 @@ public final class FightPits {
 						passPlayersToArena();
 					}else{
 						if(minutes == 0) {
-							for(Player player : arena) 
+							for(Player player : arena)
 								player.getDialogueManager().startDialogue("SimpleNPCMessage", THHAAR_MEJ_KAH, "FIGHT!");		
 						}else if (minutes == 5) { //spawn tz-kih
 							//spawns
@@ -80,7 +80,7 @@ public final class FightPits {
 										stop();
 										return;
 									}
-									for(Player player : arena)  
+									for(Player player : arena)
 										player.applyHit(new Hit(player, 150, HitLook.REGULAR_DAMAGE));
 								}
 								
@@ -135,7 +135,7 @@ public final class FightPits {
 	
 	public static void refreshFoes() {
 		int foes = arena.size()-1;
-		for(Player player : arena) 
+		for(Player player : arena)
 			player.getPackets().sendConfig(560, foes);
 		
 	}

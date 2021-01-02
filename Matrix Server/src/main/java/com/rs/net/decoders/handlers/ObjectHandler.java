@@ -1431,7 +1431,7 @@ public final class ObjectHandler {
 	}
 
 	private static boolean handleStaircases(Player player, WorldObject object,
-			int optionId) {
+											int optionId) {
 		String option = object.getDefinitions().getOption(optionId);
 		if (option.equalsIgnoreCase("Climb-up")) {
 			if (player.getPlane() == 3)
@@ -1459,7 +1459,7 @@ public final class ObjectHandler {
 	}
 
 	private static boolean handleLadder(Player player, WorldObject object,
-			int optionId) {
+										int optionId) {
 		String option = object.getDefinitions().getOption(optionId);
 		if (option.equalsIgnoreCase("Climb-up")) {
 			if (player.getPlane() == 3)
