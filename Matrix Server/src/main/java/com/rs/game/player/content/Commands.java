@@ -15,8 +15,8 @@ import com.rs.Settings;
 import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
-import com.rs.custom.JSONPlayerFileManager;
-import com.rs.custom.SaveMergeManager;
+import com.rs.custom.JSONPlayerFile;
+import com.rs.custom.MergeJSONManager;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.interfaces.Interfaces;
 import com.rs.game.Animation;
@@ -2174,10 +2174,10 @@ public final class Commands {
 		String message;
 		switch (cmd[0]) {
 			case "load":
-				SaveMergeManager.loadJSON(player);
+				MergeJSONManager.loadJSON(player);
 				return true;
 			case "save":
-				JSONPlayerFileManager.savePlayer(player);
+				JSONPlayerFile.savePlayer(player);
 				return true;
 			case "controller":
 				try {

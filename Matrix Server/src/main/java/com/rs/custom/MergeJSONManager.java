@@ -9,16 +9,14 @@ import java.io.File;
 /**
  * Merges serialization and JSON for loseless gameplay through updates
  */
-public class SaveMergeManager {
-    public boolean loadedFromJSON;
-
+public class MergeJSONManager {
     public static void saveJsonSerial(Player player) {
-        JSONPlayerFileManager.savePlayer(player);
+        JSONPlayerFile.savePlayer(player);
         SerializableFilesManager.savePlayer(player);
     }
 
     public static void loadJSON(Player player) {
-        JSONPlayerFileManager.loadPlayer(player);
+        JSONPlayerFile.loadPlayer(player);
     }
 
     public static boolean jsonExists(Player player) {

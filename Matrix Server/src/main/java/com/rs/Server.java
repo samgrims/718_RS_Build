@@ -12,7 +12,7 @@ import com.rs.cache.loaders.ItemsEquipIds;
 import com.rs.cache.loaders.NPCDefinitions;
 import com.rs.cache.loaders.ObjectDefinitions;
 import com.rs.cores.CoresManager;
-import com.rs.custom.SaveMergeManager;
+import com.rs.custom.MergeJSONManager;
 import com.rs.game.Region;
 import com.rs.game.RegionBuilder;
 import com.rs.game.World;
@@ -167,7 +167,7 @@ public final class Server {
 		for (Player player : World.getPlayers()) {
 			if (player == null || !player.hasStarted() || player.hasFinished())
 				continue;
-			SaveMergeManager.saveJsonSerial(player);
+			MergeJSONManager.saveJsonSerial(player);
 		}
 		DisplayNames.save();
 		IPBanL.save();

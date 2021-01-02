@@ -27,9 +27,8 @@ public final class Settings {
 	/**
 	 * General client and server settings.
 	 */
-	public static final String SERVER_NAME = "Matrix";
+	public static final String SERVER_NAME = "Matrix Base";
 	public static final int PORT_ID = 43594;
-	public static final String LASTEST_UPDATE = "<col=FFFF00>Latest update: Hairdresser and cloths changing!";
 	public static boolean DEBUG = true;
 	public static final int RECEIVE_DATA_LIMIT = 7500;
 	public static final int PACKET_SIZE_LIMIT = 7500;

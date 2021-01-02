@@ -1,6 +1,7 @@
 package com.rs.custom;
 
 import com.rs.Settings;
+import com.rs.game.item.Item;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
 import org.json.simple.JSONArray;
@@ -8,57 +9,47 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.*;
-import java.text.ParseException;
 
 /**
  * Protects player integrity accross player versions
  */
-public class JSONPlayerFileManager {
+public class JSONPlayerFile {
     //Skills DONE
     //Misc: Spins, Music, minutes played, creation date
     //Bank Inventory
-    //Inventory
+    //Inventory DRAFT ENCODE
     //Equipment Inventory
     //Toolbelt inventory
 
     public static void savePlayer(Player player) {
-        JSONObject playerContainer = new JSONObject();
-        playerContainer = saveSkills(player, playerContainer);
+        JSONObject playerMeta = new JSONObject();
+        playerMeta = encodeSkills(player, playerMeta);
+        playerMeta = encodeInventory(player, playerMeta);
+//        playerMeta = encodeEquipment(player, playerMeta);
 
-        System.out.println(playerContainer);
-        saveToFile(player, playerContainer);
+        toFile(player, playerMeta);
     }
 
     public static void loadPlayer(Player player) {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
-
         try {
             String filePath = Settings.PLAYER_JSON_FOLDER_DIR + player.getUsername().toLowerCase() + ".json";
             File input_json = new File(filePath);
             if(!input_json.exists())
                 input_json.createNewFile();
 
-            FileReader reader = new FileReader(input_json);
-
             //Read JSON file
+            FileReader reader = new FileReader(input_json);
             Object obj = jsonParser.parse(reader);
-
             JSONObject playerContainer = (JSONObject) obj;
-
-            readSkills(player, playerContainer);
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (org.json.simple.parser.ParseException e) {
+            decodeSkills(player, playerContainer);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static JSONObject readSkills(Player player, JSONObject playerContainer) {
+    private static JSONObject decodeSkills(Player player, JSONObject playerContainer) {
         JSONArray skills = (JSONArray)playerContainer.get("skills");
         JSONObject skill;
         for(int skillID = 0; skillID < skills.size(); skillID++) {
@@ -72,24 +63,44 @@ public class JSONPlayerFileManager {
         return playerContainer;
     }
 
-    private static JSONObject saveSkills(Player player, JSONObject playerContainer) {
+    private static JSONObject encodeSkills(Player player, JSONObject playerMeta) {
         JSONArray skills = new JSONArray();
-        JSONObject skillContainer = new JSONObject();
-        JSONArray skill = new JSONArray();
+        JSONObject skill = new JSONObject();
+        JSONArray skillMeta = new JSONArray();
 
         for(short skillID = 0; skillID < 25; skillID++) {
-            skill.add(player.getSkills().getLevel(skillID));
-            skill.add((int)player.getSkills().getXp(skillID));
-            skillContainer.put(Skills.SKILL_NAME[skillID].toLowerCase(), skill.clone());
-            skills.add(skillContainer.clone());
-            skillContainer.clear();
+            skillMeta.add(player.getSkills().getLevel(skillID));
+            skillMeta.add((int)player.getSkills().getXp(skillID));
+            skill.put(Skills.SKILL_NAME[skillID].toLowerCase(), skillMeta.clone());
+            skills.add(skill.clone());
             skill.clear();
+            skillMeta.clear();
         }
-        playerContainer.put("skills", skills);
-        return playerContainer;
+        playerMeta.put("skills", skills);
+        return playerMeta;
     }
 
-    private static void saveToFile(Player player, JSONObject playerContainer) {
+    private static JSONObject encodeInventory(Player player, JSONObject playerMeta) {
+        JSONArray inventory = new JSONArray();
+        JSONObject itemJSON = new JSONObject();
+        JSONArray itemMeta = new JSONArray();
+        playerMeta.put("inventory", inventory);
+
+        for(int slot = 0; slot < 28; slot++) {
+            Item item = player.getInventory().getItem(slot);
+            if(item != null) {
+                itemMeta.add(item.getId());
+                itemMeta.add(item.getAmount());
+                itemJSON.put(item.getName().toLowerCase(), itemMeta.clone());
+            }
+            inventory.add(itemJSON.clone());
+            itemJSON.clear();
+            itemMeta.clear();
+        }
+        return playerMeta;
+    }
+
+    private static void toFile(Player player, JSONObject playerMeta) {
         try {
             String filePath = Settings.PLAYER_JSON_FOLDER_DIR + player.getUsername().toLowerCase() + ".json";
             System.out.println(filePath);
@@ -98,7 +109,7 @@ public class JSONPlayerFileManager {
                 output_json.createNewFile();
 
             FileWriter fileWriter = new FileWriter(output_json);
-            fileWriter.write(playerContainer.toJSONString());
+            fileWriter.write(playerMeta.toJSONString());
             fileWriter.flush();
 
         } catch (IOException e) {

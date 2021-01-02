@@ -30,32 +30,13 @@ public class SerializableFilesManager {
 	public synchronized static Player loadPlayer(String username) {
 		try {
 			Player loadedPlayerFile = (Player) loadSerializedFile(new File(Settings.PLAYER_FOLDER_DIR + Player.getPlayerVersionOfServer() + "." + username + ".p"));
-
 			if(loadedPlayerFile == null)
-				DebugLine.print("Perhaps there was an update?");
-
+				DebugLine.print("There is likely an update!");
 			return loadedPlayerFile;
-
 		} catch (Throwable e) {
 			Logger.handle(e);
-		}
-		try {
-//			Logger.log("SerializableFilesManager", "Recovering account: " + username);
-			return (Player) loadSerializedFile(new File(Settings.BACKUP_DIR + username + ".p"));
-		} catch (Throwable e) {
-//			Logger.handle(e);
 		}
 		return null;
-	}
-
-	public static boolean createBackup(String username) {
-		try {
-			Utils.copyFile(new File(Settings.PLAYER_FOLDER_DIR + Player.getPlayerVersionOfServer() + "." + username + ".p"), new File(Settings.BACKUP_DIR + username + ".p"));
-			return true;
-		} catch (Throwable e) {
-			Logger.handle(e);
-			return false;
-		}
 	}
 
 	public synchronized static void savePlayer(Player player) {

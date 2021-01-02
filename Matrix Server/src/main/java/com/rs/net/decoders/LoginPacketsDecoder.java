@@ -2,7 +2,6 @@ package com.rs.net.decoders;
 
 import com.rs.Settings;
 import com.rs.cache.Cache;
-import com.rs.custom.SaveMergeManager;
 import com.rs.game.World;
 import com.rs.game.player.Player;
 import com.rs.io.InputStream;
@@ -93,7 +92,7 @@ public final class LoginPacketsDecoder extends Decoder {
 		String settings = stream.readString();
 		int affid = stream.readInt();
 		stream.skip(stream.readUnsignedByte()); // useless settings
-		MachineInformation mInformation = null;
+		MachineInformation machineInformation = null;
 		int unknown3 = stream.readInt();
 		long userFlow = stream.readLong();
 		boolean hasAditionalInformation = stream.readUnsignedByte() == 1;
@@ -114,6 +113,20 @@ public final class LoginPacketsDecoder extends Decoder {
 				return;
 			}
 		}
+		validateSession(username);
+		Player player = retrievePlayer(username, password);
+
+		if(player == null) {
+			return;
+		}
+		player.init(session, username, displayMode, screenWidth, screenHeight, machineInformation, new IsaacKeyPair(isaacKeys));
+		session.getLoginPackets().sendLoginDetails(player);
+		session.setDecoder(3, player);
+		session.setEncoder(2, player);
+		player.start();
+	}
+
+	private void validateSession(String username) {
 		if (Utils.invalidAccountName(username)) {
 			session.getLoginPackets().sendClientPacket(3);
 			return;
@@ -126,37 +139,28 @@ public final class LoginPacketsDecoder extends Decoder {
 			session.getLoginPackets().sendClientPacket(5);
 			return;
 		}
-		if (AntiFlood.getSessionsIP(session.getIP()) > 3) {
+		if (AntiFlood.getSessionsIP(session.getIP()) > 10) {
 			session.getLoginPackets().sendClientPacket(9);
 			return;
 		}
-		Player player;
-		if (!SerializableFilesManager.containsPlayer(username)) {
+	}
+
+	private Player retrievePlayer(String username, String password) {
+		Player player = null;
+		if(!SerializableFilesManager.containsPlayer(username)) {
 			player = Player.createBrandNew(password);
-		} else {
-			player = SerializableFilesManager.loadPlayer(username);
-			if (player == null) {
-				session.getLoginPackets().sendClientPacket(20);
-				return;
-			}
-			if (!SerializableFilesManager.createBackup(username)) {
-				session.getLoginPackets().sendClientPacket(20);
-				return;
-			}
-			if (!password.equals(player.getPassword())) {
-				session.getLoginPackets().sendClientPacket(3);
-				return;
-			}
+		}
+		player = SerializableFilesManager.loadPlayer(username);
+		if(player == null) {
+			player = Player.recreateUpdatedPlayer(password, true);
+		}
+		if(!password.equals(player.getPassword())) {
+			session.getLoginPackets().sendClientPacket(3);
 		}
 		if (player.isPermBanned() || player.getBanned() > Utils.currentTimeMillis()) {
 			session.getLoginPackets().sendClientPacket(4);
-			return;
 		}
-		player.init(session, username, displayMode, screenWidth, screenHeight, mInformation, new IsaacKeyPair(isaacKeys));
-		session.getLoginPackets().sendLoginDetails(player);
-		session.setDecoder(3, player);
-		session.setEncoder(2, player);
-		player.start();
+		return player;
 	}
-
 }
+

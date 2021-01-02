@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.rs.Settings;
 import com.rs.cores.CoresManager;
-import com.rs.custom.SaveMergeManager;
+import com.rs.custom.MergeJSONManager;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.data_structures.SquealOfFortune;
 import com.rs.custom.data_structures.Toolbelt;
@@ -64,7 +64,7 @@ public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	//version information
-	private final static long serialVersionUID = 1;//based on updates
+	private final static long serialVersionUID = 4;//based on updates
 	private static boolean syncedWithJSON;
 
 	// Portable Information per Base Version
@@ -73,10 +73,9 @@ public class Player extends Entity {//Player Updater tool
 	private transient int spins;
 
 
-
-
 	private long timeOfLogin;
 	private boolean isBrandNew;
+	private boolean isUpdated;
 	private Toolbelt toolbelt;
 	private SquealOfFortune sof;
 	private SpinsManager spinsManager;
@@ -247,6 +246,11 @@ public class Player extends Entity {//Player Updater tool
 	private boolean isForumModerator;
 
 	// creates Player and saved classes
+	public Player(String password, boolean updateNotice) {
+		this(password);
+		this.isUpdated = updateNotice;
+	}
+
 	public Player(String password) {
 		super(Settings.START_PLAYER_LOCATION);
 		//custom stuff
@@ -291,6 +295,10 @@ public class Player extends Entity {//Player Updater tool
 	 * @param password
 	 * @return
 	 */
+	public static Player recreateUpdatedPlayer(String password, boolean updateNotice) {
+		return new Player(password, updateNotice);
+	}
+
 	public static Player createBrandNew(String password) {
 		return new Player(password);
 	}
@@ -515,14 +523,16 @@ public class Player extends Entity {//Player Updater tool
 		updateSpinsEarnedByMinutes();
 		if(isBrandNew) {
 			giveStartingItems();
-			if(SaveMergeManager.jsonExists(this))
+			if(isUpdated)
+				this.getPackets().sendGameMessage("<col=FFFF00>There has been an update!");
+			else if(MergeJSONManager.jsonExists(this))
 				this.getPackets().sendGameMessage("<col=FF0000>Your save was loaded from a backup");
 			isBrandNew = false;
 		}
 		toolbelt.setPlayer(this);
 		sof.setPlayer(this);
 		toolbelt.init();
-		SaveMergeManager.loadJSON(this);
+		MergeJSONManager.loadJSON(this);
 	}
 
 	public void stopAll() {
@@ -734,7 +744,6 @@ public class Player extends Entity {//Player Updater tool
 
 	public void sendWelcomePrompts() {
 		getPackets().sendGameMessage("Welcome to " + Settings.SERVER_NAME + ".");
-		getPackets().sendGameMessage(Settings.LASTEST_UPDATE);
 	}
 
 	public void run() {
@@ -990,7 +999,7 @@ public class Player extends Entity {//Player Updater tool
 		setFinished(true);
 		session.setDecoder(-1);
 		updateTimeLoggedIn();
-		SaveMergeManager.saveJsonSerial(this);
+		MergeJSONManager.saveJsonSerial(this);
 		World.updateEntityRegion(this);
 		World.removePlayer(this);
 
