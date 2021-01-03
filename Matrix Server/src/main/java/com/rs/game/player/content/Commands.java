@@ -2170,10 +2170,10 @@ public final class Commands {
 		String message;
 		switch (cmd[0]) {
 			case "load":
-				SaveJSONManager.loadJSON(player);
+				player.getSaveJSONManager().loadJSON();
 				return true;
 			case "save":
-				JSONPlayerSaver.savePlayer(player);
+				player.getSaveJSONManager().saveJSON();
 				return true;
 			case "controller":
 				try {

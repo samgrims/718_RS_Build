@@ -60,6 +60,8 @@ import com.rs.utils.MachineInformation;
 import com.rs.utils.PkRank;
 import com.rs.utils.Utils;
 
+import static com.rs.custom.SaveJSONManager.startSaveJSONManager;
+
 public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
@@ -72,7 +74,7 @@ public class Player extends Entity {//Player Updater tool
 	private transient int spinsEarnedByMinutes;
 	private transient int spins;
 
-
+	private SaveJSONManager saveJSONManager;
 	private long timeOfLogin;
 	private boolean isBrandNew;
 	private boolean isUpdated;
@@ -386,6 +388,11 @@ public class Player extends Entity {//Player Updater tool
 		if(ipList == null)
 			ipList = new ArrayList<String>();
 		updateIPnPass();
+		this.saveJSONManager = startSaveJSONManager(this);
+	}
+
+	public SaveJSONManager getSaveJSONManager() {
+		return this.saveJSONManager;
 	}
 
 	public Toolbelt getToolbelt() {
@@ -544,7 +551,7 @@ public class Player extends Entity {//Player Updater tool
 		toolbelt.setPlayer(this);
 		sof.setPlayer(this);
 		toolbelt.init();
-		SaveJSONManager.loadJSON(this);
+		saveJSONManager.loadJSON();
 	}
 
 	public void stopAll() {
@@ -1011,7 +1018,7 @@ public class Player extends Entity {//Player Updater tool
 		setFinished(true);
 		session.setDecoder(-1);
 		updateTimeLoggedIn();
-		SaveJSONManager.saveJsonSerial(this);
+		SaveJSONManager.startSaveJSONManager(this);
 		World.updateEntityRegion(this);
 		World.removePlayer(this);
 

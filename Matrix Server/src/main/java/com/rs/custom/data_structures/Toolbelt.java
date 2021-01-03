@@ -31,6 +31,10 @@ public class Toolbelt implements Serializable {
         refreshConfigs();
     }
 
+    public void setToolbeltItemsTaken(boolean[] toolbeltItemsTaken) {
+        this.TOOLBELT_ITEMS_TAKEN = toolbeltItemsTaken;
+    }
+
     private int getConfigIndex(int i) {
         return i / 20;
     }

@@ -100,8 +100,7 @@ public final class MusicsManager implements Serializable {
 	}
 
 	public void addPlayingMusicToPlayList() {
-		addToPlayList((int) ClientScriptMap.getMap(1351).getKeyForValue(
-				playingMusic));
+		addToPlayList((int) ClientScriptMap.getMap(1351).getKeyForValue(playingMusic));
 	}
 
 	public void addToPlayList(int musicIndex) {
@@ -160,8 +159,7 @@ public final class MusicsManager implements Serializable {
 	public void refreshListConfigs() {
 		int[] configValues = new int[CONFIG_IDS.length];
 		for (int musicId : unlockedMusics) {
-			int musicIndex = (int) ClientScriptMap.getMap(1351).getKeyForValue(
-					musicId);
+			int musicIndex = (int) ClientScriptMap.getMap(1351).getKeyForValue(musicId);
 			if (musicIndex == -1)
 				continue;
 			int index = getConfigIndex(musicIndex);
@@ -205,8 +203,7 @@ public final class MusicsManager implements Serializable {
 	}
 
 	public boolean musicEnded() {
-		return playingMusic != -2
-				&& playingMusicDelay + (180000) < Utils.currentTimeMillis();
+		return playingMusic != -2	&& playingMusicDelay + (180000) < Utils.currentTimeMillis();
 	}
 
 	public void replayMusic() {
@@ -220,14 +217,12 @@ public final class MusicsManager implements Serializable {
 				playingMusic = playList.get(nextPlayListMusic++);
 			}
 		} else if (unlockedMusics.size() > 0) // random music
-			playingMusic = unlockedMusics.get(Utils.getRandom(unlockedMusics
-					.size() - 1));
+			playingMusic = unlockedMusics.get(Utils.getRandom(unlockedMusics.size() - 1));
 		playMusic(playingMusic);
 	}
 
 	public void checkMusic(int requestMusicId) {
-		if (playListOn || settedMusic
-				&& playingMusicDelay + (180000) >= Utils.currentTimeMillis())
+		if (playListOn || settedMusic && playingMusicDelay + (180000) >= Utils.currentTimeMillis())
 			return;
 		settedMusic = false;
 		if (playingMusic != requestMusicId)
@@ -241,17 +236,15 @@ public final class MusicsManager implements Serializable {
 
 	public void reset() {
 		settedMusic = false;
-		player.getMusicsManager().checkMusic(
-				World.getRegion(player.getRegionId()).getMusicId());
+		player.getMusicsManager().checkMusic(World.getRegion(player.getRegionId()).getMusicId());
 	}
 
 	
 	public void sendHint(int musicIndex) {
 		int musicId = ClientScriptMap.getMap(1351).getIntValue(musicIndex);
 		if (musicId != -1) {
-			player.getPackets().sendGameMessage("This track "+
-		(unlockedMusics.contains(musicId) ? "was unlocked" : "unlocks")
-		+ " " +MusicHints.getHint(musicId));
+			player.getPackets().sendGameMessage("This track "+ (unlockedMusics.contains(musicId) ? "was unlocked" :
+					"unlocks") + " " +MusicHints.getHint(musicId));
 		}
 	}
 	public void playAnotherMusic(int musicIndex) {

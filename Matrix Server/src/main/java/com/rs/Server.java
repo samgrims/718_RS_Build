@@ -12,7 +12,6 @@ import com.rs.cache.loaders.ItemsEquipIds;
 import com.rs.cache.loaders.NPCDefinitions;
 import com.rs.cache.loaders.ObjectDefinitions;
 import com.rs.cores.CoresManager;
-import com.rs.custom.SaveJSONManager;
 import com.rs.game.Region;
 import com.rs.game.RegionBuilder;
 import com.rs.game.World;
@@ -24,23 +23,7 @@ import com.rs.game.player.controlers.ControlerHandler;
 import com.rs.game.player.cutscenes.CutscenesHandler;
 import com.rs.game.player.dialogues.DialogueHandler;
 import com.rs.net.ServerChannelHandler;
-import com.rs.utils.DTRank;
-import com.rs.utils.DisplayNames;
-import com.rs.utils.IPBanL;
-import com.rs.utils.ItemBonuses;
-import com.rs.utils.ItemExamines;
-import com.rs.utils.Logger;
-import com.rs.utils.MapArchiveKeys;
-import com.rs.utils.MapAreas;
-import com.rs.utils.MusicHints;
-import com.rs.utils.NPCBonuses;
-import com.rs.utils.NPCCombatDefinitionsL;
-import com.rs.utils.NPCDrops;
-import com.rs.utils.NPCSpawns;
-import com.rs.utils.ObjectSpawns;
-import com.rs.utils.PkRank;
-import com.rs.utils.ShopsHandler;
-import com.rs.utils.Utils;
+import com.rs.utils.*;
 import com.rs.utils.huffman.Huffman;
 
 public final class Server {
@@ -167,7 +150,8 @@ public final class Server {
 		for (Player player : World.getPlayers()) {
 			if (player == null || !player.hasStarted() || player.hasFinished())
 				continue;
-			SaveJSONManager.saveJsonSerial(player);
+			player.getSaveJSONManager().saveJSON();
+			SerializableFilesManager.savePlayer(player);
 		}
 		DisplayNames.save();
 		IPBanL.save();
