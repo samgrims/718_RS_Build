@@ -798,12 +798,10 @@ public class ButtonHandler {
 						if (Magic.sendItemTeleportSpell(player, true,
 								Transportation.EMOTE, Transportation.GFX, 4,
 								new WorldTile(3087, 3496, 0))) {
-							Item amulet = player.getEquipment().getItem(
-									Equipment.SLOT_AMULET);
+							Item amulet = player.getEquipment().getItem(Equipment.SLOT_AMULET);
 							if (amulet != null) {
 								amulet.setId(amulet.getId() - 2);
-								player.getEquipment().refresh(
-										Equipment.SLOT_AMULET);
+								player.getEquipment().refresh(Equipment.SLOT_AMULET);
 							}
 						}
 					} else if (amuletId == 1704 || amuletId == 10352)

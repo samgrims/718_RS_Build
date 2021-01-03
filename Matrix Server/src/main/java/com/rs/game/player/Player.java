@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.rs.Settings;
 import com.rs.cores.CoresManager;
-import com.rs.custom.MergeJSONManager;
+import com.rs.custom.SaveJSONManager;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.data_structures.SquealOfFortune;
 import com.rs.custom.data_structures.Toolbelt;
@@ -311,6 +311,10 @@ public class Player extends Entity {//Player Updater tool
 		return creationDate;
 	}
 
+	public void setCreationDate(long creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	public WorldTile getLocation() {
 		return new WorldTile(getX(), getY(), getPlane());
 	}
@@ -429,6 +433,10 @@ public class Player extends Entity {//Player Updater tool
 		return this.totalMinutesPlayed;
 	}
 
+	public void setTotalMinutesPlayed(int totalMinutesPlayed) {
+		this.totalMinutesPlayed = totalMinutesPlayed;
+	}
+
 	private void setAdminBasedOnUsername() {
 		if (getUsername().equalsIgnoreCase("Jawarrior1")) {
 			setRights(2);
@@ -529,14 +537,14 @@ public class Player extends Entity {//Player Updater tool
 			giveStartingItems();
 			if(isUpdated)
 				this.getPackets().sendGameMessage("<col=FFFF00>There has been an update!");
-			else if(MergeJSONManager.jsonExists(this))
+			else if(SaveJSONManager.jsonExists(this))
 				this.getPackets().sendGameMessage("<col=FF0000>Your save was loaded from a backup");
 			isBrandNew = false;
 		}
 		toolbelt.setPlayer(this);
 		sof.setPlayer(this);
 		toolbelt.init();
-		MergeJSONManager.loadJSON(this);
+		SaveJSONManager.loadJSON(this);
 	}
 
 	public void stopAll() {
@@ -1003,7 +1011,7 @@ public class Player extends Entity {//Player Updater tool
 		setFinished(true);
 		session.setDecoder(-1);
 		updateTimeLoggedIn();
-		MergeJSONManager.saveJsonSerial(this);
+		SaveJSONManager.saveJsonSerial(this);
 		World.updateEntityRegion(this);
 		World.removePlayer(this);
 

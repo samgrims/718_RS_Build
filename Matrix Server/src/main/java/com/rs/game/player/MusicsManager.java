@@ -182,6 +182,11 @@ public final class MusicsManager implements Serializable {
 			player.getEmotesManager().unlockEmote(41);
 	}
 
+	public void addMusicNoEmotes(int musicId) {
+		unlockedMusics.add(musicId);
+		refreshListConfigs();
+	}
+
 	public int getConfigIndex(int musicId) {
 		return (musicId + 1) / 32;
 	}
@@ -270,24 +275,18 @@ public final class MusicsManager implements Serializable {
 			player.getPackets().sendIComponentText(187, 4, "");
 			return;
 		}
-		player.getPackets().sendMusic(musicId, playingMusic == -1 ? 0 : 100,
-				255);
+		player.getPackets().sendMusic(musicId, playingMusic == -1 ? 0 : 100,255);
 		playingMusic = musicId;
-		int musicIndex = (int) ClientScriptMap.getMap(1351).getKeyForValue(
-				musicId);
+		int musicIndex = (int) ClientScriptMap.getMap(1351).getKeyForValue(	musicId);
 		if (musicIndex != -1) {
-			String musicName = ClientScriptMap.getMap(1345).getStringValue(
-					musicIndex);
+			String musicName = ClientScriptMap.getMap(1345).getStringValue(	musicIndex);
 			if (musicName.equals(" "))
 				musicName = Region.getMusicName1(player.getRegionId());
-			player.getPackets().sendIComponentText(187, 4,
-					musicName != null ? musicName : "");
+			player.getPackets().sendIComponentText(187, 4,	musicName != null ? musicName : "");
 			if (!unlockedMusics.contains(musicId)) {
 				addMusic(musicId);
 				if (musicName != null)
-					player.getPackets().sendGameMessage(
-							"<col=ff0000>You have unlocked a new music track: "
-									+ musicName + ".");
+					player.getPackets().sendGameMessage("<col=ff0000>You have unlocked a new music track: " + musicName + ".");
 			}
 		}
 	}

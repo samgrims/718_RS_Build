@@ -67,6 +67,10 @@ public class Bank implements Serializable {
 			refreshTab(slot);
 	}
 
+	public Item[][] getBankTabs() {
+		return bankTabs;
+	}
+
 	public int getTabSize(int slot) {
 		if(slot >= bankTabs.length)
 			return 0;

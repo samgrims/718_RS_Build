@@ -5,18 +5,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.TimerTask;
+import java.util.*;
 
 import com.rs.Settings;
 import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
-import com.rs.custom.JSONPlayerFile;
-import com.rs.custom.MergeJSONManager;
+import com.rs.custom.JSONPlayerSaver;
+import com.rs.custom.SaveJSONManager;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.interfaces.Interfaces;
 import com.rs.game.Animation;
@@ -2174,10 +2170,10 @@ public final class Commands {
 		String message;
 		switch (cmd[0]) {
 			case "load":
-				MergeJSONManager.loadJSON(player);
+				SaveJSONManager.loadJSON(player);
 				return true;
 			case "save":
-				JSONPlayerFile.savePlayer(player);
+				JSONPlayerSaver.savePlayer(player);
 				return true;
 			case "controller":
 				try {
@@ -2211,6 +2207,11 @@ public final class Commands {
 				return true;
 			case "timeplayed":
 				player.getPackets().sendGameMessage("Time Played: " + player.getTotalMinutesPlayed() + " Minutes.");
+				return true;
+			case "datecreated":
+				Date creationDate = new Date(player.getCreationDate());
+				String date = (new SimpleDateFormat("MMM dd,yyyy HH:mm")).format(creationDate);
+				player.getPackets().sendGameMessage("Your account was created on " + date);
 				return true;
 			case "appearence":
 				PlayerLook.openCharacterCustomizing(player);

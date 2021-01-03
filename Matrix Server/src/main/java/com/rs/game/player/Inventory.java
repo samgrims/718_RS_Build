@@ -30,10 +30,8 @@ public final class Inventory implements Serializable {
 	}
 
 	public void unlockInventoryOptions() {
-		player.getPackets().sendIComponentSettings(INVENTORY_INTERFACE, 0, 0,
-				27, 4554126);
-		player.getPackets().sendIComponentSettings(INVENTORY_INTERFACE, 0, 28,
-				55, 2097152);
+		player.getPackets().sendIComponentSettings(INVENTORY_INTERFACE, 0, 0,27, 4554126);
+		player.getPackets().sendIComponentSettings(INVENTORY_INTERFACE, 0, 28,55, 2097152);
 	}
 
 	public void reset() {
@@ -60,22 +58,21 @@ public final class Inventory implements Serializable {
 	}
 
 	public boolean addItem(Item item) {
-		if (item.getId() < 0
-				|| item.getAmount() < 0
-				|| !Utils.itemExists(item.getId())
-				|| !player.getControlerManager().canAddInventoryItem(
-						item.getId(), item.getAmount()))
+		if (item.getId() < 0 || item.getAmount() < 0 || !Utils.itemExists(item.getId())	|| !player.getControlerManager().canAddInventoryItem(item.getId(), item.getAmount()))
 			return false;
 		Item[] itemsBefore = items.getItemsCopy();
 		if (!items.add(item)) {
 			items.add(new Item(item.getId(), items.countAvailableSlots()));
-			player.getPackets().sendGameMessage(
-					"Not enough space in your inventory.");
+			player.getPackets().sendGameMessage("Not enough space in your inventory.");
 			refreshItems(itemsBefore);
 			return false;
 		}
 		refreshItems(itemsBefore);
 		return true;
+	}
+
+	public void addItemOnSlot(int slot, Item item) {
+		items.set(slot, item);
 	}
 
 	public void deleteItem(int slot, Item item) {
@@ -106,8 +103,7 @@ public final class Inventory implements Serializable {
 	}
 
 	public void deleteItem(Item item) {
-		if (!player.getControlerManager().canDeleteInventoryItem(item.getId(),
-				item.getAmount()))
+		if (!player.getControlerManager().canDeleteInventoryItem(item.getId(), item.getAmount()))
 			return;
 		Item[] itemsBefore = items.getItemsCopy();
 		items.remove(item);

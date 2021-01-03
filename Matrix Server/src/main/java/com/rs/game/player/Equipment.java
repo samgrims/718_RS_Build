@@ -53,6 +53,10 @@ public final class Equipment implements Serializable {
 		init();
 	}
 
+	public void addItemOnSlot(int slot, Item item) {
+		items.set(slot, item);
+	}
+
 	public Item getItem(int slot) {
 		return items.get(slot);
 	}
