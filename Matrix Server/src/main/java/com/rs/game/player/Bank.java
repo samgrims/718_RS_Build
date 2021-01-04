@@ -33,6 +33,24 @@ public class Bank implements Serializable {
 		bankTabs = new Item[1][0];
 	}
 
+	public void reset() {
+		for (int i = 0; i < 25353; i++) {
+			player.getBank().removeItem(i);
+			int[] BankSlot = player.getBank().getItemSlot(i);
+
+			player.getBank().removeItem(BankSlot, Integer.MAX_VALUE, false, true);
+			if (player.getBank().bankTabs != null) {
+				for (int i1 = 0; i1 < player.getBank().bankTabs.length; i1++) {
+					for (int i2 = 0; i2 < player.getBank().bankTabs[i1].length; i2++) {
+						player.getBank().bankTabs[i1][i2].setId(0);
+						player.getBank().bankTabs[i1][i2].setAmount(0);
+						player.getBank().bankTabs = new Item[1][0];
+					}
+				}
+			}
+		}
+	}
+
 	public void removeItem(int id) {
 		if(bankTabs != null) {
 			for(int i = 0; i < bankTabs.length; i++) {

@@ -1,5 +1,6 @@
 package com.rs.game.player;
 
+import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -54,11 +55,7 @@ import com.rs.net.decoders.WorldPacketsDecoder;
 import com.rs.net.decoders.handlers.ButtonHandler;
 import com.rs.net.encoders.WorldPacketsEncoder;
 import com.rs.tools.DebugLine;
-import com.rs.utils.IsaacKeyPair;
-import com.rs.utils.Logger;
-import com.rs.utils.MachineInformation;
-import com.rs.utils.PkRank;
-import com.rs.utils.Utils;
+import com.rs.utils.*;
 
 import static com.rs.custom.SaveJSONManager.startSaveJSONManager;
 
@@ -66,7 +63,7 @@ public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	//version information
-	private final static long serialVersionUID = 4;//based on updates
+	private final static long serialVersionUID = 6;//based on updates
 	private static boolean syncedWithJSON;
 
 	// Portable Information per Base Version
@@ -74,7 +71,8 @@ public class Player extends Entity {//Player Updater tool
 	private transient int spinsEarnedByMinutes;
 	private transient int spins;
 
-	private SaveJSONManager saveJSONManager;
+	private transient SaveJSONManager saveJSONManager;
+	public WorldTile locationFromJSON;
 	private long timeOfLogin;
 	private boolean isBrandNew;
 	private boolean isUpdated;
@@ -399,7 +397,7 @@ public class Player extends Entity {//Player Updater tool
 		return this.toolbelt;
 	}
 
-	private void giveStartingItems() {
+	public void giveStartingItems() {
 		Item[] inventory = {new Item(1351, 1), new Item(590, 1), new Item(303, 1), new Item(315, 1),
 				new Item(1925, 1), new Item(1931, 1), new Item(2309, 1), new Item(1265, 1), new Item(1205, 1),
 				new Item(1277, 1), new Item(1171, 1), new Item(841, 1), new Item(882, 25), new Item(556, 25),
@@ -1018,7 +1016,10 @@ public class Player extends Entity {//Player Updater tool
 		setFinished(true);
 		session.setDecoder(-1);
 		updateTimeLoggedIn();
+
 		SaveJSONManager.startSaveJSONManager(this);
+		SerializableFilesManager.savePlayer(this);
+
 		World.updateEntityRegion(this);
 		World.removePlayer(this);
 

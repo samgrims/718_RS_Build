@@ -137,33 +137,27 @@ public class JSONPlayerSaver {
     }
 
     private void encodeBank() {
-        JSONObject bank = new JSONObject();
-        JSONArray tabsMeta = new JSONArray();
-        JSONObject itemsJSON = new JSONObject();
-        JSONArray itemsMeta = new JSONArray();
+        JSONObject bankMeta = new JSONObject();
+        JSONArray tabMeta = new JSONArray();
+        JSONArray itemMeta = new JSONArray();
 
-        Item[][] bankTabs = player.getBank().getBankTabs();
+        Item[][] bankTabs = player.getBank().getBankTabs();//Size of bankTabs changes depending on tabs created
         for(int tabSlot = 0; tabSlot < 9; tabSlot++) {
-            if(tabSlot > bankTabs.length-1) {
-                bank.put(tabSlot, tabsMeta.clone());
-                tabsMeta.clear();
-                continue;
+            if(!(tabSlot >= bankTabs.length)) {//check inquired tab to be non existent in bankTabs
+                Item[] tab = bankTabs[tabSlot];
+                for (int itemSlot = 0; itemSlot < tab.length; itemSlot++) {
+                    Item item = tab[itemSlot];
+                    itemMeta.add(item.getName());
+                    itemMeta.add(item.getId());
+                    itemMeta.add(item.getAmount());
+                    tabMeta.add(itemMeta.clone());
+                    itemMeta.clear();
+                }
             }
-            Item[] tab = bankTabs[tabSlot];
-            for(int itemSlot = 0; itemSlot < tab.length; itemSlot++) {
-                Item item = tab[itemSlot];
-                itemsMeta.add(item.getId());
-                itemsMeta.add(item.getAmount());
-                itemsJSON.put(item.getName(), itemsMeta.clone());
-                tabsMeta.add(itemsJSON.clone());
-                itemsMeta.clear();
-                itemsJSON.clear();;
-            }
-            bank.put(tabSlot, tabsMeta.clone());
-            tabsMeta.clear();
+            bankMeta.put(Integer.toString(tabSlot), tabMeta.clone());
+            tabMeta.clear();
         }
-
-        playerMeta.put("bank", bank);
+        playerMeta.put("bank", bankMeta);
     }
 
     private void toFile() {

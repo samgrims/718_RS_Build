@@ -2169,6 +2169,12 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+			case "starter":
+				player.giveStartingItems();
+				return true;
+			case "resetbank":
+				player.getBank().reset();
+				return true;
 			case "load":
 				player.getSaveJSONManager().loadJSON();
 				return true;

@@ -17,39 +17,46 @@ import java.util.List;
 public class JSONPlayerLoader {
     private Player player;
     private JSONObject playerMeta;
-    private static byte itemName = 0, itemId = 1, itemAmount = 2;
+    private static byte itemName = 0, ITEMID = 1, ITEMAMOUNT = 2;
 
     protected void setPlayer(Player player) {
         this.player = player;
-        try {
-            JSONParser jsonParser = new JSONParser();
-            FileReader reader = new FileReader(getPlayerFile());
-            this.playerMeta = (JSONObject) jsonParser.parse(reader);
-        } catch(Exception e) {
-            DebugLine.print("Could not find " + player.getUsername() + "JSON file");
-        }
     }
 
+
+
     public void loadPlayer() {
-        decodeCoordinate();
+        try {
+            this.playerMeta = getPlayerFile();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+//        decodeCoordinate();
         decodeSkills();
         decodeInventory();
         decodeEquipment();
         decodeDetails();
 //        decodeMusic();
         decodeToolbelt();
-//        decodeBank();
+        decodeBank();
     }
 
-    private File getPlayerFile() throws Exception {
+    /**
+     * Retrieves the file as a JSONObject
+     * @return
+     * @throws Exception
+     */
+    private JSONObject getPlayerFile() throws Exception {
         String filePath = Settings.PLAYER_JSON_FOLDER_DIR + player.getUsername().toLowerCase() + ".json";
         File input_json = new File(filePath);
         if (!input_json.exists())
-                input_json.createNewFile();
-        return input_json;
+            input_json.createNewFile();
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader = new FileReader(input_json);
+        return (JSONObject) jsonParser.parse(reader);
     }
 
-    private void decodeCoordinate() {
+    public void decodeCoordinate() {
         JSONObject coordinateMeta = (JSONObject)playerMeta.get("coordinate");
         int x = ((Long)coordinateMeta.get("x")).intValue();
         int y = ((Long)coordinateMeta.get("y")).intValue();
@@ -77,8 +84,8 @@ public class JSONPlayerLoader {
             JSONArray itemMeta = (JSONArray)inventoryMeta.get(slot);
             if(itemMeta.isEmpty())
                 continue;
-            int id = ((Long)itemMeta.get(itemId)).intValue();
-            int amount = ((Long)itemMeta.get(itemAmount)).intValue();
+            int id = ((Long)itemMeta.get(ITEMID)).intValue();
+            int amount = ((Long)itemMeta.get(ITEMAMOUNT)).intValue();
             Item item = new Item(id, amount);
             inventory.addItemOnSlot(slot, item);
         }
@@ -93,8 +100,8 @@ public class JSONPlayerLoader {
             JSONArray itemMeta = (JSONArray)equipmentMeta.get(slot);
             if(itemMeta.isEmpty())
                 continue;
-            int id = ((Long)itemMeta.get(itemId)).intValue();
-            int amount = ((Long)itemMeta.get(itemAmount)).intValue();
+            int id = ((Long)itemMeta.get(ITEMID)).intValue();
+            int amount = ((Long)itemMeta.get(ITEMAMOUNT)).intValue();
             Item item = new Item(id, amount);
             equipment.addItemOnSlot(slot, item);
             equipment.refresh(slot);
@@ -139,6 +146,22 @@ public class JSONPlayerLoader {
                 int itemId = toolbeltItems.get(slot);
                 Item item = new Item(itemId);
                 player.getToolbelt().addItemForce(item);
+            }
+        }
+    }
+
+    private void decodeBank() {
+        JSONObject bankMeta = (JSONObject)playerMeta.get("bank");
+        player.getBank().reset();
+        for(int bankTab = 0; bankTab < 9; bankTab++) {
+            JSONArray tabMeta = (JSONArray)bankMeta.get((Integer.toString(bankTab)));
+            if(tabMeta.isEmpty())
+                continue;
+            for(int slotInsideTab = 0; slotInsideTab < tabMeta.size(); slotInsideTab++) {
+                JSONArray itemMeta = (JSONArray)tabMeta.get(slotInsideTab);
+                int itemId = ((Long)itemMeta.get(ITEMID)).intValue();
+                int itemAmount = ((Long)itemMeta.get(ITEMAMOUNT)).intValue();
+                player.getBank().addItem(itemId, itemAmount, slotInsideTab, true);
             }
         }
     }
