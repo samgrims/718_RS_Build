@@ -1359,7 +1359,7 @@ public final class WorldPacketsDecoder extends Decoder {
 				|| packetId == OBJECT_CLICK4_PACKET	|| packetId == OBJECT_CLICK5_PACKET
 				|| packetId == INTERFACE_ON_OBJECT) {
 			player.addLogicPacketToQueue(new LogicPacket(packetId, length, stream));
-			player.afkTimer = Utils.currentTimeMillis() + (10 * 60 * 1000);
+			player.setAFKTime(Utils.currentTimeMillis() + (10 * 60 * 1000));
 		}
 		else if (packetId == OBJECT_EXAMINE_PACKET) {
 			ObjectHandler.handleOption(player, stream, -1);

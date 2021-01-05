@@ -68,8 +68,7 @@ public abstract class Cutscene {
 		player.stopAll(true, false);
 	}
 
-	public void constructArea(final Player player, final int baseChunkX,
-                              final int baseChunkY, final int widthChunks, final int heightChunks) {
+	public void constructArea(final Player player, final int baseChunkX, final int baseChunkY, final int widthChunks, final int heightChunks) {
 		constructingRegion = true;
 		player.getPackets().sendWindowsPane(56, 0);
 		CoresManager.slowExecutor.execute(new Runnable() {
@@ -77,20 +76,15 @@ public abstract class Cutscene {
 			public void run() {
 				try {
 					final int[] oldData = currentMapData;
-					int[] mapBaseChunks = RegionBuilder.findEmptyChunkBound(
-							widthChunks, heightChunks);
-					RegionBuilder.copyAllPlanesMap(baseChunkX, baseChunkY,
-							mapBaseChunks[0], mapBaseChunks[1], widthChunks,
-							heightChunks);
-					currentMapData = new int[] { mapBaseChunks[0],
-							mapBaseChunks[1], widthChunks, heightChunks };
-					player.setNextWorldTile(new WorldTile(getBaseX()
-							+ widthChunks * 4, +getBaseY() + heightChunks * 4,
-							0));
+					int[] mapBaseChunks = RegionBuilder.findEmptyChunkBound(widthChunks, heightChunks);
+					RegionBuilder.copyAllPlanesMap(baseChunkX, baseChunkY,	mapBaseChunks[0], mapBaseChunks[1], widthChunks, heightChunks);
+					currentMapData = new int[] { mapBaseChunks[0],	mapBaseChunks[1], widthChunks, heightChunks	};
+					player.setNextWorldTile(new WorldTile(getBaseX()	+ widthChunks * 4, +getBaseY() + heightChunks * 4,0));
 					constructingRegion = false;
-					if (Settings.DEBUG)
-						Logger.log(this, "Bases: " + getBaseX() + ", "
-								+ getBaseY());
+
+					if(Settings.DEBUG)
+						Logger.log(this, "Bases: " + getBaseX() + ", " + getBaseY());
+
 					WorldTasksManager.schedule(new WorldTask() {
 
 						@Override
@@ -99,16 +93,10 @@ public abstract class Cutscene {
 							CoresManager.slowExecutor.execute(new Runnable() {
 								@Override
 								public void run() {
-									player.getPackets()
-											.sendWindowsPane(
-													player.getInterfaceManager()
-															.hasRezizableScreen() ? InterfaceManager.RESIZABLE_WINDOW_ID
-															: InterfaceManager.FIXED_WINDOW_ID,
-													0);
+									player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? InterfaceManager.RESIZABLE_WINDOW_ID
+															: InterfaceManager.FIXED_WINDOW_ID,0);
 									if (oldData != null)
-										RegionBuilder.destroyMap(oldData[0],
-												oldData[1], oldData[1],
-												oldData[2]);
+										RegionBuilder.destroyMap(oldData[0], oldData[1], oldData[1], oldData[2]);
 								}
 							});
 						}

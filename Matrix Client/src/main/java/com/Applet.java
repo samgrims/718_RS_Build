@@ -21,8 +21,8 @@ public class Applet extends java.applet.Applet {
 	public static boolean usingRS = false;
 	public static boolean useIsaac = false;
 	
-//	public static String IP = "72.191.29.70";
-	public static String IP = "144.91.84.171";
+	public static String IP = "72.191.29.70";
+//	public static String IP = "144.91.84.171";
 	public static boolean LOBBY_ENABLED = false;
 	public static boolean DISABLE_XTEA_CRASH = true;
 	public static boolean DISABLE_USELESS_PACKETS = false;

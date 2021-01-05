@@ -1,6 +1,5 @@
 package com.rs.game.player;
 
-import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -63,23 +62,21 @@ public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	//version information
-	private final static long serialVersionUID = 6;//based on updates
-	private static boolean syncedWithJSON;
+	private final static long serialVersionUID = 7;//based on updates
 
-	// Portable Information per Base Version
+	// Not serialized
 	private transient int totalMinutesPlayed;
 	private transient int spinsEarnedByMinutes;
 	private transient int spins;
-	public transient long afkTimer = 0;
-
+	private transient long afkTime = 0;
 	private transient SaveJSONManager saveJSONManager;
-	public WorldTile locationFromJSON;
+
 	private long timeOfLogin;
 	private boolean isBrandNew;
 	private boolean isUpdated;
 	private Toolbelt toolbelt;
 	private SquealOfFortune sof;
-	private SpinsManager spinsManager;
+	private boolean isDebugModeOn;
 
 	// Matrix transient stuff
 	private transient String username;
@@ -259,6 +256,7 @@ public class Player extends Entity {//Player Updater tool
 		this.spinsEarnedByMinutes = 0;
 		this.isBrandNew = true;
 		this.toolbelt = new Toolbelt();
+		this.isDebugModeOn = false;
 
 		//Matrix stuff
 		setHitpoints(Settings.START_PLAYER_HITPOINTS);
@@ -300,14 +298,35 @@ public class Player extends Entity {//Player Updater tool
 		return new Player(password, updateNotice);
 	}
 
+	public static Player createBrandNew(String password) {
+		return new Player(password);
+	}
+
 	@Override
 	public void sendDeathWithSound(final Entity source, Entity player) {
 //		PlayerCombat.playSound(1, player);
 		sendDeath(source);
 	}
 
-	public static Player createBrandNew(String password) {
-		return new Player(password);
+	public void notifyDebugMessage(String message) {
+		if(isDebugModeOn)
+			this.getPackets().sendGameMessage("[Debug]" + message);
+	}
+
+	public boolean getDebugMode() {
+		return isDebugModeOn;
+	}
+
+	public void setDebugMode(boolean isOn) {
+		this.isDebugModeOn = isOn;
+	}
+
+	public long getAFKTime() {
+		return this.afkTime;
+	}
+
+	public void setAFKTime(long time) {
+		this.afkTime = time;
 	}
 
 	public static String getPlayerVersionOfServer() {
@@ -328,7 +347,7 @@ public class Player extends Entity {//Player Updater tool
 
 	public void init(Session session, String username, int displayMode,	int screenWidth, int screenHeight, MachineInformation machineInformation, IsaacKeyPair isaacKeyPair) {
 		//custom properties
-		afkTimer = Utils.currentTimeMillis() + (1*60*1000);
+		afkTime = Utils.currentTimeMillis() + (1*60*1000);
 		afkTime();
 		this.timeOfLogin = System.currentTimeMillis();
 		if(toolbelt == null)
@@ -401,7 +420,7 @@ public class Player extends Entity {//Player Updater tool
 	public void afkTime() {
 		CoresManager.slowExecutor.schedule(new Runnable() {
 			public void run(){
-				if (afkTimer < Utils.currentTimeMillis()){
+				if (afkTime < Utils.currentTimeMillis()){
 					logout(false);
 				}
 				afkTime();
@@ -428,10 +447,6 @@ public class Player extends Entity {//Player Updater tool
 
 	public SquealOfFortune getSquealOfFortune() {
 		return sof;
-	}
-
-	public SpinsManager getSpinsManager() {
-		return spinsManager;
 	}
 
 	public void setSpins(int spins) {

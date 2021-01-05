@@ -1187,36 +1187,29 @@ public final class ObjectHandler {
 						break;
 					}
 				}
-				if (Settings.DEBUG)
-					Logger.log("ObjectHandler", "cliked 5 at object id : " + id
-							+ ", " + object.getX() + ", " + object.getY() + ", " + object.getPlane() + ", ");
+				player.notifyDebugMessage("cliked 5 at object id : " + id + ", " + object.getX() + ", " + object.getY() + ", " + object.getPlane() + ", ");
 			}
 		}, objectDef.getSizeX(), objectDef.getSizeY(), object.getRotation()));
 	}
 
 	private static void handleOptionExamine(final Player player, final WorldObject object) {
-		player.getPackets().sendGameMessage(
-				"It's an " + object.getDefinitions().name + ".");
-		if (Settings.DEBUG) {
-			DebugLine.print("ObjectHandler, examined object id : " + object.getId() + ", "
-					+ object.getX() + ", " + object.getY() + ", " + object.getPlane() + ", "
-					+ object.getType() + ", " + object.getRotation() + ", " + object.getDefinitions().name);
-			int offsetX = object.getX() - player.getX();
-			int offsetY = object.getY() - player.getY();
-			DebugLine.print("Offsets " + offsetX + " , " + offsetY);
-		}
+		player.getPackets().sendGameMessage("It's an " + object.getDefinitions().name + ".");
+
+		player.notifyDebugMessage("ObjectHandler, examined object id : " + object.getId() + ", "	+ object.getX() + ", " + object.getY() + ", " +
+				object.getPlane() + ", " + object.getType() + ", " + object.getRotation() + ", " + object.getDefinitions().name);
+		int offsetX = object.getX() - player.getX();
+		int offsetY = object.getY() - player.getY();
+		player.notifyDebugMessage("Offsets " + offsetX + " , " + offsetY);
 	}
 
 
 	private static void slashWeb(Player player, WorldObject object) {
 		if (Utils.getRandom(1) == 0) {
-			World.spawnTemporaryObject(new WorldObject(object.getId() + 1,
-					object.getType(), object.getRotation(), object.getX(),
-					object.getY(), object.getPlane()), 60000, true);
+			World.spawnTemporaryObject(new WorldObject(object.getId() + 1, object.getType(), object.getRotation(), object.getX(), object.getY(), object.getPlane()),
+					60000, true);
 			player.getPackets().sendGameMessage("You slash through the web!");
 		} else
-			player.getPackets().sendGameMessage(
-					"You fail to cut through the web.");
+			player.getPackets().sendGameMessage("You fail to cut through the web.");
 	}
 
 
