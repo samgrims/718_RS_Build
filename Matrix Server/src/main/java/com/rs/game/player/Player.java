@@ -299,6 +299,12 @@ public class Player extends Entity {//Player Updater tool
 		return new Player(password, updateNotice);
 	}
 
+	@Override
+	public void sendDeathWithSound(final Entity source, Entity player) {
+//		PlayerCombat.playSound(1, player);
+		sendDeath(source);
+	}
+
 	public static Player createBrandNew(String password) {
 		return new Player(password);
 	}
@@ -2975,7 +2981,7 @@ public class Player extends Entity {//Player Updater tool
 	}
 
 	/**
-	 * @param runeSpanPoint the runeSpanPoint to set
+	 * @param runeSpanPoints the runeSpanPoint to set
 	 */
 	public void setRuneSpanPoint(int runeSpanPoints) {
 		this.runeSpanPoints = runeSpanPoints;

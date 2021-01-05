@@ -58,8 +58,8 @@ public final class QuestManager implements Serializable {
 	}
 
 	public void checkCompleted() {
-		if(!completedQuests.contains(Quests.PERIL_OF_ICE_MONTAINS)
-				&& player.getSkills().hasRequiriments(Skills.CONSTRUCTION, 10, Skills.FARMING, 10, Skills.HUNTER, 10, Skills.THIEVING, 11))
+		if(!completedQuests.contains(Quests.PERIL_OF_ICE_MONTAINS)	&& player.getSkills().hasRequiriments(
+				Skills.CONSTRUCTION, 10, Skills.FARMING, 10, Skills.HUNTER, 10, Skills.THIEVING, 11))
 			completeQuest(Quests.PERIL_OF_ICE_MONTAINS);
 	}
 	
@@ -67,8 +67,7 @@ public final class QuestManager implements Serializable {
 		completedQuests.add(quest);
 		questStages.remove(quest);
 		sendCompletedQuestsData(quest); 
-		player.getPackets().sendGameMessage(
-				"<col=ff0000>You have completed quest: "
+		player.getPackets().sendGameMessage("<col=ff0000>You have completed quest: "
 						+ Utils.formatPlayerNameForDisplay(quest.toString()) + ".");
 		//message completed quest
 	}

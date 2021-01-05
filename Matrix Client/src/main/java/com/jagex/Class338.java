@@ -141,7 +141,7 @@ public class Class338 {
 
 			//Change the text
 			if (component.text.equalsIgnoreCase("<u=C8C8C8>Recover Your Password")) {
-				component.text = "Create new account";
+				component.text = "Forgot password?";
 			}
 
 			//Remove excess texts

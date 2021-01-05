@@ -14,7 +14,7 @@ import java.util.HashMap;
 import com.rs.Settings;
 import com.rs.game.npc.combat.NPCCombatDefinitions;
 
-public final class NPCCombatDefinitionsL {
+public final class NPCCombatDefinitionsLoader {
 
 	private final static HashMap<Integer, NPCCombatDefinitions> npcCombatDefinitions = new HashMap<Integer, NPCCombatDefinitions>();
 	private final static NPCCombatDefinitions DEFAULT_DEFINITION = new NPCCombatDefinitions(
@@ -29,6 +29,10 @@ public final class NPCCombatDefinitionsL {
 			loadUnpackedNPCCombatDefinitions();
 	}
 
+	public static void reload() {
+		loadUnpackedNPCCombatDefinitions();
+	}
+
 	public static NPCCombatDefinitions getNPCCombatDefinitions(int npcId) {
 		NPCCombatDefinitions def = npcCombatDefinitions.get(npcId);
 		if (def == null)
@@ -40,10 +44,9 @@ public final class NPCCombatDefinitionsL {
 		int count = 0;
 		Logger.log("NPCCombatDefinitionsL", "Packing npc combat definitions...");
 		try {
-			DataOutputStream out = new DataOutputStream(new FileOutputStream(
-					PACKED_PATH));
-			BufferedReader in = new BufferedReader(new FileReader(
-					Settings.SERVER_DIR + "data/npcs/unpackedCombatDefinitionsList.txt"));
+			DataOutputStream out = new DataOutputStream(new FileOutputStream(PACKED_PATH));
+			BufferedReader in = new BufferedReader(new FileReader(Settings.SERVER_DIR +
+					"data/npcs/unpackedCombatDefinitionsList.txt"));
 			while (true) {
 				String line = in.readLine();
 				count++;
@@ -92,8 +95,7 @@ public final class NPCCombatDefinitionsL {
 				else if (splitedLine2[11].equalsIgnoreCase("AGRESSIVE"))
 					agressivenessType = NPCCombatDefinitions.AGRESSIVE;
 				else
-					throw new RuntimeException(
-							"Invalid NPC Combat Definitions line: " + line);
+					throw new RuntimeException("Invalid NPC Combat Definitions line: " + line);
 				out.writeShort(npcId);
 				out.writeShort(hitpoints);
 				out.writeShort(attackAnim);
@@ -163,7 +165,7 @@ public final class NPCCombatDefinitionsL {
 		}
 	}
 
-	private NPCCombatDefinitionsL() {
+	private NPCCombatDefinitionsLoader() {
 
 	}
 

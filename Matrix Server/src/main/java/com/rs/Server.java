@@ -62,7 +62,7 @@ public final class Server {
 		MapAreas.init();
 		ObjectSpawns.init();
 		NPCSpawns.init();
-		NPCCombatDefinitionsL.init();
+		NPCCombatDefinitionsLoader.init();
 		NPCBonuses.init();
 		NPCDrops.init();
 		ItemExamines.init();

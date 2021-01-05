@@ -77,7 +77,7 @@ public final class Settings {
 	/**
 	 * Quest settings
 	 */
-	public static final int QUESTS = 183;
+	public static final int QUESTS = 183;//originally 183
 	
 	/**
 	 * Memory settings

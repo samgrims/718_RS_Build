@@ -16,6 +16,12 @@
     <dependencies>
         <dependency>
             <groupId>com.warbycode</groupId>
+            <artifactId>FileStore</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.warbycode</groupId>
             <artifactId>clientlibs</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -37,7 +43,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs</classpathPrefix>
-                            <mainClass>Loader</mainClass>
+                            <mainClass>com.Applet</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

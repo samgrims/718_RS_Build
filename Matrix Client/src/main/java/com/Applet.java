@@ -30,6 +30,7 @@ public class Applet extends java.applet.Applet {
 	public static final int REVISION = 718;
 	public static final int LOBBY_PORT = 41116;
 	public static String LOBBY_IP = "72.191.29.70";
+	public static final String FORGOT_PASSWORD_URL = "https://www.warbycode.com/runescape/";
 	public static int SUB_REVISION = 3;
 	public static Applet instance;
 	public static int[] outSizes = new int[256];

@@ -48,10 +48,8 @@ public class InterfaceManager {
 	}
 
 	public void sendInventoryInterface(int childId) {
-		player.getPackets().sendInterface(false,
-				resizableScreen ? RESIZABLE_WINDOW_ID : FIXED_WINDOW_ID,
-				resizableScreen ? RESIZABLE_INV_TAB_ID : FIXED_INV_TAB_ID,
-				childId);
+		player.getPackets().sendInterface(false, resizableScreen ? RESIZABLE_WINDOW_ID : FIXED_WINDOW_ID,
+				resizableScreen ? RESIZABLE_INV_TAB_ID : FIXED_INV_TAB_ID,	childId);
 	}
 
 	public final void sendInterfaces() {
@@ -103,7 +101,10 @@ public class InterfaceManager {
 		sendCombatStyles();
 		sendTaskSystem();
 		sendSkills();
-		sendTab(114, 190);
+		sendTab(114, 190);//quest tab
+		player.getPackets().sendHideIComponent(190, 13, true);
+		player.getPackets().sendHideIComponent(190, 12, true);
+		player.getPackets().sendIComponentText(190, 1, "Quests not implemented");
 		sendInventory();
 		sendEquipment();
 		sendPrayerBook();

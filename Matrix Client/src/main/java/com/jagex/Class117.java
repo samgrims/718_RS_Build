@@ -103,13 +103,10 @@ public class Class117 {
 		try {
 			String string = (null != AccountCreationStage.aString6063 ? AccountCreationStage.aString6063
 					: ClientScriptMap.method6131((byte) -3));
-			Class346.method4172(string, false,
-					Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub14_7571
-							.method5677(-2014540467) == 5, client.aBoolean8867,
-					client.aBoolean8651, (byte) 37);
+			Class346.method4172(string, false,	Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub14_7571
+							.method5677(-2014540467) == 5, client.aBoolean8867, client.aBoolean8651, (byte) 37);
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("et.fb(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("et.fb(").append(')').toString());
 		}
 	}
 

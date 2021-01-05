@@ -21,6 +21,7 @@ import com.rs.game.npc.combat.NPCCombat;
 import com.rs.game.npc.combat.NPCCombatDefinitions;
 import com.rs.game.npc.familiar.Familiar;
 import com.rs.game.player.Player;
+import com.rs.game.player.actions.PlayerCombat;
 import com.rs.game.player.actions.Slayer;
 import com.rs.game.player.actions.Slayer.SlayerTask;
 import com.rs.game.player.controlers.Wilderness;
@@ -29,9 +30,11 @@ import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.Logger;
 import com.rs.utils.MapAreas;
 import com.rs.utils.NPCBonuses;
-import com.rs.utils.NPCCombatDefinitionsL;
+import com.rs.utils.NPCCombatDefinitionsLoader;
 import com.rs.utils.NPCDrops;
 import com.rs.utils.Utils;
+
+import static com.rs.game.player.actions.PlayerCombat.parseSound;
 
 public class NPC extends Entity implements Serializable {
 
@@ -107,6 +110,30 @@ public class NPC extends Entity implements Serializable {
 		return super.needMasksUpdate() || nextTransformation != null || changedCombatLevel || changedName;
 	}
 
+	/**
+	 * Kills the sound source, with sound
+	 * @param soundSource
+	 * @param attacker
+	 */
+	@Override
+	public void sendDeathWithSound(final Entity soundSource, Entity attacker) {
+//		Commands.debug(soundSource.getClass() + " " + attacker.getClass());
+		if(attacker instanceof Player) {
+			Player player = (Player)attacker;
+			if (soundSource instanceof NPC)
+				PlayerCombat.parseSound("death", player, soundSource);
+
+//
+//			if (soundSource instanceof Player) {
+////				if(soundSource.withinDistance(attacker, 5)) {
+////					playsound
+////				}
+//				Commands.playerDebug(player, ((Player) soundSource).getUsername() + "Has no death sounds");
+//			}
+		}
+		sendDeath(soundSource);
+	}
+
 	public void transformIntoNPC(int id) {
 		setNPC(id);
 		nextTransformation = new Transformation(id);
@@ -142,7 +169,7 @@ public class NPC extends Entity implements Serializable {
 	}
 
 	public NPCCombatDefinitions getCombatDefinitions() {
-		return NPCCombatDefinitionsL.getNPCCombatDefinitions(id);
+		return NPCCombatDefinitionsLoader.getNPCCombatDefinitions(id);
 	}
 
 	@Override

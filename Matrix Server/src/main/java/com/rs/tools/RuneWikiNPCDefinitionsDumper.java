@@ -70,8 +70,7 @@ public class RuneWikiNPCDefinitionsDumper {
 					if (!hpCheckLine.equalsIgnoreCase(HP_LINE))
 						throw new RuntimeException("invalid hp line.");
 					linesCount++;
-					String lifePointsLine = getFormatedString(page.getLines()
-							.get(linesCount));
+					String lifePointsLine = getFormatedString(page.getLines().get(linesCount));
 					String[] lifePoints = lifePointsLine.split(",");
 					for (int i = 0; i < levels.length; i++) {
 						int level = Integer.valueOf(levels[i]);

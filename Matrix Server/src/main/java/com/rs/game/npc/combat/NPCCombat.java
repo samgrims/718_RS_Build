@@ -8,6 +8,8 @@ import com.rs.game.WorldTile;
 import com.rs.game.npc.NPC;
 import com.rs.game.npc.familiar.Familiar;
 import com.rs.game.npc.godwars.zaros.Nex;
+import com.rs.game.player.Player;
+import com.rs.game.player.actions.PlayerCombat;
 import com.rs.game.player.content.Combat;
 import com.rs.utils.MapAreas;
 import com.rs.utils.Utils;
@@ -48,6 +50,7 @@ public final class NPCCombat {
 	 * return combatDelay
 	 */
 	private int combatAttack() {
+		doAttackSound();
 		Entity target = this.target; // prevents multithread issues
 		if (target == null)
 			return 0;
@@ -58,16 +61,14 @@ public final class NPCCombat {
 		// this gameticket
 		NPCCombatDefinitions defs = npc.getCombatDefinitions();
 		int attackStyle = defs.getAttackStyle();
-		int maxDistance = attackStyle == NPCCombatDefinitions.MELEE
-				|| attackStyle == NPCCombatDefinitions.SPECIAL2 ? 0 : 7;
+		int maxDistance = attackStyle == NPCCombatDefinitions.MELEE || attackStyle == NPCCombatDefinitions.SPECIAL2 ? 0 : 7;
 		if ((!(npc instanceof Nex))
 				&& !npc.clipedProjectile(target, maxDistance == 0))
 			return 0;
 		int distanceX = target.getX() - npc.getX();
 		int distanceY = target.getY() - npc.getY();
 		int size = npc.getSize();
-		if (distanceX > size + maxDistance || distanceX < -1 - maxDistance
-				|| distanceY > size + maxDistance
+		if (distanceX > size + maxDistance || distanceX < -1 - maxDistance || distanceY > size + maxDistance
 				|| distanceY < -1 - maxDistance) {
 			return 0;
 		}
@@ -75,13 +76,22 @@ public final class NPCCombat {
 		return CombatScriptsHandler.specialAttack(npc, target);
 	}
 
+	/**
+	 * Checks if its a player then forwards to another class
+	 */
+	public void doAttackSound() {
+		if(target instanceof Player) {
+			Player player = (Player)target;
+			PlayerCombat.parseSound("attack", player, npc);
+		}
+	}
+
 	protected void doDefenceEmote(Entity target) {
 		/*
 		 * if (target.getNextAnimation() != null) // if has att emote already
 		 * return;
 		 */
-		target.setNextAnimationNoPriority(new Animation(Combat
-				.getDefenceEmote(target)));
+		target.setNextAnimationNoPriority(new Animation(Combat.getDefenceEmote(target)));
 	}
 
 	public Entity getTarget() {

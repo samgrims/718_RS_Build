@@ -26,6 +26,7 @@ import com.rs.game.player.Equipment;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
 import com.rs.game.player.content.Combat;
+import com.rs.game.player.content.Commands;
 import com.rs.game.player.content.Magic;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
@@ -1237,7 +1238,7 @@ public class PlayerCombat extends Action {
 
 	/**
 	 * Gets the magic defence of an entity.
-	 * @param e The entity.
+	 *
 	 * @return The magic defence value.
 	 */
 	/*	private double getMagicDefence(Entity e) {
@@ -1263,7 +1264,7 @@ public class PlayerCombat extends Action {
 		final int weaponId = player.getEquipment().getWeaponId();
 		final int attackStyle = player.getCombatDefinitions().getAttackStyle();
 		int combatDelay = getRangeCombatDelay(weaponId, attackStyle);
-		int soundId = getSoundId(weaponId, attackStyle);
+		int soundId = getWeaponSoundID(weaponId, attackStyle);
 		if (player.getCombatDefinitions().isUsingSpecialAttack()) {
 			int specAmt = getSpecialAmmount(weaponId);
 			if (specAmt == 0) {
@@ -1945,7 +1946,7 @@ public class PlayerCombat extends Action {
 		int weaponId = player.getEquipment().getWeaponId();
 		int attackStyle = player.getCombatDefinitions().getAttackStyle();
 		int combatDelay = getMeleeCombatDelay(player, weaponId);
-		int soundId = getSoundId(weaponId, attackStyle);
+		int soundId = getWeaponSoundID(weaponId, attackStyle);
 		if (weaponId == -1) {
 			Item gloves = player.getEquipment().getItem(Equipment.SLOT_HANDS);
 			if (gloves != null && gloves.getDefinitions().getName().contains("Goliath gloves")) {
@@ -2335,7 +2336,7 @@ public class PlayerCombat extends Action {
 		return combatDelay;
 	}
 
-	public void playSound(int soundId, Player player, Entity target) {
+	public static void playSound(int soundId, Player player, Entity target) {
 		if (soundId == -1)
 			return;
 		player.getPackets().sendSound(soundId, 0, 1);
@@ -2939,8 +2940,7 @@ public class PlayerCombat extends Action {
 		block_tele = false;
 	}
 
-	private void delayHit(int delay, final int weaponId, final int attackStyle,
-			final Hit... hits) {
+	private void delayHit(int delay, final int weaponId, final int attackStyle,	final Hit... hits) {
 		addAttackedByDelay(hits[0].getSource());
 
 		final Entity target = this.target;
@@ -3030,6 +3030,9 @@ public class PlayerCombat extends Action {
 								player.getSkills().addXp(Skills.HITPOINTS, hpXp);
 						}
 					}
+			if(hit.getDamage() > 0 && target instanceof NPC)
+				doDefenceSound(player, target);
+			Commands.playerDebug(player, "dmg: " + hit.getDamage());
 		}
 
 		WorldTasksManager.schedule(new WorldTask() {
@@ -3161,14 +3164,116 @@ public class PlayerCombat extends Action {
 		}, delay);
 	}
 
-	private int getSoundId(int weaponId, int attackStyle) {
+	private void doDefenceSound(Player player, Entity soundSource) {
+		if(soundSource instanceof NPC) {
+			NPC npc = (NPC)soundSource;
+			PlayerCombat.parseSound("defence", player, npc);
+		}
+	}
+
+	private static void createAttackSounds(Player player, Entity soundSource) {
+		if(soundSource instanceof NPC) {
+			NPC npc = (NPC) soundSource;
+			String name = npc.getName().toLowerCase();
+			switch (name) {
+				case "imp":
+					PlayerCombat.playSound(534, player, npc);
+					break;
+				case "man":
+//					PlayerCombat.playSound(97, player, npc);
+				case "chicken":
+				default:
+					Commands.playerDebug(player, name + " has no attack sounds!");
+			}
+		}
+	}
+
+	private static void createDefenceSounds(Player player, Entity soundSource) {
+		if(soundSource instanceof NPC) {
+			NPC npc = ((NPC)soundSource);
+			String name = npc.getName();
+			switch (name.toLowerCase()) {
+				case "imp":
+					playSound(536, player, npc);
+					break;
+				case "man":
+//					playSound(97, player, npc);
+				case "chicken":
+				default:
+					Commands.playerDebug(player, name + " has no defence sounds");
+					break;
+			}
+		}
+	}
+
+	private static void createDeathSound(Player killerPlayer, Entity soundSource) {
+		NPC npc = ((NPC)soundSource);
+		String nameNPC = npc.getName();
+////			if(soundSource instanceof Boss) {//or above lvl 300
+////				if(soundSource.withinDistance(attacker, 5)) {
+////					//playsound
+////						//return
+////				}
+		switch (nameNPC.toLowerCase()) {
+			case "imp":
+				PlayerCombat.playSound(535, killerPlayer, npc);
+				break;
+			default:
+				Commands.playerDebug(killerPlayer, nameNPC + " Has no death sounds");
+		}
+	}
+//
+//	public static void playSound(int soundId, Player player, Entity target) {
+//		if (soundId == -1)
+//			return;
+//		player.getPackets().sendSound(soundId, 0, 1);
+//		if (target instanceof Player) {
+//			Player p2 = (Player) target;
+//			p2.getPackets().sendSound(soundId, 0, 1);
+//		}
+//	}
+
+	public static void parseSound(String type, Player player, Entity soundSource) {
+		if(type.contains("attack"))
+			createAttackSounds(player, soundSource);
+		else if(type.contains("defence"))
+			createDefenceSounds(player, soundSource);
+		else if(type.contains("death"))
+			createDeathSound(player, soundSource);
+	}
+
+	private int getWeaponSoundID(int weaponId, int attackStyle) {
 		if (weaponId != -1) {
-			String weaponName = ItemDefinitions.getItemDefinitions(weaponId)
-					.getName().toLowerCase();
+			String weaponName = ItemDefinitions.getItemDefinitions(weaponId).getName().toLowerCase();
 			if (weaponName.contains("dart") || weaponName.contains("knife"))
+//				if(attackstyle == 0)
+//					return 123;
 				return 2707;
+			if(weaponName.contains("sword")) {
+				String[] weaponWords = weaponName.split(" ");
+				 if(weaponWords.length == 2 && isMetalName(weaponWords[0]))
+					return 2500;
+			}
+			Commands.announceDebug("Uknown weapon sound for " + weaponName);
 		}
 		return -1;
+	}
+
+	private boolean isMetalName(String metal) {
+		switch(metal.toLowerCase()) {
+			case "bronze":
+			case "iron":
+			case "steel":
+			case "black":
+			case "mithril":
+			case "adamant":
+			case "rune":
+			case "dragon":
+				return true;
+			default:
+				break;
+		}
+		return false;
 	}
 
 	public static int getWeaponAttackEmote(int weaponId, int attackStyle) {

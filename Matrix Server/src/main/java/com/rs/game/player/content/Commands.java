@@ -11,8 +11,6 @@ import com.rs.Settings;
 import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
-import com.rs.custom.JSONPlayerSaver;
-import com.rs.custom.SaveJSONManager;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.interfaces.Interfaces;
 import com.rs.game.Animation;
@@ -43,19 +41,27 @@ import com.rs.game.player.cutscenes.HomeCutScene;
 import com.rs.game.player.dialogues.Dialogue;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
-import com.rs.utils.DisplayNames;
-import com.rs.utils.Encrypt;
-import com.rs.utils.IPBanL;
-import com.rs.utils.NPCSpawns;
-import com.rs.utils.PkRank;
-import com.rs.utils.SerializableFilesManager;
-import com.rs.utils.ShopsHandler;
-import com.rs.utils.Utils;
+import com.rs.utils.*;
 
 /*
  * doesnt let it be extended
  */
 public final class Commands {
+	private static boolean debugMode = true;
+
+	public static void debug(String out) {
+		if(debugMode)
+			System.out.println(out);
+	}
+	public static void playerDebug(Player player, String out) {
+		if(debugMode)
+			player.getPackets().sendGameMessage(out);
+	}
+	public static void announceDebug(String out) {
+		if(debugMode)
+			World.sendWorldMessage("<col=b25200>" + out,false);
+	}
+
 
 	/**
 	 * Parent command function. It calls adminCommands, mod commands & support commands
@@ -1190,79 +1196,6 @@ public final class Commands {
 				}
 				return true; 
 
-			case "empty":
-				player.getInventory().reset();
-				return true;
-			case "hideinterbetween":
-				if (cmd.length < 3) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId startid endid");
-					return true;
-				}
-				int componentSize = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
-				int interfaceId = Integer.parseInt(cmd[1]);
-				int startingComponentId = Integer.parseInt(cmd[2]);
-				int endingComponentId = Integer.parseInt(cmd[3]);
-
-				System.out.println("length: " + componentSize);
-				for(int nextComponentId = startingComponentId; nextComponentId <= endingComponentId; nextComponentId++)
-					player.getPackets().sendHideIComponent(interfaceId, nextComponentId, true);
-
-				return true;
-			case "showinterbetween":
-				if (cmd.length < 3) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId startid endid");
-					return true;
-				}
-				int componentLen = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
-				int interfaceID = Integer.parseInt(cmd[1]);
-				int startingComponentID = Integer.parseInt(cmd[2]);
-				int endingComponentID = Integer.parseInt(cmd[3]);
-
-				System.out.println("length: " + componentLen);
-				for(int nextComponentId = startingComponentID; nextComponentId <= endingComponentID; nextComponentId++)
-					player.getPackets().sendHideIComponent(interfaceID, nextComponentId, false);
-
-				return true;
-			case "hideinter":
-				if (cmd.length < 3) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
-					return true;
-				}
-				player.getPackets().sendHideIComponent(Integer.parseInt(cmd[1]), Integer.parseInt(cmd[2]), true);
-				System.out.println("length: " + Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1])));
-				return true;
-			case "interh":
-				if (cmd.length < 2) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
-					return true;
-				}
-
-				try {
-					int interId = Integer.valueOf(cmd[1]);
-					for (int componentId = 0; componentId < Utils.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
-						player.getPackets().sendIComponentModel(interId, componentId, 66);
-					}
-				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
-				}
-				return true;
-
-			case "inters":
-				if (cmd.length < 2) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
-					return true;
-				}
-
-				try {
-					int interId = Integer.valueOf(cmd[1]);
-					for (int componentId = 0; componentId < Utils.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
-						player.getPackets().sendIComponentText(interId,	componentId, "cid: " + componentId);
-					}
-				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
-				}
-				return true;
-
 			case "kill":
 				name = "";
 				for (int i = 1; i < cmd.length; i++)
@@ -1473,14 +1406,17 @@ public final class Commands {
 				World.safeShutdown(false, delay);
 				return true; 
 
+			case "reloademotes":
+				NPCCombatDefinitionsLoader.reload();
+				return true;
+
 			case "emote":
 				if (cmd.length < 2) {
 					player.getPackets().sendPanelBoxMessage("Use: ::emote id");
 					return true;
 				}
 				try {
-					player.setNextAnimation(new Animation(Integer
-							.valueOf(cmd[1])));
+					player.setNextAnimation(new Animation(Integer.valueOf(cmd[1])));
 				} catch (NumberFormatException e) {
 					player.getPackets().sendPanelBoxMessage("Use: ::emote id");
 				}
@@ -2169,6 +2105,82 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+			case "emptyinventory":
+				player.getInventory().reset();
+				return true;
+			case "hideinterbetween":
+				if (cmd.length < 3) {
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId startid endid");
+					return true;
+				}
+				int componentSize = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
+				int interfaceId = Integer.parseInt(cmd[1]);
+				int startingComponentId = Integer.parseInt(cmd[2]);
+				int endingComponentId = Integer.parseInt(cmd[3]);
+
+				System.out.println("length: " + componentSize);
+				for(int nextComponentId = startingComponentId; nextComponentId <= endingComponentId; nextComponentId++)
+					player.getPackets().sendHideIComponent(interfaceId, nextComponentId, true);
+
+				return true;
+			case "showinterbetween":
+				if (cmd.length < 3) {
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId startid endid");
+					return true;
+				}
+				int componentLen = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
+				int interfaceID = Integer.parseInt(cmd[1]);
+				int startingComponentID = Integer.parseInt(cmd[2]);
+				int endingComponentID = Integer.parseInt(cmd[3]);
+
+				System.out.println("length: " + componentLen);
+				for(int nextComponentId = startingComponentID; nextComponentId <= endingComponentID; nextComponentId++)
+					player.getPackets().sendHideIComponent(interfaceID, nextComponentId, false);
+
+				return true;
+			case "hideinter":
+				if (cmd.length < 3) {
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
+					return true;
+				}
+				player.getPackets().sendHideIComponent(Integer.parseInt(cmd[1]), Integer.parseInt(cmd[2]), true);
+				System.out.println("length: " + Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1])));
+				return true;
+			case "interh":
+				if (cmd.length < 2) {
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
+					return true;
+				}
+
+				try {
+					int interId = Integer.valueOf(cmd[1]);
+					for (int componentId = 0; componentId < Utils.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
+						player.getPackets().sendIComponentModel(interId, componentId, 66);
+					}
+				} catch (NumberFormatException e) {
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
+				}
+				return true;
+
+			case "interfacecid":
+				if (cmd.length < 2) {
+					player.getPackets().sendPanelBoxMessage("Use: ;;interfacecid [interfaceId]");
+					return true;
+				}
+
+				try {
+					int interId = Integer.valueOf(cmd[1]);
+					for (int componentId = 0; componentId < Utils.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
+						player.getPackets().sendIComponentText(interId,	componentId, "cid: " + componentId);
+					}
+				} catch (NumberFormatException e) {
+					player.getPackets().sendPanelBoxMessage("Use: ;;interfacecid [interfaceId]");
+				}
+				return true;
+
+			case "finishquests":
+				player.getQuestManager().checkCompleted();
+				return true;
 			case "starter":
 				player.giveStartingItems();
 				return true;

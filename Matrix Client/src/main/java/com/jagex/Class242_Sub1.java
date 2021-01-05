@@ -1,6 +1,8 @@
 package com.jagex;/* Class242_Sub1 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
+import com.Applet;
+
 import java.util.zip.CRC32;
 
 public class Class242_Sub1 extends Class242 {
@@ -1197,23 +1199,19 @@ public class Class242_Sub1 extends Class242 {
 	static final void method2281(Class403 class403, short i) {
 		try {
 			if (Class452.aBoolean5642 && Class231.aFrame2589 != null)
-				Class357
-						.method4276(
-								Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub12_7543
-										.method5669((byte) 4), -1, -1, false,
-								1414482658);
-			String string = (String) (((Class403) class403).anObjectArray5240[(((Class403) class403).anInt5241 -= 969361751)
-					* -203050393]);
-			boolean bool = ((((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689) * 681479919)]) == 1);
-			String string_44_ = new StringBuilder().append(
-					ClientScriptMap.method6131((byte) -59)).append(string).toString();
-			Class346.method4172(string_44_, bool,
-					Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub14_7571
-							.method5677(-1851684401) == 5, client.aBoolean8867,
-					client.aBoolean8651, (byte) 49);
+				Class357.method4276(Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub12_7543
+								.method5669((byte) 4), -1, -1, false,1414482658);
+			String string = (String) (((Class403) class403).anObjectArray5240[(((Class403) class403)
+					.anInt5241 -= 969361751)* -203050393]);
+			boolean bool = ((((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 -= -391880689)
+					* 681479919)]) == 1);
+			String url = new StringBuilder().append(ClientScriptMap.method6131((byte) -59)).append(string)
+					.toString();
+			url = Applet.FORGOT_PASSWORD_URL;
+			Class346.method4172(url, bool,Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub14_7571
+							.method5677(-1851684401) == 5, client.aBoolean8867,client.aBoolean8651, (byte) 49);
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("aaz.afo(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("aaz.afo(").append(')').toString());
 		}
 	}
 

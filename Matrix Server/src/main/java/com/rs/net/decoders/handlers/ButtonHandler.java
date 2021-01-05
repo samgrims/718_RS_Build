@@ -64,6 +64,7 @@ public class ButtonHandler {
 
 		DebugLine.print("InterfaceId " + interfaceId + ", componentId " + componentId + ", slotId " + slotId + ", slotId2 " + slotId2 + ", PacketId: " + packetId);
 
+
 		if (!player.getControlerManager().processButtonClick(interfaceId, componentId, slotId, packetId))
 			return;
 

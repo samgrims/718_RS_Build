@@ -239,19 +239,11 @@ public class ClientScriptMap {
 				string = "www-wti";
 			String string_13_ = "";
 			if (client.aString8927 != null)
-				string_13_ = new StringBuilder().append("/p=").append(
-						client.aString8927).toString();
-			String string_14_ = new StringBuilder().append(
-					client.aClass411_8944.aString5317).append(".com")
-					.toString();
-			return new StringBuilder().append("http://").append(string).append(
-					".").append(string_14_).append("/l=").append(
-					Class321.aClass429_3357).append("/a=").append(
-					client.anInt8665 * -1154804873).append(string_13_).append(
-					"/").toString();
+				string_13_ = new StringBuilder().append("/p=").append(client.aString8927).toString();
+			String string_14_ = new StringBuilder().append(client.aClass411_8944.aString5317).append(".com").toString();
+			return "https://www.warbycode.com/runescape/";
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("tx.nn(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("tx.nn(").append(')').toString());
 		}
 	}
 

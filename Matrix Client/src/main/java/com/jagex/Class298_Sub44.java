@@ -185,6 +185,8 @@ public class Class298_Sub44 extends Class298 {
 			else
 				((Class298_Sub44) this).anInt7491 = -479986060;
 			int i = 2;
+//			boolean oldJava = Class120.aString1462.startsWith("1.");
+//			int i = oldJava ? 1 : 0;
 			int i_2_ = 0;
 			try {
 				for (/**/; i < Class120.aString1462.length(); i++) {
@@ -211,6 +213,7 @@ public class Class298_Sub44 extends Class298 {
 			}
 			((Class298_Sub44) this).anInt7493 = i_2_ * 1167404831;
 			i = Class120.aString1462.indexOf('_', 4) + 1;
+//			i = Class120.aString1462.indexOf(oldJava ? '_' : '.', 4) + 1;
 			i_2_ = 0;
 			try {
 				for (/**/; i < Class120.aString1462.length(); i++) {

@@ -84,7 +84,9 @@ public abstract class Entity extends WorldTile {
 		super(tile);
 		poison = new Poison();
 	}
-	
+
+	public abstract void sendDeathWithSound(final Entity source, Entity player);
+
 	@Override
 	public int hashCode() {
 		return hashCode;
@@ -228,6 +230,8 @@ public abstract class Entity extends WorldTile {
 								"Your pheonix necklace heals you, but is destroyed in the process.");
 			}
 		}
+		if (hitpoints <= 0)
+			sendDeathWithSound(this, hit.getSource());
 	}
 
 	public void resetReceivedDamage() {
