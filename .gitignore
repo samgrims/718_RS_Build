@@ -3,3 +3,18 @@
 /Matrix Server/data/characters_json/
 /Matrix Server/data/charactersBackup/
 /Client/
+
+/Matrix Server/.settings/
+/Matrix Client/.settings/
+/Avalon Server/
+/Client/
+/Matrix Server/data/cache/
+/Matrix Server/data/cache_bu/
+/Matrix Server/data/cache.zip
+/Matrix Server/data/characters/
+/Matrix Server/data/characters_json/
+/Matrix Server/data/charactersBackup/
+/Client/bin/
+/Client/libs/
+/Client/src/
+/Client/pom.xml/
