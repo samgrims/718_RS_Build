@@ -70,6 +70,7 @@ public class Player extends Entity {//Player Updater tool
 	private transient int totalMinutesPlayed;
 	private transient int spinsEarnedByMinutes;
 	private transient int spins;
+	public transient long afkTimer = 0;
 
 	private transient SaveJSONManager saveJSONManager;
 	public WorldTile locationFromJSON;
@@ -327,6 +328,8 @@ public class Player extends Entity {//Player Updater tool
 
 	public void init(Session session, String username, int displayMode,	int screenWidth, int screenHeight, MachineInformation machineInformation, IsaacKeyPair isaacKeyPair) {
 		//custom properties
+		afkTimer = Utils.currentTimeMillis() + (1*60*1000);
+		afkTime();
 		this.timeOfLogin = System.currentTimeMillis();
 		if(toolbelt == null)
 			toolbelt = new Toolbelt();
@@ -393,6 +396,17 @@ public class Player extends Entity {//Player Updater tool
 			ipList = new ArrayList<String>();
 		updateIPnPass();
 		this.saveJSONManager = startSaveJSONManager(this);
+	}
+
+	public void afkTime() {
+		CoresManager.slowExecutor.schedule(new Runnable() {
+			public void run(){
+				if (afkTimer < Utils.currentTimeMillis()){
+					logout(false);
+				}
+				afkTime();
+			}
+		}, 1, TimeUnit.MINUTES);
 	}
 
 	public SaveJSONManager getSaveJSONManager() {
@@ -1727,25 +1741,14 @@ public class Player extends Entity {//Player Updater tool
 				final Player target = this;
 				if (isAtMultiArea()) {
 					for (int regionId : getMapRegionsIds()) {
-						List<Integer> playersIndexes = World
-								.getRegion(regionId).getPlayerIndexes();
+						List<Integer> playersIndexes = World.getRegion(regionId).getPlayerIndexes();
 						if (playersIndexes != null) {
 							for (int playerIndex : playersIndexes) {
-								Player player = World.getPlayers().get(
-										playerIndex);
-								if (player == null
-										|| !player.hasStarted()
-										|| player.isDead()
-										|| player.hasFinished()
-										|| !player.withinDistance(this, 1)
-										|| !player.isCanPvp()
-										|| !target.getControlerManager()
-										.canHit(player))
+								Player player = World.getPlayers().get(playerIndex);
+								if (player == null || !player.hasStarted() || player.isDead() || player.hasFinished() || !player.withinDistance(this, 1)
+										|| !player.isCanPvp() || !target.getControlerManager().canHit(player))
 									continue;
-								player.applyHit(new Hit(
-										target,
-										Utils.getRandom((int) (skills
-												.getLevelForXp(Skills.PRAYER) * 2.5)),
+								player.applyHit(new Hit(target,	Utils.getRandom((int) (skills.getLevelForXp(Skills.PRAYER) * 2.5)),
 												HitLook.REGULAR_DAMAGE));
 							}
 						}

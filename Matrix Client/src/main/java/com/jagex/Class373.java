@@ -200,7 +200,7 @@ public class Class373 {
 			Class99.aClass517_951.method6306((byte) 119);
 			Class299.aClass370_3199.method4575(242474592);
 			Class94.aClass349_913.method4201((byte) -124);
-			Class120.aClass487_1463.method6162((byte) 81);
+			SignLink.aClass487_1463.method6162((byte) 81);
 			Class363.aClass339_3931.method4120(758365461);
 			Class92.aClass504_905.method6248(2090718480);
 			ConfigDefinitions.aClass317_3472.method3848(-1350735214);

@@ -10,7 +10,7 @@ public class Class317 {
 	public Class317(Class411 class411, Class429 class429, Class243 class243) {
 		((Class317) this).aClass243_3319 = class243;
 		((Class317) this).aClass243_3319.filesCount(
-				(-1006924897 * (Class120.aClass120_1434.anInt1460)),
+				(-1006924897 * (SignLink.aClass120_1434.anInt1460)),
 				-1713499559);
 	}
 
@@ -93,7 +93,7 @@ public class Class317 {
 			byte[] is;
 			synchronized (((Class317) this).aClass243_3319) {
 				is = (((Class317) this).aClass243_3319.method2315(
-						Class120.aClass120_1434.anInt1460 * -1006924897, i,
+						SignLink.aClass120_1434.anInt1460 * -1006924897, i,
 						(byte) -79));
 			}
 			class325 = new Class325();

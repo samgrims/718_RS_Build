@@ -11,7 +11,7 @@ public class Class508 {
 		new Class348(64);
 		((Class508) this).aClass243_6215 = class243;
 		anInt6214 = (((Class508) this).aClass243_6215.filesCount(
-				(-1006924897 * (Class120.aClass120_1420.anInt1460)),
+				(-1006924897 * (SignLink.aClass120_1420.anInt1460)),
 				-2127064505) * 809853823);
 	}
 

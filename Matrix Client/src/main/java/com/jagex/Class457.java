@@ -88,15 +88,12 @@ public class Class457 {
 		try {
 			boolean bool = false;
 			try {
-				Field field = sun.awt.Win32GraphicsDevice.class
-						.getDeclaredField("valid");
+				Field field = sun.awt.Win32GraphicsDevice.class.getDeclaredField("valid");
 				field.setAccessible(true);
-				boolean bool_6_ = ((Boolean) field
-						.get(((Class457) this).aGraphicsDevice5666))
+				boolean bool_6_ = ((Boolean) field.get(((Class457) this).aGraphicsDevice5666))
 						.booleanValue();
 				if (bool_6_) {
-					field.set(((Class457) this).aGraphicsDevice5666,
-							Boolean.FALSE);
+					field.set(((Class457) this).aGraphicsDevice5666, Boolean.FALSE);
 					bool = true;
 				}
 			} catch (Throwable throwable) {

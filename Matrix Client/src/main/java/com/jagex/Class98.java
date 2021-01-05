@@ -75,7 +75,7 @@ public abstract class Class98 {
 					float f_24_ = (Class436.aFloatArray5475[0] / Class436.aFloatArray5475[3]);
 					float f_25_ = (Class436.aFloatArray5475[1] / Class436.aFloatArray5475[3]);
 					float f_26_ = (Class436.aFloatArray5475[2] / Class436.aFloatArray5475[3]);
-					float f_27_ = Class120.method1312(f_21_, f_22_, f_23_,
+					float f_27_ = SignLink.method1312(f_21_, f_22_, f_23_,
 							f_24_, f_25_, f_26_, 4, 1869450178);
 					if (f_27_ > 0.0F) {
 						float f_28_ = f_24_ - f_21_;

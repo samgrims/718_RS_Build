@@ -533,7 +533,7 @@ public class Class125 {
 				Class363.aClass339_3931 = new Class339(client.aClass411_8944,
 						Class321.aClass429_3357, Class284_Sub1.aClass243_7146,
 						Class158.idx8);
-				Class120.aClass487_1463 = new Class487(client.aClass411_8944,
+				SignLink.aClass487_1463 = new Class487(client.aClass411_8944,
 						Class321.aClass429_3357, Class284_Sub1.aClass243_7146,
 						Class158.idx8);
 				Class15.aClass507_224 = new Class507(client.aClass411_8944,
@@ -613,7 +613,7 @@ public class Class125 {
 				Class301.method3690(Class_v.aClass243_7622,
 						Class504.aClass375_6196, Class151.aClass451_6358,
 						client.aClass283_8716.method2641(-1404290651),
-						Class363.aClass339_3931, Class120.aClass487_1463,
+						Class363.aClass339_3931, SignLink.aClass487_1463,
 						Class128.aClass148_6331);
 			if (Class82_Sub6.aClass227_6843 == Class227.aClass227_2554) {
 				Class374.anIntArray4078 = new int[-2088092255

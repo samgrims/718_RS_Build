@@ -20,7 +20,7 @@ public class Class205 {
 			byte[] is;
 			synchronized (((Class205) this).aClass243_2338) {
 				is = (((Class205) this).aClass243_2338.method2315(-1006924897
-						* Class120.aClass120_1421.anInt1460, i, (byte) -4));
+						* SignLink.aClass120_1421.anInt1460, i, (byte) -4));
 			}
 			class207 = new Class207();
 			if (null != is)
@@ -72,7 +72,7 @@ public class Class205 {
 		((Class205) this).aClass243_2338 = class243;
 		if (null != ((Class205) this).aClass243_2338)
 			anInt2339 = (((Class205) this).aClass243_2338.filesCount(
-					Class120.aClass120_1421.anInt1460 * -1006924897, 487068051)) * 1946957321;
+					SignLink.aClass120_1421.anInt1460 * -1006924897, 487068051)) * 1946957321;
 		else
 			anInt2339 = 0;
 	}

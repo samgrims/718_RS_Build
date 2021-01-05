@@ -51,7 +51,7 @@ public class Class370 {
 			byte[] is;
 			synchronized (((Class370) this).aClass243_4030) {
 				is = (((Class370) this).aClass243_4030.method2315(
-						Class120.aClass120_1414.anInt1460 * -1006924897, i,
+						SignLink.aClass120_1414.anInt1460 * -1006924897, i,
 						(byte) -90));
 			}
 			class376 = new Class376();
@@ -71,7 +71,7 @@ public class Class370 {
 		((Class370) this).aClass243_4030 = class243;
 		if (null != ((Class370) this).aClass243_4030)
 			((Class370) this).aClass243_4030.filesCount(-1006924897
-					* Class120.aClass120_1414.anInt1460, -279300149);
+					* SignLink.aClass120_1414.anInt1460, -279300149);
 	}
 
 	public static boolean method4577(byte i) {

@@ -26,8 +26,8 @@ public class Class507 {
 			byte[] is;
 			synchronized (((Class507) this).aClass243_6207) {
 				is = (((Class507) this).aClass243_6207.method2315(
-						Class120.aClass120_1410.method1307(i, -790155853),
-						Class120.aClass120_1410.method1305(i, -576275965),
+						SignLink.aClass120_1410.method1307(i, -790155853),
+						SignLink.aClass120_1410.method1305(i, -576275965),
 						(byte) -76));
 			}
 			class503 = new Class503();
@@ -151,7 +151,7 @@ public class Class507 {
 		((Class507) this).aClass243_6208 = class243_3_;
 		if (((Class507) this).aClass243_6207 != null) {
 			int i = ((Class507) this).aClass243_6207.method2296(2037724352) - 1;
-			Class120.aClass120_1410.method1306((short) 12429);
+			SignLink.aClass120_1410.method1306((short) 12429);
 			((Class507) this).aClass243_6207.filesCount(i, 678420951);
 		}
 		if (Class411.aClass411_5320 == ((Class507) this).aClass411_6205)

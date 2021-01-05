@@ -21,7 +21,7 @@ public class Class144 {
 			byte[] is;
 			synchronized (((Class144) this).aClass243_1559) {
 				is = (((Class144) this).aClass243_1559.method2315(
-						Class120.aClass120_1425.anInt1460 * -1006924897, i,
+						SignLink.aClass120_1425.anInt1460 * -1006924897, i,
 						(byte) -128));
 			}
 			class132 = new Class132();
@@ -76,7 +76,7 @@ public class Class144 {
 		((Class144) this).aClass243_1559 = class243;
 		((Class144) this).aClass243_1560 = class243_2_;
 		((Class144) this).aClass243_1559.filesCount(
-				(-1006924897 * (Class120.aClass120_1425.anInt1460)),
+				(-1006924897 * (SignLink.aClass120_1425.anInt1460)),
 				-2109974583);
 	}
 

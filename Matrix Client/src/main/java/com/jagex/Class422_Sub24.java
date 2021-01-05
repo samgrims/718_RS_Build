@@ -455,7 +455,7 @@ public class Class422_Sub24 extends Class422 {
 														.toString();
 										}
 										if (-1 != (-324971993 * class105.anInt1289)) {
-											string = (Class120
+											string = (SignLink
 													.method1308(
 															(-324971993 * class105.anInt1289),
 															(byte) -48));

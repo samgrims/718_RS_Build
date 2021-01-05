@@ -35,7 +35,7 @@ public class Class491 {
 			byte[] is;
 			synchronized (((Class491) this).aClass243_6076) {
 				is = (((Class491) this).aClass243_6076.method2315(-1006924897
-						* Class120.aClass120_1438.anInt1460, i, (byte) -68));
+						* SignLink.aClass120_1438.anInt1460, i, (byte) -68));
 			}
 			class492 = new Class492();
 			((Class492) class492).aClass491_6082 = this;
@@ -85,7 +85,7 @@ public class Class491 {
 		((Class491) this).aClass243_6076 = class243;
 		((Class491) this).aClass243_6077 = class243_2_;
 		((Class491) this).aClass243_6076.filesCount(
-				(Class120.aClass120_1438.anInt1460) * -1006924897, -1015661848);
+				(SignLink.aClass120_1438.anInt1460) * -1006924897, -1015661848);
 	}
 
 	static final void method6175(long l) {

@@ -65,7 +65,7 @@ public class Class395 {
 		((Class395) this).aClass243_5189 = class243;
 		if (null != ((Class395) this).aClass243_5189) {
 			int i = ((Class395) this).aClass243_5189.method2296(1196471561) - 1;
-			Class120.aClass120_1409.method1306((short) 21776);
+			SignLink.aClass120_1409.method1306((short) 21776);
 			((Class395) this).aClass243_5189.filesCount(i, -1829120689);
 		}
 		Class_ta_Sub2.method6006(class243_2_, class243_3_, 2, (byte) 2);
@@ -83,8 +83,8 @@ public class Class395 {
 			byte[] is;
 			synchronized (((Class395) this).aClass243_5189) {
 				is = (((Class395) this).aClass243_5189.method2315(
-						Class120.aClass120_1409.method1307(i, 180156567),
-						Class120.aClass120_1409.method1305(i, -1217474734),
+						SignLink.aClass120_1409.method1307(i, 180156567),
+						SignLink.aClass120_1409.method1305(i, -1217474734),
 						(byte) -6));
 			}
 			class391 = new Class391();

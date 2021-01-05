@@ -10,7 +10,7 @@ public class Class475 {
 		((Class475) this).aClass243_5981 = class243;
 		if (null != ((Class475) this).aClass243_5981) {
 			int i = ((Class475) this).aClass243_5981.method2296(1572683796) - 1;
-			Class120.aClass120_1413.method1306((short) 19923);
+			SignLink.aClass120_1413.method1306((short) 19923);
 			((Class475) this).aClass243_5981.filesCount(i, 146505674);
 		}
 	}
@@ -25,8 +25,8 @@ public class Class475 {
 			if (null != class483)
 				return class483;
 			byte[] is = (((Class475) this).aClass243_5981.method2315(
-					Class120.aClass120_1413.method1307(id, -1240874866),
-					Class120.aClass120_1413.method1305(id, -2003896976),
+					SignLink.aClass120_1413.method1307(id, -1240874866),
+					SignLink.aClass120_1413.method1305(id, -2003896976),
 					(byte) -65));
 			class483 = new ClientScriptMap();
 			if (null != is)

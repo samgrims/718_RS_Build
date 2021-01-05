@@ -116,10 +116,10 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 			RuntimeException_Sub2.anInt6307 = i_7_ * 715279939;
 			Class400.anInt5225 = i_8_ * 1366053379;
 			Class350.aString3759 = "Unknown";
-			Class120.aString1462 = "1.1";
+			SignLink.javaVersion = "1.1";
 			try {
 				Class350.aString3759 = System.getProperty("java.vendor");
-				Class120.aString1462 = System.getProperty("java.version");
+				SignLink.javaVersion = System.getProperty("java.version");
 			} catch (Exception exception) {
 				/* empty */
 			}
@@ -409,7 +409,7 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 				String string = Class350.aString3759.toLowerCase();
 				if (string.indexOf("sun") != -1
 						|| string.indexOf("apple") != -1) {
-					String string_19_ = Class120.aString1462;
+					String string_19_ = SignLink.javaVersion;
 					if (string_19_.equals("1.1")
 							|| string_19_.startsWith("1.1.")
 							|| string_19_.equals("1.2")
@@ -1162,7 +1162,7 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 						OutcommingPacket.aClass198_2088,
 						client.aClass25_8711.aClass449_330, (byte) 94);
 				class298_sub36.out.writeShort(
-						(1 + Class120.method1310(string, (byte) -1) + Class120
+						(1 + SignLink.method1310(string, (byte) -1) + SignLink
 								.method1310(string_44_, (byte) -1)), 16711935);
 				class298_sub36.out.putJagString(string_44_,
 						(short) -29506);

@@ -38,8 +38,8 @@ public class Class389 {
 			byte[] is;
 			synchronized (((Class389) this).aClass243_4159) {
 				is = (((Class389) this).aClass243_4159.method2315(
-						Class120.aClass120_1449.method1307(i, -880627246),
-						Class120.aClass120_1449.method1305(i, -2138953670),
+						SignLink.aClass120_1449.method1307(i, -880627246),
+						SignLink.aClass120_1449.method1305(i, -2138953670),
 						(byte) -76));
 			}
 			class398 = new Class398();
@@ -102,7 +102,7 @@ public class Class389 {
 		((Class389) this).aClass243_4159 = class243;
 		((Class389) this).aClass243_4160 = class243_3_;
 		int i = ((Class389) this).aClass243_4159.method2296(1921321046) - 1;
-		Class120.aClass120_1449.method1306((short) 3745);
+		SignLink.aClass120_1449.method1306((short) 3745);
 		((Class389) this).aClass243_4159.filesCount(i, -1103317672);
 	}
 

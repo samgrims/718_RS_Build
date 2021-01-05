@@ -22,7 +22,7 @@ public class Class427 {
 		((Class427) this).aClass243_5361 = class243;
 		if (((Class427) this).aClass243_5361 != null)
 			((Class427) this).aClass243_5361.filesCount(
-					Class120.aClass120_1430.anInt1460 * -1006924897,
+					SignLink.aClass120_1430.anInt1460 * -1006924897,
 					-1236940551);
 	}
 
@@ -58,7 +58,7 @@ public class Class427 {
 			if (null != class434)
 				return class434;
 			byte[] is = (((Class427) this).aClass243_5361.method2315(
-					-1006924897 * Class120.aClass120_1430.anInt1460, i,
+					-1006924897 * SignLink.aClass120_1430.anInt1460, i,
 					(byte) 14));
 			class434 = new Class434();
 			if (null != is)

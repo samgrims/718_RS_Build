@@ -20,7 +20,7 @@ public class Class347 {
 			byte[] is;
 			synchronized (((Class347) this).aClass243_3698) {
 				is = (((Class347) this).aClass243_3698.method2315(-1006924897
-						* Class120.aClass120_1451.anInt1460, i, (byte) -66));
+						* SignLink.aClass120_1451.anInt1460, i, (byte) -66));
 			}
 			class358 = new Class358();
 			((Class358) class358).aClass347_3856 = this;
@@ -83,7 +83,7 @@ public class Class347 {
 		((Class347) this).aClass243_3699 = class243_2_;
 		((Class347) this).aClass243_3698 = class243;
 		((Class347) this).aClass243_3698.filesCount(
-				(Class120.aClass120_1451.anInt1460) * -1006924897, -790264977);
+				(SignLink.aClass120_1451.anInt1460) * -1006924897, -790264977);
 	}
 
 	static final void method4180(Class403 class403, int i) {

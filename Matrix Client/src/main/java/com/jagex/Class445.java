@@ -27,7 +27,7 @@ public class Class445 {
 			if (null != class485)
 				return class485;
 			byte[] is = ((Class445) this).aClass243_5609.method2315(
-					((Class120.aClass120_1411.anInt1460) * -1006924897), i,
+					((SignLink.aClass120_1411.anInt1460) * -1006924897), i,
 					(byte) -50);
 			class485 = new Class485();
 			if (null != is)
@@ -69,7 +69,7 @@ public class Class445 {
 		if (null != ((Class445) this).aClass243_5609)
 			((Class445) this).aClass243_5609
 					.filesCount(
-							Class120.aClass120_1411.anInt1460 * -1006924897,
+							SignLink.aClass120_1411.anInt1460 * -1006924897,
 							1281975621);
 	}
 

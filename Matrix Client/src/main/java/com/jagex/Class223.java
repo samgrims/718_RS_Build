@@ -144,7 +144,7 @@ public class Class223 implements Interface24 {
 				Class99.aClass517_951.method6305(-1223470139);
 				Class299.aClass370_3199.method4574((byte) 63);
 				Class94.aClass349_913.method4199(-1850735168);
-				Class120.aClass487_1463.method6161((byte) 115);
+				SignLink.aClass487_1463.method6161((byte) 115);
 				Class363.aClass339_3931.method4118(478354698);
 				Class92.aClass504_905.method6250(-1692960093);
 				ConfigDefinitions.aClass317_3472.method3846((byte) -6);
@@ -155,7 +155,7 @@ public class Class223 implements Interface24 {
 				Class251.method2402((byte) -99);
 				Class8.method319(1407497429);
 				Class497.aClass197_6105.method1880(575838917);
-				Class120.method1309((byte) -57);
+				SignLink.method1309((byte) -57);
 				if (Class242.aClass401_2708 != Class401.aClass401_6557) {
 					for (int i_5_ = 0; i_5_ < Class98.aByteArrayArray949.length; i_5_++)
 						Class98.aByteArrayArray949[i_5_] = null;

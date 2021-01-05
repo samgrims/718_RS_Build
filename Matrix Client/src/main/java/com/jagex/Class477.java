@@ -52,16 +52,16 @@ public class Class477 {
 			
 			if(!forceNew && OLD_ITEMS) { 
 				is = (((Class477) this).aClass243_5990.method2315(
-						Class120.aClass120_1429.method1307(itemId + (Class298_Sub32_Sub14.aClass477_9400.itemDefinitionsLength * -888767613), -100335020),
-						Class120.aClass120_1429.method1305(itemId + (Class298_Sub32_Sub14.aClass477_9400.itemDefinitionsLength * -888767613), -1698958016),
+						SignLink.aClass120_1429.method1307(itemId + (Class298_Sub32_Sub14.aClass477_9400.itemDefinitionsLength * -888767613), -100335020),
+						SignLink.aClass120_1429.method1305(itemId + (Class298_Sub32_Sub14.aClass477_9400.itemDefinitionsLength * -888767613), -1698958016),
 						(byte) -74));
 				oldItem = true;
 			}
 			if(is == null) {
 				synchronized (((Class477) this).aClass243_5990) {
 					is = (((Class477) this).aClass243_5990.method2315(
-							Class120.aClass120_1429.method1307(itemId, -100335020),
-							Class120.aClass120_1429.method1305(itemId, -1698958016),
+							SignLink.aClass120_1429.method1307(itemId, -100335020),
+							SignLink.aClass120_1429.method1305(itemId, -1698958016),
 							(byte) -74));
 					oldItem = false;
 				}
@@ -243,7 +243,7 @@ public class Class477 {
 			if(true)
 				itemDefinitionsLength = 30000 * -1797723349;
 			else
-				itemDefinitionsLength = (i * Class120.aClass120_1429.method1306((short) 15063) + ((Class477) this).aClass243_5990.filesCount(i, -1996628421)) * -1797723349;
+				itemDefinitionsLength = (i * SignLink.aClass120_1429.method1306((short) 15063) + ((Class477) this).aClass243_5990.filesCount(i, -1996628421)) * -1797723349;
 		} else
 			itemDefinitionsLength = 0;
 		if (((Class477) this).aClass411_5998 == Class411.aClass411_5320)

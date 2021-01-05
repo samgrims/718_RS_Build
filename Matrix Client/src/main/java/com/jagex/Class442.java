@@ -194,7 +194,7 @@ public class Class442 {
 			Class299.aClass370_3199.method4573(5, 181310577);
 			Class94.aClass349_913.method4200(5, (byte) -101);
 			Class363.aClass339_3931.method4117(5, (byte) 14);
-			Class120.aClass487_1463.method6163(5, -718074838);
+			SignLink.aClass487_1463.method6163(5, -718074838);
 			Class92.aClass504_905.method6249(5, (byte) 46);
 			ConfigDefinitions.aClass317_3472.method3847(5, -2144491274);
 			Class138_Sub1.aClass131_7010.method1469(5, (short) -24291);

@@ -13,7 +13,7 @@ public class Class500 {
 		((Class500) this).aClass243_6114 = class243;
 		((Class500) this).anInt6115 = (((Class500) this).aClass243_6114
 				.filesCount(
-						(-1006924897 * (Class120.aClass120_1431.anInt1460)),
+						(-1006924897 * (SignLink.aClass120_1431.anInt1460)),
 						-1837337583) * 1005943745);
 		if (bool) {
 			((Class500) this).aClass298_Sub37_Sub7Array6116 = (new Class298_Sub37_Sub7[((Class500) this).anInt6115 * 589337665]);
@@ -21,7 +21,7 @@ public class Class500 {
 				byte[] is;
 				synchronized (((Class500) this).aClass243_6114) {
 					is = (((Class500) this).aClass243_6114.method2315(
-							-1006924897 * Class120.aClass120_1431.anInt1460, i,
+							-1006924897 * SignLink.aClass120_1431.anInt1460, i,
 							(byte) -117));
 				}
 				Class298_Sub37_Sub7 class298_sub37_sub7 = new Class298_Sub37_Sub7();

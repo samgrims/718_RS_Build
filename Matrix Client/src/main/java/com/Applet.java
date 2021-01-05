@@ -4,12 +4,12 @@ import com.jagex.client;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 public class Applet extends java.applet.Applet {
@@ -106,11 +106,13 @@ public class Applet extends java.applet.Applet {
 	}
 
 	void openFrame() {
-		client_frame = new JFrame("Matrix RSPS");
+		client_frame = new JFrame("Matrix Base");
+		URL iconURL = getClass().getResource("/RS_Icon.png");
+		client_frame.setIconImage(new ImageIcon(iconURL).getImage());
 		client_frame.setLayout(new BorderLayout());
 		client_panel.setLayout(new BorderLayout());
 		client_panel.add(this);
-		client_panel.setPreferredSize(new Dimension(765, 503));
+		client_panel.setPreferredSize(new Dimension(765, 495));
 		client_frame.getContentPane().add(client_panel, "Center");
 		client_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

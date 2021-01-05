@@ -39,7 +39,7 @@ public class Class362 {
 		if (((Class362) this).aClass243_3917 != null)
 			((Class362) this).anInt3916 = (((Class362) this).aClass243_3917
 					.filesCount(
-							-1006924897 * Class120.aClass120_1440.anInt1460,
+							-1006924897 * SignLink.aClass120_1440.anInt1460,
 							-941078932)) * 70760625;
 		else
 			((Class362) this).anInt3916 = 0;
@@ -49,7 +49,7 @@ public class Class362 {
 				byte[] is;
 				synchronized (((Class362) this).aClass243_3917) {
 					is = (((Class362) this).aClass243_3917.method2315(
-							Class120.aClass120_1440.anInt1460 * -1006924897, i,
+							SignLink.aClass120_1440.anInt1460 * -1006924897, i,
 							(byte) -67));
 				}
 				Class369 class369 = new Class369();

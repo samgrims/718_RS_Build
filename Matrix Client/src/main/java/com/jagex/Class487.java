@@ -22,7 +22,7 @@ public class Class487 {
 			byte[] is;
 			synchronized (((Class487) this).aClass243_6067) {
 				is = (((Class487) this).aClass243_6067.method2315(
-						Class120.aClass120_1419.anInt1460 * -1006924897, i,
+						SignLink.aClass120_1419.anInt1460 * -1006924897, i,
 						(byte) -51));
 			}
 			class496 = new Class496();
@@ -82,7 +82,7 @@ public class Class487 {
 		((Class487) this).aClass243_6067 = class243;
 		((Class487) this).aClass243_6068 = class243_3_;
 		((Class487) this).aClass243_6067.filesCount(
-				(Class120.aClass120_1419.anInt1460) * -1006924897, 1339445894);
+				(SignLink.aClass120_1419.anInt1460) * -1006924897, 1339445894);
 		Math.random();
 		Math.random();
 		Math.random();

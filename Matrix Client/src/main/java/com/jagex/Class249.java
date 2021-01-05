@@ -1977,7 +1977,7 @@ public class Class249 implements Interface_ma {
 				Class354.method4258(class403, 468134532);
 				break;
 			case 832:
-				Class120.method1313(class403, -847776836);
+				SignLink.method1313(class403, -847776836);
 				break;
 			case 123:
 				Class309.method3803(class403, -757452101);

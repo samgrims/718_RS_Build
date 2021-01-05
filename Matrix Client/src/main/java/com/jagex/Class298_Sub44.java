@@ -32,7 +32,7 @@ public class Class298_Sub44 extends Class298 {
 	int anInt7489;
 	static int anInt7490 = 4;
 	int anInt7491;
-	public int anInt7492;
+	public int javaRelease;
 	int anInt7493;
 	public int anInt7494;
 	boolean aBoolean7495;
@@ -82,7 +82,7 @@ public class Class298_Sub44 extends Class298 {
 			buffer.writeByte((((Class298_Sub44) this).aBoolean7509 ? 1 : 0)); //64-bit
 			buffer.writeByte((-1414570243 * ((Class298_Sub44) this).anInt7486)); //OS version
 			buffer.writeByte((((Class298_Sub44) this).anInt7491 * 43286197)); //Java vendor
-			buffer.writeByte(anInt7492 * 154600941); //Java version
+			buffer.writeByte(javaRelease * 154600941); //Java version
 			buffer.writeByte((-1529246497 * ((Class298_Sub44) this).anInt7493)); //Java sub version
 			buffer.writeByte(anInt7494 * 1324779323); //Java sub sub version.
 			buffer.writeByte((((Class298_Sub44) this).aBoolean7495 ? 1 : 0)); //Always false
@@ -113,17 +113,17 @@ public class Class298_Sub44 extends Class298 {
 	public int method3530(int i) {
 		try {
 			int i_1_ = 38;
-			i_1_ += Class120.method1310(((Class298_Sub44) this).aString7502,
+			i_1_ += SignLink.method1310(((Class298_Sub44) this).aString7502,
 					(byte) -1);
-			i_1_ += Class120.method1310(((Class298_Sub44) this).aString7503,
+			i_1_ += SignLink.method1310(((Class298_Sub44) this).aString7503,
 					(byte) -1);
-			i_1_ += Class120.method1310(((Class298_Sub44) this).aString7482,
+			i_1_ += SignLink.method1310(((Class298_Sub44) this).aString7482,
 					(byte) -1);
-			i_1_ += Class120.method1310(((Class298_Sub44) this).aString7505,
+			i_1_ += SignLink.method1310(((Class298_Sub44) this).aString7505,
 					(byte) -1);
-			i_1_ += Class120.method1310(((Class298_Sub44) this).aString7496,
+			i_1_ += SignLink.method1310(((Class298_Sub44) this).aString7496,
 					(byte) -1);
-			i_1_ += Class120.method1310(((Class298_Sub44) this).aString7511,
+			i_1_ += SignLink.method1310(((Class298_Sub44) this).aString7511,
 					(byte) -1);
 			return i_1_;
 		} catch (RuntimeException runtimeexception) {
@@ -189,24 +189,24 @@ public class Class298_Sub44 extends Class298 {
 //			int i = oldJava ? 1 : 0;
 			int i_2_ = 0;
 			try {
-				for (/**/; i < Class120.aString1462.length(); i++) {
-					int i_3_ = Class120.aString1462.charAt(i);
-					if (i_3_ < 48 || i_3_ > 57)
+				for (/**/; i < SignLink.javaVersion.length(); i++) {
+					int characterInsideVersionString = SignLink.javaVersion.charAt(i);
+					if (characterInsideVersionString < 48 || characterInsideVersionString > 57)
 						break;
-					i_2_ = i_3_ - 48 + i_2_ * 10;
+					javaRelease = characterInsideVersionString - 48 + javaRelease * 10;
 				}
 			} catch (Exception exception) {
 				/* empty */
 			}
-			anInt7492 = i_2_ * 1984962533;
-			i = Class120.aString1462.indexOf('.', 2) + 1;
-			i_2_ = 0;
+			this.javaRelease = javaRelease * 1984962533;
+			i = SignLink.javaVersion.indexOf('.', 2) + 1;
+			javaRelease = 0;
 			try {
-				for (/**/; i < Class120.aString1462.length(); i++) {
-					int i_4_ = Class120.aString1462.charAt(i);
+				for (/**/; i < SignLink.javaVersion.length(); i++) {
+					int i_4_ = SignLink.javaVersion.charAt(i);
 					if (i_4_ < 48 || i_4_ > 57)
 						break;
-					i_2_ = i_4_ - 48 + 10 * i_2_;
+					javaRelease = i_4_ - 48 + 10 * javaRelease;
 				}
 			} catch (Exception exception) {
 				/* empty */
@@ -216,19 +216,19 @@ public class Class298_Sub44 extends Class298 {
 //			i = Class120.aString1462.indexOf(oldJava ? '_' : '.', 4) + 1;
 			i_2_ = 0;
 			try {
-				for (/**/; i < Class120.aString1462.length(); i++) {
-					int i_5_ = Class120.aString1462.charAt(i);
+				for (/**/; i < SignLink.javaVersion.length(); i++) {
+					int i_5_ = SignLink.javaVersion.charAt(i);
 					if (i_5_ < 48 || i_5_ > 57)
 						break;
-					i_2_ = i_2_ * 10 + (i_5_ - 48);
+					javaRelease = javaRelease * 10 + (i_5_ - 48);
 				}
 			} catch (Exception exception) {
 				/* empty */
 			}
-			anInt7494 = -796083725 * i_2_;
+			anInt7494 = -796083725 * javaRelease;
 			((Class298_Sub44) this).aBoolean7495 = false;
 			((Class298_Sub44) this).anInt7469 = Class291.maximumMemory * -633367115;
-			if (154600941 * anInt7492 > 3)
+			if (154600941 * this.javaRelease > 3)
 				((Class298_Sub44) this).anInt7498 = Class291.availableCPU
 						* -1360223467;
 			else

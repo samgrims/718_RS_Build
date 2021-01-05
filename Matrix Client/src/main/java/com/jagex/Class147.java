@@ -47,7 +47,7 @@ public class Class147 {
 	static void method1601(byte i) {
 		try {
 			if (client.aByteArray8843 != null)
-				Class120.method1311(-1491321338);
+				SignLink.method1311(-1491321338);
 			else if (2084404473 * Class360.anInt3873 != -1)
 				Class124.method1386((byte) -89);
 			else

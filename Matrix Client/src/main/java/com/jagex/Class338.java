@@ -83,6 +83,7 @@ public class Class338 {
 						//Custom hard coded functions
 						component = changeLogin(component, interfaceId, i);
 						component = removeFullscreen(component, interfaceId, i);
+//						component = removeUpdateJavaInterface(component, interfaceId, i);
 					}
 				}
 			}
@@ -153,5 +154,10 @@ public class Class338 {
 		return component;
 	}
 
+	private static IComponentDefinition removeUpdateJavaInterface(IComponentDefinition component, int interfaceId, int i) {
+		if(interfaceId == 405)
+			component.hidden = true;
+		return component;
+	}
 
 }

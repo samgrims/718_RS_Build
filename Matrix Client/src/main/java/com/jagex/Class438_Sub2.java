@@ -31,7 +31,7 @@ public class Class438_Sub2 extends Class438 {
 					.getObjectDefinitions(interface3.method32((byte) 21));
 			if (-1 == -1204256389 * class432.anInt5400)
 				return true;
-			Class496 class496 = Class120.aClass487_1463.method6159(
+			Class496 class496 = SignLink.aClass487_1463.method6159(
 					(class432.anInt5400 * -1204256389), -2130110173);
 			if (-1 == 1690480405 * class496.anInt6097)
 				return true;

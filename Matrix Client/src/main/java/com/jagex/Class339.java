@@ -22,7 +22,7 @@ public class Class339 {
 			byte[] is;
 			synchronized (((Class339) this).aClass243_3634) {
 				is = (((Class339) this).aClass243_3634.method2315(-1006924897
-						* Class120.aClass120_1441.anInt1460, i, (byte) -50));
+						* SignLink.aClass120_1441.anInt1460, i, (byte) -50));
 			}
 			class352 = new Class352();
 			class352.anInt3784 = i * -1314224517;
@@ -97,7 +97,7 @@ public class Class339 {
 		((Class339) this).aClass243_3634 = class243;
 		((Class339) this).aClass243_3638 = class243_4_;
 		((Class339) this).aClass243_3634.filesCount(
-				(-1006924897 * (Class120.aClass120_1441.anInt1460)),
+				(-1006924897 * (SignLink.aClass120_1441.anInt1460)),
 				-1187243048);
 	}
 

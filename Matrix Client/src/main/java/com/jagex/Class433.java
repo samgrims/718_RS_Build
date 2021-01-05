@@ -131,7 +131,7 @@ public class Class433 {
 		((Class433) this).aClass243_5447 = class243_3_;
 		if (null != ((Class433) this).aClass243_5446) {
 			int i = ((Class433) this).aClass243_5446.method2296(1680210708) - 1;
-			Class120.aClass120_1443.method1306((short) 23751);
+			SignLink.aClass120_1443.method1306((short) 23751);
 			((Class433) this).aClass243_5446.filesCount(i, -1017296855);
 		}
 		if (((Class433) this).aClass411_5455 == Class411.aClass411_5320)
@@ -160,8 +160,8 @@ public class Class433 {
 			byte[] is;
 			synchronized (((Class433) this).aClass243_5446) {
 				is = (((Class433) this).aClass243_5446.method2315(
-						Class120.aClass120_1443.method1307(objectId, -1875026798),
-						Class120.aClass120_1443.method1305(objectId, -1955117131),
+						SignLink.aClass120_1443.method1307(objectId, -1875026798),
+						SignLink.aClass120_1443.method1305(objectId, -1955117131),
 						(byte) -69));
 			}
 			class432 = new ObjectDefinitions();

@@ -1348,26 +1348,19 @@ public final class WorldPacketsDecoder extends Decoder {
 			 * here player.setClientHasLoadedMapRegion(); }
 			 * //player.refreshSpawnedObjects(); //player.refreshSpawnedItems();
 			 */
-		} else if (packetId == WALKING_PACKET
-				|| packetId == MINI_WALKING_PACKET
-				|| packetId == ITEM_TAKE_PACKET
-				|| packetId == PLAYER_OPTION_2_PACKET
-				|| packetId == PLAYER_OPTION_4_PACKET
-				|| packetId == PLAYER_OPTION_1_PACKET || packetId == ATTACK_NPC
-				|| packetId == INTERFACE_ON_PLAYER
-				|| packetId == INTERFACE_ON_NPC
-				|| packetId == NPC_CLICK1_PACKET
-				|| packetId == NPC_CLICK2_PACKET
-				|| packetId == NPC_CLICK3_PACKET
-				|| packetId == OBJECT_CLICK1_PACKET
-				|| packetId == SWITCH_INTERFACE_ITEM_PACKET
-				|| packetId == OBJECT_CLICK2_PACKET
-				|| packetId == OBJECT_CLICK3_PACKET
-				|| packetId == OBJECT_CLICK4_PACKET
-				|| packetId == OBJECT_CLICK5_PACKET
-				|| packetId == INTERFACE_ON_OBJECT)
-			player.addLogicPacketToQueue(new LogicPacket(packetId, length,
-					stream));
+		} else if (packetId == WALKING_PACKET || packetId == MINI_WALKING_PACKET
+				|| packetId == ITEM_TAKE_PACKET	|| packetId == PLAYER_OPTION_2_PACKET
+				|| packetId == PLAYER_OPTION_4_PACKET || packetId == PLAYER_OPTION_1_PACKET
+				|| packetId == ATTACK_NPC || packetId == INTERFACE_ON_PLAYER
+				|| packetId == INTERFACE_ON_NPC	|| packetId == NPC_CLICK1_PACKET
+				|| packetId == NPC_CLICK2_PACKET || packetId == NPC_CLICK3_PACKET
+				|| packetId == OBJECT_CLICK1_PACKET	|| packetId == SWITCH_INTERFACE_ITEM_PACKET
+				|| packetId == OBJECT_CLICK2_PACKET	|| packetId == OBJECT_CLICK3_PACKET
+				|| packetId == OBJECT_CLICK4_PACKET	|| packetId == OBJECT_CLICK5_PACKET
+				|| packetId == INTERFACE_ON_OBJECT) {
+			player.addLogicPacketToQueue(new LogicPacket(packetId, length, stream));
+			player.afkTimer = Utils.currentTimeMillis() + (10 * 60 * 1000);
+		}
 		else if (packetId == OBJECT_EXAMINE_PACKET) {
 			ObjectHandler.handleOption(player, stream, -1);
 		}else if (packetId == NPC_EXAMINE_PACKET) {
