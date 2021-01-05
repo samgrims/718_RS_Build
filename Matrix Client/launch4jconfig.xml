@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\jesse\OneDrive - Texas A&amp;M University-San Antonio\Learning\Programming\Java\Projects\runescape\Matrix718Base\Matrix718\Matrix Client\target\Client-1.0-SNAPSHOT.jar</jar>
+  <outfile>C:\Users\jesse\OneDrive - Texas A&amp;M University-San Antonio\Learning\Programming\Java\Projects\runescape\Matrix718Base\Matrix718\Matrix Client\target\MatrixClient.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\jesse\OneDrive - Texas A&amp;M University-San Antonio\Learning\Programming\Java\Projects\runescape\Matrix718Base\Matrix718\Matrix Client\RS_Icon.ico</icon>
+  <jre>
+    <path>C:\Program Files\Java\jre1.8.0_261</path>
+    <bundledJre64Bit>true</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion>1.8.0_270</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+  </jre>
+</launch4jConfig>
