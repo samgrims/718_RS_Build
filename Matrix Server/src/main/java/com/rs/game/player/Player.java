@@ -310,7 +310,7 @@ public class Player extends Entity {//Player Updater tool
 
 	public void notifyDebugMessage(String message) {
 		if(isDebugModeOn)
-			this.getPackets().sendGameMessage("[Debug]" + message);
+			this.getPackets().sendGameMessage("[<col=00FF00>Debug<col=FFFFFF>]" + message);
 	}
 
 	public boolean getDebugMode() {

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.rs.cache.loaders.ItemDefinitions;
+import com.rs.custom.data_structures.SoundsHolder;
 import com.rs.game.Animation;
 import com.rs.game.Entity;
 import com.rs.game.Graphics;
@@ -26,7 +27,6 @@ import com.rs.game.player.Equipment;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
 import com.rs.game.player.content.Combat;
-import com.rs.game.player.content.Commands;
 import com.rs.game.player.content.Magic;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
@@ -970,7 +970,7 @@ public class PlayerCombat extends Action {
 				return 4;
 			case 23: // ice barrage
 				player.setNextAnimation(new Animation(1979));
-				playSound(171, player, target);
+				sendSoundToPlayer(171, player, target);
 				attackTarget(getMultiAttackTargets(player), new MultiAttack() {
 
 					private boolean nextTarget; //real target is first player on array
@@ -1264,21 +1264,18 @@ public class PlayerCombat extends Action {
 		final int weaponId = player.getEquipment().getWeaponId();
 		final int attackStyle = player.getCombatDefinitions().getAttackStyle();
 		int combatDelay = getRangeCombatDelay(weaponId, attackStyle);
-		int soundId = getWeaponSoundID(weaponId, attackStyle);
+		int soundId = -1;
 		if (player.getCombatDefinitions().isUsingSpecialAttack()) {
 			int specAmt = getSpecialAmmount(weaponId);
 			if (specAmt == 0) {
-				player.getPackets()
-				.sendGameMessage(
-						"This weapon has no special Attack, if you still see special bar please relogin.");
+				player.getPackets().sendGameMessage("This weapon has no special Attack, if you still see special bar please relogin.");
 				player.getCombatDefinitions().desecreaseSpecialAttack(0);
 				return combatDelay;
 			}
 			if (player.getCombatDefinitions().hasRingOfVigour())
 				specAmt *= 0.9;
 			if (player.getCombatDefinitions().getSpecialAttackPercentage() < specAmt) {
-				player.getPackets().sendGameMessage(
-						"You don't have enough power left.");
+				player.getPackets().sendGameMessage("You don't have enough power left.");
 				player.getCombatDefinitions().desecreaseSpecialAttack(0);
 				return combatDelay;
 			}
@@ -1289,14 +1286,8 @@ public class PlayerCombat extends Action {
 				player.setNextAnimation(new Animation(426));
 				player.setNextGraphics(new Graphics(97));
 				World.sendProjectile(player, target, 100, 41, 16, 25, 35, 16, 0);
-				delayHit(
-						1,
-						weaponId,
-						attackStyle,
-						getRangeHit(
-								player,
-								getRandomMaxHit(player, weaponId, attackStyle,
-										true, true, 1.0, true)));
+				delayHit(1, weaponId,	attackStyle, getRangeHit(player, getRandomMaxHit(player, weaponId, attackStyle,true, true, 1.0,
+						true)));
 				dropAmmo(player, 1);
 				break;
 			case 19146:
@@ -1304,14 +1295,8 @@ public class PlayerCombat extends Action {
 				player.setNextAnimation(new Animation(426));
 				player.setNextGraphics(new Graphics(95));
 				World.sendProjectile(player, target, 98, 41, 16, 25, 35, 16, 0);
-				delayHit(
-						1,
-						weaponId,
-						attackStyle,
-						getRangeHit(
-								player,
-								getRandomMaxHit(player, weaponId, attackStyle,
-										true, true, 1.0, true)));
+				delayHit(1, weaponId, attackStyle, getRangeHit(player, getRandomMaxHit(player, weaponId, attackStyle, true, true, 1.0,
+						true)));
 				dropAmmo(player, 1);
 				break;
 			case 19143:// saradomin bow
@@ -1319,22 +1304,14 @@ public class PlayerCombat extends Action {
 				player.setNextAnimation(new Animation(426));
 				player.setNextGraphics(new Graphics(96));
 				World.sendProjectile(player, target, 99, 41, 16, 25, 35, 16, 0);
-				delayHit(
-						1,
-						weaponId,
-						attackStyle,
-						getRangeHit(
-								player,
-								getRandomMaxHit(player, weaponId, attackStyle,
-										true, true, 1.0, true)));
+				delayHit(1, weaponId, attackStyle, getRangeHit(player, getRandomMaxHit(player, weaponId, attackStyle, true, true, 1.0,
+						true)));
 				dropAmmo(player, 1);
 				break;
 			case 10034:
 			case 10033:
 				attackTarget(getMultiAttackTargets(player), new MultiAttack() {
-
 					private boolean nextTarget; //real target is first player on array
-
 					@Override
 					public boolean attack() {
 						int damage = getRandomMaxHit(player, weaponId, attackStyle, true, true, weaponId == 10034 ? 1.2 : 1.0, true);
@@ -1365,63 +1342,33 @@ public class PlayerCombat extends Action {
 				player.setNextGraphics(new Graphics(249, 0, 100));
 				World.sendProjectile(player, target, 249, 41, 16, 31, 35, 16, 0);
 				World.sendProjectile(player, target, 249, 41, 16, 25, 35, 21, 0);
-				delayHit(
-						2,
-						weaponId,
-						attackStyle,
-						getRangeHit(
-								player,
-								getRandomMaxHit(player, weaponId, attackStyle,
-										true, true, 1.0, true)));
-				delayHit(
-						3,
-						weaponId,
-						attackStyle,
-						getRangeHit(
-								player,
-								getRandomMaxHit(player, weaponId, attackStyle,
-										true, true, 1.0, true)));
+				delayHit(2, weaponId, attackStyle, getRangeHit(player, getRandomMaxHit(player, weaponId, attackStyle,true, true, 1.0,
+						true)));
+				delayHit(3, weaponId, attackStyle, getRangeHit(player, getRandomMaxHit(player, weaponId, attackStyle,true, true, 1.0,
+						true)));
 				dropAmmo(player, 2);
 				break;
 			case 15241: // Hand cannon
 				WorldTasksManager.schedule(new WorldTask() {
 					int loop = 0;
-
 					@Override
 					public void run() {
-						if ((target.isDead() || player.isDead() || loop > 1)
-								&& !World.getNPCs().contains(target)) {
+						if ((target.isDead() || player.isDead() || loop > 1) && !World.getNPCs().contains(target)) {
 							stop();
 							return;
 						}
 						if (loop == 0) {
 							player.setNextAnimation(new Animation(12174));
 							player.setNextGraphics(new Graphics(2138));
-							World.sendProjectile(player, target, 2143, 18, 18,
-									50, 50, 0, 0);
-							delayHit(
-									1,
-									weaponId,
-									attackStyle,
-									getRangeHit(
-											player,
-											getRandomMaxHit(player, weaponId,
-													attackStyle, true, true,
+							World.sendProjectile(player, target, 2143, 18, 18,50, 50, 0, 0);
+							delayHit(1, weaponId, attackStyle, getRangeHit(player, getRandomMaxHit(player, weaponId, attackStyle, true, true,
 													1.0, true)));
 						} else if (loop == 1) {
 							player.setNextAnimation(new Animation(12174));
 							player.setNextGraphics(new Graphics(2138));
-							World.sendProjectile(player, target, 2143, 18, 18,
-									50, 50, 0, 0);
-							delayHit(
-									1,
-									weaponId,
-									attackStyle,
-									getRangeHit(
-											player,
-											getRandomMaxHit(player, weaponId,
-													attackStyle, true, true,
-													1.0, true)));
+							World.sendProjectile(player, target, 2143, 18, 18,50, 50, 0, 0);
+							delayHit(1, weaponId, attackStyle, getRangeHit(player, getRandomMaxHit(player, weaponId, attackStyle, true, true,
+									1.0,true)));
 							stop();
 						}
 						loop++;
@@ -1435,27 +1382,19 @@ public class PlayerCombat extends Action {
 			case 15703:
 			case 15704:
 				int ammoId = player.getEquipment().getAmmoId();
-				player.setNextAnimation(new Animation(getWeaponAttackEmote(
-						weaponId, attackStyle)));
-				player.setNextGraphics(new Graphics(getArrowThrowGfxId(
-						weaponId, ammoId), 0, 100));
+				player.setNextAnimation(new Animation(getWeaponAttackEmote(weaponId, attackStyle)));
+				player.setNextGraphics(new Graphics(getArrowThrowGfxId(weaponId, ammoId), 0, 100));
 				if (ammoId == 11212) {
-					int damage = getRandomMaxHit(player, weaponId, attackStyle,
-							true, true, 1.5, true);
+					int damage = getRandomMaxHit(player, weaponId, attackStyle,true, true, 1.5, true);
 					if (damage < 80)
 						damage = 80;
-					int damage2 = getRandomMaxHit(player, weaponId,
-							attackStyle, true, true, 1.5, true);
+					int damage2 = getRandomMaxHit(player, weaponId, attackStyle, true, true, 1.5, true);
 					if (damage2 < 80)
 						damage2 = 80;
-					World.sendProjectile(player, target, 1099, 41, 16, 31, 35,
-							16, 0);
-					World.sendProjectile(player, target, 1099, 41, 16, 25, 35,
-							21, 0);
-					delayHit(2, weaponId, attackStyle,
-							getRangeHit(player, damage));
-					delayHit(3, weaponId, attackStyle,
-							getRangeHit(player, damage2));
+					World.sendProjectile(player, target, 1099, 41, 16, 31, 35,16, 0);
+					World.sendProjectile(player, target, 1099, 41, 16, 25, 35,21, 0);
+					delayHit(2, weaponId, attackStyle, getRangeHit(player, damage));
+					delayHit(3, weaponId, attackStyle, getRangeHit(player, damage2));
 					WorldTasksManager.schedule(new WorldTask() {
 						@Override
 						public void run() {
@@ -1463,41 +1402,26 @@ public class PlayerCombat extends Action {
 						}
 					}, 2);
 				} else {
-					int damage = getRandomMaxHit(player, weaponId, attackStyle,
-							true, true, 1.3, true);
+					int damage = getRandomMaxHit(player, weaponId, attackStyle, true, true, 1.3, true);
 					if (damage < 50)
 						damage = 50;
-					int damage2 = getRandomMaxHit(player, weaponId,
-							attackStyle, true, true, 1.3, true);
+					int damage2 = getRandomMaxHit(player, weaponId, attackStyle, true, true, 1.3, true);
 					if (damage2 < 50)
 						damage2 = 50;
-					World.sendProjectile(player, target, 1101, 41, 16, 31, 35,
-							16, 0);
-					World.sendProjectile(player, target, 1101, 41, 16, 25, 35,
-							21, 0);
-					delayHit(2, weaponId, attackStyle,
-							getRangeHit(player, damage));
-					delayHit(3, weaponId, attackStyle,
-							getRangeHit(player, damage2));
+					World.sendProjectile(player, target, 1101, 41, 16, 31, 35,16, 0);
+					World.sendProjectile(player, target, 1101, 41, 16, 25, 35,21, 0);
+					delayHit(2, weaponId, attackStyle, getRangeHit(player, damage));
+					delayHit(3, weaponId, attackStyle, getRangeHit(player, damage2));
 				}
 				dropAmmo(player, 2);
 
 				break;
 			case 14684: // zanik cbow
-				player.setNextAnimation(new Animation(getWeaponAttackEmote(
-						weaponId, attackStyle)));
+				player.setNextAnimation(new Animation(getWeaponAttackEmote(weaponId, attackStyle)));
 				player.setNextGraphics(new Graphics(1714));
 				World.sendProjectile(player, target, 2001, 41, 41, 41, 35, 0, 0);
-				delayHit(
-						2,
-						weaponId,
-						attackStyle,
-						getRangeHit(
-								player,
-								getRandomMaxHit(player, weaponId, attackStyle,
-										true, true, 1.0, true)
-										+ 30
-										+ Utils.getRandom(120)));
+				delayHit(2, weaponId,	attackStyle, getRangeHit(player,getRandomMaxHit(player, weaponId, attackStyle,true, true,
+						1.0, true)	+ 30 + Utils.getRandom(120)));
 				dropAmmo(player);
 				break;
 			case 13954:// morrigan javelin
@@ -1510,28 +1434,23 @@ public class PlayerCombat extends Action {
 				player.setNextGraphics(new Graphics(1836));
 				player.setNextAnimation(new Animation(10501));
 				World.sendProjectile(player, target, 1837, 41, 41, 41, 35, 0, 0);
-				final int hit = getRandomMaxHit(player, weaponId, attackStyle,
-						true, true, 1.0, true);
+				final int hit = getRandomMaxHit(player, weaponId, attackStyle,true, true, 1.0, true);
 				delayHit(2, weaponId, attackStyle, getRangeHit(player, hit));
 				if (hit > 0) {
 					final Entity finalTarget = target;
 					WorldTasksManager.schedule(new WorldTask() {
 						int damage = hit;
-
 						@Override
 						public void run() {
-							if (finalTarget.isDead()
-									|| finalTarget.hasFinished()) {
+							if (finalTarget.isDead() || finalTarget.hasFinished()) {
 								stop();
 								return;
 							}
 							if (damage > 50) {
 								damage -= 50;
-								finalTarget.applyHit(new Hit(player, 50,
-										HitLook.REGULAR_DAMAGE));
+								finalTarget.applyHit(new Hit(player, 50, HitLook.REGULAR_DAMAGE));
 							} else {
-								finalTarget.applyHit(new Hit(player, damage,
-										HitLook.REGULAR_DAMAGE));
+								finalTarget.applyHit(new Hit(player, damage, HitLook.REGULAR_DAMAGE));
 								stop();
 							}
 						}
@@ -1721,7 +1640,7 @@ public class PlayerCombat extends Action {
 							}
 						}, 2);
 					}
-					playSound(soundId, player, target);
+					PlayerCombat.sendSoundToPlayer(soundId, player, target);
 					return combatDelay;
 				} else { // bow/default
 					final int ammoId = player.getEquipment().getAmmoId();
@@ -1764,7 +1683,11 @@ public class PlayerCombat extends Action {
 						weaponId, attackStyle)));
 			}
 		}
-		playSound(soundId, player, target);
+
+		if(soundId == -1)
+			SoundsHolder.playWeaponAttackSoundFromPlayer(player, target, weaponId, attackStyle);
+		else
+			PlayerCombat.sendSoundToPlayer(soundId, player, target);
 		return combatDelay;
 	}
 
@@ -1938,15 +1861,14 @@ public class PlayerCombat extends Action {
 
 	@SuppressWarnings("unused")
 	private int getRangeHitDelay(Player player) {
-		return Utils.getDistance(player.getX(), player.getY(), target.getX(),
-				target.getY()) >= 5 ? 2 : 1;
+		return Utils.getDistance(player.getX(), player.getY(), target.getX(), target.getY()) >= 5 ? 2 : 1;
 	}
 
 	private int meleeAttack(final Player player) {
 		int weaponId = player.getEquipment().getWeaponId();
 		int attackStyle = player.getCombatDefinitions().getAttackStyle();
 		int combatDelay = getMeleeCombatDelay(player, weaponId);
-		int soundId = getWeaponSoundID(weaponId, attackStyle);
+		int soundId = -1;
 		if (weaponId == -1) {
 			Item gloves = player.getEquipment().getItem(Equipment.SLOT_HANDS);
 			if (gloves != null && gloves.getDefinitions().getName().contains("Goliath gloves")) {
@@ -2332,16 +2254,19 @@ public class PlayerCombat extends Action {
 			player.setNextAnimation(new Animation(getWeaponAttackEmote(
 					weaponId, attackStyle)));
 		}
-		playSound(soundId, player, target);
+		if(soundId == -1)
+			SoundsHolder.playWeaponAttackSoundFromPlayer(player, target, weaponId, attackStyle);
+		else
+			sendSoundToPlayer(soundId, player, target);
 		return combatDelay;
 	}
 
-	public static void playSound(int soundId, Player player, Entity target) {
+	public static void sendSoundToPlayer(int soundId, Player player, Entity soundSource) {
 		if (soundId == -1)
 			return;
 		player.getPackets().sendSound(soundId, 0, 1);
-		if (target instanceof Player) {
-			Player p2 = (Player) target;
+		if (soundSource instanceof Player) {
+			Player p2 = (Player) soundSource;
 			p2.getPackets().sendSound(soundId, 0, 1);
 		}
 	}
@@ -3032,7 +2957,6 @@ public class PlayerCombat extends Action {
 					}
 			if(hit.getDamage() > 0 && target instanceof NPC)
 				doDefenceSound(player, target);
-			Commands.playerDebug(player, "dmg: " + hit.getDamage());
 		}
 
 		WorldTasksManager.schedule(new WorldTask() {
@@ -3107,7 +3031,7 @@ public class PlayerCombat extends Action {
 							} else if (hit.getLook() == HitLook.MAGIC_DAMAGE) {
 								if (splash) {
 									target.setNextGraphics(new Graphics(85, 0, 96));
-									playSound(227, player, target);
+									sendSoundToPlayer(227, player, target);
 								} else {
 									if (mage_hit_gfx != 0) {
 										target.setNextGraphics(new Graphics(
@@ -3137,7 +3061,7 @@ public class PlayerCombat extends Action {
 										}
 									}
 									if (magic_sound > 0)
-										playSound(magic_sound, player, target);
+										sendSoundToPlayer(magic_sound, player, target);
 								}
 							}
 							if (max_poison_hit > 0 && Utils.getRandom(10) == 0) {
@@ -3147,8 +3071,7 @@ public class PlayerCombat extends Action {
 							if (target instanceof Player) {
 								Player p2 = (Player) target;
 								p2.closeInterfaces();
-								if (p2.getCombatDefinitions().isAutoRelatie()
-										&& !p2.getActionManager().hasSkillWorking()
+								if (p2.getCombatDefinitions().isAutoRelatie() && !p2.getActionManager().hasSkillWorking()
 										&& !p2.hasWalkSteps()) 
 									p2.getActionManager().setAction(
 											new PlayerCombat(player));
@@ -3171,109 +3094,13 @@ public class PlayerCombat extends Action {
 		}
 	}
 
-	private static void createAttackSounds(Player player, Entity soundSource) {
-		if(soundSource instanceof NPC) {
-			NPC npc = (NPC) soundSource;
-			String name = npc.getName().toLowerCase();
-			switch (name) {
-				case "imp":
-					PlayerCombat.playSound(534, player, npc);
-					break;
-				case "man":
-//					PlayerCombat.playSound(97, player, npc);
-				case "chicken":
-				default:
-					Commands.playerDebug(player, name + " has no attack sounds!");
-			}
-		}
-	}
-
-	private static void createDefenceSounds(Player player, Entity soundSource) {
-		if(soundSource instanceof NPC) {
-			NPC npc = ((NPC)soundSource);
-			String name = npc.getName();
-			switch (name.toLowerCase()) {
-				case "imp":
-					playSound(536, player, npc);
-					break;
-				case "man":
-//					playSound(97, player, npc);
-				case "chicken":
-				default:
-					Commands.playerDebug(player, name + " has no defence sounds");
-					break;
-			}
-		}
-	}
-
-	private static void createDeathSound(Player killerPlayer, Entity soundSource) {
-		NPC npc = ((NPC)soundSource);
-		String nameNPC = npc.getName();
-////			if(soundSource instanceof Boss) {//or above lvl 300
-////				if(soundSource.withinDistance(attacker, 5)) {
-////					//playsound
-////						//return
-////				}
-		switch (nameNPC.toLowerCase()) {
-			case "imp":
-				PlayerCombat.playSound(535, killerPlayer, npc);
-				break;
-			default:
-				Commands.playerDebug(killerPlayer, nameNPC + " Has no death sounds");
-		}
-	}
-//
-//	public static void playSound(int soundId, Player player, Entity target) {
-//		if (soundId == -1)
-//			return;
-//		player.getPackets().sendSound(soundId, 0, 1);
-//		if (target instanceof Player) {
-//			Player p2 = (Player) target;
-//			p2.getPackets().sendSound(soundId, 0, 1);
-//		}
-//	}
-
 	public static void parseSound(String type, Player player, Entity soundSource) {
 		if(type.contains("attack"))
-			createAttackSounds(player, soundSource);
+			SoundsHolder.sendEntityAttackSoundToPlayer(soundSource, player);
 		else if(type.contains("defence"))
-			createDefenceSounds(player, soundSource);
+			SoundsHolder.sendEntityDefenceSoundToPlayer(soundSource, player);
 		else if(type.contains("death"))
-			createDeathSound(player, soundSource);
-	}
-
-	private int getWeaponSoundID(int weaponId, int attackStyle) {
-		if (weaponId != -1) {
-			String weaponName = ItemDefinitions.getItemDefinitions(weaponId).getName().toLowerCase();
-			if (weaponName.contains("dart") || weaponName.contains("knife"))
-//				if(attackstyle == 0)
-//					return 123;
-				return 2707;
-			if(weaponName.contains("sword")) {
-				String[] weaponWords = weaponName.split(" ");
-				 if(weaponWords.length == 2 && isMetalName(weaponWords[0]))
-					return 2500;
-			}
-			Commands.announceDebug("Uknown weapon sound for " + weaponName);
-		}
-		return -1;
-	}
-
-	private boolean isMetalName(String metal) {
-		switch(metal.toLowerCase()) {
-			case "bronze":
-			case "iron":
-			case "steel":
-			case "black":
-			case "mithril":
-			case "adamant":
-			case "rune":
-			case "dragon":
-				return true;
-			default:
-				break;
-		}
-		return false;
+			SoundsHolder.sendEntityDeathSoundToPlayer(soundSource, player);
 	}
 
 	public static int getWeaponAttackEmote(int weaponId, int attackStyle) {

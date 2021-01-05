@@ -47,22 +47,6 @@ import com.rs.utils.*;
  * doesnt let it be extended
  */
 public final class Commands {
-	private static boolean debugMode = true;
-
-	public static void debug(String out) {
-		if(debugMode)
-			System.out.println(out);
-	}
-	public static void playerDebug(Player player, String out) {
-		if(debugMode)
-			player.getPackets().sendGameMessage(out);
-	}
-	public static void announceDebug(String out) {
-		if(debugMode)
-			World.sendWorldMessage("<col=b25200>" + out,false);
-	}
-
-
 	/**
 	 * Parent command function. It calls adminCommands, mod commands & support commands
 	 */
