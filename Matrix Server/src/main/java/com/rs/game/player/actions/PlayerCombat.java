@@ -2956,7 +2956,7 @@ public class PlayerCombat extends Action {
 						}
 					}
 			if(hit.getDamage() > 0 && target instanceof NPC)
-				doDefenceSound(player, target);
+				PlayerCombat.createSounds("defence", player, target);
 		}
 
 		WorldTasksManager.schedule(new WorldTask() {
@@ -3087,14 +3087,7 @@ public class PlayerCombat extends Action {
 		}, delay);
 	}
 
-	private void doDefenceSound(Player player, Entity soundSource) {
-		if(soundSource instanceof NPC) {
-			NPC npc = (NPC)soundSource;
-			PlayerCombat.parseSound("defence", player, npc);
-		}
-	}
-
-	public static void parseSound(String type, Player player, Entity soundSource) {
+	public static void createSounds(String type, Player player, Entity soundSource) {
 		if(type.contains("attack"))
 			SoundsHolder.sendEntityAttackSoundToPlayer(soundSource, player);
 		else if(type.contains("defence"))
@@ -3261,10 +3254,7 @@ public class PlayerCombat extends Action {
 						return 376;
 					}
 				}
-				if (weaponName.contains("2h sword")
-						|| weaponName.equals("dominion sword")
-						|| weaponName.equals("thok's sword")
-						|| weaponName.equals("saradomin sword")) {
+				if (weaponName.contains("2h sword") || weaponName.equals("dominion sword") || weaponName.equals("thok's sword") || weaponName.equals("saradomin sword")) {
 					switch (attackStyle) {
 					case 2:
 						return 7048;
@@ -3274,10 +3264,7 @@ public class PlayerCombat extends Action {
 						return 7041;
 					}
 				}
-				if (weaponName.contains(" sword")
-						|| weaponName.contains("saber")
-						|| weaponName.contains("longsword")
-						|| weaponName.contains("light")
+				if (weaponName.contains(" sword") || weaponName.contains("saber") || weaponName.contains("longsword") || weaponName.contains("light")
 						|| weaponName.contains("excalibur")) {
 					switch (attackStyle) {
 					case 2:
@@ -3286,8 +3273,7 @@ public class PlayerCombat extends Action {
 						return 12311;
 					}
 				}
-				if (weaponName.contains("rapier")
-						|| weaponName.contains("brackish")) {
+				if (weaponName.contains("rapier") || weaponName.contains("brackish")) {
 					switch (attackStyle) {
 					case 2:
 						return 13048;

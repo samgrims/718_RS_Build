@@ -38,11 +38,5 @@ public class SaveJSONManager {
         }
     }
 
-    public static boolean jsonExists(Player player) {
-        String filePath = Settings.PLAYER_JSON_FOLDER_DIR + player.getUsername().toLowerCase() + ".json";
-        File input_json = new File(filePath);
-        if(input_json.exists())
-            return true;
-        return false;
-    }
+
 }

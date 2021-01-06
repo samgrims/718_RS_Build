@@ -12,7 +12,7 @@ import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
 import com.rs.custom.data_structures.SpinsManager;
-import com.rs.custom.interfaces.Interfaces;
+import com.rs.custom.interfaces.CustomInterfaces;
 import com.rs.game.Animation;
 import com.rs.game.ForceMovement;
 import com.rs.game.ForceTalk;
@@ -42,6 +42,8 @@ import com.rs.game.player.dialogues.Dialogue;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.*;
+
+import static com.rs.custom.interfaces.CustomInterfaces.debugCommandsListScreen;
 
 /*
  * doesnt let it be extended
@@ -700,12 +702,10 @@ public final class Commands {
 
 			case "npc":
 				try {
-					World.spawnNPC(Integer.parseInt(cmd[1]), player, -1, true,
-							true);
+					World.spawnNPC(Integer.parseInt(cmd[1]), player, -1, true,true);
 					return true;
 				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::npc id(Integer)");
+					player.getPackets().sendPanelBoxMessage("Use: ::npc id(Integer)");
 				}
 				return true; 
 
@@ -1140,16 +1140,13 @@ public final class Commands {
 
 			case "tonpc":
 				if (cmd.length < 2) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::tonpc id(-1 for player)");
+					player.getPackets().sendPanelBoxMessage("Use: ::tonpc id(-1 for player)");
 					return true;
 				}
 				try {
-					player.getAppearence().transformIntoNPC(
-							Integer.valueOf(cmd[1]));
+					player.getAppearence().transformIntoNPC(Integer.valueOf(cmd[1]));
 				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::tonpc id(-1 for player)");
+					player.getPackets().sendPanelBoxMessage("Use: ::tonpc id(-1 for player)");
 				}
 				return true; 
 
@@ -2089,6 +2086,31 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+			case "commandlist":
+				debugCommandsListScreen(player);
+				return true;
+			case "coordinaterepeater":
+				player.getPackets().sendGameMessage("--You must logout to kill the repeater--");
+				long timeInterval = 2000;//2 seconds
+				Runnable repeater = new Runnable() {
+					public void run() {
+						while (true) {
+							player.getPackets().sendGameMessage("X: " + Integer.toString(player.getLocation().getX()) + " Y: "
+									+ Integer.toString(player.getLocation().getY()));
+							try {
+								Thread.sleep(timeInterval);
+							} catch(InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				};
+				Thread thread = new Thread(repeater);
+				thread.start();
+				return true;
+			case "transformid":
+				player.getPackets().sendGameMessage("ID " + player.getAppearence().getTransformedNPCId());
+				return true;
 			case "debug":
 				player.setDebugMode(!player.getDebugMode());
 				player.getPackets().sendGameMessage("Debug mode has been set to " + player.getDebugMode());
@@ -2098,7 +2120,7 @@ public final class Commands {
 				return true;
 			case "hideinterbetween":
 				if (cmd.length < 3) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId startid endid");
+					player.getPackets().sendPanelBoxMessage("Use: ;;hideicompbetween [Interface ID] [Starting Component ID] [Ending Component ID]");
 					return true;
 				}
 				int componentSize = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
@@ -2111,9 +2133,9 @@ public final class Commands {
 					player.getPackets().sendHideIComponent(interfaceId, nextComponentId, true);
 
 				return true;
-			case "showinterbetween":
+			case "showicompbetween":
 				if (cmd.length < 3) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId startid endid");
+					player.getPackets().sendPanelBoxMessage("Use: ;;showicompbetween [Interface ID] [Starting Component ID] [Ending Component ID]");
 					return true;
 				}
 				int componentLen = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
@@ -2126,9 +2148,9 @@ public final class Commands {
 					player.getPackets().sendHideIComponent(interfaceID, nextComponentId, false);
 
 				return true;
-			case "hideinter":
+			case "hideicomp":
 				if (cmd.length < 3) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
+					player.getPackets().sendGameMessage("Use: ;;hideicomp [Interface ID] [Component ID]");
 					return true;
 				}
 				player.getPackets().sendHideIComponent(Integer.parseInt(cmd[1]), Integer.parseInt(cmd[2]), true);
@@ -2136,7 +2158,7 @@ public final class Commands {
 				return true;
 			case "interh":
 				if (cmd.length < 2) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
+					player.getPackets().sendGameMessage("Use: ;;hideicomp [Interface ID] [Component ID]");
 					return true;
 				}
 
@@ -2146,7 +2168,7 @@ public final class Commands {
 						player.getPackets().sendIComponentModel(interId, componentId, 66);
 					}
 				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
+					player.getPackets().sendPanelBoxMessage("Use: ;;inter interfaceId");
 				}
 				return true;
 
@@ -2175,13 +2197,13 @@ public final class Commands {
 			case "resetbank":
 				player.getBank().reset();
 				return true;
-			case "load":
+			case "loadjson":
 				player.getSaveJSONManager().loadJSON();
 				return true;
-			case "save":
+			case "savejson":
 				player.getSaveJSONManager().saveJSON();
 				return true;
-			case "controller":
+			case "getcontroller":
 				try {
 					String controler_name = player.getControlerManager().getController().getClass().getName();
 					player.getPackets().sendGameMessage(controler_name);
@@ -2189,9 +2211,9 @@ public final class Commands {
 					player.getPackets().sendGameMessage("none");
 				}
 				return true;
-			case "addspin":
+			case "addspins":
 				if(cmd.length != 2 || !cmd[1].matches("\\d+")) {
-					player.getPackets().sendGameMessage("The format is \";;addspin [amt]\"");
+					player.getPackets().sendGameMessage("The format is \";;addspins [amt]\"");
 					return true;
 				}
 				SpinsManager.addSpins(player, Integer.parseInt(cmd[1]));
@@ -2222,9 +2244,9 @@ public final class Commands {
 				PlayerLook.openCharacterCustomizing(player);
 				return true;
 			case "welcome":
-				Interfaces.welcomeScreen(player);
+				CustomInterfaces.welcomeScreen(player);
 				return true;
-			case "position":
+			case "coordinate":
 				player.getPackets().sendGameMessage("X: " + Integer.toString(player.getLocation().getX()) + " Y: " + Integer.toString(player.getLocation().getY()));
 				return true;
 			case "item":

@@ -162,16 +162,12 @@ public class JSONPlayerSaver {
 
     private void toFile() {
         try {
-            String filePath = Settings.PLAYER_JSON_FOLDER_DIR + player.getUsername().toLowerCase() + ".json";
-
-            File output_json = new File(filePath);
-            if(!output_json.exists())
-                output_json.createNewFile();
-
+            File output_json = CustomUtilities.getJSONFile(player);
+            if(!CustomUtilities.jsonExists(player))
+                CustomUtilities.createJSON(player);
             FileWriter fileWriter = new FileWriter(output_json);
             fileWriter.write(playerMeta.toJSONString());
             fileWriter.flush();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

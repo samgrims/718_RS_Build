@@ -82,7 +82,7 @@ public final class NPCCombat {
 	public void doAttackSound() {
 		if(target instanceof Player) {
 			Player player = (Player)target;
-			PlayerCombat.parseSound("attack", player, npc);
+			PlayerCombat.createSounds("attack", player, npc);
 		}
 	}
 

@@ -54,6 +54,10 @@ public class Appearence implements Serializable {
 		generateAppearenceData();
 	}
 
+	public int getTransformedNPCId() {
+		return this.transformedNpcId;
+	}
+
 	public void switchHidden() {
 		hidePlayer = !hidePlayer;
 		generateAppearenceData();
@@ -155,8 +159,7 @@ public class Appearence implements Serializable {
 			stream.writeShort(0);
 			int hash = 0;
 			int slotFlag = -1;
-			for (int slotId = 0; slotId < player.getEquipment().getItems()
-					.getSize(); slotId++) {
+			for (int slotId = 0; slotId < player.getEquipment().getItems().getSize(); slotId++) {
 				if (Equipment.DISABLED_SLOTS[slotId] != 0)
 					continue;
 				slotFlag++;
@@ -164,18 +167,12 @@ public class Appearence implements Serializable {
 					int hatId = player.getEquipment().getHatId();
 					if (hatId == 20768 || hatId == 20770 || hatId == 20772) {
 						ItemDefinitions defs = ItemDefinitions.getItemDefinitions(hatId-1);
-						if ((hatId == 20768
-								&& Arrays.equals(
-										player.getMaxedCapeCustomized(),
-										defs.originalModelColors) || ((hatId == 20770 || hatId == 20772) && Arrays
-								.equals(player.getCompletionistCapeCustomized(),
-										defs.originalModelColors))))
+						if ((hatId == 20768	&& Arrays.equals(player.getMaxedCapeCustomized(), defs.originalModelColors) || ((hatId == 20770 || hatId == 20772)
+								&& Arrays.equals(player.getCompletionistCapeCustomized(), defs.originalModelColors))))
 							continue;
 						hash |= 1 << slotFlag;
 						stream.writeByte(0x4); // modify 4 model colors
-						int[] hat = hatId == 20768 ? player
-								.getMaxedCapeCustomized() : player
-								.getCompletionistCapeCustomized();
+						int[] hat = hatId == 20768 ? player.getMaxedCapeCustomized() : player.getCompletionistCapeCustomized();
 						int slots = 0 | 1 << 4 | 2 << 8 | 3 << 12;
 						stream.writeShort(slots);
 						for (int i = 0; i < 4; i++)
@@ -184,20 +181,13 @@ public class Appearence implements Serializable {
 				}else if (slotId == Equipment.SLOT_CAPE) {
 					int capeId = player.getEquipment().getCapeId();
 					if (capeId == 20767 || capeId == 20769 || capeId == 20771) {
-						ItemDefinitions defs = ItemDefinitions
-								.getItemDefinitions(capeId);
-						if ((capeId == 20767
-								&& Arrays.equals(
-										player.getMaxedCapeCustomized(),
-										defs.originalModelColors) || ((capeId == 20769 || capeId == 20771) && Arrays
-								.equals(player.getCompletionistCapeCustomized(),
-										defs.originalModelColors))))
+						ItemDefinitions defs = ItemDefinitions.getItemDefinitions(capeId);
+						if ((capeId == 20767 && Arrays.equals(player.getMaxedCapeCustomized(), defs.originalModelColors) || ((capeId == 20769 || capeId == 20771)
+								&& Arrays.equals(player.getCompletionistCapeCustomized(), defs.originalModelColors))))
 							continue;
 						hash |= 1 << slotFlag;
 						stream.writeByte(0x4); // modify 4 model colors
-						int[] cape = capeId == 20767 ? player
-								.getMaxedCapeCustomized() : player
-								.getCompletionistCapeCustomized();
+						int[] cape = capeId == 20767 ? player.getMaxedCapeCustomized() : player.getCompletionistCapeCustomized();
 						int slots = 0 | 1 << 4 | 2 << 8 | 3 << 12;
 						stream.writeShort(slots);
 						for (int i = 0; i < 4; i++)
@@ -235,17 +225,14 @@ public class Appearence implements Serializable {
 		stream.writeShort(getRenderEmote());
 		stream.writeString(player.getDisplayName());
 		boolean pvpArea = World.isPvpArea(player);
-		stream.writeByte(pvpArea ? player.getSkills().getCombatLevel() : player
-				.getSkills().getCombatLevelWithSummoning());
-		stream.writeByte(pvpArea ? player.getSkills()
-				.getCombatLevelWithSummoning() : 0);
+		stream.writeByte(pvpArea ? player.getSkills().getCombatLevel() : player.getSkills().getCombatLevelWithSummoning());
+		stream.writeByte(pvpArea ? player.getSkills().getCombatLevelWithSummoning() : 0);
 		stream.writeByte(-1); // higher level acc name appears in front :P
 		stream.writeByte(transformedNpcId >= 0 ? 1 : 0); // to end here else id
 															// need to send more
 															// data
 		if (transformedNpcId >= 0) {
-			NPCDefinitions defs = NPCDefinitions
-					.getNPCDefinitions(transformedNpcId);
+			NPCDefinitions defs = NPCDefinitions.getNPCDefinitions(transformedNpcId);
 			stream.writeShort(defs.anInt876);
 			stream.writeShort(defs.anInt842);
 			stream.writeShort(defs.anInt884);
@@ -255,8 +242,7 @@ public class Appearence implements Serializable {
 
 		// done separated for safe because of synchronization
 		byte[] appeareanceData = new byte[stream.getOffset()];
-		System.arraycopy(stream.getBuffer(), 0, appeareanceData, 0,
-				appeareanceData.length);
+		System.arraycopy(stream.getBuffer(), 0, appeareanceData, 0, appeareanceData.length);
 		byte[] md5Hash = Utils.encryptUsingMD5(appeareanceData);
 		this.appeareanceData = appeareanceData;
 		md5AppeareanceDataHash = md5Hash;

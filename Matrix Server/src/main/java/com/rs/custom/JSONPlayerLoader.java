@@ -29,7 +29,8 @@ public class JSONPlayerLoader {
         try {
             this.playerMeta = getPlayerFile();
         } catch(Exception e) {
-            e.printStackTrace();
+            DebugLine.print("Player loaded without a JSON file");
+            return;
         }
 //        decodeCoordinate();
         decodeSkills();
@@ -47,10 +48,7 @@ public class JSONPlayerLoader {
      * @throws Exception
      */
     private JSONObject getPlayerFile() throws Exception {
-        String filePath = Settings.PLAYER_JSON_FOLDER_DIR + player.getUsername().toLowerCase() + ".json";
-        File input_json = new File(filePath);
-        if (!input_json.exists())
-            input_json.createNewFile();
+        File input_json = CustomUtilities.getJSONFile(player);
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader(input_json);
         return (JSONObject) jsonParser.parse(reader);

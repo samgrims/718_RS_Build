@@ -75,9 +75,8 @@ public final class PlayerLook {
 		}
 	}
 
-	public static void handleHairdresserSalonButtons(Player player, int buttonId,
-                                                     int slotId) {// Hair and color match button count so just loop and
-							// do ++, but cant find button ids
+	public static void handleHairdresserSalonButtons(Player player, int buttonId, int slotId) {// Hair and color match button count so just loop and
+		// do ++, but cant find button ids
 		if (buttonId == 6)
 			player.getTemporaryAttributtes().put("hairSaloon", true);
 		else if (buttonId == 7)
@@ -97,14 +96,10 @@ public final class PlayerLook {
 	public static void openMageMakeOver(Player player) {
 		player.getInterfaceManager().sendInterface(900);
 		player.getPackets().sendIComponentText(900, 33, "Confirm");
-		player.getPackets().sendConfigByFile(6098,
-				player.getAppearence().isMale() ? 0 : 1);
-		player.getPackets().sendConfigByFile(6099,
-				player.getAppearence().getSkinColor());
-		player.getTemporaryAttributtes().put("MageMakeOverGender",
-				player.getAppearence().isMale());
-		player.getTemporaryAttributtes().put("MageMakeOverSkin",
-				player.getAppearence().getSkinColor());
+		player.getPackets().sendConfigByFile(6098, player.getAppearence().isMale() ? 0 : 1);
+		player.getPackets().sendConfigByFile(6099,	player.getAppearence().getSkinColor());
+		player.getTemporaryAttributtes().put("MageMakeOverGender", player.getAppearence().isMale());
+		player.getTemporaryAttributtes().put("MageMakeOverSkin", player.getAppearence().getSkinColor());
 	}
 
 	

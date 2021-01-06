@@ -148,11 +148,11 @@ public final class LoginPacketsDecoder extends Decoder {
 	private Player retrievePlayer(String username, String password) {
 		Player player = null;
 		if(!SerializableFilesManager.containsPlayer(username)) {
-			player = Player.createBrandNew(password);
+			player = Player.createUnserialized(password);
 		}
 		player = SerializableFilesManager.loadPlayer(username);
 		if(player == null) {
-			player = Player.recreateUpdatedPlayer(password, true);
+			player = Player.createUnserialized(password);
 		}
 		if(!password.equals(player.getPassword())) {
 			session.getLoginPackets().sendClientPacket(3);

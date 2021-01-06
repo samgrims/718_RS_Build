@@ -948,9 +948,7 @@ public abstract class Entity extends WorldTile {
 
 	public void setNextAnimation(Animation nextAnimation) {
 		if (nextAnimation != null && nextAnimation.getIds()[0] >= 0)
-			lastAnimationEnd = Utils.currentTimeMillis()
-					+ AnimationDefinitions.getAnimationDefinitions(
-							nextAnimation.getIds()[0]).getEmoteTime();
+			lastAnimationEnd = Utils.currentTimeMillis() + AnimationDefinitions.getAnimationDefinitions(nextAnimation.getIds()[0]).getEmoteTime();
 		this.nextAnimation = nextAnimation;
 	}
 

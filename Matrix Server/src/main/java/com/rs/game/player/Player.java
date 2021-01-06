@@ -12,10 +12,12 @@ import java.util.concurrent.TimeUnit;
 
 import com.rs.Settings;
 import com.rs.cores.CoresManager;
+import com.rs.custom.CustomUtilities;
 import com.rs.custom.SaveJSONManager;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.data_structures.SquealOfFortune;
 import com.rs.custom.data_structures.Toolbelt;
+import com.rs.custom.interfaces.CustomInterfaces;
 import com.rs.game.Animation;
 import com.rs.game.Entity;
 import com.rs.game.ForceTalk;
@@ -73,7 +75,6 @@ public class Player extends Entity {//Player Updater tool
 
 	private long timeOfLogin;
 	private boolean isBrandNew;
-	private boolean isUpdated;
 	private Toolbelt toolbelt;
 	private SquealOfFortune sof;
 	private boolean isDebugModeOn;
@@ -243,12 +244,6 @@ public class Player extends Entity {//Player Updater tool
 	
 	private boolean isForumModerator;
 
-	// creates Player and saved classes
-	public Player(String password, boolean updateNotice) {
-		this(password);
-		this.isUpdated = updateNotice;
-	}
-
 	public Player(String password) {
 		super(Settings.START_PLAYER_LOCATION);
 		//custom stuff
@@ -290,15 +285,12 @@ public class Player extends Entity {//Player Updater tool
 	}
 
 	/**
-	 * Creates a brand new character to be saved
+	 * Creates a brand new character to be serialized/packed into a .p file. However, the actual primary saving of the player is done in JSON.
+	 *
 	 * @param password
-	 * @return
+	 * @return A new Player object
 	 */
-	public static Player recreateUpdatedPlayer(String password, boolean updateNotice) {
-		return new Player(password, updateNotice);
-	}
-
-	public static Player createBrandNew(String password) {
+	public static Player createUnserialized(String password) {
 		return new Player(password);
 	}
 
@@ -329,6 +321,10 @@ public class Player extends Entity {//Player Updater tool
 		this.afkTime = time;
 	}
 
+	public void resetAFKTime() {
+		this.afkTime = Utils.currentTimeMillis();
+	}
+
 	public static String getPlayerVersionOfServer() {
 		return "v" + serialVersionUID;
 	}
@@ -347,7 +343,7 @@ public class Player extends Entity {//Player Updater tool
 
 	public void init(Session session, String username, int displayMode,	int screenWidth, int screenHeight, MachineInformation machineInformation, IsaacKeyPair isaacKeyPair) {
 		//custom properties
-		afkTime = Utils.currentTimeMillis() + (1*60*1000);
+		afkTime = Utils.currentTimeMillis();
 		afkTime();
 		this.timeOfLogin = System.currentTimeMillis();
 		if(toolbelt == null)
@@ -420,7 +416,7 @@ public class Player extends Entity {//Player Updater tool
 	public void afkTime() {
 		CoresManager.slowExecutor.schedule(new Runnable() {
 			public void run(){
-				if (afkTime < Utils.currentTimeMillis()){
+				if (afkTime - Utils.currentTimeMillis() > 10*60*1000){
 					logout(false);
 				}
 				afkTime();
@@ -573,13 +569,14 @@ public class Player extends Entity {//Player Updater tool
 
 		//custom login methods
 		updateSpinsEarnedByMinutes();
-		if(isBrandNew) {
+		boolean jsonExists = CustomUtilities.jsonExists(this);
+		if(isBrandNew && !jsonExists) {
+			CustomInterfaces.welcomeScreen(this);
 			giveStartingItems();
-			if(isUpdated)
-				this.getPackets().sendGameMessage("<col=FFFF00>There has been an update!");
-			else if(SaveJSONManager.jsonExists(this))
-				this.getPackets().sendGameMessage("<col=FF0000>Your save was loaded from a backup");
 			isBrandNew = false;
+			PlayerLook.openCharacterCustomizing(this);
+		} else if(isBrandNew && jsonExists) {
+			this.getPackets().sendGameMessage("<col=FFFF00>Save loaded from a backup, likely an update");
 		}
 		toolbelt.setPlayer(this);
 		sof.setPlayer(this);

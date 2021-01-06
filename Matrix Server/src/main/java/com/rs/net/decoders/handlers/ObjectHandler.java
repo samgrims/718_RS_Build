@@ -792,16 +792,12 @@ public final class ObjectHandler {
 								player.addWalkSteps(player.getX(), player.getY() < y ? object.getY()+2 : object.getY() - 1, -1, false);
 								player.getPackets().sendGameMessage("You squeeze though the web.");
 							} else
-								player.getPackets().sendGameMessage(
-										"You fail to squeeze though the web; perhaps you should try again.");
+								player.getPackets().sendGameMessage("You fail to squeeze though the web; perhaps you should try again.");
 						}
 						break;
 					case "web":
 						if (objectDef.containsOption(0, "Slash")) {
-							player.setNextAnimation(new Animation(PlayerCombat
-									.getWeaponAttackEmote(player.getEquipment()
-											.getWeaponId(), player
-											.getCombatDefinitions()
+							player.setNextAnimation(new Animation(PlayerCombat.getWeaponAttackEmote(player.getEquipment().getWeaponId(), player.getCombatDefinitions()
 											.getAttackStyle())));
 							slashWeb(player, object);
 						}

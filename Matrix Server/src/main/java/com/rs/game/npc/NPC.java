@@ -34,8 +34,6 @@ import com.rs.utils.NPCCombatDefinitionsLoader;
 import com.rs.utils.NPCDrops;
 import com.rs.utils.Utils;
 
-import static com.rs.game.player.actions.PlayerCombat.parseSound;
-
 public class NPC extends Entity implements Serializable {
 
 	private static final long serialVersionUID = -4794678936277614443L;
@@ -121,7 +119,7 @@ public class NPC extends Entity implements Serializable {
 		if(attacker instanceof Player) {
 			Player player = (Player)attacker;
 			if (soundSource instanceof NPC)
-				PlayerCombat.parseSound("death", player, soundSource);
+				PlayerCombat.createSounds("death", player, soundSource);
 
 //
 //			if (soundSource instanceof Player) {
