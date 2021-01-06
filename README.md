@@ -6,7 +6,8 @@ It is based on Matrix 718 but is put together as one client/server IntelliJ proj
 You are welcome to leech, join in on development or make a pull request! If you just want the original Matrix release working in IntelliJ then clone the first few commits.
 
 <h2>Setup Instructions</h2>
-<p>I recommend using Maven to build, IntelliJ to edit & Java JDK 8 is just required for editing the source, but you can also clone to Eclipse or build in Gradle or others. The client mostly requires Java 8 so the release on this page will be a windows .exe installer which includes Java 8. For Mac youll need to use a jar with Java 8 installed. Any other Java version works but is not optimal. Here are the steps:</p>
+<p>I recommend using Maven to build, IntelliJ to edit & Java JDK 8 is just required for editing the source, but you can also clone to Eclipse or build in Gradle or others. The client mostly requires Java 8 so the release on this page will be a windows .exe installer which includes Java 8. For Mac youll need to use a jar with Java 8 installed. Any other Java version works but is not optimal.</p> 
+<p>Here are the steps:</p>
 <ol>
 <li>Fork the repo
 <li>Clone the repo as "an existing source from version control" in IntelliJ. Copy and paste the repo URL.
