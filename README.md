@@ -28,7 +28,6 @@ mvn install:install-file -Dfile=[folder_with_dependencies]\netty-3.6.5.Final.jar
 <li>Run Applet.java as the client
 <li>You should be able to enter into a local server
 </ol>
-  <br/><br/>
  <h2>Additional Info</h2>
  -You can create a .jar of the server and client using Maven<br>
  -You can then run the server jar in a remote VPS to make it live. Remember to point the client to your live jar & also move the data folder to the same folder 
