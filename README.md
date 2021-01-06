@@ -1,12 +1,12 @@
-# 718 Runescape Build
+# 718 Runescape Base
 <img src="https://i.gyazo.com/3043a41874f6a791cb2899cb36e794f1.png">
-<p>This 718 client/server build is aimed to be a semi-vanilla version of Runescape that encourages creating a vanilla core first, then adds custom features later.
-It is based on Matrix 718 but is put together as client/server in one IntelliJ project. The cache is interchangeable with another.</p>
+<p>This 718 client/server build is aimed to be a semi-vanilla base for public use. This source encourages creating a vanilla core first, then adding custom features later.
+It is based on Matrix 718 but is put together as one client/server IntelliJ project. The cache is interchangeable and there are no anti-leech functions.</p>
 
-You are welcome to leech or join in on development, just make a pull request! If you just want a clean Matrix base that works in IntelliJ then clone the first few commits.
+You are welcome to leech, join in on development or make a pull request! If you just want the original Matrix release working in IntelliJ then clone the first few commits.
 
 <h2>Setup Instructions</h2>
-<p>I recommend using Maven to build, IntelliJ to edit & Java JDK 8 is just required but you can also clone to Eclipse or build in Gradle or others.</p>
+<p>I recommend using Maven to build, IntelliJ to edit & Java JDK 8 is just required for editing the source, but you can also clone to Eclipse or build in Gradle or others. The client mostly requires Java 8 so the release on this page will be a windows .exe installer which includes Java 8. For Mac youll need to use a jar with Java 8 installed. Any other Java version works but is not optimal. Here are the steps:</p>
 <ol>
 <li>Fork the repo
 <li>Clone the repo as "an existing source from version control" in IntelliJ. Copy and paste the repo URL.
