@@ -16,7 +16,7 @@ You are welcome to leech, join in on development or make a pull request! If you 
 <li>Open the project in IntelliJ and create 2 modules, the Client & the Server. Follow the standard Maven layout src->main->java in each, marking java as the source directory.
 Note the pom.xml is created for both client & server individually, each module has its own pom
 <li>Download cache.zip from Mega: https://mega.nz/file/u1cm2BgB#y9ud8X6Wh_1IrEWBIkQmyONqb7PQuE_qbWNYlTHqgkA
-<li>Unzip cachr.zip to the server-module->data folder. It should just be Matrix Server->data->cache while the rest of the server folders are on the same level as data. Here is a picture:<br> 
+<li>Unzip cache.zip to the server-module->data folder. It should just be Matrix Server->data->cache while the rest of the server folders are on the same level as data. Here is a picture:<br> 
 <img src="https://i.gyazo.com/2e95faffe500e88dd3eb5658efe717b7.png">
 <li>Install local jar files onto your Maven local repo on the server by running terminal commands that look like these. If you have never installed jars to your local repo 
 just make sure to follow a guide online and have the everything in the command matching the pom.xml dependency info in the dependency tags.
