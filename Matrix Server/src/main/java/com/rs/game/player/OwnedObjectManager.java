@@ -17,7 +17,7 @@ public class OwnedObjectManager {
 
 	private static final Map<String, OwnedObjectManager> ownedObjects = new ConcurrentHashMap<String, OwnedObjectManager>();
 
-	private Player player;
+	private transient  Player player;
 	private WorldObject[] objects;
 	private int count;
 	private long cycleTime;

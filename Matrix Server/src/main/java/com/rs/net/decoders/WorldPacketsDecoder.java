@@ -219,7 +219,7 @@ public final class WorldPacketsDecoder extends Decoder {
 		PACKET_SIZES[103] = 4;
 	}
 
-	private Player player;
+	private transient  Player player;
 	private int chatType;
 
 	public WorldPacketsDecoder(Session session, Player player) {

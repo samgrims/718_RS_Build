@@ -7,7 +7,7 @@ import com.rs.game.player.Player;
 public class FloorItem extends Item {
 
 	private WorldTile tile;
-	private Player owner;
+	private transient  Player owner;
 	private boolean invisible;
 	private boolean grave;
 

@@ -87,7 +87,7 @@ public class TicketSystem {
 	}
 	
 	public static class TicketEntry {
-		private Player player;
+		private transient  Player player;
 		private WorldTile tile;
 		
 		public TicketEntry(Player player) {

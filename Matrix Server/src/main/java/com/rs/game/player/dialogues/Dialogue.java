@@ -6,7 +6,7 @@ import com.rs.game.player.Player;
 
 public abstract class Dialogue {
 
-	protected Player player;
+	protected transient  Player player;
 	protected byte stage = -1;
 
 	public Dialogue() {

@@ -22,7 +22,7 @@ import com.rs.utils.Utils;
 
 public class DuelArena extends Controller {
 
-	private Player target;
+	private transient  Player target;
 	private boolean ifFriendly, isDueling;
 
 	private final Item[] FUN_WEAPONS = {new Item(4566)};

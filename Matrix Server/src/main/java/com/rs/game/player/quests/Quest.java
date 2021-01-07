@@ -12,7 +12,7 @@ public abstract class Quest {
 	/**
 	 * The player reference.
 	 */
-	protected Player player;
+	protected transient  Player player;
 
 	/**
 	 * The quest id.

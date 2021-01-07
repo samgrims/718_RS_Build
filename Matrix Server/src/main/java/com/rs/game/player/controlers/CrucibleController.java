@@ -12,7 +12,7 @@ import com.rs.utils.Utils;
 
 public class CrucibleController extends Controller {
 
-	private Player target;
+	private transient  Player target;
 	
 	@Override
 	public void start() {

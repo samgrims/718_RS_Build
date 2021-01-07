@@ -18,7 +18,6 @@ public final class PlayerLook {
 			setMale(player);
 		if(buttonId == 63)  //Female
 			setFemale(player);
-
 	}
 
 	public static void setMale(Player player) {

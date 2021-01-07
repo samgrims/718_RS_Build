@@ -17,7 +17,7 @@ import java.util.List;
 public class JSONPlayerSaver {
     //Bank Inventory DRAFT ENCODE
     //Toolbelt inventory DRAFT ENCODE
-    private Player player;
+    private transient  Player player;
     private JSONObject playerMeta;
     private static int itemName = 0, itemId = 1, itemAmount = 2;
 

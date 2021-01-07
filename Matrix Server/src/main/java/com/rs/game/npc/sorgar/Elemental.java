@@ -20,7 +20,7 @@ public class Elemental extends NPC {
 	
 	private boolean beingTeleported = false;
 	
-	private Player player;
+	private transient  Player player;
 
 	private static final WorldTile[][] tiles = { 
 		{new WorldTile(2908, 5460, 0), new WorldTile(2898, 5460, 0)}, 

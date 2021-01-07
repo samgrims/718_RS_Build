@@ -13,7 +13,7 @@ public class DreadNip extends NPC {
 		"The dreadnip gave up as you were too far away.",
 	"Your dreadnip served its purpose and fled."};
 
-	private Player owner;
+	private transient  Player owner;
 	private int ticks;
 
 	public DreadNip(Player owner, int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {

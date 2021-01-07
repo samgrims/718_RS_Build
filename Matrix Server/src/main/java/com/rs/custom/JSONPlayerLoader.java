@@ -15,7 +15,7 @@ import java.io.FileReader;
 import java.util.List;
 
 public class JSONPlayerLoader {
-    private Player player;
+    private transient  Player player;
     private JSONObject playerMeta;
     private static byte itemName = 0, ITEMID = 1, ITEMAMOUNT = 2;
 

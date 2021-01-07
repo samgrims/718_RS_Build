@@ -32,7 +32,7 @@ import com.rs.utils.huffman.Huffman;
 
 public class WorldPacketsEncoder extends Encoder {
 
-	private Player player;
+	private transient  Player player;
 
 	public WorldPacketsEncoder(Session session, Player player) {
 		super(session);

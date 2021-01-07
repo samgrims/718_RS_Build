@@ -27,10 +27,9 @@ public class Nomad extends NPC {
 	private ArrayList<NPC> copies;
 	private boolean healed;
 	private int notAttacked;
-	private Player target;
+	private transient  Player target;
 	
-	public Nomad(int id, WorldTile tile, int mapAreaNameHash,
-			boolean canBeAttackFromOutOfArea, boolean spawned) {
+	public Nomad(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea, boolean spawned) {
 		super(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		setForceMultiArea(true);
 		setRun(true);

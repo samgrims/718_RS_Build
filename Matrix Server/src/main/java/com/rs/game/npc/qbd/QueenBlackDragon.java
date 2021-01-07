@@ -118,7 +118,7 @@ public final class QueenBlackDragon extends NPC {
 	/**
 	 * The player.
 	 */
-	private final Player attacker;
+	private final transient   Player attacker;
 
 	/**
 	 * The queen state.

@@ -17,7 +17,7 @@ public class QuestManager {
 	/**
 	 * The player reference.
 	 */
-	private Player player;
+	private transient  Player player;
 	
 	/**
 	 * An array list holding all quests, completed, started and non-started.

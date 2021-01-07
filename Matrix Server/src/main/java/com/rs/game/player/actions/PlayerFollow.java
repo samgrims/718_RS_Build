@@ -5,7 +5,7 @@ import com.rs.utils.Utils;
 
 public class PlayerFollow extends Action {
 
-	private Player target;
+	private transient  Player target;
 
 	public PlayerFollow(Player target) {
 		this.target = target;

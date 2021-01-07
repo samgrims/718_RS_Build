@@ -69,7 +69,7 @@ public final class TorturedSoul extends NPC {
 	/**
 	 * The player victim.
 	 */
-	private final Player victim;
+	private final transient   Player victim;
 	
 	/**
 	 * If the NPC should skip a walk step.

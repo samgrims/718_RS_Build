@@ -44,6 +44,7 @@ import com.rs.game.player.dialogues.Dialogue;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.io.OutputStream;
+import com.rs.tools.DebugLine;
 import com.rs.utils.*;
 
 import static com.rs.custom.interfaces.CustomInterfaces.debugCommandsListScreen;
@@ -2090,24 +2091,14 @@ public final class Commands {
 		String message;
 		switch (cmd[0]) {
 			case "test":
-				int[] xteas = new int[4];
-				OutputStream stream = new OutputStream(24);
-				stream.writePacket(player, 14);
-				stream.writeShort(Integer.parseInt(cmd[1]));
-				stream.writeInt(xteas[0]);
-				stream.writeIntV2(xteas[1]);
-				stream.writeIntV1(windowId << 16 | windowComponentId);
-				stream.writeByte(nocliped ? 1 : 0);
-				stream.writeIntV1(xteas[3]);
-				stream.writeIntV2(xteas[2]);
-				session.write(stream);
+				PlayerLook.openCharacterCustomizing(player);
 				return true;
 			case "serialsave":
 				Server.saveFiles();
 				player.getPackets().sendGameMessage("Saved as serial");
 				return true;
 			case "data":
-				player.getPackets().sendGameMessage("Top: " + player.getAppearence().getTopStyle());
+				DebugLine.print("Top: " + player.getAppearence().getTopStyle());
 				return true;
 			case "commandlist":
 				debugCommandsListScreen(player);

@@ -32,7 +32,7 @@ public class Applet extends java.applet.Applet {
 	public static final int LOBBY_PORT = 41116;
 	public static String LOBBY_IP = IP;//probably used for multiple worlds
 	public static final String FORGOT_PASSWORD_URL = "https://warbycode.com/718-lostpassword/";
-	public static int SUB_REVISION = 1;//3 for matrix
+	public static int SUB_REVISION = 3;//3 for matrix
 	public static Applet instance;
 	public static int[] outSizes = new int[256];
 

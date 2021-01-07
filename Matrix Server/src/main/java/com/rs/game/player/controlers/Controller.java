@@ -13,7 +13,9 @@ public abstract class Controller {
 
 	// private static final long serialVersionUID = 8384350746724116339L;
 
-	protected Player player;
+	// private static final long serialVersionUID = 8384350746724116339L;
+
+	protected transient  Player player;
 
 	public final void setPlayer(Player player) {
 		this.player = player;

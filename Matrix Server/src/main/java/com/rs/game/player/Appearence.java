@@ -14,18 +14,18 @@ import com.rs.utils.Utils;
 
 public class Appearence implements Serializable {
 
-	private static final long serialVersionUID = 7655608569741626586L;
+	private static final long serialVersionUID = 7655608569741626587L;
 
 	private transient int renderEmote;
 	private int title;
 	private int[] lookI;
 	private byte[] colour;
 	private boolean male;
-	private transient boolean glowRed;
-	private transient byte[] appeareanceData;
-	private transient byte[] md5AppeareanceDataHash;
-	private transient short transformedNpcId;
-	private transient boolean hidePlayer;
+	private boolean glowRed;
+	private byte[] appeareanceData;
+	private byte[] md5AppeareanceDataHash;
+	private short transformedNpcId;
+	private boolean hidePlayer;
 
 	private transient Player player;
 

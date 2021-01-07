@@ -21,7 +21,7 @@ public class SquealOfFortune implements Serializable {
 
 	public static int SOF_INTERFACE_ID = 1253;
 	public static int TAB_INTERFACE_ID = 0;
-	private Player player;
+	private transient  Player player;
 	private int prizeId;
 	private boolean isDiscarded = false;
 

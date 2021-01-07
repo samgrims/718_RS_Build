@@ -4,7 +4,7 @@ import com.rs.game.player.Player;
 
 public class DungeonPartyPlayer {
 
-	private Player player;
+	private transient  Player player;
 	private int deaths;
 
 	public DungeonPartyPlayer(Player player) {

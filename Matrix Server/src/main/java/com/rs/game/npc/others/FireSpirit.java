@@ -12,7 +12,7 @@ import com.rs.utils.Utils;
 @SuppressWarnings("serial")
 public class FireSpirit extends NPC {
 
-	private Player target;
+	private transient  Player target;
 	private long createTime;
 	
 	public FireSpirit(WorldTile tile, Player target) {
