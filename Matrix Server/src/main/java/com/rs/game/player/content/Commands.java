@@ -1,15 +1,13 @@
 package com.rs.game.player.content;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.rs.Server;
 import com.rs.Settings;
 import com.rs.cache.loaders.AnimationDefinitions;
+import com.rs.cache.loaders.ClientScriptMap;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
 import com.rs.custom.data_structures.SpinsManager;
@@ -2098,7 +2096,36 @@ public final class Commands {
 				player.getPackets().sendGameMessage("Saved as serial");
 				return true;
 			case "data":
-				DebugLine.print("Top: " + player.getAppearence().getTopStyle());
+				if(cmd.length == 1) {
+					try (PrintWriter out = new PrintWriter("filename.txt")) {
+						for (int scriptId = 0; scriptId < 5920; scriptId++) {
+							Map<Long, Object> map = ClientScriptMap.getMap(scriptId).getValues();
+							try {
+								map.entrySet().forEach(entry -> {
+									out.print(entry.getKey() + " " + entry.getValue() + " ");
+								});
+								out.println("");
+							} catch (Exception e) {
+								continue;
+							}
+							System.out.println("\n^Script " + scriptId);
+						}
+					} catch (Exception e) {
+						;
+					}
+				}
+				if(cmd.length == 2) {
+					int scriptId = Integer.parseInt(cmd[1]);
+					Map<Long, Object> map = ClientScriptMap.getMap(scriptId).getValues();
+					try {
+						map.entrySet().forEach(entry -> {
+							System.out.print(entry.getKey() + " " + entry.getValue() + " ");
+						});
+					} catch(Exception e) {
+						System.out.println("Script error");
+					}
+					System.out.println("\n^Script " + scriptId);
+				}
 				return true;
 			case "commandlist":
 				debugCommandsListScreen(player);
@@ -2254,7 +2281,7 @@ public final class Commands {
 				String date = (new SimpleDateFormat("MMM dd,yyyy HH:mm")).format(creationDate);
 				player.getPackets().sendGameMessage("Your account was created on " + date);
 				return true;
-			case "appearence":
+			case "appearance":
 				PlayerLook.openMageMakeOver(player);
 				return true;
 			case "welcome":

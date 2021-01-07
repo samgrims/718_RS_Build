@@ -212,7 +212,7 @@ public class Class298_Sub44 extends Class298 {
 				/* empty */
 			}
 			((Class298_Sub44) this).anInt7493 = i_2_ * 1167404831;
-			i = Class120.aString1462.indexOf('_', 4) + 1;
+			i = SignLink.javaVersion.indexOf('_', 4) + 1;
 //			i = Class120.aString1462.indexOf(oldJava ? '_' : '.', 4) + 1;
 			i_2_ = 0;
 			try {

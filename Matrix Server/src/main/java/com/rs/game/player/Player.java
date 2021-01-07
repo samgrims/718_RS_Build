@@ -55,14 +55,13 @@ import com.rs.net.decoders.handlers.ButtonHandler;
 import com.rs.net.encoders.WorldPacketsEncoder;
 import com.rs.tools.DebugLine;
 import com.rs.utils.*;
-
 import static com.rs.custom.SaveJSONManager.startSaveJSONManager;
 
 public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	//version information
-	private final static long serialVersionUID = 14;//based on updates
+	private final static long serialVersionUID = 15;//based on updates
 
 	// Not serialized
 	private transient int totalMinutesPlayed;
@@ -242,6 +241,16 @@ public class Player extends Entity {//Player Updater tool
 	
 	private boolean isForumModerator;
 
+	/**
+	 * Creates a brand new character to be serialized/packed into a .p file. However, the actual primary saving of the player is done in JSON.
+	 *
+	 * @param password
+	 * @return A new Player object
+	 */
+	public static Player createUnserialized(String password) {
+		return new Player(password);
+	}
+
 	public Player(String password) {
 		super(Settings.START_PLAYER_LOCATION);
 		//custom stuff
@@ -252,7 +261,6 @@ public class Player extends Entity {//Player Updater tool
 		this.isDebugModeOn = false;
 
 		//Matrix stuff
-		setHitpoints(Settings.START_PLAYER_HITPOINTS);
 		this.password = password;
 		appearence = new Appearence();
 		inventory = new Inventory();
@@ -280,63 +288,6 @@ public class Player extends Entity {//Player Updater tool
 		passwordList = new ArrayList<String>();
 		ipList = new ArrayList<String>();
 		creationDate = Utils.currentTimeMillis();
-	}
-
-	/**
-	 * Creates a brand new character to be serialized/packed into a .p file. However, the actual primary saving of the player is done in JSON.
-	 *
-	 * @param password
-	 * @return A new Player object
-	 */
-	public static Player createUnserialized(String password) {
-		return new Player(password);
-	}
-
-	@Override
-	public void sendDeathWithSound(final Entity source, Entity player) {
-//		PlayerCombat.playSound(1, player);
-		sendDeath(source);
-	}
-
-	public void notifyDebugMessage(String message) {
-		if(isDebugModeOn)
-			this.getPackets().sendGameMessage("[<col=00FF00>Debug<col=FFFFFF>]" + message);
-	}
-
-	public boolean getDebugMode() {
-		return isDebugModeOn;
-	}
-
-	public void setDebugMode(boolean isOn) {
-		this.isDebugModeOn = isOn;
-	}
-
-	public long getAFKTime() {
-		return this.afkTime;
-	}
-
-	public void setAFKTime(long time) {
-		this.afkTime = time;
-	}
-
-	public void resetAFKTime() {
-		this.afkTime = Utils.currentTimeMillis();
-	}
-
-	public static String getPlayerVersionOfServer() {
-		return "v" + serialVersionUID;
-	}
-
-	public long getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(long creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public WorldTile getLocation() {
-		return new WorldTile(getX(), getY(), getPlane());
 	}
 
 	public void init(Session session, String username, int displayMode,	int screenWidth, int screenHeight, MachineInformation machineInformation, IsaacKeyPair isaacKeyPair) {
@@ -409,6 +360,144 @@ public class Player extends Entity {//Player Updater tool
 			ipList = new ArrayList<String>();
 		updateIPnPass();
 		this.saveJSONManager = startSaveJSONManager(this);
+	}
+
+	// now that we inited we can start showing game
+	public void start() {
+		loadMapRegions();
+		started = true;
+
+		if(isBrandNew()) {
+//			PlayerLook.openMageMakeOver(this);
+			setHitpoints(100);
+			giveStartingItems();
+		} else if(isOnlyFromJSON()) {
+			saveJSONManager.loadJSON();
+			setHitpoints(skills.getLevel(Skills.HITPOINTS)*10);
+			refreshHitPoints();
+			this.getPackets().sendGameMessage("<col=FFFF00>Save loaded from a backup, likely an update");
+			DebugLine.print("Server Admin: did you update the Player.java serial?");
+		}
+		run();
+		toolbelt.setPlayer(this);
+		sof.setPlayer(this);
+		toolbelt.init();
+
+		//custom login methods
+		updateSpinsEarnedByMinutes();
+		hasSerialization = true;
+		if (isDead())
+			sendDeath(null);
+	}
+
+	public void run() {
+		if (World.exiting_start != 0) {
+			int delayPassed = (int) ((Utils.currentTimeMillis() - World.exiting_start) / 1000);
+			getPackets().sendSystemUpdate(World.exiting_delay - delayPassed);
+		}
+		lastIP = getSession().getIP();
+		interfaceManager.sendInterfaces();
+		getPackets().sendRunEnergy();
+		getPackets().sendItemsLook();
+		refreshAllowChatEffects();
+		refreshMouseButtons();
+		refreshPrivateChatSetup();
+		refreshOtherChatsSetup();
+		sendRunButtonConfig();
+		sendWelcomePrompts();
+		sendDefaultPlayersOptions();
+		checkMultiArea();
+		inventory.init();
+		equipment.init();
+		skills.init();
+		combatDefinitions.init();
+		prayer.init();
+		friendsIgnores.init();
+		refreshHitPoints();
+		prayer.refreshPrayerPoints();
+		getPoison().refresh();
+		getPackets().sendConfig(281, 1000); // unlock can't do this on tutorial
+		getPackets().sendConfig(1160, -1); // unlock summoning orb
+		getPackets().sendConfig(1159, 1);
+		getPackets().sendGameBarStages();
+		musicsManager.init();
+		emotesManager.refreshListConfigs();
+		questManager.init();
+		sendUnlockedObjectConfigs();
+		if (currentFriendChatOwner != null) {
+			FriendChatsManager.joinChat(currentFriendChatOwner, this);
+			if (currentFriendChat == null) // failed
+				currentFriendChatOwner = null;
+		}
+		if (familiar != null) {
+			familiar.respawnFamiliar(this);
+		} else {
+			petManager.init();
+		}
+		running = true;
+		updateMovementType = true;
+		appearence.generateAppearenceData();
+		controlerManager.login(); // checks what to do on login after welcome
+		OwnedObjectManager.linkKeys(this);
+		// screen
+		if(machineInformation != null)
+			machineInformation.sendSuggestions(this);
+		Notes.unlock(this);
+	}
+
+	public boolean isBrandNew() {
+		return !hasSerialization && !CustomUtilities.jsonExists(this);
+	}
+
+	public boolean isOnlyFromJSON() {
+		return !hasSerialization && CustomUtilities.jsonExists(this);
+	}
+
+	@Override
+	public void sendDeathWithSound(final Entity source, Entity player) {
+//		PlayerCombat.playSound(1, player);
+		sendDeath(source);
+	}
+
+	public void notifyDebugMessage(String message) {
+		if(isDebugModeOn)
+			this.getPackets().sendGameMessage("[<col=00FF00>Debug<col=FFFFFF>]" + message);
+	}
+
+	public boolean getDebugMode() {
+		return isDebugModeOn;
+	}
+
+	public void setDebugMode(boolean isOn) {
+		this.isDebugModeOn = isOn;
+	}
+
+	public long getAFKTime() {
+		return this.afkTime;
+	}
+
+	public void setAFKTime(long time) {
+		this.afkTime = time;
+	}
+
+	public void resetAFKTime() {
+		this.afkTime = Utils.currentTimeMillis();
+	}
+
+	public static String getPlayerVersionOfServer() {
+		return "v" + serialVersionUID;
+	}
+
+	public long getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(long creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public WorldTile getLocation() {
+		return new WorldTile(getX(), getY(), getPlane());
 	}
 
 	public void afkTime() {
@@ -553,38 +642,6 @@ public class Player extends Entity {//Player Updater tool
 						getPackets().sendDestroyObject(object);
 			}
 		}
-	}
-
-	// now that we inited we can start showing game
-	public void start() {
-		loadMapRegions();
-		started = true;
-		run();
-		if (isDead())
-			sendDeath(null);
-
-		//custom login methods
-		updateSpinsEarnedByMinutes();
-		if(isBrandNew()) {
-//			PlayerLook.openMageMakeOver(this);
-			giveStartingItems();
-		} else if(isOnlyFromJSON()) {
-			this.getPackets().sendGameMessage("<col=FFFF00>Save loaded from a backup, likely an update");
-			DebugLine.print("Server Admin: did you update the Player.java serial?");
-		}
-		hasSerialization = true;
-		toolbelt.setPlayer(this);
-		sof.setPlayer(this);
-		toolbelt.init();
-		saveJSONManager.loadJSON();
-	}
-
-	public boolean isBrandNew() {
-		return !hasSerialization && !CustomUtilities.jsonExists(this);
-	}
-
-	public boolean isOnlyFromJSON() {
-		return !hasSerialization && CustomUtilities.jsonExists(this);
 	}
 
 	public void stopAll() {
@@ -798,62 +855,7 @@ public class Player extends Entity {//Player Updater tool
 		getPackets().sendGameMessage("Welcome to " + Settings.SERVER_NAME + ".");
 	}
 
-	public void run() {
-		if (World.exiting_start != 0) {
-			int delayPassed = (int) ((Utils.currentTimeMillis() - World.exiting_start) / 1000);
-			getPackets().sendSystemUpdate(World.exiting_delay - delayPassed);
-		}
-		lastIP = getSession().getIP();
-		interfaceManager.sendInterfaces();
-		getPackets().sendRunEnergy();
-		getPackets().sendItemsLook();
-		refreshAllowChatEffects();
-		refreshMouseButtons();
-		refreshPrivateChatSetup();
-		refreshOtherChatsSetup();
-		sendRunButtonConfig();
-		sendWelcomePrompts();
 
-
-		sendDefaultPlayersOptions();
-		checkMultiArea();
-		inventory.init();
-		equipment.init();
-		skills.init();
-		combatDefinitions.init();
-		prayer.init();
-		friendsIgnores.init();
-		refreshHitPoints();
-		prayer.refreshPrayerPoints();
-		getPoison().refresh();
-		getPackets().sendConfig(281, 1000); // unlock can't do this on tutorial
-		getPackets().sendConfig(1160, -1); // unlock summoning orb
-		getPackets().sendConfig(1159, 1);
-		getPackets().sendGameBarStages();
-		musicsManager.init();
-		emotesManager.refreshListConfigs();
-		questManager.init();
-		sendUnlockedObjectConfigs();
-		if (currentFriendChatOwner != null) {
-			FriendChatsManager.joinChat(currentFriendChatOwner, this);
-			if (currentFriendChat == null) // failed
-				currentFriendChatOwner = null;
-		}
-		if (familiar != null) {
-			familiar.respawnFamiliar(this);
-		} else {
-			petManager.init();
-		}
-		running = true;
-		updateMovementType = true;
-		appearence.generateAppearenceData();
-		controlerManager.login(); // checks what to do on login after welcome
-		OwnedObjectManager.linkKeys(this);
-		// screen
-		if(machineInformation != null)
-			machineInformation.sendSuggestions(this);
-		Notes.unlock(this);
-	}
 
 
 	private void sendUnlockedObjectConfigs() {

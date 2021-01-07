@@ -138,7 +138,7 @@ public final class PlayerLook {
 				CustomInterfaces.welcomeScreen(player);
 		} else if (buttonId == 12) { //set part
 			if(styleStage == null || styleStage == 0) {
-				player.getAppearence().setTopStyle(ClientScriptMap.getMap(player.getAppearence().isMale() ? 690 : 1591).getIntValue(slotId/2));
+//				player.getAppearence().setTopStyle(ClientScriptMap.getMap(player.getAppearence().isMale() ? 690 : 1591).getIntValue(slotId/2));
 				if(!player.getAppearence().isMale())
 					player.getAppearence().setBeardStyle(player.getAppearence().getTopStyle());
 				player.getAppearence().setArmsStyle(player.getAppearence().isMale() ? 26 : 65); //default
@@ -146,9 +146,11 @@ public final class PlayerLook {
 			}else if (styleStage == 1) //arms
 				player.getAppearence().setArmsStyle(ClientScriptMap.getMap(player.getAppearence().isMale() ? 711 : 693).getIntValue(slotId/2));
 			else if (styleStage == 2) //wrists
-				player.getAppearence().setWristsStyle(ClientScriptMap.getMap(751).getIntValue(slotId/2));
+				;
+//				player.getAppearence().setWristsStyle(ClientScriptMap.getMap(751).getIntValue(slotId/2));
 			else
-				player.getAppearence().setLegsStyle(ClientScriptMap.getMap(player.getAppearence().isMale() ? 1586 : 1607).getIntValue(slotId/2));
+				;
+//				player.getAppearence().setLegsStyle(ClientScriptMap.getMap(player.getAppearence().isMale() ? 1586 : 1607).getIntValue(slotId/2));
 			
 		} else if (buttonId == 17) {//color
 			if(styleStage == null || styleStage == 0 || styleStage == 1)

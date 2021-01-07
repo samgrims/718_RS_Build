@@ -56,7 +56,6 @@ public final class Settings {
 	/**
 	 * Player settings
 	 */
-	public static final int START_PLAYER_HITPOINTS = 100;
 	public static final WorldTile START_PLAYER_LOCATION = new WorldTile(3222,3219, 0);
 	public static final String START_CONTROLER = null;
 	public static final WorldTile RESPAWN_PLAYER_LOCATION = new WorldTile(3222,3219, 0);
