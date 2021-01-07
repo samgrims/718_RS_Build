@@ -83,6 +83,7 @@ public class Class338 {
 						//Custom hard coded functions
 						component = changeLogin(component, interfaceId, i);
 						component = removeFullscreen(component, interfaceId, i);
+						component = removeMoneyPouch(component, interfaceId, i);
 //						component = removeUpdateJavaInterface(component, interfaceId, i);
 					}
 				}
@@ -151,6 +152,13 @@ public class Class338 {
 				component.hidden = true;
 			}
 		}
+		return component;
+	}
+
+	private static IComponentDefinition removeMoneyPouch(IComponentDefinition component, int interfaceId, int i) {
+		if(interfaceId == 746)
+			if(i == 207)
+				component.hidden = true;
 		return component;
 	}
 

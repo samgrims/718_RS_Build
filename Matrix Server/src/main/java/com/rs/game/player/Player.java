@@ -369,7 +369,7 @@ public class Player extends Entity {//Player Updater tool
 
 		if(isBrandNew()) {
 //			PlayerLook.openMageMakeOver(this);
-			setHitpoints(100);
+			setHitpoints(skills.getLevel(Skills.HITPOINTS)*10);
 			giveStartingItems();
 		} else if(isOnlyFromJSON()) {
 			saveJSONManager.loadJSON();
