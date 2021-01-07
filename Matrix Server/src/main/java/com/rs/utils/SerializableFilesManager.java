@@ -29,7 +29,9 @@ public class SerializableFilesManager {
 
 	public synchronized static Player loadPlayer(String username) {
 		try {
-			Player loadedPlayerFile = (Player) loadSerializedFile(new File(Settings.PLAYER_FOLDER_DIR + Player.getPlayerVersionOfServer() + "." + username + ".p"));
+			String playerPath = Settings.PLAYER_FOLDER_DIR + Player.getPlayerVersionOfServer() + "." + username + ".p";
+			Player loadedPlayerFile = (Player) loadSerializedFile(new File(playerPath));
+			DebugLine.print(playerPath);
 			if(loadedPlayerFile == null)
 				DebugLine.print("There is likely an update!");
 			return loadedPlayerFile;
@@ -41,9 +43,12 @@ public class SerializableFilesManager {
 
 	public synchronized static void savePlayer(Player player) {
 		try {
-			storeSerializableClass(player, new File(Settings.PLAYER_FOLDER_DIR + Player.getPlayerVersionOfServer() + "." + player.getUsername() + ".p"));
+			String playerPath = Settings.PLAYER_FOLDER_DIR + Player.getPlayerVersionOfServer() + "." + player.getUsername() + ".p";
+			storeSerializableClass(player, new File(playerPath));
+			DebugLine.print(playerPath);
 		} catch (ConcurrentModificationException e) {
 			//happens because saving and logging out same time
+			DebugLine.print("This happened");
 		} catch (Throwable e) {
 			Logger.handle(e);
 		}
@@ -59,7 +64,6 @@ public class SerializableFilesManager {
 	}
 
 	public static final void storeSerializableClass(Serializable o, File f) throws IOException {
-
 		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(f));
 		out.writeObject(o);
 		out.close();

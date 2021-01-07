@@ -1272,8 +1272,7 @@ public class ButtonHandler {
 		else if (interfaceId == 1028)
 			PlayerLook.handleCharacterCustomizingButtons(player, componentId);
 		else if (interfaceId == 1108 || interfaceId == 1109)
-			player.getFriendsIgnores().handleFriendChatButtons(interfaceId,
-					componentId, packetId);
+			player.getFriendsIgnores().handleFriendChatButtons(interfaceId,	componentId, packetId);
 		else if (interfaceId == 1079)
 			player.closeInterfaces(); 
 		else if (interfaceId == 374) {

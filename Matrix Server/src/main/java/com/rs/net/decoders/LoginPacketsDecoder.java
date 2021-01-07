@@ -6,6 +6,7 @@ import com.rs.game.World;
 import com.rs.game.player.Player;
 import com.rs.io.InputStream;
 import com.rs.net.Session;
+import com.rs.tools.DebugLine;
 import com.rs.utils.AntiFlood;
 import com.rs.utils.Encrypt;
 import com.rs.utils.IsaacKeyPair;
@@ -152,6 +153,7 @@ public final class LoginPacketsDecoder extends Decoder {
 		}
 		player = SerializableFilesManager.loadPlayer(username);
 		if(player == null) {
+			DebugLine.print("player was null");
 			player = Player.createUnserialized(password);
 		}
 		if(!password.equals(player.getPassword())) {

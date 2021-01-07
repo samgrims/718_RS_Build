@@ -68,4 +68,11 @@ public class CustomInterfaces {
         }
     }
 
+    public static void wardrobeScreen(Player player) {
+        player.getInterfaceManager().sendInterface(729);
+        player.getPackets().sendIComponentText(729,	21, "Confirm");
+        player.getPackets().sendIComponentText(729,	3, "Appearence Wardrobe");
+
+    }
+
 }

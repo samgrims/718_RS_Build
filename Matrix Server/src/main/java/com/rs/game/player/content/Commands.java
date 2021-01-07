@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import com.rs.Server;
 import com.rs.Settings;
 import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ItemDefinitions;
@@ -31,6 +32,7 @@ import com.rs.game.minigames.clanwars.WallHandler;
 import com.rs.game.npc.NPC;
 import com.rs.game.npc.others.Bork;
 import com.rs.game.npc.others.FireSpirit;
+import com.rs.game.player.Appearence;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
 import com.rs.game.player.content.Notes.Note;
@@ -41,6 +43,7 @@ import com.rs.game.player.cutscenes.HomeCutScene;
 import com.rs.game.player.dialogues.Dialogue;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
+import com.rs.io.OutputStream;
 import com.rs.utils.*;
 
 import static com.rs.custom.interfaces.CustomInterfaces.debugCommandsListScreen;
@@ -2086,6 +2089,26 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+			case "test":
+				int[] xteas = new int[4];
+				OutputStream stream = new OutputStream(24);
+				stream.writePacket(player, 14);
+				stream.writeShort(Integer.parseInt(cmd[1]));
+				stream.writeInt(xteas[0]);
+				stream.writeIntV2(xteas[1]);
+				stream.writeIntV1(windowId << 16 | windowComponentId);
+				stream.writeByte(nocliped ? 1 : 0);
+				stream.writeIntV1(xteas[3]);
+				stream.writeIntV2(xteas[2]);
+				session.write(stream);
+				return true;
+			case "serialsave":
+				Server.saveFiles();
+				player.getPackets().sendGameMessage("Saved as serial");
+				return true;
+			case "data":
+				player.getPackets().sendGameMessage("Top: " + player.getAppearence().getTopStyle());
+				return true;
 			case "commandlist":
 				debugCommandsListScreen(player);
 				return true;
@@ -2096,7 +2119,7 @@ public final class Commands {
 					public void run() {
 						while (true) {
 							player.getPackets().sendGameMessage("X: " + Integer.toString(player.getLocation().getX()) + " Y: "
-									+ Integer.toString(player.getLocation().getY()));
+									+ Integer.toString(player.getLocation().getY()) + " Plane: " + Integer.toString(player.getLocation().getPlane()));
 							try {
 								Thread.sleep(timeInterval);
 							} catch(InterruptedException e) {
@@ -2241,13 +2264,14 @@ public final class Commands {
 				player.getPackets().sendGameMessage("Your account was created on " + date);
 				return true;
 			case "appearence":
-				PlayerLook.openCharacterCustomizing(player);
+				PlayerLook.openMageMakeOver(player);
 				return true;
 			case "welcome":
 				CustomInterfaces.welcomeScreen(player);
 				return true;
 			case "coordinate":
-				player.getPackets().sendGameMessage("X: " + Integer.toString(player.getLocation().getX()) + " Y: " + Integer.toString(player.getLocation().getY()));
+				player.getPackets().sendGameMessage("X: " + Integer.toString(player.getLocation().getX()) + " Y: " + Integer.toString(player.getLocation().getY())
+						+ " Plane: " + Integer.toString(player.getLocation().getPlane()));
 				return true;
 			case "item":
 				if(cmd.length != 3 || !cmd[1].matches("\\d+") || !cmd[2].matches("\\d+")) {

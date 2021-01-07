@@ -76,8 +76,7 @@ public class Appearence implements Serializable {
 		int flag = 0;
 		if (!male)
 			flag |= 0x1;
-		if (transformedNpcId >= 0
-				&& NPCDefinitions.getNPCDefinitions(transformedNpcId).aBoolean3190)
+		if (transformedNpcId >= 0 && NPCDefinitions.getNPCDefinitions(transformedNpcId).aBoolean3190)
 			flag |= 0x2;
 		if(title != 0) 
 			flag |= title >= 32 && title <= 37 ? 0x80 : 0x40; //after/before
@@ -103,8 +102,7 @@ public class Appearence implements Serializable {
 						continue;
 					}
 					if (index == 1) {
-						stream.writeShort(32768 + ItemsEquipIds
-								.getEquipId(14641));
+						stream.writeShort(32768 + ItemsEquipIds.getEquipId(14641));
 						continue;
 					}
 				}
@@ -113,37 +111,31 @@ public class Appearence implements Serializable {
 				else
 					stream.writeShort(32768 + item.getEquipId());
 			}
-			Item item = player.getEquipment().getItems()
-					.get(Equipment.SLOT_CHEST);
+			Item item = player.getEquipment().getItems().get(Equipment.SLOT_CHEST);
 			stream.writeShort(item == null ? 0x100 + lookI[2] : 32768 + item.getEquipId());
 			item = player.getEquipment().getItems().get(Equipment.SLOT_SHIELD);
+
 			if (item == null)
 				stream.writeByte(0);
 			else
 				stream.writeShort(32768 + item.getEquipId());
 			item = player.getEquipment().getItems().get(Equipment.SLOT_CHEST);
+
 			if (item == null || !Equipment.hideArms(item))
 				stream.writeShort(0x100 + lookI[3]);
 			else
 				stream.writeByte(0);
 			item = player.getEquipment().getItems().get(Equipment.SLOT_LEGS);
-			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2908)
-					: item == null ? 0x100 + lookI[5] : 32768 + item
-							.getEquipId());
+			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2908) : item == null ? 0x100 + lookI[5] : 32768 + item.getEquipId());
 			item = player.getEquipment().getItems().get(Equipment.SLOT_HAT);
-			if (!glowRed
-					&& (item == null || !Equipment.hideHair(item)))
+			if (!glowRed && (item == null || !Equipment.hideHair(item)))
 				stream.writeShort(0x100 + lookI[0]);
 			else
 				stream.writeByte(0);
 			item = player.getEquipment().getItems().get(Equipment.SLOT_HANDS);
-			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2912)
-					: item == null ? 0x100 + lookI[4] : 32768 + item
-							.getEquipId());
+			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2912) : item == null ? 0x100 + lookI[4] : 32768 + item.getEquipId());
 			item = player.getEquipment().getItems().get(Equipment.SLOT_FEET);
-			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2904)
-					: item == null ? 0x100 + lookI[6] : 32768 + item
-							.getEquipId());
+			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2904) : item == null ? 0x100 + lookI[6] : 32768 + item.getEquipId());
 			//tits for female, bear for male
 			item = player.getEquipment().getItems().get(male ? Equipment.SLOT_HAT : Equipment.SLOT_CHEST);
 			if (item == null || (male && Equipment.showBear(item)))
@@ -394,6 +386,14 @@ public class Appearence implements Serializable {
 
 	public int getHairColor() {
 		return colour[0];
+	}
+
+	public void setShoeStyle(int i) {
+		lookI[6] = i;
+	}
+
+	public int[] getLookI() {
+		return lookI;
 	}
 
 	public void setTitle(int title) {

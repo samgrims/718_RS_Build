@@ -43,9 +43,7 @@ public abstract class Stream {
 
 	private final int readInt() {
 		offset += 4;
-		return ((0xff & buffer[-3 + offset]) << 16)
-				+ ((((0xff & buffer[-4 + offset]) << 24) + ((buffer[-2 + offset] & 0xff) << 8)) + (buffer[-1
-						+ offset] & 0xff));
+		return ((0xff & buffer[-3 + offset]) << 16)	+ ((((0xff & buffer[-4 + offset]) << 24) + ((buffer[-2 + offset] & 0xff) << 8)) + (buffer[-1 + offset] & 0xff));
 	}
 
 	private final void writeInt(int value) {

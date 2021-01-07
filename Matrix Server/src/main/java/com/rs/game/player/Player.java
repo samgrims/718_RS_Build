@@ -14,10 +14,8 @@ import com.rs.Settings;
 import com.rs.cores.CoresManager;
 import com.rs.custom.CustomUtilities;
 import com.rs.custom.SaveJSONManager;
-import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.data_structures.SquealOfFortune;
 import com.rs.custom.data_structures.Toolbelt;
-import com.rs.custom.interfaces.CustomInterfaces;
 import com.rs.game.Animation;
 import com.rs.game.Entity;
 import com.rs.game.ForceTalk;
@@ -64,7 +62,7 @@ public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	//version information
-	private final static long serialVersionUID = 7;//based on updates
+	private final static long serialVersionUID = 14;//based on updates
 
 	// Not serialized
 	private transient int totalMinutesPlayed;
@@ -74,7 +72,7 @@ public class Player extends Entity {//Player Updater tool
 	private transient SaveJSONManager saveJSONManager;
 
 	private long timeOfLogin;
-	private boolean isBrandNew;
+	private boolean hasSerialization;
 	private Toolbelt toolbelt;
 	private SquealOfFortune sof;
 	private boolean isDebugModeOn;
@@ -249,7 +247,7 @@ public class Player extends Entity {//Player Updater tool
 		//custom stuff
 		this.totalMinutesPlayed = 0;
 		this.spinsEarnedByMinutes = 0;
-		this.isBrandNew = true;
+		this.hasSerialization = false;
 		this.toolbelt = new Toolbelt();
 		this.isDebugModeOn = false;
 
@@ -542,15 +540,13 @@ public class Player extends Entity {//Player Updater tool
 
 	public void refreshSpawnedObjects() {
 		for (int regionId : getMapRegionsIds()) {
-			List<WorldObject> spawnedObjects = World.getRegion(regionId)
-					.getSpawnedObjects();
+			List<WorldObject> spawnedObjects = World.getRegion(regionId).getSpawnedObjects();
 			if (spawnedObjects != null) {
 				for (WorldObject object : spawnedObjects)
 					if (object.getPlane() == getPlane())
 						getPackets().sendSpawnedObject(object);
 			}
-			List<WorldObject> removedObjects = World.getRegion(regionId)
-					.getRemovedObjects();
+			List<WorldObject> removedObjects = World.getRegion(regionId).getRemovedObjects();
 			if (removedObjects != null) {
 				for (WorldObject object : removedObjects)
 					if (object.getPlane() == getPlane())
@@ -569,19 +565,26 @@ public class Player extends Entity {//Player Updater tool
 
 		//custom login methods
 		updateSpinsEarnedByMinutes();
-		boolean jsonExists = CustomUtilities.jsonExists(this);
-		if(isBrandNew && !jsonExists) {
-			CustomInterfaces.welcomeScreen(this);
+		if(isBrandNew()) {
+//			PlayerLook.openMageMakeOver(this);
 			giveStartingItems();
-			isBrandNew = false;
-			PlayerLook.openCharacterCustomizing(this);
-		} else if(isBrandNew && jsonExists) {
+		} else if(isOnlyFromJSON()) {
 			this.getPackets().sendGameMessage("<col=FFFF00>Save loaded from a backup, likely an update");
+			DebugLine.print("Server Admin: did you update the Player.java serial?");
 		}
+		hasSerialization = true;
 		toolbelt.setPlayer(this);
 		sof.setPlayer(this);
 		toolbelt.init();
 		saveJSONManager.loadJSON();
+	}
+
+	public boolean isBrandNew() {
+		return !hasSerialization && !CustomUtilities.jsonExists(this);
+	}
+
+	public boolean isOnlyFromJSON() {
+		return !hasSerialization && CustomUtilities.jsonExists(this);
 	}
 
 	public void stopAll() {
@@ -1049,7 +1052,7 @@ public class Player extends Entity {//Player Updater tool
 		session.setDecoder(-1);
 		updateTimeLoggedIn();
 
-		SaveJSONManager.startSaveJSONManager(this);
+		saveJSONManager.saveJSON();
 		SerializableFilesManager.savePlayer(this);
 
 		World.updateEntityRegion(this);
@@ -1713,18 +1716,12 @@ public class Player extends Entity {//Player Updater tool
 								p2.setNextAnimation(new Animation(12569));
 								p2.setNextGraphics(new Graphics(2223));
 								p2.prayer.setBoostedLeech(true);
-								if (combatDefinitions
-										.getSpecialAttackPercentage() <= 0) {
-									p2.getPackets()
-									.sendGameMessage(
-											"Your opponent has been weakened so much that your sap curse has no effect.",
-											true);
+								if (combatDefinitions.getSpecialAttackPercentage() <= 0) {
+									p2.getPackets().sendGameMessage("Your opponent has been weakened so much that your sap curse has no effect.",true);
 								} else {
-									combatDefinitions
-									.desecreaseSpecialAttack(10);
+									combatDefinitions.desecreaseSpecialAttack(10);
 								}
-								World.sendProjectile(p2, this, 2224, 35, 35,
-										20, 5, 0, 0);
+								World.sendProjectile(p2, this, 2224, 35, 35, 20, 5, 0, 0);
 								WorldTasksManager.schedule(new WorldTask() {
 									@Override
 									public void run() {
@@ -1746,8 +1743,7 @@ public class Player extends Entity {//Player Updater tool
 
 	@Override
 	public void sendDeath(final Entity source) {
-		if (prayer.hasPrayersOn()
-				&& getTemporaryAttributtes().get("startedDuel") != Boolean.TRUE) {
+		if (prayer.hasPrayersOn() && getTemporaryAttributtes().get("startedDuel") != Boolean.TRUE) {
 			if (prayer.usingPrayer(0, 22)) {
 				setNextGraphics(new Graphics(437));
 				final Player target = this;
@@ -1760,68 +1756,35 @@ public class Player extends Entity {//Player Updater tool
 								if (player == null || !player.hasStarted() || player.isDead() || player.hasFinished() || !player.withinDistance(this, 1)
 										|| !player.isCanPvp() || !target.getControlerManager().canHit(player))
 									continue;
-								player.applyHit(new Hit(target,	Utils.getRandom((int) (skills.getLevelForXp(Skills.PRAYER) * 2.5)),
-												HitLook.REGULAR_DAMAGE));
+								player.applyHit(new Hit(target,	Utils.getRandom((int) (skills.getLevelForXp(Skills.PRAYER) * 2.5)),	HitLook.REGULAR_DAMAGE));
 							}
 						}
-						List<Integer> npcsIndexes = World.getRegion(regionId)
-								.getNPCsIndexes();
+						List<Integer> npcsIndexes = World.getRegion(regionId).getNPCsIndexes();
 						if (npcsIndexes != null) {
 							for (int npcIndex : npcsIndexes) {
 								NPC npc = World.getNPCs().get(npcIndex);
-								if (npc == null
-										|| npc.isDead()
-										|| npc.hasFinished()
-										|| !npc.withinDistance(this, 1)
-										|| !npc.getDefinitions()
-										.hasAttackOption()
-										|| !target.getControlerManager()
-										.canHit(npc))
+								if (npc == null	|| npc.isDead()	|| npc.hasFinished() || !npc.withinDistance(this, 1) || !npc.getDefinitions()
+										.hasAttackOption() || !target.getControlerManager().canHit(npc))
 									continue;
-								npc.applyHit(new Hit(
-										target,
-										Utils.getRandom((int) (skills
-												.getLevelForXp(Skills.PRAYER) * 2.5)),
-												HitLook.REGULAR_DAMAGE));
+								npc.applyHit(new Hit(target, Utils.getRandom((int) (skills.getLevelForXp(Skills.PRAYER) * 2.5)), HitLook.REGULAR_DAMAGE));
 							}
 						}
 					}
 				} else {
-					if (source != null && source != this && !source.isDead()
-							&& !source.hasFinished()
-							&& source.withinDistance(this, 1))
-						source.applyHit(new Hit(target, Utils
-								.getRandom((int) (skills
-										.getLevelForXp(Skills.PRAYER) * 2.5)),
-										HitLook.REGULAR_DAMAGE));
+					if (source != null && source != this && !source.isDead() && !source.hasFinished() && source.withinDistance(this, 1))
+						source.applyHit(new Hit(target, Utils.getRandom((int) (skills.getLevelForXp(Skills.PRAYER) * 2.5)),	HitLook.REGULAR_DAMAGE));
 				}
 				WorldTasksManager.schedule(new WorldTask() {
 					@Override
 					public void run() {
-						World.sendGraphics(target, new Graphics(438),
-								new WorldTile(target.getX() - 1, target.getY(),
-										target.getPlane()));
-						World.sendGraphics(target, new Graphics(438),
-								new WorldTile(target.getX() + 1, target.getY(),
-										target.getPlane()));
-						World.sendGraphics(target, new Graphics(438),
-								new WorldTile(target.getX(), target.getY() - 1,
-										target.getPlane()));
-						World.sendGraphics(target, new Graphics(438),
-								new WorldTile(target.getX(), target.getY() + 1,
-										target.getPlane()));
-						World.sendGraphics(target, new Graphics(438),
-								new WorldTile(target.getX() - 1,
-										target.getY() - 1, target.getPlane()));
-						World.sendGraphics(target, new Graphics(438),
-								new WorldTile(target.getX() - 1,
-										target.getY() + 1, target.getPlane()));
-						World.sendGraphics(target, new Graphics(438),
-								new WorldTile(target.getX() + 1,
-										target.getY() - 1, target.getPlane()));
-						World.sendGraphics(target, new Graphics(438),
-								new WorldTile(target.getX() + 1,
-										target.getY() + 1, target.getPlane()));
+						World.sendGraphics(target, new Graphics(438), new WorldTile(target.getX() - 1, target.getY(),	target.getPlane()));
+						World.sendGraphics(target, new Graphics(438), new WorldTile(target.getX() + 1, target.getY(),	target.getPlane()));
+						World.sendGraphics(target, new Graphics(438), new WorldTile(target.getX(), target.getY() - 1, target.getPlane()));
+						World.sendGraphics(target, new Graphics(438), new WorldTile(target.getX(), target.getY() + 1, target.getPlane()));
+						World.sendGraphics(target, new Graphics(438), new WorldTile(target.getX() - 1, target.getY() - 1, target.getPlane()));
+						World.sendGraphics(target, new Graphics(438), new WorldTile(target.getX() - 1, target.getY() + 1, target.getPlane()));
+						World.sendGraphics(target, new Graphics(438), new WorldTile(target.getX() + 1, target.getY() - 1, target.getPlane()));
+						World.sendGraphics(target, new Graphics(438), new WorldTile(target.getX() + 1, target.getY() + 1, target.getPlane()));
 					}
 				});
 			} else if (prayer.usingPrayer(1, 17)) {
@@ -1868,9 +1831,7 @@ public class Player extends Entity {//Player Updater tool
 														.getControlerManager()
 														.canHit(player))
 											continue;
-										player.applyHit(new Hit(
-												target,
-												Utils.getRandom((skills
+										player.applyHit(new Hit(target, Utils.getRandom((skills
 														.getLevelForXp(Skills.PRAYER) * 3)),
 														HitLook.REGULAR_DAMAGE));
 									}

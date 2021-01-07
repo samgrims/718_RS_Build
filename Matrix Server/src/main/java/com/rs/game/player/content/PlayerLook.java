@@ -1,6 +1,7 @@
 package com.rs.game.player.content;
 
 import com.rs.cache.loaders.ClientScriptMap;
+import com.rs.custom.interfaces.CustomInterfaces;
 import com.rs.game.Animation;
 import com.rs.game.player.Player;
 
@@ -14,9 +15,47 @@ public final class PlayerLook {
 		if (buttonId == 138)  // confirm
 			player.getPackets().sendWindowsPane(player.getInterfaceManager().hasRezizableScreen() ? 746	: 548, 0);
 		if(buttonId == 62)  //Male
-			setGender(player, true);
+			setMale(player);
 		if(buttonId == 63)  //Female
-			setGender(player, false);
+			setFemale(player);
+
+	}
+
+	public static void setMale(Player player) {
+		player.getAppearence().male();
+		player.getAppearence().generateAppearenceData();
+	}
+
+	public static void setFemale(Player player) {
+		player.getAppearence().female();
+		player.getAppearence().generateAppearenceData();
+	}
+
+
+	public static void handleHairdresserSalonButtons(Player player, int buttonId, int slotId) {// Hair and color match button count so just loop and
+		if (buttonId == 6)
+			player.getTemporaryAttributtes().put("hairSaloon", true);
+		else if (buttonId == 7)
+			player.getTemporaryAttributtes().put("hairSaloon", false);
+		else if (buttonId == 18) {
+			player.closeInterfaces();
+		} else if (buttonId == 10) {
+			Boolean hairSalon =  (Boolean) player.getTemporaryAttributtes().get("hairSaloon");
+			if(hairSalon != null && hairSalon) 
+				player.getAppearence().setHairStyle((int) ClientScriptMap.getMap(player.getAppearence().isMale() ? 2339 : 2342).getKeyForValue(slotId/2));
+			else if (player.getAppearence().isMale())
+				player.getAppearence().setBeardStyle(ClientScriptMap.getMap(703).getIntValue(slotId/2));
+		} else if (buttonId == 16) 
+			player.getAppearence().setHairColor(ClientScriptMap.getMap(2345).getIntValue(slotId/2));
+	}
+	
+	public static void openMageMakeOver(Player player) {
+		player.getInterfaceManager().sendInterface(900);
+		player.getPackets().sendIComponentText(900, 33, "Confirm");
+		player.getPackets().sendConfigByFile(6098, player.getAppearence().isMale() ? 0 : 1);
+		player.getPackets().sendConfigByFile(6099,	player.getAppearence().getSkinColor());
+		player.getTemporaryAttributtes().put("MageMakeOverGender", player.getAppearence().isMale());
+		player.getTemporaryAttributtes().put("MageMakeOverSkin", player.getAppearence().getSkinColor());
 	}
 
 	public static void handleMageMakeOverButtons(Player player, int buttonId) {
@@ -55,91 +94,67 @@ public final class PlayerLook {
 			player.closeInterfaces();
 			if (male == null || skin == null)
 				return;
-			if (male == player.getAppearence().isMale() && skin == player.getAppearence().getSkinColor())
-				player.getDialogueManager().startDialogue("MakeOverMage", 2676,1);
-			else {
-				player.getDialogueManager().startDialogue("MakeOverMage", 2676, 2);
-				if (player.getAppearence().isMale() != male) {
-					if (player.getEquipment().wearingArmour()) {
-						player.getDialogueManager().startDialogue("SimpleMessage", "You cannot have armor on while changing your gender.");
-						return;
-					}
-					if (male)
-						player.getAppearence().resetAppearence();
-					else
-						player.getAppearence().female();
+//			if (male == player.getAppearence().isMale() && skin == player.getAppearence().getSkinColor())
+//				player.getDialogueManager().startDialogue("MakeOverMage", 2676,1);
+//			else {
+			player.getDialogueManager().startDialogue("MakeOverMage", 2676, 2);
+			if (player.getAppearence().isMale() != male) {
+				if (player.getEquipment().wearingArmour()) {
+					player.getDialogueManager().startDialogue("SimpleMessage", "You cannot wear equipment while changing your gender.");
+					return;
 				}
-				player.getAppearence().setSkinColor(skin);
-				player.getAppearence().generateAppearenceData();
+				if (male)
+					player.getAppearence().resetAppearence();
+				else
+					player.getAppearence().female();
 			}
+			player.getAppearence().setSkinColor(skin);
+			player.getAppearence().generateAppearenceData();
+			CustomInterfaces.wardrobeScreen(player);
 		}
-	}
-
-	public static void handleHairdresserSalonButtons(Player player, int buttonId, int slotId) {// Hair and color match button count so just loop and
-		// do ++, but cant find button ids
-		if (buttonId == 6)
-			player.getTemporaryAttributtes().put("hairSaloon", true);
-		else if (buttonId == 7)
-			player.getTemporaryAttributtes().put("hairSaloon", false);
-		else if (buttonId == 18) {
-			player.closeInterfaces();
-		} else if (buttonId == 10) {
-			Boolean hairSalon =  (Boolean) player.getTemporaryAttributtes().get("hairSaloon");
-			if(hairSalon != null && hairSalon) 
-				player.getAppearence().setHairStyle((int) ClientScriptMap.getMap(player.getAppearence().isMale() ? 2339 : 2342).getKeyForValue(slotId/2));
-			else if (player.getAppearence().isMale())
-				player.getAppearence().setBeardStyle(ClientScriptMap.getMap(703).getIntValue(slotId/2));
-		} else if (buttonId == 16) 
-			player.getAppearence().setHairColor(ClientScriptMap.getMap(2345).getIntValue(slotId/2));
-	}
-	
-	public static void openMageMakeOver(Player player) {
-		player.getInterfaceManager().sendInterface(900);
-		player.getPackets().sendIComponentText(900, 33, "Confirm");
-		player.getPackets().sendConfigByFile(6098, player.getAppearence().isMale() ? 0 : 1);
-		player.getPackets().sendConfigByFile(6099,	player.getAppearence().getSkinColor());
-		player.getTemporaryAttributtes().put("MageMakeOverGender", player.getAppearence().isMale());
-		player.getTemporaryAttributtes().put("MageMakeOverSkin", player.getAppearence().getSkinColor());
 	}
 
 	
 	public static void handleThessaliasMakeOverButtons(Player player, int buttonId, int slotId) {
+		Integer styleStage = (Integer) player.getTemporaryAttributtes().get("ThessaliasMakeOver");
+		player.getPackets().sendGameMessage("Top is " + ClientScriptMap.getMap(player.getAppearence().isMale() ? 690 : 1591).getIntValue(slotId/2));
 		if (buttonId == 6)
 			player.getTemporaryAttributtes().put("ThessaliasMakeOver", 0);
-		else if (buttonId == 7) {
-			if(ClientScriptMap.getMap(player.getAppearence().isMale() ? 690 : 1591).getKeyForValue(player.getAppearence().getTopStyle()) >= 32) {
-				player.getTemporaryAttributtes().put("ThessaliasMakeOver", 1);
-			}else
+		else if (buttonId == 7) {//
+//			if(ClientScriptMap.getMap(player.getAppearence().isMale() ? 690 : 1591).getKeyForValue(player.getAppearence().getTopStyle()) >= 32) {
+			player.getTemporaryAttributtes().put("ThessaliasMakeOver", 1);
+			if(styleStage == null) //null means button didn't work
 				player.getPackets().sendGameMessage("You can't select different arms to go with that top.");
 		}else if (buttonId == 8) {
-			if(ClientScriptMap.getMap(player.getAppearence().isMale() ? 690 : 1591).getKeyForValue(player.getAppearence().getTopStyle()) >= 32) {
-				player.getTemporaryAttributtes().put("ThessaliasMakeOver", 2);
-			}else
+			// delete if statement if everything works
+//			if(ClientScriptMap.getMap(player.getAppearence().isMale() ? 690 : 1591).getKeyForValue(player.getAppearence().getTopStyle()) >= 32) {
+			player.getTemporaryAttributtes().put("ThessaliasMakeOver", 2);
+			if(styleStage == null) //null means button didn't work
 				player.getPackets().sendGameMessage("You can't select different wrists to go with that top.");
 		}else if (buttonId == 9)
 			player.getTemporaryAttributtes().put("ThessaliasMakeOver", 3);
 		else if (buttonId == 19) { //confirm
 			player.closeInterfaces();
+			if(player.isBrandNew())
+				CustomInterfaces.welcomeScreen(player);
 		} else if (buttonId == 12) { //set part
-			Integer stage = (Integer) player.getTemporaryAttributtes().get("ThessaliasMakeOver");
-			if(stage == null || stage == 0) {
-				player.getAppearence().setTopStyle((int) ClientScriptMap.getMap(player.getAppearence().isMale() ? 690 : 1591).getIntValue(slotId/2));
+			if(styleStage == null || styleStage == 0) {
+				player.getAppearence().setTopStyle(ClientScriptMap.getMap(player.getAppearence().isMale() ? 690 : 1591).getIntValue(slotId/2));
 				if(!player.getAppearence().isMale())
 					player.getAppearence().setBeardStyle(player.getAppearence().getTopStyle());
 				player.getAppearence().setArmsStyle(player.getAppearence().isMale() ? 26 : 65); //default
 				player.getAppearence().setWristsStyle(player.getAppearence().isMale() ? 34 : 68); //default
-			}else if (stage == 1) //arms
-				player.getAppearence().setArmsStyle((int) ClientScriptMap.getMap(player.getAppearence().isMale() ? 711 : 693).getIntValue(slotId/2));
-			else if (stage == 2) //wrists
-				player.getAppearence().setWristsStyle((int) ClientScriptMap.getMap(751).getIntValue(slotId/2));
+			}else if (styleStage == 1) //arms
+				player.getAppearence().setArmsStyle(ClientScriptMap.getMap(player.getAppearence().isMale() ? 711 : 693).getIntValue(slotId/2));
+			else if (styleStage == 2) //wrists
+				player.getAppearence().setWristsStyle(ClientScriptMap.getMap(751).getIntValue(slotId/2));
 			else
-				player.getAppearence().setLegsStyle((int) ClientScriptMap.getMap(player.getAppearence().isMale() ? 1586 : 1607).getIntValue(slotId/2));
+				player.getAppearence().setLegsStyle(ClientScriptMap.getMap(player.getAppearence().isMale() ? 1586 : 1607).getIntValue(slotId/2));
 			
 		} else if (buttonId == 17) {//color
-			Integer stage = (Integer) player.getTemporaryAttributtes().get("ThessaliasMakeOver");
-			if(stage == null || stage == 0 || stage == 1) 
+			if(styleStage == null || styleStage == 0 || styleStage == 1)
 				player.getAppearence().setTopColor(ClientScriptMap.getMap(3282).getIntValue(slotId/2));
-			else if (stage == 3)
+			else if (styleStage == 3)
 				player.getAppearence().setLegsColor(ClientScriptMap.getMap(3284).getIntValue(slotId/2));
 		}
 	}
@@ -196,17 +211,6 @@ public final class PlayerLook {
 			}
 			
 		});
-	}
-
-	public static void setGender(Player player, boolean isMale) {
-		if(isMale) {
-			player.getAppearence().male();
-			player.getAppearence().generateAppearenceData();
-		}
-		else {
-			player.getAppearence().female();
-			player.getAppearence().generateAppearenceData();
-		}
 	}
 
 	private PlayerLook() {

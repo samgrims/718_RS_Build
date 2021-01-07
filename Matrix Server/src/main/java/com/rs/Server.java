@@ -143,7 +143,7 @@ public final class Server {
 				}
 
 			}
-		}, 15, 10, TimeUnit.MINUTES);
+		}, 15, 5, TimeUnit.MINUTES);
 	}
 
 	public static void saveFiles() {

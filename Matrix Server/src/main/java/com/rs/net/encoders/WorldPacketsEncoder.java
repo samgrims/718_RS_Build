@@ -952,8 +952,7 @@ public class WorldPacketsEncoder extends Encoder {
 		if (!(windowId == 752 && (windowComponentId == 9 || windowComponentId == 12))) {
 			if (player.getInterfaceManager().containsInterface(windowComponentId, interfaceId))
 				closeInterface(windowComponentId);
-			if (!player.getInterfaceManager().addInterface(windowId,
-					windowComponentId, interfaceId)) {
+			if (!player.getInterfaceManager().addInterface(windowId, windowComponentId, interfaceId)) {
 				Logger.log(this, "Error adding interface: " + windowId + " , " + windowComponentId + " , " + interfaceId);
 				return;
 			}
