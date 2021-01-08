@@ -700,17 +700,7 @@ public final class Commands {
 					player.getPackets().sendGameMessage(
 							"Usage ::setlevel skillId level");
 				}
-				return true; 
-
-			case "npc":
-				try {
-					World.spawnNPC(Integer.parseInt(cmd[1]), player, -1, true,true);
-					return true;
-				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage("Use: ::npc id(Integer)");
-				}
-				return true; 
-
+				return true;
 			case "loadwalls":
 				WallHandler.loadWall(player.getCurrentFriendChat()
 						.getClanWars());
@@ -2088,6 +2078,21 @@ public final class Commands {
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
 		switch (cmd[0]) {
+
+//			case "npc":
+//				try {
+//					World.spawnNPC(Integer.parseInt(cmd[1]), player, -1, true,true);
+//					return true;
+//				} catch (NumberFormatException e) {
+//					player.getPackets().sendPanelBoxMessage("Use: ::npc id(Integer)");
+//				}
+//				return true;
+			case "npc":
+				int id = Integer.parseInt(cmd[1]);
+				WorldTile loc = player.getLocation();
+				World.spawnNPC(id, new WorldTile(loc.getX()+1, loc.getY(), loc.getPlane()), -1, true, true);
+
+				return true;
 			case "test":
 				PlayerLook.openCharacterCustomizing(player);
 				return true;

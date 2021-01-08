@@ -335,34 +335,26 @@ public final class World {
 		npcs.remove(npc);
 	}
 
-	public static final NPC spawnNPC(int id, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea,
-			boolean spawned) {
+	public static final NPC spawnNPC(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea,	boolean spawned) {
 		NPC n = null;
 		HunterNPC hunterNPCs = HunterNPC.forId(id);
 		if (hunterNPCs != null) {
 			if (id == hunterNPCs.getNpcId())
-				n = new ItemHunterNPC(id, tile, mapAreaNameHash,
-						canBeAttackFromOutOfArea, spawned);
+				n = new ItemHunterNPC(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		} else if (id == 6142 || id == 6144 || id == 6145 || id == 6143)
-			n = new PestMonsters(id, tile, mapAreaNameHash,
-					canBeAttackFromOutOfArea, spawned);
+			n = new PestMonsters(id, tile, mapAreaNameHash,	canBeAttackFromOutOfArea, spawned);
 		else if (id >= 5533 && id <= 5558)
-			n = new Elemental(id, tile, mapAreaNameHash,
-					canBeAttackFromOutOfArea, spawned);
+			n = new Elemental(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id == 7134)
-			n = new Bork(id, tile, mapAreaNameHash,
-					canBeAttackFromOutOfArea, spawned);
+			n = new Bork(id, tile, mapAreaNameHash,	canBeAttackFromOutOfArea, spawned);
 		else if (id == 9441)
-			n = new FlameVortex(id, tile, mapAreaNameHash,
-					canBeAttackFromOutOfArea, spawned);
+			n = new FlameVortex(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id >= 8832 && id <= 8834)
 			n = new LivingRock(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id >= 13465 && id <= 13481)
 			n = new Revenant(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id == 1158 || id == 1160)
-			n = new KalphiteQueen(id, tile, mapAreaNameHash,
-					canBeAttackFromOutOfArea, spawned);
+			n = new KalphiteQueen(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id >= 8528 && id <= 8532)
 			n = new Nomad(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id == 6215 || id == 6211 || id == 3406 || id == 6216|| id == 6214 || id == 6215|| id == 6212 || id == 6219 || id == 6221 || id == 6218)
@@ -380,16 +372,12 @@ public final class World {
 		else if (id == 6222)
 			n = new KreeArra(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id == 6223 || id == 6225 || id == 6227)
-			n = GodWarsBosses.armadylMinions[(id - 6223) / 2] = new GodWarMinion(
-					id, tile, mapAreaNameHash, canBeAttackFromOutOfArea,
-					spawned);
+			n = GodWarsBosses.armadylMinions[(id - 6223) / 2] = new GodWarMinion(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id == 6203)
-			n = new KrilTstsaroth(id, tile, mapAreaNameHash,
-					canBeAttackFromOutOfArea, spawned);
+			n = new KrilTstsaroth(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id == 6204 || id == 6206 || id == 6208)
 			n = GodWarsBosses.zamorakMinions[(id - 6204) / 2] = new GodWarMinion(
-					id, tile, mapAreaNameHash, canBeAttackFromOutOfArea,
-					spawned);
+					id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else if (id == 50 || id == 2642)
 			n = new KingBlackDragon(id, tile, mapAreaNameHash,
 					canBeAttackFromOutOfArea, spawned);
