@@ -1293,9 +1293,7 @@ public class Player extends Entity {//Player Updater tool
 
 	@Override
 	public void handleIngoingHit(final Hit hit) {
-		if (hit.getLook() != HitLook.MELEE_DAMAGE
-				&& hit.getLook() != HitLook.RANGE_DAMAGE
-				&& hit.getLook() != HitLook.MAGIC_DAMAGE)
+		if (hit.getLook() != HitLook.MELEE_DAMAGE && hit.getLook() != HitLook.RANGE_DAMAGE && hit.getLook() != HitLook.MAGIC_DAMAGE)
 			return;
 		if(invulnerable) {
 			hit.setDamage(0);

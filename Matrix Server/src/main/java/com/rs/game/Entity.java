@@ -305,13 +305,9 @@ public abstract class Entity extends WorldTile {
 	public void processMovement() {
 		lastWorldTile = new WorldTile(this);
 		if (lastFaceEntity >= 0) {
-			Entity target = lastFaceEntity >= 32768 ? World.getPlayers().get(
-					lastFaceEntity - 32768) : World.getNPCs().get(
-					lastFaceEntity);
+			Entity target = lastFaceEntity >= 32768 ? World.getPlayers().get(lastFaceEntity - 32768) : World.getNPCs().get(lastFaceEntity);
 			if (target != null)
-				direction = Utils.getFaceDirection(
-						target.getCoordFaceX(target.getSize()) - getX(),
-						target.getCoordFaceY(target.getSize()) - getY());
+				direction = Utils.getFaceDirection(target.getCoordFaceX(target.getSize()) - getX(),target.getCoordFaceY(target.getSize()) - getY());
 		}
 		nextWalkDirection = nextRunDirection = -1;
 		if (nextWorldTile != null) {
@@ -333,8 +329,7 @@ public abstract class Entity extends WorldTile {
 		if (walkSteps.isEmpty())
 			return;
 		if (this instanceof Player) {
-			if (((Player) this).getEmotesManager().getNextEmoteEnd() >= Utils
-					.currentTimeMillis())
+			if (((Player) this).getEmotesManager().getNextEmoteEnd() >= Utils.currentTimeMillis())
 				return;
 		}
 		if (this instanceof TorturedSoul) {
@@ -345,37 +340,31 @@ public abstract class Entity extends WorldTile {
 		nextWalkDirection = getNextWalkStep();
 		if (nextWalkDirection != -1) {
 			if (this instanceof Player) {
-				if (!((Player) this).getControlerManager().canMove(
-						nextWalkDirection)) {
+				if (!((Player) this).getControlerManager().canMove(nextWalkDirection)) {
 					nextWalkDirection = -1;
 					resetWalkSteps();
 					return;
 				}
 			}
-			moveLocation(Utils.DIRECTION_DELTA_X[nextWalkDirection],
-					Utils.DIRECTION_DELTA_Y[nextWalkDirection], 0);
+			moveLocation(Utils.DIRECTION_DELTA_X[nextWalkDirection], Utils.DIRECTION_DELTA_Y[nextWalkDirection], 0);
 			if (run) {
-				if (this instanceof Player
-						&& ((Player) this).getRunEnergy() <= 0)
+				if (this instanceof Player && ((Player) this).getRunEnergy() <= 0)
 					setRun(false);
 				else {
 					nextRunDirection = getNextWalkStep();
 					if (nextRunDirection != -1) {
 						if (this instanceof Player) {
 							Player player = (Player) this;
-							if (!player.getControlerManager().canMove(
-									nextRunDirection)) {
+							if (!player.getControlerManager().canMove(nextRunDirection)) {
 								nextRunDirection = -1;
 								resetWalkSteps();
 								return;
 							}
 							player.drainRunEnergy();
 						}
-						moveLocation(Utils.DIRECTION_DELTA_X[nextRunDirection],
-								Utils.DIRECTION_DELTA_Y[nextRunDirection], 0);
+						moveLocation(Utils.DIRECTION_DELTA_X[nextRunDirection],	Utils.DIRECTION_DELTA_Y[nextRunDirection], 0);
 					} else if (this instanceof Player)
-						((Player) this)
-								.setTemporaryMoveType(Player.WALK_MOVE_TYPE);
+						((Player) this).setTemporaryMoveType(Player.WALK_MOVE_TYPE);
 				}
 			}
 		}
