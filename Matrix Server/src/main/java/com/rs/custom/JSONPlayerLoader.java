@@ -23,8 +23,6 @@ public class JSONPlayerLoader {
         this.player = player;
     }
 
-
-
     public void loadPlayer() {
         try {
             this.playerMeta = getPlayerFile();
@@ -32,7 +30,7 @@ public class JSONPlayerLoader {
             DebugLine.print("Player loaded without a JSON file");
             return;
         }
-//        decodeCoordinate();
+        decodeCoordinate();
         decodeSkills();
         decodeInventory();
         decodeEquipment();
@@ -40,6 +38,7 @@ public class JSONPlayerLoader {
 //        decodeMusic();
         decodeToolbelt();
         decodeBank();
+        decodeAppearance();
     }
 
     /**
@@ -162,5 +161,23 @@ public class JSONPlayerLoader {
                 player.getBank().addItem(itemId, itemAmount, slotInsideTab, true);
             }
         }
+    }
+
+    private void decodeAppearance() {
+        JSONObject appearanceMeta = (JSONObject)playerMeta.get("appearance");
+        JSONArray bodyStylesMeta = (JSONArray)appearanceMeta.get("bodystyles");
+        JSONArray bodyColorsMeta = (JSONArray)appearanceMeta.get("bodycolors");
+        JSONArray appearenceBlocksMeta = (JSONArray)appearanceMeta.get("appearanceblocks");
+
+        for(int i = 0; i < bodyStylesMeta.size(); i++)
+           player.getAppearence().setBodyStyle(i, ((Long)bodyStylesMeta.get(i)).intValue());
+        for(int i = 0; i < bodyColorsMeta.size(); i++)
+            player.getAppearence().setBodyColor(i, ((Long)bodyColorsMeta.get(i)).intValue());
+        for(int i = 0; i < appearenceBlocksMeta.size(); i++)
+            player.getAppearence().setAppearanceBlocks(i, ((Long)appearenceBlocksMeta.get(i)).intValue());
+
+        boolean isMale = (Boolean)appearanceMeta.get("ismale");
+        player.getAppearence().setMale(isMale);
+        player.getAppearence().generateAppearenceData();
     }
 }

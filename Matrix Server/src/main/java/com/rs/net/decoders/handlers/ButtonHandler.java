@@ -23,14 +23,7 @@ import com.rs.game.player.actions.HomeTeleport;
 import com.rs.game.player.actions.Rest;
 import com.rs.game.player.actions.Smithing.ForgingInterface;
 import com.rs.game.player.actions.Summoning;
-import com.rs.game.player.content.AdventurersLog;
-import com.rs.game.player.content.ItemConstants;
-import com.rs.game.player.content.Magic;
-import com.rs.game.player.content.PlayerLook;
-import com.rs.game.player.content.Runecrafting;
-import com.rs.game.player.content.Shop;
-import com.rs.game.player.content.SkillCapeCustomizer;
-import com.rs.game.player.content.SkillsDialogue;
+import com.rs.game.player.content.*;
 import com.rs.game.player.dialogues.LevelUp;
 import com.rs.game.player.dialogues.Transportation;
 import com.rs.game.tasks.WorldTask;
@@ -1270,7 +1263,7 @@ public class ButtonHandler {
 		else if (interfaceId == 900)
 			PlayerLook.handleMageMakeOverButtons(player, componentId);
 		else if (interfaceId == 1028)
-			PlayerLook.handleCharacterCustomizingButtons(player, componentId);
+			PlayerDesign.handle(player, componentId, slotId);
 		else if (interfaceId == 1108 || interfaceId == 1109)
 			player.getFriendsIgnores().handleFriendChatButtons(interfaceId,	componentId, packetId);
 		else if (interfaceId == 1079)

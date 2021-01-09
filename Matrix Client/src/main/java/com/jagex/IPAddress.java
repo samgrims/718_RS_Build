@@ -151,25 +151,14 @@ public class IPAddress {
 											1879961195 * RuntimeException_Sub2.anInt6307)
 									.append("&cs=")
 									.append(Class400.anInt5225 * -518231893)
-									.append("&u=")
-									.append(
-											RuntimeException_Sub2.aString6305 != null ? Class24
-													.method381(
+									.append("&u=").append(RuntimeException_Sub2.aString6305 != null ? Class24.method381(
 															(RuntimeException_Sub2.aString6305),
 															1755268630)
-													: new StringBuilder()
-															.append("")
-															.append(
-																	RuntimeException_Sub2.aLong6304
+													: new StringBuilder().append("").append(RuntimeException_Sub2.aLong6304
 																			* -6049538010378147713L)
 															.toString())
-									.append("&v1=").append(
-											Class24.method381(string_3_,
-													1908813810)).append("&v2=")
-									.append(
-											Class24.method381(string_4_,
-													1870225284)).append("&e=")
-									.append(string_2_).toString()));
+									.append("&v1=").append(Class24.method381(string_3_, 1908813810)).append("&v2=").append(Class24.method381(string_4_,
+													1870225284)).append("&e=").append(string_2_).toString()));
 					DataInputStream datainputstream = new DataInputStream(url.openStream());
 					datainputstream.read();
 					datainputstream.close();

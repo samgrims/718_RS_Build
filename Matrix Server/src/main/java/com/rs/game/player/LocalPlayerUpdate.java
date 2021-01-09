@@ -476,7 +476,7 @@ public final class LocalPlayerUpdate {
 	}
 
 	private void applyAppearanceMask(Player p, OutputStream data) {
-		byte[] renderData = p.getAppearence().getAppeareanceData();
+		byte[] renderData = p.getAppearence().getAppeareanceBlocks();
 		totalRenderDataSentLength += renderData.length;
 		cachedAppearencesHashes[p.getIndex()] = p.getAppearence()
 				.getMD5AppeareanceDataHash();

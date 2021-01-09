@@ -28,8 +28,7 @@ public final class WorldThread extends Thread {
 					if (player == null || !player.hasStarted()
 							|| player.hasFinished())
 						continue;
-					if (currentTime - player.getPacketsDecoderPing() > Settings.MAX_PACKETS_DECODER_PING_DELAY
-							&& player.getSession().getChannel().isOpen())
+					if (currentTime - player.getPacketsDecoderPing() > Settings.MAX_PACKETS_DECODER_PING_DELAY && player.getSession().getChannel().isOpen())
 						player.getSession().getChannel().close();
 					player.processEntity();
 				}

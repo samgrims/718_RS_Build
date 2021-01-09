@@ -1,6 +1,5 @@
 package com.rs.custom;
 
-import com.rs.Settings;
 import com.rs.game.item.Item;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
@@ -35,6 +34,7 @@ public class JSONPlayerSaver {
         encodeMusic();
         encodeToolbelt();
         encodeBank();
+        encodeAppearance();
         toFile();
     }
 
@@ -158,6 +158,24 @@ public class JSONPlayerSaver {
             tabMeta.clear();
         }
         playerMeta.put("bank", bankMeta);
+    }
+
+    private void encodeAppearance() {
+        JSONObject appearanceMeta = new JSONObject();
+        JSONArray bodyStyles = new JSONArray();
+        JSONArray bodyColors = new JSONArray();
+        JSONArray appearanceBlocks = new JSONArray();
+        for(int style : player.getAppearence().getBodyStyles())
+            bodyStyles.add(style);
+        for(byte color : player.getAppearence().getBodyColors())
+            bodyColors.add(color);
+        for(byte block : player.getAppearence().getAppeareanceBlocks())
+            appearanceBlocks.add(block);
+        appearanceMeta.put("bodystyles", bodyStyles);
+        appearanceMeta.put("bodycolors", bodyColors);
+        appearanceMeta.put("appearanceblocks", appearanceBlocks);
+        appearanceMeta.put("ismale", player.getAppearence().isMale());
+        playerMeta.put("appearance", appearanceMeta);
     }
 
     private void toFile() {

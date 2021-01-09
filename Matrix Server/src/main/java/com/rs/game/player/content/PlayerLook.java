@@ -21,7 +21,7 @@ public final class PlayerLook {
 	}
 
 	public static void setMale(Player player) {
-		player.getAppearence().male();
+		player.getAppearence().setMale();
 		player.getAppearence().generateAppearenceData();
 	}
 
@@ -178,7 +178,7 @@ public final class PlayerLook {
 			public void run() {
 				player.getDialogueManager().startDialogue("SimpleNPCMessage", 548, "A marvellous choise. You look splendid!");
 				player.setNextAnimation(new Animation(-1));
-				player.getAppearence().getAppeareanceData();
+				player.getAppearence().getAppeareanceBlocks();
 				player.getTemporaryAttributtes().remove("ThessaliasMakeOver");
 			}
 			
@@ -207,7 +207,7 @@ public final class PlayerLook {
 			public void run() {
 				player.getDialogueManager().startDialogue("SimpleNPCMessage", 598, "An excellent choise, "+(player.getAppearence().isMale() ? "sir" : "lady")+".");
 				player.setNextAnimation(new Animation(-1));
-				player.getAppearence().getAppeareanceData();
+				player.getAppearence().getAppeareanceBlocks();
 				player.getTemporaryAttributtes().remove("hairSaloon");
 			}
 			

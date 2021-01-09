@@ -30,7 +30,6 @@ import com.rs.game.minigames.clanwars.WallHandler;
 import com.rs.game.npc.NPC;
 import com.rs.game.npc.others.Bork;
 import com.rs.game.npc.others.FireSpirit;
-import com.rs.game.player.Appearence;
 import com.rs.game.player.Player;
 import com.rs.game.player.Skills;
 import com.rs.game.player.content.Notes.Note;
@@ -41,8 +40,6 @@ import com.rs.game.player.cutscenes.HomeCutScene;
 import com.rs.game.player.dialogues.Dialogue;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
-import com.rs.io.OutputStream;
-import com.rs.tools.DebugLine;
 import com.rs.utils.*;
 
 import static com.rs.custom.interfaces.CustomInterfaces.debugCommandsListScreen;
@@ -1441,7 +1438,7 @@ public final class Commands {
 						if (player.hasFinished()) {
 							stop();
 						}
-						player.getAppearence().setLook(look, i);
+						player.getAppearence().setBodyStyle(look, i);
 						player.getAppearence().generateAppearenceData();
 						player.getPackets().sendGameMessage("Look " + i + ".");
 						i++;
@@ -2287,7 +2284,7 @@ public final class Commands {
 				player.getPackets().sendGameMessage("Your account was created on " + date);
 				return true;
 			case "appearance":
-				PlayerLook.openMageMakeOver(player);
+				PlayerDesign.open(player);
 				return true;
 			case "welcome":
 				CustomInterfaces.welcomeScreen(player);

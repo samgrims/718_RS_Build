@@ -49,6 +49,7 @@ import com.rs.game.player.controlers.pestcontrol.PestControlGame;
 import com.rs.game.player.controlers.pestcontrol.PestControlLobby;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
+import com.rs.io.OutputStream;
 import com.rs.net.Session;
 import com.rs.net.decoders.WorldPacketsDecoder;
 import com.rs.net.decoders.handlers.ButtonHandler;
@@ -61,7 +62,7 @@ public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	//version information
-	private final static long serialVersionUID = 15;//based on updates
+	private final static long serialVersionUID = 18;//based on updates
 
 	// Not serialized
 	private transient int totalMinutesPlayed;
@@ -1122,6 +1123,16 @@ public class Player extends Entity {//Player Updater tool
 
 	public WorldPacketsEncoder getPackets() {
 		return session.getWorldPackets();
+	}
+
+	public void sendAccessMask(Player player, int min, int max, int interfaceId, int childId, int hash) {
+		OutputStream stream = new OutputStream(13);
+		stream.writePacket(player, 40);
+		stream.writeIntV2(hash);
+		stream.writeInt(interfaceId << 16 | childId);
+		stream.writeShort128(min);
+		stream.writeShortLE(max);
+		session.write(stream);
 	}
 
 	public boolean hasStarted() {

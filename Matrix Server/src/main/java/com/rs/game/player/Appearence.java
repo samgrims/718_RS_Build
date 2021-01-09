@@ -14,16 +14,16 @@ import com.rs.utils.Utils;
 
 public class Appearence implements Serializable {
 
-	private static final long serialVersionUID = 7655608569741626587L;
+	private static final long serialVersionUID = 7655608569741626588L;
 
 	private transient int renderEmote;
 	private int title;
-	private int[] lookI;
-	private byte[] colour;
+	private int[] bodyStyle;
+	private byte[] bodyColors;
 	private boolean male;
 	private boolean glowRed;
-	private byte[] appeareanceData;
-	private byte[] md5AppeareanceDataHash;
+	private byte[] appearanceBlock;
+	private byte[] encryptedAppearenceBlock;
 	private short transformedNpcId;
 	private boolean hidePlayer;
 
@@ -36,6 +36,19 @@ public class Appearence implements Serializable {
 		resetAppearence();
 	}
 
+	//EradicationX Methods
+	public void setLooks(short[] look) {
+		for (byte i = 0; i < this.bodyStyle.length; i = (byte) (i + 1))
+			if (look[i] != -1)
+				this.bodyStyle[i] = look[i];
+	}
+
+	public void copyColors(short[] colors) {
+		for (byte i = 0; i < this.bodyColors.length; i = (byte) (i + 1))
+			if (colors[i] != -1)
+				this.bodyColors[i] = (byte) colors[i];
+	}
+	//End eradication
 	public void setGlowRed(boolean glowRed) {
 		this.glowRed = glowRed;
 		generateAppearenceData();
@@ -45,7 +58,7 @@ public class Appearence implements Serializable {
 		this.player = player;
 		transformedNpcId = -1;
 		renderEmote = -1;
-		if(lookI == null)
+		if(bodyStyle == null)
 			resetAppearence();
 	}
 
@@ -78,7 +91,7 @@ public class Appearence implements Serializable {
 			flag |= 0x1;
 		if (transformedNpcId >= 0 && NPCDefinitions.getNPCDefinitions(transformedNpcId).aBoolean3190)
 			flag |= 0x2;
-		if(title != 0) 
+		if(title != 0)
 			flag |= title >= 32 && title <= 37 ? 0x80 : 0x40; //after/before
 		stream.writeByte(flag);
 		if(title != 0) {
@@ -112,7 +125,7 @@ public class Appearence implements Serializable {
 					stream.writeShort(32768 + item.getEquipId());
 			}
 			Item item = player.getEquipment().getItems().get(Equipment.SLOT_CHEST);
-			stream.writeShort(item == null ? 0x100 + lookI[2] : 32768 + item.getEquipId());
+			stream.writeShort(item == null ? 0x100 + bodyStyle[2] : 32768 + item.getEquipId());
 			item = player.getEquipment().getItems().get(Equipment.SLOT_SHIELD);
 
 			if (item == null)
@@ -122,24 +135,24 @@ public class Appearence implements Serializable {
 			item = player.getEquipment().getItems().get(Equipment.SLOT_CHEST);
 
 			if (item == null || !Equipment.hideArms(item))
-				stream.writeShort(0x100 + lookI[3]);
+				stream.writeShort(0x100 + bodyStyle[3]);
 			else
 				stream.writeByte(0);
 			item = player.getEquipment().getItems().get(Equipment.SLOT_LEGS);
-			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2908) : item == null ? 0x100 + lookI[5] : 32768 + item.getEquipId());
+			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2908) : item == null ? 0x100 + bodyStyle[5] : 32768 + item.getEquipId());
 			item = player.getEquipment().getItems().get(Equipment.SLOT_HAT);
 			if (!glowRed && (item == null || !Equipment.hideHair(item)))
-				stream.writeShort(0x100 + lookI[0]);
+				stream.writeShort(0x100 + bodyStyle[0]);
 			else
 				stream.writeByte(0);
 			item = player.getEquipment().getItems().get(Equipment.SLOT_HANDS);
-			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2912) : item == null ? 0x100 + lookI[4] : 32768 + item.getEquipId());
+			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2912) : item == null ? 0x100 + bodyStyle[4] : 32768 + item.getEquipId());
 			item = player.getEquipment().getItems().get(Equipment.SLOT_FEET);
-			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2904) : item == null ? 0x100 + lookI[6] : 32768 + item.getEquipId());
+			stream.writeShort(glowRed ? 32768 + ItemsEquipIds.getEquipId(2904) : item == null ? 0x100 + bodyStyle[6] : 32768 + item.getEquipId());
 			//tits for female, bear for male
 			item = player.getEquipment().getItems().get(male ? Equipment.SLOT_HAT : Equipment.SLOT_CHEST);
 			if (item == null || (male && Equipment.showBear(item)))
-				stream.writeShort(0x100 + lookI[1]);
+				stream.writeShort(0x100 + bodyStyle[1]);
 			else
 				stream.writeByte(0);
 			item = player.getEquipment().getItems().get(Equipment.SLOT_AURA);
@@ -199,8 +212,8 @@ public class Appearence implements Serializable {
 					stream.writeBigSmart(modelId); // female modelid1
 					if(auraDefs.getMaleWornModelId2() != -1 || auraDefs.getFemaleWornModelId2() != -1) {
 						int modelId2 = player.getAuraManager().getAuraModelId2();
-						stream.writeBigSmart(modelId2); 
-						stream.writeBigSmart(modelId2); 
+						stream.writeBigSmart(modelId2);
+						stream.writeBigSmart(modelId2);
 					}
 				}
 			}
@@ -210,9 +223,9 @@ public class Appearence implements Serializable {
 			stream.setOffset(pos2);
 		}
 
-		for (int index = 0; index < colour.length; index++)
+		for (int index = 0; index < bodyColors.length; index++)
 			// colour length 10
-			stream.writeByte(colour[index]);
+			stream.writeByte(bodyColors[index]);
 
 		stream.writeShort(getRenderEmote());
 		stream.writeString(player.getDisplayName());
@@ -236,8 +249,8 @@ public class Appearence implements Serializable {
 		byte[] appeareanceData = new byte[stream.getOffset()];
 		System.arraycopy(stream.getBuffer(), 0, appeareanceData, 0, appeareanceData.length);
 		byte[] md5Hash = Utils.encryptUsingMD5(appeareanceData);
-		this.appeareanceData = appeareanceData;
-		md5AppeareanceDataHash = md5Hash;
+		this.appearanceBlock = appeareanceData;
+		encryptedAppearenceBlock = md5Hash;
 	}
 
 	public int getSize() {
@@ -260,59 +273,63 @@ public class Appearence implements Serializable {
 	}
 
 	public void resetAppearence() {
-		lookI = new int[7];
-		colour = new byte[10];
-		male();
+		bodyStyle = new int[7];
+		bodyColors = new byte[10];
+		setMale();
 	}
 
-	public void male() {
-		lookI[0] = 3; // Hair
-		lookI[1] = 14; // Beard
-		lookI[2] = 18; // Torso
-		lookI[3] = 26; // Arms
-		lookI[4] = 34; // Bracelets
-		lookI[5] = 38; // Legs
-		lookI[6] = 42; // Shoes~
+	public void setMale() {
+		bodyStyle[0] = 3; // Hair
+		bodyStyle[1] = 14; // Beard
+		bodyStyle[2] = 18; // Torso
+		bodyStyle[3] = 26; // Arms
+		bodyStyle[4] = 34; // Bracelets
+		bodyStyle[5] = 38; // Legs
+		bodyStyle[6] = 42; // Shoes~
 
-		colour[2] = 16;
-		colour[1] = 16;
-		colour[0] = 3;
+		bodyColors[2] = 16;
+		bodyColors[1] = 16;
+		bodyColors[0] = 3;
 		male = true;
 	}
 
 	public void female() {
-		lookI[0] = 48; // Hair
-		lookI[1] = 57; // Beard
-		lookI[2] = 57; // Torso
-		lookI[3] = 65; // Arms
-		lookI[4] = 68; // Bracelets
-		lookI[5] = 77; // Legs
-		lookI[6] = 80; // Shoes
+		bodyStyle[0] = 48; // Hair
+		bodyStyle[1] = 57; // Beard
+		bodyStyle[2] = 57; // Torso
+		bodyStyle[3] = 65; // Arms
+		bodyStyle[4] = 68; // Bracelets
+		bodyStyle[5] = 77; // Legs
+		bodyStyle[6] = 80; // Shoes
 
-		colour[2] = 16;
-		colour[1] = 16;
-		colour[0] = 3;
+		bodyColors[2] = 16;
+		bodyColors[1] = 16;
+		bodyColors[0] = 3;
 		male = false;
 	}
 
-	public byte[] getAppeareanceData() {
-		return appeareanceData;
+	public byte[] getAppeareanceBlocks() {
+		return appearanceBlock;
 	}
 
 	public byte[] getMD5AppeareanceDataHash() {
-		return md5AppeareanceDataHash;
+		return encryptedAppearenceBlock;
 	}
 
 	public boolean isMale() {
 		return male;
 	}
 
-	public void setLook(int i, int i2) {
-		lookI[i] = i2;
+	public void setBodyStyle(int i, int i2) {
+		bodyStyle[i] = i2;
 	}
 
-	public void setColor(int i, int i2) {
-		colour[i] = (byte) i2;
+	public void setAppearanceBlocks(int i, int i2) {
+		appearanceBlock[i] = (byte) i2;
+	}
+
+	public void setBodyColor(int i, int i2) {
+		bodyColors[i] = (byte) i2;
 	}
 
 	public void setMale(boolean male) {
@@ -320,80 +337,86 @@ public class Appearence implements Serializable {
 	}
 
 	public void setHairStyle(int i) {
-		lookI[0] = i;
+		bodyStyle[0] = i;
 	}
 	
 	public void setTopStyle(int i) {
-		lookI[2] = i;
+		bodyStyle[2] = i;
 	}
 	
 	public int getTopStyle() {
-		return lookI[2];
+		return bodyStyle[2];
 	}
 	
 	
 	public void setArmsStyle(int i) {
-		lookI[3] = i;
+		bodyStyle[3] = i;
 	}
 	
 	public void setWristsStyle(int i) {
-		lookI[4] = i;
+		bodyStyle[4] = i;
 	}
 
 	public void setLegsStyle(int i) {
-		lookI[5] = i;
+		bodyStyle[5] = i;
 	}
 
 	public int getHairStyle() {
-		return lookI[0];
+		return bodyStyle[0];
 	}
 
 	public void setBeardStyle(int i) {
-		lookI[1] = i;
+		bodyStyle[1] = i;
 	}
 
 	public int getBeardStyle() {
-		return lookI[1];
+		return bodyStyle[1];
 	}
 
 	public void setFacialHair(int i) {
-		lookI[1] = i;
+		bodyStyle[1] = i;
 	}
 
 	public int getFacialHair() {
-		return lookI[1];
+		return bodyStyle[1];
 	}
 
 	public void setSkinColor(int color) {
-		colour[4] = (byte) color;
+		bodyColors[4] = (byte) color;
 	}
 
 	public int getSkinColor() {
-		return colour[4];
+		return bodyColors[4];
 	}
 
 	public void setHairColor(int color) {
-		colour[0] = (byte) color;
+		bodyColors[0] = (byte) color;
 	}
 	
 	public void setTopColor(int color) {
-		colour[1] = (byte) color;
+		bodyColors[1] = (byte) color;
 	}
 	
 	public void setLegsColor(int color) {
-		colour[2] = (byte) color;
+		bodyColors[2] = (byte) color;
 	}
 
 	public int getHairColor() {
-		return colour[0];
+		return bodyColors[0];
 	}
+
+	public byte[] getBodyColors() {
+		return bodyColors;
+	}
+
+
 
 	public void setShoeStyle(int i) {
-		lookI[6] = i;
+		bodyStyle[6] = i;
 	}
 
-	public int[] getLookI() {
-		return lookI;
+	public int[] getBodyStyles() {
+		return bodyStyle;
 	}
 
 	public void setTitle(int title) {
