@@ -101,7 +101,7 @@ public class ObjectDefinitions {
 	private HashMap<Integer, Object> parameters;
 	boolean aBoolean3923;
 	boolean aBoolean3924;
-	int anInt3925;
+	int cflag;
 	public int id;
 
 	public static void main(String[] args) throws IOException {
@@ -206,17 +206,14 @@ public class ObjectDefinitions {
 															if (opcode != 62) {
 																if (opcode != 64) {
 																	if (opcode == 65)
-																		anInt3902 = stream
-																				.readUnsignedShort();
+																		anInt3902 = stream.readUnsignedShort();
 																	else if (opcode != 66) {
 																		if (opcode != 67) {
 																			if (opcode == 69)
-																				anInt3925 = stream
-																						.readUnsignedByte();
+																				cflag = stream.readUnsignedByte();
 																			else if (opcode != 70) {
 																				if (opcode == 71)
-																					anInt3889 = stream
-																							.readShort() << 2;
+																					anInt3889 = stream.readShort() << 2;
 																				else if (opcode != 72) {
 																					if (opcode == 73)
 																						secondBool = true;
@@ -625,7 +622,7 @@ public class ObjectDefinitions {
 		anInt3902 = 128;
 		configId = -1;
 		anInt3877 = 0;
-		anInt3925 = 0;
+		cflag = 0;
 		anInt3892 = 64;
 		aBoolean3923 = false;
 		aBoolean3924 = false;
@@ -706,7 +703,11 @@ public class ObjectDefinitions {
 	public static void clearObjectDefinitions() {
 		objectDefinitions.clear();
 	}
-	
+
+	public int getAccessBlockFlag() {
+		return cflag;
+	}
+
 	/**
 	 * Prints all fields in this class.
 	 */

@@ -43,6 +43,22 @@ public class WorldPacketsEncoder extends Encoder {
 		return player;
 	}
 
+	public void sendResetMinimapFlag() {
+		OutputStream stream = new OutputStream(3);
+		stream.writePacket(player, 13);
+		stream.writeByte128(255);
+		stream.writeByte128(255);
+		session.write(stream);
+	}
+
+	public void sendMinimapFlag(int x, int y) {
+		OutputStream stream = new OutputStream(3);
+		stream.writePacket(player, 13);
+		stream.writeByte128(y);
+		stream.writeByte128(x);
+		session.write(stream);
+	}
+
 	public void sendPlayerUnderNPCPriority(boolean priority) {
 		OutputStream stream = new OutputStream(2);
 		stream.writePacket(player, 6);

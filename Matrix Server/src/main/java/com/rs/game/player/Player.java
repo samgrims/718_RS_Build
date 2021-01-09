@@ -16,6 +16,7 @@ import com.rs.custom.CustomUtilities;
 import com.rs.custom.SaveJSONManager;
 import com.rs.custom.data_structures.SquealOfFortune;
 import com.rs.custom.data_structures.Toolbelt;
+import com.rs.custom.route.RouteEvent;
 import com.rs.game.Animation;
 import com.rs.game.Entity;
 import com.rs.game.ForceTalk;
@@ -91,6 +92,7 @@ public class Player extends Entity {//Player Updater tool
 	private transient CutscenesManager cutscenesManager;
 	private transient PriceCheckManager priceCheckManager;
 	private transient CoordsEvent coordsEvent;
+	private transient RouteEvent routeEvent;
 	private transient FriendChatsManager currentFriendChat;
 	private transient Trade trade;
 	private transient DuelRules lastDuelRules;
@@ -1261,6 +1263,10 @@ public class Player extends Entity {//Player Updater tool
 
 	public void setCoordsEvent(CoordsEvent coordsEvent) {
 		this.coordsEvent = coordsEvent;
+	}
+
+	public void setRouteEvent(RouteEvent routeEvent) {
+		this.routeEvent = routeEvent;
 	}
 
 	public DialogueManager getDialogueManager() {

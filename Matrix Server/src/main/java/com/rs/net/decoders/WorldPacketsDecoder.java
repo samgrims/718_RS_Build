@@ -1,6 +1,8 @@
 package com.rs.net.decoders;
 
 import com.rs.Settings;
+import com.rs.custom.route.RouteFinder;
+import com.rs.custom.route.strategy.FixedTileStrategy;
 import com.rs.game.Animation;
 import com.rs.game.Graphics;
 import com.rs.game.World;
@@ -283,9 +285,21 @@ public final class WorldPacketsDecoder extends Decoder {
 			player.stopAll();
 			if(forceRun)
 				player.setRun(forceRun);
-			for (int step = 0; step < steps; step++)
-				if (!player.addWalkSteps(baseX + stream.readUnsignedByte(),baseY + stream.readUnsignedByte(), 25,true))
-					break;
+			if (steps > 0) {
+				int x = 0, y = 0;
+				for (int step = 0; step < steps; step++) {
+					x = baseX + stream.readUnsignedByte();
+					y = baseY + stream.readUnsignedByte();
+				}
+				steps = RouteFinder.findRoute(RouteFinder.WALK_ROUTEFINDER, player.getX(), player.getY(), player.getPlane(), player.getSize(),
+						new FixedTileStrategy(x, y), true);
+				int[] bufferX = RouteFinder.getLastPathBufferX();
+				int[] bufferY = RouteFinder.getLastPathBufferY();
+				for (int i = steps - 1; i >= 0; i--) {
+					if (!player.addWalkSteps(bufferX[i], bufferY[i], 25, true))
+						break;
+				}
+			}
 		} else if (packetId == INTERFACE_ON_OBJECT) {
 			boolean forceRun = stream.readByte128() == 1;
 			int itemId = stream.readShortLE128();
