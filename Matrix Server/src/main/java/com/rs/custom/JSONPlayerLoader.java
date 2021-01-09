@@ -30,7 +30,7 @@ public class JSONPlayerLoader {
             DebugLine.print("Player loaded without a JSON file");
             return;
         }
-        decodeCoordinate();
+//        decodeCoordinate();
         decodeSkills();
         decodeInventory();
         decodeEquipment();
