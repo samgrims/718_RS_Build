@@ -2,7 +2,7 @@ package com.jagex;/* Class336_Sub4 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-public class Class336_Sub4 extends Class336 {
+public class Class336_Sub4 extends PathStrategy {
 	Class336_Sub4() {
 		/* empty */
 	}

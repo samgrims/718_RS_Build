@@ -50,8 +50,8 @@ public class Class355 implements Interface19 {
 
 	static boolean method4261(int i, int i_7_) {
 		try {
-			return (i >= -1976050083 * Class424.aClass424_6596.anInt6613 && i <= -1976050083
-					* Class424.aClass424_6600.anInt6613);
+			return (i >= -1976050083 * GameObjectType.aClass424_6596.anInt6613 && i <= -1976050083
+					* GameObjectType.aClass424_6600.anInt6613);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("ov.p(").append(')').toString());
@@ -69,8 +69,8 @@ public class Class355 implements Interface19 {
 
 	static int method4263(int i, int i_8_, byte i_9_) {
 		try {
-			if (Class424.aClass424_6592.anInt6613 * -1976050083 == i
-					|| -1976050083 * Class424.aClass424_6594.anInt6613 == i)
+			if (GameObjectType.aClass424_6592.anInt6613 * -1976050083 == i
+					|| -1976050083 * GameObjectType.aClass424_6594.anInt6613 == i)
 				return Class365_Sub1_Sub5_Sub2.anIntArray9938[i_8_ & 0x3];
 			return Class365_Sub1_Sub5_Sub2.anIntArray9937[i_8_ & 0x3];
 		} catch (RuntimeException runtimeexception) {

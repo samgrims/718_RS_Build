@@ -679,12 +679,12 @@ public class Class301 {
 				i_158_ = i_147_ + i_149_ - 1;
 			for (int i_159_ = 0; i_159_ < is.length; i_159_++) {
 				int i_160_ = is_153_[i_159_] & 0x3f;
-				if (i_160_ == Class424.aClass424_6614.anInt6613 * -1976050083
-						|| (i_160_ == Class424.aClass424_6593.anInt6613
+				if (i_160_ == GameObjectType.aClass424_6614.anInt6613 * -1976050083
+						|| (i_160_ == GameObjectType.aClass424_6593.anInt6613
 								* -1976050083)
-						|| (i_160_ == Class424.aClass424_6594.anInt6613
+						|| (i_160_ == GameObjectType.aClass424_6594.anInt6613
 								* -1976050083)
-						|| (i_160_ == Class424.aClass424_6595.anInt6613
+						|| (i_160_ == GameObjectType.aClass424_6595.anInt6613
 								* -1976050083)) {
 					ObjectDefinitions class432 = aClass433_3220.getObjectDefinitions(is[i_159_]);
 					if (class432.anInt5400 * -1204256389 == -1) {
@@ -692,7 +692,7 @@ public class Class301 {
 						if (class432.anInt5382 * 1532834983 == 1)
 							i_161_ = -3407872;
 						int i_162_ = is_153_[i_159_] >> 6 & 0x3;
-						if (i_160_ == (Class424.aClass424_6614.anInt6613 * -1976050083)) {
+						if (i_160_ == (GameObjectType.aClass424_6614.anInt6613 * -1976050083)) {
 							if (i_162_ == 0)
 								class_ra.G(i, i_147_, i_149_, i_161_, 0);
 							else if (i_162_ == 1)
@@ -701,7 +701,7 @@ public class Class301 {
 								class_ra.G(i_157_, i_147_, i_149_, i_161_, 0);
 							else
 								class_ra.XA(i, i_158_, i_148_, i_161_, 0);
-						} else if (i_160_ == (Class424.aClass424_6593.anInt6613 * -1976050083)) {
+						} else if (i_160_ == (GameObjectType.aClass424_6593.anInt6613 * -1976050083)) {
 							if (i_162_ == 0) {
 								class_ra.G(i, i_147_, i_149_, -1, 0);
 								class_ra.XA(i, i_147_, i_148_, i_161_, 0);
@@ -715,7 +715,7 @@ public class Class301 {
 								class_ra.G(i, i_147_, i_149_, -1, 0);
 								class_ra.XA(i, i_158_, i_148_, i_161_, 0);
 							}
-						} else if (i_160_ == (Class424.aClass424_6594.anInt6613 * -1976050083)) {
+						} else if (i_160_ == (GameObjectType.aClass424_6594.anInt6613 * -1976050083)) {
 							if (i_162_ == 0)
 								class_ra.XA(i, i_147_, 1, i_161_, 0);
 							else if (i_162_ == 1)
@@ -724,7 +724,7 @@ public class Class301 {
 								class_ra.XA(i_157_, i_158_, 1, i_161_, 0);
 							else
 								class_ra.XA(i, i_158_, 1, i_161_, 0);
-						} else if (i_160_ == (Class424.aClass424_6595.anInt6613 * -1976050083)) {
+						} else if (i_160_ == (GameObjectType.aClass424_6595.anInt6613 * -1976050083)) {
 							if (i_162_ == 0 || i_162_ == 2) {
 								for (int i_163_ = 0; i_163_ < i_149_; i_163_++)
 									class_ra.XA(i + i_163_, i_158_ - i_163_, 1,

@@ -139,7 +139,7 @@ public class Class372 {
 	}
 
 	static final boolean method4593(int i, int i_13_, int i_14_,
-			Class336 class336, Class289 class289, byte i_15_) {
+									PathStrategy class336, Class289 class289, byte i_15_) {
 		try {
 			int i_16_ = i;
 			int i_17_ = i_13_;

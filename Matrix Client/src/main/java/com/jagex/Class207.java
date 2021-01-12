@@ -56,8 +56,8 @@ public class Class207 {
 
 	public static boolean method1930(int i, byte i_2_) {
 		try {
-			return (i >= Class424.aClass424_6608.anInt6613 * -1976050083 && i <= -1976050083
-					* Class424.aClass424_6606.anInt6613);
+			return (i >= GameObjectType.aClass424_6608.anInt6613 * -1976050083 && i <= -1976050083
+					* GameObjectType.aClass424_6606.anInt6613);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("is.u(").append(')').toString());

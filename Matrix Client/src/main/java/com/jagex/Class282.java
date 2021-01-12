@@ -97,8 +97,8 @@ public class Class282 implements Interface21 {
 		}
 	}
 
-	public static Class336 method2619(int i, int i_0_, int i_1_, int i_2_,
-			int i_3_) {
+	public static PathStrategy method2619(int i, int i_0_, int i_1_, int i_2_,
+                                          int i_3_) {
 		try {
 			Class315.aClass336_Sub4_3305.toX = i * -760677635;
 			Class315.aClass336_Sub4_3305.toY = i_0_ * 167105303;

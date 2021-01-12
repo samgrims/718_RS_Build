@@ -1044,7 +1044,7 @@ public class Class249 implements Interface_ma {
 				Class250.method2399(class403, (byte) -1);
 				break;
 			case 249:
-				Class424.method5735(class403, -1107806402);
+				GameObjectType.method5735(class403, -1107806402);
 				break;
 			case 535:
 				Class445.method5896(class403, (byte) -58);
@@ -2502,7 +2502,7 @@ public class Class249 implements Interface_ma {
 				Class326.method3972(class403, (byte) 41);
 				break;
 			case 685:
-				Class336.method4092(class403, -110893029);
+				PathStrategy.method4092(class403, -110893029);
 				break;
 			case 352:
 				Class488.method6166(class403, -1327440948);
@@ -3032,7 +3032,7 @@ public class Class249 implements Interface_ma {
 				Class404.method4953(class403, -2073212206);
 				break;
 			case 412:
-				Class336_Sub6.method4106(class403, (byte) 49);
+				ExactStrategy.method4106(class403, (byte) 49);
 				break;
 			case 653:
 				Class111.method1237(class403, -2115838866);
@@ -3233,7 +3233,7 @@ public class Class249 implements Interface_ma {
 				Class207.method1935(class403, (byte) 101);
 				break;
 			case 788:
-				Class336.method4094(class403, (byte) -128);
+				PathStrategy.method4094(class403, (byte) -128);
 				break;
 			case 408:
 				Class365_Sub1_Sub5_Sub1.method4527(class403, 1379762103);

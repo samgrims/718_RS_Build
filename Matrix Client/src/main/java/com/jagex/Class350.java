@@ -392,7 +392,7 @@ public class Class350 {
 		}
 	}
 
-	public static Class336 method4214(int i, int i_28_, short i_29_) {
+	public static PathStrategy method4214(int i, int i_28_, short i_29_) {
 		try {
 			Class315.aClass336_Sub6_3307.toX = i * -760677635;
 			Class315.aClass336_Sub6_3307.toY = i_28_ * 167105303;

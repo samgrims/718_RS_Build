@@ -126,7 +126,7 @@ public class Class111 {
 
 	public static boolean method1236(int i, int i_5_) {
 		try {
-			return (i >= -1976050083 * Class424.aClass424_6612.anInt6613 && i <= Class424.aClass424_6597.anInt6613
+			return (i >= -1976050083 * GameObjectType.aClass424_6612.anInt6613 && i <= GameObjectType.aClass424_6597.anInt6613
 					* -1976050083);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

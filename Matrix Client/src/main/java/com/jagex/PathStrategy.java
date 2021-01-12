@@ -2,7 +2,7 @@ package com.jagex;/* Class336 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-public abstract class Class336 {
+public abstract class PathStrategy {
 	public int toY;
 	public int toX;
 	public int sizeX;
@@ -11,7 +11,7 @@ public abstract class Class336 {
 	public abstract boolean method4089(int i, int i_0_, int i_1_,
 			Class289 class289);
 
-	Class336() {
+	PathStrategy() {
 		/* empty */
 	}
 

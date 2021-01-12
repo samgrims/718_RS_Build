@@ -119,7 +119,7 @@ public class Class228 {
 		}
 	}
 
-	static final boolean method2120(int i, int i_8_, Class336 class336,
+	static final boolean method2120(int i, int i_8_, PathStrategy class336,
 			Class289 class289, int i_9_) {
 		try {
 			int i_10_ = i;

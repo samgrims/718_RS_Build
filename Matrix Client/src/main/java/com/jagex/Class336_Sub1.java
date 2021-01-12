@@ -2,9 +2,9 @@ package com.jagex;/* Class336_Sub1 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-public class Class336_Sub1 extends Class336 {
+public class Class336_Sub1 extends PathStrategy {
 	int anInt7711;
-	Class424 aClass424_7712;
+	GameObjectType aClass424_7712;
 
 	public boolean method4090(int i, int i_0_, int i_1_, Class289 class289,
 			int i_2_) {

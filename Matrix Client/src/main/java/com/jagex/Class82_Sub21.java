@@ -69,7 +69,7 @@ public class Class82_Sub21 extends Class82 {
 	}
 
 	static final boolean method938(int i, int i_6_, boolean bool,
-			Class336 class336, int i_7_) {
+								   PathStrategy class336, int i_7_) {
 		try {
 			int i_8_ = (Class287.myPlayer.scenePositionXQueue[0]);
 			int i_9_ = (Class287.myPlayer.scenePositionYQueue[0]);

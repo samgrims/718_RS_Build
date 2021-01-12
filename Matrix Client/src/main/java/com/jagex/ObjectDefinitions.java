@@ -448,7 +448,7 @@ public class ObjectDefinitions {
 			Class435 class435, byte i_41_) {
 		try {
 			if (Class355.method4261(i_35_, 1883717056))
-				i_35_ = Class424.aClass424_6596.anInt6613 * -1976050083;
+				i_35_ = GameObjectType.aClass424_6596.anInt6613 * -1976050083;
 			long l = (long) (i_36_ + ((i_35_ << 3) + (1181652947 * anInt5365 << 10)));
 			int i_42_ = i;
 			l |= (long) (class_ra.anInt5298 * 580915349 << 29);
@@ -467,7 +467,7 @@ public class ObjectDefinitions {
 				if (0 != ((ObjectDefinitions) this).anInt5419 * 1782732613)
 					i |= 0x4;
 			}
-			if (Class424.aClass424_6611.anInt6613 * -1976050083 == i_35_
+			if (GameObjectType.aClass424_6611.anInt6613 * -1976050083 == i_35_
 					&& i_36_ > 3)
 				i |= 0x5;
 			Class387 class387;
@@ -493,7 +493,7 @@ public class ObjectDefinitions {
 				bool = true;
 				class438.method5839(class387, i_36_ & 0x3, 1865606525);
 			}
-			if (i_35_ == -1976050083 * Class424.aClass424_6611.anInt6613
+			if (i_35_ == -1976050083 * GameObjectType.aClass424_6611.anInt6613
 					&& i_36_ > 3) {
 				if (!bool) {
 					class387 = class387.method4755((byte) 3, i, true);
@@ -536,7 +536,7 @@ public class ObjectDefinitions {
 			int i_46_ = ((ObjectDefinitions) this).anInt5392 * -1536403851 + 64;
 			int i_47_ = -2019557395 * ((ObjectDefinitions) this).anInt5393 + 850;
 			int i_48_ = i;
-			boolean bool = (aBoolean5404 || (i_43_ == Class424.aClass424_6593.anInt6613
+			boolean bool = (aBoolean5404 || (i_43_ == GameObjectType.aClass424_6593.anInt6613
 					* -1976050083 && i_44_ > 3));
 			if (bool)
 				i |= 0x10;
@@ -636,7 +636,7 @@ public class ObjectDefinitions {
 				class387_56_.Q(i_47_);
 			if (bool)
 				class387_56_.wa();
-			if (i_43_ == Class424.aClass424_6596.anInt6613 * -1976050083
+			if (i_43_ == GameObjectType.aClass424_6596.anInt6613 * -1976050083
 					&& i_44_ > 3) {
 				class387_56_.S(2048);
 				class387_56_.ia(180, 0, -180);
@@ -749,7 +749,7 @@ public class ObjectDefinitions {
 				anInt5382 = 0;
 				if (null != aByteArray5430
 						&& 1 == aByteArray5430.length
-						&& (aByteArray5430[0] == Class424.aClass424_6611.anInt6613
+						&& (aByteArray5430[0] == GameObjectType.aClass424_6611.anInt6613
 								* -1976050083))
 					anInt5382 = 455422743;
 				for (int i_63_ = 0; i_63_ < 5; i_63_++) {
@@ -921,7 +921,7 @@ public class ObjectDefinitions {
 			int i_75_) {
 		try {
 			if (Class355.method4261(i_69_, -1998635010))
-				i_69_ = Class424.aClass424_6596.anInt6613 * -1976050083;
+				i_69_ = GameObjectType.aClass424_6596.anInt6613 * -1976050083;
 			long l = (long) ((1181652947 * anInt5365 << 10) + (i_69_ << 3) + i_70_);
 			l |= (long) (class_ra.anInt5298 * 580915349 << 29);
 			if (class435 != null)
@@ -954,7 +954,7 @@ public class ObjectDefinitions {
 					if (null != class387)
 						i_76_ = class_ra.method5004(i_76_, class387.m());
 					int i_77_ = i_76_;
-					if ((i_69_ == Class424.aClass424_6611.anInt6613
+					if ((i_69_ == GameObjectType.aClass424_6611.anInt6613
 							* -1976050083)
 							&& i_70_ > 3)
 						i_77_ |= 0x5;
@@ -962,7 +962,7 @@ public class ObjectDefinitions {
 							class435, 1553510063);
 					if (class387 == null)
 						return null;
-					if ((i_69_ == Class424.aClass424_6611.anInt6613
+					if ((i_69_ == GameObjectType.aClass424_6611.anInt6613
 							* -1976050083)
 							&& i_70_ > 3)
 						class387.f(2048);

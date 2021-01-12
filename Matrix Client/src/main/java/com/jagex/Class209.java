@@ -150,8 +150,8 @@ public class Class209 {
 		}
 	}
 
-	public static Class336 setExtraRoutefinderData(int toX, int toY, int sizeX, int sizeY,
-			int routeType) {
+	public static PathStrategy setExtraRoutefinderData(int toX, int toY, int sizeX, int sizeY,
+                                                       int routeType) {
 		try {
 			Class315.aClass336_Sub5_3304.toX = toX * -760677635;
 			Class315.aClass336_Sub5_3304.toY = toY * 167105303;

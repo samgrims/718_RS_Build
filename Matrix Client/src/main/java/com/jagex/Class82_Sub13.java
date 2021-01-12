@@ -108,7 +108,7 @@ public class Class82_Sub13 extends Class82 {
 						if (i_13_ > 0 && i_14_ > 0 && i_13_ < i_1_ - 1
 								&& i_14_ < i_2_ - 1) {
 							ObjectDefinitions class432 = class433.getObjectDefinitions(i_5_);
-							if ((-1976050083 * Class424.aClass424_6610.anInt6613) == i_12_
+							if ((-1976050083 * GameObjectType.aClass424_6610.anInt6613) == i_12_
 									&& Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub2_7547
 											.method5629(-1915667162) == 0
 									&& 0 == 1532834983 * class432.anInt5382

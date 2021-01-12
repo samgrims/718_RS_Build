@@ -2,7 +2,7 @@ package com.jagex;/* Class336_Sub5 - Decompiled by JODE
  * Visit http://jode.sourceforge.net/
  */
 
-public class Class336_Sub5 extends Class336 {
+public class Class336_Sub5 extends PathStrategy {
 	int routeType;
 
 	public boolean method4090(int i, int i_0_, int i_1_, Class289 class289,
@@ -36,8 +36,8 @@ public class Class336_Sub5 extends Class336 {
 		/* empty */
 	}
 
-	public static Class336 method4105(int i, int i_7_, int i_8_, int i_9_,
-			Class424 class424, int i_10_, int i_11_) {
+	public static PathStrategy method4105(int i, int i_7_, int i_8_, int i_9_,
+										  GameObjectType class424, int i_10_, int i_11_) {
 		try {
 			Class315.aClass336_Sub1_3308.toX = -760677635 * i;
 			Class315.aClass336_Sub1_3308.toY = 167105303 * i_7_;

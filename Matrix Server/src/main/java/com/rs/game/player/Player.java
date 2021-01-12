@@ -741,6 +741,8 @@ public class Player extends Entity {//Player Updater tool
 		cutscenesManager.process();
 		if (coordsEvent != null && coordsEvent.processEvent(this))
 			coordsEvent = null;
+		if (routeEvent != null && routeEvent.processEvent(this))
+			routeEvent = null;
 		super.processEntity();
 		if (musicsManager.musicEnded())
 			musicsManager.replayMusic();

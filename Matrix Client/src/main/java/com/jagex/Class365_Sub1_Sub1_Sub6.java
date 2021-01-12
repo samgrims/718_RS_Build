@@ -434,11 +434,11 @@ public class Class365_Sub1_Sub1_Sub6 extends Class365_Sub1_Sub1 implements
 					.method5785(
 							class_ra,
 							i,
-							((((Class365_Sub1_Sub1_Sub6) this).aByte9880 != Class424.aClass424_6604.anInt6613
+							((((Class365_Sub1_Sub1_Sub6) this).aByte9880 != GameObjectType.aClass424_6604.anInt6613
 									* -1976050083) ? (int) ((Class365_Sub1_Sub1_Sub6) this).aByte9880
-									: Class424.aClass424_6611.anInt6613
+									: GameObjectType.aClass424_6611.anInt6613
 											* -1976050083),
-							((Class424.aClass424_6604.anInt6613 * -1976050083 == ((Class365_Sub1_Sub1_Sub6) this).aByte9880) ? (int) (((Class365_Sub1_Sub1_Sub6) this).aByte9885 + 4)
+							((GameObjectType.aClass424_6604.anInt6613 * -1976050083 == ((Class365_Sub1_Sub1_Sub6) this).aByte9880) ? (int) (((Class365_Sub1_Sub1_Sub6) this).aByte9885 + 4)
 									: ((Class365_Sub1_Sub1_Sub6) this).aByte9885),
 							class_xa, class_xa_20_, (int) class217.aFloat2451,
 							(int) class217.aFloat2455,

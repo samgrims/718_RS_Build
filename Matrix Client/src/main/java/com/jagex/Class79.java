@@ -43,7 +43,7 @@ public class Class79 {
 
 	static byte method848(int i, int i_4_, byte i_5_) {
 		try {
-			if (-1976050083 * Class424.aClass424_6595.anInt6613 != i)
+			if (-1976050083 * GameObjectType.aClass424_6595.anInt6613 != i)
 				return (byte) 0;
 			if ((i_4_ & 0x1) == 0)
 				return (byte) 1;

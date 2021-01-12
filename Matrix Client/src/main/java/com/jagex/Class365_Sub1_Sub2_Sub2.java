@@ -85,7 +85,7 @@ public class Class365_Sub1_Sub2_Sub2 extends Class365_Sub1_Sub2 implements
 			}
 			Class217 class217 = method4337().aClass217_2599;
 			return (class432.method5785(class_ra, i,
-					Class424.aClass424_6610.anInt6613 * -1976050083,
+					GameObjectType.aClass424_6610.anInt6613 * -1976050083,
 					((Class365_Sub1_Sub2_Sub2) this).aByte9917, class_xa,
 					class_xa_2_, (int) class217.aFloat2451,
 					(int) class217.aFloat2455, (int) class217.aFloat2454, bool,
@@ -177,7 +177,7 @@ public class Class365_Sub1_Sub2_Sub2 extends Class365_Sub1_Sub2 implements
 
 	public int method29(int i) {
 		try {
-			return Class424.aClass424_6610.anInt6613 * -1976050083;
+			return GameObjectType.aClass424_6610.anInt6613 * -1976050083;
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()
 					.append("wo.f(").append(')').toString());
@@ -254,7 +254,7 @@ public class Class365_Sub1_Sub2_Sub2 extends Class365_Sub1_Sub2 implements
 	}
 
 	public int method35() {
-		return Class424.aClass424_6610.anInt6613 * -1976050083;
+		return GameObjectType.aClass424_6610.anInt6613 * -1976050083;
 	}
 
 	public int method42() {
@@ -410,7 +410,7 @@ public class Class365_Sub1_Sub2_Sub2 extends Class365_Sub1_Sub2 implements
 	}
 
 	public int method36() {
-		return Class424.aClass424_6610.anInt6613 * -1976050083;
+		return GameObjectType.aClass424_6610.anInt6613 * -1976050083;
 	}
 
 	void method4371(GraphicsToolkit class_ra) {

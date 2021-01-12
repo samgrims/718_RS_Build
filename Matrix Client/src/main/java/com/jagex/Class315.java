@@ -6,7 +6,7 @@ public final class Class315 {
 	static Class336_Sub5 aClass336_Sub5_3304;
 	static Class336_Sub4 aClass336_Sub4_3305;
 	static short aShort3306;
-	static Class336_Sub6 aClass336_Sub6_3307 = new Class336_Sub6();
+	static ExactStrategy aClass336_Sub6_3307 = new ExactStrategy();
 	static Class336_Sub1 aClass336_Sub1_3308;
 	static Class336_Sub2 aClass336_Sub2_3309;
 	static Class336_Sub3 aClass336_Sub3_3310;
@@ -71,8 +71,8 @@ public final class Class315 {
 				ObjectDefinitions class432 = client.aClass283_8716
 						.method2641(-527347356).getObjectDefinitions(i_21_);
 				int i_22_ = class298_sub53_sub2.readUnsignedByte128(-1014855659);
-				if (i_16_ == -1976050083 * Class424.aClass424_6604.anInt6613)
-					i_16_ = Class424.aClass424_6611.anInt6613 * -1976050083;
+				if (i_16_ == -1976050083 * GameObjectType.aClass424_6604.anInt6613)
+					i_16_ = GameObjectType.aClass424_6611.anInt6613 * -1976050083;
 				int i_23_ = 0;
 				if (class432.aByteArray5430 != null) {
 					int i_24_ = -1;

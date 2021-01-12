@@ -373,12 +373,12 @@ public class Class401 implements Interface21 {
 					int i_3_ = (int) l >> 14 & 0x1f;
 					int i_4_ = (int) l >> 20 & 0x3;
 					int i_5_ = (int) (l >>> 32) & 0x7fffffff;
-					Class424 class424 = ((Class424) Class422_Sub20.method5701(
-							Class336_Sub6.method4108(114624527), i_3_, (byte) 2));
-					Class336 class336;
-					if (Class424.aClass424_6611 == class424
-							|| Class424.aClass424_6604 == class424
-							|| Class424.aClass424_6610 == class424) {
+					GameObjectType class424 = ((GameObjectType) Class422_Sub20.method5701(
+							ExactStrategy.method4108(114624527), i_3_, (byte) 2));
+					PathStrategy class336;
+					if (GameObjectType.aClass424_6611 == class424
+							|| GameObjectType.aClass424_6604 == class424
+							|| GameObjectType.aClass424_6610 == class424) {
 						ObjectDefinitions class432 = client.aClass283_8716.method2641(
 								-1208362615).getObjectDefinitions(i_5_);
 						int i_6_;
@@ -394,8 +394,8 @@ public class Class401 implements Interface21 {
 							/* empty */
 						}
 						class336 = Class336_Sub5.method4105(i_32_, i_33_, i_6_, i_7_,
-								Class424.aClass424_6614, 0, 1300552038);
-					} else if (Class82_Sub9.method900(-1976050083 * class424.anInt6613,
+								GameObjectType.aClass424_6614, 0, 1300552038);
+					} else if (Class82_Sub9.isWall(-1976050083 * class424.anInt6613,
 							(byte) 28))
 						class336 = Class336_Sub5.method4105(i_32_, i_33_, 0, 0, class424,
 								i_4_, 740164949);
@@ -425,7 +425,7 @@ public class Class401 implements Interface21 {
 					class298_sub36.out.writeShort128(i_32_
 							+ -1760580017 * class341.gameSceneBaseX);
 					client.aClass25_8711.method390(class298_sub36, (byte) -39);
-					Class93.method1013(i_32_, i_33_, l);
+					Class93.findObjectRoute(i_32_, i_33_, l);
 				}
 				if (i_34_ == 30 && client.aClass105_8652 == null) {
 					Class117.method1280(i_33_, i_32_, 1723723267);
@@ -635,12 +635,12 @@ public class Class401 implements Interface21 {
 							int i_3_ = (int) l >> 14 & 0x1f;
 							int i_4_ = (int) l >> 20 & 0x3;
 							int i_5_ = (int) (l >>> 32) & 0x7fffffff;
-							Class424 class424 = ((Class424) Class422_Sub20.method5701(
-									Class336_Sub6.method4108(114624527), i_3_, (byte) 2));
-							Class336 class336;
-							if (Class424.aClass424_6611 == class424
-									|| Class424.aClass424_6604 == class424
-									|| Class424.aClass424_6610 == class424) {
+							GameObjectType class424 = ((GameObjectType) Class422_Sub20.method5701(
+									ExactStrategy.method4108(114624527), i_3_, (byte) 2));
+							PathStrategy class336;
+							if (GameObjectType.aClass424_6611 == class424
+									|| GameObjectType.aClass424_6604 == class424
+									|| GameObjectType.aClass424_6610 == class424) {
 								ObjectDefinitions class432 = client.aClass283_8716.method2641(
 										-1208362615).getObjectDefinitions(i_5_);
 								int i_6_;
@@ -656,8 +656,8 @@ public class Class401 implements Interface21 {
 									/* empty */
 								}
 								class336 = Class336_Sub5.method4105(i_32_, i_33_, i_6_, i_7_,
-										Class424.aClass424_6614, 0, 1300552038);
-							} else if (Class82_Sub9.method900(-1976050083 * class424.anInt6613,
+										GameObjectType.aClass424_6614, 0, 1300552038);
+							} else if (Class82_Sub9.isWall(-1976050083 * class424.anInt6613,
 									(byte) 28))
 								class336 = Class336_Sub5.method4105(i_32_, i_33_, 0, 0, class424,
 										i_4_, 740164949);
@@ -680,7 +680,7 @@ public class Class401 implements Interface21 {
 					class298_sub36.out
 							.writeShortLE128(class341.gameSceneBaseY * 283514611 + i_33_);
 					client.aClass25_8711.method390(class298_sub36, (byte) -13);
-					Class93.method1013(i_32_, i_33_, l);
+					Class93.findObjectRoute(i_32_, i_33_, l);
 				}
 				if (8 == i_34_) {
 					Class298_Sub29 class298_sub29 = ((Class298_Sub29) client.aClass437_8696

@@ -129,8 +129,8 @@ public class Class84 {
 
 	static int method952(int i, int i_15_, int i_16_) {
 		try {
-			if (-1976050083 * Class424.aClass424_6592.anInt6613 == i
-					|| i == -1976050083 * Class424.aClass424_6594.anInt6613)
+			if (-1976050083 * GameObjectType.aClass424_6592.anInt6613 == i
+					|| i == -1976050083 * GameObjectType.aClass424_6594.anInt6613)
 				return Class365_Sub1_Sub5_Sub1.anIntArray9891[i_15_ & 0x3];
 			return Class365_Sub1_Sub5_Sub1.anIntArray9890[i_15_ & 0x3];
 		} catch (RuntimeException runtimeexception) {

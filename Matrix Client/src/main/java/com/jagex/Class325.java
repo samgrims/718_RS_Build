@@ -62,8 +62,8 @@ public class Class325 {
 		}
 	}
 
-	public static Class336 method3963(int i, int i_3_, int i_4_, int i_5_,
-			int i_6_, byte i_7_) {
+	public static PathStrategy method3963(int i, int i_3_, int i_4_, int i_5_,
+                                          int i_6_, byte i_7_) {
 		try {
 			Class315.aClass336_Sub3_3310.toX = i * -760677635;
 			Class315.aClass336_Sub3_3310.toY = i_3_ * 167105303;

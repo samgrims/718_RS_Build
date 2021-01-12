@@ -110,7 +110,7 @@ public class Class365_Sub1_Sub2_Sub1 extends Class365_Sub1_Sub2 implements
 		super(class331, i_6_, i_7_, i_8_, i, i_5_, -228547261
 				* class432.anInt5418);
 		aClass60_9910 = new Class60(class_ra, class433, class432,
-				Class424.aClass424_6610.anInt6613 * -1976050083, i_9_, i, i_5_,
+				GameObjectType.aClass424_6610.anInt6613 * -1976050083, i_9_, i, i_5_,
 				this, bool, i_10_);
 		((Class365_Sub1_Sub2_Sub1) this).aBoolean9908 = class432.anInt5382 * 1532834983 != 0
 				&& !bool;

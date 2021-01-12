@@ -1419,32 +1419,202 @@ public final class ObjectHandler {
 		return handleDoor(player, object, 60000);
 	}
 
-	private static boolean handleStaircases(Player player, WorldObject object,
-											int optionId) {
+	private static boolean handleStaircases(Player player, WorldObject object, int optionId) {
+		DebugLine.print("yolo");
+//		String option = object.getDefinitions().getOption(optionId);
+//		if (option.equalsIgnoreCase("Climb-up")) {
+//			if (player.getPlane() == 3)
+//				return false;
+//			player.useStairs(-1, new WorldTile(player.getX(), player.getY(), player.getPlane() + 1), 0, 1);
+//		} else if (option.equalsIgnoreCase("Climb-down")) {
+//			if (player.getPlane() == 0)
+//				return false;
+//			player.useStairs(-1, new WorldTile(player.getX(), player.getY(),player.getPlane() - 1), 0, 1);
+//		} else if (option.equalsIgnoreCase("Climb")) {
+//			if (player.getPlane() == 3 || player.getPlane() == 0)
+//				return false;
+//			player.getDialogueManager().startDialogue("ClimbNoEmoteStairs", new WorldTile(player.getX(), player.getY(), player.getPlane() + 1),
+//							new WorldTile(player.getX(), player.getY(), player.getPlane() - 1), "Go up the stairs.", "Go down the stairs.");
+//		} else
+//			return false;
+//		return false;
 		String option = object.getDefinitions().getOption(optionId);
 		if (option.equalsIgnoreCase("Climb-up")) {
 			if (player.getPlane() == 3)
 				return false;
-			player.useStairs(-1, new WorldTile(player.getX(), player.getY(),
-					player.getPlane() + 1), 0, 1);
+			WorldTile tile = stairCaseUp(object, player);
+			player.useStairs(-1, tile, 0, 1);
 		} else if (option.equalsIgnoreCase("Climb-down")) {
 			if (player.getPlane() == 0)
 				return false;
-			player.useStairs(-1, new WorldTile(player.getX(), player.getY(),
-					player.getPlane() - 1), 0, 1);
+			WorldTile tile = stairCaseDown(object, player);
+			player.useStairs(-1, tile, 0, 1);
 		} else if (option.equalsIgnoreCase("Climb")) {
 			if (player.getPlane() == 3 || player.getPlane() == 0)
 				return false;
-			player.getDialogueManager().startDialogue(
-					"ClimbNoEmoteStairs",
-					new WorldTile(player.getX(), player.getY(), player
-							.getPlane() + 1),
-							new WorldTile(player.getX(), player.getY(), player
-									.getPlane() - 1), "Go up the stairs.",
+			WorldTile upTile = stairCaseUp(object, player);
+			WorldTile downTile = stairCaseDown(object, player);
+			player.getDialogueManager().startDialogue("ClimbNoEmoteStairs", upTile, downTile, "Go up the stairs.",
 					"Go down the stairs.");
 		} else
 			return false;
 		return false;
+
+	}
+
+	private static WorldTile stairCaseUp(WorldObject object, Player player) {
+		WorldTile tile = new WorldTile(player.getX(), player.getY(), player.getPlane() + 1);
+		switch (object.getId()) {
+			case 34548:
+				if (object.getRotation() == 3) {
+					tile.setX(object.getX() + 1);
+					tile.setY(object.getY() + 2);
+				}
+				return tile;
+			case 26197:
+				if (object.getRotation() == 0) {
+					tile.setX(object.getX() + 2);
+					tile.setY(object.getY());
+				}
+				if (object.getRotation() == 1) {
+					tile.setX(object.getX());
+					tile.setY(object.getY() - 1);
+				}
+				return tile;
+			case 47364:
+				tile.setX(object.getX() + 2);
+				tile.setY(object.getY() + 4);
+				return tile;
+			case 24074:// cooking guild
+				if (object.getRotation() == 1) {
+					tile.setX(tile.getX());
+					tile.setY(tile.getY() - 3);
+				}
+				return tile;
+			case 35533:
+				if (object.getRotation() == 1)
+					tile.setX(object.getX() + 1);
+				return tile;
+			case 35516:
+				tile.setY(object.getY() - 1);
+				return tile;
+			case 11729:// spiral staircases
+			case 35781:
+			case 11732:
+			case 24349:
+			case 31615:
+			case 24350:
+			case 40057:
+			case 9582:
+			case 11888:
+				if (object.getRotation() == 0) {
+					tile.setX(tile.getX() + 1);
+					tile.setY(tile.getY() + 1);
+				}
+				if (object.getRotation() == 1) {
+					tile.setX(tile.getX() + 1);
+					tile.setY(tile.getY() - 1);
+				}
+				if (object.getRotation() == 2) {
+					tile.setX(object.getX() - 1);
+					tile.setY(tile.getY() - 1);
+				}
+				if (object.getRotation() == 3) {
+					tile.setX(tile.getX() - 1);
+					tile.setY(tile.getY() + 1);
+				}
+				return tile;
+			case 26145:// falador party room
+				if (object.getRotation() == 1) {
+					tile.setX(tile.getX() - 1);
+					tile.setY(tile.getY() + 1);
+				}
+				return tile;
+			case 26144:// falador party room
+				if (object.getRotation() == 1) {
+					tile.setX(tile.getX() + 1);
+					tile.setY(tile.getY() + 1);
+				}
+				return tile;
+			case 26146:// falador party room
+				if (object.getRotation() == 0) {
+					tile.setX(tile.getX() - 1);
+					tile.setY(tile.getY() + 1);
+				}
+				return tile;
+			case 26147:// falador party room
+				if (object.getRotation() == 2) {
+					tile.setX(tile.getX() + 1);
+					tile.setY(tile.getY() + 1);
+				}
+				return tile;
+			case 11736:// long staircases
+			case 11734:
+			case 24356:
+			case 24357:
+			case 24358:
+			case 24367:
+				if (object.getRotation() == 0) {
+					tile.setX(tile.getX());
+					tile.setY(tile.getY() + 4);
+				}
+				if (object.getRotation() == 1) {
+					tile.setX(tile.getX() + 4);
+					tile.setY(tile.getY());
+				}
+				if (object.getRotation() == 2) {
+					tile.setX(tile.getX());
+					tile.setY(tile.getY() - 4);
+				}
+				if (object.getRotation() == 3) {
+					tile.setX(tile.getX() - 4);
+					tile.setY(tile.getY());
+				}
+				return tile;
+		}
+		return tile;
+	}
+
+	private static WorldTile stairCaseDown(WorldObject object, Player player) {
+		WorldTile tile = new WorldTile(player.getX(), player.getY(), player.getPlane() - 1);
+		switch (object.getId()) {
+			case 34550:
+				tile.setX(tile.getX());
+				tile.setY(tile.getY() - 3);
+				return tile;
+			case 47657:
+				tile.setX(tile.getX());
+				tile.setY(tile.getY() - 5);
+				return tile;
+			case 35518:
+				tile.setY(object.getY() + 1);
+				return tile;
+			case 11737:
+			case 35783:
+			case 24359:
+			case 37117:
+				if (object.getRotation() == 0) {
+					tile.setX(tile.getX());
+					tile.setY(tile.getY() - 4);
+				}
+				if (object.getRotation() == 1) {
+					tile.setX(tile.getX() - 4);
+					tile.setY(tile.getY());
+				}
+				if (object.getRotation() == 2) {
+					tile.setX(tile.getX());
+					tile.setY(tile.getY() + 4);
+				}
+				if (object.getRotation() == 3) {
+					tile.setX(tile.getX() + 4);
+					tile.setY(tile.getY());
+				}
+				return tile;
+			case 24075:
+				tile.setY(tile.getY() + 3);
+				return tile;
+		}
+		return tile;
 	}
 
 	private static boolean handleLadder(Player player, WorldObject object,

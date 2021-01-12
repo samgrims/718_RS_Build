@@ -64,10 +64,10 @@ public class Class82_Sub9 extends Class82 {
 		}
 	}
 
-	public static boolean method900(int i, byte i_0_) {
+	public static boolean isWall(int i, byte i_0_) {
 		try {
-			return ((i >= -1976050083 * Class424.aClass424_6614.anInt6613 && i <= Class424.aClass424_6594.anInt6613
-					* -1976050083) || Class424.aClass424_6595.anInt6613
+			return ((i >= -1976050083 * GameObjectType.aClass424_6614.anInt6613 && i <= GameObjectType.aClass424_6594.anInt6613
+					* -1976050083) || GameObjectType.aClass424_6595.anInt6613
 					* -1976050083 == i);
 		} catch (RuntimeException runtimeexception) {
 			throw Class346.method4175(runtimeexception, new StringBuilder()

@@ -68,7 +68,7 @@ public class Class240_Sub1 extends Class240 {
 								* -1125834887, -565161399 * class432.sizeY,
 								i_5_, class432.aBoolean5424,
 								!class432.aBoolean5416, (byte) 38);
-					if (Class424.aClass424_6595.anInt6613 * -1976050083 == i_4_) {
+					if (GameObjectType.aClass424_6595.anInt6613 * -1976050083 == i_4_) {
 						if ((i_5_ & 0x1) == 0)
 							aClass331_2619.aClass333_3512.method4068(8, i,
 									i_1_, i_2_);
@@ -632,7 +632,7 @@ public class Class240_Sub1 extends Class240 {
 			Class_xa class_xa, Class289 class289, int i_117_, int i_118_,
 			byte i_119_) {
 		try {
-			if (-1976050083 * Class424.aClass424_6614.anInt6613 == i) {
+			if (-1976050083 * GameObjectType.aClass424_6614.anInt6613 == i) {
 				int i_120_ = class432.anInt5376 * -1508517619;
 				if (aBoolean7073 && -1 == -1508517619 * class432.anInt5376)
 					i_120_ = 1;
@@ -702,7 +702,7 @@ public class Class240_Sub1 extends Class240 {
 							class432.anInt5391 * -448694871, (byte) -54);
 				return true;
 			}
-			if (i == -1976050083 * Class424.aClass424_6592.anInt6613) {
+			if (i == -1976050083 * GameObjectType.aClass424_6592.anInt6613) {
 				Class365_Sub1_Sub5 class365_sub1_sub5;
 				if (bool) {
 					Class365_Sub1_Sub5_Sub1 class365_sub1_sub5_sub1 = new Class365_Sub1_Sub5_Sub1(
@@ -737,7 +737,7 @@ public class Class240_Sub1 extends Class240 {
 							(byte) 0);
 				return true;
 			}
-			if (i == -1976050083 * Class424.aClass424_6593.anInt6613) {
+			if (i == -1976050083 * GameObjectType.aClass424_6593.anInt6613) {
 				int i_121_ = i_107_ + 1 & 0x3;
 				Class365_Sub1_Sub5 class365_sub1_sub5;
 				Class365_Sub1_Sub5 class365_sub1_sub5_122_;
@@ -819,7 +819,7 @@ public class Class240_Sub1 extends Class240 {
 							-448694871 * class432.anInt5391, (byte) 12);
 				return true;
 			}
-			if (i == -1976050083 * Class424.aClass424_6594.anInt6613) {
+			if (i == -1976050083 * GameObjectType.aClass424_6594.anInt6613) {
 				Class365_Sub1_Sub5 class365_sub1_sub5;
 				if (bool) {
 					Class365_Sub1_Sub5_Sub1 class365_sub1_sub5_sub1 = new Class365_Sub1_Sub5_Sub1(
@@ -854,7 +854,7 @@ public class Class240_Sub1 extends Class240 {
 							(byte) 0);
 				return true;
 			}
-			if (i == -1976050083 * Class424.aClass424_6595.anInt6613) {
+			if (i == -1976050083 * GameObjectType.aClass424_6595.anInt6613) {
 				Class365_Sub1_Sub1 class365_sub1_sub1;
 				if (bool) {
 					Class365_Sub1_Sub1_Sub6 class365_sub1_sub1_sub6 = new Class365_Sub1_Sub1_Sub6(
@@ -903,7 +903,7 @@ public class Class240_Sub1 extends Class240 {
 			ObjectDefinitions class432, int i_126_, int i_127_, int i_128_, int i_129_,
 			int i_130_, int i_131_, int i_132_, int i_133_, int i_134_) {
 		try {
-			if (i == -1976050083 * Class424.aClass424_6596.anInt6613) {
+			if (i == -1976050083 * GameObjectType.aClass424_6596.anInt6613) {
 				Class365_Sub1_Sub3 class365_sub1_sub3;
 				if (bool) {
 					Class365_Sub1_Sub3_Sub2 class365_sub1_sub3_sub2 = new Class365_Sub1_Sub3_Sub2(
@@ -924,7 +924,7 @@ public class Class240_Sub1 extends Class240 {
 						class365_sub1_sub3, null, 861548591);
 				return true;
 			}
-			if (i == Class424.aClass424_6601.anInt6613 * -1976050083) {
+			if (i == GameObjectType.aClass424_6601.anInt6613 * -1976050083) {
 				int i_135_ = 65;
 				Interface3 interface3 = ((Interface3) aClass331_2619
 						.method4031(i_127_, i_132_, i_133_, 644917110));
@@ -954,7 +954,7 @@ public class Class240_Sub1 extends Class240 {
 						class365_sub1_sub3, null, 1859376340);
 				return true;
 			}
-			if (-1976050083 * Class424.aClass424_6598.anInt6613 == i) {
+			if (-1976050083 * GameObjectType.aClass424_6598.anInt6613 == i) {
 				int i_136_ = 33;
 				Interface3 interface3 = ((Interface3) aClass331_2619
 						.method4031(i_127_, i_132_, i_133_, 552550945));
@@ -985,7 +985,7 @@ public class Class240_Sub1 extends Class240 {
 						class365_sub1_sub3, null, 1431954302);
 				return true;
 			}
-			if (-1976050083 * Class424.aClass424_6599.anInt6613 == i) {
+			if (-1976050083 * GameObjectType.aClass424_6599.anInt6613 == i) {
 				int i_137_ = i_125_ + 2 & 0x3;
 				Class365_Sub1_Sub3 class365_sub1_sub3;
 				if (bool) {
@@ -1007,7 +1007,7 @@ public class Class240_Sub1 extends Class240 {
 						class365_sub1_sub3, null, 1921538390);
 				return true;
 			}
-			if (Class424.aClass424_6600.anInt6613 * -1976050083 == i) {
+			if (GameObjectType.aClass424_6600.anInt6613 * -1976050083 == i) {
 				int i_138_ = i_125_ + 2 & 0x3;
 				int i_139_ = 33;
 				Interface3 interface3 = ((Interface3) aClass331_2619
@@ -1229,12 +1229,12 @@ public class Class240_Sub1 extends Class240 {
 						&& class432.anIntArray5366 == null
 						&& !class432.aBoolean5381 && !class432.aBoolean5389);
 				if (!aBoolean7084
-						|| ((!Class82_Sub9.method900(i_166_, (byte) 13) || class432.anInt5376
+						|| ((!Class82_Sub9.isWall(i_166_, (byte) 13) || class432.anInt5376
 								* -1508517619 == 1) && (!Class111.method1236(
 								i_166_, 1378507148) || 0 != -1508517619
 								* class432.anInt5376))) {
 					if (i_166_ == -1976050083
-							* Class424.aClass424_6610.anInt6613) {
+							* GameObjectType.aClass424_6610.anInt6613) {
 						if ((Class422_Sub25.aClass298_Sub48_8425.aClass422_Sub2_7547
 								.method5629(-807116560) != 0)
 								|| class432.anInt5382 * 1532834983 != 0
@@ -1264,9 +1264,9 @@ public class Class240_Sub1 extends Class240 {
 									&& null != class289)
 								class289.method2734(i_162_, i_163_, (byte) 2);
 						}
-					} else if ((-1976050083 * Class424.aClass424_6611.anInt6613 == i_166_)
+					} else if ((-1976050083 * GameObjectType.aClass424_6611.anInt6613 == i_166_)
 							|| i_166_ == -1976050083
-									* (Class424.aClass424_6604.anInt6613)) {
+									* (GameObjectType.aClass424_6604.anInt6613)) {
 						Class365_Sub1_Sub1_Sub6 class365_sub1_sub1_sub6 = null;
 						Class365_Sub1_Sub1 class365_sub1_sub1;
 						int i_179_;
@@ -1345,7 +1345,7 @@ public class Class240_Sub1 extends Class240 {
 								&& !aBoolean2629
 								&& Class111.method1236(i_166_, 1932287279)
 								&& (-1976050083
-										* Class424.aClass424_6602.anInt6613 != i_166_)
+										* GameObjectType.aClass424_6602.anInt6613 != i_166_)
 								&& i_161_ > 0
 								&& class432.anInt5376 * -1508517619 != 0)
 							aByteArrayArrayArray2637[i_161_][i_162_][i_163_] |= 0x4;

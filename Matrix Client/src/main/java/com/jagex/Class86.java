@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Class86 {
 	int anInt786;
-	Class424 aClass424_787;
+	GameObjectType aClass424_787;
 	int anInt788;
 	int anInt789;
 	int anInt790;
@@ -14,8 +14,8 @@ public class Class86 {
 
 	Class86(RsByteBuffer class298_sub53) {
 		((Class86) this).anInt786 = class298_sub53.readBigSmart(1235052657) * 368471857;
-		((Class86) this).aClass424_787 = ((Class424) Class422_Sub20.method5701(
-				Class336_Sub6.method4108(114624527), class298_sub53
+		((Class86) this).aClass424_787 = ((GameObjectType) Class422_Sub20.method5701(
+				ExactStrategy.method4108(114624527), class298_sub53
 						.readUnsignedByte(), (byte) 2));
 	}
 

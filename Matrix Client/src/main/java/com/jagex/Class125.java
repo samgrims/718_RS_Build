@@ -596,7 +596,7 @@ public class Class125 {
 						Class253.anInterface_ma2785, 2043056803);
 				Class113 class113 = new Class113(Class122.aClass243_1467
 						.method2301("huffman", "", 1988047685));
-				Class336_Sub6.method4107(class113, -1778895275);
+				ExactStrategy.method4107(class113, -1778895275);
 				Class291.aClass309_6492 = Class360.method4302(-1239681225);
 				Class12.aClass298_Sub44_9946 = new Class298_Sub44(true);
 			}

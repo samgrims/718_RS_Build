@@ -334,7 +334,7 @@ public class Class113 {
 
 	static byte method1253(int i, int i_42_, int i_43_) {
 		try {
-			if (i != Class424.aClass424_6595.anInt6613 * -1976050083)
+			if (i != GameObjectType.aClass424_6595.anInt6613 * -1976050083)
 				return (byte) 0;
 			if ((i_42_ & 0x1) == 0)
 				return (byte) 1;

@@ -27,7 +27,7 @@ public class Class98_Sub4 extends Class98 {
 			int i_8_ = 1348897509 * ((Class98_Sub4) this).anInt6945 * i_1_ >> 12;
 			int i_9_ = 1800257793 * ((Class98_Sub4) this).anInt6939 * i >> 12;
 			int i_10_ = 1776133377 * ((Class98_Sub4) this).anInt6946 * i_1_ >> 12;
-			Class336.method4095(i_3_, i_4_, i_5_, i_6_, i_7_, i_8_, i_9_,
+			PathStrategy.method4095(i_3_, i_4_, i_5_, i_6_, i_7_, i_8_, i_9_,
 					i_10_, ((Class98_Sub4) this).anInt947 * 1785836763,
 					(byte) -73);
 		} catch (RuntimeException runtimeexception) {
@@ -67,7 +67,7 @@ public class Class98_Sub4 extends Class98 {
 		int i_28_ = 1348897509 * ((Class98_Sub4) this).anInt6945 * i_22_ >> 12;
 		int i_29_ = 1800257793 * ((Class98_Sub4) this).anInt6939 * i >> 12;
 		int i_30_ = 1776133377 * ((Class98_Sub4) this).anInt6946 * i_22_ >> 12;
-		Class336.method4095(i_23_, i_24_, i_25_, i_26_, i_27_, i_28_, i_29_,
+		PathStrategy.method4095(i_23_, i_24_, i_25_, i_26_, i_27_, i_28_, i_29_,
 				i_30_, ((Class98_Sub4) this).anInt947 * 1785836763, (byte) -33);
 	}
 

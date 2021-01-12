@@ -461,7 +461,7 @@ public class Class277 {
 		}
 	}
 	
-	public static void sendWalkPacket(Class336 class336) {
+	public static void sendWalkPacket(PathStrategy class336) {
 		sendWalkPacket(0, class336);
 	}
 	
@@ -469,7 +469,7 @@ public class Class277 {
 	 * routeType -1 - normal walk
 	 * routeType 0 - follow
 	 */
-	public static void sendWalkPacket(int type , Class336 class336) {
+	public static void sendWalkPacket(int type , PathStrategy class336) {
 		  	int stepsCount = (Class298_Sub37
 										.calculateRoute(
 												(Class287.myPlayer.scenePositionXQueue[0]),

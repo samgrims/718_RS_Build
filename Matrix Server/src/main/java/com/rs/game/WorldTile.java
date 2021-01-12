@@ -184,6 +184,14 @@ public class WorldTile implements Serializable {
 		return new WorldTile(this.x + x, this.y + y, this.plane + plane);
 	}
 
+	public void setX(int x) {
+		this.x = (short) x;
+	}
+
+	public void setY(int y) {
+		this.y = (short) y;
+	}
+
 	/**
 	 * Checks if this world tile's coordinates match the other world tile.
 	 * @param other The world tile to compare with.

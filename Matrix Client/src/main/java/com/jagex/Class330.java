@@ -205,7 +205,7 @@ public class Class330 implements Runnable {
 		}
 	}
 
-	static final boolean method4006(int i, int i_6_, Class336 class336,
+	static final boolean method4006(int i, int i_6_, PathStrategy class336,
 			Class289 class289, int i_7_) {
 		try {
 			int i_8_ = i;

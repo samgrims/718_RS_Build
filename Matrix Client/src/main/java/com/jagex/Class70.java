@@ -104,8 +104,8 @@ public final class Class70 {
 					if (1532834983 * class432.anInt5382 > 0)
 						i_16_ = i_12_;
 					if ((i_15_ == -1976050083
-							* Class424.aClass424_6614.anInt6613)
-							|| (-1976050083 * Class424.aClass424_6593.anInt6613 == i_15_)) {
+							* GameObjectType.aClass424_6614.anInt6613)
+							|| (-1976050083 * GameObjectType.aClass424_6593.anInt6613 == i_15_)) {
 						if (i_14_ == 0)
 							class_ra.method5035(i_9_, i_10_, 4, i_16_,
 									(short) 23432);
@@ -120,7 +120,7 @@ public final class Class70 {
 									-1141905509);
 					}
 					if (i_15_ == -1976050083
-							* Class424.aClass424_6594.anInt6613) {
+							* GameObjectType.aClass424_6594.anInt6613) {
 						if (0 == i_14_)
 							class_ra.method5015(i_9_, i_10_, 1, 1, i_16_,
 									(byte) 7);
@@ -134,7 +134,7 @@ public final class Class70 {
 							class_ra.method5015(i_9_, 3 + i_10_, 1, 1, i_16_,
 									(byte) 7);
 					}
-					if (Class424.aClass424_6593.anInt6613 * -1976050083 == i_15_) {
+					if (GameObjectType.aClass424_6593.anInt6613 * -1976050083 == i_15_) {
 						if (i_14_ == 0)
 							class_ra.method4990(i_9_, i_10_, 4, i_16_,
 									-1677742445);
@@ -161,7 +161,7 @@ public final class Class70 {
 				if (-1204256389 * class432.anInt5400 != -1)
 					Class82.method871(class_ra, class432, i_17_, i_9_, i_10_,
 							(byte) 7);
-				else if (Class424.aClass424_6595.anInt6613 * -1976050083 == i_18_) {
+				else if (GameObjectType.aClass424_6595.anInt6613 * -1976050083 == i_18_) {
 					int i_19_ = -1118482;
 					if (1532834983 * class432.anInt5382 > 0)
 						i_19_ = -1179648;

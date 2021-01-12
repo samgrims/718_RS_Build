@@ -117,44 +117,35 @@ final class Class93 implements Interface23 {
 		}
 	}
 
-	static final void method1013(int i, int i_2_, long l) {
+	static final void findObjectRoute(int dstX, int dstY, long objdata) {
 		try {
-			int i_3_ = (int) l >> 14 & 0x1f;
-			int i_4_ = (int) l >> 20 & 0x3;
-			int i_5_ = (int) (l >>> 32) & 0x7fffffff;
-			Class424 class424 = ((Class424) Class422_Sub20.method5701(
-					Class336_Sub6.method4108(114624527), i_3_, (byte) 2));
-			Class336 class336;
-			if (Class424.aClass424_6611 == class424
-					|| Class424.aClass424_6604 == class424
-					|| Class424.aClass424_6610 == class424) {
-				ObjectDefinitions class432 = client.aClass283_8716.method2641(
-						-1208362615).getObjectDefinitions(i_5_);
-				int i_6_;
-				int i_7_;
-				if (0 == i_4_ || i_4_ == 2) {
-					i_6_ = -1125834887 * class432.sizeX;
-					i_7_ = -565161399 * class432.sizeY;
+			int objtype = (int) objdata >> 14 & 0x1f;
+			int objrot = (int) objdata >> 20 & 0x3;
+			int objid = (int) (objdata >>> 32) & 0x7fffffff;
+			GameObjectType typeDef = ((GameObjectType) Class422_Sub20.method5701(ExactStrategy.method4108(114624527), objtype, (byte) 2));
+			PathStrategy strategy;
+			if (GameObjectType.aClass424_6611 == typeDef	|| GameObjectType.aClass424_6604 == typeDef || GameObjectType.aClass424_6610 == typeDef) {
+				ObjectDefinitions definitions = client.aClass283_8716.method2641(-1208362615).getObjectDefinitions(objid);
+				int sizeX;
+				int sizeY;
+				if (0 == objrot || objrot == 2) {
+					sizeX = -1125834887 * definitions.sizeX;
+					sizeY = -565161399 * definitions.sizeY;
 				} else {
-					i_6_ = -565161399 * class432.sizeY;
-					i_7_ = class432.sizeX * -1125834887;
+					sizeX = -565161399 * definitions.sizeY;
+					sizeY = definitions.sizeX * -1125834887;
 				}
-				if (i_4_ == 0) {
+				if (objrot == 0) {
 					/* empty */
 				}
-				class336 = Class336_Sub5.method4105(i, i_2_, i_6_, i_7_,
-						Class424.aClass424_6614, 0, 1300552038);
-			} else if (Class82_Sub9.method900(-1976050083 * class424.anInt6613,
-					(byte) 28))
-				class336 = Class336_Sub5.method4105(i, i_2_, 0, 0, class424,
-						i_4_, 740164949);
+				strategy = Class336_Sub5.method4105(dstX, dstY, sizeX, sizeY, GameObjectType.aClass424_6614, 0, 1300552038);
+			} else if (Class82_Sub9.isWall(-1976050083 * typeDef.anInt6613, (byte) 28))
+				strategy = Class336_Sub5.method4105(dstX, dstY, 0, 0, typeDef, objrot, 740164949);
 			else
-				class336 = Class194.method1867(i, i_2_, 0, 0, class424, i_4_,
-						(byte) -22);
-			Class82_Sub21.method938(i, i_2_, true, class336, -1680742639);
+				strategy = Class194.method1867(dstX, dstY, 0, 0, typeDef, objrot, (byte) -22);
+			Class82_Sub21.method938(dstX, dstY, true, strategy, -1680742639);
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("du.jd(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("du.jd(").append(')').toString());
 		}
 	}
 

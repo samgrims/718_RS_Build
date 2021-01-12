@@ -89,8 +89,8 @@ public class Class194 {
 		}
 	}
 
-	public static Class336 method1867(int i, int i_2_, int i_3_, int i_4_,
-			Class424 class424, int i_5_, byte i_6_) {
+	public static PathStrategy method1867(int i, int i_2_, int i_3_, int i_4_,
+										  GameObjectType class424, int i_5_, byte i_6_) {
 		try {
 			Class315.aClass336_Sub2_3309.toX = i * -760677635;
 			Class315.aClass336_Sub2_3309.toY = 167105303 * i_2_;

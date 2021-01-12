@@ -22,7 +22,7 @@ public class Class298_Sub37 extends Class298 {
 		}
 	}
 
-	public static int calculateRoute(int startX, int startY, int size, Class336 class336,
+	public static int calculateRoute(int startX, int startY, int size, PathStrategy class336,
 			Class289 planeClipData, boolean alternativeRoute, int[] calculatedPositionXsArray, int[] calculatedPositionYsArray) {
 		try {
 			for (int i_4_ = 0; i_4_ < 128; i_4_++) {
