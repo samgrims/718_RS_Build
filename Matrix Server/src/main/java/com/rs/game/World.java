@@ -65,13 +65,10 @@ public final class World {
 	public static int exiting_delay;
 	public static long exiting_start;
 
-	private static final EntityList<Player> players = new EntityList<Player>(
-			Settings.PLAYERS_LIMIT);
+	private static final EntityList<Player> players = new EntityList<Player>(Settings.PLAYERS_LIMIT);
 
-	private static final EntityList<NPC> npcs = new EntityList<NPC>(
-			Settings.NPCS_LIMIT);
-	private static final Map<Integer, Region> regions = Collections
-			.synchronizedMap(new HashMap<Integer, Region>());
+	private static final EntityList<NPC> npcs = new EntityList<NPC>(Settings.NPCS_LIMIT);
+	private static final Map<Integer, Region> regions = Collections.synchronizedMap(new HashMap<Integer, Region>());
 
 	// private static final Object lock = new Object();
 
@@ -550,8 +547,7 @@ public final class World {
 			return -1;
 		int baseLocalX = x - ((regionId >> 8) * 64);
 		int baseLocalY = y - ((regionId & 0xff) * 64);
-		return region
-				.getMaskClipedOnly(tile.getPlane(), baseLocalX, baseLocalY);
+		return region.getMaskClipedOnly(tile.getPlane(), baseLocalX, baseLocalY);
 	}
 
 	public static final boolean checkProjectileStep(int plane, int x, int y,

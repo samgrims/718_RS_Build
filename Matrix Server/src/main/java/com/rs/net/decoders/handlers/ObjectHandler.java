@@ -1,5 +1,6 @@
 package com.rs.net.decoders.handlers;
 
+import com.rs.custom.route.RouteEvent;
 import com.rs.tools.DebugLine;
 import com.rs.Settings;
 import com.rs.cache.loaders.ObjectDefinitions;
@@ -136,12 +137,11 @@ public final class ObjectHandler {
 		final int id = object.getId();
 		final int x = object.getX();
 		final int y = object.getY();
-
 		DebugLine.print(id + "");
 
 		if(SihponActionNodes.siphon(player, object)) 
 			return;
-		player.setCoordsEvent(new CoordsEvent(object, new Runnable() {
+		player.setRouteEvent(new RouteEvent(object, new Runnable() {
 			@Override
 			public void run() {
 				player.stopAll();
@@ -977,8 +977,7 @@ public final class ObjectHandler {
 									+ object.getRotation() + ", "
 									+ object.getDefinitions().name);
 			}
-		}, objectDef.getSizeX(), Wilderness.isDitch(id) ? 4 : objectDef
-				.getSizeY(), object.getRotation()));
+		}, true));
 	}
 
 	private static boolean onClickHandledByName(WorldObject world_object, Player player) {
