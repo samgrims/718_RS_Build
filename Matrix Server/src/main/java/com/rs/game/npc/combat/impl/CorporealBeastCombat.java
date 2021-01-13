@@ -139,7 +139,7 @@ public class CorporealBeastCombat extends CombatScript {
 						for (Entity t : possibleTargets) {
 							if (Utils.getDistance(newTile.getX(),
 									newTile.getY(), t.getX(), t.getY()) > 1
-									|| !t.clipedProjectile(newTile, false))
+									|| !t.isNotClippedProjectile(newTile, false))
 								continue;
 							delayHit(
 									npc,

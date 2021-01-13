@@ -173,7 +173,7 @@ public class Thieving {
 					continue;
 				if (!isGuard(npc.getId()) || npc.isUnderCombat()
 						|| npc.isDead() || !npc.withinDistance(player, 4)
-						|| !npc.clipedProjectile(player, true))
+						|| !npc.isNotClippedProjectile(player, true))
 					continue;
 				int distance = Utils.getDistance(npc.getX(), npc.getY(),
 						player.getX(), player.getY());

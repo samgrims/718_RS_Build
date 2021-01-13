@@ -48,7 +48,7 @@ public class GodwarsArmadylFaction extends NPC {
 															&& player.getAttackedBy() != this && player
 															.getAttackedByDelay() > Utils
 															.currentTimeMillis())
-															|| !clipedProjectile(player, false) || !hasGodItem(player))
+															|| !isNotClippedProjectile(player, false) || !hasGodItem(player))
 						continue;
 					possibleTarget.add(player);
 				}
@@ -74,7 +74,7 @@ public class GodwarsArmadylFaction extends NPC {
 															&& npc.getAttackedBy() != this && npc
 															.getAttackedByDelay() > Utils
 															.currentTimeMillis())
-															|| !clipedProjectile(npc, false))
+															|| !isNotClippedProjectile(npc, false))
 						continue;
 					possibleTarget.add(npc);
 				}

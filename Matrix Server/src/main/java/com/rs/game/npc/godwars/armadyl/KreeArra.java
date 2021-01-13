@@ -42,7 +42,7 @@ public class KreeArra extends NPC {
 									&& player.getAttackedBy() != this && player
 									.getAttackedByDelay() > System
 									.currentTimeMillis())
-							|| !clipedProjectile(player, false))
+							|| !isNotClippedProjectile(player, false))
 						continue;
 					possibleTarget.add(player);
 				}

@@ -37,7 +37,7 @@ public class PlayerFollow extends Action {
 		if (player.getFreezeDelay() >= Utils.currentTimeMillis())
 			return true;
 		maxDistance = 0;
-		if ((!player.clipedProjectile(target, maxDistance == 0))
+		if ((!player.isNotClippedProjectile(target, maxDistance == 0))
 				|| distanceX > size + maxDistance
 				|| distanceX < -1 - maxDistance
 				|| distanceY > size + maxDistance

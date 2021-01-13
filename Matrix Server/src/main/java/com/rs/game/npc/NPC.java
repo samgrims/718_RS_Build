@@ -775,7 +775,7 @@ public class NPC extends Entity implements Serializable {
 																							currentTimeMillis() || player
 																							.getFindTargetDelay() > Utils
 																							.currentTimeMillis()))
-																							|| !clipedProjectile(player, false)
+																							|| !isNotClippedProjectile(player, false)
 																							|| (!forceAgressive && !Wilderness.isAtWild(this) && player
 																									.getSkills().getCombatLevelWithSummoning() >= getCombatLevel() * 2))
 						continue;

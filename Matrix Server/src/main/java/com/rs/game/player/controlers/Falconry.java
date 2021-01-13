@@ -164,7 +164,7 @@ public class Falconry extends Controller {
 		int size = player.getSize();
 		int maxDistance = 16;
 		player.resetWalkSteps();
-		if ((!player.clipedProjectile(target, maxDistance  == 0)) || distanceX > size + maxDistance || distanceX < -1 - maxDistance || distanceY > size + maxDistance || distanceY < -1 - maxDistance) {
+		if ((!player.isNotClippedProjectile(target, maxDistance  == 0)) || distanceX > size + maxDistance || distanceX < -1 - maxDistance || distanceY > size + maxDistance || distanceY < -1 - maxDistance) {
 			if(!player.addWalkStepsInteract(target.getX(), target.getY(), 2, size, true)) 
 				return true;
 		}

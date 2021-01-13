@@ -101,7 +101,7 @@ public class Nomad extends NPC {
 	@Override
 	public void processNPC() {
 		Entity target = getCombat().getTarget();
-		if(target instanceof Player && !clipedProjectile(target, false)) {
+		if(target instanceof Player && !isNotClippedProjectile(target, false)) {
 			notAttacked++;
 			if(notAttacked == 10) {
 				if(copies != null) {

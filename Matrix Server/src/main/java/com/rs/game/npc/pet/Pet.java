@@ -197,7 +197,7 @@ public final class Pet extends NPC {
 			}
 			return;
 		}		
-		if ((!clipedProjectile(owner, true)) || distanceX > size || distanceX < -1 || distanceY > size || distanceY < -1) {
+		if ((!isNotClippedProjectile(owner, true)) || distanceX > size || distanceX < -1 || distanceY > size || distanceY < -1) {
 			resetWalkSteps();
 			addWalkStepsInteract(owner.getX(), owner.getY(), getRun() ? 2 : 1, size, true);
 			return;

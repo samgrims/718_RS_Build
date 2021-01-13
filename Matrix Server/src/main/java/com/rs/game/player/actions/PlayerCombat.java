@@ -30,6 +30,7 @@ import com.rs.game.player.content.Combat;
 import com.rs.game.player.content.Magic;
 import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
+import com.rs.tools.DebugLine;
 import com.rs.utils.MapAreas;
 import com.rs.utils.Utils;
 
@@ -53,6 +54,7 @@ public class PlayerCombat extends Action {
 
 	@Override
 	public boolean start(Player player) {
+		DebugLine.print("Combat started");
 		player.setNextFaceEntity(target);
 		if (checkAll(player)) {
 			return true;
@@ -87,7 +89,7 @@ public class PlayerCombat extends Action {
 		if (player.getTemporaryAttributtes().get("miasmic_effect") == Boolean.TRUE) 
 			multiplier = 1.5;
 		int size = target.getSize();
-		if (!player.clipedProjectile(target, maxDistance == 0 && !forceCheckClipAsRange(target)))
+		if (!player.isNotClippedProjectile(target, maxDistance == 0 && !forceCheckClipAsRange(target)))
 			return 0;
 		if (player.hasWalkSteps())
 			maxDistance += 1;
@@ -3410,6 +3412,8 @@ public class PlayerCombat extends Action {
 				|| target.hasFinished()) {
 			return false;
 		}
+		player = player;
+
 		int distanceX = player.getX() - target.getX();
 		int distanceY = player.getY() - target.getY();
 		int size = target.getSize();
@@ -3513,60 +3517,59 @@ public class PlayerCombat extends Action {
 				player.addWalkSteps(player.getX(), target.getY(), 1);
 			return true;
 		}
-		maxDistance = isRanging != 0
-				|| player.getCombatDefinitions().getSpellId() > 0 || hasPolyporeStaff(player) ? 7 : 0;
-				if ((!player.clipedProjectile(target, maxDistance == 0 && !forceCheckClipAsRange(target)))
-						|| distanceX > size + maxDistance
-						|| distanceX < -1 - maxDistance
-						|| distanceY > size + maxDistance
-						|| distanceY < -1 - maxDistance) {
-					if (!player.hasWalkSteps()) {
-						player.resetWalkSteps();
-						player.addWalkStepsInteract(target.getX(), target.getY(),
-								player.getRun() ? 2 : 1, size, true);
-					}
-					return true;
-				} else {
-					player.resetWalkSteps();
-				}
-				if (player.getPolDelay() >= Utils.currentTimeMillis()
-						&& !(player.getEquipment().getWeaponId() == 15486
-						|| player.getEquipment().getWeaponId() == 22207
-						|| player.getEquipment().getWeaponId() == 22209
-						|| player.getEquipment().getWeaponId() == 22211 || player
-						.getEquipment().getWeaponId() == 22213))
-					player.setPolDelay(0);
-				player.getTemporaryAttributtes().put("last_target", target);
-				if (target != null)
-					target.getTemporaryAttributtes().put("last_attacker", player);
-				if (player.getCombatDefinitions().isInstantAttack()) {
-					player.getCombatDefinitions().setInstantAttack(false);
-					if (player.getCombatDefinitions().getAutoCastSpell() > 0)
-						return true;
-					if (player.getCombatDefinitions().isUsingSpecialAttack()) {
-						if (!specialExecute(player))
-							return true;
-						player.getActionManager().setActionDelay(0);
-						int weaponId = player.getEquipment().getWeaponId();
-						int attackStyle = player.getCombatDefinitions().getAttackStyle();
-						switch(weaponId) {
-						case 4153:
-							player.setNextAnimation(new Animation(1667));
-							player.setNextGraphics(new Graphics(340, 0, 96 << 16));
-							delayNormalHit(
-									weaponId,
-									attackStyle,
-									getMeleeHit(
-											player,
-											getRandomMaxHit(player, weaponId, attackStyle,
-													false, true, 1.1, true)));
-							break;
-						}
-						player.getActionManager().setActionDelay(4);
-					}
-					return true;
-				}
+		maxDistance = isRanging != 0 || player.getCombatDefinitions().getSpellId() > 0 || hasPolyporeStaff(player) ? 7 : 0;
+		player.getPackets().sendGameMessage("Attack not clipped/can access " + player.isNotClippedProjectile(target, maxDistance == 0 && !forceCheckClipAsRange(target)));
+		if ((!player.isNotClippedProjectile(target, maxDistance == 0 && !forceCheckClipAsRange(target))) || beyondMaxPlayerDistance(distanceX, distanceY, size, maxDistance)) {
+			if (!player.hasWalkSteps()) {
+				player.resetWalkSteps();
+				player.addWalkStepsInteract(target.getX(), target.getY(), player.getRun() ? 2 : 1, size, true);
+			}
+			return true;
+		} else {
+			player.resetWalkSteps();
+		}
+		if (player.getPolDelay() >= Utils.currentTimeMillis()
+				&& !(player.getEquipment().getWeaponId() == 15486
+				|| player.getEquipment().getWeaponId() == 22207
+				|| player.getEquipment().getWeaponId() == 22209
+				|| player.getEquipment().getWeaponId() == 22211 || player
+				.getEquipment().getWeaponId() == 22213))
+			player.setPolDelay(0);
+		player.getTemporaryAttributtes().put("last_target", target);
+		if (target != null)
+			target.getTemporaryAttributtes().put("last_attacker", player);
+		if (player.getCombatDefinitions().isInstantAttack()) {
+			player.getCombatDefinitions().setInstantAttack(false);
+			if (player.getCombatDefinitions().getAutoCastSpell() > 0)
 				return true;
+			if (player.getCombatDefinitions().isUsingSpecialAttack()) {
+				if (!specialExecute(player))
+					return true;
+				player.getActionManager().setActionDelay(0);
+				int weaponId = player.getEquipment().getWeaponId();
+				int attackStyle = player.getCombatDefinitions().getAttackStyle();
+				switch(weaponId) {
+				case 4153:
+					player.setNextAnimation(new Animation(1667));
+					player.setNextGraphics(new Graphics(340, 0, 96 << 16));
+					delayNormalHit(
+							weaponId,
+							attackStyle,
+							getMeleeHit(
+									player,
+									getRandomMaxHit(player, weaponId, attackStyle,
+											false, true, 1.1, true)));
+					break;
+				}
+				player.getActionManager().setActionDelay(4);
+			}
+			return true;
+		}
+		return true;
+	}
+
+	public static boolean beyondMaxPlayerDistance(int distanceX, int distanceY, int npcSize, int maxDistance) {
+		return distanceX > npcSize + maxDistance || distanceX < -1 - maxDistance || distanceY > npcSize + maxDistance || distanceY < -1 - maxDistance;
 	}
 
 	public static boolean specialExecute(Player player) {

@@ -152,7 +152,7 @@ public class NomadCombat extends CombatScript {
 								player.getPackets().sendVoice(7960);
 								secondLoop = true;
 							}else{
-								if(npc.clipedProjectile(target, false)) {
+								if(npc.isNotClippedProjectile(target, false)) {
 									delayHit(npc, 2, target, getRegularHit(npc, 750));
 									World.sendProjectile(npc, target, 1658, 30, 30, 75, 25, 0, 0);
 								}

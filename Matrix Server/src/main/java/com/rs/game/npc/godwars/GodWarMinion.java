@@ -40,7 +40,7 @@ public class GodWarMinion extends NPC {
 									&& player.getAttackedBy() != this && player
 									.getAttackedByDelay() > Utils
 									.currentTimeMillis())
-							|| !clipedProjectile(player, false))
+							|| !isNotClippedProjectile(player, false))
 						continue;
 					possibleTarget.add(player);
 				}

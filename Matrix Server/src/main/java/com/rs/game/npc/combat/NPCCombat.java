@@ -63,7 +63,7 @@ public final class NPCCombat {
 		int attackStyle = defs.getAttackStyle();
 		int maxDistance = attackStyle == NPCCombatDefinitions.MELEE || attackStyle == NPCCombatDefinitions.SPECIAL2 ? 0 : 7;
 		if ((!(npc instanceof Nex))
-				&& !npc.clipedProjectile(target, maxDistance == 0))
+				&& !npc.isNotClippedProjectile(target, maxDistance == 0))
 			return 0;
 		int distanceX = target.getX() - npc.getX();
 		int distanceY = target.getY() - npc.getY();
@@ -255,7 +255,7 @@ public final class NPCCombat {
 								: 7;
 				npc.resetWalkSteps();
 				// is far from target, moves to it till can attack
-				if ((!npc.clipedProjectile(target, maxDistance == 0))
+				if ((!npc.isNotClippedProjectile(target, maxDistance == 0))
 						|| distanceX > size + maxDistance
 						|| distanceX < -1 - maxDistance
 						|| distanceY > size + maxDistance

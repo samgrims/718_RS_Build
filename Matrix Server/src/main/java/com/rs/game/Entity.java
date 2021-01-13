@@ -396,17 +396,17 @@ public abstract class Entity extends WorldTile {
 	/*
 	 * returns if cliped
 	 */
-	public boolean clipedProjectile(WorldTile tile, boolean checkClose) {
+	public boolean isNotClippedProjectile(WorldTile tile, boolean checkClose) {
 		if(tile instanceof NPC) {
 			NPC n = (NPC) tile;
 			if(this instanceof Player)
-				return n.clipedProjectile(this, checkClose);
+				return n.isNotClippedProjectile(this, checkClose);
 			tile = n.getMiddleWorldTile();
 		}else if (tile instanceof Player && this instanceof Player){
 			Player p = (Player) tile;
-			return clipedProjectile(tile, checkClose, 1) || p.clipedProjectile(this, checkClose, 1);
+			return isNotClippedProjectile(tile, checkClose, 1) || p.isNotClippedProjectile(this, checkClose, 1);
 		}
-		return clipedProjectile(tile, checkClose, 1); // size 1 thats arrow
+		return isNotClippedProjectile(tile, checkClose, 1); // size 1 thats arrow
 														// size, the tile has to
 														// be target center
 														// coord not base
@@ -510,9 +510,9 @@ public abstract class Entity extends WorldTile {
 	}
 
 	/*
-	 * returns if cliped
+	 * returns if not cliped
 	 */
-	public boolean clipedProjectile(WorldTile tile, boolean checkClose, int size) {
+	public boolean isNotClippedProjectile(WorldTile tile, boolean isClose, int size) {
 		int myX = getX();
 		int myY = getY();
 		if(this instanceof NPC && size == 1) {
@@ -537,12 +537,17 @@ public abstract class Entity extends WorldTile {
 			int dir = Utils.getMoveDirection(myX - lastTileX, myY - lastTileY);
 			if (dir == -1)
 				return false;
-			if (checkClose) {
-				if (!World.checkWalkStep(getPlane(), lastTileX, lastTileY, dir,
-						size))
+
+			boolean b;
+			if(!World.canUseProjectileOnStep(getPlane(), lastTileX, lastTileY, dir, size)) {
+				System.out.println("We cannot projectile!");
+				b = World.canUseProjectileOnStep(getPlane(), lastTileX, lastTileY, dir, size);
+			}
+
+			if (isClose) {
+				if (!World.checkWalkStep(getPlane(), lastTileX, lastTileY, dir, size))
 					return false;
-			} else if (!World.checkProjectileStep(getPlane(), lastTileX,
-					lastTileY, dir, size))
+			} else if (!World.canUseProjectileOnStep(getPlane(), lastTileX, lastTileY, dir, size))
 				return false;
 			lastTileX = myX;
 			lastTileY = myY;
@@ -551,10 +556,8 @@ public abstract class Entity extends WorldTile {
 		}
 	}
 
-	public boolean addWalkStepsInteract(int destX, int destY,
-			int maxStepsCount, int size, boolean calculate) {
-		return addWalkStepsInteract(destX, destY, maxStepsCount, size, size,
-				calculate);
+	public boolean addWalkStepsInteract(int destX, int destY, int maxStepsCount, int size, boolean calculate) {
+		return addWalkStepsInteract(destX, destY, maxStepsCount, size, size, calculate);
 	}
 
 	public boolean canWalkNPC(int toX, int toY) {
@@ -621,8 +624,7 @@ public abstract class Entity extends WorldTile {
 	/*
 	 * return added all steps
 	 */
-	public boolean addWalkStepsInteract(final int destX, final int destY,
-			int maxStepsCount, int sizeX, int sizeY, boolean calculate) {
+	public boolean addWalkStepsInteract(final int destX, final int destY, int maxStepsCount, int sizeX, int sizeY, boolean calculate) {
 		int[] lastTile = getLastWalkTile();
 		int myX = lastTile[0];
 		int myY = lastTile[1];
@@ -645,8 +647,7 @@ public abstract class Entity extends WorldTile {
 					return false;
 				myX = myRealX;
 				myY = myRealY;
-				int[] myT = calculatedStep(myRealX, myRealY, destX, destY,
-						lastTile[0], lastTile[1], sizeX, sizeY);
+				int[] myT = calculatedStep(myRealX, myRealY, destX, destY,	lastTile[0], lastTile[1], sizeX, sizeY);
 				if (myT == null)
 					return false;
 				myX = myT[0];

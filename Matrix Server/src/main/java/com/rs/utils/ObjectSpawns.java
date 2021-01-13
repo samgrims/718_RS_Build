@@ -93,11 +93,9 @@ public final class ObjectSpawns {
 		}
 	}
 
-	private static final void addObjectSpawn(int objectId, int type,
-			int rotation, int regionId, WorldTile tile, boolean cliped) {
+	private static final void addObjectSpawn(int objectId, int type, int rotation, int regionId, WorldTile tile, boolean cliped) {
 		try {
-			DataOutputStream out = new DataOutputStream(new FileOutputStream(
-					Settings.SERVER_DIR + "data/map/packedSpawns/" + regionId + ".os", true));
+			DataOutputStream out = new DataOutputStream(new FileOutputStream(Settings.SERVER_DIR + "data/map/packedSpawns/" + regionId + ".os", true));
 			out.writeShort(objectId);
 			out.writeByte(type);
 			out.writeByte(rotation);

@@ -480,7 +480,7 @@ public final class ObjectHandler {
 						}
 
 					}, 1, 0);
-				}else if (id == 45076)
+				} else if (id == 45076)
 					player.getActionManager().setAction(new Mining(object, RockDefinitions.LRC_Gold_Ore));
 				else if (id == 5999)
 					player.getActionManager().setAction(new Mining(object, RockDefinitions.LRC_Coal_Ore));
@@ -631,16 +631,10 @@ public final class ObjectHandler {
 					player.getControlerManager().startController("Wilderness");
 				} else if (id == 38815 && object.getX() == 3209
 						&& object.getY() == 3780 && object.getPlane() == 0) {
-					if (player.getSkills().getLevelForXp(Skills.WOODCUTTING) < 37
-							|| player.getSkills().getLevelForXp(Skills.MINING) < 45
-							|| player.getSkills().getLevelForXp(
-									Skills.SUMMONING) < 23
-									|| player.getSkills().getLevelForXp(
-											Skills.FIREMAKING) < 47
+					if (player.getSkills().getLevelForXp(Skills.WOODCUTTING) < 37 || player.getSkills().getLevelForXp(Skills.MINING) < 45
+							|| player.getSkills().getLevelForXp(Skills.SUMMONING) < 23 || player.getSkills().getLevelForXp(Skills.FIREMAKING) < 47
 											|| player.getSkills().getLevelForXp(Skills.PRAYER) < 55) {
-						player.getPackets()
-						.sendGameMessage(
-								"You need 23 Summoning, 37 Woodcutting, 45 Mining, 47 Firemaking and 55 Prayer to enter this dungeon.");
+						player.getPackets().sendGameMessage("You need 23 Summoning, 37 Woodcutting, 45 Mining, 47 Firemaking and 55 Prayer to enter this dungeon.");
 						return;
 					}
 					player.stopAll();
@@ -667,10 +661,8 @@ public final class ObjectHandler {
 						&& object.getY() == 4680) { // kbd lever
 					Magic.pushLeverTeleport(player, new WorldTile(3067, 10254,
 							0));
-				} else if (id == 1816 && object.getX() == 3067
-						&& object.getY() == 10252) { // kbd out lever
-					Magic.pushLeverTeleport(player,
-							new WorldTile(2273, 4681, 0));
+				} else if (id == 1816 && object.getX() == 3067 && object.getY() == 10252) { // kbd out lever
+					Magic.pushLeverTeleport(player,	new WorldTile(2273, 4681, 0));
 				} else if (id == 32015 && object.getX() == 3069
 						&& object.getY() == 10256) { // kbd stairs
 					player.useStairs(828, new WorldTile(3017, 3848, 0), 1, 2);
@@ -1437,6 +1429,10 @@ public final class ObjectHandler {
 //		} else
 //			return false;
 //		return false;
+		if(!isCorrectLumbridgeStairLocations(player, object)) {
+			return false;
+		}
+
 		String option = object.getDefinitions().getOption(optionId);
 		if (option.equalsIgnoreCase("Climb-up")) {
 			if (player.getPlane() == 3)
@@ -1459,6 +1455,16 @@ public final class ObjectHandler {
 			return false;
 		return false;
 
+	}
+
+	private static boolean isCorrectLumbridgeStairLocations(Player player, WorldObject object) {
+		if(object.getId() == 36773) {//South staircase inside lumbridge castle, first floor
+			if(player.getLocation().matches(new WorldTile(3206, 3208, 0)) || player.getLocation().matches(new WorldTile(3205, 3209, 0))
+					|| player.getLocation().matches(new WorldTile(3206, 3209, 0)))
+				return true;
+			return false;
+		}
+		return true;
 	}
 
 	private static WorldTile stairCaseUp(WorldObject object, Player player) {

@@ -550,10 +550,9 @@ public final class World {
 		return region.getMaskClipedOnly(tile.getPlane(), baseLocalX, baseLocalY);
 	}
 
-	public static final boolean checkProjectileStep(int plane, int x, int y,
-			int dir, int size) {
-		int xOffset = Utils.DIRECTION_DELTA_X[dir];
-		int yOffset = Utils.DIRECTION_DELTA_Y[dir];
+	public static final boolean canUseProjectileOnStep(int sourcePlane, int sourceX, int sourceY, int direction, int size) {
+		int xOffset = Utils.DIRECTION_DELTA_X[direction];
+		int yOffset = Utils.DIRECTION_DELTA_Y[direction];
 		/*
 		 * int rotation = getRotation(plane,x+xOffset,y+yOffset); if(rotation !=
 		 * 0) { dir += rotation; if(dir >= Utils.DIRECTION_DELTA_X.length) dir =
@@ -562,9 +561,7 @@ public final class World {
 		 * }
 		 */
 		if (size == 1) {
-			int mask = getClipedOnlyMask(plane, x
-					+ Utils.DIRECTION_DELTA_X[dir], y
-					+ Utils.DIRECTION_DELTA_Y[dir]);
+			int mask = getClipedOnlyMask(sourcePlane, sourceX + Utils.DIRECTION_DELTA_X[direction], sourceY + Utils.DIRECTION_DELTA_Y[direction]);
 			if (xOffset == -1 && yOffset == 0)
 				return (mask & 0x42240000) == 0;
 			if (xOffset == 1 && yOffset == 0)
@@ -574,113 +571,112 @@ public final class World {
 			if (xOffset == 0 && yOffset == 1)
 				return (mask & 0x48240000) == 0;
 			if (xOffset == -1 && yOffset == -1) {
-				return (mask & 0x43a40000) == 0
-						&& (getClipedOnlyMask(plane, x - 1, y) & 0x42240000) == 0
-						&& (getClipedOnlyMask(plane, x, y - 1) & 0x40a40000) == 0;
+				return (mask & 0x43a40000) == 0	&& (getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY) & 0x42240000) == 0
+						&& (getClipedOnlyMask(sourcePlane, sourceX, sourceY - 1) & 0x40a40000) == 0;
 			}
 			if (xOffset == 1 && yOffset == -1) {
 				return (mask & 0x60e40000) == 0
-						&& (getClipedOnlyMask(plane, x + 1, y) & 0x60240000) == 0
-						&& (getClipedOnlyMask(plane, x, y - 1) & 0x40a40000) == 0;
+						&& (getClipedOnlyMask(sourcePlane, sourceX + 1, sourceY) & 0x60240000) == 0
+						&& (getClipedOnlyMask(sourcePlane, sourceX, sourceY - 1) & 0x40a40000) == 0;
 			}
 			if (xOffset == -1 && yOffset == 1) {
 				return (mask & 0x4e240000) == 0
-						&& (getClipedOnlyMask(plane, x - 1, y) & 0x42240000) == 0
-						&& (getClipedOnlyMask(plane, x, y + 1) & 0x48240000) == 0;
+						&& (getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY) & 0x42240000) == 0
+						&& (getClipedOnlyMask(sourcePlane, sourceX, sourceY + 1) & 0x48240000) == 0;
 			}
 			if (xOffset == 1 && yOffset == 1) {
 				return (mask & 0x78240000) == 0
-						&& (getClipedOnlyMask(plane, x + 1, y) & 0x60240000) == 0
-						&& (getClipedOnlyMask(plane, x, y + 1) & 0x48240000) == 0;
+						&& (getClipedOnlyMask(sourcePlane, sourceX + 1, sourceY) & 0x60240000) == 0
+						&& (getClipedOnlyMask(sourcePlane, sourceX, sourceY + 1) & 0x48240000) == 0;
 			}
 		} else if (size == 2) {
 			if (xOffset == -1 && yOffset == 0)
-				return (getClipedOnlyMask(plane, x - 1, y) & 0x43a40000) == 0
-				&& (getClipedOnlyMask(plane, x - 1, y + 1) & 0x4e240000) == 0;
+				return (getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY) & 0x43a40000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY + 1) & 0x4e240000) == 0;
 			if (xOffset == 1 && yOffset == 0)
-				return (getClipedOnlyMask(plane, x + 2, y) & 0x60e40000) == 0
-				&& (getClipedOnlyMask(plane, x + 2, y + 1) & 0x78240000) == 0;
+				return (getClipedOnlyMask(sourcePlane, sourceX + 2, sourceY) & 0x60e40000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX + 2, sourceY + 1) & 0x78240000) == 0;
 			if (xOffset == 0 && yOffset == -1)
-				return (getClipedOnlyMask(plane, x, y - 1) & 0x43a40000) == 0
-				&& (getClipedOnlyMask(plane, x + 1, y - 1) & 0x60e40000) == 0;
+				return (getClipedOnlyMask(sourcePlane, sourceX, sourceY - 1) & 0x43a40000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX + 1, sourceY - 1) & 0x60e40000) == 0;
 			if (xOffset == 0 && yOffset == 1)
-				return (getClipedOnlyMask(plane, x, y + 2) & 0x4e240000) == 0
-				&& (getClipedOnlyMask(plane, x + 1, y + 2) & 0x78240000) == 0;
+				return (getClipedOnlyMask(sourcePlane, sourceX, sourceY + 2) & 0x4e240000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX + 1, sourceY + 2) & 0x78240000) == 0;
 			if (xOffset == -1 && yOffset == -1)
-				return (getClipedOnlyMask(plane, x - 1, y) & 0x4fa40000) == 0
-				&& (getClipedOnlyMask(plane, x - 1, y - 1) & 0x43a40000) == 0
-				&& (getClipedOnlyMask(plane, x, y - 1) & 0x63e40000) == 0;
+				return (getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY) & 0x4fa40000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY - 1) & 0x43a40000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX, sourceY - 1) & 0x63e40000) == 0;
 			if (xOffset == 1 && yOffset == -1)
-				return (getClipedOnlyMask(plane, x + 1, y - 1) & 0x63e40000) == 0
-				&& (getClipedOnlyMask(plane, x + 2, y - 1) & 0x60e40000) == 0
-				&& (getClipedOnlyMask(plane, x + 2, y) & 0x78e40000) == 0;
+				return (getClipedOnlyMask(sourcePlane, sourceX + 1, sourceY - 1) & 0x63e40000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX + 2, sourceY - 1) & 0x60e40000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX + 2, sourceY) & 0x78e40000) == 0;
 			if (xOffset == -1 && yOffset == 1)
-				return (getClipedOnlyMask(plane, x - 1, y + 1) & 0x4fa40000) == 0
-				&& (getClipedOnlyMask(plane, x - 1, y + 1) & 0x4e240000) == 0
-				&& (getClipedOnlyMask(plane, x, y + 2) & 0x7e240000) == 0;
+				return (getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY + 1) & 0x4fa40000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY + 1) & 0x4e240000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX, sourceY + 2) & 0x7e240000) == 0;
 			if (xOffset == 1 && yOffset == 1)
-				return (getClipedOnlyMask(plane, x + 1, y + 2) & 0x7e240000) == 0
-				&& (getClipedOnlyMask(plane, x + 2, y + 2) & 0x78240000) == 0
-				&& (getClipedOnlyMask(plane, x + 1, y + 1) & 0x78e40000) == 0;
+				return (getClipedOnlyMask(sourcePlane, sourceX + 1, sourceY + 2) & 0x7e240000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX + 2, sourceY + 2) & 0x78240000) == 0
+				&& (getClipedOnlyMask(sourcePlane, sourceX + 1, sourceY + 1) & 0x78e40000) == 0;
 		} else {
 			if (xOffset == -1 && yOffset == 0) {
-				if ((getClipedOnlyMask(plane, x - 1, y) & 0x43a40000) != 0
-						|| (getClipedOnlyMask(plane, x - 1, -1 + (y + size)) & 0x4e240000) != 0)
+				if ((getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY) & 0x43a40000) != 0
+						|| (getClipedOnlyMask(sourcePlane, sourceX - 1, -1 + (sourceY + size)) & 0x4e240000) != 0)
 					return false;
 				for (int sizeOffset = 1; sizeOffset < size - 1; sizeOffset++)
-					if ((getClipedOnlyMask(plane, x - 1, y + sizeOffset) & 0x4fa40000) != 0)
+					if ((getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY + sizeOffset) & 0x4fa40000) != 0)
 						return false;
 			} else if (xOffset == 1 && yOffset == 0) {
-				if ((getClipedOnlyMask(plane, x + size, y) & 0x60e40000) != 0
-						|| (getClipedOnlyMask(plane, x + size, y - (-size + 1)) & 0x78240000) != 0)
+				if ((getClipedOnlyMask(sourcePlane, sourceX + size, sourceY) & 0x60e40000) != 0
+						|| (getClipedOnlyMask(sourcePlane, sourceX + size, sourceY - (-size + 1)) & 0x78240000) != 0)
 					return false;
 				for (int sizeOffset = 1; sizeOffset < size - 1; sizeOffset++)
-					if ((getClipedOnlyMask(plane, x + size, y + sizeOffset) & 0x78e40000) != 0)
+					if ((getClipedOnlyMask(sourcePlane, sourceX + size, sourceY + sizeOffset) & 0x78e40000) != 0)
 						return false;
 			} else if (xOffset == 0 && yOffset == -1) {
-				if ((getClipedOnlyMask(plane, x, y - 1) & 0x43a40000) != 0
-						|| (getClipedOnlyMask(plane, x + size - 1, y - 1) & 0x60e40000) != 0)
+				if ((getClipedOnlyMask(sourcePlane, sourceX, sourceY - 1) & 0x43a40000) != 0
+						|| (getClipedOnlyMask(sourcePlane, sourceX + size - 1, sourceY - 1) & 0x60e40000) != 0)
 					return false;
 				for (int sizeOffset = 1; sizeOffset < size - 1; sizeOffset++)
-					if ((getClipedOnlyMask(plane, x + sizeOffset, y - 1) & 0x63e40000) != 0)
+					if ((getClipedOnlyMask(sourcePlane, sourceX + sizeOffset, sourceY - 1) & 0x63e40000) != 0)
 						return false;
 			} else if (xOffset == 0 && yOffset == 1) {
-				if ((getClipedOnlyMask(plane, x, y + size) & 0x4e240000) != 0
-						|| (getClipedOnlyMask(plane, x + (size - 1), y + size) & 0x78240000) != 0)
+				if ((getClipedOnlyMask(sourcePlane, sourceX, sourceY + size) & 0x4e240000) != 0
+						|| (getClipedOnlyMask(sourcePlane, sourceX + (size - 1), sourceY + size) & 0x78240000) != 0)
 					return false;
 				for (int sizeOffset = 1; sizeOffset < size - 1; sizeOffset++)
-					if ((getClipedOnlyMask(plane, x + sizeOffset, y + size) & 0x7e240000) != 0)
+					if ((getClipedOnlyMask(sourcePlane, sourceX + sizeOffset, sourceY + size) & 0x7e240000) != 0)
 						return false;
 			} else if (xOffset == -1 && yOffset == -1) {
-				if ((getClipedOnlyMask(plane, x - 1, y - 1) & 0x43a40000) != 0)
+				if ((getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY - 1) & 0x43a40000) != 0)
 					return false;
 				for (int sizeOffset = 1; sizeOffset < size; sizeOffset++)
-					if ((getClipedOnlyMask(plane, x - 1, y + (-1 + sizeOffset)) & 0x4fa40000) != 0
-					|| (getClipedOnlyMask(plane, sizeOffset - 1 + x,
-							y - 1) & 0x63e40000) != 0)
+					if ((getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY + (-1 + sizeOffset)) & 0x4fa40000) != 0
+					|| (getClipedOnlyMask(sourcePlane, sizeOffset - 1 + sourceX,
+							sourceY - 1) & 0x63e40000) != 0)
 						return false;
 			} else if (xOffset == 1 && yOffset == -1) {
-				if ((getClipedOnlyMask(plane, x + size, y - 1) & 0x60e40000) != 0)
+				if ((getClipedOnlyMask(sourcePlane, sourceX + size, sourceY - 1) & 0x60e40000) != 0)
 					return false;
 				for (int sizeOffset = 1; sizeOffset < size; sizeOffset++)
-					if ((getClipedOnlyMask(plane, x + size, sizeOffset
-							+ (-1 + y)) & 0x78e40000) != 0
-							|| (getClipedOnlyMask(plane, x + sizeOffset, y - 1) & 0x63e40000) != 0)
+					if ((getClipedOnlyMask(sourcePlane, sourceX + size, sizeOffset
+							+ (-1 + sourceY)) & 0x78e40000) != 0
+							|| (getClipedOnlyMask(sourcePlane, sourceX + sizeOffset, sourceY - 1) & 0x63e40000) != 0)
 						return false;
 			} else if (xOffset == -1 && yOffset == 1) {
-				if ((getClipedOnlyMask(plane, x - 1, y + size) & 0x4e240000) != 0)
+				if ((getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY + size) & 0x4e240000) != 0)
 					return false;
 				for (int sizeOffset = 1; sizeOffset < size; sizeOffset++)
-					if ((getClipedOnlyMask(plane, x - 1, y + sizeOffset) & 0x4fa40000) != 0
-					|| (getClipedOnlyMask(plane, -1 + (x + sizeOffset),
-							y + size) & 0x7e240000) != 0)
+					if ((getClipedOnlyMask(sourcePlane, sourceX - 1, sourceY + sizeOffset) & 0x4fa40000) != 0
+					|| (getClipedOnlyMask(sourcePlane, -1 + (sourceX + sizeOffset),
+							sourceY + size) & 0x7e240000) != 0)
 						return false;
 			} else if (xOffset == 1 && yOffset == 1) {
-				if ((getClipedOnlyMask(plane, x + size, y + size) & 0x78240000) != 0)
+				if ((getClipedOnlyMask(sourcePlane, sourceX + size, sourceY + size) & 0x78240000) != 0)
 					return false;
 				for (int sizeOffset = 1; sizeOffset < size; sizeOffset++)
-					if ((getClipedOnlyMask(plane, x + sizeOffset, y + size) & 0x7e240000) != 0
-					|| (getClipedOnlyMask(plane, x + size, y
+					if ((getClipedOnlyMask(sourcePlane, sourceX + sizeOffset, sourceY + size) & 0x7e240000) != 0
+					|| (getClipedOnlyMask(sourcePlane, sourceX + size, sourceY
 							+ sizeOffset) & 0x78e40000) != 0)
 						return false;
 			}

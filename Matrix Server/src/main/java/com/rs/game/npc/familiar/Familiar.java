@@ -95,7 +95,7 @@ public abstract class Familiar extends NPC implements Serializable {
 
 
 
-		if ((!clipedProjectile(owner, true)) || distanceX > size
+		if ((!isNotClippedProjectile(owner, true)) || distanceX > size
 				|| distanceX < -1 || distanceY > size || distanceY < -1) {
 			resetWalkSteps();
 			addWalkStepsInteract(owner.getX(), owner.getY(), getRun() ? 2 : 1, size, true);
