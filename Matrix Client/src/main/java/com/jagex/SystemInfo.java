@@ -6,7 +6,7 @@ import java.util.HashMap;
 import jaclib.hardware_info.HardwareInfo;
 
 public class SystemInfo extends Class298 {
-	int cpuInfo;
+	int numberOfCPUCores;
 	static int anInt7467 = 3;
 	static int anInt7468 = 4;
 	int anInt7469;
@@ -38,7 +38,7 @@ public class SystemInfo extends Class298 {
 	boolean aBoolean7495;
 	String aString7496;
 	static int anInt7497 = 0;
-	int anInt7498;
+	int availableCores;
 	static int anInt7499 = 20;
 	static int anInt7500 = 2;
 	int cpuClockSpeed1;
@@ -49,7 +49,7 @@ public class SystemInfo extends Class298 {
 	int directXDriverData2;
 	int directXDriverDate;
 	static int anInt7508 = 6;
-	boolean aBoolean7509;
+	boolean is64Bit;
 	public int cpuClockSpeed;
 	String aString7511;
 	int[] anIntArray7512 = new int[3];
@@ -78,35 +78,34 @@ public class SystemInfo extends Class298 {
 	public void writeMachineInformation(RsByteBuffer buffer, int i) {
 		try {
 			buffer.writeByte(6); //protocol 6, before 5
-			buffer.writeByte((((SystemInfo) this).anInt7471 * -1570985485)); //OS type.
-			buffer.writeByte((((SystemInfo) this).aBoolean7509 ? 1 : 0)); //64-bit
-			buffer.writeByte((-1414570243 * ((SystemInfo) this).anInt7486)); //OS version
-			buffer.writeByte((((SystemInfo) this).anInt7491 * 43286197)); //Java vendor
+			buffer.writeByte((this.anInt7471 * -1570985485)); //OS type.
+			buffer.writeByte((this.is64Bit ? 1 : 0)); //64-bit
+			buffer.writeByte((-1414570243 * this.anInt7486)); //OS version
+			buffer.writeByte((this.anInt7491 * 43286197)); //Java vendor
 			buffer.writeByte(javaRelease * 154600941); //Java version
-			buffer.writeByte((-1529246497 * ((SystemInfo) this).javaSubVersion)); //Java sub version
+			buffer.writeByte((-1529246497 * this.javaSubVersion)); //Java sub version
 			buffer.writeByte(javaSubSubVersion * 1324779323); //Java sub sub version.
-			buffer.writeByte((((SystemInfo) this).aBoolean7495 ? 1 : 0)); //Always false
-			buffer.writeShort((((SystemInfo) this).anInt7469 * -2088235843), 16711935); //Maximum memory
-			buffer.writeByte((-1837764033 * ((SystemInfo) this).anInt7498)); //Available processors
+			buffer.writeByte((this.aBoolean7495 ? 1 : 0)); //Always false
+			buffer.writeShort((this.anInt7469 * -2088235843), 16711935); //Maximum memory
+			buffer.writeByte((-1837764033 * this.availableCores)); //Available processors
 			buffer.putTriByte(399637415 * cpuClockSpeed, (byte) 115); //Clock speed (MHz)
-			buffer.writeShort((-1360789919 * ((SystemInfo) this).cpuClockSpeed1), 16711935); //Clock speed (MHz)
-			buffer.putJagString(((SystemInfo) this).aString7502, (short) 14956); //Empty
-			buffer.putJagString(((SystemInfo) this).aString7503, (short) 23186); //Empty
-			buffer.putJagString(((SystemInfo) this).aString7482, (short) 15519); //Empty
-			buffer.putJagString(((SystemInfo) this).aString7505, (short) 4727); //Empty
-			buffer.writeByte((((SystemInfo) this).directXDriverDate * 1183412533)); //DirectX driver date (month).
-			buffer.writeShort((-669549295 * ((SystemInfo) this).directXDriverData2), 16711935); //DirectX driver date (year).
-			buffer.putJagString(((SystemInfo) this).aString7496, (short) 3988); //CPU type.
-			buffer.putJagString(((SystemInfo) this).aString7511, (short) -4559); //CPU data
-			buffer.writeByte((78038867 * ((SystemInfo) this).cpuInfo)); //CPU cores amount.
-			buffer.writeByte((((SystemInfo) this).anInt7489 * 664924581)); //Raw cpu info0
-			for (int i_0_ = 0; i_0_ < ((SystemInfo) this).anIntArray7512.length; i_0_++) {
-				buffer.writeInt((((SystemInfo) this).anIntArray7512[i_0_]), -1856682920);
+			buffer.writeShort((-1360789919 * this.cpuClockSpeed1), 16711935); //Clock speed (MHz)
+			buffer.putJagString(this.aString7502, (short) 14956); //Empty
+			buffer.putJagString(this.aString7503, (short) 23186); //Empty
+			buffer.putJagString(this.aString7482, (short) 15519); //Empty
+			buffer.putJagString(this.aString7505, (short) 4727); //Empty
+			buffer.writeByte((this.directXDriverDate * 1183412533)); //DirectX driver date (month).
+			buffer.writeShort((-669549295 * this.directXDriverData2), 16711935); //DirectX driver date (year).
+			buffer.putJagString(this.aString7496, (short) 3988); //CPU type.
+			buffer.putJagString(this.aString7511, (short) -4559); //CPU data
+			buffer.writeByte((78038867 * this.numberOfCPUCores)); //CPU cores amount.
+			buffer.writeByte((this.anInt7489 * 664924581)); //Raw cpu info0
+			for (int i_0_ = 0; i_0_ < this.anIntArray7512.length; i_0_++) {
+				buffer.writeInt((this.anIntArray7512[i_0_]), -1856682920);
 			}
-			buffer.writeInt((-277721711 * ((SystemInfo) this).anInt7513), -1047358922);
+			buffer.writeInt((-277721711 * this.anInt7513), -1047358922);
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("acc.f(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("acc.f(").append(')').toString());
 		}
 	}
 
@@ -134,56 +133,55 @@ public class SystemInfo extends Class298 {
 
 	public SystemInfo(boolean bool) {
 		if (bool) {
-			if (Class82_Sub8.aString6856.startsWith("win"))
-				((SystemInfo) this).anInt7471 = -1323296965;
-			else if (Class82_Sub8.aString6856.startsWith("mac"))
-				((SystemInfo) this).anInt7471 = 1648373366;
-			else if (Class82_Sub8.aString6856.startsWith("linux"))
-				((SystemInfo) this).anInt7471 = 325076401;
+			if (Class82_Sub8.operatingSystem.startsWith("win"))
+				this.anInt7471 = -1323296965;
+			else if (Class82_Sub8.operatingSystem.startsWith("mac"))
+				this.anInt7471 = 1648373366;
+			else if (Class82_Sub8.operatingSystem.startsWith("linux"))
+				this.anInt7471 = 325076401;
 			else
-				((SystemInfo) this).anInt7471 = -998220564;
-			if (Class344.aString3687.startsWith("amd64")
-					|| Class344.aString3687.startsWith("x86_64"))
-				((SystemInfo) this).aBoolean7509 = true;
+				this.anInt7471 = -998220564;
+			if (Class344.aString3687.startsWith("amd64") || Class344.aString3687.startsWith("x86_64"))
+				this.is64Bit = true;
 			else
-				((SystemInfo) this).aBoolean7509 = false;
-			if (1 == -1570985485 * ((SystemInfo) this).anInt7471) {
+				this.is64Bit = false;
+			if (1 == -1570985485 * (this.anInt7471)) {
 				if (Class250.aString2765.indexOf("4.0") != -1)
-					((SystemInfo) this).anInt7486 = 1791241813;
+					this.anInt7486 = 1791241813;
 				else if (Class250.aString2765.indexOf("4.1") != -1)
-					((SystemInfo) this).anInt7486 = -712483670;
+					this.anInt7486 = -712483670;
 				else if (Class250.aString2765.indexOf("4.9") != -1)
-					((SystemInfo) this).anInt7486 = 1078758143;
+					this.anInt7486 = 1078758143;
 				else if (Class250.aString2765.indexOf("5.0") != -1)
-					((SystemInfo) this).anInt7486 = -1424967340;
+					this.anInt7486 = -1424967340;
 				else if (Class250.aString2765.indexOf("5.1") != -1)
-					((SystemInfo) this).anInt7486 = 366274473;
+					this.anInt7486 = 366274473;
 				else if (Class250.aString2765.indexOf("5.2") != -1)
-					((SystemInfo) this).anInt7486 = 1445032616;
+					this.anInt7486 = 1445032616;
 				else if (Class250.aString2765.indexOf("6.0") != -1)
-					((SystemInfo) this).anInt7486 = -2137451010;
+					this.anInt7486 = -2137451010;
 				else if (Class250.aString2765.indexOf("6.1") != -1)
-					((SystemInfo) this).anInt7486 = -346209197;
+					this.anInt7486 = -346209197;
 				else if (Class250.aString2765.indexOf("6.2") != -1)
-					((SystemInfo) this).anInt7486 = -1058692867;
-			} else if (2 == ((SystemInfo) this).anInt7471 * -1570985485) {
+					this.anInt7486 = -1058692867;
+			} else if (2 == this.anInt7471 * -1570985485) {
 				if (Class250.aString2765.indexOf("10.4") != -1)
-					((SystemInfo) this).anInt7486 = 1465097892;
+					this.anInt7486 = 1465097892;
 				else if (Class250.aString2765.indexOf("10.5") != -1)
-					((SystemInfo) this).anInt7486 = -1038627591;
+					this.anInt7486 = -1038627591;
 				else if (Class250.aString2765.indexOf("10.6") != -1)
-					((SystemInfo) this).anInt7486 = 752614222;
+					this.anInt7486 = 752614222;
 				else if (Class250.aString2765.indexOf("10.7") != -1)
-					((SystemInfo) this).anInt7486 = -1751111261;
+					this.anInt7486 = -1751111261;
 			}
-			if (Class350.aString3759.toLowerCase().indexOf("sun") != -1)
-				((SystemInfo) this).anInt7491 = 953745309;
-			else if (Class350.aString3759.toLowerCase().indexOf("microsoft") != -1)
-				((SystemInfo) this).anInt7491 = 1907490618;
-			else if (Class350.aString3759.toLowerCase().indexOf("apple") != -1)
-				((SystemInfo) this).anInt7491 = -1433731369;
+			if (Class350.javaVendor.toLowerCase().indexOf("sun") != -1)
+				this.anInt7491 = 953745309;
+			else if (Class350.javaVendor.toLowerCase().indexOf("microsoft") != -1)
+				this.anInt7491 = 1907490618;
+			else if (Class350.javaVendor.toLowerCase().indexOf("apple") != -1)
+				this.anInt7491 = -1433731369;
 			else
-				((SystemInfo) this).anInt7491 = -479986060;
+				this.anInt7491 = -479986060;
 
 			int javaVersionIndex = 2;
 			int i_2_ = 0;
@@ -228,25 +226,25 @@ public class SystemInfo extends Class298 {
 			this.aBoolean7495 = false;
 			this.anInt7469 = Class291.maximumMemory * -633367115;
 			if (154600941 * this.javaRelease > 3)
-				this.anInt7498 = Class291.availableCPU * -1360223467;
+				this.availableCores = Class291.availableCPU * -1360223467;
 			else
-				this.anInt7498 = 0;
+				this.availableCores = 0;
 			try {
-				int[] is = HardwareInfo.getCPUInfo();
-				if (is != null && 3 == is.length) {
-					this.cpuInfo = is[0] * 672863451;
-					this.cpuClockSpeed1 = is[1] * -1283906143;
-					cpuClockSpeed = is[2] * -108594153;
+				int[] cpuInfo = HardwareInfo.getCPUInfo();
+				if (cpuInfo != null && 3 == cpuInfo.length) {
+					this.numberOfCPUCores = cpuInfo[0] * 672863451;
+					this.cpuClockSpeed1 = cpuInfo[1] * -1283906143;
+					cpuClockSpeed = cpuInfo[2] * -108594153;
 				}
-				int[] is_6_ = HardwareInfo.getRawCPUInfo();
-				if (is_6_ != null && is_6_.length % 5 == 0) {
+				int[] rawCPUInfo = HardwareInfo.getRawCPUInfo();
+				if (rawCPUInfo != null && rawCPUInfo.length % 5 == 0) {
 					HashMap hashmap = new HashMap();
-					for (int i_7_ = 0; i_7_ < is_6_.length / 5; i_7_++) {
-						int i_8_ = is_6_[i_7_ * 5];
-						int i_9_ = is_6_[5 * i_7_ + 1];
-						int i_10_ = is_6_[2 + i_7_ * 5];
-						int i_11_ = is_6_[i_7_ * 5 + 3];
-						int i_12_ = is_6_[4 + i_7_ * 5];
+					for (int i = 0; i < rawCPUInfo.length / 5; i++) {
+						int i_8_ = rawCPUInfo[i * 5];
+						int i_9_ = rawCPUInfo[5 * i + 1];
+						int i_10_ = rawCPUInfo[2 + i * 5];
+						int i_11_ = rawCPUInfo[i * 5 + 3];
+						int i_12_ = rawCPUInfo[4 + i * 5];
 						Class472 class472 = new Class472(i_8_, i_9_, i_10_,	i_11_, i_12_);
 						hashmap.put(Integer.valueOf(i_8_), class472);
 					}
@@ -254,30 +252,20 @@ public class SystemInfo extends Class298 {
 					if (null != class472) {
 						RsByteBuffer class298_sub53 = new RsByteBuffer(13);
 						class298_sub53.writeLEInt((-2056580217 * (((Class472) class472).anInt5960)),162325587);
-						class298_sub53
-								.writeLEInt(
-										(272393713 * (((Class472) class472).anInt5964)),
-										-487042280);
-						class298_sub53
-								.writeLEInt(
-										(634425393 * (((Class472) class472).anInt5963)),
-										164405285);
+						class298_sub53.writeLEInt((272393713 * (((Class472) class472).anInt5964)),-487042280);
+						class298_sub53.writeLEInt((634425393 * (((Class472) class472).anInt5963)), 164405285);
 						class298_sub53.index = 0;
-						((SystemInfo) this).aString7496 = class298_sub53
-								.readString(512996154);
+						((SystemInfo) this).aString7496 = class298_sub53.readString(512996154);
 					}
-					Class472 class472_13_ = (Class472) hashmap.get(Integer
-							.valueOf(1));
+					Class472 class472_13_ = (Class472) hashmap.get(Integer.valueOf(1));
 					if (null != class472_13_) {
 						((SystemInfo) this).anInt7513 = (-1193649755 * ((Class472) class472_13_).anInt5961);
 						int i_14_ = (((Class472) class472_13_).anInt5960 * -2056580217);
-						((SystemInfo) this).anInt7489 = -1403810259
-								* (i_14_ >> 16 & 0xff);
+						((SystemInfo) this).anInt7489 = -1403810259 * (i_14_ >> 16 & 0xff);
 						((SystemInfo) this).anIntArray7512[0] = ((Class472) class472_13_).anInt5963 * 634425393;
 						((SystemInfo) this).anIntArray7512[1] = 272393713 * ((Class472) class472_13_).anInt5964;
 					}
-					Class472 class472_15_ = (Class472) hashmap.get(Integer
-							.valueOf(-2147483647));
+					Class472 class472_15_ = (Class472) hashmap.get(Integer.valueOf(-2147483647));
 					if (class472_15_ != null)
 						((SystemInfo) this).anIntArray7512[2] = 272393713 * ((Class472) class472_15_).anInt5964;
 					RsByteBuffer class298_sub53 = new RsByteBuffer(49);

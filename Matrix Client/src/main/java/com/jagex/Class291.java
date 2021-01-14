@@ -115,22 +115,20 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 			Class139.anInt1548 = i * 19765097;
 			RuntimeException_Sub2.anInt6307 = i_7_ * 715279939;
 			Class400.anInt5225 = i_8_ * 1366053379;
-			Class350.aString3759 = "Unknown";
+			Class350.javaVendor = "Unknown";
 			SignLink.javaVersion = "1.1";
 			try {
-				Class350.aString3759 = System.getProperty("java.vendor");
+				Class350.javaVendor = System.getProperty("java.vendor");
 				SignLink.javaVersion = System.getProperty("java.version");
 			} catch (Exception exception) {
 				/* empty */
 			}
 			try {
-				Class365_Sub1_Sub3_Sub2.aString9932 = System
-						.getProperty("os.name");
+				Class365_Sub1_Sub3_Sub2.aString9932 = System.getProperty("os.name");
 			} catch (Exception exception) {
 				Class365_Sub1_Sub3_Sub2.aString9932 = "Unknown";
 			}
-			Class82_Sub8.aString6856 = Class365_Sub1_Sub3_Sub2.aString9932
-					.toLowerCase();
+			Class82_Sub8.operatingSystem = Class365_Sub1_Sub3_Sub2.aString9932.toLowerCase();
 			try {
 				Class344.aString3687 = System.getProperty("os.arch")
 						.toLowerCase();
@@ -151,7 +149,7 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 				/* empty */
 			}
 			try {
-				if (Class82_Sub8.aString6856.startsWith("win")) {
+				if (Class82_Sub8.operatingSystem.startsWith("win")) {
 					if (null == Class83.aString765)
 						Class83.aString765 = System.getenv("USERPROFILE");
 				} else if (null == Class83.aString765)
@@ -402,8 +400,8 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 
 	void method2759(byte i) {
 		try {
-			if (null != Class350.aString3759) {
-				String string = Class350.aString3759.toLowerCase();
+			if (null != Class350.javaVendor) {
+				String string = Class350.javaVendor.toLowerCase();
 				if (string.indexOf("sun") != -1
 						|| string.indexOf("apple") != -1) {
 					String string_19_ = SignLink.javaVersion;

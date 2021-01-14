@@ -531,7 +531,7 @@ public class Class505 {
 			if (Class12.aClass298_Sub44_9946.cpuClockSpeed * 399637415 < 512
 					&& 399637415 * Class12.aClass298_Sub44_9946.cpuClockSpeed != 0)
 				bool = false;
-			if (Class82_Sub8.aString6856.startsWith("win")) {
+			if (Class82_Sub8.operatingSystem.startsWith("win")) {
 				bool_79_ = true;
 				bool_78_ = true;
 			} else

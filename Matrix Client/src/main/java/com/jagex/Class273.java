@@ -38,9 +38,9 @@ public class Class273 {
 						return;
 					}
 				} while (false);
-				if (Class82_Sub8.aString6856.startsWith("win") && !bool_2_)
+				if (Class82_Sub8.operatingSystem.startsWith("win") && !bool_2_)
 					Class254.method2427(string, 0, (byte) 23);
-				else if (Class82_Sub8.aString6856.startsWith("mac"))
+				else if (Class82_Sub8.operatingSystem.startsWith("mac"))
 					Class65.method762(string, 1, string_1_, -1988096952);
 				else
 					Class254.method2427(string, 2, (byte) 77);

@@ -2662,7 +2662,7 @@ public class PacketsDecoder {
 					if (string_466_.length() == 0)
 						string_466_ = string;
 					if (!client.aBoolean8638
-							|| Class82_Sub8.aString6856.startsWith("mac")
+							|| Class82_Sub8.operatingSystem.startsWith("mac")
 							|| !Class65.method762(string, 1,
 									Class212.aClass212_2424
 											.method1951(-1209858466),

@@ -56,7 +56,7 @@ public class Class350 {
 	public boolean aBoolean3756;
 	public static Class298_Sub25 aClass298_Sub25_3757;
 	static int anInt3758;
-	public static String aString3759;
+	public static String javaVendor;
 
 	void method4206(RsByteBuffer class298_sub53, int i, int i_0_) {
 		try {

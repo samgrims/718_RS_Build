@@ -55,7 +55,7 @@ public class Class65 {
 			if (i == 0) {
 				boolean bool;
 				try {
-					if (!Class82_Sub8.aString6856.startsWith("win"))
+					if (!Class82_Sub8.operatingSystem.startsWith("win"))
 						throw new Exception();
 					if (!string.startsWith("http://")
 							&& !string.startsWith("https://"))
