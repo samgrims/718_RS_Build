@@ -598,7 +598,7 @@ public class Class125 {
 						.method2301("huffman", "", 1988047685));
 				ExactStrategy.method4107(class113, -1778895275);
 				Class291.aClass309_6492 = Class360.method4302(-1239681225);
-				Class12.aClass298_Sub44_9946 = new Class298_Sub44(true);
+				Class12.aClass298_Sub44_9946 = new SystemInfo(true);
 			}
 			if (Class227.aClass227_2540 == Class82_Sub6.aClass227_6843) {
 				int i_27_ = (Class298_Sub32_Sub30.method3334(

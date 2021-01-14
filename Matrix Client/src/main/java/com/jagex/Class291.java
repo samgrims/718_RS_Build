@@ -146,8 +146,7 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 			try {
 				Class83.aString765 = System.getProperty("user.home");
 				if (Class83.aString765 != null)
-					Class83.aString765 = new StringBuilder().append(
-							Class83.aString765).append("/").toString();
+					Class83.aString765 = new StringBuilder().append(Class83.aString765).append("/").toString();
 			} catch (Exception exception) {
 				/* empty */
 			}
@@ -158,16 +157,14 @@ public abstract class Class291 implements Interface14, Runnable, FocusListener,
 				} else if (null == Class83.aString765)
 					Class83.aString765 = System.getenv("HOME");
 				if (Class83.aString765 != null)
-					Class83.aString765 = new StringBuilder().append(
-							Class83.aString765).append("/").toString();
+					Class83.aString765 = new StringBuilder().append(Class83.aString765).append("/").toString();
 			} catch (Exception exception) {
 				/* empty */
 			}
 			if (null == Class83.aString765)
 				Class83.aString765 = "~/";
 			try {
-				Class403.anEventQueue5262 = Toolkit.getDefaultToolkit()
-						.getSystemEventQueue();
+				Class403.anEventQueue5262 = Toolkit.getDefaultToolkit().getSystemEventQueue();
 			} catch (Throwable throwable) {
 				/* empty */
 			}

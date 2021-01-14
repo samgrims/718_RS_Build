@@ -171,8 +171,7 @@ public class Class207 {
 			Class74.method830(i_9_, i_10_ >> 14 & 0x3fff, i_10_ & 0x3fff, true,
 					1858886715);
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("is.aer(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("is.aer(").append(')').toString());
 		}
 	}
 
@@ -180,14 +179,12 @@ public class Class207 {
 		try {
 			if (154600941 * Class12.aClass298_Sub44_9946.javaRelease < 6)
 				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = 0;
-			else if (6 == 154600941 * Class12.aClass298_Sub44_9946.javaRelease
-					&& (Class12.aClass298_Sub44_9946.anInt7494 * 1324779323 < 10))
-				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = 0;
+			else if (6 == 154600941 * Class12.aClass298_Sub44_9946.javaRelease && (Class12.aClass298_Sub44_9946.javaSubSubVersion * 1324779323 < 10))
+				(class403).anIntArray5244[(((class403).anInt5239 += -391880689) * 681479919) - 1] = 0;
 			else
-				((Class403) class403).anIntArray5244[((((Class403) class403).anInt5239 += -391880689) * 681479919) - 1] = 1;
+				(class403).anIntArray5244[(((class403).anInt5239 += -391880689) * 681479919) - 1] = 1;
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("is.afd(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("is.afd(").append(')').toString());
 		}
 	}
 }

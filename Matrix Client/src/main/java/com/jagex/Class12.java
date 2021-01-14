@@ -6,7 +6,7 @@ public class Class12 implements Interface8_Impl1_Impl2 {
 	int anInt9943;
 	int anInt9944;
 	float[] aFloatArray9945;
-	public static Class298_Sub44 aClass298_Sub44_9946;
+	public static SystemInfo aClass298_Sub44_9946;
 
 	public void b() {
 		try {

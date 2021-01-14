@@ -21,7 +21,7 @@ public class Class275 {
 
 	public static Class459 method2571(int i, int i_0_) {
 		try {
-			Class459[] class459s = Class298_Sub44.method3531((byte) 89);
+			Class459[] class459s = SystemInfo.method3531((byte) 89);
 			for (int i_1_ = 0; i_1_ < class459s.length; i_1_++) {
 				Class459 class459 = class459s[i_1_];
 				if (i == class459.anInt5673 * 1790024195)

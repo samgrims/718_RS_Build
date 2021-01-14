@@ -1458,6 +1458,12 @@ public final class ObjectHandler {
 	}
 
 	private static boolean isCorrectLumbridgeStairLocations(Player player, WorldObject object) {
+		if(object.getId() == 36776) {//South staircase inside lumbridge castle, first floor
+			if(player.getLocation().matches(new WorldTile(3206, 3229, 0)) || player.getLocation().matches(new WorldTile(3206, 3228, 0))
+					|| player.getLocation().matches(new WorldTile(3205, 3228, 0)))
+				return true;
+			return false;
+		}
 		if(object.getId() == 36773) {//South staircase inside lumbridge castle, first floor
 			if(player.getLocation().matches(new WorldTile(3206, 3208, 0)) || player.getLocation().matches(new WorldTile(3205, 3209, 0))
 					|| player.getLocation().matches(new WorldTile(3206, 3209, 0)))
