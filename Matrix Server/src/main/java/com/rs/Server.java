@@ -12,6 +12,7 @@ import com.rs.cache.loaders.ItemsEquipIds;
 import com.rs.cache.loaders.NPCDefinitions;
 import com.rs.cache.loaders.ObjectDefinitions;
 import com.rs.cores.CoresManager;
+import com.rs.custom.data_structures.NPCExamines;
 import com.rs.game.Region;
 import com.rs.game.RegionBuilder;
 import com.rs.game.World;
@@ -49,11 +50,11 @@ public final class Server {
 			Settings.XP_RATE = 100;
 
 		long currentTime = Utils.currentTimeMillis();
-		Logger.log("Launcher", "Initing Cache...");
+		Logger.log("Server", "Initing Cache...");
 		Cache.init();
 		ItemsEquipIds.init();
 		Huffman.init();
-		Logger.log("Launcher", "Initing Data Files...");
+		Logger.log("Server", "Initing Data Files...");
 		DisplayNames.init();
 		IPBanL.init();
 		PkRank.init();
@@ -69,34 +70,36 @@ public final class Server {
 		ItemBonuses.init();
 		MusicHints.init();
 		ShopsHandler.init();
-		Logger.log("Launcher", "Initing Fishing Spots...");
+		Logger.log("Server", "Initing Fishing Spots...");
 		FishingSpotsHandler.init();
-		Logger.log("Launcher", "Initing NPC Combat Scripts...");
+		Logger.log("Server", "Initing NPC Combat Scripts...");
 		CombatScriptsHandler.init();
-		Logger.log("Launcher", "Initing Dialogues...");
+		Logger.log("Server", "Initing Dialogues...");
 		DialogueHandler.init();
-		Logger.log("Launcher", "Initing Controlers...");
+		Logger.log("Server", "Initing Controlers...");
 		ControlerHandler.init();
-		Logger.log("Launcher", "Initing Cutscenes...");
+		Logger.log("Server", "Initing Cutscenes...");
 		CutscenesHandler.init();
-		Logger.log("Launcher", "Initing Friend Chats Manager...");
+		Logger.log("Server", "Initing Friend Chats Manager...");
 		FriendChatsManager.init();
-		Logger.log("Launcher", "Initing Cores Manager...");
+		Logger.log("Server", "Initing Cores Manager...");
 		CoresManager.init();
-		Logger.log("Launcher", "Initing World...");
+		Logger.log("Server", "Initing World...");
 		World.init();
-		Logger.log("Launcher", "Initing Region Builder...");
+		Logger.log("Server", "Initing Region Builder...");
 		RegionBuilder.init();
-		Logger.log("Launcher", "Initing Server Channel Handler...");
+		Logger.log("Server", "Initing Server Channel Handler...");
+		NPCExamines.loadExamines();
+		Logger.log("Server", "Loading NPC examine data...");
 		try {
 			ServerChannelHandler.init();
 		} catch (Throwable e) {
 			Logger.handle(e);
-			Logger.log("Launcher", "Failed initing Server Channel Handler. Shutting down...");
+			Logger.log("Server", "Failed initing Server Channel Handler. Shutting down...");
 			System.exit(1);
 			return;
 		}
-		Logger.log("Launcher", "Server took " + (Utils.currentTimeMillis() - currentTime) + " milli seconds to launch.");
+		Logger.log("Server", "Server took " + (Utils.currentTimeMillis() - currentTime) + " milli seconds to launch.");
 		addAccountsSavingTask();
 		addCleanMemoryTask();
 	}

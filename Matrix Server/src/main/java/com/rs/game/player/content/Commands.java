@@ -1153,16 +1153,14 @@ public final class Commands {
 
 			case "overlay":
 				if (cmd.length < 2) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::inter interfaceId");
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
 					return true;
 				}
 				int child = cmd.length > 2 ? Integer.parseInt(cmd[2]) : 28;
 				try {
 					player.getPackets().sendInterface(true, 746, child, Integer.valueOf(cmd[1]));
 				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage(
-							"Use: ::inter interfaceId");
+					player.getPackets().sendPanelBoxMessage("Use: ::inter interfaceId");
 				}
 				return true; 
 

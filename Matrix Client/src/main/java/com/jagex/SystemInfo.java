@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import jaclib.hardware_info.HardwareInfo;
 
+import static com.jagex.SignLink.javaVersion;
+
 public class SystemInfo extends Class298 {
 	int numberOfCPUCores;
 	static int anInt7467 = 3;
@@ -185,7 +187,6 @@ public class SystemInfo extends Class298 {
 
 			int javaVersionIndex = 2;
 			int i_2_ = 0;
-			System.out.println(SignLink.javaVersion);
 			try {
 				for (/**/; javaVersionIndex < SignLink.javaVersion.length(); javaVersionIndex++) {
 					int characterInsideVersionString = SignLink.javaVersion.charAt(javaVersionIndex);

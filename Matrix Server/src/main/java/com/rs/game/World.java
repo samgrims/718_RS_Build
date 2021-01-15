@@ -53,12 +53,7 @@ import com.rs.game.player.content.ItemConstants;
 import com.rs.game.player.content.LivingRockCavern;
 import com.rs.game.player.content.TriviaBot;
 import com.rs.game.player.controlers.Wilderness;
-import com.rs.utils.AntiFlood;
-import com.rs.utils.IPBanL;
-import com.rs.utils.Logger;
-import com.rs.utils.PkRank;
-import com.rs.utils.ShopsHandler;
-import com.rs.utils.Utils;
+import com.rs.utils.*;
 
 public final class World {
 
@@ -332,6 +327,12 @@ public final class World {
 		npcs.remove(npc);
 	}
 
+	public static final NPC spawnNPC(int id, WorldTile tile, int rotationValue, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+		NPC npc = spawnNPC(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, false);
+		npc.setDirection(rotationValue);
+		return npc;
+	}
+
 	public static final NPC spawnNPC(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea,	boolean spawned) {
 		NPC n = null;
 		HunterNPC hunterNPCs = HunterNPC.forId(id);
@@ -418,13 +419,11 @@ public final class World {
 		else if (id == 15149)
 			n = new MasterOfFear(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		else 
-			n = new NPC(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea,
-					spawned);
+			n = new NPC(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, spawned);
 		return n;
 	}
 
-	public static final NPC spawnNPC(int id, WorldTile tile,
-			int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
+	public static final NPC spawnNPC(int id, WorldTile tile, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		return spawnNPC(id, tile, mapAreaNameHash, canBeAttackFromOutOfArea, false);
 	}
 

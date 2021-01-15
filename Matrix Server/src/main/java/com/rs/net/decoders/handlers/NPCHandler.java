@@ -25,26 +25,25 @@ import com.rs.io.InputStream;
 import com.rs.utils.Logger;
 import com.rs.utils.NPCSpawns;
 import com.rs.utils.ShopsHandler;
+import com.rs.custom.data_structures.NPCExamines;
 
 public class NPCHandler {
 
 	public static void handleExamine(final Player player, InputStream stream) {
 		int npcIndex = stream.readUnsignedShort128();
 		boolean forceRun = stream.read128Byte() == 1;
-		if(forceRun)
+		if (forceRun)
 			player.setRun(forceRun);
 		final NPC npc = World.getNPCs().get(npcIndex);
-		if (npc == null || npc.hasFinished()
-				|| !player.getMapRegionsIds().contains(npc.getRegionId()))
+		if (npc == null || npc.hasFinished() || !player.getMapRegionsIds().contains(npc.getRegionId()))
 			return;
-		if (player.getRights() > 1) {
-			player.getPackets().sendGameMessage(
-					"NPC - [id=" + npc.getId() + ", loc=[" + npc.getX() + ", " + npc.getY() + ", " + npc.getPlane() + "]].");
+		if (player.getDebugMode()) {
+			player.getPackets().sendGameMessage("NPC - [id=" + npc.getId() + ", loc=[" + npc.getX() + ", " + npc.getY() + ", " + npc.getPlane() + "]].");
 		}
-		player.getPackets().sendNPCMessage(0, npc, "It's a " + npc.getDefinitions().name + ".");
-		if(player.isSpawnsMode()) {
+		player.getPackets().sendNPCMessage(0, npc, NPCExamines.getExamine(npc.getId()));
+		if (player.isSpawnsMode()) {
 			try {
-				if(NPCSpawns.removeSpawn(npc)) {
+				if (NPCSpawns.removeSpawn(npc)) {
 					player.getPackets().sendGameMessage("Removed spawn!");
 					return;
 				}
@@ -54,9 +53,9 @@ public class NPCHandler {
 			player.getPackets().sendGameMessage("Failed removing spawn!");
 		}
 		if (Settings.DEBUG)
-			Logger.log("NPCHandler", "examined npc: " + npcIndex+", "+npc.getId());
+			Logger.log("NPCHandler", "examined npc: " + npcIndex + ", " + npc.getId());
 	}
-	
+
 	public static void handleOption1(final Player player, InputStream stream) {
 		int npcIndex = stream.readUnsignedShort128();
 		boolean forceRun = stream.read128Byte() == 1;
@@ -66,7 +65,7 @@ public class NPCHandler {
 				|| !player.getMapRegionsIds().contains(npc.getRegionId()))
 			return;
 		player.stopAll(false);
-		if(forceRun)
+		if (forceRun)
 			player.setRun(forceRun);
 		if (npc.getDefinitions().name.contains("Banker") || npc.getDefinitions().name.contains("banker")) {
 			player.faceEntity(npc);
@@ -76,7 +75,7 @@ public class NPCHandler {
 			player.getDialogueManager().startDialogue("Banker", npc.getId());
 			return;
 		}
-		if(SiphonActionCreatures.siphon(player, npc)) 
+		if (SiphonActionCreatures.siphon(player, npc))
 			return;
 		player.setCoordsEvent(new CoordsEvent(npc, new Runnable() {
 			@Override
@@ -89,7 +88,7 @@ public class NPCHandler {
 				if (spot != null) {
 					player.getActionManager().setAction(new Fishing(spot, npc));
 					return; // its a spot, they wont face us
-				}else if (npc.getId() >= 8837 && npc.getId() <= 8839) {
+				} else if (npc.getId() >= 8837 && npc.getId() <= 8839) {
 					player.getActionManager().setAction(new LivingMineralMining((LivingRock) npc));
 					return;
 				}
@@ -100,13 +99,12 @@ public class NPCHandler {
 					player.getDialogueManager().startDialogue("SorceressGardenNPCs", npc);
 				else if (npc.getId() == 5563)
 					player.getDialogueManager().startDialogue("SorceressGardenNPCs", npc);
-				else if (npc.getId() == 5559) 
+				else if (npc.getId() == 5559)
 					player.sendDeath(npc);
 				else if (npc.getId() == 15451 && npc instanceof FireSpirit) {
 					FireSpirit spirit = (FireSpirit) npc;
 					spirit.giveReward(player);
-				}
-				else if (npc.getId() == 949)
+				} else if (npc.getId() == 949)
 					player.getDialogueManager().startDialogue("QuestGuide",
 							npc.getId(), null);
 				else if (npc.getId() >= 1 && npc.getId() <= 6 || npc.getId() >= 7875 && npc.getId() <= 7884)
@@ -132,7 +130,7 @@ public class NPCHandler {
 					player.getDialogueManager().startDialogue("Hairdresser", npc.getId());
 				else if (npc.getId() == 548)
 					player.getDialogueManager().startDialogue("Thessalia", npc.getId());
-				else if(npc.getId() == 659)
+				else if (npc.getId() == 659)
 					player.getDialogueManager().startDialogue("PartyPete");
 				else if (npc.getId() == 579)
 					player.getDialogueManager().startDialogue("DrogoDwarf", npc.getId());
@@ -162,7 +160,7 @@ public class NPCHandler {
 					player.getDialogueManager().startDialogue("TzHaarMejJal", npc.getId());
 				else if (npc.getId() == 2618)
 					player.getDialogueManager().startDialogue("TzHaarMejKah", npc.getId());
-				else if(npc.getId() == 15149)
+				else if (npc.getId() == 15149)
 					player.getDialogueManager().startDialogue("MasterOfFear", 0);
 				else if (npc instanceof Pet) {
 					Pet pet = (Pet) npc;
@@ -172,8 +170,7 @@ public class NPCHandler {
 					}
 					player.setNextAnimation(new Animation(827));
 					pet.pickup();
-				}
-				else {
+				} else {
 					player.getPackets().sendGameMessage(
 							"Nothing interesting happens.");
 					if (Settings.DEBUG)
@@ -194,7 +191,7 @@ public class NPCHandler {
 				|| !player.getMapRegionsIds().contains(npc.getRegionId()))
 			return;
 		player.stopAll(false);
-		if(forceRun)
+		if (forceRun)
 			player.setRun(forceRun);
 		if (npc.getDefinitions().name.contains("Banker")
 				|| npc.getDefinitions().name.contains("banker")) {
@@ -253,7 +250,7 @@ public class NPCHandler {
 					FremennikShipmaster.sail(player, true);
 				else if (npc.getId() == 9708)
 					FremennikShipmaster.sail(player, false);
-				else if (npc.getId() == 13455 || npc.getId() == 2617 || npc.getId() == 2618 
+				else if (npc.getId() == 13455 || npc.getId() == 2617 || npc.getId() == 2618
 						|| npc.getId() == 15194)
 					player.getBank().openBank();
 				else if (npc.getId() == 528 || npc.getId() == 529)
@@ -294,7 +291,7 @@ public class NPCHandler {
 					ShopsHandler.openShop(player, 17);
 				else if (npc.getId() == 4563) //Crossbow Shop
 					ShopsHandler.openShop(player, 33);
-				else if(npc.getId() == 15149)
+				else if (npc.getId() == 15149)
 					player.getDialogueManager().startDialogue("MasterOfFear", 3);
 				else if (npc.getId() == 2676)
 					PlayerLook.openMageMakeOver(player);
@@ -306,12 +303,11 @@ public class NPCHandler {
 						return;
 					}
 					Pet pet = player.getPet();
-					player.getPackets().sendMessage(99, "Pet [id=" + pet.getId() 
+					player.getPackets().sendMessage(99, "Pet [id=" + pet.getId()
 							+ ", hunger=" + pet.getDetails().getHunger()
 							+ ", growth=" + pet.getDetails().getGrowth()
 							+ ", stage=" + pet.getDetails().getStage() + "].", player);
-				}
-				else {
+				} else {
 					player.getPackets().sendGameMessage(
 							"Nothing interesting happens.");
 					if (Settings.DEBUG)
@@ -332,7 +328,7 @@ public class NPCHandler {
 				|| !player.getMapRegionsIds().contains(npc.getRegionId()))
 			return;
 		player.stopAll(false);
-		if(forceRun)
+		if (forceRun)
 			player.setRun(forceRun);
 		player.setCoordsEvent(new CoordsEvent(npc, new Runnable() {
 			@Override
@@ -344,7 +340,7 @@ public class NPCHandler {
 				if (npc.getId() >= 8837 && npc.getId() <= 8839) {
 					MiningBase.propect(player, "You examine the remains...", "The remains contain traces of living minerals.");
 					return;
-					
+
 				}
 				npc.faceEntity(player);
 				if ((npc.getId() == 8462 || npc.getId() == 8464
@@ -357,7 +353,7 @@ public class NPCHandler {
 				else if (npc.getId() == 5532) {
 					npc.setNextForceTalk(new ForceTalk("Senventior Disthinte Molesko!"));
 					player.getControlerManager().startController("SorceressGarden");
-					
+
 				} else
 					player.getPackets().sendGameMessage(
 							"Nothing interesting happens.");

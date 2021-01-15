@@ -21,6 +21,49 @@ import com.rs.game.WorldTile;
 import com.rs.game.npc.NPC;
 
 public final class NPCSpawns {
+	public enum EntityDirection {
+		NORTH(8192),
+		SOUTH(0),
+		EAST(12288),
+		WEST(4096),
+		NORTHEAST(10240),
+		SOUTHEAST(14366),
+		NORTHWEST(6144),
+		SOUTHWEST(2048);
+
+		private int value;
+
+		public int getValue() {
+			return value;
+		}
+
+		private EntityDirection(int value) {
+			this.value = value;
+		}
+	}
+
+	public int getRotationValue(String rotation) {
+		int value = 6144;
+		switch(rotation.toUpperCase()) {
+			case "NORTH" :
+				break;
+			case "SOUTH" :
+				break;
+			case "WEST" :
+				break;
+			case "EAST" :
+				break;
+			case "NORTHEAST" :
+				break;
+			case "NORTHWEST" :
+				break;
+			case "SOUTHEAST" :
+				break;
+			case "SOUTHWEST" :
+				break;
+		}
+		return value;
+	}
 
 	private static final Object lock = new Object();
 	public static boolean addSpawn(String username, int id, WorldTile tile) throws Throwable {
@@ -81,39 +124,40 @@ public final class NPCSpawns {
 	private static final void packNPCSpawns() {
 		Logger.log("NPCSpawns", "Packing npc spawns...");
 		if (!new File(Settings.SERVER_DIR + "data/npcs/packedSpawns").mkdir())
-			throw new RuntimeException(
-					"Couldn't create packedSpawns directory.");
+			throw new RuntimeException("Couldn't create packedSpawns directory.");
 		try {
-			BufferedReader in = new BufferedReader(new FileReader(
-					Settings.SERVER_DIR + "data/npcs/unpackedSpawnsList.txt"));
+			BufferedReader in = new BufferedReader(new FileReader(Settings.SERVER_DIR + "data/npcs/unpackedSpawnsList.txt"));
 			while (true) {
 				String line = in.readLine();
 				if (line == null)
 					break;
 				if (line.startsWith("//"))
 					continue;
-				String[] splitedLine = line.split(" - ", 2);
-				if (splitedLine.length != 2)
-					throw new RuntimeException("Invalid NPC Spawn line: "
-							+ line);
-				int npcId = Integer.parseInt(splitedLine[0]);
-				String[] splitedLine2 = splitedLine[1].split(" ", 5);
-				if (splitedLine2.length != 3 && splitedLine2.length != 5)
-					throw new RuntimeException("Invalid NPC Spawn line: "
-							+ line);
-				WorldTile tile = new WorldTile(
-						Integer.parseInt(splitedLine2[0]),
-						Integer.parseInt(splitedLine2[1]),
-						Integer.parseInt(splitedLine2[2]));
+
+				String[] entireLine = line.split(" - ", 2);
+				if (entireLine.length != 2)
+					throw new RuntimeException("Invalid NPC Spawn line: " + line);
+
+				int npcId = Integer.parseInt(entireLine[0]);
+
+				String[] lineArguments = entireLine[1].split(" ", 6);
+				if (!(lineArguments.length >= 4 && lineArguments.length <= 6))
+					throw new RuntimeException("Invalid NPC Spawn line: " + line);
+
+				int x = Integer.parseInt(lineArguments[0]);
+				int y = Integer.parseInt(lineArguments[1]);
+				int plane = Integer.parseInt(lineArguments[2]);
+				String rotation = lineArguments[3].toUpperCase();
+				WorldTile tile = new WorldTile(x, y, plane);
+				int rotationValue = EntityDirection.valueOf(rotation).getValue();
+
 				int mapAreaNameHash = -1;
 				boolean canBeAttackFromOutOfArea = true;
-				if (splitedLine2.length == 5) {
-					mapAreaNameHash = Utils.getNameHash(splitedLine2[3]);
-					canBeAttackFromOutOfArea = Boolean
-							.parseBoolean(splitedLine2[4]);
+				if (lineArguments.length == 6) {
+					mapAreaNameHash = Utils.getNameHash(lineArguments[3]);
+					canBeAttackFromOutOfArea = Boolean.parseBoolean(lineArguments[4]);
 				}
-				addNPCSpawn(npcId, tile.getRegionId(), tile, mapAreaNameHash,
-						canBeAttackFromOutOfArea);
+				writeNPCSpawn(npcId, tile.getRegionId(), tile, rotationValue, mapAreaNameHash, canBeAttackFromOutOfArea);
 			}
 			in.close();
 		} catch (Throwable e) {
@@ -128,13 +172,13 @@ public final class NPCSpawns {
 		try {
 			RandomAccessFile in = new RandomAccessFile(file, "r");
 			FileChannel channel = in.getChannel();
-			ByteBuffer buffer = channel.map(MapMode.READ_ONLY, 0,
-					channel.size());
+			ByteBuffer buffer = channel.map(MapMode.READ_ONLY, 0, channel.size());
 			while (buffer.hasRemaining()) {
 				int npcId = buffer.getShort() & 0xffff;
 				int plane = buffer.get() & 0xff;
 				int x = buffer.getShort() & 0xffff;
 				int y = buffer.getShort() & 0xffff;
+				int rotation = buffer.getInt();
 				boolean hashExtraInformation = buffer.get() == 1;
 				int mapAreaNameHash = -1;
 				boolean canBeAttackFromOutOfArea = true;
@@ -142,8 +186,7 @@ public final class NPCSpawns {
 					mapAreaNameHash = buffer.getInt();
 					canBeAttackFromOutOfArea = buffer.get() == 1;
 				}
-				World.spawnNPC(npcId, new WorldTile(x, y, plane),
-						mapAreaNameHash, canBeAttackFromOutOfArea);
+				World.spawnNPC(npcId, new WorldTile(x, y, plane), rotation, mapAreaNameHash, canBeAttackFromOutOfArea);
 			}
 			channel.close();
 			in.close();
@@ -152,16 +195,14 @@ public final class NPCSpawns {
 		}
 	}
 
-	private static final void addNPCSpawn(int npcId, int regionId,
-			WorldTile tile, int mapAreaNameHash,
-			boolean canBeAttackFromOutOfArea) {
+	private static final void writeNPCSpawn(int npcId, int regionId, WorldTile tile, int rotationValue, int mapAreaNameHash, boolean canBeAttackFromOutOfArea) {
 		try {
-			DataOutputStream out = new DataOutputStream(new FileOutputStream(
-					Settings.SERVER_DIR + "data/npcs/packedSpawns/" + regionId + ".ns", true));
+			DataOutputStream out = new DataOutputStream(new FileOutputStream(Settings.SERVER_DIR + "data/npcs/packedSpawns/" + regionId + ".ns", true));
 			out.writeShort(npcId);
 			out.writeByte(tile.getPlane());
 			out.writeShort(tile.getX());
 			out.writeShort(tile.getY());
+			out.writeInt(rotationValue);
 			out.writeBoolean(mapAreaNameHash != -1);
 			if (mapAreaNameHash != -1) {
 				out.writeInt(mapAreaNameHash);
