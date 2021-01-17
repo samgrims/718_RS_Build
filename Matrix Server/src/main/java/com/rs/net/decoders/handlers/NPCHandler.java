@@ -4,6 +4,7 @@ import com.rs.Settings;
 import com.rs.game.Animation;
 import com.rs.game.ForceTalk;
 import com.rs.game.World;
+import com.rs.game.WorldTile;
 import com.rs.game.npc.NPC;
 import com.rs.game.npc.familiar.Familiar;
 import com.rs.game.npc.others.FireSpirit;
@@ -60,21 +61,15 @@ public class NPCHandler {
 		int npcIndex = stream.readUnsignedShort128();
 		boolean forceRun = stream.read128Byte() == 1;
 		final NPC npc = World.getNPCs().get(npcIndex);
-		if (npc == null || npc.isCantInteract() || npc.isDead()
-				|| npc.hasFinished()
-				|| !player.getMapRegionsIds().contains(npc.getRegionId()))
+
+		if (!isNPCAvailable(player, npc))
 			return;
+
 		player.stopAll(false);
 		if (forceRun)
 			player.setRun(forceRun);
-		if (npc.getDefinitions().name.contains("Banker") || npc.getDefinitions().name.contains("banker")) {
-			player.faceEntity(npc);
-			if (!player.withinDistance(npc, 2))
-				return;
-			npc.faceEntity(player);
-			player.getDialogueManager().startDialogue("Banker", npc.getId());
-			return;
-		}
+
+		processBanker(player, npc);
 		if (SiphonActionCreatures.siphon(player, npc))
 			return;
 		player.setCoordsEvent(new CoordsEvent(npc, new Runnable() {
@@ -93,95 +88,113 @@ public class NPCHandler {
 					return;
 				}
 				npc.faceEntity(player);
-				if (npc.getId() == 3709)
-					player.getDialogueManager().startDialogue("MrEx", npc.getId());
-				else if (npc.getId() == 5532)
-					player.getDialogueManager().startDialogue("SorceressGardenNPCs", npc);
-				else if (npc.getId() == 5563)
-					player.getDialogueManager().startDialogue("SorceressGardenNPCs", npc);
-				else if (npc.getId() == 5559)
-					player.sendDeath(npc);
-				else if (npc.getId() == 15451 && npc instanceof FireSpirit) {
-					FireSpirit spirit = (FireSpirit) npc;
-					spirit.giveReward(player);
-				} else if (npc.getId() == 949)
-					player.getDialogueManager().startDialogue("QuestGuide",
-							npc.getId(), null);
-				else if (npc.getId() >= 1 && npc.getId() <= 6 || npc.getId() >= 7875 && npc.getId() <= 7884)
-					player.getDialogueManager().startDialogue("Man", npc.getId());
-				else if (npc.getId() == 198)
-					player.getDialogueManager().startDialogue("Guildmaster", npc.getId());
-				else if (npc.getId() == 9462)
-					Strykewyrm.handleStomping(player, npc);
-				else if (npc.getId() == 9707)
-					player.getDialogueManager().startDialogue(
-							"FremennikShipmaster", npc.getId(), true);
-				else if (npc.getId() == 9708)
-					player.getDialogueManager().startDialogue(
-							"FremennikShipmaster", npc.getId(), false);
-				else if (npc.getId() == 11270)
-					ShopsHandler.openShop(player, 19);
-				else if (npc.getId() == 6537)
-					player.getDialogueManager().startDialogue("SetSkills",
-							npc.getId());
-				else if (npc.getId() == 2676)
-					player.getDialogueManager().startDialogue("MakeOverMage", npc.getId(), 0);
-				else if (npc.getId() == 598)
-					player.getDialogueManager().startDialogue("Hairdresser", npc.getId());
-				else if (npc.getId() == 548)
-					player.getDialogueManager().startDialogue("Thessalia", npc.getId());
-				else if (npc.getId() == 659)
-					player.getDialogueManager().startDialogue("PartyPete");
-				else if (npc.getId() == 579)
-					player.getDialogueManager().startDialogue("DrogoDwarf", npc.getId());
-				else if (npc.getId() == 582) //dwarves general store
-					player.getDialogueManager().startDialogue("GeneralStore", npc.getId(), 31);
-				else if (npc.getId() == 528 || npc.getId() == 529) //edge
-					player.getDialogueManager().startDialogue("GeneralStore", npc.getId(), 1);
-				else if (npc.getId() == 522 || npc.getId() == 523) //varrock
-					player.getDialogueManager().startDialogue("GeneralStore", npc.getId(), 8);
-				else if (npc.getId() == 520 || npc.getId() == 521) //lumbridge
-					player.getDialogueManager().startDialogue("GeneralStore", npc.getId(), 4);
-				else if (npc.getId() == 594)
-					player.getDialogueManager().startDialogue("Nurmof", npc.getId());
-				else if (npc.getId() == 665)
-					player.getDialogueManager().startDialogue("BootDwarf", npc.getId());
-				else if (npc.getId() == 382 || npc.getId() == 3294 || npc.getId() == 4316)
-					player.getDialogueManager().startDialogue("MiningGuildDwarf", npc.getId(), false);
-				else if (npc.getId() == 3295)
-					player.getDialogueManager().startDialogue("MiningGuildDwarf", npc.getId(), true);
-				else if (npc.getId() == 537)
-					player.getDialogueManager().startDialogue("Scavvo", npc.getId());
-				else if (npc.getId() == 536)
-					player.getDialogueManager().startDialogue("Valaine", npc.getId());
-				else if (npc.getId() == 4563) //Crossbow Shop
-					player.getDialogueManager().startDialogue("Hura", npc.getId());
-				else if (npc.getId() == 2617)
-					player.getDialogueManager().startDialogue("TzHaarMejJal", npc.getId());
-				else if (npc.getId() == 2618)
-					player.getDialogueManager().startDialogue("TzHaarMejKah", npc.getId());
-				else if (npc.getId() == 15149)
-					player.getDialogueManager().startDialogue("MasterOfFear", 0);
-				else if (npc instanceof Pet) {
-					Pet pet = (Pet) npc;
-					if (pet != player.getPet()) {
-						player.getPackets().sendGameMessage("This isn't your pet.");
-						return;
-					}
-					player.setNextAnimation(new Animation(827));
-					pet.pickup();
-				} else {
-					player.getPackets().sendGameMessage(
-							"Nothing interesting happens.");
-					if (Settings.DEBUG)
-						System.out.println("cliked 1 at npc id : "
-								+ npc.getId() + ", " + npc.getX() + ", "
-								+ npc.getY() + ", " + npc.getPlane());
-				}
+				startCustomDialogues(player, npc);
+				startBuiltInDialogues(player, npc);
 			}
 		}, npc.getSize()));
 	}
 
+	public static boolean isNPCAvailable(Player player, NPC npc) {
+		return npc == null || npc.isCantInteract() || npc.isDead()	|| npc.hasFinished() || !player.getMapRegionsIds().contains(npc.getRegionId());
+	}
+
+	public static void processBanker(Player player, NPC npc) {
+		if (npc.getDefinitions().name.contains("Banker") || npc.getDefinitions().name.contains("banker")) {
+			player.faceEntity(npc);
+			if (!player.withinDistance(npc, 2))
+				return;
+			if(player.getLocation().matches(new WorldTile(3206, 3222, 2)))//3rd floor in Lumbridge
+				return;
+			npc.faceEntity(player);
+			player.getDialogueManager().startDialogue("Banker", npc.getId());
+		}
+	}
+
+	public static void startCustomDialogues(Player player, NPC npc) {
+		int id = npc.getId();
+		if(id == 741)//Duke Horacio
+			player.getDialogueManager().startDialogue("DukeHoracio", id);
+	}
+	public static void startBuiltInDialogues(Player player, NPC npc) {
+		int id = npc.getId();
+		if (id == 3709)
+			player.getDialogueManager().startDialogue("MrEx", id);
+		else if (id == 5532)
+			player.getDialogueManager().startDialogue("SorceressGardenNPCs", npc);
+		else if (id == 5563)
+			player.getDialogueManager().startDialogue("SorceressGardenNPCs", npc);
+		else if (id == 5559)
+			player.sendDeath(npc);
+		else if (id == 15451 && npc instanceof FireSpirit) {
+			FireSpirit spirit = (FireSpirit) npc;
+			spirit.giveReward(player);
+		} else if (id == 949)
+			player.getDialogueManager().startDialogue("QuestGuide",	id, null);
+		else if (id >= 1 && id <= 6 || id >= 7875 && id <= 7884)
+			player.getDialogueManager().startDialogue("Man", id);
+		else if (id == 198)
+			player.getDialogueManager().startDialogue("Guildmaster", id);
+		else if (id == 9462)
+			Strykewyrm.handleStomping(player, npc);
+		else if (id == 9707)
+			player.getDialogueManager().startDialogue("FremennikShipmaster", id, true);
+		else if (id == 9708)
+			player.getDialogueManager().startDialogue("FremennikShipmaster", id, false);
+		else if (id == 11270)
+			ShopsHandler.openShop(player, 19);
+		else if (id == 6537)
+			player.getDialogueManager().startDialogue("SetSkills",	id);
+		else if (id == 2676)
+			player.getDialogueManager().startDialogue("MakeOverMage", id, 0);
+		else if (id == 598)
+			player.getDialogueManager().startDialogue("Hairdresser", id);
+		else if (id == 548)
+			player.getDialogueManager().startDialogue("Thessalia", id);
+		else if (id == 659)
+			player.getDialogueManager().startDialogue("PartyPete");
+		else if (id == 579)
+			player.getDialogueManager().startDialogue("DrogoDwarf", id);
+		else if (id == 582) //dwarves general store
+			player.getDialogueManager().startDialogue("GeneralStore", id, 31);
+		else if (id == 528 || id == 529) //edge
+			player.getDialogueManager().startDialogue("GeneralStore", id, 1);
+		else if (id == 522 || id == 523) //varrock
+			player.getDialogueManager().startDialogue("GeneralStore", id, 8);
+		else if (id == 520 || id == 521) //lumbridge
+			player.getDialogueManager().startDialogue("GeneralStore", id, 4);
+		else if (id == 594)
+			player.getDialogueManager().startDialogue("Nurmof", id);
+		else if (id == 665)
+			player.getDialogueManager().startDialogue("BootDwarf", id);
+		else if (id == 382 || id == 3294 || id == 4316)
+			player.getDialogueManager().startDialogue("MiningGuildDwarf", id, false);
+		else if (id == 3295)
+			player.getDialogueManager().startDialogue("MiningGuildDwarf", id, true);
+		else if (id == 537)
+			player.getDialogueManager().startDialogue("Scavvo", id);
+		else if (id == 536)
+			player.getDialogueManager().startDialogue("Valaine", id);
+		else if (id == 4563) //Crossbow Shop
+			player.getDialogueManager().startDialogue("Hura", id);
+		else if (id == 2617)
+			player.getDialogueManager().startDialogue("TzHaarMejJal", id);
+		else if (id == 2618)
+			player.getDialogueManager().startDialogue("TzHaarMejKah", id);
+		else if (id == 15149)
+			player.getDialogueManager().startDialogue("MasterOfFear", 0);
+		else if (npc instanceof Pet) {
+			Pet pet = (Pet) npc;
+			if (pet != player.getPet()) {
+				player.getPackets().sendGameMessage("This isn't your pet.");
+				return;
+			}
+			player.setNextAnimation(new Animation(827));
+			pet.pickup();
+		} else {
+			player.getPackets().sendGameMessage("Nothing interesting happens.");
+		}
+	}
+	
 	public static void handleOption2(final Player player, InputStream stream) {
 		int npcIndex = stream.readUnsignedShort128();
 		boolean forceRun = stream.read128Byte() == 1;
