@@ -69,7 +69,7 @@ public class NPCHandler {
 		if (forceRun)
 			player.setRun(forceRun);
 
-		processBanker(player, npc);
+//		processBanker(player, npc);
 		if (SiphonActionCreatures.siphon(player, npc))
 			return;
 		player.setCoordsEvent(new CoordsEvent(npc, new Runnable() {
@@ -95,7 +95,7 @@ public class NPCHandler {
 	}
 
 	public static boolean isNPCAvailable(Player player, NPC npc) {
-		return npc == null || npc.isCantInteract() || npc.isDead()	|| npc.hasFinished() || !player.getMapRegionsIds().contains(npc.getRegionId());
+		return !(npc == null || npc.isCantInteract() || npc.isDead()	|| npc.hasFinished() || !player.getMapRegionsIds().contains(npc.getRegionId()));
 	}
 
 	public static void processBanker(Player player, NPC npc) {

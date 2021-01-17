@@ -2,6 +2,7 @@ package com.rs.game.player.dialogues;
 
 import java.util.HashMap;
 
+import com.rs.custom.dialogues.CustomDialoguesHandler;
 import com.rs.custom.dialogues.DukeHoracio;
 import com.rs.tools.DebugLine;
 import com.rs.utils.Logger;
@@ -13,16 +14,17 @@ public final class DialogueHandler {
 	@SuppressWarnings("unchecked")
 	public static final void init() {
 		try {
-			addCustomDialogues();
+			CustomDialoguesHandler.addCustomDialogues();
 			addBuiltInDialogues();
 		} catch (Throwable e) {
 			Logger.handle(e);
 		}
 	}
 
-	public static void addCustomDialogues() throws ClassNotFoundException {
-		handledDialogues.put("DukeHoracio", (Class<Dialogue>) Class.forName(DukeHoracio.class.getCanonicalName()));
+	public static void putHandledDialogue(String dialogueName, Class<Dialogue> dialogueClass) {
+		handledDialogues.put(dialogueName, dialogueClass);
 	}
+
 	public static void addBuiltInDialogues() throws ClassNotFoundException {
 		Class<Dialogue> value1 = (Class<Dialogue>) Class.forName(LevelUp.class.getCanonicalName());
 		handledDialogues.put("LevelUp", value1);
