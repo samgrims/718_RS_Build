@@ -1,5 +1,6 @@
 package com.rs.custom.dialogues;
 
+import com.rs.custom.dialogues.handler.FaceAnimations;
 import com.rs.game.player.Skills;
 import com.rs.game.player.dialogues.Dialogue;
 import com.rs.utils.ShopsHandler;
@@ -10,7 +11,7 @@ public class DukeHoracio extends Dialogue {
     @Override
     public void start() {
         npcId = (Integer) parameters[0];
-        sendNPCDialogue(npcId, 9827, "Can I help you at all?" );
+        sendNPCDialogue(npcId, FaceAnimations.HAPPY_PLAIN.getId(), "Greetings. Welcome to my castle.");
 
     }
 

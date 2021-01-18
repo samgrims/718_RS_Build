@@ -2082,6 +2082,9 @@ public final class Commands {
 //					player.getPackets().sendPanelBoxMessage("Use: ::npc id(Integer)");
 //				}
 //				return true;
+			case "faceanim":
+				player.getDialogueManager().testFaceAnimations("DukeHoracio", Integer.parseInt(cmd[1]));
+				return true;
 			case "npc":
 				int id = Integer.parseInt(cmd[1]);
 				WorldTile loc = player.getLocation();

@@ -25,6 +25,19 @@ public class DialogueManager {
 		lastDialogue.start();
 	}
 
+	public void testFaceAnimations(Object key, int faceAnim,  Object... parameters) {
+		if (!player.getControlerManager().useDialogueScript(key))
+			return;
+		if (lastDialogue != null)
+			lastDialogue.finish();
+		lastDialogue = DialogueHandler.getDialogue(key);
+		if (lastDialogue == null)
+			return;
+		lastDialogue.parameters = parameters;
+		lastDialogue.setPlayer(player);
+		lastDialogue.start(faceAnim);
+	}
+
 	public void continueDialogue(int interfaceId, int componentId) {
 		if (lastDialogue == null)
 			return;

@@ -21,6 +21,10 @@ public abstract class Dialogue {
 
 	public abstract void start();
 
+	public void start(int faceAnimation) {
+		sendNPCDialogue(741, faceAnimation, "Greetings. I am testing your face Animations!");
+	}
+
 	public abstract void run(int interfaceId, int componentId);
 
 	public abstract void finish();

@@ -2,9 +2,7 @@ package com.rs.game.player.dialogues;
 
 import java.util.HashMap;
 
-import com.rs.custom.dialogues.CustomDialoguesHandler;
-import com.rs.custom.dialogues.DukeHoracio;
-import com.rs.tools.DebugLine;
+import com.rs.custom.dialogues.handler.CustomDialoguesHandler;
 import com.rs.utils.Logger;
 
 public final class DialogueHandler {
