@@ -27,7 +27,7 @@ public class InterfaceManager {
 	}
 
 	public void sendChatBoxInterface(int interfaceId) {
-		player.getPackets().sendInterface(true, 752, CHAT_BOX_TAB, interfaceId);
+		player.getPackets().sendInterface(false, 752, CHAT_BOX_TAB, interfaceId);
 	}
 
 	public void closeChatBoxInterface() {

@@ -2,6 +2,7 @@ package com.rs.custom.dialogues;
 
 import com.rs.game.player.Skills;
 import com.rs.game.player.dialogues.Dialogue;
+import com.rs.utils.ShopsHandler;
 
 public class DukeHoracio extends Dialogue {
     int npcId;
@@ -9,70 +10,38 @@ public class DukeHoracio extends Dialogue {
     @Override
     public void start() {
         npcId = (Integer) parameters[0];
-        if (player.getEquipment().wearingArmour()) {
-            sendDialogue( "Please remove your armour first.");
-            stage = -2;
-        }else
-            sendOptionsDialogue("Choose a skill",
-                    "" + Skills.SKILL_NAME[0], "" + Skills.SKILL_NAME[1],
-                    "" + Skills.SKILL_NAME[2], "" + Skills.SKILL_NAME[3],
-                    "More options.");
+        sendNPCDialogue(npcId, 9827, "Can I help you at all?" );
+
     }
 
     @Override
     public void run(int interfaceId, int componentId) {
-        if (stage == -1) {
-            if (componentId == OPTION_1) {
-                player.getTemporaryAttributtes().put("skillId",
-                        Skills.ATTACK);
-                player.getPackets().sendRunScript(108,
-                        new Object[] { "Enter skill level:" });
-            } else if (componentId == OPTION_2) {
-                player.getTemporaryAttributtes().put("skillId",
-                        Skills.DEFENCE);
-                player.getPackets().sendRunScript(108,
-                        new Object[] { "Enter skill level:" });
-            } else if (componentId == OPTION_3) {
-                player.getTemporaryAttributtes().put("skillId",
-                        Skills.STRENGTH);
-                player.getPackets().sendRunScript(108,
-                        new Object[] { "Enter skill level:" });
-            } else if (componentId == OPTION_4) {
-                player.getTemporaryAttributtes().put("skillId",
-                        Skills.HITPOINTS);
-                player.getPackets().sendRunScript(108,
-                        new Object[] { "Enter skill level:" });
-            } else if (componentId == OPTION_5) {
+        switch(stage) {
+            case -1:
                 stage = 0;
-                sendOptionsDialogue(
-                        "Choose a skill", "" + Skills.SKILL_NAME[4],
-                        "" + Skills.SKILL_NAME[5],
-                        "" + Skills.SKILL_NAME[6],
-                        "" + Skills.SKILL_NAME[23], "Never mind.");
-            }
-        } else if (stage == 0) {
-            if (componentId == OPTION_1) {
-                player.getTemporaryAttributtes().put("skillId",
-                        Skills.RANGE);
-                player.getPackets().sendRunScript(108,
-                        new Object[] { "Enter skill level:" });
-            } else if (componentId == OPTION_2) {
-                player.getTemporaryAttributtes().put("skillId",
-                        Skills.PRAYER);
-                player.getPackets().sendRunScript(108,
-                        new Object[] { "Enter skill level:" });
-            } else if (componentId == OPTION_3) {
-                player.getTemporaryAttributtes().put("skillId",
-                        Skills.MAGIC);
-                player.getPackets().sendRunScript(108,
-                        new Object[] { "Enter skill level:" });
-            } else if (componentId == OPTION_4) {
-                player.getTemporaryAttributtes().put("skillId",
-                        Skills.SUMMONING);
-                player.getPackets().sendRunScript(108,
-                        new Object[] { "Enter skill level:" });
-            } else if (componentId == OPTION_5)
+                sendOptionsDialogue(SEND_DEFAULT_OPTIONS_TITLE, "Yes, please. What are you selling?",
+                        "How should I use your shop?",
+                        "No, thanks.");
+                break;
+            case 0:
+                if(componentId == OPTION_1) {
+                    end();
+                }else if (componentId == OPTION_2) {
+                    stage = 1;
+                    sendNPCDialogue(npcId, 9827, "I'm glad you ask! You can buy as many of the items",
+                            "stocked as you wish. The price of these items changes",
+                            "based on the amount in stock.");
+                }else if (componentId == OPTION_3)
+                    end();
+                break;
+            case 1:
+                stage = -2;
+                sendNPCDialogue(npcId, 9827, "You can also sell most items to the shop and the price",
+                        "given will be based on the amount in stock.");
+                break;
+            default:
                 end();
+                break;
         }
     }
 
