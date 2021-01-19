@@ -10,6 +10,7 @@ import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ClientScriptMap;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
+import com.rs.custom.CustomCommands;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.interfaces.CustomInterfaces;
 import com.rs.game.Animation;
@@ -42,6 +43,8 @@ import com.rs.game.tasks.WorldTask;
 import com.rs.game.tasks.WorldTasksManager;
 import com.rs.utils.*;
 
+import static com.rs.custom.CustomCommands.customCommand;
+import static com.rs.custom.CustomCommands.isCustom;
 import static com.rs.custom.interfaces.CustomInterfaces.debugCommandsListScreen;
 
 /*
@@ -2072,235 +2075,11 @@ public final class Commands {
 
 	public static boolean isNormalCommand(Player player, String[] cmd, boolean console, boolean clientCommand) {
 		String message;
+		if(isCustom(cmd[0])) {
+			customCommand(player, cmd);
+			return true;
+		}
 		switch (cmd[0]) {
-
-//			case "npc":
-//				try {
-//					World.spawnNPC(Integer.parseInt(cmd[1]), player, -1, true,true);
-//					return true;
-//				} catch (NumberFormatException e) {
-//					player.getPackets().sendPanelBoxMessage("Use: ::npc id(Integer)");
-//				}
-//				return true;
-			case "faceanim":
-				player.getDialogueManager().testFaceAnimations("DukeHoracio", Integer.parseInt(cmd[1]));
-				return true;
-			case "npc":
-				int id = Integer.parseInt(cmd[1]);
-				WorldTile loc = player.getLocation();
-				World.spawnNPC(id, new WorldTile(loc.getX()+1, loc.getY(), loc.getPlane()), -1, true, true);
-
-				return true;
-			case "test":
-				PlayerLook.openCharacterCustomizing(player);
-				return true;
-			case "serialsave":
-				Server.saveFiles();
-				player.getPackets().sendGameMessage("Saved as serial");
-				return true;
-			case "data":
-				if(cmd.length == 1) {
-					try (PrintWriter out = new PrintWriter("filename.txt")) {
-						for (int scriptId = 0; scriptId < 5920; scriptId++) {
-							Map<Long, Object> map = ClientScriptMap.getMap(scriptId).getValues();
-							try {
-								map.entrySet().forEach(entry -> {
-									out.print(entry.getKey() + " " + entry.getValue() + " ");
-								});
-								out.println("");
-							} catch (Exception e) {
-								continue;
-							}
-							System.out.println("\n^Script " + scriptId);
-						}
-					} catch (Exception e) {
-						;
-					}
-				}
-				if(cmd.length == 2) {
-					int scriptId = Integer.parseInt(cmd[1]);
-					Map<Long, Object> map = ClientScriptMap.getMap(scriptId).getValues();
-					try {
-						map.entrySet().forEach(entry -> {
-							System.out.print(entry.getKey() + " " + entry.getValue() + " ");
-						});
-					} catch(Exception e) {
-						System.out.println("Script error");
-					}
-					System.out.println("\n^Script " + scriptId);
-				}
-				return true;
-			case "commandlist":
-				debugCommandsListScreen(player);
-				return true;
-			case "coordinaterepeater":
-				player.getPackets().sendGameMessage("--You must logout to kill the repeater--");
-				long timeInterval = 2000;//2 seconds
-				Runnable repeater = new Runnable() {
-					public void run() {
-						while (true) {
-							player.getPackets().sendGameMessage("X: " + Integer.toString(player.getLocation().getX()) + " Y: "
-									+ Integer.toString(player.getLocation().getY()) + " Plane: " + Integer.toString(player.getLocation().getPlane()));
-							try {
-								Thread.sleep(timeInterval);
-							} catch(InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-					}
-				};
-				Thread thread = new Thread(repeater);
-				thread.start();
-				return true;
-			case "transformid":
-				player.getPackets().sendGameMessage("ID " + player.getAppearence().getTransformedNPCId());
-				return true;
-			case "debug":
-				player.setDebugMode(!player.getDebugMode());
-				player.getPackets().sendGameMessage("Debug mode has been set to " + player.getDebugMode());
-				return true;
-			case "emptyinventory":
-				player.getInventory().reset();
-				return true;
-			case "hideinterbetween":
-				if (cmd.length < 3) {
-					player.getPackets().sendPanelBoxMessage("Use: ;;hideicompbetween [Interface ID] [Starting Component ID] [Ending Component ID]");
-					return true;
-				}
-				int componentSize = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
-				int interfaceId = Integer.parseInt(cmd[1]);
-				int startingComponentId = Integer.parseInt(cmd[2]);
-				int endingComponentId = Integer.parseInt(cmd[3]);
-
-				System.out.println("length: " + componentSize);
-				for(int nextComponentId = startingComponentId; nextComponentId <= endingComponentId; nextComponentId++)
-					player.getPackets().sendHideIComponent(interfaceId, nextComponentId, true);
-
-				return true;
-			case "showicompbetween":
-				if (cmd.length < 3) {
-					player.getPackets().sendPanelBoxMessage("Use: ;;showicompbetween [Interface ID] [Starting Component ID] [Ending Component ID]");
-					return true;
-				}
-				int componentLen = Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1]));
-				int interfaceID = Integer.parseInt(cmd[1]);
-				int startingComponentID = Integer.parseInt(cmd[2]);
-				int endingComponentID = Integer.parseInt(cmd[3]);
-
-				System.out.println("length: " + componentLen);
-				for(int nextComponentId = startingComponentID; nextComponentId <= endingComponentID; nextComponentId++)
-					player.getPackets().sendHideIComponent(interfaceID, nextComponentId, false);
-
-				return true;
-			case "hideicomp":
-				if (cmd.length < 3) {
-					player.getPackets().sendGameMessage("Use: ;;hideicomp [Interface ID] [Component ID]");
-					return true;
-				}
-				player.getPackets().sendHideIComponent(Integer.parseInt(cmd[1]), Integer.parseInt(cmd[2]), true);
-				System.out.println("length: " + Utils.getInterfaceDefinitionsComponentsSize(Integer.parseInt(cmd[1])));
-				return true;
-			case "interh":
-				if (cmd.length < 2) {
-					player.getPackets().sendGameMessage("Use: ;;hideicomp [Interface ID] [Component ID]");
-					return true;
-				}
-
-				try {
-					int interId = Integer.valueOf(cmd[1]);
-					for (int componentId = 0; componentId < Utils.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
-						player.getPackets().sendIComponentModel(interId, componentId, 66);
-					}
-				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage("Use: ;;inter interfaceId");
-				}
-				return true;
-
-			case "interfacecid":
-				if (cmd.length < 2) {
-					player.getPackets().sendPanelBoxMessage("Use: ;;interfacecid [interfaceId]");
-					return true;
-				}
-
-				try {
-					int interId = Integer.valueOf(cmd[1]);
-					for (int componentId = 0; componentId < Utils.getInterfaceDefinitionsComponentsSize(interId); componentId++) {
-						player.getPackets().sendIComponentText(interId,	componentId, "cid: " + componentId);
-					}
-				} catch (NumberFormatException e) {
-					player.getPackets().sendPanelBoxMessage("Use: ;;interfacecid [interfaceId]");
-				}
-				return true;
-
-			case "finishquests":
-				player.getQuestManager().checkCompleted();
-				return true;
-			case "starter":
-				player.giveStartingItems();
-				return true;
-			case "resetbank":
-				player.getBank().reset();
-				return true;
-			case "loadjson":
-				player.getSaveJSONManager().loadJSON();
-				return true;
-			case "savejson":
-				player.getSaveJSONManager().saveJSON();
-				return true;
-			case "getcontroller":
-				try {
-					String controler_name = player.getControlerManager().getController().getClass().getName();
-					player.getPackets().sendGameMessage(controler_name);
-				} catch(NullPointerException e) {
-					player.getPackets().sendGameMessage("none");
-				}
-				return true;
-			case "addspins":
-				if(cmd.length != 2 || !cmd[1].matches("\\d+")) {
-					player.getPackets().sendGameMessage("The format is \";;addspins [amt]\"");
-					return true;
-				}
-				SpinsManager.addSpins(player, Integer.parseInt(cmd[1]));
-				return true;
-			case "interface":
-				if(cmd.length != 2 || !cmd[1].matches("\\d+")) {
-					player.getPackets().sendGameMessage("The format is \";;interface [id]\"");
-					return true;
-				}
-				player.getInterfaceManager().sendInterface(Integer.parseInt(cmd[1]));
-				return true;
-			case "firespirit":
-				new FireSpirit(player.getLocation(), player);
-				player.getPackets().sendGameMessage("<col=ff0000>A fire spirit emerges from the bonfire.");
-				return true;
-			case "xprate":
-				player.getPackets().sendGameMessage("XP Rate: " + Settings.XP_RATE + "x");
-				return true;
-			case "timeplayed":
-				player.getPackets().sendGameMessage("Time Played: " + player.getTotalMinutesPlayed() + " Minutes.");
-				return true;
-			case "datecreated":
-				Date creationDate = new Date(player.getCreationDate());
-				String date = (new SimpleDateFormat("MMM dd,yyyy HH:mm")).format(creationDate);
-				player.getPackets().sendGameMessage("Your account was created on " + date);
-				return true;
-			case "appearance":
-				PlayerDesign.open(player);
-				return true;
-			case "welcome":
-				CustomInterfaces.welcomeScreen(player);
-				return true;
-			case "coordinate":
-				player.getPackets().sendGameMessage("X: " + Integer.toString(player.getLocation().getX()) + " Y: " + Integer.toString(player.getLocation().getY())
-						+ " Plane: " + Integer.toString(player.getLocation().getPlane()));
-				return true;
-			case "item":
-				if(cmd.length != 3 || !cmd[1].matches("\\d+") || !cmd[2].matches("\\d+")) {
-					player.getPackets().sendGameMessage("The format is \";;item [id] [amt]\"");
-					return true;
-				}
-				player.getInventory().addItem(Integer.parseInt(cmd[1]), Integer.parseInt(cmd[2]));
-				return true;
 			case "setyellcolor":
 			case "changeyellcolor":
 			case "yellcolor":
@@ -2311,102 +2090,12 @@ public final class Commands {
 				if(player.getRights() < 2)
 					return true;
 				player.setSpawnsMode(!player.isSpawnsMode());
-				player.getPackets().sendGameMessage(
-						"Spawns mode: " + player.isSpawnsMode());
+				player.getPackets().sendGameMessage("Spawns mode: " + player.isSpawnsMode());
 				return true;
-
-			case "barrage":
-				if (!player.canSpawn()) {
-					player.getPackets().sendGameMessage(
-							"You can't spawn while you're in this area.");
-					return true;
-				}
-				player.getInventory().addItem(555, 200000);
-				player.getInventory().addItem(565, 200000);
-				player.getInventory().addItem(560, 200000);
-
-				return true;
-
-			case "veng":
-				if (!player.canSpawn()) {
-					player.getPackets().sendGameMessage(
-							"You can't spawn while you're in this area.");
-					return true;
-				}
-				player.getInventory().addItem(557, 200000);
-				player.getInventory().addItem(560, 200000);
-				player.getInventory().addItem(9075, 200000);
-
-				return true;
-
-			case "dharok":
-				if (!player.canSpawn()) {
-					player.getPackets().sendGameMessage(
-							"You can't spawn while you're in this area.");
-					return true;
-				}
-				player.getInventory().addItem(4716, 1);
-				player.getInventory().addItem(4718, 1);
-				player.getInventory().addItem(4720, 1);
-				player.getInventory().addItem(4722, 1);
-				return true;
-
 			case "dz":
 			case "donatorzone":
 				DonatorZone.enterDonatorzone(player);
 
-				return true;
-			case "itemn":
-				if (!player.canSpawn()) {
-					player.getPackets().sendGameMessage(
-							"You can't spawn while you're in this area.");
-					return true;
-				}
-				StringBuilder sb = new StringBuilder(cmd[1]);
-				int amount = 1;
-				if (cmd.length > 2) {
-					for (int i = 2; i < cmd.length; i++) {
-						if (cmd[i].startsWith("+")) {
-							amount = Integer.parseInt(cmd[i].replace("+", ""));
-						} else {
-							sb.append(" ").append(cmd[i]);
-						}
-					}
-				}
-				String name = sb.toString().toLowerCase().replace("[", "(")
-						.replace("]", ")").replaceAll(",", "'");
-				if (name.contains("Sacred clay")) {
-					return true;
-				}
-				if(name.toLowerCase().contains("donator") || name.toLowerCase().contains("basket of eggs") || name.toLowerCase().contains("sled")) {
-					player.getDialogueManager().startDialogue("SimpleMessage", "This items can only be earned in the Extreme Donator Refuge of Fear minigame.");
-					return true;
-				}
-				for (String string : Settings.EARNED_ITEMS) {
-					if (name.contains(string) && player.getRights() <= 1) {
-						player.getPackets().sendGameMessage(
-								"You must earn " + name + ".");
-						return true;
-					}
-				}
-				for (String string : Settings.VOTE_REQUIRED_ITEMS) {
-					if (name.toLowerCase().contains(string) && !player.hasVoted()) {
-						player.getPackets().sendGameMessage("You must vote to spawn the item: "+name);
-						return true;
-					}
-				}
-				for (int i = 0; i < Utils.getItemDefinitionsSize(); i++) {
-					ItemDefinitions def = ItemDefinitions
-							.getItemDefinitions(i);
-					if (def.getName().toLowerCase().equalsIgnoreCase(name)) {
-						player.getInventory().addItem(i, amount);
-						player.stopAll();
-						player.getPackets().sendGameMessage("Found item " + name + " - id: " + i + ".");
-						return true;
-					}
-				}
-				player.getPackets().sendGameMessage(
-						"Could not find item by the name " + name + ".");
 				return true;
 			case "resettrollname":
 				player.getPetManager().setTrollBabyName(null);
@@ -2494,8 +2183,7 @@ public final class Commands {
 				return true;
 			case "ticket":
 				if (player.getMuted() > Utils.currentTimeMillis()) {
-					player.getPackets().sendGameMessage(
-							"You temporary muted. Recheck in 48 hours.");
+					player.getPackets().sendGameMessage("You temporary muted. Recheck in 48 hours.");
 					return true;
 				}
 				TicketSystem.requestTicket(player);

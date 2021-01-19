@@ -1,6 +1,7 @@
 package com.rs.custom.dialogues;
 
 import com.rs.custom.dialogues.handler.FaceAnimations;
+import com.rs.game.player.Inventory;
 import com.rs.game.player.Skills;
 import com.rs.game.player.dialogues.Dialogue;
 import com.rs.utils.ShopsHandler;
@@ -11,34 +12,30 @@ public class DukeHoracio extends Dialogue {
     @Override
     public void start() {
         npcId = (Integer) parameters[0];
-        sendNPCDialogue(npcId, FaceAnimations.HAPPY_PLAIN.getId(), "Greetings. Welcome to my castle.");
-
+        sendNPCDialogue(npcId, FaceAnimations.PLAIN_TALKING.getId(), "Greetings. Welcome to my castle.");
+        stage = 1;
     }
 
     @Override
     public void run(int interfaceId, int componentId) {
+        System.out.println(stage);
         switch(stage) {
-            case -1:
-                stage = 0;
-                sendOptionsDialogue(SEND_DEFAULT_OPTIONS_TITLE, "Yes, please. What are you selling?",
-                        "How should I use your shop?",
-                        "No, thanks.");
-                break;
-            case 0:
-                if(componentId == OPTION_1) {
-                    end();
-                }else if (componentId == OPTION_2) {
-                    stage = 1;
-                    sendNPCDialogue(npcId, 9827, "I'm glad you ask! You can buy as many of the items",
-                            "stocked as you wish. The price of these items changes",
-                            "based on the amount in stock.");
-                }else if (componentId == OPTION_3)
-                    end();
-                break;
             case 1:
-                stage = -2;
-                sendNPCDialogue(npcId, 9827, "You can also sell most items to the shop and the price",
-                        "given will be based on the amount in stock.");
+                sendPlayerDialogue(FaceAnimations.PLAIN_TALKING_WITH_BLINK.getId(), "I seek a shield that will protect me from dragonbreath.");
+                stage = 2;
+                break;
+            case 2:
+                sendNPCDialogue(npcId, FaceAnimations.PLAIN_TALKING_WITH_BLINK.getId(), "A knight going on a dragon quest, hmm?");
+                stage = 3;
+                break;
+            case 3:
+                Inventory playerInventory = player.getInventory();
+                if(playerInventory.hasFreeSlots()) {
+                    sendDialogue("The duke hands you the shield.");
+                    playerInventory.addItem(1540, 1);
+                } else
+                    sendDialogue("You need to free your inventory");
+                stage = 0;
                 break;
             default:
                 end();
