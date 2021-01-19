@@ -6,6 +6,7 @@ import java.util.TimerTask;
 import com.rs.Settings;
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.cores.CoresManager;
+import com.rs.custom.interfaces.PlayerDesign;
 import com.rs.game.WorldTile;
 import com.rs.game.item.Item;
 import com.rs.game.minigames.Crucible;
@@ -1057,7 +1058,7 @@ public class ButtonHandler {
 		} else if (interfaceId == 750) {
 			if (componentId == 4) {
 				if (packetId == WorldPacketsDecoder.ACTION_BUTTON1_PACKET) {
-					player.toogleRun(player.isResting() ? false : true);
+					player.toggleRun(player.isResting() ? false : true);
 					if (player.isResting())
 						player.stopAll();
 				} else if (packetId == WorldPacketsDecoder.ACTION_BUTTON2_PACKET) {

@@ -9,7 +9,7 @@ import com.rs.game.World;
 import com.rs.game.WorldTile;
 import com.rs.game.npc.others.FireSpirit;
 import com.rs.game.player.Player;
-import com.rs.game.player.content.PlayerDesign;
+import com.rs.custom.interfaces.PlayerDesign;
 import com.rs.game.player.content.PlayerLook;
 import com.rs.utils.Utils;
 

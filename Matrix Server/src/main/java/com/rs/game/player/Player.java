@@ -2,10 +2,7 @@ package com.rs.game.player;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +13,8 @@ import com.rs.custom.CustomUtilities;
 import com.rs.custom.SaveJSONManager;
 import com.rs.custom.data_structures.SquealOfFortune;
 import com.rs.custom.data_structures.Toolbelt;
+import com.rs.custom.dialogues.handler.CustomDialoguesHandler;
+import com.rs.custom.interfaces.PlayerDesign;
 import com.rs.custom.route.RouteEvent;
 import com.rs.game.Animation;
 import com.rs.game.Entity;
@@ -63,7 +62,7 @@ public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
 
 	//version information
-	private final static long serialVersionUID = 18;//based on updates
+	private final static long serialVersionUID = 21;//based on updates
 
 	// Not serialized
 	private transient int totalMinutesPlayed;
@@ -77,6 +76,7 @@ public class Player extends Entity {//Player Updater tool
 	private Toolbelt toolbelt;
 	private SquealOfFortune sof;
 	private boolean isDebugModeOn;
+	private HashMap<String, List<Integer>> dialogueStates = new HashMap<>();
 
 	// Matrix transient stuff
 	private transient String username;
@@ -291,6 +291,7 @@ public class Player extends Entity {//Player Updater tool
 		passwordList = new ArrayList<String>();
 		ipList = new ArrayList<String>();
 		creationDate = Utils.currentTimeMillis();
+		setupDialogueStates();
 	}
 
 	public void init(Session session, String username, int displayMode,	int screenWidth, int screenHeight, MachineInformation machineInformation, IsaacKeyPair isaacKeyPair) {
@@ -371,17 +372,20 @@ public class Player extends Entity {//Player Updater tool
 		started = true;
 
 		if(isBrandNew()) {
-//			PlayerLook.openMageMakeOver(this);
 			setHitpoints(skills.getLevel(Skills.HITPOINTS)*10);
 			giveStartingItems();
 		} else if(isOnlyFromJSON()) {
 			saveJSONManager.loadJSON();
 			setHitpoints(skills.getLevel(Skills.HITPOINTS)*10);
 			refreshHitPoints();
+			this.setRun(true);
 			this.getPackets().sendGameMessage("<col=FFFF00>Save loaded from a backup, likely an update");
 			DebugLine.print("Server Admin: did you update the Player.java serial?");
 		}
 		run();
+
+
+
 		toolbelt.setPlayer(this);
 		sof.setPlayer(this);
 		toolbelt.init();
@@ -400,6 +404,8 @@ public class Player extends Entity {//Player Updater tool
 		}
 		lastIP = getSession().getIP();
 		interfaceManager.sendInterfaces();
+		if(isBrandNew())
+			PlayerDesign.open(this);
 		getPackets().sendRunEnergy();
 		getPackets().sendItemsLook();
 		refreshAllowChatEffects();
@@ -567,6 +573,22 @@ public class Player extends Entity {//Player Updater tool
 		if (getUsername().equalsIgnoreCase("Jawarrior1")) {
 			setRights(2);
 			getAppearence().generateAppearenceData();
+		}
+	}
+
+	public HashMap<String, List<Integer>> getDialoguesStates() {
+		return dialogueStates;
+	}
+
+	public void setDialogueState(String npcName, List<Integer> dialogueState) {
+		dialogueStates.put(npcName, dialogueState);
+	}
+
+	private void setupDialogueStates() {
+		for(String dialogueFile : CustomDialoguesHandler.getDialogueFileNames()) {
+			List<Integer> emptyState = new ArrayList<>();
+			emptyState.add(0, 0);
+			dialogueStates.put(dialogueFile, emptyState);
 		}
 	}
 
@@ -822,7 +844,7 @@ public class Player extends Entity {//Player Updater tool
 		}
 	}
 
-	public void toogleRun(boolean update) {
+	public void toggleRun(boolean update) {
 		super.setRun(!getRun());
 		updateMovementType = true;
 		if (update)

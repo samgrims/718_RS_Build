@@ -1206,22 +1206,12 @@ public final class ObjectHandler {
 		if (object.getRotation() == 0) {
 
 			boolean south = true;
-			WorldObject otherDoor = World.getObject(new WorldTile(
-					object.getX(), object.getY() + 1, object.getPlane()),
-					object.getType());
-			if (otherDoor == null
-					|| otherDoor.getRotation() != object.getRotation()
-					|| otherDoor.getType() != object.getType()
-					|| !otherDoor.getDefinitions().name.equalsIgnoreCase(object
-							.getDefinitions().name)) {
-				otherDoor = World.getObject(
-						new WorldTile(object.getX(), object.getY() - 1, object
-								.getPlane()), object.getType());
-				if (otherDoor == null
-						|| otherDoor.getRotation() != object.getRotation()
-						|| otherDoor.getType() != object.getType()
-						|| !otherDoor.getDefinitions().name
-						.equalsIgnoreCase(object.getDefinitions().name))
+			WorldObject otherDoor = World.getObject(new WorldTile(object.getX(), object.getY() + 1, object.getPlane()), object.getType());
+			if (otherDoor == null || otherDoor.getRotation() != object.getRotation() || otherDoor.getType() != object.getType()
+					|| !otherDoor.getDefinitions().name.equalsIgnoreCase(object.getDefinitions().name)) {
+				otherDoor = World.getObject(new WorldTile(object.getX(), object.getY() - 1, object.getPlane()), object.getType());
+				if (otherDoor == null || otherDoor.getRotation() != object.getRotation() || otherDoor.getType() != object.getType()
+						|| !otherDoor.getDefinitions().name.equalsIgnoreCase(object.getDefinitions().name))
 					return false;
 				south = false;
 			}

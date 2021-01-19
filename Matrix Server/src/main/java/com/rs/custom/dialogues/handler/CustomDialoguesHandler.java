@@ -11,11 +11,15 @@ public class CustomDialoguesHandler {
     private static final String classPath = "com.rs.custom.dialogues.";
 
     private static final String[] dialogueFileNames = new String[] {
-            "DukeHoracio"
+            "DukeHoracio", "LumbridgeGuardsmen", "LumbridgeCook"
     };
 
     public static void addCustomDialogues() throws ClassNotFoundException {
         for(String className : dialogueFileNames)
             DialogueHandler.putHandledDialogue(className, (Class<Dialogue>) Class.forName(classPath + className));
+    }
+
+    public static String[] getDialogueFileNames() {
+        return dialogueFileNames;
     }
 }

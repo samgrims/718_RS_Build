@@ -112,8 +112,25 @@ public class NPCHandler {
 
 	public static void startCustomDialogues(Player player, NPC npc) {
 		int id = npc.getId();
-		if(id == 741)//Duke Horacio
-			player.getDialogueManager().startDialogue("DukeHoracio", id);
+		switch(id) {
+			case 278://Lumbridge Cook
+				player.getDialogueManager().startDialogue("LumbridgeCook", id);
+				break;
+			case 741://Duke Horacio
+				player.getDialogueManager().startDialogue("DukeHoracio", id);
+				break;
+			case 7885://Lumbridge Guardsmen
+			case 7886:
+			case 7887:
+			case 7889:
+			case 7890:
+				player.getDialogueManager().startDialogue("LumbridgeGuardsmen", id);
+				break;
+			default:
+				break;
+		}
+
+
 	}
 	public static void startBuiltInDialogues(Player player, NPC npc) {
 		int id = npc.getId();
@@ -190,8 +207,6 @@ public class NPCHandler {
 			}
 			player.setNextAnimation(new Animation(827));
 			pet.pickup();
-		} else {
-			player.getPackets().sendGameMessage("Nothing interesting happens.");
 		}
 	}
 	
