@@ -200,4 +200,9 @@ public class WorldTile implements Serializable {
 	public boolean matches(WorldTile other) {
 		return x == other.x && y == other.y && plane == other.plane;
 	}
+
+	@Override
+	public String toString() {
+		return "X: " + this.x + " Y: " + this.y + " Plane: " + this.plane;
+	}
 }

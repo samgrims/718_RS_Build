@@ -16,55 +16,12 @@ import java.util.List;
 
 import com.rs.Settings;
 import com.rs.cache.loaders.NPCDefinitions;
+import com.rs.custom.data_structures.EntityDirection;
 import com.rs.game.World;
 import com.rs.game.WorldTile;
 import com.rs.game.npc.NPC;
 
 public final class NPCSpawns {
-	public enum EntityDirection {
-		NORTH(8192),
-		SOUTH(0),
-		EAST(12288),
-		WEST(4096),
-		NORTHEAST(10240),
-		SOUTHEAST(14366),
-		NORTHWEST(6144),
-		SOUTHWEST(2048);
-
-		private int value;
-
-		public int getValue() {
-			return value;
-		}
-
-		private EntityDirection(int value) {
-			this.value = value;
-		}
-	}
-
-	public int getRotationValue(String rotation) {
-		int value = 6144;
-		switch(rotation.toUpperCase()) {
-			case "NORTH" :
-				break;
-			case "SOUTH" :
-				break;
-			case "WEST" :
-				break;
-			case "EAST" :
-				break;
-			case "NORTHEAST" :
-				break;
-			case "NORTHWEST" :
-				break;
-			case "SOUTHEAST" :
-				break;
-			case "SOUTHWEST" :
-				break;
-		}
-		return value;
-	}
-
 	private static final Object lock = new Object();
 	public static boolean addSpawn(String username, int id, WorldTile tile) throws Throwable {
 		synchronized(lock) {

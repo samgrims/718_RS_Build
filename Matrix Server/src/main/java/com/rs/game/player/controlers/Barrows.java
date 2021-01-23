@@ -57,7 +57,7 @@ public final class Barrows extends Controller {
 					&& player.getY() >= hill.outBound.getY()
 					&& player.getX() <= hill.outBound.getX()+3
 					&& player.getY() <= hill.outBound.getY()+3) {
-				player.useStairs(-1, hill.inside, 1, 2, "You've broken into a crypt.");
+				player.useObjectToMove(-1, hill.inside, 1, 2, "You've broken into a crypt.");
 				WorldTasksManager.schedule(new WorldTask() {
 					@Override
 					public void run() {

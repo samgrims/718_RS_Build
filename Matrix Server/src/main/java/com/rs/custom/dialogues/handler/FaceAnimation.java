@@ -3,7 +3,7 @@ package com.rs.custom.dialogues.handler;
 /**
  * Face animation duplicates are removed.
  */
-public enum FaceAnimations {
+public enum FaceAnimation {
     OH_MY_GOD_SHOCK(9750), GUILTY_SHOCK(9753),  PLAIN_THANK_YOU(9757),
     SLIGHTLY_SAD(9760), SADDER_CRYING(9761), REGULAR_SAD_CRYING(9764),
     DISPAIR(9767), SADDEST(9768), GUILTY_FEAR(9769),
@@ -18,17 +18,10 @@ public enum FaceAnimations {
     HAPPY_PLAIN_EYEBROWS_UP(9847), CONCEITED_LAUGH(9851), PRAYING(9877),
     STUNNED_HEAD_ROLLING(9878);
 
-    private int id;
+    public int animationID;
 
-    FaceAnimations(int id) {
-        this.id = id;
+    FaceAnimation(int animationID) {
+        this.animationID = animationID;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

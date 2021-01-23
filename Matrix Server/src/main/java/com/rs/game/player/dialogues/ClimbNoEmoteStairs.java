@@ -19,9 +19,9 @@ public class ClimbNoEmoteStairs extends Dialogue {
 	@Override
 	public void run(int interfaceId, int componentId) {
 		if (componentId == OPTION_1) {
-			player.useStairs(-1, upTile, 0, 1);
+			player.useObjectToMove(-1, upTile, 0, 1);
 		} else if (componentId == OPTION_2)
-			player.useStairs(-1, downTile, 0, 1);
+			player.useObjectToMove(-1, downTile, 0, 1);
 		end();
 	}
 

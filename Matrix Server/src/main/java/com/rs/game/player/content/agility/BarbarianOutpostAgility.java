@@ -62,7 +62,7 @@ public class BarbarianOutpostAgility {
 	public static void climbUpWall(final Player player, WorldObject object) {
 		if(!Agility.hasLevel(player, 90))
 			return;
-		player.useStairs(10023, new WorldTile(2536, 3546, 3), 2, 3);
+		player.useObjectToMove(10023, new WorldTile(2536, 3546, 3), 2, 3);
 		 WorldTasksManager.schedule(new WorldTask() {
 
 			@Override
@@ -268,7 +268,7 @@ public class BarbarianOutpostAgility {
 			return;
 		player.getPackets().sendGameMessage("You climb the netting...", true);
 		player.getSkills().addXp(Skills.AGILITY, 8.2);
-		player.useStairs(828, new WorldTile(object.getX()-1, player.getY(), 1), 1, 2);
+		player.useObjectToMove(828, new WorldTile(object.getX()-1, player.getY(), 1), 1, 2);
 		if (getStage(player) == 1)
 			setStage(player, 2);
 	}

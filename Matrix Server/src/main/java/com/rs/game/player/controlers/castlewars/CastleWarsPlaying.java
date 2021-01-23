@@ -320,80 +320,80 @@ public class CastleWarsPlaying extends Controller {
 			player.setNextAnimation(new Animation(741));
 			player.addWalkSteps(object.getX(), object.getY(), -1, false);
 		} else if (id == 36693) {
-			player.useStairs(827, new WorldTile(2430, 9483, 0), 1, 2);
+			player.useObjectToMove(827, new WorldTile(2430, 9483, 0), 1, 2);
 			return false;
 		} else if (id == 36694) {
-			player.useStairs(827, new WorldTile(2369, 9524, 0), 1, 2);
+			player.useObjectToMove(827, new WorldTile(2369, 9524, 0), 1, 2);
 			return false;
 		} else if (id == 36645) {
-			player.useStairs(828, new WorldTile(2430, 3081, 0), 1, 2);
+			player.useObjectToMove(828, new WorldTile(2430, 3081, 0), 1, 2);
 			return false;
 		} else if (id == 36646) {
-			player.useStairs(828, new WorldTile(2369, 3126, 0), 1, 2);
+			player.useObjectToMove(828, new WorldTile(2369, 3126, 0), 1, 2);
 			return false;
 		} else if (id == 4415) {
 			if (object.getX() == 2417 && object.getY() == 3075
 					&& object.getPlane() == 1)
-				player.useStairs(-1, new WorldTile(2417, 3078, 0), 0, 1);
+				player.useObjectToMove(-1, new WorldTile(2417, 3078, 0), 0, 1);
 			else if (object.getX() == 2419 && object.getY() == 3080
 					&& object.getPlane() == 1)
-				player.useStairs(-1, new WorldTile(2419, 3077, 0), 0, 1);
+				player.useObjectToMove(-1, new WorldTile(2419, 3077, 0), 0, 1);
 			else if (object.getX() == 2430 && object.getY() == 3081
 					&& object.getPlane() == 2)
-				player.useStairs(-1, new WorldTile(2427, 3081, 1), 0, 1);
+				player.useObjectToMove(-1, new WorldTile(2427, 3081, 1), 0, 1);
 			else if (object.getX() == 2425 && object.getY() == 3074
 					&& object.getPlane() == 3)
-				player.useStairs(-1, new WorldTile(2425, 3077, 2), 0, 1);
+				player.useObjectToMove(-1, new WorldTile(2425, 3077, 2), 0, 1);
 			else if (object.getX() == 2380 && object.getY() == 3127
 					&& object.getPlane() == 1)
-				player.useStairs(-1, new WorldTile(2380, 3130, 0), 0, 1);
+				player.useObjectToMove(-1, new WorldTile(2380, 3130, 0), 0, 1);
 			else if (object.getX() == 2382 && object.getY() == 3132
 					&& object.getPlane() == 1)
-				player.useStairs(-1, new WorldTile(2382, 3129, 0), 0, 1);
+				player.useObjectToMove(-1, new WorldTile(2382, 3129, 0), 0, 1);
 			else if (object.getX() == 2369 && object.getY() == 3126
 					&& object.getPlane() == 2)
-				player.useStairs(-1, new WorldTile(2372, 3126, 1), 0, 1);
+				player.useObjectToMove(-1, new WorldTile(2372, 3126, 1), 0, 1);
 			else if (object.getX() == 2374 && object.getY() == 3133
 					&& object.getPlane() == 3)
-				player.useStairs(-1, new WorldTile(2374, 3130, 2), 0, 1);
+				player.useObjectToMove(-1, new WorldTile(2374, 3130, 2), 0, 1);
 			return false;
 		} else if (id == 36481) {
-			player.useStairs(-1, new WorldTile(2417, 3075, 0), 0, 1);
+			player.useObjectToMove(-1, new WorldTile(2417, 3075, 0), 0, 1);
 			return false;
 		} else if (id == 36495 && object.getPlane() == 0) {
-			player.useStairs(-1, new WorldTile(2420, 3080, 1), 0, 1);
+			player.useObjectToMove(-1, new WorldTile(2420, 3080, 1), 0, 1);
 			return false;
 		} else if (id == 36480 && object.getPlane() == 1) {
-			player.useStairs(-1, new WorldTile(2430, 3080, 2), 0, 1);
+			player.useObjectToMove(-1, new WorldTile(2430, 3080, 2), 0, 1);
 			return false;
 		} else if (id == 36484 && object.getPlane() == 2) {
-			player.useStairs(-1, new WorldTile(2426, 3074, 3), 0, 1);
+			player.useObjectToMove(-1, new WorldTile(2426, 3074, 3), 0, 1);
 			return false;
 		} else if (id == 36532 && object.getPlane() == 0) {
-			player.useStairs(-1, new WorldTile(2379, 3127, 1), 0, 1);
+			player.useObjectToMove(-1, new WorldTile(2379, 3127, 1), 0, 1);
 			return false;
 		} else if (id == 36540) {
-			player.useStairs(-1, new WorldTile(2383, 3132, 0), 0, 1);
+			player.useObjectToMove(-1, new WorldTile(2383, 3132, 0), 0, 1);
 			return false;
 		} else if (id == 36521 && object.getPlane() == 1) {
-			player.useStairs(-1, new WorldTile(2369, 3127, 2), 0, 1);
+			player.useObjectToMove(-1, new WorldTile(2369, 3127, 2), 0, 1);
 			return false;
 		} else if (id == 36523 && object.getPlane() == 2) {
-			player.useStairs(-1, new WorldTile(2373, 3133, 3), 0, 1);
+			player.useObjectToMove(-1, new WorldTile(2373, 3133, 3), 0, 1);
 			return false;
 		} else if (id == 36644) {
 			if (object.getY() == 9508)
-				player.useStairs(828, new WorldTile(2400, 3106, 0), 1, 2);
+				player.useObjectToMove(828, new WorldTile(2400, 3106, 0), 1, 2);
 			else if (object.getY() == 9499)
-				player.useStairs(828, new WorldTile(2399, 3100, 0), 1, 2);
+				player.useObjectToMove(828, new WorldTile(2399, 3100, 0), 1, 2);
 			player.setFreezeDelay(0);
 			player.setFrozeBlocked(0);
 			return false;
 		} else if (id == 36691) {
 			if (object.getY() == 3099)
-				player.useStairs(827, new WorldTile(2399, 9500, 0), 1, 2);
+				player.useObjectToMove(827, new WorldTile(2399, 9500, 0), 1, 2);
 			else if (object.getY() == 3108)
-				player.useStairs(827, new WorldTile(2400, 9507, 0), 1, 2);
+				player.useObjectToMove(827, new WorldTile(2400, 9507, 0), 1, 2);
 			player.setFreezeDelay(0);
 			player.setFrozeBlocked(0);
 			return false;

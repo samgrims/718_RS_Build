@@ -1,6 +1,6 @@
 package com.rs.custom.dialogues;
 
-import com.rs.custom.dialogues.handler.FaceAnimations;
+import com.rs.custom.dialogues.handler.FaceAnimation;
 import com.rs.game.player.Inventory;
 import com.rs.game.player.dialogues.Dialogue;
 
@@ -10,7 +10,7 @@ public class DukeHoracio extends Dialogue {
     @Override
     public void start() {
         npcId = (Integer) parameters[0];
-        sendNPCDialogue(npcId, FaceAnimations.PLAIN_TALKING.getId(), "Greetings. Welcome to my castle.");
+        sendNPCDialogue(npcId, FaceAnimation.PLAIN_TALKING.animationID, "Greetings. Welcome to my castle.");
         stage = 1;
     }
 
@@ -19,11 +19,11 @@ public class DukeHoracio extends Dialogue {
         System.out.println(stage);
         switch(stage) {
             case 1:
-                sendPlayerDialogue(FaceAnimations.PLAIN_TALKING_WITH_BLINK.getId(), "I seek a shield that will protect me from dragonbreath.");
+                sendPlayerDialogue(FaceAnimation.PLAIN_TALKING_WITH_BLINK.animationID, "I seek a shield that will protect me from dragonbreath.");
                 stage = 2;
                 break;
             case 2:
-                sendNPCDialogue(npcId, FaceAnimations.PLAIN_TALKING_WITH_BLINK.getId(), "A knight going on a dragon quest, hmm?");
+                sendNPCDialogue(npcId, FaceAnimation.PLAIN_TALKING_WITH_BLINK.animationID, "A knight going on a dragon quest, hmm?");
                 stage = 3;
                 break;
             case 3:

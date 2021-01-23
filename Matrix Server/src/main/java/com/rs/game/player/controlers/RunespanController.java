@@ -283,7 +283,7 @@ public class RunespanController extends Controller {
 	}
 	
 	public static void enterRunespan(final Player player, boolean high) {
-		player.useStairs(-1, high ? HIGHER_LEVEL : LOWER_LEVEL, 0, 2);
+		player.useObjectToMove(-1, high ? HIGHER_LEVEL : LOWER_LEVEL, 0, 2);
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
@@ -611,7 +611,7 @@ public class RunespanController extends Controller {
 			}
 		}
 		if(object.getId() == 70508) {
-			player.useStairs(16668, HIGHER_LEVEL, 4, 5); 
+			player.useObjectToMove(16668, HIGHER_LEVEL, 4, 5);
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {
@@ -621,7 +621,7 @@ public class RunespanController extends Controller {
 			player.getPackets().sendGlobalConfig(1917, 2);
 			return false;
 		} else if (object.getId() == 70509) {
-			player.useStairs(16675, VINE_LADDER, 2, 3); 
+			player.useObjectToMove(16675, VINE_LADDER, 2, 3);
 			WorldTasksManager.schedule(new WorldTask() {
 				@Override
 				public void run() {

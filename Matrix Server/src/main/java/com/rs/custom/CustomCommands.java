@@ -25,13 +25,17 @@ public class CustomCommands {
     private static String[] allCustomCommands = new String[] {
             "interh", "interfacecid", "finishquests", "starter", "resetbank", "loadjson", "savejson", "getcontroller", "addspins", "interface", "firespirit",
             "xprate", "timeplayed", "datecreated", "appearance", "welcome", "coordinate", "item", "spawnnpc", "faceanim", "npc", "test",  "serialsave",
-            "data", "commandlist", "coordinaterepeater", "transformid", "debug", "emptyinventory", "hideinterbetween"
+            "data", "commandlist", "coordinaterepeater", "transformid", "debug", "emptyinventory", "hideinterbetween", "facingtile"
     };
     public static boolean isCustom(String command) {
         return Arrays.asList(allCustomCommands).contains(command);
     }
     public static void customCommand(Player player, String[] command) {
         switch(command[0]) {
+            case "facingtile":
+                WorldTile tilePlayerIsLookingAt = player.getTileInFacingDirection();
+                player.getPackets().sendGameMessage("Tile player is looking at; " + tilePlayerIsLookingAt);
+                break;
             case "showicompbetween":
                 if (command.length < 3) {
                     player.getPackets().sendPanelBoxMessage("Use: ;;showicompbetween [Interface ID] [Starting Component ID] [Ending Component ID]");

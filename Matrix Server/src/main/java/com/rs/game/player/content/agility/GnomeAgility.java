@@ -44,7 +44,7 @@ public class GnomeAgility {
 		if (player.getY() != 3426)
 			return;
 		player.getPackets().sendGameMessage("You climb the netting.", true);
-		player.useStairs(828, new WorldTile(player.getX(), 3423, 1), 1, 2);
+		player.useObjectToMove(828, new WorldTile(player.getX(), 3423, 1), 1, 2);
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
@@ -57,7 +57,7 @@ public class GnomeAgility {
 
 	public static void climbUpGnomeTreeBranch(final Player player) {
 		player.getPackets().sendGameMessage("You climb the tree...", true);
-		player.useStairs(828, new WorldTile(2473, 3420, 2), 1, 2,
+		player.useObjectToMove(828, new WorldTile(2473, 3420, 2), 1, 2,
 				"... to the plantaform above.");
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
@@ -128,7 +128,7 @@ public class GnomeAgility {
 	}
 
 	public static void climbDownGnomeTreeBranch(final Player player) {
-		player.useStairs(828, new WorldTile(2487, 3421, 0), 1, 2,
+		player.useObjectToMove(828, new WorldTile(2487, 3421, 0), 1, 2,
 				"You climbed the tree branch succesfully.");
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override
@@ -144,7 +144,7 @@ public class GnomeAgility {
 		if (player.getY() != 3425)
 			return;
 		player.getPackets().sendGameMessage("You climb the netting.", true);
-		player.useStairs(828, new WorldTile(player.getX(),
+		player.useObjectToMove(828, new WorldTile(player.getX(),
 				player.getY() == 3425 ? 3428 : 3425, 0), 1, 2);
 		WorldTasksManager.schedule(new WorldTask() {
 			@Override

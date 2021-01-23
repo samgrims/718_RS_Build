@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.rs.Settings;
 import com.rs.cache.loaders.AnimationDefinitions;
 import com.rs.cache.loaders.ObjectDefinitions;
+import com.rs.custom.data_structures.EntityDirection;
 import com.rs.game.Hit.HitLook;
 import com.rs.game.npc.NPC;
 import com.rs.game.npc.familiar.Familiar;
@@ -1003,6 +1004,28 @@ public abstract class Entity extends WorldTile {
 		return direction;
 	}
 
+	public WorldTile getTileInFacingDirection() {
+		if(getDirection() == EntityDirection.NORTH.getValue()) {
+			return new WorldTile(this.getX(), this.getY()+1, this.getPlane());
+		} else if(getDirection() == EntityDirection.NORTHEAST.getValue()) {
+			return new WorldTile(this.getX()+1, this.getY()+1, this.getPlane());
+		} else if(getDirection() == EntityDirection.EAST.getValue()) {
+			return new WorldTile(this.getX()+1, this.getY(), this.getPlane());
+		} else if(getDirection() == EntityDirection.SOUTHEAST.getValue()) {
+			return new WorldTile(this.getX()+1, this.getY()-1, this.getPlane());
+		} else if(getDirection() == EntityDirection.SOUTH.getValue()) {
+			return new WorldTile(this.getX(), this.getY()-1, this.getPlane());
+		} else if(getDirection() == EntityDirection.SOUTHWEST.getValue()) {
+			return new WorldTile(this.getX()-1, this.getY()-1, this.getPlane());
+		} else if(getDirection() == EntityDirection.WEST.getValue()) {
+			return new WorldTile(this.getX()-1, this.getY(), this.getPlane());
+		} else if(getDirection() == EntityDirection.NORTHWEST.getValue()) {
+			return new WorldTile(this.getX()+1, this.getY()+1, this.getPlane());
+		} else {
+			return new WorldTile(this.getX(), this.getY(), this.getPlane());
+		}
+	}
+
 	public void setFinished(boolean finished) {
 		this.finished = finished;
 	}
@@ -1043,22 +1066,22 @@ public abstract class Entity extends WorldTile {
 		return run;
 	}
 
+	/**
+	 *
+	 * @return Tile entity is facing
+	 */
 	public WorldTile getNextFaceWorldTile() {
 		return nextFaceWorldTile;
 	}
 
 	public void setNextFaceWorldTile(WorldTile nextFaceWorldTile) {
-		if (nextFaceWorldTile.getX() == getX()
-				&& nextFaceWorldTile.getY() == getY())
+		if (nextFaceWorldTile.getX() == getX() && nextFaceWorldTile.getY() == getY())
 			return;
 		this.nextFaceWorldTile = nextFaceWorldTile;
 		if (nextWorldTile != null)
-			direction = Utils.getFaceDirection(nextFaceWorldTile.getX()
-					- nextWorldTile.getX(), nextFaceWorldTile.getY()
-					- nextWorldTile.getY());
+			direction = Utils.getFaceDirection(nextFaceWorldTile.getX() - nextWorldTile.getX(), nextFaceWorldTile.getY() - nextWorldTile.getY());
 		else
-			direction = Utils.getFaceDirection(nextFaceWorldTile.getX()
-					- getX(), nextFaceWorldTile.getY() - getY());
+			direction = Utils.getFaceDirection(nextFaceWorldTile.getX() - getX(), nextFaceWorldTile.getY() - getY());
 	}
 
 	public abstract int getSize();
@@ -1189,11 +1212,8 @@ public abstract class Entity extends WorldTile {
 
 	public void faceObject(WorldObject object) {
 		ObjectDefinitions objectDef = object.getDefinitions();
-		setNextFaceWorldTile(new WorldTile(object.getCoordFaceX(
-				objectDef.getSizeX(), objectDef.getSizeY(),
-				object.getRotation()), object.getCoordFaceY(
-				objectDef.getSizeX(), objectDef.getSizeY(),
-				object.getRotation()), object.getPlane()));
+		setNextFaceWorldTile(new WorldTile(object.getCoordFaceX(objectDef.getSizeX(), objectDef.getSizeY(),	object.getRotation()), object.getCoordFaceY(
+				objectDef.getSizeX(), objectDef.getSizeY(),	object.getRotation()), object.getPlane()));
 	}
 
 	public long getLastAnimationEnd() {

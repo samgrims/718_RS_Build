@@ -37,7 +37,7 @@ public final class Runecrafting {
 	private static void enterAltar(Player player, WorldTile dest) {
 		player.getPackets().sendGameMessage(
 				"A mysterious force grabs hold of you.");
-		player.useStairs(-1, dest, 0, 1);
+		player.useObjectToMove(-1, dest, 0, 1);
 	}
 	
 	public static void enterMindAltar(Player player) {

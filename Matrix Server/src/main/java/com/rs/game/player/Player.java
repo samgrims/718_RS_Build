@@ -2090,13 +2090,11 @@ public class Player extends Entity {//Player Updater tool
 		lockDelay = 0;
 	}
 
-	public void useStairs(int emoteId, final WorldTile dest, int useDelay,
-			int totalDelay) {
-		useStairs(emoteId, dest, useDelay, totalDelay, null);
+	public void useObjectToMove(int emoteId, final WorldTile dest, int useDelay, int totalDelay) {
+		useObjectToMove(emoteId, dest, useDelay, totalDelay, null);
 	}
 
-	public void useStairs(int emoteId, final WorldTile dest, int useDelay,
-			int totalDelay, final String message) {
+	public void useObjectToMove(int emoteId, final WorldTile dest, int useDelay, int totalDelay, final String message) {
 		stopAll();
 		lock(totalDelay);
 		if (emoteId != -1)
