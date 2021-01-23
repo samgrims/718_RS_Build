@@ -6,6 +6,7 @@ import com.rs.cache.loaders.ClientScriptMap;
 import com.rs.custom.data_structures.SpinsManager;
 import com.rs.custom.interfaces.CustomInterfaces;
 import com.rs.game.World;
+import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.npc.others.FireSpirit;
 import com.rs.game.player.Player;
@@ -25,13 +26,17 @@ public class CustomCommands {
     private static String[] allCustomCommands = new String[] {
             "interh", "interfacecid", "finishquests", "starter", "resetbank", "loadjson", "savejson", "getcontroller", "addspins", "interface", "firespirit",
             "xprate", "timeplayed", "datecreated", "appearance", "welcome", "coordinate", "item", "spawnnpc", "faceanim", "npc", "test",  "serialsave",
-            "data", "commandlist", "coordinaterepeater", "transformid", "debug", "emptyinventory", "hideinterbetween", "facingtile"
+            "data", "commandlist", "coordinaterepeater", "transformid", "debug", "emptyinventory", "hideinterbetween", "facingtile", "spawnobject"
     };
     public static boolean isCustom(String command) {
         return Arrays.asList(allCustomCommands).contains(command);
     }
     public static void customCommand(Player player, String[] command) {
         switch(command[0]) {
+            case "spawnobject":
+                WorldObject worldObject = new WorldObject(Integer.parseInt(command[1]), 10, 0, player.getTileInFacingDirection());
+                World.spawnObject(worldObject, true);
+                break;
             case "facingtile":
                 WorldTile tilePlayerIsLookingAt = player.getTileInFacingDirection();
                 player.getPackets().sendGameMessage("Tile player is looking at; " + tilePlayerIsLookingAt);
