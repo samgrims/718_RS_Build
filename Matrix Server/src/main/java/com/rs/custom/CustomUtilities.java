@@ -4,6 +4,7 @@ import com.rs.Settings;
 import com.rs.game.player.Player;
 
 import java.io.File;
+import java.util.stream.IntStream;
 
 public class CustomUtilities {
     public static boolean isMetalName(String metal) {
@@ -42,5 +43,20 @@ public class CustomUtilities {
     public static File getJSONFile(Player player) {
         String filePath = Settings.PLAYER_JSON_FOLDER_DIR + player.getUsername().toLowerCase() + ".json";
         return new File(filePath);
+    }
+
+    public static <T> T[] removeElementFromArray(T[] arr, int index) {
+        if (arr == null || index < 0 || index >= arr.length) {
+            return arr;
+        }
+
+        T[] anotherArray = (T[])new Object[arr.length - 1];
+        for (int i = 0, k = 0; i < arr.length; i++) {
+            if (i == index) {
+                continue;
+            }
+            anotherArray[k++] = arr[i];
+        }
+        return anotherArray;
     }
 }

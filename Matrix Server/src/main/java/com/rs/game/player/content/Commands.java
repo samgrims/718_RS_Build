@@ -582,12 +582,7 @@ public final class Commands {
 						"KaramjaTrip",
 						Utils.getRandom(1) == 0 ? 11701
 								: (Utils.getRandom(1) == 0 ? 11702 : 11703));
-				return true; 
-
-			case "shop":
-				ShopsHandler.openShop(player, Integer.parseInt(cmd[1]));
-				return true; 
-
+				return true;
 			case "clanwars":
 				// player.setClanWars(new ClanWars(player, player));
 				// player.getClanWars().setWhiteTeam(true);

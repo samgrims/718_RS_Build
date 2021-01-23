@@ -16,7 +16,7 @@ public enum EntityDirection {
         return value;
     }
 
-    private EntityDirection(int value) {
+    EntityDirection(int value) {
         this.value = value;
     }
 }

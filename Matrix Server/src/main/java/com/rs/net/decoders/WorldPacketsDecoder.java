@@ -1282,8 +1282,7 @@ public final class WorldPacketsDecoder extends Decoder {
 					player.getDialogueManager().startDialogue("SimpleMessage", "You cannot do this while having armour on!");
 					return;
 				}
-				int skillId = (Integer) player.getTemporaryAttributtes()
-						.remove("skillId");
+				int skillId = (Integer) player.getTemporaryAttributtes().remove("skillId");
 				if (skillId == Skills.HITPOINTS && value <= 9)
 					value = 10;
 				else if (value < 1)
@@ -1312,36 +1311,27 @@ public final class WorldPacketsDecoder extends Decoder {
 
 
 			int toInterfaceId = toInterfaceHash >> 16;
-				int toComponentId = toInterfaceHash - (toInterfaceId << 16);
-				int fromInterfaceId = fromInterfaceHash >> 16;
-				int fromComponentId = fromInterfaceHash - (fromInterfaceId << 16);
+			int toComponentId = toInterfaceHash - (toInterfaceId << 16);
+			int fromInterfaceId = fromInterfaceHash >> 16;
+			int fromComponentId = fromInterfaceHash - (fromInterfaceId << 16);
 
-				if (Utils.getInterfaceDefinitionsSize() <= fromInterfaceId
-						|| Utils.getInterfaceDefinitionsSize() <= toInterfaceId)
+			if (Utils.getInterfaceDefinitionsSize() <= fromInterfaceId
+					|| Utils.getInterfaceDefinitionsSize() <= toInterfaceId)
+				return;
+			if (!player.getInterfaceManager().containsInterface(fromInterfaceId) || !player.getInterfaceManager().containsInterface(toInterfaceId))
+				return;
+			if (fromComponentId != -1 && Utils.getInterfaceDefinitionsComponentsSize(fromInterfaceId) <= fromComponentId)
+				return;
+			if (toComponentId != -1	&& Utils.getInterfaceDefinitionsComponentsSize(toInterfaceId) <= toComponentId)
+				return;
+			if (fromInterfaceId == Inventory.INVENTORY_INTERFACE
+					&& fromComponentId == 0
+					&& toInterfaceId == Inventory.INVENTORY_INTERFACE
+					&& toComponentId == 0) {
+				toSlot -= 28;
+				if (toSlot < 0 || toSlot >= player.getInventory().getItemsContainerSize() || fromSlot >= player.getInventory().getItemsContainerSize())
 					return;
-				if (!player.getInterfaceManager()
-						.containsInterface(fromInterfaceId)
-						|| !player.getInterfaceManager().containsInterface(
-								toInterfaceId))
-					return;
-				if (fromComponentId != -1
-						&& Utils.getInterfaceDefinitionsComponentsSize(fromInterfaceId) <= fromComponentId)
-					return;
-				if (toComponentId != -1
-						&& Utils.getInterfaceDefinitionsComponentsSize(toInterfaceId) <= toComponentId)
-					return;
-				if (fromInterfaceId == Inventory.INVENTORY_INTERFACE
-						&& fromComponentId == 0
-						&& toInterfaceId == Inventory.INVENTORY_INTERFACE
-						&& toComponentId == 0) {
-					toSlot -= 28;
-					if (toSlot < 0
-							|| toSlot >= player.getInventory()
-							.getItemsContainerSize()
-							|| fromSlot >= player.getInventory()
-							.getItemsContainerSize())
-						return;
-					player.getInventory().switchItem(fromSlot, toSlot);
+				player.getInventory().switchItem(fromSlot, toSlot);
 				} else if (fromInterfaceId == 763 && fromComponentId == 0
 						&& toInterfaceId == 763 && toComponentId == 0) {
 					if (toSlot >= player.getInventory().getItemsContainerSize()
@@ -1350,8 +1340,7 @@ public final class WorldPacketsDecoder extends Decoder {
 						return;
 					player.getInventory().switchItem(fromSlot, toSlot);
 				} else if (fromInterfaceId == 762 && toInterfaceId == 762) {
-					player.getBank().switchItem(fromSlot, toSlot, fromComponentId,
-							toComponentId);
+					player.getBank().switchItem(fromSlot, toSlot, fromComponentId, toComponentId);
 				}
 				if (Settings.DEBUG)
 					System.out.println("Switch item " + fromInterfaceId + ", "

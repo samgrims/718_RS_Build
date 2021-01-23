@@ -8,10 +8,12 @@ import com.rs.custom.interfaces.CustomInterfaces;
 import com.rs.game.World;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
+import com.rs.game.item.Item;
 import com.rs.game.npc.others.FireSpirit;
 import com.rs.game.player.Player;
 import com.rs.custom.interfaces.PlayerDesign;
 import com.rs.game.player.content.PlayerLook;
+import com.rs.utils.ShopsHandler;
 import com.rs.utils.Utils;
 
 import java.io.PrintWriter;
@@ -26,13 +28,22 @@ public class CustomCommands {
     private static String[] allCustomCommands = new String[] {
             "interh", "interfacecid", "finishquests", "starter", "resetbank", "loadjson", "savejson", "getcontroller", "addspins", "interface", "firespirit",
             "xprate", "timeplayed", "datecreated", "appearance", "welcome", "coordinate", "item", "spawnnpc", "faceanim", "npc", "test",  "serialsave",
-            "data", "commandlist", "coordinaterepeater", "transformid", "debug", "emptyinventory", "hideinterbetween", "facingtile", "spawnobject"
+            "data", "commandlist", "coordinaterepeater", "transformid", "debug", "emptyinventory", "hideinterbetween", "facingtile", "spawnobject", "shop",
+            "showicompbetween", "hideicompbetween", "tester1"
     };
     public static boolean isCustom(String command) {
         return Arrays.asList(allCustomCommands).contains(command);
     }
     public static void customCommand(Player player, String[] command) {
         switch(command[0]) {
+            case "tester1":
+                for(Item item : ShopsHandler.getShop(1).getGeneralStock())
+                    if(item != null)
+                        System.out.print(item.getName() + " ");
+                break;
+            case "shop":
+                ShopsHandler.openShop(player, Integer.parseInt(command[1]));
+                break;
             case "spawnobject":
                 WorldObject worldObject = new WorldObject(Integer.parseInt(command[1]), 10, 0, player.getTileInFacingDirection());
                 World.spawnObject(worldObject, true);
@@ -253,7 +264,7 @@ public class CustomCommands {
             case "emptyinventory":
                 player.getInventory().reset();
                 break;
-            case "hideinterbetween":
+            case "hideicompbetween":
                 if (command.length < 3) {
                     player.getPackets().sendPanelBoxMessage("Use: ;;hideicompbetween [Interface ID] [Starting Component ID] [Ending Component ID]");
                     break;
