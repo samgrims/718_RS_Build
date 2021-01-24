@@ -37,7 +37,7 @@ public class CustomCommands {
     public static void customCommand(Player player, String[] command) {
         switch(command[0]) {
             case "tester1":
-                for(Item item : ShopsHandler.getShop(1).getGeneralStock())
+                for(Item item : ShopsHandler.getShop(1).getPlayerStock())
                     if(item != null)
                         System.out.print(item.getName() + " ");
                 break;

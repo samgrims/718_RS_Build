@@ -18,6 +18,11 @@ public class CustomObjectHandler {
             player.getInterfaceManager().sendInterface(762);
     }
 
+    public static void handleCustomOption2(Player player, WorldObject worldObject) {
+        if(worldObject.getId() == 12309)//Culimnancor chest
+            ShopsHandler.openShop(player, 35);
+    }
+
     public static void handleCustomOption3(Player player, WorldObject worldObject) {
         if(worldObject.getId() == 12309)//Culimnancor chest
             ShopsHandler.openShop(player, 34);

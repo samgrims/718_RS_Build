@@ -292,15 +292,14 @@ public class InterfaceManager {
 	}
 
 	public boolean containsScreenInter() {
-		return containsTab(resizableScreen ? RESIZABLE_SCREEN_TAB_ID
-				: FIXED_SCREEN_TAB_ID);
+		return containsTab(resizableScreen ? RESIZABLE_SCREEN_TAB_ID : FIXED_SCREEN_TAB_ID);
 	}
 
+	/**
+	 * Closes only interface in screen and not the tabbed ones
+	 */
 	public void closeScreenInterface() {
-		player.getPackets()
-				.closeInterface(
-						resizableScreen ? RESIZABLE_SCREEN_TAB_ID
-								: FIXED_SCREEN_TAB_ID);
+		player.getPackets().closeInterface(resizableScreen ? RESIZABLE_SCREEN_TAB_ID : FIXED_SCREEN_TAB_ID);
 	}
 
 	public boolean containsInventoryInter() {
@@ -309,8 +308,7 @@ public class InterfaceManager {
 	}
 
 	public void closeInventoryInterface() {
-		player.getPackets().closeInterface(
-				resizableScreen ? RESIZABLE_INV_TAB_ID : FIXED_INV_TAB_ID);
+		player.getPackets().closeInterface(resizableScreen ? RESIZABLE_INV_TAB_ID : FIXED_INV_TAB_ID);
 	}
 
 	public boolean containsChatBoxInter() {

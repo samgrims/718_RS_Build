@@ -24,6 +24,8 @@ public class SoundsHolder {
                 if(weaponWords.length == 2 && CustomUtilities.isMetalName(weaponWords[0]))
                     soundId = 2500;
             }
+            if(weaponName.equalsIgnoreCase("cleaver"))
+                soundId = 2500;
         }
         if(soundId == -1)
             player.notifyDebugMessage(weaponName + " has no attack sound");

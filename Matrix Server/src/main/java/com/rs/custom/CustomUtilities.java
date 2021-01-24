@@ -1,6 +1,7 @@
 package com.rs.custom;
 
 import com.rs.Settings;
+import com.rs.game.item.Item;
 import com.rs.game.player.Player;
 
 import java.io.File;

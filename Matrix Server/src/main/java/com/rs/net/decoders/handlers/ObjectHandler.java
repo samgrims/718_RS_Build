@@ -1045,6 +1045,11 @@ public final class ObjectHandler {
 				player.stopAll();
 				player.faceObject(world_object);
 
+				if(CustomObjectHandler.isCustomObject(world_object.getId())) {
+					CustomObjectHandler.handleCustomOption2(player, world_object);
+					return;
+				}
+
 				if(onClickHandled2ByName(world_object, player))
 					;
 				else if(onClickHandled2ByID(world_object, player))

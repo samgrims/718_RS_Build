@@ -284,8 +284,7 @@ public final class CombatDefinitions implements Serializable {
 			if (weaponId == -2) {
 				return CRUSH_ATTACK;
 			}
-			String weaponName = ItemDefinitions.getItemDefinitions(weaponId)
-					.getName().toLowerCase();
+			String weaponName = ItemDefinitions.getItemDefinitions(weaponId).getName().toLowerCase();
 			if (weaponName.contains("whip"))
 				return SLASH_ATTACK;
 			if (weaponName.contains("staff of light")) {

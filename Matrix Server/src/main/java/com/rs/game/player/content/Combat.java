@@ -33,16 +33,13 @@ public final class Combat {
 			int shieldId = p.getEquipment().getShieldId();
 			String shieldName = shieldId == -1 ? null : ItemDefinitions
 					.getItemDefinitions(shieldId).getName().toLowerCase();
-			if (shieldId == -1
-					|| (shieldName.contains("book") && shieldId != 18346)) {
+			if (shieldId == -1	|| (shieldName.contains("book") && shieldId != 18346)) {
 				int weaponId = p.getEquipment().getWeaponId();
 				if (weaponId == -1)
 					return 424;
-				String weaponName = ItemDefinitions
-						.getItemDefinitions(weaponId).getName().toLowerCase();
+				String weaponName = ItemDefinitions.getItemDefinitions(weaponId).getName().toLowerCase();
 				if (weaponName != null && !weaponName.equals("null")) {
-					if (weaponName.contains("scimitar")
-							|| weaponName.contains("korasi sword"))
+					if (weaponName.contains("scimitar")	|| weaponName.contains("korasi sword"))
 						return 15074;
 					if (weaponName.contains("whip"))
 						return 11974;

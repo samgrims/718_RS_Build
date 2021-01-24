@@ -1122,8 +1122,7 @@ public final class WorldPacketsDecoder extends Decoder {
 			if(Settings.DEBUG)
 				Logger.log(this, "Dialogue: "+interfaceId+", "+buttonId+", "+junk);
 			int componentId = interfaceHash - (interfaceId << 16);
-			player.getDialogueManager().continueDialogue(interfaceId,
-					componentId);
+			player.getDialogueManager().continueDialogue(interfaceId, componentId);
 		} else if (packetId == WORLD_MAP_CLICK) {
 			int coordinateHash = stream.readInt();
 			int x = coordinateHash >> 14;
@@ -1137,16 +1136,9 @@ public final class WorldPacketsDecoder extends Decoder {
 				player.getHintIconsManager().addHintIcon(x, y, plane, 20, 0, 2, -1, true);
 				player.getPackets().sendConfig(1159, coordinateHash);
             }
-		} else if (packetId == ACTION_BUTTON1_PACKET
-				|| packetId == ACTION_BUTTON2_PACKET
-				|| packetId == ACTION_BUTTON4_PACKET
-				|| packetId == ACTION_BUTTON5_PACKET
-				|| packetId == ACTION_BUTTON6_PACKET
-				|| packetId == ACTION_BUTTON7_PACKET
-				|| packetId == ACTION_BUTTON8_PACKET
-				|| packetId == ACTION_BUTTON3_PACKET
-				|| packetId == ACTION_BUTTON9_PACKET
-				|| packetId == ACTION_BUTTON10_PACKET) {
+		} else if (packetId == ACTION_BUTTON1_PACKET || packetId == ACTION_BUTTON2_PACKET || packetId == ACTION_BUTTON4_PACKET || packetId == ACTION_BUTTON5_PACKET
+				|| packetId == ACTION_BUTTON6_PACKET || packetId == ACTION_BUTTON7_PACKET || packetId == ACTION_BUTTON8_PACKET || packetId == ACTION_BUTTON3_PACKET
+				|| packetId == ACTION_BUTTON9_PACKET || packetId == ACTION_BUTTON10_PACKET) {
 			ButtonHandler.handleButtons(player, stream, packetId);
 		} else if (packetId == ENTER_NAME_PACKET) {
 			if (!player.isRunning() || player.isDead())

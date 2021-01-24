@@ -3109,8 +3109,7 @@ public class PlayerCombat extends Action {
 					return 14393;
 				}
 			}
-			String weaponName = ItemDefinitions.getItemDefinitions(weaponId)
-					.getName().toLowerCase();
+			String weaponName = ItemDefinitions.getItemDefinitions(weaponId).getName().toLowerCase();
 			if (weaponName != null && !weaponName.equals("null")) {
 				if (weaponName.contains("crossbow"))
 					return weaponName.contains("karil's crossbow") ? 2075
@@ -3135,8 +3134,7 @@ public class PlayerCombat extends Action {
 					return 6600;
 				if (weaponName.contains("knife"))
 					return 9055;
-				if (weaponName.contains("scimitar")
-						|| weaponName.contains("korasi's sword")) {
+				if (weaponName.contains("scimitar")	|| weaponName.contains("korasi's sword") || weaponName.equalsIgnoreCase("cleaver")) {
 					switch (attackStyle) {
 					case 2:
 						return 15072;

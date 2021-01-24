@@ -81,17 +81,6 @@ public final class World {
 		LivingRockCavern.init();
 	}
 
-	/*
-	 * private static void addLogicPacketsTask() {
-	 * CoresManager.fastExecutor.scheduleAtFixedRate(new TimerTask() {
-	 * 
-	 * @Override public void run() { for(Player player : World.getPlayers()) {
-	 * if(!player.hasStarted() || player.hasFinished()) continue;
-	 * player.processLogicPackets(); } }
-	 * 
-	 * }, 300, 300); }
-	 */
-
 	private static void addOwnedObjectsTask() {
 		CoresManager.slowExecutor.scheduleWithFixedDelay(new Runnable() {
 			@Override
