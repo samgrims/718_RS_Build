@@ -646,10 +646,8 @@ public class Magic {
 		}, 1);
 	}
 
-	public static final void sendObjectTeleportSpell(Player player,
-													 boolean randomize, WorldTile tile) {
-		sendTeleportSpell(player, 8939, 8941, 1576, 1577, 0, 0, tile, 3,
-				randomize, OBJECT_TELEPORT);
+	public static final void sendObjectTeleportSpell(Player player, boolean randomize, WorldTile tile) {
+		sendTeleportSpell(player, 8939, 8941, 1576, 1577, 0, 0, tile, 3, randomize, OBJECT_TELEPORT);
 	}
 
 	public static final void sendDelayedObjectTeleportSpell(Player player,
@@ -658,17 +656,14 @@ public class Magic {
 				randomize, OBJECT_TELEPORT);
 	}
 
-	public static final boolean sendTeleportSpell(final Player player,
-			int upEmoteId, final int downEmoteId, int upGraphicId,
-			final int downGraphicId, int level, final double xp,
-			final WorldTile tile, int delay, final boolean randomize,
-			final int teleType, int... runes) {
+	public static final boolean sendTeleportSpell(final Player player, int upEmoteId, final int downEmoteId, int upGraphicId, final int downGraphicId,
+												  int level, final double xp, final WorldTile tile, int delay, final boolean randomize,	final int teleType,
+												  int... runes) {
 		long currentTime = Utils.currentTimeMillis();
 		if (player.getLockDelay() > currentTime)
 			return false;
 		if (player.getSkills().getLevel(Skills.MAGIC) < level) {
-			player.getPackets().sendGameMessage(
-					"Your Magic level is not high enough for this spell.");
+			player.getPackets().sendGameMessage("Your Magic level is not high enough for this spell.");
 			return false;
 		}
 		if (!checkRunes(player, false, runes))
@@ -704,8 +699,7 @@ public class Magic {
 						// attemps to randomize tile by 4x4 area
 						for (int trycount = 0; trycount < 10; trycount++) {
 							teleTile = new WorldTile(tile, 2);
-							if (World.canMoveNPC(tile.getPlane(), teleTile.getX(),
-									teleTile.getY(), player.getSize()))
+							if (World.canMoveNPC(tile.getPlane(), teleTile.getX(), teleTile.getY(), player.getSize()))
 								break;
 							teleTile = tile;
 						}

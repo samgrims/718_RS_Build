@@ -57,6 +57,8 @@ import com.rs.net.encoders.WorldPacketsEncoder;
 import com.rs.tools.DebugLine;
 import com.rs.utils.*;
 import static com.rs.custom.SaveJSONManager.startSaveJSONManager;
+import static com.rs.game.player.content.Magic.ITEM_TELEPORT;
+import static com.rs.game.player.content.Magic.teleControlersCheck;
 
 public class Player extends Entity {//Player Updater tool
 	public static final int TELE_MOVE_TYPE = 127, WALK_MOVE_TYPE = 1, RUN_MOVE_TYPE = 2;
@@ -1941,6 +1943,48 @@ public class Player extends Entity {//Player Updater tool
 				loop++;
 			}
 		}, 0, 1);
+	}
+
+	public void changeLocation(final WorldTile tile) {
+		if (!this.getControlerManager().processItemTeleport(tile))
+			return;
+		this.lock();
+
+		Player player = this;
+		WorldTasksManager.schedule(new WorldTask() {
+			int stage;
+
+			@Override
+			public void run() {
+				if (stage == 0) {
+					stage = 1;
+				} else if(stage == 1){
+					WorldTile teleTile = tile;
+					// attemps to randomize tile by 4x4 area
+					for (int trycount = 0; trycount < 10; trycount++) {
+						teleTile = new WorldTile(tile, 2);
+						if (World.canMoveNPC(tile.getPlane(), teleTile.getX(),
+								teleTile.getY(), player.getSize()))
+							break;
+						teleTile = tile;
+					}
+					player.setNextWorldTile(teleTile);
+					player.getControlerManager().magicTeleported(ITEM_TELEPORT);
+					if (player.getControlerManager().getController() == null)
+						teleControlersCheck(player, teleTile);
+					player.setNextFaceWorldTile(new WorldTile(teleTile.getX(),
+							teleTile.getY() - 1, teleTile.getPlane()));
+					player.setDirection(6);
+					player.setNextAnimation(new Animation(-1));
+					stage = 2;
+				}else if (stage == 2) {
+					player.resetReceivedDamage();
+					player.unlock();
+					stop();
+				}
+
+			}
+		}, 0, 0);
 	}
 
 	public void sendItemsOnDeath(Player killer) {

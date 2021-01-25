@@ -14,7 +14,7 @@ import com.rs.game.tasks.WorldTasksManager;
 
 public class DeathEvent extends Controller {
 
-	public static final WorldTile RESPAWN = new WorldTile(3214, 3423, 0);
+	public static final WorldTile RESPAWN = new WorldTile(3222, 3218, 0);
 
 	
 	private int[] boundChuncks;

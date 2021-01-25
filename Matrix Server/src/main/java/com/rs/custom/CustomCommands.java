@@ -29,13 +29,16 @@ public class CustomCommands {
             "interh", "interfacecid", "finishquests", "starter", "resetbank", "loadjson", "savejson", "getcontroller", "addspins", "interface", "firespirit",
             "xprate", "timeplayed", "datecreated", "appearance", "welcome", "coordinate", "item", "spawnnpc", "faceanim", "npc", "test",  "serialsave",
             "data", "commandlist", "coordinaterepeater", "transformid", "debug", "emptyinventory", "hideinterbetween", "facingtile", "spawnobject", "shop",
-            "showicompbetween", "hideicompbetween", "tester1"
+            "showicompbetween", "hideicompbetween", "tester1", "respawn"
     };
     public static boolean isCustom(String command) {
         return Arrays.asList(allCustomCommands).contains(command);
     }
     public static void customCommand(Player player, String[] command) {
         switch(command[0]) {
+            case "respawn":
+                player.changeLocation(Settings.RESPAWN_PLAYER_LOCATION);
+                break;
             case "tester1":
                 for(Item item : ShopsHandler.getShop(1).getPlayerStock())
                     if(item != null)
