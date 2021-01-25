@@ -38,7 +38,7 @@ public class WalkRouteFinder {
 	 * steps > 0, route exists. If steps = 0, route exists, but no need to move.
 	 * If steps < 0, route does not exist.
 	 */
-	protected static int findRoute(int srcX, int srcY, int srcZ, int srcSizeXY, RouteStrategy strategy,
+	protected static int findRoute(int srcX, int srcY, int srcZ, int srcSizeXY, RouteDefinitions strategy,
 			boolean findAlternative) {
 		isAlternative = false;
 		for (int x = 0; x < GRAPH_SIZE; x++) {
@@ -189,7 +189,7 @@ public class WalkRouteFinder {
 	/**
 	 * Perform's size 1 calculations.
 	 */
-	private static boolean performCalculationS1(int srcX, int srcY, RouteStrategy strategy) {
+	private static boolean performCalculationS1(int srcX, int srcY, RouteDefinitions strategy) {
 		// first, we will cache our static fields to local variables, this is
 		// done for performance, because
 		// modern jit compiler's usually takes advantage of things like this
@@ -364,7 +364,7 @@ public class WalkRouteFinder {
 	/**
 	 * Perform's size 2 calculations.
 	 */
-	private static boolean performCalculationS2(int srcX, int srcY, RouteStrategy strategy) {
+	private static boolean performCalculationS2(int srcX, int srcY, RouteDefinitions strategy) {
 		return performCalculationSX(srcX, srcY, 2, strategy);
 																// algorhytm's.
 	}
@@ -372,7 +372,7 @@ public class WalkRouteFinder {
 	/**
 	 * Perform's size x calculations.
 	 */
-	private static boolean performCalculationSX(int srcX, int srcY, int size, RouteStrategy strategy) {
+	private static boolean performCalculationSX(int srcX, int srcY, int size, RouteDefinitions strategy) {
 		// first, we will cache our static fields to local variables, this is
 		// done for performance, because
 		// modern jit compiler's usually takes advantage of things like this

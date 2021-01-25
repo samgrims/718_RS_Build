@@ -11,7 +11,7 @@ public class LumbridgeGuardsmen extends Dialogue {
         npcId = (Integer) parameters[0];
 
         sendNPCDialogue(npcId, FaceAnimation.HAPPY_PLAIN.animationID, "Greetings, adventurer. Duke Horacio has recently provided us guards with advanced" +
-                "training, as well as much improved swords!");
+                " training, as well as much improved swords!");
         stage = 1;
     }
 

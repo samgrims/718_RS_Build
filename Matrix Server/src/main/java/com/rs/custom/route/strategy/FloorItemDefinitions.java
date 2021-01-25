@@ -1,9 +1,9 @@
 package com.rs.custom.route.strategy;
 
-import com.rs.custom.route.RouteStrategy;
+import com.rs.custom.route.RouteDefinitions;
 import com.rs.game.item.FloorItem;
 
-public class FloorItemStrategy extends RouteStrategy {
+public class FloorItemDefinitions extends RouteDefinitions {
 
 	/**
 	 * Entity position x.
@@ -14,14 +14,14 @@ public class FloorItemStrategy extends RouteStrategy {
 	 */
 	private int y;
 
-	public FloorItemStrategy(FloorItem entity) {
+	public FloorItemDefinitions(FloorItem entity) {
 		this.x = entity.getTile().getX();
 		this.y = entity.getTile().getY();
 	}
 
 	@Override
 	public boolean canExit(int currentX, int currentY, int sizeXY, int[][] clip, int clipBaseX, int clipBaseY) {
-		return RouteStrategy.checkFilledRectangularInteract(clip, currentX - clipBaseX, currentY - clipBaseY, sizeXY,
+		return RouteDefinitions.checkFilledRectangularInteract(clip, currentX - clipBaseX, currentY - clipBaseY, sizeXY,
 				sizeXY, x - clipBaseX, y - clipBaseY, 1, 1, 0);
 	}
 
@@ -47,9 +47,9 @@ public class FloorItemStrategy extends RouteStrategy {
 
 	@Override
 	public boolean equals(Object other) {
-		if (!(other instanceof FloorItemStrategy))
+		if (!(other instanceof FloorItemDefinitions))
 			return false;
-		FloorItemStrategy strategy = (FloorItemStrategy) other;
+		FloorItemDefinitions strategy = (FloorItemDefinitions) other;
 		return x == strategy.x && y == strategy.y;
 	}
 

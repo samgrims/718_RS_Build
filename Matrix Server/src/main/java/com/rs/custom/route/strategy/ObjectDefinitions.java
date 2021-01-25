@@ -1,9 +1,9 @@
 package com.rs.custom.route.strategy;
 
-import com.rs.custom.route.RouteStrategy;
+import com.rs.custom.route.RouteDefinitions;
 import com.rs.game.WorldObject;
 
-public class ObjectStrategy extends RouteStrategy {
+public class ObjectDefinitions extends RouteDefinitions {
 
 	/**
 	 * Contains object pos x.
@@ -38,16 +38,14 @@ public class ObjectStrategy extends RouteStrategy {
 	 */
 	private int accessBlockFlag;
 
-	public ObjectStrategy(WorldObject object) {
+	public ObjectDefinitions(WorldObject object) {
 		this.x = object.getX();
 		this.y = object.getY();
 		this.routeType = getType(object);
 		this.type = object.getType();
 		this.rotation = object.getRotation();
-		this.sizeX = rotation == 0 || rotation == 2 ? object.getDefinitions().getSizeX()
-				: object.getDefinitions().getSizeY();
-		this.sizeY = rotation == 0 || rotation == 2 ? object.getDefinitions().getSizeY()
-				: object.getDefinitions().getSizeX();
+		this.sizeX = rotation == 0 || rotation == 2 ? object.getDefinitions().getSizeX() : object.getDefinitions().getSizeY();
+		this.sizeY = rotation == 0 || rotation == 2 ? object.getDefinitions().getSizeY() : object.getDefinitions().getSizeX();
 		this.accessBlockFlag = object.getDefinitions().getAccessBlockFlag();
 		if (rotation != 0)
 			accessBlockFlag = ((accessBlockFlag << rotation) & 0xF) + (accessBlockFlag >> (4 - rotation));
@@ -57,13 +55,13 @@ public class ObjectStrategy extends RouteStrategy {
 	public boolean canExit(int currentX, int currentY, int sizeXY, int[][] clip, int clipBaseX, int clipBaseY) {
 		switch (routeType) {
 		case 0:
-			return RouteStrategy.checkWallInteract(clip, currentX - clipBaseX, currentY - clipBaseY, sizeXY,
+			return RouteDefinitions.checkWallInteract(clip, currentX - clipBaseX, currentY - clipBaseY, sizeXY,
 					x - clipBaseX, y - clipBaseY, type, rotation);
 		case 1:
-			return RouteStrategy.checkWallDecorationInteract(clip, currentX - clipBaseX, currentY - clipBaseY, sizeXY,
+			return RouteDefinitions.checkWallDecorationInteract(clip, currentX - clipBaseX, currentY - clipBaseY, sizeXY,
 					x - clipBaseX, y - clipBaseY, type, rotation);
 		case 2:
-			return RouteStrategy.checkFilledRectangularInteract(clip, currentX - clipBaseX, currentY - clipBaseY,
+			return RouteDefinitions.checkFilledRectangularInteract(clip, currentX - clipBaseX, currentY - clipBaseY,
 					sizeXY, sizeXY, x - clipBaseX, y - clipBaseY, sizeX, sizeY, accessBlockFlag);
 		case 3:
 			return currentX == x && currentY == y;
@@ -105,9 +103,9 @@ public class ObjectStrategy extends RouteStrategy {
 
 	@Override
 	public boolean equals(Object other) {
-		if (!(other instanceof ObjectStrategy))
+		if (!(other instanceof ObjectDefinitions))
 			return false;
-		ObjectStrategy strategy = (ObjectStrategy) other;
+		ObjectDefinitions strategy = (ObjectDefinitions) other;
 		return x == strategy.x && y == strategy.y && routeType == strategy.routeType && type == strategy.type
 				&& rotation == strategy.rotation && sizeX == strategy.sizeX && sizeY == strategy.sizeY
 				&& accessBlockFlag == strategy.accessBlockFlag;

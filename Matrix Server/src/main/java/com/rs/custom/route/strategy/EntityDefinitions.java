@@ -1,9 +1,9 @@
 package com.rs.custom.route.strategy;
 
-import com.rs.custom.route.RouteStrategy;
+import com.rs.custom.route.RouteDefinitions;
 import com.rs.game.Entity;
 
-public class EntityStrategy extends RouteStrategy {
+public class EntityDefinitions extends RouteDefinitions {
 
 	/**
 	 * Entity position x.
@@ -22,11 +22,11 @@ public class EntityStrategy extends RouteStrategy {
 	 */
 	private int accessBlockFlag;
 
-	public EntityStrategy(Entity entity) {
+	public EntityDefinitions(Entity entity) {
 		this(entity, 0);
 	}
 
-	public EntityStrategy(Entity entity, int accessBlockFlag) {
+	public EntityDefinitions(Entity entity, int accessBlockFlag) {
 		this.x = entity.getX();
 		this.y = entity.getY();
 		this.size = entity.getSize();
@@ -35,7 +35,7 @@ public class EntityStrategy extends RouteStrategy {
 
 	@Override
 	public boolean canExit(int currentX, int currentY, int sizeXY, int[][] clip, int clipBaseX, int clipBaseY) {
-		return RouteStrategy.checkFilledRectangularInteract(clip, currentX - clipBaseX, currentY - clipBaseY, sizeXY,
+		return RouteDefinitions.checkFilledRectangularInteract(clip, currentX - clipBaseX, currentY - clipBaseY, sizeXY,
 				sizeXY, x - clipBaseX, y - clipBaseY, size, size, accessBlockFlag);
 	}
 
@@ -61,9 +61,9 @@ public class EntityStrategy extends RouteStrategy {
 
 	@Override
 	public boolean equals(Object other) {
-		if (!(other instanceof EntityStrategy))
+		if (!(other instanceof EntityDefinitions))
 			return false;
-		EntityStrategy strategy = (EntityStrategy) other;
+		EntityDefinitions strategy = (EntityDefinitions) other;
 		return x == strategy.x && y == strategy.y && size == strategy.size
 				&& accessBlockFlag == strategy.accessBlockFlag;
 	}

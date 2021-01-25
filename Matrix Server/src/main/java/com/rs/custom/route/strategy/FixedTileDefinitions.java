@@ -1,8 +1,8 @@
 package com.rs.custom.route.strategy;
 
-import com.rs.custom.route.RouteStrategy;
+import com.rs.custom.route.RouteDefinitions;
 
-public class FixedTileStrategy extends RouteStrategy {
+public class FixedTileDefinitions extends RouteDefinitions {
 
 	/**
 	 * X position of tile.
@@ -13,7 +13,7 @@ public class FixedTileStrategy extends RouteStrategy {
 	 */
 	private int y;
 
-	public FixedTileStrategy(int x, int y) {
+	public FixedTileDefinitions(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -45,9 +45,9 @@ public class FixedTileStrategy extends RouteStrategy {
 
 	@Override
 	public boolean equals(Object other) {
-		if (!(other instanceof FixedTileStrategy))
+		if (!(other instanceof FixedTileDefinitions))
 			return false;
-		FixedTileStrategy strategy = (FixedTileStrategy) other;
+		FixedTileDefinitions strategy = (FixedTileDefinitions) other;
 		return x == strategy.x && y == strategy.y;
 	}
 

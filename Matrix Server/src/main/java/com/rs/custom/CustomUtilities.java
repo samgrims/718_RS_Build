@@ -10,6 +10,22 @@ import java.util.stream.IntStream;
 
 public class CustomUtilities {
 
+    public static boolean isItemAWaterContainer(Item item) {
+        switch(item.getId()) {
+            case 229://empty vial
+                return true;
+            default:
+                break;
+        }
+        return false;
+    }
+
+    public static Item retrieveWaterFilledItemContatinerOfItem(Item item) {
+        if(item.getId() == 229)
+            return new Item(227);
+        return item;
+    }
+
     public static boolean isLocationOneOfTheseWorldTiles(WorldTile location, WorldTile ... worldTiles) {
         for(WorldTile worldTile : worldTiles)
             if(location.matches(worldTile))

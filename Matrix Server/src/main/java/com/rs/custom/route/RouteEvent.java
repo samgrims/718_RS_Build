@@ -1,15 +1,16 @@
 package com.rs.custom.route;
 
-import com.rs.custom.route.strategy.EntityStrategy;
-import com.rs.custom.route.strategy.FixedTileStrategy;
-import com.rs.custom.route.strategy.FloorItemStrategy;
-import com.rs.custom.route.strategy.ObjectStrategy;
+import com.rs.custom.CustomUtilities;
+import com.rs.custom.route.strategy.*;
+import com.rs.custom.route.strategy.FloorItemDefinitions;
+import com.rs.custom.route.strategy.ObjectDefinitions;
 import com.rs.game.Entity;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
 import com.rs.game.item.FloorItem;
 import com.rs.game.npc.NPC;
 import com.rs.game.player.Player;
+import com.rs.tools.DebugLine;
 import com.rs.utils.Utils;
 
 public class RouteEvent {
@@ -17,7 +18,7 @@ public class RouteEvent {
 	/**
 	 * Object to which we are finding the route.
 	 */
-	private Object object;
+	private Object targetObject;
 	/**
 	 * The event instance.
 	 */
@@ -27,36 +28,35 @@ public class RouteEvent {
 	 */
 	private boolean alternative;
 	/**
-	 * Contains last route strategies.
+	 * Contains last route definitions.
 	 */
-	private RouteStrategy[] last;
+	private RouteDefinitions[] last;
 
-	public RouteEvent(Object object, Runnable event) {
-		this(object, event, false);
+	public RouteEvent(Object targetObject, Runnable event) {
+		this(targetObject, event, false);
 	}
 
-	public RouteEvent(Object object, Runnable event, boolean alternative) {
-		this.object = object;
+	public RouteEvent(Object targetObject, Runnable event, boolean alternative) {
+		this.targetObject = targetObject;
 		this.event = event;
 		this.alternative = alternative;
 	}
 
 	public boolean processEvent(final NPC npc) {
-		if (!simpleCheck(npc)) {
+		if (!isTargetObjectInSamePlane(npc)) {
 			return true;
 		}
 		if (npc.getFreezeDelay() > Utils.currentTimeMillis())
 			return true;
-		RouteStrategy[] strategies = generateStrategies();
-		if (strategies == null)
+		RouteDefinitions[] definitions = generateDefinitions();
+		if (definitions == null)
 			return false;
-		else if (last != null && match(strategies, last) && npc.hasWalkSteps())
+		else if (last != null && match(definitions, last) && npc.hasWalkSteps())
 			return false;
-		else if (last != null && match(strategies, last) && !npc.hasWalkSteps()) {
-			for (int i = 0; i < strategies.length; i++) {
-				RouteStrategy strategy = strategies[i];
-				int steps = RouteFinder.findRoute(RouteFinder.WALK_ROUTEFINDER, npc.getX(), npc.getY(), npc.getPlane(),
-						npc.getSize(), strategy, i == (strategies.length - 1));
+		else if (last != null && match(definitions, last) && !npc.hasWalkSteps()) {
+			for (int i = 0; i < definitions.length; i++) {
+				RouteDefinitions strategy = definitions[i];
+				int steps = RouteFinder.findRoute(RouteFinder.WALK_ROUTEFINDER, npc.getX(), npc.getY(), npc.getPlane(),	npc.getSize(), strategy, i == (definitions.length - 1));
 				if (steps == -1)
 					continue;
 				if ((!RouteFinder.lastIsAlternative() && steps <= 0) || alternative) {
@@ -66,12 +66,12 @@ public class RouteEvent {
 			}
 			return true;
 		} else {
-			last = strategies;
+			last = definitions;
 
-			for (int i = 0; i < strategies.length; i++) {
-				RouteStrategy strategy = strategies[i];
-				int steps = RouteFinder.findRoute(RouteFinder.WALK_ROUTEFINDER, npc.getX(), npc.getY(), npc.getPlane(),
-						npc.getSize(), strategy, i == (strategies.length - 1));
+			for (int i = 0; i < definitions.length; i++) {
+				RouteDefinitions strategy = definitions[i];
+				int steps = RouteFinder.findRoute(RouteFinder.WALK_ROUTEFINDER, npc.getX(), npc.getY(), npc.getPlane(),	npc.getSize(), strategy,
+						i == (definitions.length - 1));
 				if (steps == -1)
 					continue;
 				if ((!RouteFinder.lastIsAlternative() && steps <= 0)) {
@@ -95,21 +95,21 @@ public class RouteEvent {
 	}
 
 	public boolean processEvent(final Player player) {
-		if (!simpleCheck(player)) {
+		if (!isTargetObjectInSamePlane(player)) {
 			player.getPackets().sendGameMessage("You can't reach that.");
 			player.getPackets().sendResetMinimapFlag();
 			return true;
 		}
 		if (player.getLockDelay() > Utils.currentTimeMillis())
 			return true;
-		RouteStrategy[] strategies = generateStrategies();
+		RouteDefinitions[] strategies = generateDefinitions();
 		if (strategies == null)
 			return false;
 		else if (last != null && match(strategies, last) && player.hasWalkSteps())
 			return false;
 		else if (last != null && match(strategies, last) && !player.hasWalkSteps()) {
 			for (int i = 0; i < strategies.length; i++) {
-				RouteStrategy strategy = strategies[i];
+				RouteDefinitions strategy = strategies[i];
 				int steps = RouteFinder.findRoute(RouteFinder.WALK_ROUTEFINDER, player.getX(), player.getY(),
 						player.getPlane(), player.getSize(), strategy, i == (strategies.length - 1));
 				if (steps == -1)
@@ -131,7 +131,7 @@ public class RouteEvent {
 			last = strategies;
 
 			for (int i = 0; i < strategies.length; i++) {
-				RouteStrategy strategy = strategies[i];
+				RouteDefinitions strategy = strategies[i];
 				int steps = RouteFinder.findRoute(RouteFinder.WALK_ROUTEFINDER, player.getX(), player.getY(),
 						player.getPlane(), player.getSize(), strategy, i == (strategies.length - 1));
 				if (steps == -1)
@@ -141,6 +141,7 @@ public class RouteEvent {
 						player.getPackets().sendResetMinimapFlag();
 					if (player.getNextFaceEntity() != -1)
 						player.setNextFaceEntity(null);
+					DebugLine.print("");
 					event.run();
 					return true;
 				}
@@ -168,51 +169,50 @@ public class RouteEvent {
 		}
 	}
 
-	private boolean simpleCheck(Player player) {
-		if (object == null)
+	private boolean isTargetObjectInSamePlane(Player player) {
+		if (targetObject == null)
 			return false;
-		if (object instanceof Entity) {
-			return player.getPlane() == ((Entity) object).getPlane();
-		} else if (object instanceof WorldObject) {
-			return player.getPlane() == ((WorldObject) object).getPlane();
-		} else if (object instanceof FloorItem) {
-			return player.getPlane() == ((FloorItem) object).getTile().getPlane();
+		if (targetObject instanceof Entity) {
+			return player.getPlane() == ((Entity) targetObject).getPlane();
+		} else if (targetObject instanceof WorldObject) {
+			return player.getPlane() == ((WorldObject) targetObject).getPlane();
+		} else if (targetObject instanceof FloorItem) {
+			return player.getPlane() == ((FloorItem) targetObject).getTile().getPlane();
 		} else {
-			throw new RuntimeException(object + " is not instanceof any reachable entity.");
+			throw new RuntimeException(targetObject + " is not instanceof any reachable entity.");
 		}
 	}
 
-	private boolean simpleCheck(NPC npc) {
-		if (object == null)
+	private boolean isTargetObjectInSamePlane(NPC npc) {
+		if (targetObject == null)
 			return false;
-		if (object instanceof Entity) {
-			return npc.getPlane() == ((Entity) object).getPlane();
-		} else if (object instanceof WorldObject) {
-			return npc.getPlane() == ((WorldObject) object).getPlane();
-		} else if (object instanceof FloorItem) {
-			return npc.getPlane() == ((FloorItem) object).getTile().getPlane();
+		if (targetObject instanceof Entity) {
+			return npc.getPlane() == ((Entity) targetObject).getPlane();
+		} else if (targetObject instanceof WorldObject) {
+			return npc.getPlane() == ((WorldObject) targetObject).getPlane();
+		} else if (targetObject instanceof FloorItem) {
+			return npc.getPlane() == ((FloorItem) targetObject).getTile().getPlane();
 		} else {
-			throw new RuntimeException(object + " is not instanceof any reachable entity.");
+			throw new RuntimeException(targetObject + " is not instanceof any reachable entity.");
 		}
 	}
 
-	private RouteStrategy[] generateStrategies() {
-		if (object == null)
+	private RouteDefinitions[] generateDefinitions() {
+		if (targetObject == null)
 			return last;
-		if (object instanceof Entity) {
-			return new RouteStrategy[] { new EntityStrategy((Entity) object) };
-		} else if (object instanceof WorldObject) {
-			return new RouteStrategy[] { new ObjectStrategy((WorldObject) object) };
-		} else if (object instanceof FloorItem) {
-			FloorItem item = (FloorItem) object;
-			return new RouteStrategy[] { new FixedTileStrategy(item.getTile().getX(), item.getTile().getY()),
-					new FloorItemStrategy(item) };
+		if (targetObject instanceof Entity) {
+			return new RouteDefinitions[] { new EntityDefinitions((Entity) targetObject) };
+		} else if (targetObject instanceof WorldObject) {
+			return new RouteDefinitions[] { new ObjectDefinitions((WorldObject) targetObject) };
+		} else if (targetObject instanceof FloorItem) {
+			FloorItem item = (FloorItem) targetObject;
+			return new RouteDefinitions[] { new FixedTileDefinitions(item.getTile().getX(), item.getTile().getY()), new FloorItemDefinitions(item) };
 		} else {
-			throw new RuntimeException(object + " is not instanceof any reachable entity.");
+			throw new RuntimeException(targetObject + " is not instanceof any reachable entity.");
 		}
 	}
 
-	private boolean match(RouteStrategy[] a1, RouteStrategy[] a2) {
+	private boolean match(RouteDefinitions[] a1, RouteDefinitions[] a2) {
 		if (a1.length != a2.length)
 			return false;
 		for (int i = 0; i < a1.length; i++)

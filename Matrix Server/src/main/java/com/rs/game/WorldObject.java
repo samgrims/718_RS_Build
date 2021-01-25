@@ -74,4 +74,8 @@ public class WorldObject extends WorldTile {
 	public ObjectDefinitions getDefinitions() {
 		return ObjectDefinitions.getObjectDefinitions(id);
 	}
+
+	public WorldTile getLocation() {
+		return new WorldTile(this.getX(), this.getY(), this.getPlane());
+	}
 }

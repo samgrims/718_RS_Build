@@ -744,7 +744,6 @@ public final class ObjectHandler {
 		else {
 			switch (objectDef.name.toLowerCase()) {
 				case "trapdoor":
-					handleTrapdoors(player, object, 1);
 				case "manhole":
 					if (objectDef.containsOption(0, "Open")) {
 						WorldObject openedHole = new WorldObject(object.getId()+1,
@@ -942,12 +941,6 @@ public final class ObjectHandler {
 					player.getPackets().sendGameMessage("Nothing interesting happens.");
 					break;
 			}
-		}
-	}
-
-	private static void handleTrapdoors(Player player, WorldObject worldObject, int optionID) {
-		if(worldObject.getId() == 36687) { //lumbridge kitchen -> cellar
-			player.useObjectToMove(828, new WorldTile(3208, 9616, 0), 2, 2);
 		}
 	}
 
@@ -1589,9 +1582,7 @@ public final class ObjectHandler {
 
 	private static boolean handleLadder(Player player, WorldObject object, int optionId) {
 		String option = object.getDefinitions().getOption(optionId);
-		if(object.getId() == 29355) { //Lumbridge cellar -> kitchen
-			player.useObjectToMove(828, new WorldTile(3210, 3216, 0), 1, 2);
-		} else if (option.equalsIgnoreCase("Climb-up")) {
+		if (option.equalsIgnoreCase("Climb-up")) {
 			if (player.getPlane() == 3)
 				return false;
 			player.useObjectToMove(828, new WorldTile(player.getX(), player.getY(), player.getPlane() + 1), 1, 2);
@@ -1609,35 +1600,35 @@ public final class ObjectHandler {
 		return true;
 	}
 
-	public static void handleItemOnObject(final Player player, final WorldObject object, final int interfaceId, final Item item) {
+	public static void handleItemOnObject(final Player player, final WorldObject worldObject, final int interfaceId, final Item item) {
 		final int itemId = item.getId();
-		final ObjectDefinitions objectDef = object.getDefinitions();
-		player.setRouteEvent(new RouteEvent(object, new Runnable() {
+		final ObjectDefinitions objectDef = worldObject.getDefinitions();
+		player.setRouteEvent(new RouteEvent(worldObject, new Runnable() {
 			@Override
 			public void run() {
-				player.faceObject(object);
-				if (itemId == 1438 && object.getId() == 2452) {
+				player.faceObject(worldObject);
+				CustomObjectHandler.handleCustomItemOnObject(player, worldObject, item);
+				if (itemId == 1438 && worldObject.getId() == 2452) {
 					Runecrafting.enterAirAltar(player);
-				} else if (itemId == 1440 && object.getId() == 2455) {
+				} else if (itemId == 1440 && worldObject.getId() == 2455) {
 					Runecrafting.enterEarthAltar(player);
-				} else if (itemId == 1442 && object.getId() == 2456) {
+				} else if (itemId == 1442 && worldObject.getId() == 2456) {
 					Runecrafting.enterFireAltar(player);
-				} else if (itemId == 1444 && object.getId() == 2454) {
+				} else if (itemId == 1444 && worldObject.getId() == 2454) {
 					Runecrafting.enterWaterAltar(player);
-				} else if (itemId == 1446 && object.getId() == 2457) {
+				} else if (itemId == 1446 && worldObject.getId() == 2457) {
 					Runecrafting.enterBodyAltar(player);
-				} else if (itemId == 1448 && object.getId() == 2453) {
+				} else if (itemId == 1448 && worldObject.getId() == 2453) {
 					Runecrafting.enterMindAltar(player);
-				} else if (object.getId() == 733 || object.getId() == 64729) {
-					player.setNextAnimation(new Animation(PlayerCombat
-							.getWeaponAttackEmote(-1, 0)));
-					slashWeb(player, object);
-				} else if (object.getId() == 48803 && itemId == 954) {
+				} else if (worldObject.getId() == 733 || worldObject.getId() == 64729) {
+					player.setNextAnimation(new Animation(PlayerCombat.getWeaponAttackEmote(-1, 0)));
+					slashWeb(player, worldObject);
+				} else if (worldObject.getId() == 48803 && itemId == 954) {
 					if (player.isKalphiteLairSetted())
 						return;
 					player.getInventory().deleteItem(954, 1);
 					player.setKalphiteLair();
-				} else if (object.getId() == 48802 && itemId == 954) {
+				} else if (worldObject.getId() == 48802 && itemId == 954) {
 					if (player.isKalphiteLairEntranceSetted())
 						return;
 					player.getInventory().deleteItem(954, 1);
@@ -1650,18 +1641,18 @@ public final class ObjectHandler {
 							ForgingInterface.sendSmithingInterface(player, bar);
 						break;
 					case "fire":
-						if (objectDef.containsOption(4, "Add-logs") && Bonfire.addLog(player, object, item))
+						if (objectDef.containsOption(4, "Add-logs") && Bonfire.addLog(player, worldObject, item))
 							return;
 					case "range":
 					case "cooking range":
 					case "stove":
-						if(object.getId() == 114 && !CustomUtilities.isLocationOneOfTheseWorldTiles(player.getLocation(), new WorldTile(3211, 3215, 0),
+						if(worldObject.getId() == 114 && !CustomUtilities.isLocationOneOfTheseWorldTiles(player.getLocation(), new WorldTile(3211, 3215, 0),
 								new WorldTile(3211, 3216, 0))) {
 							break;
 						}
 						Cookables cook = Cooking.isCookingSkill(item);
 						if (cook != null) {
-							player.getDialogueManager().startDialogue("CookingD", cook, object);
+							player.getDialogueManager().startDialogue("CookingD", cook, worldObject);
 							return;
 						}
 						player.getDialogueManager().startDialogue("SimpleMessage", "You can't cook that on a " + (objectDef.name

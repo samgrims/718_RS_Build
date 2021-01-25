@@ -3,7 +3,7 @@ package com.rs.custom.route;
 /**
  * Class, controlling the exit point of a route.
  */
-public abstract class RouteStrategy {
+public abstract class RouteDefinitions {
 
 	public static final int BLOCK_FLAG_NORTH = 0x1;
 	public static final int BLOCK_FLAG_EAST = 0x2;

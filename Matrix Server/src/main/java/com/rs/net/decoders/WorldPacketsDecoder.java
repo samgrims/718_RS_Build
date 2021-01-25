@@ -2,7 +2,7 @@ package com.rs.net.decoders;
 
 import com.rs.Settings;
 import com.rs.custom.route.RouteFinder;
-import com.rs.custom.route.strategy.FixedTileStrategy;
+import com.rs.custom.route.strategy.FixedTileDefinitions;
 import com.rs.game.Animation;
 import com.rs.game.Graphics;
 import com.rs.game.World;
@@ -292,7 +292,7 @@ public final class WorldPacketsDecoder extends Decoder {
 					y = baseY + stream.readUnsignedByte();
 				}
 				steps = RouteFinder.findRoute(RouteFinder.WALK_ROUTEFINDER, player.getX(), player.getY(), player.getPlane(), player.getSize(),
-						new FixedTileStrategy(x, y), true);
+						new FixedTileDefinitions(x, y), true);
 				int[] bufferX = RouteFinder.getLastPathBufferX();
 				int[] bufferY = RouteFinder.getLastPathBufferY();
 				for (int i = steps - 1; i >= 0; i--) {
