@@ -10,12 +10,22 @@ import java.util.stream.Collectors;
 
 public class CustomObjectHandler {
     private static int[] customObjects = new int[] {
-        12309
+        12309, 12348, 12349
     };
 
     public static void handleCustomOption1(Player player, WorldObject worldObject) {
-        if(worldObject.getId() == 12309)//Culimnancor chest
-            player.getInterfaceManager().sendInterface(762);
+        int worldObjectID = worldObject.getId();
+        switch(worldObjectID) {
+            case 12309:
+                player.getInterfaceManager().sendInterface(762);
+                break;
+            case 12348:
+            case 12349:
+                player.getPackets().sendGameMessage("The door is locked");
+                break;
+            default:
+                break;
+        }
     }
 
     public static void handleCustomOption2(Player player, WorldObject worldObject) {

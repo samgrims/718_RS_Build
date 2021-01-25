@@ -1,6 +1,7 @@
 package com.rs.custom;
 
 import com.rs.Settings;
+import com.rs.game.WorldTile;
 import com.rs.game.item.Item;
 import com.rs.game.player.Player;
 
@@ -8,6 +9,14 @@ import java.io.File;
 import java.util.stream.IntStream;
 
 public class CustomUtilities {
+
+    public static boolean isLocationOneOfTheseWorldTiles(WorldTile location, WorldTile ... worldTiles) {
+        for(WorldTile worldTile : worldTiles)
+            if(location.matches(worldTile))
+                return true;
+        return false;
+    }
+
     public static boolean isMetalName(String metal) {
         switch(metal.toLowerCase()) {
             case "bronze":

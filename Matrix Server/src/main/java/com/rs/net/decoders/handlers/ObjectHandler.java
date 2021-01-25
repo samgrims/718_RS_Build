@@ -1,5 +1,6 @@
 package com.rs.net.decoders.handlers;
 
+import com.rs.custom.CustomUtilities;
 import com.rs.custom.data_structures.CustomObjectHandler;
 import com.rs.custom.route.RouteEvent;
 import com.rs.tools.DebugLine;
@@ -890,8 +891,7 @@ public final class ObjectHandler {
 				case "gate":
 				case "large door":
 				case "metal door":
-					if (object.getType() == 0
-							&& objectDef.containsOption(0, "Open"))
+					if (object.getType() == 0 && objectDef.containsOption(0, "Open"))
 						if(!handleGate(player, object))
 							handleDoor(player, object);
 					break;
@@ -1206,12 +1206,8 @@ public final class ObjectHandler {
 					return false;
 				south = false;
 			}
-			WorldObject openedDoor1 = new WorldObject(object.getId(),
-					object.getType(), object.getRotation() + 1, object.getX(),
-					object.getY(), object.getPlane());
-			WorldObject openedDoor2 = new WorldObject(otherDoor.getId(),
-					otherDoor.getType(), otherDoor.getRotation() + 1,
-					otherDoor.getX(), otherDoor.getY(), otherDoor.getPlane());
+			WorldObject openedDoor1 = new WorldObject(object.getId(), object.getType(), object.getRotation() + 1, object.getX(),	object.getY(), object.getPlane());
+			WorldObject openedDoor2 = new WorldObject(otherDoor.getId(), otherDoor.getType(), otherDoor.getRotation() + 1, otherDoor.getX(), otherDoor.getY(), otherDoor.getPlane());
 			if (south) {
 				openedDoor1.moveLocation(-1, 0, 0);
 				openedDoor1.setRotation(3);
@@ -1616,7 +1612,7 @@ public final class ObjectHandler {
 	public static void handleItemOnObject(final Player player, final WorldObject object, final int interfaceId, final Item item) {
 		final int itemId = item.getId();
 		final ObjectDefinitions objectDef = object.getDefinitions();
-		player.setCoordsEvent(new CoordsEvent(object, new Runnable() {
+		player.setRouteEvent(new RouteEvent(object, new Runnable() {
 			@Override
 			public void run() {
 				player.faceObject(object);
@@ -1654,35 +1650,29 @@ public final class ObjectHandler {
 							ForgingInterface.sendSmithingInterface(player, bar);
 						break;
 					case "fire":
-						if (objectDef.containsOption(4, "Add-logs")
-								&& Bonfire.addLog(player, object, item))
+						if (objectDef.containsOption(4, "Add-logs") && Bonfire.addLog(player, object, item))
 							return;
 					case "range":
 					case "cooking range":
 					case "stove":
+						if(object.getId() == 114 && !CustomUtilities.isLocationOneOfTheseWorldTiles(player.getLocation(), new WorldTile(3211, 3215, 0),
+								new WorldTile(3211, 3216, 0))) {
+							break;
+						}
 						Cookables cook = Cooking.isCookingSkill(item);
 						if (cook != null) {
-							player.getDialogueManager().startDialogue(
-									"CookingD", cook, object);
+							player.getDialogueManager().startDialogue("CookingD", cook, object);
 							return;
 						}
-						player.getDialogueManager()
-						.startDialogue(
-								"SimpleMessage",
-								"You can't cook that on a "
-										+ (objectDef.name
-												.equals("Fire") ? "fire"
-														: "range") + ".");
+						player.getDialogueManager().startDialogue("SimpleMessage", "You can't cook that on a " + (objectDef.name
+												.equals("Fire") ? "fire" : "range") + ".");
 						break;
 					default:
-						player.getPackets().sendGameMessage(
-								"Nothing interesting happens.");
+						player.getPackets().sendGameMessage("Nothing interesting happens.");
 						break;
 					}
-					if (Settings.DEBUG)
-						System.out.println("Item on object: " + object.getId());
 				}
 			}
-		}, objectDef.getSizeX(), objectDef.getSizeY(), object.getRotation()));
+		}, true));
 	}
 }
