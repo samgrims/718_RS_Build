@@ -131,8 +131,7 @@ public class Class223 implements Interface24 {
 				Class504.aClass375_6196.method4648((byte) 90);
 				Class151.aClass451_6358.method5929(-176522889);
 				Class212.aClass144_2433.method1580((byte) -92);
-				client.aClass283_8716.method2641(1825433072).method5793(
-						1390466939);
+				client.aClass283_8716.method2641(1825433072).method5793(	1390466939);
 				Class15.aClass507_224.method6272(-862794511);
 				Class298_Sub32_Sub14.aClass477_9400.method6088((short) 23106);
 				Class501.aClass395_6122.method4901(-726986844);
@@ -161,8 +160,7 @@ public class Class223 implements Interface24 {
 						Class98.aByteArrayArray949[i_5_] = null;
 					client.anInt8677 = 0;
 				}
-				client.aClass283_8716.method2640((byte) 31).method4317(
-						(byte) 24);
+				client.aClass283_8716.method2640((byte) 31).method4317((byte) 24);
 				Class401.method4934((byte) -90);
 				Class482.method6119(-1075754274);
 				Class330.method4005(-1407310804);
@@ -176,8 +174,7 @@ public class Class223 implements Interface24 {
 			Class355.method4262(1675886592);
 			Class513.method6293(-707841245);
 		} catch (RuntimeException runtimeexception) {
-			throw Class346.method4175(runtimeexception, new StringBuilder()
-					.append("jl.gx(").append(')').toString());
+			throw Class346.method4175(runtimeexception, new StringBuilder().append("jl.gx(").append(')').toString());
 		}
 	}
 

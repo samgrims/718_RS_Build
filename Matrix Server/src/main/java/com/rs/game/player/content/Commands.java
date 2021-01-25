@@ -529,11 +529,6 @@ public final class Commands {
 								.contains(string))
 							items[i] = new Item(-1, -1);
 					}
-					for (String string : Settings.VOTE_REQUIRED_ITEMS) {
-						if (items[i].getDefinitions().getName().toLowerCase()
-								.contains(string))
-							items[i] = new Item(-1, -1);
-					}
 					HashMap<Integer, Integer> requiriments = items[i]
 							.getDefinitions().getWearingSkillRequiriments();
 					if (requiriments != null) {
@@ -2333,6 +2328,9 @@ public final class Commands {
 				}
 				return true;
 			case "switchitemslook":
+				/*
+				Only changes up to item IDs 23106, found in method2082 in the client
+				 */
 				player.switchItemsLook();
 				player.getPackets().sendGameMessage("You are now playing with " + (player.isOldItemsLook() ? "old" : "new") + " item looks.");
 				return true;

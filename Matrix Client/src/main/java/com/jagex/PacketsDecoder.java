@@ -2360,9 +2360,9 @@ public class PacketsDecoder {
 				((Class25) class25).INCOMMING_PACKET = null;
 				return true;
 			}
-			if (IncommingPacket.SWITCH_ITEMS_LOOK_PACKET == ((Class25) class25).INCOMMING_PACKET) {
+			if (IncommingPacket.SWITCH_ITEMS_LOOK_PACKET == class25.INCOMMING_PACKET) {
 				Class477.switchItems(stream.readUnsignedByte() == 1);
-				((Class25) class25).INCOMMING_PACKET = null;
+				class25.INCOMMING_PACKET = null;
 				return true;
 			}
 			if (IncommingPacket.WORLD_TILE_PACKET == ((Class25) class25).INCOMMING_PACKET) {

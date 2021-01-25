@@ -1381,12 +1381,6 @@ public class ButtonHandler {
 				return true;
 			}
 		}
-		for (String strings : Settings.VOTE_REQUIRED_ITEMS) {
-			if (itemName.toLowerCase().contains(strings) && !player.hasVoted()) {
-				player.getPackets().sendGameMessage("You need to vote to wear the prod item "+itemName+" for 24 hours, type ::vote to vote.");
-				return true;
-			}
-		}
 		int targetSlot = Equipment.getItemSlot(itemId);
 		if (targetSlot == -1) {
 			player.getPackets().sendGameMessage("You can't wear that.");
@@ -1520,12 +1514,6 @@ public class ButtonHandler {
 			if (itemName.contains(strings) && player.getRights() <= 1) {
 				player.getPackets().sendGameMessage(
 						"You must earn " + itemName + ".");
-				return true;
-			}
-		}
-		for (String strings : Settings.VOTE_REQUIRED_ITEMS) {
-			if (itemName.toLowerCase().contains(strings) && !player.hasVoted()) {
-				player.getPackets().sendGameMessage("You need to vote to wear the prod item "+itemName+" for 24 hours, type ::vote to vote.");
 				return true;
 			}
 		}

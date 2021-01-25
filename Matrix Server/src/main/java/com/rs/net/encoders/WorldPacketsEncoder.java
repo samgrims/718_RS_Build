@@ -1318,12 +1318,12 @@ public class WorldPacketsEncoder extends Encoder {
 	public void sendItemsLook() {
 		OutputStream stream = new OutputStream(2);
 		stream.writePacket(player, 159);
-		stream.writeByte(player.isOldItemsLook() ? 1 : 0);
+		stream.writeByte(1);
+//		stream.writeByte(player.isOldItemsLook() ? 1 : 0);
 		session.write(stream);
 	}
 	
-	public void sendCameraPos(int moveLocalX, int moveLocalY, int moveZ,
-			int speed1, int speed2) {
+	public void sendCameraPos(int moveLocalX, int moveLocalY, int moveZ, int speed1, int speed2) {
 		OutputStream stream = new OutputStream(7);
 		stream.writePacket(player, 74);
 		stream.writeByte128(speed2);

@@ -111,11 +111,7 @@ public final class Settings {
 	
 	public static String[] REMOVING_ITEMS = { "(class",
 		"sacred clay", "dominion", "sled"};
-	
-	public static String[] VOTE_REQUIRED_ITEMS = {
-		"torva", "virtus", "pernix", "ganodermic", "flaming skull", "polypore", "spirit shield", 
-		"chaotic", "celestial", "light saber", "fallen cape"
-	};
+
 	
 	public static boolean inApacheEmperorZone(WorldTile tile) {
 		return (tile.getX() >= 2830 && tile.getX() <= 2862 && tile.getY() >= 10042 && tile.getY() <= 10062);
