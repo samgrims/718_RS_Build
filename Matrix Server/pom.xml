@@ -55,11 +55,11 @@
             <version>1.0.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.warbycode</groupId>
-            <artifactId>RS-Cache-Library</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.warbycode</groupId>-->
+<!--            <artifactId>RS-Cache-Library</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
