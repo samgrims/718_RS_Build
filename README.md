@@ -18,7 +18,7 @@ Note the pom.xml is created for both client & server individually, each module h
 <li>Download cache.zip from Mega: https://mega.nz/file/u1cm2BgB#y9ud8X6Wh_1IrEWBIkQmyONqb7PQuE_qbWNYlTHqgkA
 <li>Unzip cache.zip to the server-module->data folder. It should just be Matrix Server->data->cache while the rest of the server folders are on the same level as data. Here is a picture:<br> 
 <img src="https://i.gyazo.com/2e95faffe500e88dd3eb5658efe717b7.png">
-<li>Install local jar files onto your Maven local repo on the server by running terminal commands that look like these. If you have never installed jars to your local repo 
+<li>Go to the server folder and install maven dependency jar files onto your Maven local repo on the server by running terminal commands that look like these. If you have never installed jars to your local repo 
 just make sure to follow a guide online and have the everything in the command matching the pom.xml dependency info in the dependency tags.
 <br>```<br>
 mvn install:install-file -Dfile=[folder_with_dependencies]\FileStore.jar -DgroupId=com.[anythinh -DartifactId=FileStore -Dversion=1.0.0 -Dpackaging=jar<br>
