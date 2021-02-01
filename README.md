@@ -21,7 +21,7 @@ Note the pom.xml is created for both client & server individually, each module h
 <li>Go to the server folder and install maven dependency jar files onto your Maven local repo on the server by running terminal commands that look like these. If you have never installed jars to your local repo 
 just make sure to follow a guide online and have the everything in the command matching the pom.xml dependency info in the dependency tags.
 <br>```<br>
-mvn install:install-file -Dfile=[folder_with_dependencies]\FileStore.jar -DgroupId=com.[anythinh -DartifactId=FileStore -Dversion=1.0.0 -Dpackaging=jar<br>
+mvn install:install-file -Dfile=[folder_with_dependencies]\FileStore.jar -DgroupId=com.warbycode -DartifactId=FileStore -Dversion=1.0.0 -Dpackaging=jar<br>
 mvn install:install-file -Dfile=[folder_with_dependencies]\netty-3.6.5.Final.jar -DgroupId=com.warbycode -DartifactId=netty-3.6.5.Final -Dversion=1.0.0 -Dpackaging=jar
 <br>```<br>
 <li>Run Server.java as the server
